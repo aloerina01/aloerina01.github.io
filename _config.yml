@@ -28,7 +28,7 @@ markdown: kramdown
 paginate: 5
 paginate_path: "/page:num/"
 inter_post_navigation: false
-highlightjs_theme: "atom_one_dark"
+highlightjs_theme: "atom-one-dark"
 
 # Archive settings (see https://github.com/jekyll/jekyll-archives/)
 jekyll-archives:
