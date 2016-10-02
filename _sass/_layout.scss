@@ -205,6 +205,9 @@ pre code.hljs {
 		padding-top: 1em !important;
 		@extend %default-ul;
 	}
+	.post-excerpt p {
+		line-height: 2;
+	}
 	.post-meta {
 		@include outer-container;
 		// padding: 1em 0;
@@ -268,6 +271,9 @@ pre code.hljs {
 		}
 		.post-content {
 			padding: 1em 0;
+			p {
+				line-height: 2;
+			}
 		}
 		.tags {
 			font-size: 0.9em;
