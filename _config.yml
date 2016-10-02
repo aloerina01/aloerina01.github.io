@@ -11,7 +11,7 @@ exclude:
 # Site settings
 title: aloecolon
 subtitle: "A simple yet classy theme for your Jekyll website or blog"
-email: 
+email:
 name: aloerina
 description: >
   A simple yet classy theme for your Jekyll website or blog.
@@ -72,7 +72,7 @@ descriptions:
 social:
   - name: Twitter
     icon: twitter
-    username: @aloerina_
+    username: "@aloerina_"
     url: https://twitter.com/aloerina_
     desc: Follow me on Twitter
     share: true
