@@ -38,9 +38,12 @@ $gray: #7f8c8d;				// Asbestos
 // Even more colors
 $bc-red: #bc0000;
 
+// custom color
+$blue-gray: #546E7A;
+
 // Font Colors
 $base-background-color: #fff;
-$base-font-color: $dark-gray;
+$base-font-color: $blue-gray;
 $action-color: $blue;
 $highlight-color: tint($action-color, 33%);
 
