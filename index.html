@@ -20,7 +20,11 @@ layout: default
       <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
     </h2>
     <section class="post-excerpt" itemprop="description">
-      <p>{{ post.outline || post.content | strip_html | truncatewords: 50 }}</p>
+      {% if post.outline %}
+      <p>{{ post.outline }}</p>
+      {% else %}
+      <p>{{ post.content | strip_html | truncatewords: 50 }}</p>
+      {% endif %}
     </section>
     <section class="post-meta">
       <div class="post-date">{{ post.date | date: "%B %-d, %Y" }}</div>
