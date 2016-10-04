@@ -267,6 +267,9 @@ pre code.hljs {
 		}
 		.post-meta {
 			padding-bottom: 1em;
+			.post-categories {
+				color: $link-color;	
+			}
 		}
 		.post-content {
 			padding: 1em 0;
