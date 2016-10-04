@@ -29,7 +29,9 @@ layout: default
     <section class="post-meta">
       <div class="post-date">{{ post.date | date: "%F" }}</div>
       <div class="post-categories">
-      {% if post.categories.size > 0 %}in {% for cat in post.categories %}
+      {% if post.categories.size > 0 %}
+        <i class="fa fa-tag fa-fw"></i>
+        {% for cat in post.categories %}
         {% if site.jekyll-archives %}
         <a href="{{ site.baseurl }}/category/{{ cat }}">{{ cat | capitalize }}</a>{% if forloop.last == false %}, {% endif %}
         {% else %}
