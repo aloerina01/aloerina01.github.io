@@ -273,6 +273,7 @@ pre code.hljs {
 			padding: 1em 0;
 			p {
 				line-height: 2;
+				margin-bottom: 20px;
 			}
 			blockquote {
 				margin-left: 12px;
@@ -280,6 +281,15 @@ pre code.hljs {
 				border-left: 6px solid $blue-gray-light;
 				font-style: italic;
 				font-size: 90%;
+			}
+			h3 {
+				margin-top: 60px;
+			}
+			h4 {
+				margin-top: 40px;
+				h3+& {
+					margin-top: 0;	
+				}
 			}
 		}
 		.tags {
