@@ -292,6 +292,10 @@ pre code.hljs {
 			h3 + h4 {
 				margin-top: 0;	
 			}
+			// temporary
+			.gist .blob-num {
+				width: 37px;	
+			}
 		}
 		.tags {
 			font-size: 0.9em;
