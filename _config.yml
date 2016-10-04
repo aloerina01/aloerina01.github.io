@@ -9,8 +9,8 @@ exclude:
   - "/vendor/"
 
 # Site settings
-title: aloecolon
-subtitle: "A simple yet classy theme for your Jekyll website or blog"
+title: "mille-feuille code"
+subtitle: "コードのかけらを一枚ずつ積み重ねて。"
 email:
 name: aloerina
 description: >
