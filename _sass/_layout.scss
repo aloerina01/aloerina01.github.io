@@ -268,7 +268,7 @@ pre code.hljs {
 		.post-meta {
 			padding-bottom: 1em;
 			.post-categories {
-				color: #2980b9;	
+				color: #2980b9;
 			}
 		}
 		.post-content {
@@ -284,6 +284,11 @@ pre code.hljs {
 				font-style: italic;
 				font-size: 90%;
 			}
+      code {
+        padding: 0 4px;
+        line-height: 1.4;
+        font-size: 94%;
+      }
 			h3 {
 				margin-top: 72px;
 				border-bottom: 1px solid $blue-gray-light;
@@ -292,11 +297,11 @@ pre code.hljs {
 				margin-top: 40px;
 			}
 			h3 + h4 {
-				margin-top: 0;	
+				margin-top: 0;
 			}
 			// temporary
 			.gist .blob-num {
-				width: 37px;	
+				width: 37px;
 			}
 		}
 		.tags {
