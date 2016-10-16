@@ -30,7 +30,7 @@ layout: default
   {% endfor %}
   {% endif %}
   </div>
-</section>  
+</section>
 
 <article class="post-content">
   {{ content }}
@@ -87,6 +87,9 @@ layout: default
         <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
       </a>
     {% endif %}
+    <a href="//getpocket.com/edit?url={{ full_url }}" target="_blank">
+      <i class="fa-get-pocket fa-square fa-lg"></i>
+    </a>
   {% endfor %}
 </section>
 {% if site.inter_post_navigation == true %}
