@@ -45,6 +45,7 @@ p {
 a {
   color: $action-color;
   text-decoration: none;
+  cursor: pointer;
   transition: color 0.4s ease;
 
   &:active,

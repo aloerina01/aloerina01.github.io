@@ -386,10 +386,11 @@ pre code.hljs {
 .site-footer {
 	$link-color: $white;
 	padding: 1em 1em 2em 1em;
-	background-color: $cyan-400;
+	background-color: $cyan-300;
 	color: $white;
 	a {
 	  color: $link-color;
+    cursor: pointer;
     transition: color 0.4s ease;
 	  &:active,
 	  &:focus,
