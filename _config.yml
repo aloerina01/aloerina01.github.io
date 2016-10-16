@@ -182,6 +182,13 @@ social:
     desc: Open another blog
     share: false
 
+  - name: Pocket
+    icon: get-pocket
+    username:
+    url:
+    desc: Save to Pocket
+    share: true
+
 # Social sharing protocols
 # These are for automatically generating sharing metadata for FB and Twitter
 # OS Protocol is for sharing the source of your site, if you're interested. For more, see osprotocol.com

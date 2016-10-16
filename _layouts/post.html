@@ -87,9 +87,11 @@ layout: default
         <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
       </a>
     {% endif %}
-    <a href="//getpocket.com/edit?url={{ full_url }}" target="_blank">
-      <i class="fa-get-pocket fa-square fa-lg"></i>
-    </a>
+    {% if social.name == "Pocket" and social.share == true %}
+      <a href="//getpocket.com/edit?url={{ full_url }}" target="_blank">
+        <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
+      </a>
+    {% endif %}
   {% endfor %}
 </section>
 {% if site.inter_post_navigation == true %}
