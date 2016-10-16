@@ -27,16 +27,26 @@ $dark-gray: #333;
 $medium-gray: #999;
 $light-gray: #ddd;
 $white: #fff;
-// Flat UI Colors. For more, see http://flatuicolors.com/
-$turquoise: #1abc9c;	// Turqoise
-$green: #27ae60;	  	// Nephritis
-$blue: #2980b9;				// Belize Hole
-$purple: #8e44ad;			// Wisteria
-$orange: #d35400;			// Pumpkin
-$red:	#c0392b;				// Pomegranate
-$gray: #7f8c8d;				// Asbestos
-// Even more colors
-$bc-red: #bc0000;
+// Material UI Colors.
+$turquoise: #26C6DA;	// Cyan
+$green: #26A69A;	  	// Nephritis
+$blue: #42A5F5;				// Belize Hole
+$purple: #7E57C2;			// Wisteria
+$orange: #FF7043;			// Pumpkin
+$red:	#EC407A;				// Pomegranate
+$gray: #78909C;				// Asbestos
+
+$cyan-100: #B2EBF2;
+$cyan-200: #80DEEA;
+$cyan-300: #4DD0E1;
+$cyan-400: #26C6DA;
+$cyan-500: #00BCD4;
+
+$pink-200: #F48FB1;
+$pink-300: #F06292;
+$pink-400: #EC407A;
+$pink-500: #E91E63;
+$pink-600: #D81B60;
 
 // custom color
 $blue-gray: #546E7A;
@@ -45,8 +55,9 @@ $blue-gray-light: #CFD8DC;
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: $blue-gray;
-$action-color: $blue;
-$highlight-color: tint($action-color, 33%);
+$main-color: $cyan-500;
+$accent-color: $pink-400;
+$action-color: $main-color;
 
 // Border
 $base-border-color: $light-gray;
