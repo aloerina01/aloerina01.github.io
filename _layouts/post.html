@@ -89,7 +89,10 @@ layout: default
     {% endif %}
     {% if social.name == "Pocket" and social.share == true %}
       <a href="//getpocket.com/edit?url={{ full_url }}" target="_blank">
-        <i class="fa fa-{{ social.icon | remove_first: '-square' }}-square fa-lg"></i>
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle fa-stack-2x"></i>
+          <i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i>
+        </span>
       </a>
     {% endif %}
   {% endfor %}
