@@ -113,8 +113,8 @@ layout: default
       </a>
     {% endif %}
     {% if social.name == "Line" and social.share == true %}
-      <a class="share-button share-button-line"
-        href="//line.me/R/msg/text/?{{ page.title | url_encode }}0D%0A{{ full_url | url_encode }}">
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?{{ page.title | url_encode }}%0D%0A{{ full_url | url_encode }}">
         <img src="{{ social.img }}" />
       </a>
     {% endif %}
