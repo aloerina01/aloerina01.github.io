@@ -15,13 +15,18 @@
   &.share-button-pocket {
     color: $color-pocket;
   }
-  &.share-button-line img {
-    border-radius: 50%;
-    position: relative;
-    display: inline-block;
-    vertical-align: middle;
-    width: 2.35rem;
-    height: 2.35rem;
-    line-height: 2rem;
+  &.share-button-line {
+    width: auto;
+    img {
+      border-radius: 50%;
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      width: 37px;
+      height: 40px;
+      padding: 2px 0 0 0;
+      line-height: 2rem;
+    }
   }
+
 }
