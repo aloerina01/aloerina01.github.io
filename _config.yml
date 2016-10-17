@@ -72,7 +72,7 @@ descriptions:
 social:
   - name: Twitter
     icon: twitter
-    username: "@aloerina_"
+    username: "aloerina_"
     url: https://twitter.com/aloerina_
     desc: Follow me on Twitter
     share: true
@@ -187,6 +187,11 @@ social:
     username:
     url:
     desc: Save to Pocket
+    share: true
+
+  - name: LINE
+    img: "/assets/thirdparty/linebutton.png"
+    desc: "LINEで送る"
     share: true
 
 # Social sharing protocols
