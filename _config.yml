@@ -189,7 +189,7 @@ social:
     desc: Save to Pocket
     share: true
 
-  - name: LINE
+  - name: Line
     img: "/assets/thirdparty/linebutton.png"
     desc: "LINEで送る"
     share: true
