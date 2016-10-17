@@ -1,4 +1,8 @@
 .share-button {
+  transition: all 0.4s ease;
+  &:hover {
+    opacity: .7;
+  }
   &.share-button-twitter {
     color: $color-twitter;
   }
@@ -10,5 +14,14 @@
   }
   &.share-button-pocket {
     color: $color-pocket;
+  }
+  &.share-button-line {
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
   }
 }
