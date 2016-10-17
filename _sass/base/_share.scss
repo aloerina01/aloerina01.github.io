@@ -1,0 +1,14 @@
+.share-button {
+  &.share-button-twitter {
+    color: $color-twitter;
+  }
+  &.share-button-facebook {
+    color: $color-facebook;
+  }
+  &.shae-button-google {
+    color: $color-google;
+  }
+  &.share-button-pocket {
+    color: $color-pocket;
+  }
+}
