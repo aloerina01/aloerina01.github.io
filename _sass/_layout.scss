@@ -315,19 +315,6 @@ pre code.hljs {
 			}
 		}
 		.share {
-			// font-weight: bold;
-			// margin: 0 0 1em 0;
-			// @include span-columns(12);
-			// @include media ($tablet) {
-			// 	@include span-columns(6);
-			// 	margin: 1em 0;
-			// 	text-align: right;
-			// }
-			// a {
-			// 	width: 1em;
-			// 	padding: 0 0.25em;
-			// 	text-decoration: none;
-			// }
       float: right;
       position: relative;
       display: flex;
@@ -335,9 +322,11 @@ pre code.hljs {
       justify-content: space-between;
       margin: 0 0 1rem 0;
       width: 270px;
-      @include media ($tablet) {
-        float: left;
-        justify-content: space-around;
+      @include media ($mobile) {
+        float: none;
+        margin: 1.5rem auto;
+        width: 100%;
+        max-width: 270px;
       }
 		}
 		.disqus {
