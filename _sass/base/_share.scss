@@ -17,6 +17,7 @@
   }
   &.share-button-line {
     width: auto;
+    padding: 2px 0 0 4px;
     img {
       border-radius: 50%;
       position: relative;
@@ -24,7 +25,6 @@
       vertical-align: middle;
       width: 38px;
       height: 38px;
-      padding: 2px 0 0 4px;
       line-height: 2rem;
       box-sizing: content-box;
     }
