@@ -1,19 +1,25 @@
 .share-button {
   transition: all 0.4s ease;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px #bbb;
   &:hover {
     opacity: .7;
   }
   &.share-button-twitter {
-    color: $color-twitter;
+    color: #fff;
+    background-color: $color-twitter;
   }
   &.share-button-facebook {
-    color: $color-facebook;
+    color: #fff;
+    background-color: $color-facebook;
   }
   &.share-button-google {
-    color: $color-google;
+    color: #fff;
+    backgrond-color: $color-google;
   }
   &.share-button-pocket {
-    color: $color-pocket;
+    color: #fff;
+    background-color: $color-pocket;
   }
   &.share-button-line {
     width: auto;
