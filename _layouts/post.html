@@ -54,62 +54,41 @@ layout: default
     {% if social.name == "Twitter" and social.share == true %}
       <a class="share-button share-button-twitter" href="//twitter.com/share?text={{ page.title | cgi_escape }}&url={{ full_url }}&via={{social.username}}"
         onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
-        </span>
+        <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
       </a>
     {% endif %}
     {% if social.name == "Facebook" and social.share == true %}
       <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t={{ page.title | cgi_escape }}&u={{ full_url }}"
         onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
-        </span>
+        <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
       </a>
     {% endif %}
     {% if social.name == "Google+" and social.share == true %}
       <a class="share-button share-button-google" href="//plus.google.com/share?title={{ page.title | cgi_escape }}&url={{ full_url }}"
         onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
-        </span>
+        <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
       </a>
     {% endif %}
     {% if social.name == "LinkedIn" and social.share == true %}
       <a href="//www.linkedin.com/shareArticle?mini=true&url={{ full_url }}"
         onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
-        </span>
+        <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
       </a>
     {% endif %}
     {% if social.name == "Pinterest" and social.share == true %}
       <a href="//www.pinterest.com/pin/create/button/?description={{ page.title | cgi_escape }}&url={{ full_url }}&media={{ site.url }}{% if page.cover %}{{ page.cover | prepend: site.baseurl  }}{% elsif site.cover %}{{ site.cover | prepend: site.baseurl }}{% else %}{{ site.logo | prepend: site.baseurl }}{% endif %}"
         onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
-        </span>
+        <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
       </a>
     {% endif %}
     {% if social.name == "Reddit" and social.share == true %}
       <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('{{ full_url }}') + '&title={{page.title}}'; return false">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
-        </span>
+        <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
       </a>
     {% endif %}
     {% if social.name == "Pocket" and social.share == true %}
       <a class="share-button share-button-pocket" href="//getpocket.com/edit?url={{ full_url }}" target="_blank">
-        <span class="fa-stack fa-lg">
-          <i class="fa fa-circle fa-stack-2x"></i>
-          <i class="fa fa-get-pocket fa-stack-1x fa-inverse"></i>
-        </span>
+        <i class="fa fa-{{ social.icon }} fa-stack-1x fa-inverse"></i>
       </a>
     {% endif %}
     {% if social.name == "Line" and social.share == true %}
