@@ -1,30 +1,37 @@
 .share-button {
+  width: 38px;
+  height: 38px;
+  text-align: center;
   transition: all 0.4s ease;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px #bbb;
   &:hover {
     opacity: .7;
   }
+  .fa {
+    padding: 11px 0 0 0;
+  }
   &.share-button-twitter {
-    color: $color-twitter;
+    background-color: $color-twitter;
   }
   &.share-button-facebook {
-    color: $color-facebook;
+    background-color: $color-facebook;
   }
   &.share-button-google {
-    color: $color-google;
+    background-color: $color-google;
   }
   &.share-button-pocket {
-    color: $color-pocket;
+    background-color: $color-pocket;
   }
   &.share-button-line {
-    width: auto;
-    padding: 2px 0 0 4px;
+    background-color: $color-line;
     img {
       border-radius: 50%;
       position: relative;
       display: inline-block;
-      vertical-align: middle;
-      width: 38px;
-      height: 38px;
+      padding: 5px 0 0 0;
+      width: 28px;
+      height: 28px;
       line-height: 2rem;
       box-sizing: content-box;
     }
