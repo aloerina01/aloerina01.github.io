@@ -269,10 +269,9 @@ pre code.hljs {
 		.post-meta {
 			padding-bottom: 1em;
 			.post-categories {
-				color: $blue-gray-100;
-        a {
-          color: $blue-gray-300;
-        }
+				a {
+					color: $blue-gray-300;
+				}
 			}
 		}
 		.post-content {
