@@ -400,13 +400,13 @@ pre code.hljs {
 	background-color: $pink-100;
 	color: $white;
 	a {
-	  color: $link-color;
+	  color: $white;
     cursor: pointer;
     transition: color 0.4s ease;
 	  &:active,
 	  &:focus,
 	  &:hover {
-	    color: darken($link-color, 20%);
+	    color: $pink-600;
 	  }
 	  &:active,
 	  &:focus {
