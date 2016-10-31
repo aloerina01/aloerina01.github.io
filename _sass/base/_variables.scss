@@ -57,12 +57,13 @@ $color-pocket: #DC3D50;
 $color-line: #00C300;
 
 // custom color
-$blue-gray: #546E7A;
-$blue-gray-light: #CFD8DC;
+$blue-gray-100: #CFD8DC;
+$blue-gray-300: #90A4AE;
+$blue-gray-600: #546E7A;
 
 // Font Colors
 $base-background-color: #fff;
-$base-font-color: $blue-gray;
+$base-font-color: $blue-gray-600;
 $main-color: $pink-300;
 $accent-color: $cyan-400;
 $action-color: $main-color;
