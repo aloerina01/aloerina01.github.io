@@ -48,7 +48,6 @@ a {
   cursor: pointer;
   transition: color 0.4s ease;
 
-  &:active,
   &:focus,
   &:hover {
     color: $accent-color;
