@@ -206,6 +206,9 @@ pre code.hljs {
 	.post-excerpt p {
 		line-height: 2;
 	}
+	.post-link {
+		color: $blue-gray-400;	
+	}
 	.post-meta {
 		@include outer-container;
 		// padding: 1em 0;
