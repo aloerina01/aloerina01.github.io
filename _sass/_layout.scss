@@ -223,12 +223,7 @@ pre code.hljs {
 			margin-right: 0;
 			text-align: right;
 			font-size: 0.9em;
-		      	a {
-				color: $blue-gray-300;
-			      	&:hover {
-					color: $accent-color;
-				}
-		      	}
+			color: $main-color;
 		}
 	}
 	.pagination {
@@ -275,12 +270,7 @@ pre code.hljs {
 		.post-meta {
 			padding-bottom: 1em;
 			.post-categories {
-				a {
-					color: $blue-gray-300;
-					&:hover {
-						color: $accent-color;
-					}
-				}
+				color: $main-color;
 			}
 		}
 		.post-content {
