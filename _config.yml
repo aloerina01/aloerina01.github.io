@@ -48,11 +48,11 @@ disqus_shortname: https-aloerina01-github-io
 
 # Category descriptions (for archive pages)
 descriptions:
-  - cat: jekyll
-    desc: "Posts describing Jekyll setup techniques."
+  - cat: JavaScript
+    desc: ""
 
-  - cat: dummy
-    desc: "Just some placeholder posts, lorem ipsum and the rest."
+  - cat: css
+    desc: ""
 
 # Social icons and sharing options
 #
