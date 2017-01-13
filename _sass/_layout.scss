@@ -207,7 +207,10 @@ pre code.hljs {
 		line-height: 2;
 	}
 	.post-link {
-		color: $blue-gray-400;	
+		color: $blue-gray-400;
+		&:hover {
+			color: $main-color;
+		}
 	}
 	.post-meta {
 		@include outer-container;
