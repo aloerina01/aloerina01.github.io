@@ -385,6 +385,34 @@ pre code.hljs {
 			padding-bottom: 0.5em;
  		}
 	}
+
+	/**
+	 * custom section
+	 */
+	.profile-section {
+    margin: 36px auto;
+    &.personal {
+    	.profile-item {
+      	margin: 16px 0;
+				img {
+					width: 200px;
+					height: 200px;
+					border-radius: 50%;
+					padding: 2px;
+					border: 2px solid $blue-gray-100;
+				}
+				&.personal-name {
+					text-align: center;
+					font-size: 21px;
+					font-weight: bold;
+				}
+				&.personal-description {
+					width: 600px;
+					text-align: center;
+				}
+      }
+    }
+	}
 }
 
 /*
