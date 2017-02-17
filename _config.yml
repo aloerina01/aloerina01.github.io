@@ -44,7 +44,7 @@ jekyll-archives:
 disqus_shortname: https-aloerina01-github-io
 
 # Google analytics
-# ga_tracking_id: "UA-XXXX-1"
+ga_tracking_id: "UA-39630080-4"
 
 # Category descriptions (for archive pages)
 descriptions:
