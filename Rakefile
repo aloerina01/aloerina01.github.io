@@ -19,7 +19,7 @@ end
 
 
 desc "Generate and publish blog to gh-pages"
-task :publish => [:generate] do
+task :publish do
   Dir.mktmpdir do |tmp|
     cp_r "_site/.", tmp
 
@@ -28,12 +28,17 @@ task :publish => [:generate] do
 
     system "git config --local user.name aloerina01"
     system "git config --local user.email kiss_mint27@yahoo.co.jp"
-    system "git init"
+    system "git fetch origin"
+    system "git checkout -B deploy origin/development"
+    system "git reset --hard origin/development"
+
+    [:generate]
+
     system "git add ."
     message = "Site updated at #{Time.now.utc}"
     system "git commit -m #{message.inspect}"
     system "git remote add origin git@github.com:#{GITHUB_REPONAME}.git"
-    system "git push origin master --force"
+    system "git push origin deploy --force"
 
     Dir.chdir pwd
   end
