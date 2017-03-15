@@ -34,6 +34,7 @@ task :publish do
 
     system "git init"
     system "git add ."
+    system "git status"
     system "git config --local user.name aloerina01"
     system "git config --local user.email kiss_mint27@yahoo.co.jp"
     message = "Site updated at #{Time.now.utc}"
