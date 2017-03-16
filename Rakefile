@@ -42,5 +42,5 @@ task :publish => [:generate] do
     system "git push origin staging --force"
 
     # Dir.chdir pwd
-  end
+  # end
 end
