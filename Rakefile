@@ -12,9 +12,8 @@ GITHUB_REPONAME = "aloerina01/aloerina01.github.io"
 desc "Generate blog files"
 task :generate do
   system "git fetch origin"
-  system "git checkout -B deploy origin/development"
   system "git reset --hard origin/development"
-  
+
   Jekyll::Site.new(Jekyll.configuration({
     "source"      => ".",
     "destination" => "_site"
