@@ -16,8 +16,7 @@ task :generate do
   system "git reset --hard origin/development"
 
   Jekyll::Site.new(Jekyll.configuration({
-    "source"      => ".",
-    "destination" => "."
+    "source"      => "."
   })).process
 end
 
