@@ -35,10 +35,10 @@ task :publish => [:generate] do
     system "git config --local user.name aloerina01"
     system "git config --local user.email kiss_mint27@yahoo.co.jp"
     message = "Site updated at #{Time.now.utc}"
-    system "git commit -m #{message.inspect}"
+    # system "git commit -m #{message.inspect}"
     # system "git remote add origin git@github.com:#{GITHUB_REPONAME}.git"
     # system "git checkout -b staging"
-    system "git push origin staging --force"
+    # system "git push origin staging --force"
 
     # Dir.chdir pwd
   # end
