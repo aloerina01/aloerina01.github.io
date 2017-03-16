@@ -24,9 +24,9 @@ end
 
 desc "Generate and publish blog to gh-pages"
 task :publish => [:generate] do
-  # repo = Grit::Repo.new(".")
-  # development_commit = repo.commits("development")
-  # head = development_commit.first
+  repo = Grit::Repo.new(".")
+  development_commit = repo.commits("development")
+  head = development_commit.first
 
   Dir.mktmpdir do |tmp|
     cp_r "_site/.", tmp
@@ -39,7 +39,7 @@ task :publish => [:generate] do
     system "git status"
     system "git config --local user.name aloerina01"
     system "git config --local user.email kiss_mint27@yahoo.co.jp"
-    message = "Site updated at #{Time.now.utc}"
+    message = "Site updated at #{Time.now.utc}, from #{head.id}"
     system "git commit -m #{message.inspect}"
     system "git remote add origin git@github.com:#{GITHUB_REPONAME}.git"
     system "git push origin master --force"
