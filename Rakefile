@@ -11,6 +11,10 @@ GITHUB_REPONAME = "aloerina01/aloerina01.github.io"
 
 desc "Generate blog files"
 task :generate do
+  system "git fetch origin"
+  system "git checkout -B deploy origin/development"
+  system "git reset --hard origin/development"
+  
   Jekyll::Site.new(Jekyll.configuration({
     "source"      => ".",
     "destination" => "_site"
@@ -19,18 +23,12 @@ end
 
 
 desc "Generate and publish blog to gh-pages"
-task :publish do
-  system "git fetch origin"
-  system "git checkout -B deploy origin/development"
-  system "git reset --hard origin/development"
-  
+task :publish => [:generate] do
   Dir.mktmpdir do |tmp|
     cp_r "_site/.", tmp
 
     pwd = Dir.pwd
     Dir.chdir tmp
-
-    [:generate]
 
     system "git init"
     system "git add ."
