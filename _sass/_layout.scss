@@ -289,12 +289,12 @@ pre code.hljs {
 				font-style: italic;
 				font-size: 90%;
 			}
-      code {
-        padding-left: 0.5rem;
-        padding-right: 0.5rem;
-        line-height: 1.3;
-        font-size: 92%;
-      }
+		      	code {
+				padding-left: 0.5rem;
+				padding-right: 0.5rem;
+				line-height: 1.3;
+				font-size: 92%;
+		      	}
 			h3 {
 				margin-top: 72px;
 				border-bottom: 1px solid $blue-gray-100;
@@ -305,9 +305,13 @@ pre code.hljs {
 			h3 + h4 {
 				margin-top: 0;
 			}
-			// temporary
-			.gist .blob-num {
-				width: 37px;
+			.footnote {
+				font-size: 80%;
+				margin-top: 44px;
+				margin-bottom: 28px;
+				p {
+					margin-bottom: 8px;
+				}
 			}
 		}
 		.tags {
