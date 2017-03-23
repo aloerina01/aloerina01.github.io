@@ -28,6 +28,6 @@ deployment:
   development:
     branch: /development/
     commands: 
-      - git config --local user.name "aloerina01"
-      - git config --local user.email "kiss_mint27@yahoo.co.jp"
+      - git config --global user.name "aloerina01"
+      - git config --global user.email "kiss_mint27@yahoo.co.jp"
       - bundle exec rake deploy --trace
