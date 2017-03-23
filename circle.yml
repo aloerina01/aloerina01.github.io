@@ -18,7 +18,9 @@ machine:
 
 # running your tests
 # CircleCI automatically runs 'npm test'
-# test:
+test:
+  override:    
+    - echo "-----no test-----"
 
 # deploying your code to your web servers
 deployment:
