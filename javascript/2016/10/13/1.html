@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CORS (Cross-Origin Resource Sharing) ってなに？</title>
+  <meta name="description" content="オリジンとは？　同一オリジンポリシーとは？　そしてCORSとは？　基本の基本と関連用語をまとめて復習したら、意外と知らなかったことがちらほらありました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="オリジンとは？　同一オリジンポリシーとは？　そしてCORSとは？　基本の基本と関連用語をまとめて復習したら、意外と知らなかったことがちらほらありました。" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="CORS (Cross-Origin Resource Sharing) ってなに？" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="CORS (Cross-Origin Resource Sharing) ってなに？">
+  <meta name="twitter:description" content="オリジンとは？　同一オリジンポリシーとは？　そしてCORSとは？　基本の基本と関連用語をまとめて復習したら、意外と知らなかったことがちらほらありました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/javascript/2016/10/13/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">CORS (Cross-Origin Resource Sharing) ってなに？</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2016-10-13</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>先日CORS(Cross-Origin Resource Sharing)でハマったので、今更だけど復習。Same Origin Policy(同一オリジンポリシー)について基本的なところから調べ直しました。</p>
+
+<h3 id="オリジンとは">オリジンとは</h3>
+
+<p>オリジン ＝ スキーム、ホスト、ポートの組み合わせ<br />
+(※スキームによって微妙に違うこともある)</p>
+
+<p><code class="highlighter-rouge">http://www.exsample.com:80/index.html</code>のURLを例にすると</p>
+
+<ul>
+  <li>スキーム ＝ <code class="highlighter-rouge">http://</code></li>
+  <li>ホスト ＝ <code class="highlighter-rouge">www.exsample.com</code></li>
+  <li>ポート ＝ <code class="highlighter-rouge">80</code> (ポート番号「80」は省略可なので普段見かけることは少ない)</li>
+</ul>
+
+<h3 id="同一オリジンポリシーとは">同一オリジンポリシーとは</h3>
+
+<h4><a href="http://dic.nicovideo.jp/a/%E4%BB%8A%E5%8C%97%E7%94%A3%E6%A5%AD" target="\_blank">今北産業</a></h4>
+
+<ul>
+  <li>セキュリティを守るための重要な仕組み</li>
+  <li>あるページを開いたときに、関連するリソース(JavaScript等)を同じオリジンからしか取得しない</li>
+  <li>そうしないと個人情報の保護も外部からの攻撃にもガバガバ</li>
+</ul>
+
+<h4 id="同一オリジンポリシーの制限を受けるwebapi">同一オリジンポリシーの制限を受けるWebAPI</h4>
+
+<ul>
+  <li>XMLHttpRequest</li>
+  <li>Canvas</li>
+  <li>Web Storage</li>
+  <li>X-Frame-Options</li>
+</ul>
+
+<h4 id="制限を受けないもの">制限を受けないもの</h4>
+<ul>
+  <li><code class="highlighter-rouge">&lt;script src="..."&gt;&lt;/script&gt;</code> によって読み込まれるJavaScript</li>
+  <li><code class="highlighter-rouge">&lt;link rel="stylesheet" href="..."&gt;</code> によって読み込まれるCSS</li>
+  <li><code class="highlighter-rouge">&lt;img&gt;</code>, <code class="highlighter-rouge">&lt;audio&gt;</code>, <code class="highlighter-rouge">&lt;video&gt;</code> のメディアファイル</li>
+  <li><code class="highlighter-rouge">@font-face</code> で指定されたフォント</li>
+  <li><code class="highlighter-rouge">&lt;frame&gt;</code>, <code class="highlighter-rouge">&lt;iframe&gt;</code></li>
+  <li><code class="highlighter-rouge">&lt;object&gt;</code>, <code class="highlighter-rouge">&lt;embad&gt;</code>, <code class="highlighter-rouge">&lt;applet&gt;</code>によるプラグイン</li>
+</ul>
+
+<p>参考：<a href="https://developer.mozilla.org/ja/docs/Web/Security/Same-origin_policy#Cross-origin_network_access">異なるオリジンへのネットワークアクセス</a></p>
+
+<h3 id="corsとは">CORSとは</h3>
+
+<p>別オリジンのリソースへアクセス(＝ <strong>クロスサイトHTTPリクエスト</strong>)できるようにするためのルール、手法。</p>
+
+<h4 id="簡単な例">簡単な例</h4>
+<p>ブラウザがオリジンA(<code class="highlighter-rouge">http://origin-a.com</code>)のWEBサイトを表示中に、オリジンB(<code class="highlighter-rouge">http://origin-b.com</code>)のリソースへアクセスする場合のやりとりの例です。</p>
+
+<ul>
+  <li>ブラウザ「オリジンA(<code class="highlighter-rouge">http://origin-a.com</code>)がおたくのリソース欲しいって」</li>
+  <li>オリジンB「オリジンA(<code class="highlighter-rouge">http://origin-a.com</code>)からきたの？それなら良いよ😘」</li>
+</ul>
+
+<p>こんな会話が、ブラウザから送られる<strong>HTTPリクエストヘッダ</strong>とサーバから返される<strong>HTTPレスポンスヘッダ</strong>にて行われています。</p>
+
+<p><strong>HTTPリクエストヘッダ</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>GET /api HTTP/1.1
+Origin: http://origin-a.com
+</code></pre>
+</div>
+
+<p><strong>HTTPレスポンスヘッダ</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://origin-a.com
+</code></pre>
+</div>
+
+<h4 id="もう少し深い話">もう少し深い話</h4>
+<p>CORSの仕組みの根底はHTTPヘッダによるやりとりなのだけれど、実はこれを実現する手段は2つあります。</p>
+
+<ol>
+  <li>👆の例のように、直接クロスオリジンなリクエストを投げる</li>
+  <li>一度CORSが可能かを確認するリクエストを投げ、そのレスポンスを受けてから再度クロスオリジンなリクエストを投げる</li>
+</ol>
+
+<p>基本的には一度CORSが可能かを確認するリクエスト(＝<strong>preflightリクエスト</strong>)を投げることが必要とされていますが、以下の条件<strong>全て</strong>を満たす場合はシンプルなリクエストでもOKです。</p>
+
+<ul>
+  <li>HTTPメソッドがGET, POST, HEADのいずれか</li>
+  <li>HTTPヘッダにAccept, Accept-Language, Content-Language, Content-Type以外のフィールドが含まれない</li>
+  <li>Content-Typeの値はapplication/x-www-form-urlencoded, multipart/form-data, text/plainのいずれか</li>
+</ul>
+
+<h4 id="今回触れない話">今回触れない話</h4>
+<p>CORSについてはもっともっと深い話があります。たとえばCORSはデフォルトではCookieを使わないのでそれを使えるようにする方法とか、リクエストに独自のリクエストヘッダを使う方法とか、IE対応の話とか…。
+そのへんは今回は割愛する代わりに、参考サイトを残しておきます。</p>
+
+<ul>
+  <li><a href="http://inside.pixiv.net/entry/2014/12/16/181804">CORSでハマったことまとめ - pixiv inside</a></li>
+  <li><a href="http://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34">CORSまとめ - Qiita</a></li>
+</ul>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=CORS+%28Cross-Origin+Resource+Sharing%29+%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F&url=https://aloerina01.github.io/javascript/2016/10/13/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=CORS+%28Cross-Origin+Resource+Sharing%29+%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F&u=https://aloerina01.github.io/javascript/2016/10/13/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=CORS+%28Cross-Origin+Resource+Sharing%29+%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F&url=https://aloerina01.github.io/javascript/2016/10/13/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/javascript/2016/10/13/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?CORS+%28Cross-Origin+Resource+Sharing%29+%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2016%2F10%2F13%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/javascript/2016/10/13/1.html',
+    'title': 'CORS (Cross-Origin Resource Sharing) ってなに？'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

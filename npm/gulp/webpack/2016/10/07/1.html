@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>npm + gulp + webpack でつくるES6/sass開発環境</title>
+  <meta name="description" content="ES6でJavaScriptを書きたい。sassに挑戦してみたい。そう思ったときにすぐに開発を始める開発環境を用意してみました。クローンしてコマンド2つで使えるので参考にしてみてください。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="ES6でJavaScriptを書きたい。sassに挑戦してみたい。そう思ったときにすぐに開発を始める開発環境を用意してみました。クローンしてコマンド2つで使えるので参考にしてみてください。" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="npm + gulp + webpack でつくるES6/sass開発環境" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/2016-10-07-1.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="npm + gulp + webpack でつくるES6/sass開発環境">
+  <meta name="twitter:description" content="ES6でJavaScriptを書きたい。sassに挑戦してみたい。そう思ったときにすぐに開発を始める開発環境を用意してみました。クローンしてコマンド2つで使えるので参考にしてみてください。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/2016-10-07-1.jpg">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/npm/gulp/webpack/2016/10/07/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/2016-10-07-1.jpg);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">npm + gulp + webpack でつくるES6/sass開発環境</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">2016-10-07</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/npm/">npm</a>, 
+    
+  
+    
+    <a href="/category/gulp/">gulp</a>, 
+    
+  
+    
+    <a href="/category/webpack/">Webpack</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>最近はJavaScriptをES6で書いたり、cssをsassで書いたりするのが当たり前になってきました。そうなると必然的に必要になるのがビルド。ビルドの仕組みも充実してきていて、単にトランスパイルするだけでなく、構文チェックしたり圧縮したり、<a href="http://lopan.jp/css-sprites/">CSSスプライト</a>をつくるようなことまでできたりします。</p>
+
+<p>で、このビルド環境、新規Project立ち上げる度に用意するのが面倒くさいので、自分用の雛形をつくりました。よかったら参考にしてみてください。</p>
+
+<h3 id="ビルドの中身">ビルドの中身</h3>
+
+<ul>
+  <li>ES6 → ブラウザで動かせるJavaScriptにする</li>
+  <li>scssをcssにする</li>
+  <li>jsとcssはそれぞれ結合して圧縮する(.min.js/.min.cssをつくる)</li>
+  <li>変更を検知して自動ビルドする</li>
+</ul>
+
+<p>雛形なので特別なことはしません。新しく何かつくりたいと思ったときにすぐに作れるようなビルド環境を用意するだけです。デバッグ用にトランスパイルしただけのものと、リリース用に結合して圧縮したものの両方をつくれるようにします。</p>
+
+<h3 id="たったひとつのこだわり">たったひとつのこだわり</h3>
+
+<p>基本的に使うツールは何でもいいのですが(依存したくないので)…ひとつだけこだわりポイントがあります。それは<strong>npmさえインストールされていれば動く</strong> ものであること。理由は2つ。</p>
+
+<ol>
+  <li>npmは今後もしばらく廃れないだろうという安易な予想😉</li>
+  <li>余計なものをグローバルインストールさせないという無駄な優しさ❤</li>
+</ol>
+
+<p>仕事用PCとプライベート用PCのそれぞれに入っているツールの種類やバージョンが違ったり、共同開発者たちのPCのツールでそれらが違ったりと、PCの状態はPCの数だけ異なります。</p>
+
+<p>そんな状況ではツールのバージョンによって動作が変わりかねないし、二重にインストールさせてバージョンぐちゃぐちゃとかバージョンが競合して動かなくなったとか、何かしらが起きる可能性があるのです。ハラハラ😱なのです。</p>
+
+<p>つまるところ、<strong>人のグローバルを侵すな</strong> という話です。</p>
+
+<p>というわけで、ビルドコマンドは<code class="highlighter-rouge">package.json</code>に集約して、すべてnpmコマンドで動くようにしました。</p>
+
+<h3 id="ソース">ソース</h3>
+<p>中身を全部確認したい場合は【<a href="https://github.com/aloerina01/short-code">aloerina01/short-code  - GitHub</a>】へ。<br />
+ここではポイントとなる部分を抜粋紹介します。</p>
+
+<h4 id="packagejson">package.json</h4>
+
+<script src="https://gist.github.com/aloerina01/04e8dd2903509a0e23b0a0b0f5d32ebe.js"></script>
+
+<p><code class="highlighter-rouge">package.json</code>の<code class="highlighter-rouge">scripts</code>部分抜粋です。gulpコマンドをnpmコマンド経由で呼び出せるようにしています。<code class="highlighter-rouge">scripts</code>のコマンドは全部<code class="highlighter-rouge">$ npm run XXX</code>というかたちで実行できます(<a href="http://qiita.com/axross/items/a2a0d148e40b66074858#%E6%84%8F%E5%91%B3%E4%BB%98%E3%81%91%E3%81%A0%E3%81%91%E3%81%8C%E3%81%95%E3%82%8C%E3%81%9Fnpm-scripts">例外</a>あり)。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ npm run build
+</code></pre>
+</div>
+
+<p>npmがnode_modules以下にあるモジュールについてのパス解決をしてくれているので、gulp-cliをグローバルインストールしていなくてもgulpコマンドを実行できるのです。同様にwebpackのコマンドなんかも実行できます。</p>
+
+<h4 id="gulpfilejs">gulpfile.js</h4>
+
+<script src="https://gist.github.com/aloerina01/1e876b9beb99e46a2fa2458ce09432a7.js"></script>
+
+<p>そしてこれがが実際に動作するタスクの中身。<code class="highlighter-rouge">gulp-plumber</code>でエラーハンドリングをした上で、①lint、②Webpackでのトランスパイル、③distディレクトリに書き出し、をしています。</p>
+
+<p>それをwatchさせた上で、defaultコマンドに登録しています。よくある基本的なかたちです。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>自分の開発環境の雛形をつくっておくと、新しいものを作りたいと思ったときにすぐに行動に移せていいですね。雛形はできるだけシンプルなものにしてあるので拡張もしやすく、クローンしてコマンド2つ叩けばすぐに開発環境が整います。よければ是非使ってみてください。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>npm install
+npm run build
+</code></pre>
+</div>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=npm+%2B+gulp+%2B+webpack+%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8BES6%2Fsass%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83&url=https://aloerina01.github.io/npm/gulp/webpack/2016/10/07/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=npm+%2B+gulp+%2B+webpack+%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8BES6%2Fsass%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83&u=https://aloerina01.github.io/npm/gulp/webpack/2016/10/07/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=npm+%2B+gulp+%2B+webpack+%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8BES6%2Fsass%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83&url=https://aloerina01.github.io/npm/gulp/webpack/2016/10/07/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/npm/gulp/webpack/2016/10/07/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?npm+%2B+gulp+%2B+webpack+%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8BES6%2Fsass%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fnpm%2Fgulp%2Fwebpack%2F2016%2F10%2F07%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/npm/gulp/webpack/2016/10/07/1.html',
+    'title': 'npm + gulp + webpack でつくるES6/sass開発環境'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

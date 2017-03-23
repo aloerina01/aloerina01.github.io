@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>超軽量Viewライブラリ「HyperApp」の日本語ドキュメント風の何か</title>
+  <meta name="description" content="WebフロントエンドのViewライブラリといえばReactやVueといった高機能なものが主流ですが、もっと手軽で最小限なライブラリが欲しいことありませんか？ それに応えるのがHyperAppです。個人的に気になってたのでドキュメントを意訳してみました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="WebフロントエンドのViewライブラリといえばReactやVueといった高機能なものが主流ですが、もっと手軽で最小限なライブラリが欲しいことありませんか？ それに応えるのがHyperAppです。個人的に気になってたのでドキュメントを意訳してみました。" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="超軽量Viewライブラリ「HyperApp」の日本語ドキュメント風の何か" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="超軽量Viewライブラリ「HyperApp」の日本語ドキュメント風の何か">
+  <meta name="twitter:description" content="WebフロントエンドのViewライブラリといえばReactやVueといった高機能なものが主流ですが、もっと手軽で最小限なライブラリが欲しいことありませんか？ それに応えるのがHyperAppです。個人的に気になってたのでドキュメントを意訳してみました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/javascript/hyperapp/2017/03/17/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">超軽量Viewライブラリ「HyperApp」の日本語ドキュメント風の何か</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-03-17</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>, 
+    
+  
+    
+    <a href="/category/hyperapp/">HyperApp</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="introduction">Introduction</h3>
+
+<p><a href="https://github.com/hyperapp/hyperapp">HyperApp - GitHub</a></p>
+
+<blockquote>
+  <p>HyperApp is a JavaScript library for building frontend applications.</p>
+</blockquote>
+
+<p>HyperAppはWebアプリケーションのフロント(主にView)を担うJavaScript用のライブラリです。このライブラリは3つのコンセプトで成り立っています。</p>
+
+<ul>
+  <li>外部ライブラリに依存しない、超軽量<strong>1KB</strong>のライブラリ</li>
+  <li>ステートレスコンポーネント</li>
+  <li>Elm Architecture に則ったスケーラブル可能な仕組み</li>
+</ul>
+
+<p>今回はHyperAppの<a href="https://github.com/hyperapp/hyperapp/wiki">Wiki</a>及び周辺のドキュメント<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>を勝手に意訳<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>してみようと思います😌💡</p>
+
+<ul id="markdown-toc">
+  <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
+  <li><a href="#getting-started" id="markdown-toc-getting-started"><a href="https://github.com/hyperapp/hyperapp/wiki/Getting-Started">Getting Started</a></a>    <ul>
+      <li><a href="#こんにちは世界" id="markdown-toc-こんにちは世界">こんにちは世界</a>        <ul>
+          <li><a href="#jsxで書いた場合" id="markdown-toc-jsxで書いた場合">JSXで書いた場合</a></li>
+          <li><a href="#hyperxで書いた場合" id="markdown-toc-hyperxで書いた場合">Hyperxで書いた場合</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#build-setup" id="markdown-toc-build-setup"><a href="https://github.com/hyperapp/hyperapp/wiki/Build-Setup">Build Setup</a></a></li>
+  <li><a href="#jsxを使う環境の用意" id="markdown-toc-jsxを使う環境の用意"><a href="https://github.com/hyperapp/hyperapp/wiki/JSX">JSXを使う環境の用意</a></a>    <ul>
+      <li><a href="#browserifyを使う場合" id="markdown-toc-browserifyを使う場合">Browserifyを使う場合</a>        <ul>
+          <li><a href="#必要なモジュールのインストール" id="markdown-toc-必要なモジュールのインストール">必要なモジュールのインストール</a></li>
+          <li><a href="#babelrcの用意" id="markdown-toc-babelrcの用意"><code class="highlighter-rouge">.babelrc</code>の用意</a></li>
+          <li><a href="#ビルドの実行" id="markdown-toc-ビルドの実行">ビルドの実行</a></li>
+        </ul>
+      </li>
+      <li><a href="#webpackを使う場合" id="markdown-toc-webpackを使う場合">Webpackを使う場合</a>        <ul>
+          <li><a href="#必要なモジュールのインストール-1" id="markdown-toc-必要なモジュールのインストール-1">必要なモジュールのインストール</a></li>
+          <li><a href="#babelrcの用意-1" id="markdown-toc-babelrcの用意-1"><code class="highlighter-rouge">.babelrc</code>の用意</a></li>
+          <li><a href="#webpackconfigjsの用意" id="markdown-toc-webpackconfigjsの用意"><code class="highlighter-rouge">webpack.config.js</code>の用意</a></li>
+          <li><a href="#ビルドの実行-1" id="markdown-toc-ビルドの実行-1">ビルドの実行</a></li>
+        </ul>
+      </li>
+      <li><a href="#rollupを使う場合" id="markdown-toc-rollupを使う場合">Rollupを使う場合</a>        <ul>
+          <li><a href="#必要なモジュールのインストール-2" id="markdown-toc-必要なモジュールのインストール-2">必要なモジュールのインストール</a></li>
+          <li><a href="#rollupconfigjsの用意" id="markdown-toc-rollupconfigjsの用意"><code class="highlighter-rouge">rollup.config.js</code>の用意</a></li>
+          <li><a href="#ビルドの実行-2" id="markdown-toc-ビルドの実行-2">ビルドの実行</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#hyperxを使う環境の用意" id="markdown-toc-hyperxを使う環境の用意"><a href="https://github.com/hyperapp/hyperapp/wiki/Hyperx">Hyperxを使う環境の用意</a></a></li>
+  <li><a href="#api-reference" id="markdown-toc-api-reference"><a href="https://github.com/hyperapp/hyperapp/wiki/Reference">API Reference</a></a>    <ul>
+      <li><a href="#h" id="markdown-toc-h"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#h">h</a></a></li>
+      <li><a href="#app" id="markdown-toc-app"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#app">app</a></a></li>
+      <li><a href="#model" id="markdown-toc-model"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#-model-">model</a></a></li>
+      <li><a href="#view" id="markdown-toc-view"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#-view-">view</a></a></li>
+      <li><a href="#actions" id="markdown-toc-actions"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#-actions-">actions</a></a></li>
+      <li><a href="#subscriptions" id="markdown-toc-subscriptions"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#-subscriptions-">subscriptions</a></a></li>
+      <li><a href="#router" id="markdown-toc-router"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#Router">Router</a></a></li>
+      <li><a href="#lifecycle-methods" id="markdown-toc-lifecycle-methods"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#lifecycle-methods">Lifecycle Methods</a></a></li>
+    </ul>
+  </li>
+  <li><a href="#afterword" id="markdown-toc-afterword">Afterword</a></li>
+</ul>
+
+<h3 id="getting-started"><a href="https://github.com/hyperapp/hyperapp/wiki/Getting-Started">Getting Started</a></h3>
+
+<p>HyperAppは器用に作られたもので、新規プロダクトに取り入れることはもちろん、既存のWebアプリケーションに組み込むこともできるよ。</p>
+
+<p>一番簡単な方法は何と言ってもCDNだね。</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>バージョンを指定したいかな？ そんなときはこう。</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp@0.7.0"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="こんにちは世界">こんにちは世界</h4>
+
+<p>ではさっそくHyperAppを使って「こんにちは世界」を表示させてみよう。<code class="highlighter-rouge">index.html</code>を用意して以下のコードをコピペしてブラウザで見てみよう😄<br />
+HyperAppでは<a href="https://github.com/hyperapp/hyperapp/wiki/JSX">JSX</a>をつかった記法と、ES6のテンプレートリテラルを使った<a href="https://github.com/hyperapp/hyperapp/wiki/Hyperx">Hyperx</a>という記法の2つが使えるよ。How wonderful!! それぞれのコード例を用意したから好きな方を使ってね。</p>
+
+<h5 id="jsxで書いた場合">JSXで書いた場合</h5>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/babel-standalone"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/babel"</span><span class="nt">&gt;</span>
+
+  <span class="kr">const</span> <span class="p">{</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">app</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">hyperapp</span>
+  <span class="cm">/** @jsx h */</span>
+
+  <span class="nx">app</span><span class="p">({</span>
+    <span class="na">model</span><span class="p">:</span> <span class="s2">"こんにちは世界"</span><span class="p">,</span>
+    <span class="na">view</span><span class="p">:</span> <span class="nx">model</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"title"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">model</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>  <span class="p">})</span>
+
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre>
+</div>
+
+<h5 id="hyperxで書いた場合">Hyperxで書いた場合</h5>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://wzrd.in/standalone/hyperx"</span><span class="nt">&gt;&lt;/script&gt;</span>
+  <span class="nt">&lt;script&gt;</span>
+
+  <span class="kr">const</span> <span class="p">{</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">app</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">hyperapp</span>
+  <span class="kr">const</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">hyperx</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span>
+
+  <span class="nx">app</span><span class="p">({</span>
+    <span class="na">model</span><span class="p">:</span> <span class="s2">"こんにちは世界"</span><span class="p">,</span>
+    <span class="na">view</span><span class="p">:</span> <span class="nx">model</span> <span class="o">=&gt;</span> <span class="nx">html</span><span class="err">`</span><span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">$</span><span class="p">{</span><span class="nx">model</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">`
+</span>  <span class="p">})</span>
+
+  <span class="nt">&lt;/script&gt;</span>
+<span class="nt">&lt;/body&gt;</span>
+</code></pre>
+</div>
+
+<p>さて、ブラウザでは何が起きたかな？<br />
+ブラウザはHyperxやJSXをCDN経由でダウンロードし、scriptの部分をコンパイルして描画したよ。</p>
+
+<p>この例ではHyperAppとは何かを手軽に知ることができたと思うけれど、これだけだとWebアプリケーション開発の例としては少々物足りないよね。わかるよ。</p>
+
+<p>では、次にWebpack、Browserify、Rollupをつかったビルド環境のセットアップの例を見てみよう。</p>
+
+<h3 id="build-setup"><a href="https://github.com/hyperapp/hyperapp/wiki/Build-Setup">Build Setup</a></h3>
+
+<p>Webアプリケーションの開発環境を用意するには3つの要素が必要なんだ。</p>
+
+<ul>
+  <li>パッケージマネージャ(<a href="https://www.npmjs.com/">npm</a>, <a href="https://yarnpkg.com/lang/en/">yarn</a>)</li>
+  <li>コンパイラ(<a href="http://babeljs.io/">babel</a>, <a href="https://buble.surge.sh/guide/">Bublé</a>)</li>
+  <li>バンドラ(<a href="https://webpack.js.org/">Webpack</a>, <a href="http://browserify.org/">Browserify</a>, <a href="http://rollupjs.org/">Rollup</a>)</li>
+</ul>
+
+<p>なぜこれらが必要かというと、JSX/Hyperxで書かれたソースをコンパイルするためなんだ💪 コンパイルされると、HyperAppの <a href="https://github.com/hyperapp/hyperapp/wiki/reference#h">h</a>関数という<strong>仮想DOMを生成するための関数</strong>になるのだけれど、それについてはまた後で語るからね。</p>
+
+<p>コンパイル前(JSX/Hyperx)</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"test"</span><span class="nt">&gt;</span>Hi.<span class="nt">&lt;/h1&gt;</span>
+</code></pre>
+</div>
+
+<p>コンパイル後</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">,</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="s2">"test"</span> <span class="p">},</span> <span class="s2">"Hi."</span><span class="p">)</span>
+</code></pre>
+</div>
+
+<p>こんな具合だよ。いい具合だね。<br />
+さぁ次の章ではJSXとHyperx各々のためのビルド環境のセットアップを学ぶよ。ついておいで！</p>
+
+<h3 id="jsxを使う環境の用意"><a href="https://github.com/hyperapp/hyperapp/wiki/JSX">JSXを使う環境の用意</a></h3>
+
+<p>JSXはXMLと同様データの記法のひとつだよ。知ってたかい？ これを使うことでHTML(テンプレート)とJavaScript(処理)を一つのファイルに混在させることができるよ。</p>
+
+<p>JSXを使うには上述の通りコンパイルが必要なんだ。JSXをh関数に変換し、ひとつのjsファイルにバンドルし、配信しなければならないからね。ではさっそくビルド環境の用意をしよう。</p>
+
+<h4 id="browserifyを使う場合">Browserifyを使う場合</h4>
+
+<h5 id="必要なモジュールのインストール">必要なモジュールのインストール</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -S hyperapp
+
+<span class="gp">$ </span>npm install -D babel-plugin-transform-react-jsx babel-preset-es2015 babelify browserify bundle-collapser uglifyify uglifyjs
+</code></pre>
+</div>
+
+<h5 id="babelrcの用意"><code class="highlighter-rouge">.babelrc</code>の用意</h5>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"es2015"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"transform-react-jsx"</span><span class="p">,</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"pragma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h5 id="ビルドの実行">ビルドの実行</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/browserify <span class="se">\</span>
+  -t babelify <span class="se">\</span>
+  -g uglifyify <span class="se">\</span>
+  -p bundle-collapser/plugin index.js | uglifyjs &gt; bundle.js
+</code></pre>
+</div>
+
+<h4 id="webpackを使う場合">Webpackを使う場合</h4>
+
+<h5 id="必要なモジュールのインストール-1">必要なモジュールのインストール</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -S hyperapp
+
+<span class="gp">$ </span>npm install -D webpack babel-core babel-loader babel-preset-es2015 babel-plugin-transform-react-jsx
+</code></pre>
+</div>
+
+<h5 id="babelrcの用意-1"><code class="highlighter-rouge">.babelrc</code>の用意</h5>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"es2015"</span><span class="p">],</span><span class="w">
+    </span><span class="nt">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">[</span><span class="w">
+        </span><span class="s2">"transform-react-jsx"</span><span class="p">,</span><span class="w">
+        </span><span class="p">{</span><span class="w">
+          </span><span class="nt">"pragma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h"</span><span class="w">
+        </span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<h5 id="webpackconfigjsの用意"><code class="highlighter-rouge">webpack.config.js</code>の用意</h5>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="s2">"./index.js"</span><span class="p">,</span>
+  <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">filename</span><span class="p">:</span> <span class="s2">"bundle.js"</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">module</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">loaders</span><span class="p">:</span> <span class="p">[{</span>
+      <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span>
+      <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span>
+      <span class="na">loader</span><span class="p">:</span> <span class="s2">"babel-loader"</span>
+    <span class="p">}]</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h5 id="ビルドの実行-1">ビルドの実行</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/webpack -p
+</code></pre>
+</div>
+
+<h4 id="rollupを使う場合">Rollupを使う場合</h4>
+
+<h5 id="必要なモジュールのインストール-2">必要なモジュールのインストール</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -S hyperapp
+
+<span class="gp">$ </span>npm install -D rollup rollup-plugin-babel rollup-plugin-node-resolve rollup-plugin-uglify babel-preset-es2015-rollup babel-plugin-transform-react-jsx
+</code></pre>
+</div>
+
+<h5 id="rollupconfigjsの用意"><code class="highlighter-rouge">rollup.config.js</code>の用意</h5>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">babel</span> <span class="nx">from</span> <span class="s2">"rollup-plugin-babel"</span>
+<span class="kr">import</span> <span class="nx">resolve</span> <span class="nx">from</span> <span class="s2">"rollup-plugin-node-resolve"</span>
+<span class="kr">import</span> <span class="nx">uglify</span> <span class="nx">from</span> <span class="s2">"rollup-plugin-uglify"</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+    <span class="nx">babel</span><span class="p">({</span>
+      <span class="na">babelrc</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="na">presets</span><span class="p">:</span> <span class="p">[</span><span class="s2">"es2015-rollup"</span><span class="p">],</span>
+      <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s2">"transform-react-jsx"</span><span class="p">,</span> <span class="p">{</span> <span class="na">pragma</span><span class="p">:</span> <span class="s2">"h"</span> <span class="p">}]</span>
+      <span class="p">]</span>
+    <span class="p">}),</span>
+    <span class="nx">resolve</span><span class="p">({</span>
+      <span class="na">jsnext</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}),</span>
+    <span class="nx">uglify</span><span class="p">()</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h5 id="ビルドの実行-2">ビルドの実行</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/rollup -cf iife -i index.js -o bundle.js
+</code></pre>
+</div>
+
+<h3 id="hyperxを使う環境の用意"><a href="https://github.com/hyperapp/hyperapp/wiki/Hyperx">Hyperxを使う環境の用意</a></h3>
+
+<p>JSXのときとインストールするファイルが少々変わるだけなので割愛するよ😌</p>
+
+<h3 id="api-reference"><a href="https://github.com/hyperapp/hyperapp/wiki/Reference">API Reference</a></h3>
+
+<p>ここではHyperAppのモジュールや関数の使い方について、サンプルと併せて紹介するよ。</p>
+
+<p>HyperAppは大きく分けて3つの仕組みを提供しているんだ。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">h 関数</code> … 仮想DOMを生成する関数</li>
+  <li><code class="highlighter-rouge">app 関数</code> … HyperAppを利用したApplicationを実行する関数</li>
+  <li><code class="highlighter-rouge">Router プラグイン</code> … ルータ機能群</li>
+</ul>
+
+<h4 id="h"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#h">h</a></h4>
+
+<p>仮想DOMを返す関数だよ。ここで言う仮想DOMとは、ネストされたDOMのツリーをJavaScriptのオブジェクトとして表現しているものだよ🌴</p>
+
+<p>Syntax</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="nx">tag</span><span class="p">,</span> <span class="nx">data</span><span class="p">,</span> <span class="nx">children</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">tag {String}</code> … 「div」など、HTML上でのタグ名</li>
+  <li><code class="highlighter-rouge">data {Object}</code> … Elementに挿入されるattributes</li>
+  <li><code class="highlighter-rouge">children {String | Array}</code> … 子要素</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="s1">'a'</span><span class="p">,</span> <span class="p">{</span><span class="na">href</span><span class="p">:</span> <span class="s1">'#'</span><span class="p">},</span> <span class="s1">'next page'</span><span class="p">);</span>
+
+<span class="c1">// return object</span>
+<span class="c1">// {</span>
+<span class="c1">//   tag: 'a',</span>
+<span class="c1">//   data: {</span>
+<span class="c1">//     href: '#'</span>
+<span class="c1">//   },</span>
+<span class="c1">//   children: 'next page'</span>
+<span class="c1">// }</span>
+</code></pre>
+</div>
+
+<h4 id="app"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#app">app</a></h4>
+
+<p>HyperAppによるWebアプリケーションを起動するよ。これを呼び出すことで全てが始まる。オプションを添えられるよ。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">({</span>
+  <span class="nx">model</span><span class="p">,</span>
+  <span class="nx">view</span><span class="p">,</span>
+  <span class="nx">actions</span><span class="p">,</span>
+  <span class="nx">subscriptions</span><span class="p">,</span>
+  <span class="nx">plugins</span><span class="p">,</span>
+  <span class="nx">root</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="model"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#-model-">model</a></h4>
+
+<p>アプリケーションのStateを管理するオブジェクトだよ。primitiveな値でも、配列でも、Objectでもいいよ。</p>
+
+<h4 id="view"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#-view-">view</a></h4>
+
+<p>仮想DOMを返す関数だよ。引数に<code class="highlighter-rouge">model</code>と<code class="highlighter-rouge">actions</code>をとるよ。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">({</span>
+  <span class="na">model</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="na">actions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">toggle</span><span class="p">:</span> <span class="nx">model</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">model</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">view</span><span class="p">:</span> <span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">actions</span><span class="p">.</span><span class="nx">toggle</span><span class="p">}</span><span class="o">&gt;</span>
+      <span class="p">{</span><span class="nx">model</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}</span>
+    <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span><span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="actions"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#-actions-">actions</a></h4>
+
+<p>Webアプリケーションの振る舞いを定義する関数のコレクションだよ。<code class="highlighter-rouge">actions</code>は一般的に<code class="highlighter-rouge">model</code>を更新するために利用されるよ。そのため、返り値が新しい<code class="highlighter-rouge">model</code>であることがしばしば。</p>
+
+<p>引数は4つだよ。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">model</code> … 現在のmodel</li>
+  <li><code class="highlighter-rouge">data</code> … actionの処理(モデルの更新)に必要な情報</li>
+  <li><code class="highlighter-rouge">actions</code> … アプリケーションが持つ大元のactions</li>
+  <li><code class="highlighter-rouge">error</code> … エラー時に呼ばれるコールバック</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">({</span>
+  <span class="na">model</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="na">actions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">add</span><span class="p">:</span> <span class="nx">model</span> <span class="o">=&gt;</span> <span class="nx">model</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="na">sub</span><span class="p">:</span> <span class="nx">model</span> <span class="o">=&gt;</span> <span class="nx">model</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="p">},</span>
+  <span class="na">view</span><span class="p">:</span> <span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span>
+    <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">actions</span><span class="p">.</span><span class="nx">add</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">+</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">model</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="nx">actions</span><span class="p">.</span><span class="nx">sub</span><span class="p">}</span>
+        <span class="nx">disabled</span><span class="o">=</span><span class="p">{</span><span class="nx">model</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="o">-</span>
+      <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>    <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="subscriptions"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#-subscriptions-">subscriptions</a></h4>
+
+<p><code class="highlighter-rouge">DOMContentLoaded</code>時に一度だけ発火される関数をもつ配列だよ。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">({</span>
+  <span class="na">model</span><span class="p">:</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">0</span> <span class="p">},</span>
+  <span class="na">actions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">move</span><span class="p">:</span> <span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="p">{</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">})</span>
+  <span class="p">},</span>
+  <span class="na">subscriptions</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">(</span><span class="nx">_</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span>
+      <span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"mousemove"</span><span class="p">,</span>
+        <span class="nx">e</span> <span class="o">=&gt;</span> <span class="nx">actions</span><span class="p">.</span><span class="nx">move</span><span class="p">({</span>
+          <span class="na">x</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clientX</span><span class="p">,</span>
+          <span class="na">y</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span><span class="p">,</span>
+        <span class="p">})</span>
+      <span class="p">)</span>
+  <span class="p">],</span>
+  <span class="na">view</span><span class="p">:</span> <span class="nx">model</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">model</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span> <span class="nx">model</span><span class="p">.</span><span class="nx">y</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span><span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="router"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#Router">Router</a></h4>
+
+<p><code class="highlighter-rouge">view</code>に、PathをKeyにTemplateを登録するとルーティングが行えるよ。SPAになるよ😘</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">({</span>
+  <span class="na">view</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"/"</span><span class="p">:</span> <span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Home</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">button</span>
+          <span class="nx">onclick</span><span class="o">=</span><span class="p">{</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">actions</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">"/about"</span><span class="p">)}</span><span class="o">&gt;</span>
+          <span class="nx">About</span>
+        <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">,
+</span>
+    <span class="s2">"/about"</span><span class="p">:</span> <span class="p">(</span><span class="nx">model</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span>
+      <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">About</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+</span>        <span class="o">&lt;</span><span class="nx">button</span>
+          <span class="nx">onclick</span><span class="o">=</span><span class="p">{</span><span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">actions</span><span class="p">.</span><span class="nx">router</span><span class="p">.</span><span class="nx">go</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)}</span><span class="o">&gt;</span>
+          <span class="nx">Home</span>
+        <span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
+</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">},</span>
+  <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span><span class="nx">Router</span><span class="p">]</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="lifecycle-methods"><a href="https://github.com/hyperapp/hyperapp/wiki/reference#lifecycle-methods">Lifecycle Methods</a></h4>
+
+<p>仮想DOMのライフサイクルにまつわるイベントをハンドリングできるよ。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">onCreate</code> … ElementがDOMとして構築されたとき</li>
+  <li><code class="highlighter-rouge">onUpdate</code> … Elementの要素が更新されたとき</li>
+  <li><code class="highlighter-rouge">onRemove</code> … ElementがDOMから消える直前</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span>
+<span class="kr">const</span> <span class="nx">editor</span> <span class="o">=</span> <span class="nx">CodeMirror</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+
+<span class="kr">const</span> <span class="nx">Editor</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kr">const</span> <span class="nx">setOptions</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">=&gt;</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="nx">editor</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">options</span><span class="p">[</span><span class="nx">key</span><span class="p">]))</span>
+
+  <span class="kr">const</span> <span class="nx">onCreate</span> <span class="o">=</span> <span class="nx">elm</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setOptions</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+    <span class="nx">elm</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="kr">const</span> <span class="nx">onUpdate</span> <span class="o">=</span> <span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">setOptions</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">onCreate</span><span class="o">=</span><span class="p">{</span><span class="nx">onCreate</span><span class="p">}</span> <span class="nx">onUpdate</span><span class="o">=</span><span class="p">{</span><span class="nx">onUpdate</span><span class="p">}</span><span class="o">&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="afterword">Afterword</h3>
+
+<p>良さそうなところ</p>
+
+<ul>
+  <li>小さな開発用ツールなどをつくるときには高速で実装できるし、実行速度的にも◎</li>
+  <li>特にReactでJSX使ってた人はとっつきやすいかも</li>
+  <li>小さなライブラリなので、初めてのOSSコードリーディングにはもってこい</li>
+  <li>同じく、初めてのOSSコントリビュートにはもってこい(？)</li>
+</ul>
+
+<p>ちょっと考えものなところ</p>
+
+<ul>
+  <li>テンプレートファイルを外出しできないとマークアップエンジニアとの分業がしにくいかも</li>
+  <li>もう少し細かい単位でライフサイクルのイベントハンドリングをしたくなるかも</li>
+  <li>viewの共通部品の定義(Abstract的なもの)とか欲しくなりそう</li>
+  <li>SSR対応できる？</li>
+</ul>
+
+<p>一部訳すのをさぼりました。すみません😵</p>
+
+<p>初めて翻訳(の真似事)をしたのですが、自然と海外ドキュメンタリーの吹き替えみたいな声が脳内再生されました。「<a href="http://shirobako-anime.com/story/04.html">私ゃ失敗こいちまってさ</a>」的なやつです。ともあれ、とても楽しかったですしHyperAppを好きになれて満足しました。</p>
+
+<p>間違いや指摘箇所があれば<a href="https://twitter.com/aloerina_">@aloerina_</a>までご連絡ください。</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>執筆時点(2017/03/17)でのREADME, wikiを参考にしています。&nbsp;<a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>英語が得意でない者が雰囲気で訳したものです。本家HyperAppとは無関係の個人的な記事です。&nbsp;<a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E8%B6%85%E8%BB%BD%E9%87%8FView%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%80%8CHyperApp%E3%80%8D%E3%81%AE%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E9%A2%A8%E3%81%AE%E4%BD%95%E3%81%8B&url=https://aloerina01.github.io/javascript/hyperapp/2017/03/17/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E8%B6%85%E8%BB%BD%E9%87%8FView%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%80%8CHyperApp%E3%80%8D%E3%81%AE%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E9%A2%A8%E3%81%AE%E4%BD%95%E3%81%8B&u=https://aloerina01.github.io/javascript/hyperapp/2017/03/17/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=%E8%B6%85%E8%BB%BD%E9%87%8FView%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%80%8CHyperApp%E3%80%8D%E3%81%AE%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E9%A2%A8%E3%81%AE%E4%BD%95%E3%81%8B&url=https://aloerina01.github.io/javascript/hyperapp/2017/03/17/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/javascript/hyperapp/2017/03/17/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?%E8%B6%85%E8%BB%BD%E9%87%8FView%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA%E3%80%8CHyperApp%E3%80%8D%E3%81%AE%E6%97%A5%E6%9C%AC%E8%AA%9E%E3%83%89%E3%82%AD%E3%83%A5%E3%83%A1%E3%83%B3%E3%83%88%E9%A2%A8%E3%81%AE%E4%BD%95%E3%81%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2Fhyperapp%2F2017%2F03%2F17%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/javascript/hyperapp/2017/03/17/1.html',
+    'title': '超軽量Viewライブラリ「HyperApp」の日本語ドキュメント風の何か'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

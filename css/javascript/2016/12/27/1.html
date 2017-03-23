@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>論理ピクセル？ @2x？ dip？ イマドキの複数画面対応を全部説明してみるよ</title>
+  <meta name="description" content="画像データを用意するときに何となく2倍にして「@2x」と付けていませんか？　cssを書く時にpx指定をしたものの端末によって思うように表現されないことありませんか？　デザイナに「Retinaだとborderが1pxじゃない」とか言われたことありませんか？　今日を機に全部解決しちゃいましょう！">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="画像データを用意するときに何となく2倍にして「@2x」と付けていませんか？　cssを書く時にpx指定をしたものの端末によって思うように表現されないことありませんか？　デザイナに「Retinaだとborderが1pxじゃない」とか言われたことありませんか？　今日を機に全部解決しちゃいましょう！" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="論理ピクセル？ @2x？ dip？ イマドキの複数画面対応を全部説明してみるよ" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="論理ピクセル？ @2x？ dip？ イマドキの複数画面対応を全部説明してみるよ">
+  <meta name="twitter:description" content="画像データを用意するときに何となく2倍にして「@2x」と付けていませんか？　cssを書く時にpx指定をしたものの端末によって思うように表現されないことありませんか？　デザイナに「Retinaだとborderが1pxじゃない」とか言われたことありませんか？　今日を機に全部解決しちゃいましょう！">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/css/javascript/2016/12/27/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">論理ピクセル？ @2x？ dip？ イマドキの複数画面対応を全部説明してみるよ</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2016-12-27</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/css/">css</a>, 
+    
+  
+    
+    <a href="/category/javascript/">JavaScript</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="前提知識">前提知識</h3>
+
+<h4 id="インチとポイント">インチとポイント</h4>
+<p>紙で文字サイズなどを表現するときには<strong>ポイント</strong>という単位を使います。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>1ポイント ＝ 1/72インチ
+</code></pre>
+</div>
+
+<p>と定められています。
+どちらも物理的に計測できる長さなので、単位の変換ができるわけです(メートルとインチの変換ができるように)。</p>
+
+<h4 id="ピクセルとは">ピクセルとは</h4>
+<p>デジタルの世界ではこの物理的な単位をそのまま扱うことは少し難しいです。なぜならウインドウのサイズと解像度の組み合わせが様々で、ウインドウによって描画できる1ドットのサイズ(描画できる最小の単位)が異なるからです。
+そこで用意されたのが、論理的に最小単位を示す<strong>ピクセル</strong>です。サイズは違えど<strong>ウインドウで表現できる最小の1ドット = 1px</strong>として定義されたわけです。</p>
+
+<p>つまり日頃CSS等で<code class="highlighter-rouge">8px</code> のように指定しているピクセルは、論理的な単位(論理ピクセル)なのです。</p>
+
+<h3 id="論理ピクセルと物理ピクセル">論理ピクセルと物理ピクセル</h3>
+<p>従来は「論理」の部分は気にしなくても問題ありませんでした。それが昨今では意識する必要が出たわけです。その理由は、<strong>ウインドウで表現できる最小の1ドット ≠ 1px</strong>というケースが出てきたからです。より高解像度にするために1pxを画面上2×2ドットをつかって表現しよう(論理上の1px = 画面上では2px)という新しいルールのディスプレイが現れたわけです。</p>
+
+<p>そして、論理1pxを画面上で何pxとして描画するかの比率を<strong>デバイスピクセル比</strong>といいます(デバイスピクセル比2のためのグラフィックデータを<strong>@2x</strong>と表現したりします)。</p>
+
+<p>まとめると、</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>画面上での1px(物理ピクセル) ≠ CSS等で指定する1px(論理ピクセル)
+</code></pre>
+</div>
+
+<p>ということです。これを言い換えると</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>物理解像度 ≠ 論理解像度
+</code></pre>
+</div>
+
+<p>ということになります。</p>
+
+<p>実際にiPhone4では物理解像度960×640なのに対して、論理解像度480×320であり、デバイスピクセル比は2です。画面上の960×640ものドットを使って、たった480×320のものを表現しようとしている、と考えると如何に高解像度かがイメージできるかもしれません。</p>
+
+<p>ちなみにiPhone6Plusではデバイスピクセル比が3ですが、これはちょっと特殊な計算が必要です。
+@3xの画像データを用意すると覚えておくだけでも対処はできますが、理論をわかりやすく図解している記事があったので紹介しておきます。<br />
+ <a href="http://www.dotproof.jp/2014/09/11/iphone-6-ppi/">iPhone 6で改めて考える画面解像度とUI | dotproof</a></p>
+
+<h3 id="ピクセル密度dpi--ppi">ピクセル密度(dpi / ppi)</h3>
+<p>さて、ここまで、物理ピクセルと論理ピクセルが異なることについて説明してきましたが、正確には画面のサイズだけでデバイスピクセル比が決まるわけではありません。例えばiPhone4とiPhone5は画面サイズが違うのにどちらもデバイスピクセル比が2です。この理由が<strong>ピクセル密度</strong>にあります。</p>
+
+<p>ピクセル密度とは、<strong>1インチを何ピクセルで表現するか</strong>を表します。単位はppi (pixel per inch)が字面的に適切な感じがしますが、dpi (dot per inch)とも表現されます。画面上ではドットとピクセルが同義なわけですね。
+iPhone4とiPhone5は<strong>画面のサイズが違う = 画面のインチ数が違う</strong>わけですが、どちらもピクセル密度が約320dpiであるため、1粒のドットのサイズが違うだけで総ドット数は同じということになります。そのため画面サイズが違っていても同じデバイスピクセル比という状態になるわけです。</p>
+
+<h3 id="androidでは必須の単位-dip">Androidでは必須の単位 dip</h3>
+<p>今度はAndroidのお話。Androidはデバイス毎に画面サイズや解像度が異なりますが(つまりピクセル密度が異なりますが)、それでも表示サイズを保つための仕組みがあります。
+それが「端末に依存しないピクセル」という(またまた)論理上の単位です。<strong>dip(Device-Independent Pixel)</strong>と表現されます。「密度に依存しないピクセル」という意味で<strong>dip(Density-Independent Pixel)</strong>という場合もありますが今のところ区別は不要です。
+ちなみに、dipを<strong>dp</strong>と表現したりもします。</p>
+
+<p>Androidの世界では160dpiを基準としていて、160dpiの画面での1pxを1dipと定義します。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>px = dip × (dpi / 160)
+</code></pre>
+</div>
+
+<p>つまりこうなるわけです(このへんはかなり数学っぽくて懐かしい感じです😌)。<br />
+たとえば32dipは…</p>
+
+<ul>
+  <li>160dpiの画面では　32px</li>
+  <li>240dpiの画面では　48px</li>
+</ul>
+
+<p>として表示されるということです。このように、開発者は画面毎のピクセル密度を気にせずサイズ指定をすることができるようになるのでした。ありがたや。</p>
+
+<h3 id="android用の汎用サイズと汎用密度">Android用の汎用サイズと汎用密度</h3>
+<p>デバイス非依存ピクセル(密度非依存ピクセル)のおかげで、開発者はピクセル密度を気にせずにすむようになりましたが、それでもiOSに比べて画面サイズが多様で大変なイメージは残りますよね。ということでAndroidでも画面サイズがある程度汎用化されています。イマドキは hdpi 〜 xxhdpi に該当する端末がかなり多くなってきていますね。iOSと同じで@2x、@3xがあれば事足りそうな感じです😌</p>
+
+<p>以下、汎用密度の対応表。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>汎用dpi</th>
+      <th>倍率</th>
+      <th>範囲</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ldpi</td>
+      <td>x0.75</td>
+      <td>〜120dpi</td>
+    </tr>
+    <tr>
+      <td>hdpi</td>
+      <td>x1.5</td>
+      <td>〜240dpi</td>
+    </tr>
+    <tr>
+      <td>xhdpi</td>
+      <td>x2</td>
+      <td>〜320dpi</td>
+    </tr>
+    <tr>
+      <td>xxhdpi</td>
+      <td>x3</td>
+      <td>〜480dpi</td>
+    </tr>
+    <tr>
+      <td>xxxhdpi</td>
+      <td>x4</td>
+      <td>〜640dpi</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="まとめ">まとめ</h3>
+
+<ul>
+  <li>1ポイント ＝ 1/72インチ</li>
+  <li>プログラム上で指定するピクセルは論理ピクセル</li>
+  <li><code class="highlighter-rouge">物理解像度 ≠ 論理解像度</code> の場合、デバイスピクセル比を意識する必要アリ</li>
+  <li>ピクセル密度(dpi / ppi)とは1インチを何ピクセルに分割するかを示すもの</li>
+  <li>dip = Device Independent Pixel (デバイス非依存ピクセル) はAndroid界では必須</li>
+  <li>デザインデータのやりとりなどでは、論理/物理ピクセルどちらで話しているかの認識をあわせる</li>
+</ul>
+
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E8%AB%96%E7%90%86%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%EF%BC%9F+%402x%EF%BC%9F+dip%EF%BC%9F+%E3%82%A4%E3%83%9E%E3%83%89%E3%82%AD%E3%81%AE%E8%A4%87%E6%95%B0%E7%94%BB%E9%9D%A2%E5%AF%BE%E5%BF%9C%E3%82%92%E5%85%A8%E9%83%A8%E8%AA%AC%E6%98%8E%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B%E3%82%88&url=https://aloerina01.github.io/css/javascript/2016/12/27/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E8%AB%96%E7%90%86%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%EF%BC%9F+%402x%EF%BC%9F+dip%EF%BC%9F+%E3%82%A4%E3%83%9E%E3%83%89%E3%82%AD%E3%81%AE%E8%A4%87%E6%95%B0%E7%94%BB%E9%9D%A2%E5%AF%BE%E5%BF%9C%E3%82%92%E5%85%A8%E9%83%A8%E8%AA%AC%E6%98%8E%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B%E3%82%88&u=https://aloerina01.github.io/css/javascript/2016/12/27/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=%E8%AB%96%E7%90%86%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%EF%BC%9F+%402x%EF%BC%9F+dip%EF%BC%9F+%E3%82%A4%E3%83%9E%E3%83%89%E3%82%AD%E3%81%AE%E8%A4%87%E6%95%B0%E7%94%BB%E9%9D%A2%E5%AF%BE%E5%BF%9C%E3%82%92%E5%85%A8%E9%83%A8%E8%AA%AC%E6%98%8E%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B%E3%82%88&url=https://aloerina01.github.io/css/javascript/2016/12/27/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/css/javascript/2016/12/27/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?%E8%AB%96%E7%90%86%E3%83%94%E3%82%AF%E3%82%BB%E3%83%AB%EF%BC%9F+%402x%EF%BC%9F+dip%EF%BC%9F+%E3%82%A4%E3%83%9E%E3%83%89%E3%82%AD%E3%81%AE%E8%A4%87%E6%95%B0%E7%94%BB%E9%9D%A2%E5%AF%BE%E5%BF%9C%E3%82%92%E5%85%A8%E9%83%A8%E8%AA%AC%E6%98%8E%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B%E3%82%88%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fcss%2Fjavascript%2F2016%2F12%2F27%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/css/javascript/2016/12/27/1.html',
+    'title': '論理ピクセル？ @2x？ dip？ イマドキの複数画面対応を全部説明してみるよ'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

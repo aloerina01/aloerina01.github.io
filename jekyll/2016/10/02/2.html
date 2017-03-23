@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Jekyll + GitHub Pages でブログをつくってみた</title>
+  <meta name="description" content="このブログを公開するまでの道のりを公開します。Jekyllについてはネット上に情報が多い分散り散りになっているイメージがあるので、シンプルに必要なことだけまとめました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="このブログを公開するまでの道のりを公開します。Jekyllについてはネット上に情報が多い分散り散りになっているイメージがあるので、シンプルに必要なことだけまとめました。" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="Jekyll + GitHub Pages でブログをつくってみた" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jekyll + GitHub Pages でブログをつくってみた">
+  <meta name="twitter:description" content="このブログを公開するまでの道のりを公開します。Jekyllについてはネット上に情報が多い分散り散りになっているイメージがあるので、シンプルに必要なことだけまとめました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/jekyll/2016/10/02/2.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Jekyll + GitHub Pages でブログをつくってみた</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2016-10-02</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/jekyll/">Jekyll</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="前提知識">前提知識</h3>
+
+<h4 id="github-pages">GitHub Pages</h4>
+<p>GitHubのリポジトリで管理されるhtml/css等をもとに静的ページを公開するサービス・仕組み。これを利用してブログをつくったり、ライブラリのドキュメントページをつくったりできる。</p>
+
+<ul>
+  <li>ブログの例：<a href="https://aloerina01.github.io/">あなたが読んでるこのブログ</a></li>
+  <li>ドキュメントの例：<a href="https://facebook.github.io/react/index.html">React</a></li>
+</ul>
+
+<h4 id="jekyll">Jekyll</h4>
+<p><strong>Markdownでページを作れる</strong>静的ページジェネレーター。Rubyで書かれたプログラムで、<a href="https://www.ruby-lang.org/ja/">Ruby</a>のパッケージ管理ツールの<a href="https://rubygems.org/">RubyGems</a>で配信されている。
+【<a href="http://melborne.github.io/2013/05/20/now-the-time-to-start-jekyll/">Jekyllいつやるの？ジキやルの？今でしょ！</a>】にいろいろ書いてあって助かりました。</p>
+
+<ol>
+  <li>Rubyを<a href="https://www.ruby-lang.org/ja/downloads/">公式サイト</a>からダウンロード＆インストール<br />
+(OS X は最初からRuby入ってる)</li>
+  <li><code class="highlighter-rouge">gem install jekyll</code></li>
+</ol>
+
+<p>これだけで使えるから楽ちん。</p>
+
+<h3 id="やりたいこと">やりたいこと</h3>
+
+<ul>
+  <li>最速で公開したい</li>
+  <li>Markdownで記事を書きたい</li>
+  <li>後々たくさんカスタマイズしたい</li>
+  <li>広告とかごちゃごちゃしたものはいらない</li>
+</ul>
+
+<p>これを満たすのが <strong>GitHubPages + Jekyll</strong> でした。ちなみにGitHubPagesは裏ではJekyllが動いているようで、ビルドやサーバ再起動なんかも勝手にやってくれるので、その点もありがたい😂</p>
+
+<h3 id="やったこと">やったこと</h3>
+
+<h4 id="jekyll用のファイルの準備">Jekyll用のファイルの準備</h4>
+
+<p>Jekyllのコマンド叩いてもよかったんだけど、お手軽そうかつReadme読みやすそうだったので<a href="https://github.com/barryclark/jekyll-now">Jekyll-now</a>を利用。書いてある通りだれど、このブランチからソースをフォークしてくることで必要なファイルが全部そろっちゃうよ🎉</p>
+
+<h4 id="テーマ選び適用">テーマ選び＆適用</h4>
+<p><a href="http://jekyllthemes.org/">Jekyll Themes</a>からよりどりみどり。他にもテーマを選ぶサイトはいくつかあるみたい(似たような名前のサイトばっかりだな…)。</p>
+
+<ul>
+  <li><a href="http://jekyllthemes.io/">Jekyll Themes &amp; Templates</a></li>
+  <li><a href="http://themes.jekyllrc.org/">Jekyll Themes</a></li>
+</ul>
+
+<p>適用方法は様々だけど、それぞれのThemeのリポジトリのソースをまるっと持ってくるってものが多いので、その場合は上の「Jekyll用のファイルの準備」の手順が不要になる。あろえの場合は、<code class="highlighter-rouge">_includes</code>、<code class="highlighter-rouge">_sass</code>、<code class="highlighter-rouge">_config.yml</code>、<code class="highlighter-rouge">*.html</code>を置き換えました。</p>
+
+<h4 id="_configymlの編集">_config.ymlの編集</h4>
+<p>ブログタイトルや作者の情報などは<code class="highlighter-rouge">_config.yml</code>に書かれているので、それを書き換える必要がある。また、テーマによってカテゴリやSNS連携情報なども記載しているので、そのへんも適宜。</p>
+
+<h4 id="トップページの続きを読む">トップページの「続きを読む」</h4>
+<p>はてなブログにて<a href="http://aloecity.hatenablog.com/">青空コメントアウト</a>というブログを並行運営してるのだけれど、あちらではトップページに<strong>一定の高さで記事を並べる</strong>(はみ出る部分を「…」として統一のレイアウトで記事が並ぶ状態にする)ことができなかったので、なんとかこっちで実現したかった。
+現在このブログに使っているテーマでは<a href="https://shopify.github.io/liquid/">Liquid</a>というテンプレートエンジンが採用されていて、これによって<strong>最初の50単語までを表示して残りを「…」で省略する</strong>ということが可能になったのだ😉</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>{{ post.content | strip_html | truncatewords: 50 }}<span class="nt">&lt;/p&gt;</span>
+</code></pre>
+</div>
+
+<p>けど落とし穴が…。50単語というのは英単語の話。日本語には適用されない！！！😰<br />
+というわけで対応が必要なんだけれど、どうせなら最初の○文字とかじゃなくて記事の要約を書けないかなーと思って、記事冒頭のメタデータに(タイトルと同じように)要約を書いて、それを表示するようにしました。</p>
+
+<p><strong>記事.md</strong></p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>---
+title: Jekyll + GitHub Pages でブログをつくってみた
+outline: このブログを公開するまでの道のりを公開します。Jekyllについてはネット上に情報が多い分散り散りになっているイメージがあるので、シンプルに必要なことだけまとめました。
+---
+</code></pre>
+</div>
+
+<p><strong>index.html</strong></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code>{% if post.outline %}
+<span class="nt">&lt;p&gt;</span>{{ post.outline }}<span class="nt">&lt;/p&gt;</span>
+{% else %}
+<span class="nt">&lt;p&gt;</span>{{ post.content | strip_html | truncatewords: 50 }}<span class="nt">&lt;/p&gt;</span>
+{% endif %}
+</code></pre>
+</div>
+
+<h3 id="いったんこれにて">いったんこれにて</h3>
+<p>いったんこれにてブログの体裁が整ったので、後はどんどん記事を書いて<code class="highlighter-rouge">_post</code>に投下するだけ。所感としては、デザインテーマがいろんなプラグインを組み込んでくれてるおかげでカスタマイズしやすそう(依存性が低くて切り離したりプラグイン追加したりしやすそう)だったり、
+Liquidテンプレートが扱いやすくてカスタマイズページもガンガン作れそうだったり、何もせずともレスポンシブデザインだったり、GitHub上で「New File」とかやって記事つくれちゃったり…いろいろ便利。メインブログの青空コメントアウトの下書きとしても活躍しそう。</p>
+
+<p>両ブログを今後ともよろしくっ😘</p>
+
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=Jekyll+%2B+GitHub+Pages+%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/jekyll/2016/10/02/2.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Jekyll+%2B+GitHub+Pages+%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F&u=https://aloerina01.github.io/jekyll/2016/10/02/2.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=Jekyll+%2B+GitHub+Pages+%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/jekyll/2016/10/02/2.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/jekyll/2016/10/02/2.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?Jekyll+%2B+GitHub+Pages+%E3%81%A7%E3%83%96%E3%83%AD%E3%82%B0%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%A6%E3%81%BF%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjekyll%2F2016%2F10%2F02%2F2.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/jekyll/2016/10/02/2.html',
+    'title': 'Jekyll + GitHub Pages でブログをつくってみた'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>そろそろYarnを使ってもいいんじゃない？</title>
+  <meta name="description" content="npmでそんなに不自由していなかったし、npm scripts よく使うし、yarn に乗り換える必要ってあるのかなー。今までnpmで運用してたのに急に乗り換えることなんてできるのかなー。そんな思いを胸に秘めている人にYarnの良さと導入の簡単さを伝えるために書きました。ええ、自分自身のことです😌">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="npmでそんなに不自由していなかったし、npm scripts よく使うし、yarn に乗り換える必要ってあるのかなー。今までnpmで運用してたのに急に乗り換えることなんてできるのかなー。そんな思いを胸に秘めている人にYarnの良さと導入の簡単さを伝えるために書きました。ええ、自分自身のことです😌" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="そろそろYarnを使ってもいいんじゃない？" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="そろそろYarnを使ってもいいんじゃない？">
+  <meta name="twitter:description" content="npmでそんなに不自由していなかったし、npm scripts よく使うし、yarn に乗り換える必要ってあるのかなー。今までnpmで運用してたのに急に乗り換えることなんてできるのかなー。そんな思いを胸に秘めている人にYarnの良さと導入の簡単さを伝えるために書きました。ええ、自分自身のことです😌">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/yarn/2017/02/13/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">そろそろYarnを使ってもいいんじゃない？</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-02-13</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/yarn/">Yarn</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="yarnのいいところは">Yarnのいいところは？</h3>
+
+<p>ウルトラでメガでスーパーなパッケージ管理ができるのが<a href="https://yarnpkg.com/en/">Yarn</a>だそうです。<br />
+が、今回は実際に使ってみて感じたメリットについて書きます。</p>
+
+<h4 id="packagejsonを使えるnpm互換">package.jsonを使える(npm互換)</h4>
+
+<p>「今までずっとnpmでやってきたプロジェクトだし、わざわざyarnに乗り換えるの面倒臭いよね…」と目をそむけてきましたが、<strong>全然面倒臭くありませんでした</strong>。yarnをグローバルインストールしてしまえば、あとはnpmと同様に<code class="highlighter-rouge">package.json</code>を元にパッケージ管理ができます。<strong>導入まで1ステップというお手軽さ</strong>でした。</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g yarn
+</code></pre>
+</div>
+<p>yarnのインストールはnpmから。なんか変な話ですね。</p>
+
+<h4 id="node_modulesの容量が減った">node_modulesの容量が減った</h4>
+
+<p>モジュール管理方法が、<strong>npmは階層化されているのに対し、yarnはフラット</strong>です。読み込んだモジュールが更にモジュールを読み込んでいて…とネストしていくものを全部フラットでインストールするため重複がありません。その分軽くなります。</p>
+
+<h4 id="ダウンロードが速い">ダウンロードが速い</h4>
+
+<p>過去に1度ダウンロードしたものをローカルにキャッシュしておいてくれるので、<code class="highlighter-rouge">npm install</code>をし直すような場面で特に高速化の威力を発揮します。ローカルキャッシュということはオフラインにも対応しているということですね(まだオフラインの恩恵を受けたことはありませんが)。</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>yarn
+<span class="c"># もしくは</span>
+<span class="gp">$ </span>yarn install
+</code></pre>
+</div>
+
+<h4 id="バージョン固定がしやすい">バージョン固定がしやすい</h4>
+
+<p>Yarnでは読み込むモジュールのバージョンを<strong>お手軽に固定することができます</strong>(一応npmでもできるんですよ、<code class="highlighter-rouge">npm shrinkwrap</code>という機能を使うと)。これにより「誰のどの環境にも同じモジュールがある」状態を維持できます。</p>
+
+<h4 id="ロゴがかわいい">ロゴがかわいい</h4>
+
+<p>ﾆｬｰﾝ。ﾔｰﾝ。</p>
+
+<h3 id="yarnの導入をしよう">Yarnの導入をしよう</h3>
+
+<h4 id="インストール">インストール</h4>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -g yarn
+</code></pre>
+</div>
+
+<h4 id="プロジェクトの準備">プロジェクトの準備</h4>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>yarn init
+</code></pre>
+</div>
+
+<h4 id="モジュールの追加削除">モジュールの追加＆削除</h4>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>yarn add <span class="o">[</span>package]            <span class="c"># npm install --save に相当</span>
+<span class="gp">$ </span>yarn add --dev <span class="o">[</span>package]      <span class="c"># npm install --save-dev に相当</span>
+<span class="gp">$ </span>yarn add <span class="o">[</span>package]@[version]
+
+<span class="gp">$ </span>yarn remove <span class="o">[</span>package]
+</code></pre>
+</div>
+
+<p>その他コマンドの<a href="https://yarnpkg.com/en/docs/migrating-from-npm#toc-cli-commands-comparison">npm / yarn比較</a>は公式に一覧化されています。</p>
+
+<h3 id="yarnのパッケージインストールの仕組み">Yarnのパッケージインストールの仕組み</h3>
+
+<p>何か問題が起きたときに、内部の動きを知っていると意外と役立ったりしますよね。ということで軽く触れておきます。</p>
+
+<h4 id="1-モジュール間の依存解決">1. モジュール間の依存解決</h4>
+<p>モジュール間の依存関係を再帰的に解決する。</p>
+
+<h4 id="2-fetch--cache">2. Fetch &amp; Cache</h4>
+<p>ダウンロード対象の各パッケージがグローバルキャッシュ(<code class="highlighter-rouge">~/.yarn-cache</code>)に存在しているかを確認し、もしなければtarballを取得しキャッシュする。</p>
+
+<h4 id="3-対象プロジェクトのnode_modulesへコピー">3. 対象プロジェクトのnode_modulesへコピー</h4>
+<p>グローバルキャッシュから対象のモジュールをnode_modules以下へコピーする。</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<ul>
+  <li>package.jsonを使えるのでnpm互換</li>
+  <li>モジュールのダウンロードが速い</li>
+  <li>モジュールの容量削減</li>
+  <li>バージョン固定</li>
+</ul>
+
+<p>大きなデメリットもなく手間もなく、あっという間にnpmからyarnへと移行しちゃいました。皆様もぜひ。</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%81%9D%E3%82%8D%E3%81%9D%E3%82%8DYarn%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%EF%BC%9F&url=https://aloerina01.github.io/yarn/2017/02/13/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%81%9D%E3%82%8D%E3%81%9D%E3%82%8DYarn%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%EF%BC%9F&u=https://aloerina01.github.io/yarn/2017/02/13/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=%E3%81%9D%E3%82%8D%E3%81%9D%E3%82%8DYarn%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%EF%BC%9F&url=https://aloerina01.github.io/yarn/2017/02/13/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/yarn/2017/02/13/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?%E3%81%9D%E3%82%8D%E3%81%9D%E3%82%8DYarn%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%EF%BC%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fyarn%2F2017%2F02%2F13%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/yarn/2017/02/13/1.html',
+    'title': 'そろそろYarnを使ってもいいんじゃない？'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

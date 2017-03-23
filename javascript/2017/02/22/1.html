@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</title>
+  <meta name="description" content="リリース環境と開発環境でAPIのオリジンを切り替えたい…ログのレベルを替えたい…。そういった環境変数に纏わる問題をクライアントサイドで解決したい場面ってありますよね。そんな場面で使える「ビルド時に環境毎の設定ファイルを読み込む方法」を実装したのでメモっておきます。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="リリース環境と開発環境でAPIのオリジンを切り替えたい…ログのレベルを替えたい…。そういった環境変数に纏わる問題をクライアントサイドで解決したい場面ってありますよね。そんな場面で使える「ビルド時に環境毎の設定ファイルを読み込む方法」を実装したのでメモっておきます。" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法">
+  <meta name="twitter:description" content="リリース環境と開発環境でAPIのオリジンを切り替えたい…ログのレベルを替えたい…。そういった環境変数に纏わる問題をクライアントサイドで解決したい場面ってありますよね。そんな場面で使える「ビルド時に環境毎の設定ファイルを読み込む方法」を実装したのでメモっておきます。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/javascript/2017/02/22/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-02-22</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="実現したいこと">実現したいこと</h3>
+
+<ul>
+  <li>リリース環境と開発環境でAPIのオリジンを替えたい</li>
+  <li>オリジンを環境変数として別ファイルに定義したい</li>
+  <li>リリースするJSファイルに開発環境用の記述が混ざらないようにしたい</li>
+  <li>クライアントサイド(JavaScript)内で完結させたい</li>
+</ul>
+
+<h3 id="解決策">解決策</h3>
+
+<p>webpackを使ってビルドする前提で、<strong>ビルド時に<code class="highlighter-rouge">process.dev.NODE_ENV</code>を見て読み込む設定ファイルを切り替える</strong>方法をとりました。</p>
+
+<h4 id="ファイル構成">ファイル構成</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>app
+  ├ ...	
+  ├ webpack.config.js
+  └ src
+     ├ environment
+         ├ index.js
+         ├ _development.js
+         └ _production.js
+
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">_deployment.js</code>と<code class="highlighter-rouge">_production.js</code>がそれぞれ環境ごとの設定ファイルです。<br />
+<code class="highlighter-rouge">index.js</code>が設定ファイルを切り替えて読み込む主体です。</p>
+
+<h4 id="環境ごとの設定ファイル">環境ごとの設定ファイル</h4>
+
+<script src="https://gist.github.com/aloerina01/5056c587e828980655b15547409c30c2.js"></script>
+
+<p>当然と言えば当然ですが、両方のファイルに同じ項目が用意されている状態にします。</p>
+
+<h4 id="設定を読み込む">設定を読み込む</h4>
+
+<script src="https://gist.github.com/aloerina01/827895f64fc549cf70fe91d3162a2d09.js"></script>
+
+<p>ポイントは、後に指定する<strong>NODE_ENV = 設定ファイル名</strong>となっていることです(今回は<code class="highlighter-rouge">environment/</code>以外でrequireしないで欲しいという意味を込めて<code class="highlighter-rouge">_</code>の接頭辞をつけました)。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">env</span> <span class="nx">from</span> <span class="s1">'../environment/index'</span><span class="p">;</span>
+
+<span class="kr">const</span> <span class="nx">FETCH_API</span> <span class="o">=</span> <span class="nx">env</span><span class="p">.</span><span class="nx">API_ORIGIN</span> <span class="o">+</span> <span class="s1">'user/articles'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>このように、<code class="highlighter-rouge">environment/index.js</code>を呼び出せばどこでも環境ごとの設定値を参照できるようになりました。</p>
+
+<h4 id="processenvnode_env-を利用できるようにする">process.env.NODE_ENV を利用できるようにする</h4>
+
+<p>ロジック内で<code class="highlighter-rouge">process.env.NODE_ENV</code>を利用するには、<code class="highlighter-rouge">webpack.config.js</code>に以下を追記します。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">plugins</span><span class="err">:</span> <span class="p">[</span>
+<span class="err">　　</span><span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">DefinePlugin</span><span class="p">({</span>
+<span class="err">　　　　</span><span class="s1">'process.env.NODE_ENV'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="p">)</span>
+<span class="err">　　</span><span class="p">})</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+<p><a href="https://webpack.js.org/plugins/define-plugin/">DefinePlugin</a>を使います。</p>
+
+<blockquote>
+  <p>The DefinePlugin allows you to create global constants which can be configured at compile time.</p>
+</blockquote>
+
+<p>コンパイル時にグローバル変数を定義してくれるというものです。</p>
+
+<h4 id="ビルド時に-processenvnode_dev-を指定する">ビルド時に process.env.NODE_DEV を指定する</h4>
+
+<p>用意が整ったのであとはビルドするだけです。ビルド時に<strong>productionビルド</strong>か<strong>developmentビルド</strong>かを指定してあげると、それに応じた設定ファイルを読み込んでコンパイルしてくれる算段です。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span><span class="nv">NODE_DEV</span><span class="o">=</span>production webpack
+</code></pre>
+</div>
+
+<p>ビルドコマンドをたたくときに<code class="highlighter-rouge">key=value</code>と指定すると、<code class="highlighter-rouge">process.env.key</code>に<code class="highlighter-rouge">value</code>が紐付けられます。</p>
+
+<p>あとはこれをnpm scriptsにして呼び出しやすいようにしておけば、手元で実行するもよし、CIに実行させるもよしです。
+<script src="https://gist.github.com/aloerina01/58d7fd5ef9363457d82b228da47dde56.js"></script></p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>不要な設定ファイルがそもそもrequireされない、というのはけっこういい感じだなと思っています。が、もっといい方法もあると思うので気づいたら教えていただけると嬉しいです。その際は<a href="https://twitter.com/aloerina_">@aloerina_</a>までお気軽に。</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=JavaScript%E3%81%A7%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E7%92%B0%E5%A2%83%E3%81%94%E3%81%A8%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E6%96%B9%E6%B3%95&url=https://aloerina01.github.io/javascript/2017/02/22/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=JavaScript%E3%81%A7%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E7%92%B0%E5%A2%83%E3%81%94%E3%81%A8%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E6%96%B9%E6%B3%95&u=https://aloerina01.github.io/javascript/2017/02/22/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=JavaScript%E3%81%A7%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E7%92%B0%E5%A2%83%E3%81%94%E3%81%A8%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E6%96%B9%E6%B3%95&url=https://aloerina01.github.io/javascript/2017/02/22/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/javascript/2017/02/22/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?JavaScript%E3%81%A7%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E7%92%B0%E5%A2%83%E3%81%94%E3%81%A8%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E6%96%B9%E6%B3%95%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2017%2F02%2F22%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/javascript/2017/02/22/1.html',
+    'title': 'JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

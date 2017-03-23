@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>外部スクリプトを動的読込して同期的に処理をする方法</title>
+  <meta name="description" content="少々荒業ですが、人生こんなことも必要です。document.write が含まれる外部スクリプトを動的読込し、かつそれが読み込まれた後で処理をするための方法です。苦戦したので覚書。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="少々荒業ですが、人生こんなことも必要です。document.write が含まれる外部スクリプトを動的読込し、かつそれが読み込まれた後で処理をするための方法です。苦戦したので覚書。" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="外部スクリプトを動的読込して同期的に処理をする方法" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="外部スクリプトを動的読込して同期的に処理をする方法">
+  <meta name="twitter:description" content="少々荒業ですが、人生こんなことも必要です。document.write が含まれる外部スクリプトを動的読込し、かつそれが読み込まれた後で処理をするための方法です。苦戦したので覚書。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/javascript/2016/10/14/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">外部スクリプトを動的読込して同期的に処理をする方法</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2016-10-14</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="背景">背景</h3>
+<ul>
+  <li><code class="highlighter-rouge">document.write</code>を使ってる外部ライブラリを動的読込する必要があった</li>
+  <li>そのライブラリが読み込まれた後にしなければならない処理がある</li>
+</ul>
+
+<p><code class="highlighter-rouge">document.write</code>は使うなってあれほど言ってるのに！！</p>
+
+<p>それでもそんなライブラリ(内製だった…)を使わなければならない場面もあります。しかも<code class="highlighter-rouge">&lt;script src="..."&gt;&lt;/script&gt;</code>で読み込めず、動的読込(※)しなきゃいけない場面もあります。それが人生です。</p>
+
+<p><strong>※動的読込の例</strong></p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">conditions</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">scriptElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
+  <span class="nx">scriptElement</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'//cdn.hoge.com/library.js'</span><span class="p">;</span>
+
+  <span class="kd">var</span> <span class="nx">headElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'head'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="nx">headElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptElement</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre>
+</div>
+
+<p>でも<code class="highlighter-rouge">document.write</code>が使われているライブラリは動的読込しようとしても読み込めません！💢💢<br />
+HTML解析が始まりDOM操作によって追加された外部スクリプトの<code class="highlighter-rouge">document.write</code>は<strong>無視されます</strong>。そのせいで普通に動的読込しても何も起こらないのでした😉</p>
+
+<h3 id="結論">結論</h3>
+
+<ul>
+  <li>iframeで動的読込する</li>
+  <li>iframe.onloadを使って後続処理をする</li>
+</ul>
+
+<h3 id="解説">解説</h3>
+
+<script src="https://gist.github.com/aloerina01/51e8012367ec04c78c37128d0430b428.js"></script>
+
+<h4 id="1-create-iframe-to-load-a-library">1. create iframe to load a library</h4>
+<p><code class="highlighter-rouge">document.write</code>を含むライブラリを読み込むための、iframeを準備します。<br />
+iframeを使うことで擬似的に別のHTMLをつくり、そいつにライブラリを読み込んでもらう算段です。iframeは今この場で生成しているのでHTML解析がまだ始まっていないから、<code class="highlighter-rouge">document.write</code>のあるライブラリも読み込めます。</p>
+
+<p>ちなみにここではiframeを用意しただけで中身(ライブラリを読み込むためのscriptタグ)はまだ書いていません。</p>
+
+<h4 id="2-some-functions-after-loading-a-library">2. some functions after loading a library</h4>
+<p>ライブラリ読込後の後続処理は<code class="highlighter-rouge">onload</code>を使います。<code class="highlighter-rouge">onload</code>イベントはsrc属性により指定されたリソースの読み込み完了時に発生します。ありがたや。</p>
+
+<h4 id="3-write-sctipt-tag-in-iframe">3. write sctipt tag in iframe</h4>
+<p>iframeにscriptタグを書き込みます。<code class="highlighter-rouge">document.write</code>にはちょっとひとクセあって、文書ストリームを勝手に開いて文字列を書き込むんですね。そして開いたら開きっぱなし(これが使うなと言われる所以)。なので明示的に<code class="highlighter-rouge">open</code>, <code class="highlighter-rouge">close</code>をします。<br />
+(closeだけすりゃいいんだけども。見栄え的にopenもしてみた)</p>
+
+<h3 id="参考">参考</h3>
+
+<p>こんな感じに少々ゴリ押し技を組み合わせて実現しました。実はこれ、一時的対応かつ404用のページなので多少汚ソースでも良かろう、と日和ってこんな手段をとっています。あんまり褒められた技じゃございませんでした、と。</p>
+
+<ul>
+  <li><a href="http://vividcode.hatenablog.com/entry/html/scripting-timing">外部 script の document.write が何もしない条件などについて - ひだまりソケットは壊れない</a></li>
+  <li><a href="http://tokkono.cute.coocan.jp/blog/slow/index.php/xhtmlcss/script-async-loading-in-iframe/">document.writeを使った遅いブログパーツ（例えばzenback）を非同期化してサイトを高速表示する方法 - ゆっくりと…</a></li>
+</ul>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E5%A4%96%E9%83%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E5%8B%95%E7%9A%84%E8%AA%AD%E8%BE%BC%E3%81%97%E3%81%A6%E5%90%8C%E6%9C%9F%E7%9A%84%E3%81%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&url=https://aloerina01.github.io/javascript/2016/10/14/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E5%A4%96%E9%83%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E5%8B%95%E7%9A%84%E8%AA%AD%E8%BE%BC%E3%81%97%E3%81%A6%E5%90%8C%E6%9C%9F%E7%9A%84%E3%81%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&u=https://aloerina01.github.io/javascript/2016/10/14/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=%E5%A4%96%E9%83%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E5%8B%95%E7%9A%84%E8%AA%AD%E8%BE%BC%E3%81%97%E3%81%A6%E5%90%8C%E6%9C%9F%E7%9A%84%E3%81%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&url=https://aloerina01.github.io/javascript/2016/10/14/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/javascript/2016/10/14/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?%E5%A4%96%E9%83%A8%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E5%8B%95%E7%9A%84%E8%AA%AD%E8%BE%BC%E3%81%97%E3%81%A6%E5%90%8C%E6%9C%9F%E7%9A%84%E3%81%AB%E5%87%A6%E7%90%86%E3%82%92%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2016%2F10%2F14%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/javascript/2016/10/14/1.html',
+    'title': '外部スクリプトを動的読込して同期的に処理をする方法'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

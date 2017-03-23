@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</title>
+  <meta name="description" content="ES6の仕様のひとつであるProxyを使って、堅牢なオブジェクトを作る方法を紹介します。Private変数を持つオブジェクト、Immutableなオブジェクト、Singletonなオブジェクト、Enumオブジェクトを作ってみましたのでご参考までに。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="ES6の仕様のひとつであるProxyを使って、堅牢なオブジェクトを作る方法を紹介します。Private変数を持つオブジェクト、Immutableなオブジェクト、Singletonなオブジェクト、Enumオブジェクトを作ってみましたのでご参考までに。" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="ES6 Proxy をつかって堅牢なオブジェクトをつくるTips" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ES6 Proxy をつかって堅牢なオブジェクトをつくるTips">
+  <meta name="twitter:description" content="ES6の仕様のひとつであるProxyを使って、堅牢なオブジェクトを作る方法を紹介します。Private変数を持つオブジェクト、Immutableなオブジェクト、Singletonなオブジェクト、Enumオブジェクトを作ってみましたのでご参考までに。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/javascript/2017/03/14/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-03-14</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="what-is-proxy">What is Proxy</h3>
+
+<blockquote>
+  <p>The Proxy object is used to define custom behavior for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc).</p>
+</blockquote>
+
+<p>オブジェクトをラップし、オブジェクトが持つ基本的な機能(<code class="highlighter-rouge">obj.key</code>と書いてvalueを取得する機能など)を上書くことができるのが<code class="highlighter-rouge">Proxy Object</code>です。<br />
+(高機能なオブジェクトを生成することができる、けっこうイカした仕様だと思います😋)</p>
+
+<h4 id="つかいかた">つかいかた</h4>
+
+<p>詳細な用法やパラメータの説明は <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">MDN</a>に任せるとして、基本的なSyntaxだけ記します。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Proxy</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<ul>
+  <li><code class="highlighter-rouge">target</code> …Proxyでラップする対象となるObject</li>
+  <li><code class="highlighter-rouge">handler</code>…上書く関数をプロパティに持つObject</li>
+</ul>
+
+<h4 id="用例">用例</h4>
+
+<p>実際のソースをみたほうがピンとくるかもしれません💡</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="s1">'Aloerina'</span><span class="p">,</span>
+  <span class="na">age</span><span class="p">:</span> <span class="mi">17</span>
+<span class="p">};</span>
+
+<span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">set</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">prop</span><span class="p">}</span><span class="err">は上書き禁止です`</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Proxy</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>  <span class="c1">// objをラップしたproxyを生成する</span>
+
+<span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Margherita'</span><span class="p">;</span>  <span class="c1">// nameは上書き禁止です</span>
+<span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Aloerina</span>
+</code></pre>
+</div>
+
+<h4 id="handlerの種類">Handlerの種類</h4>
+
+<p>オブジェクトが持つ基本的な機能、つまり「オブジェクトのプロパティへのアクセスを提供するメソッド」のことを<strong>トラップ</strong>といいます。<br />
+handlerとは、トラップの処理を上書きするものなので、各トラップに対して対応するhandlerが用意されています。「Proxyで何ができるか」を知りたいときはこれを見るのが分かりやすそうです。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>handler</th>
+      <th>trap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getPrototypeOf">handler.getPrototypeOf(target)</a></td>
+      <td>Object.getPrototypeOf</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/setPrototypeOf">handler.setPrototypeOf(target, prototype)</a></td>
+      <td>Object.setPrototypeOf</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/isExtensible">handler.isExtensible(target)</a></td>
+      <td>Object.isExtensible</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/preventExtensions">handler.preventExtensions(target)</a></td>
+      <td>Object.preventExtensions</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getOwnPropertyDescriptor">handler.getOwnPropertyDescriptor(target, prop)</a></td>
+      <td>Object.getOwnPropertyDescriptor</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/defineProperty">handler.defineProperty(target, prop, descriptor)</a></td>
+      <td>Object.defineProperty</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/has">handler.has(target, prop)</a></td>
+      <td><em>in</em> operator</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/get">handler.get(target, prop, receiver)</a></td>
+      <td>getting property values</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/set">handler.set(target, prop, value, receiver)</a></td>
+      <td>setting property values</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/deleteProperty">handler.deleteProperty(target, prop)</a></td>
+      <td><em>delete</em> operator</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/ownKeys">handler.ownKeys(target)</a></td>
+      <td>Object.getOwnPropertyNames<br />Object.getOwnPropertySymbols</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/apply">handler.apply(target, thisArg, argumentsList)</a></td>
+      <td>function call</td>
+    </tr>
+    <tr>
+      <td><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/construct">handler.construct(target, argumentsList, newTarget)</a></td>
+      <td><em>new</em> operator</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="reflect">Reflect</h4>
+
+<p>handlerの中で「本来の処理を呼び出したい」場面があると思います。この場合に使えるのが<code class="highlighter-rouge">Reflect</code>です。<code class="highlighter-rouge">handler</code>と同じメソッド群を持ちます。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">set</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Before set'</span><span class="p">);</span>
+    <span class="nx">Reflect</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>  <span class="c1">// targetオブジェクトのsetterを呼び出す</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Proxy</span><span class="p">({},</span> <span class="nx">handler</span><span class="p">);</span>
+
+<span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Margherita'</span><span class="p">;</span>  <span class="c1">// Before set</span>
+<span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Margherita</span>
+</code></pre>
+</div>
+
+<h4 id="can-i-use">Can I Use</h4>
+
+<p>執筆時点(2017/03/14)でのものです。</p>
+
+<p><img src="/assets/2017-03-14-1.png" alt="caniuse" /></p>
+
+<h4 id="polyfill">Polyfill</h4>
+
+<p><a href="https://github.com/GoogleChrome/proxy-polyfill">GoogleChrome/proxy-polyfill</a></p>
+
+<p>このPolyfillでは</p>
+
+<ul>
+  <li>get</li>
+  <li>set</li>
+  <li>apply</li>
+  <li>construct</li>
+</ul>
+
+<p>のトラップにしか対応していないので、その点ご注意を…。</p>
+
+<p>以上、ざっとProxyの使い方でした。ここからはProxyの実用例の話です。</p>
+
+<h3 id="tips-enumobjectをつくる-enumbuilder">[Tips] EnumObjectをつくる！ EnumBuilder</h3>
+
+<p>Enumの定義にオブジェクトを使うことケース。よくあります。<br />
+あるオブジェクトがEnumである以上、<strong>値が書き換えられないこと</strong>が厳密に管理されていると良いです。ということで、オブジェクトがEnumとして生まれ変わる<code class="highlighter-rouge">EnumBuilder</code>をつくってみました。
+<script src="https://gist.github.com/aloerina01/9c931d3918242767b9c9729a63b0952f.js"></script></p>
+
+<ul>
+  <li><code class="highlighter-rouge">set / delete</code>ができないオブジェクトにする</li>
+  <li><code class="highlighter-rouge">import</code>して<code class="highlighter-rouge">Type.Inport</code>のようにスタティックアクセス風に使える</li>
+  <li>既に作られているEnum用オブジェクトにも簡単に適用できる</li>
+  <li>オブジェクトの中にオブジェクトが入れ子になるケースは想定してない</li>
+</ul>
+
+<p>といったことを満たす仕様にしたくてこのような形にしました。ただ、渡すオプションがこれ以上増えなさそうなのでBuilderパターンにするのは過剰な実装だったかもしれません。すみません好みです🙇</p>
+
+<h3 id="tips-用途別に制約付きmoduleを定義してクラスベースな実装をする">[Tips] 用途別に制約付きModuleを定義してクラスベースな実装をする！</h3>
+
+<p>class構文で用意したModuleを<code class="highlighter-rouge">import</code>して<code class="highlighter-rouge">new</code>して使うと本当にクラスをインスタンス化してるように見えて、読みやすいクラスベース(風)の実装となりますよね。<br />
+しかし実際にはインスタンス化されたソレはただのオブジェクトです。やろうと思えばfunctionを外から追加することも、privateな用途で用意した変数を強引に書き換えることもできてしまいます。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">User</span> <span class="nx">from</span> <span class="s1">'./User'</span><span class="p">;</span>
+
+<span class="kd">let</span> <span class="nx">user01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
+<span class="nx">user01</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="s1">'Aloerina'</span><span class="p">;</span>        <span class="c1">// やめてー！ private用の変数を書き換えないでー！</span>
+</code></pre>
+</div>
+
+<p>こうなってしまうと悲惨なので😭、<strong>Module毎の性質に応じて機能を制約し、不本意な使われ方を防ぐ</strong>ため、</p>
+
+<ol>
+  <li>Private変数を持つModule</li>
+  <li>Immutableな値を定義するModule</li>
+  <li>SingletonなModule</li>
+</ol>
+
+<p>の3パターンのModuleを定義するための<code class="highlighter-rouge">ModuleBuilder</code>を作ってみました。</p>
+
+<script src="https://gist.github.com/aloerina01/1fa30b0d81384681a4480d80e69893fe.js"></script>
+
+<ul>
+  <li>既に作られているModuleにも適用できる</li>
+  <li>Moduleのソース内に、どの性質を持っているのかが明記されている</li>
+  <li>今まで通りModuleを<code class="highlighter-rouge">import</code>して<code class="highlighter-rouge">new</code>して使える。呼び出し側で修正が不要(singletonは除く)</li>
+  <li>上記3つ以外にもパターンを拡張できる</li>
+</ul>
+
+<p>といったことを意識してつくってみました。Builderパターンなのは言わずもがな。<br />
+任意のクラスと用意されたhandlerを選択してBuilderに渡し、出来上がったProxyをModuleとしてExportさせて使います。以下に実用例を2つ挙げます。</p>
+
+<h4 id="immutableなオブジェクト">Immutableなオブジェクト</h4>
+
+<script src="https://gist.github.com/aloerina01/2d3a998bc7dc8f90c91ddc318e50214a.js"></script>
+
+<h4 id="singletonなオブジェクト">Singletonなオブジェクト</h4>
+
+<script src="https://gist.github.com/aloerina01/d9537a60291363555b95df5c33a4f9da.js"></script>
+
+<p>ちなみに、設計当初は<code class="highlighter-rouge">Handlers</code>を組み合わせていろんな性質を持つModuleをつくれるようにしたい(Javaの<a href="http://dev.classmethod.jp/server-side/java/use_lombok_short/">lombok</a>アノテーションみたいな感じで簡単に付与できるようにしたい)と思っていたのですが、handlerの競合が起きるのでやめました…。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p><strong>オブジェクトが持つ基本機能を上書くことでJavaScript特有の自由さに制限を設けて堅牢な実装をしよう！</strong> というお話でした。</p>
+
+<p>とは言え、やや強引な実装なので粗があることも事実です(上記の例ではSingletonの実装は微妙。そもそもJSでSingletonなんて使わなくてもいいかもなと思ったり…)。<br />
+<strong>クラスベースな書き方をゴリ押しで実現している</strong>とも言えるので、そもそもJavaScriptの実装としてふさわしいかという議論の余地はありそうです。</p>
+
+<p>ただ、そういった点も踏まえた上で使うのであれば強力な効果を発揮してくれるのがProxyだと思います。今回は自分で試用してみたものだけをまとめましたが、他にも有用な使い方はあるようです。下記のサイトが参考になりました。</p>
+
+<p><a href="http://dealwithjs.io/es6-features-10-use-cases-for-proxy/">ES6 Features - 10 Use Cases for Proxy</a></p>
+
+<p>もっと良い実装がある、間違っている部分がある、という場合はぜひ<a href="https://twitter.com/aloerina_">@aloerina_</a> までご一報いただけると嬉しいです。</p>
+
+<p>現場からは以上です。</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=ES6+Proxy+%E3%82%92%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%A6%E5%A0%85%E7%89%A2%E3%81%AA%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8BTips&url=https://aloerina01.github.io/javascript/2017/03/14/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=ES6+Proxy+%E3%82%92%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%A6%E5%A0%85%E7%89%A2%E3%81%AA%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8BTips&u=https://aloerina01.github.io/javascript/2017/03/14/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=ES6+Proxy+%E3%82%92%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%A6%E5%A0%85%E7%89%A2%E3%81%AA%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8BTips&url=https://aloerina01.github.io/javascript/2017/03/14/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/javascript/2017/03/14/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?ES6+Proxy+%E3%82%92%E3%81%A4%E3%81%8B%E3%81%A3%E3%81%A6%E5%A0%85%E7%89%A2%E3%81%AA%E3%82%AA%E3%83%96%E3%82%B8%E3%82%A7%E3%82%AF%E3%83%88%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8BTips%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2017%2F03%2F14%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/javascript/2017/03/14/1.html',
+    'title': 'ES6 Proxy をつかって堅牢なオブジェクトをつくるTips'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

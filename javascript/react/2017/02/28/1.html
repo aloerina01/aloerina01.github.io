@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</title>
+  <meta name="description" content="Reactを使ったWebApplicationの開発環境をコマンドひとつで立ち上げてくれるcreate-react-app。ビルド周りまで用意してくれるので便利な反面落とし穴もありました。今回はそんなcreate-react-appの使い方と使った感想を語ってみます。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Reactを使ったWebApplicationの開発環境をコマンドひとつで立ち上げてくれるcreate-react-app。ビルド周りまで用意してくれるので便利な反面落とし穴もありました。今回はそんなcreate-react-appの使い方と使った感想を語ってみます。" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="Reactを秒速で使い始められるcreate-react-appの使い方と使い心地" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Reactを秒速で使い始められるcreate-react-appの使い方と使い心地">
+  <meta name="twitter:description" content="Reactを使ったWebApplicationの開発環境をコマンドひとつで立ち上げてくれるcreate-react-app。ビルド周りまで用意してくれるので便利な反面落とし穴もありました。今回はそんなcreate-react-appの使い方と使った感想を語ってみます。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/javascript/react/2017/02/28/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-02-28</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>, 
+    
+  
+    
+    <a href="/category/react/">React</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="what-is-create-react-app">What is create-react-app</h3>
+
+<p><a href="https://github.com/facebookincubator/create-react-app">GitHub - facebookincubator/create-react-app</a></p>
+
+<blockquote>
+  <p>Create React apps with no build configuration.</p>
+</blockquote>
+
+<p>イマドキのJS開発環境でWebアプリを作ろうと思ったらビルド環境が必要ですが、それも含めて、Reactを使った開発環境の構築をしてくれるのがこのcreate-react-appです。create-react-appの依存関係に含まれる<code class="highlighter-rouge">react-scripts</code>というモジュールがビルド周りを担っています。</p>
+
+<h3 id="how-to-use">How to use</h3>
+
+<h4 id="セットアップ">セットアップ</h4>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm i -g create-react-app         <span class="c"># create-react-appのインストール</span>
+
+<span class="gp">$ </span>create-react-app &lt;project_name&gt;   <span class="c"># 任意の名前のReactApplicationを作成してくれる</span>
+
+<span class="gp">$ </span>npm start                         <span class="c"># ビルド&amp;ローカルサーバ起動(npmを利用する場合)</span>
+<span class="gp">$ </span>yarn start                        <span class="c"># 同上(yarnを利用する場合)</span>
+</code></pre>
+</div>
+
+<h4 id="ビルド">ビルド</h4>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm run build    <span class="c"># npmを利用する場合</span>
+<span class="gp">$ </span>yarn run build   <span class="c"># yarnを利用する場合</span>
+</code></pre>
+</div>
+
+<h3 id="how-do-feel">How do feel</h3>
+
+<p>コンセプトの通り簡単にReact Applicationの土台を用意することができるので、これからReactを実用として試したいという場面でとても役立ちました。フォルダ構成やビルドについても用意されているものに従うだけなので悩む必要がなく、Reactのキャッチアップやfluxライブラリの検証にも使えました。</p>
+
+<p>そのお手軽さの反面、どうしても融通がききにくい部分がありました。特にビルド周りがガチガチに作り込まれていてカスタマイズできずに苦労したのはいい思い出…じゃない(´・ω・｀)</p>
+
+<h4 id="ビルド成果物に強制的にタグ番号が振られて困る">ビルド成果物に強制的にタグ番号が振られて困る</h4>
+
+<p><code class="highlighter-rouge">npm start</code>を叩くと、手元でお手軽にローカルサーバを起動し動作確認することができます。ちょっとの確認ならこれでいいのですが、複数人で開発している場合は開発環境用のサーバに適用(bundleされたjsを配信する等)して動作確認する場面もあるでしょう。</p>
+
+<p>で、いざバンドル用のコマンド<code class="highlighter-rouge">npm run build</code>を叩いてみると、<code class="highlighter-rouge">bundle.3969bbc2.js</code>といった具合にタグ番号が振られます。これが迷惑。HTML側でいちいち<code class="highlighter-rouge">&lt;script&gt;</code>タグを修正しないといけません。</p>
+
+<p>リリースするjsファイルはそれでいいけど、開発環境に適用するjsファイルにはそんなのいらんのよ…(´・ω・｀)</p>
+
+<h4 id="ビルド結果が手元での実行時とciでの実行時で違って困る">ビルド結果が手元での実行時とCIでの実行時で違って困る</h4>
+
+<p>CircleCIに<code class="highlighter-rouge">npm run build</code>させたところ、たくさんのWarningと「Failed to compile」の文字が。手元で同コマンドを叩いても何も起きなかったくせに！！</p>
+
+<blockquote>
+  <p>Create React App treats warnings as failures in the build.</p>
+</blockquote>
+
+<p>CIでビルドさせるときはワーニングでもビルド失敗として扱うようです。</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CI</span> <span class="o">&amp;&amp;</span> <span class="nx">stats</span><span class="p">.</span><span class="nx">compilation</span><span class="p">.</span><span class="nx">warnings</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+     <span class="nx">printErrors</span><span class="p">(</span><span class="s1">'Failed to compile.'</span><span class="p">,</span> <span class="nx">stats</span><span class="p">.</span><span class="nx">compilation</span><span class="p">.</span><span class="nx">warnings</span><span class="p">);</span>
+     <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+   <span class="p">}</span>
+</code></pre>
+</div>
+<p><code class="highlighter-rouge">react-scripts</code>のソースにもこの通り。</p>
+
+<p>ここまでは親切でありがたいのだけれど、せめて手元でビルドしたときに同じWarningを表示しよう。なぜ手元ではWarning出してくれないんだ…(´・ω・｀)</p>
+
+<h4 id="つまりビルドの中身を簡単に変えられない">つまりビルドの中身を簡単に変えられない</h4>
+
+<p>ここまでで何となく伝わるかと思いますが、<code class="highlighter-rouge">react-scripts</code>モジュールには<strong>カスタマイズの余地があまりありません</strong>。内部的にWebpackを使っているのですが、<code class="highlighter-rouge">webpack.config.js</code>を外から上書く機構などがなく、<code class="highlighter-rouge">process.env</code>に変数を追加してビルド時にゴニョゴニョしたい…みたいなことがサッとできずに少し困りました。<br />
+(この話： <a href="https://aloerina01.github.io/javascript/2017/02/22/1.html">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</a>)</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p><strong>Reactを使ったWebApplicationをさっと立ち上げるには便利ですが、ビルド周りの融通がききにくい</strong>、ということに尽きます。</p>
+
+<p>とは言え、工夫すればいい感じにビルドすることはできるし、そこでゴニョゴニョ工夫するくらいならイチから<code class="highlighter-rouge">webpack.config.js</code>書くなりして自前の環境を用意すればいいし、どうとでもなります。</p>
+
+<p>こういうのはとっつきやすくて手っ取り早いのがいいところだと思うのであります。以上。</p>
+
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=React%E3%82%92%E7%A7%92%E9%80%9F%E3%81%A7%E4%BD%BF%E3%81%84%E5%A7%8B%E3%82%81%E3%82%89%E3%82%8C%E3%82%8Bcreate-react-app%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%A8%E4%BD%BF%E3%81%84%E5%BF%83%E5%9C%B0&url=https://aloerina01.github.io/javascript/react/2017/02/28/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=React%E3%82%92%E7%A7%92%E9%80%9F%E3%81%A7%E4%BD%BF%E3%81%84%E5%A7%8B%E3%82%81%E3%82%89%E3%82%8C%E3%82%8Bcreate-react-app%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%A8%E4%BD%BF%E3%81%84%E5%BF%83%E5%9C%B0&u=https://aloerina01.github.io/javascript/react/2017/02/28/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=React%E3%82%92%E7%A7%92%E9%80%9F%E3%81%A7%E4%BD%BF%E3%81%84%E5%A7%8B%E3%82%81%E3%82%89%E3%82%8C%E3%82%8Bcreate-react-app%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%A8%E4%BD%BF%E3%81%84%E5%BF%83%E5%9C%B0&url=https://aloerina01.github.io/javascript/react/2017/02/28/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/javascript/react/2017/02/28/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?React%E3%82%92%E7%A7%92%E9%80%9F%E3%81%A7%E4%BD%BF%E3%81%84%E5%A7%8B%E3%82%81%E3%82%89%E3%82%8C%E3%82%8Bcreate-react-app%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%A8%E4%BD%BF%E3%81%84%E5%BF%83%E5%9C%B0%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2Freact%2F2017%2F02%2F28%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/javascript/react/2017/02/28/1.html',
+    'title': 'Reactを秒速で使い始められるcreate-react-appの使い方と使い心地'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

@@ -1,0 +1,30 @@
+general:
+  branches:
+    only:
+      - /development/
+
+# adjusting the VM to your preferences and requirements
+machine:
+  timezone: Asia/Tokyo
+
+# checking out and cloning your git repo
+# checkout: 
+
+# preparing the databases for your tests
+# database:
+
+# dependencies:
+  # cache_directories:
+
+# running your tests
+# CircleCI automatically runs 'npm test'
+test:
+  override:    
+    - echo "-----no test-----"
+
+# deploying your code to your web servers
+deployment:
+  development:
+    branch: /development/
+    commands: 
+      - rake publish
