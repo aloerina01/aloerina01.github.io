@@ -13,7 +13,7 @@ machine:
 # preparing the databases for your tests
 # database:
 
-dependencies:
+# dependencies:
   # cache_directories:
 
 # running your tests
