@@ -13,8 +13,9 @@ machine:
 # preparing the databases for your tests
 # database:
 
-# dependencies:
-  # cache_directories:
+dependencies:
+  override:
+    - bundle install --frozen
 
 # running your tests
 # CircleCI automatically runs 'npm test'
@@ -27,4 +28,6 @@ deployment:
   development:
     branch: /development/
     commands: 
-      - rake publish
+      - git config --local user.name "aloerina01"
+      - git config --local user.email "kiss_mint27@yahoo.co.jp"
+      # - bundle exec rake deploy --trace
