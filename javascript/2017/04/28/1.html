@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>escape() と encodeURI() と encodeURIComponent() を正しく使い分ける</title>
+  <meta name="description" content="今更すぎるけれど、ちゃんと使い分けることって大切だと思うんです。それぞれの関数の意味と役割を知り、正しく使い分けられるようになる機会は、今です。「あれ、どれ使えばいいんだっけ…」と忘れてしまった今。Just now😌💡">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="今更すぎるけれど、ちゃんと使い分けることって大切だと思うんです。それぞれの関数の意味と役割を知り、正しく使い分けられるようになる機会は、今です。「あれ、どれ使えばいいんだっけ…」と忘れてしまった今。Just now😌💡" />
+  <meta property="og:url" content="https://aloerina01.github.io" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="escape() と encodeURI() と encodeURIComponent() を正しく使い分ける" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="escape() と encodeURI() と encodeURIComponent() を正しく使い分ける">
+  <meta name="twitter:description" content="今更すぎるけれど、ちゃんと使い分けることって大切だと思うんです。それぞれの関数の意味と役割を知り、正しく使い分けられるようになる機会は、今です。「あれ、どれ使えばいいんだっけ…」と忘れてしまった今。Just now😌💡">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/javascript/2017/04/28/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">escape() と encodeURI() と encodeURIComponent() を正しく使い分ける</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-04-28</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="escape">escape()</h3>
+
+<ul>
+  <li><strong>非推奨</strong>、Web標準から削除されている</li>
+  <li>ブラウザやそのバージョンにより仕様が違う</li>
+  <li>変換されない文字がある</li>
+</ul>
+
+<h3 id="encodeuri">encodeURI</h3>
+
+<ul>
+  <li>UTF8へエンコード</li>
+  <li>その名の通り、<strong>URIそのもの</strong>を渡しエンコードしてもらうもの</li>
+  <li>そのため、URI内で意味をもつ<code class="highlighter-rouge">#$&amp;+,/:;=?@</code>の文字は変換されない</li>
+  <li>スペースのエンコードは<code class="highlighter-rouge">+</code>ではなく<code class="highlighter-rouge">%20</code></li>
+</ul>
+
+<h3 id="encodeuricomponent">encodeURIComponent</h3>
+
+<ul>
+  <li>URIComponent(URIを構成する要素の一部)をエンコードする</li>
+  <li>UTF-8へエンコード</li>
+  <li>その名の通り、<strong>URIを構成する一部分</strong>を渡しエンコードしてもらうもの</li>
+  <li>URI内で意味を持つ<code class="highlighter-rouge">#$&amp;+,/:;=?@</code>もエンコードする</li>
+  <li><code class="highlighter-rouge">encodeURI</code>との差は<code class="highlighter-rouge">#$&amp;+,/:;=?@</code>をエンコードするか否か</li>
+  <li>URI全体をこの関数でエンコードすると、URIとして機能しなくなる</li>
+</ul>
+
+<h3 id="比較ツールつくった">比較ツールつくった</h3>
+
+<p>3つの関数によりどのようにエンコードされるかが分かるツールをつくりました。<br />
+<a href="https://aloerina01.github.io/encoder/">encoder</a></p>
+
+<h3 id="htmlエスケープ用の関数はない">HTMLエスケープ用の関数はない</h3>
+
+<p>「HTMLエスケープは基本的にはサーバサイドでするもの」という認識が漠然とあります。が、SPAの登場などもあってクライアントサイドでレンダリングする場面もチラホラあるので、その場合は自前でエスケープ関数を作る必要があります。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">escapeHtml</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">!==</span> <span class="s1">'string'</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">target</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">target</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">&amp;'`"&lt;&gt;</span><span class="se">]</span><span class="sr">/g</span><span class="p">,</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="s1">'&amp;'</span><span class="p">:</span> <span class="s1">'&amp;amp;'</span><span class="p">,</span>
+      <span class="s2">"'"</span><span class="p">:</span> <span class="s1">'&amp;#x27;'</span><span class="p">,</span>
+      <span class="s1">'`'</span><span class="p">:</span> <span class="s1">'&amp;#x60;'</span><span class="p">,</span>
+      <span class="s1">'"'</span><span class="p">:</span> <span class="s1">'&amp;quot;'</span><span class="p">,</span>
+      <span class="s1">'&lt;'</span><span class="p">:</span> <span class="s1">'&amp;lt;'</span><span class="p">,</span>
+      <span class="s1">'&gt;'</span><span class="p">:</span> <span class="s1">'&amp;gt;'</span><span class="p">,</span>
+    <span class="p">}[</span><span class="nx">match</span><span class="p">]</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>ざっくりとこんな感じです。</p>
+
+<p>大した話でもないのでまとめとか後書きは抜きにして、現場からは以上です。</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=escape%28%29+%E3%81%A8+encodeURI%28%29+%E3%81%A8+encodeURIComponent%28%29+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&url=https://aloerina01.github.io/javascript/2017/04/28/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=escape%28%29+%E3%81%A8+encodeURI%28%29+%E3%81%A8+encodeURIComponent%28%29+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&u=https://aloerina01.github.io/javascript/2017/04/28/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=escape%28%29+%E3%81%A8+encodeURI%28%29+%E3%81%A8+encodeURIComponent%28%29+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&url=https://aloerina01.github.io/javascript/2017/04/28/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/javascript/2017/04/28/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?escape%28%29+%E3%81%A8+encodeURI%28%29+%E3%81%A8+encodeURIComponent%28%29+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2017%2F04%2F28%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+<section class="disqus">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+    var disqus_shortname = 'https-aloerina01-github-io';
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web/Appエンジニアをしています。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/javascript/2017/04/28/1.html',
+    'title': 'escape() と encodeURI() と encodeURIComponent() を正しく使い分ける'
+  });
+</script>
+
+
+
+  </body>
+
+</html>
