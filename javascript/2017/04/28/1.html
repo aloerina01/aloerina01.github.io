@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>escape() と encodeURI() と encodeURIComponent() を正しく使い分ける</title>
+  <title>escape と encodeURI と encodeURIComponent を正しく使い分ける</title>
   <meta name="description" content="今更すぎるけれど、ちゃんと使い分けることって大切だと思うんです。それぞれの関数の意味と役割を知り、正しく使い分けられるようになる機会は、今です。「あれ、どれ使えばいいんだっけ…」と忘れてしまった今。Just now😌💡">
   
   <meta name="author" content="aloerina">
@@ -44,7 +44,7 @@
   <meta property="og:description" content="今更すぎるけれど、ちゃんと使い分けることって大切だと思うんです。それぞれの関数の意味と役割を知り、正しく使い分けられるようになる機会は、今です。「あれ、どれ使えばいいんだっけ…」と忘れてしまった今。Just now😌💡" />
   <meta property="og:url" content="https://aloerina01.github.io" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="escape() と encodeURI() と encodeURIComponent() を正しく使い分ける" />
+  <meta property="og:title" content="escape と encodeURI と encodeURIComponent を正しく使い分ける" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -55,7 +55,7 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="escape() と encodeURI() と encodeURIComponent() を正しく使い分ける">
+  <meta name="twitter:title" content="escape と encodeURI と encodeURIComponent を正しく使い分ける">
   <meta name="twitter:description" content="今更すぎるけれど、ちゃんと使い分けることって大切だと思うんです。それぞれの関数の意味と役割を知り、正しく使い分けられるようになる機会は、今です。「あれ、どれ使えばいいんだっけ…」と忘れてしまった今。Just now😌💡">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
   <meta name="twitter:url" content="https://aloerina01.github.io">
@@ -143,7 +143,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">escape() と encodeURI() と encodeURIComponent() を正しく使い分ける</h1>
+      <h1 class="title">escape と encodeURI と encodeURIComponent を正しく使い分ける</h1>
       <!-- <p class="info">by <strong></strong></p> -->
     </header>
   </div>
@@ -172,7 +172,7 @@
 </section>
 
 <article class="post-content">
-  <h3 id="escape">escape()</h3>
+  <h3 id="escape">escape</h3>
 
 <ul>
   <li><strong>非推奨</strong>、Web標準から削除されている</li>
@@ -183,7 +183,7 @@
 <h3 id="encodeuri">encodeURI</h3>
 
 <ul>
-  <li>UTF8へエンコード</li>
+  <li>UTF8ベースのエンコード</li>
   <li>その名の通り、<strong>URIそのもの</strong>を渡しエンコードしてもらうもの</li>
   <li>そのため、URI内で意味をもつ<code class="highlighter-rouge">#$&amp;+,/:;=?@</code>の文字は変換されない</li>
   <li>スペースのエンコードは<code class="highlighter-rouge">+</code>ではなく<code class="highlighter-rouge">%20</code></li>
@@ -192,7 +192,7 @@
 <h3 id="encodeuricomponent">encodeURIComponent</h3>
 
 <ul>
-  <li>UTF-8へエンコード</li>
+  <li>UTF-8ベースのエンコード</li>
   <li>その名の通り、<strong>URIを構成する一部分</strong>を渡しエンコードしてもらうもの</li>
   <li>URI内で意味を持つ<code class="highlighter-rouge">#$&amp;+,/:;=?@</code>もエンコードする</li>
   <li><code class="highlighter-rouge">encodeURI</code>との差は<code class="highlighter-rouge">#$&amp;+,/:;=?@</code>をエンコードするか否か</li>
@@ -209,8 +209,8 @@
 <p>ついでの話。<br />
 「HTMLエスケープは基本的にはサーバサイドでするもの」という認識が漠然とあります。が、SPAの登場などもあってクライアントサイドでレンダリングする場面もチラホラあるので、その場合は自前でエスケープ関数を作る必要があります。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">escapeHtml</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">!==</span> <span class="s1">'string'</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">escapeHtml</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">!==</span> <span class="s1">'string'</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">target</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="k">return</span> <span class="nx">target</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">&amp;'`"&lt;&gt;</span><span class="se">]</span><span class="sr">/g</span><span class="p">,</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -245,7 +245,7 @@
   
     
     
-      <a class="share-button share-button-twitter" href="//twitter.com/share?text=escape%28%29+%E3%81%A8+encodeURI%28%29+%E3%81%A8+encodeURIComponent%28%29+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&url=https://aloerina01.github.io/javascript/2017/04/28/1.html&via=aloerina_"
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=escape+%E3%81%A8+encodeURI+%E3%81%A8+encodeURIComponent+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&url=https://aloerina01.github.io/javascript/2017/04/28/1.html&via=aloerina_"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
         <i class="fa fa-twitter fa-inverse"></i>
       </a>
@@ -261,7 +261,7 @@
     
     
     
-      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=escape%28%29+%E3%81%A8+encodeURI%28%29+%E3%81%A8+encodeURIComponent%28%29+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&u=https://aloerina01.github.io/javascript/2017/04/28/1.html"
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=escape+%E3%81%A8+encodeURI+%E3%81%A8+encodeURIComponent+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&u=https://aloerina01.github.io/javascript/2017/04/28/1.html"
         onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
         <i class="fa fa-facebook fa-inverse"></i>
       </a>
@@ -297,7 +297,7 @@
     
     
     
-      <a class="share-button share-button-google" href="//plus.google.com/share?title=escape%28%29+%E3%81%A8+encodeURI%28%29+%E3%81%A8+encodeURIComponent%28%29+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&url=https://aloerina01.github.io/javascript/2017/04/28/1.html"
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=escape+%E3%81%A8+encodeURI+%E3%81%A8+encodeURIComponent+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B&url=https://aloerina01.github.io/javascript/2017/04/28/1.html"
         onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
         <i class="fa fa-google-plus fa-inverse"></i>
       </a>
@@ -442,7 +442,7 @@
     
     
       <a class="share-button share-button-line" target="_blank"
-        href="//line.me/R/msg/text/?escape%28%29+%E3%81%A8+encodeURI%28%29+%E3%81%A8+encodeURIComponent%28%29+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2017%2F04%2F28%2F1.html">
+        href="//line.me/R/msg/text/?escape+%E3%81%A8+encodeURI+%E3%81%A8+encodeURIComponent+%E3%82%92%E6%AD%A3%E3%81%97%E3%81%8F%E4%BD%BF%E3%81%84%E5%88%86%E3%81%91%E3%82%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2017%2F04%2F28%2F1.html">
         <img src="/assets/thirdparty/linebutton.png" />
       </a>
     
@@ -653,7 +653,7 @@ $(document).ready(function() {
   ga('create', 'UA-39630080-4', 'auto');
   ga('send', 'pageview', {
     'page': '/javascript/2017/04/28/1.html',
-    'title': 'escape() と encodeURI() と encodeURIComponent() を正しく使い分ける'
+    'title': 'escape と encodeURI と encodeURIComponent を正しく使い分ける'
   });
 </script>
 
