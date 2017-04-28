@@ -192,7 +192,6 @@
 <h3 id="encodeuricomponent">encodeURIComponent</h3>
 
 <ul>
-  <li>URIComponent(URIを構成する要素の一部)をエンコードする</li>
   <li>UTF-8へエンコード</li>
   <li>その名の通り、<strong>URIを構成する一部分</strong>を渡しエンコードしてもらうもの</li>
   <li>URI内で意味を持つ<code class="highlighter-rouge">#$&amp;+,/:;=?@</code>もエンコードする</li>
@@ -207,7 +206,8 @@
 
 <h3 id="htmlエスケープ用の関数はない">HTMLエスケープ用の関数はない</h3>
 
-<p>「HTMLエスケープは基本的にはサーバサイドでするもの」という認識が漠然とあります。が、SPAの登場などもあってクライアントサイドでレンダリングする場面もチラホラあるので、その場合は自前でエスケープ関数を作る必要があります。</p>
+<p>ついでの話。<br />
+「HTMLエスケープは基本的にはサーバサイドでするもの」という認識が漠然とあります。が、SPAの登場などもあってクライアントサイドでレンダリングする場面もチラホラあるので、その場合は自前でエスケープ関数を作る必要があります。</p>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">escapeHtml</span> <span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">!==</span> <span class="s1">'string'</span><span class="p">)</span> <span class="p">{</span>
