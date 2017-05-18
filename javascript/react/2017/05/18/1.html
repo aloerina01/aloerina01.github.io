@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</title>
-  <meta name="description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした☺ というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀 というあまり聞かない話について書きました。">
+  <meta name="description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2017">
@@ -41,7 +41,7 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした☺ というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀 というあまり聞かない話について書きました。" />
+  <meta property="og:description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。" />
   <meta property="og:url" content="https://aloerina01.github.io" />
   <meta property="og:site_name" content="mille-feuille code" />
   <meta property="og:title" content="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方" />
@@ -56,7 +56,7 @@
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方">
-  <meta name="twitter:description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした☺ というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀 というあまり聞かない話について書きました。">
+  <meta name="twitter:description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
   <meta name="twitter:url" content="https://aloerina01.github.io">
   
@@ -184,7 +184,7 @@
 
 <p>そして、りあくと君は朽ちました。</p>
 
-<p>エンジニア各々の俺俺実装でツギハギまみれになりガチガチに仕様で固められて朽ちてしまったりあくと君……きみを蘇生させてみせる！！
+<p>エンジニア各々のオレオレ実装でツギハギまみれになりガチガチに仕様で固められて朽ちてしまったりあくと君……きみを蘇生させてみせる！！
 そう言って立ち上がった一人のエンジニアの物語が、今ここにはじまろうとしています。</p>
 
 <h3 id="まえおき">まえおき</h3>
@@ -192,7 +192,7 @@
 <ul>
   <li>リファクタリングしたいのでまずはテストを用意しようと思いました</li>
   <li>Facebook謹製の<strong>Jest</strong>というオールインワンなツールでテストをします</li>
-  <li>Airbnb謹製の<strong>enzyme</strong>というTest Utilitiesを使ってテストコードを書きます</li>
+  <li>Airbnb謹製の<strong>Enzyme</strong>というTest Utilitiesを使ってテストコードを書きます</li>
   <li>もとのWebアプリは<strong>create-react-app</strong>でつくられています</li>
 </ul>
 
@@ -218,8 +218,8 @@
   </li>
   <li><a href="#enzymeを使ってスナップショットのテストをする" id="markdown-toc-enzymeを使ってスナップショットのテストをする">Enzymeを使ってスナップショットのテストをする</a></li>
   <li><a href="#ハマったところ" id="markdown-toc-ハマったところ">ハマったところ</a>    <ul>
-      <li><a href="#localstorage-is-not-defined" id="markdown-toc-localstorage-is-not-defined">localStorage is not defined</a></li>
-      <li><a href="#reacttestutils-has-been-moved-to-react-domtest-utils" id="markdown-toc-reacttestutils-has-been-moved-to-react-domtest-utils">ReactTestUtils has been moved to react-dom/test-utils.</a></li>
+      <li><a href="#localstorage-is-not-defined" id="markdown-toc-localstorage-is-not-defined">🙅localStorage is not defined</a></li>
+      <li><a href="#reacttestutils-has-been-moved-to-react-domtest-utils" id="markdown-toc-reacttestutils-has-been-moved-to-react-domtest-utils">🙅ReactTestUtils has been moved to react-dom/test-utils.</a></li>
     </ul>
   </li>
   <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
@@ -238,7 +238,7 @@
 
 <h3 id="create-react-app-のおさらい">create-react-app のおさらい</h3>
 
-<p>コマンド一発でReactの開発環境をつくることができるツールです。
+<p>コマンド一発でReactの開発環境をつくることができるツールです。<br />
 (参考：<a href="https://aloerina01.github.io/javascript/react/2017/02/28/1.html">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a>)</p>
 
 <p>これを使って構築した環境には標準でJestが組み込まれていて、<code class="highlighter-rouge">yarn test</code>コマンドですぐにテストを実行することができます。</p>
@@ -262,16 +262,7 @@
 <h4 id="enzyme">Enzyme</h4>
 
 <ul>
-  <li>
-    <table>
-      <tbody>
-        <tr>
-          <td>[Introduction</td>
-          <td>Enzyme](http://airbnb.io/enzyme/)</td>
-        </tr>
-      </tbody>
-    </table>
-  </li>
+  <li><a href="http://airbnb.io/enzyme/">Enzyme</a></li>
   <li>Reactのテストコードを書くためのUtilityです</li>
   <li>Jestだけではできない高度なテストを書くことができるfunction群です(Jestと重なる部分もあります)</li>
   <li>Reactコンポーネントをrenderingする<code class="highlighter-rouge">shallow</code> <code class="highlighter-rouge">mount</code> <code class="highlighter-rouge">render</code>の3つのfunctionがキモです</li>
@@ -280,7 +271,7 @@
 <h3 id="テストの書き始め方">テストの書き始め方</h3>
 
 <h4 id="1-テストファイルの配置場所を知る">1. テストファイルの配置場所を知る</h4>
-<p>Jestは任意のディレクトリからテストコードを探し出し順に実行してくれます。本来このディレクトリは<code class="highlighter-rouge">package.json</code>に<code class="highlighter-rouge">rootDir</code>という名前で定義するものなのですが、create-react-appでつくられた環境では<code class="highlighter-rouge">/src</code>と決められています。</p>
+<p>Jestは任意のディレクトリからテストコードを探し出し順に実行してくれます。本来このディレクトリは<code class="highlighter-rouge">package.json</code>に<code class="highlighter-rouge">rootDir</code>という名前で定義するものなのですが、create-react-appでつくられた環境では<code class="highlighter-rouge">src/</code>と決められています。</p>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// react-scripts/utils/createJestConfig.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">rootDir</span><span class="p">,</span> <span class="nx">isEjecting</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -301,7 +292,7 @@
 </code></pre>
 </div>
 
-<p>したがって、<code class="highlighter-rouge">/src</code>にテストファイルを配置していきます。</p>
+<p>したがって、<code class="highlighter-rouge">src/</code>にテストファイルを配置していきます。</p>
 
 <h4 id="2-テストファイルを作成する">2. テストファイルを作成する</h4>
 
@@ -325,10 +316,10 @@
 
 <h4 id="3-テストコードを書く">3. テストコードを書く</h4>
 
-<p>Jestの使い方はこの記事が分かりやすかったです。<br />
+<p>Jestの各functionの使い方はこの記事が分かりやすかったです。  
 <a href="http://qiita.com/chimame/items/e97883fd46b67529d59f">Facebook製のJavaScriptテストツール「Jest」の逆引き使用例 - Qiita</a></p>
 
-<p>ここでは、「チェックボックスのOn/Offに応じてラベルの文言が切り替わるコンポーネント」のテストの例を挙げます。ソースを読んで雰囲気がつかめるかと思います(がいかがでしょう)。</p>
+<p>ここでは、「チェックボックスのOn/Offに応じてラベルの文言が切り替わるコンポーネント」のテストの実装例を挙げます。ソースを読んで雰囲気がつかめるかと思います(がいかがでしょう)。</p>
 
 <p><strong>src/components/CheckboxWithLabel.js</strong></p>
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
@@ -364,11 +355,11 @@
 
 <span class="nx">describe</span><span class="p">(</span><span class="s1">'ChecboxWithLabel'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="nx">test</span><span class="p">(</span><span class="s1">'Changes the label after click'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="c1">// Enzyme#shallow  Componentをレンダリングする</span>
+ <span class="err"> </span> <span class="err"> </span><span class="c1">// Componentをレンダリングする</span>
     <span class="kr">const</span> <span class="nx">checkbox</span> <span class="o">=</span> <span class="nx">shallow</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">CheckboxWithLabel</span> <span class="nx">labelOn</span><span class="o">=</span><span class="s2">"On"</span> <span class="nx">labelOff</span><span class="o">=</span><span class="s2">"Off"</span> <span class="o">/&gt;</span><span class="p">);</span>
     <span class="c1">// expect(検査対象).toEqual(想定結果)</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">checkbox</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'Off'</span><span class="p">);</span>
-    <span class="c1">// Enzyme#find shallowでレンダリングされた要素から特定のセレクタを取得する</span>
+ <span class="err"> </span> <span class="err"> </span><span class="c1">// shallowでレンダリングされた要素から特定のセレクタを取得する</span>
     <span class="nx">checkbox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">'change'</span><span class="p">);</span>
     <span class="c1">// expect(検査対象).toEqual(想定結果)</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">checkbox</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'On'</span><span class="p">);</span>
@@ -383,14 +374,7 @@
   <p>Shallow rendering is useful to constrain yourself to testing a component as a unit, and to ensure that your tests aren’t indirectly asserting on behavior of child components.</p>
 </blockquote>
 
-<table>
-  <tbody>
-    <tr>
-      <td>*[Shallow Rendering</td>
-      <td>Enzyme](http://airbnb.io/enzyme/docs/api/shallow.html) より*</td>
-    </tr>
-  </tbody>
-</table>
+<p><em><a href="http://airbnb.io/enzyme/docs/api/shallow.html">Shallow Rendering</a>より</em></p>
 
 <h3 id="enzymeを使ってスナップショットのテストをする">Enzymeを使ってスナップショットのテストをする</h3>
 
@@ -416,18 +400,11 @@
   <p>Full DOM rendering is ideal for use cases where you have components that may interact with DOM APIs, or may require the full lifecycle in order to fully test the component (i.e., componentDidMount etc.)</p>
 </blockquote>
 
-<table>
-  <tbody>
-    <tr>
-      <td>*[Full DOM Rendering</td>
-      <td>Enzyme](http://airbnb.io/enzyme/docs/api/mount.html) より*</td>
-    </tr>
-  </tbody>
-</table>
+<p><em><a href="http://airbnb.io/enzyme/docs/api/mount.html">Full DOM Rendering</a>より</em></p>
 
 <h3 id="ハマったところ">ハマったところ</h3>
 
-<h4 id="localstorage-is-not-defined">localStorage is not defined</h4>
+<h4 id="localstorage-is-not-defined">🙅localStorage is not defined</h4>
 
 <p>テストするComponentが依存しているあるモジュールは、内部でlocalStorageを利用していました。そのためimport時に<code class="highlighter-rouge">localStorage is not defined</code>のエラーが起きました。</p>
 
@@ -466,7 +443,7 @@
 </code></pre>
 </div>
 
-<h4 id="reacttestutils-has-been-moved-to-react-domtest-utils">ReactTestUtils has been moved to react-dom/test-utils.</h4>
+<h4 id="reacttestutils-has-been-moved-to-react-domtest-utils">🙅ReactTestUtils has been moved to react-dom/test-utils.</h4>
 
 <p>テスト結果に以下のワーニング文が表示されていました。</p>
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code>Warning: ReactTestUtils has been moved to react-dom/test-utils. Update references to remove this warning.
