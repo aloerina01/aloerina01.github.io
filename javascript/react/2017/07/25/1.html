@@ -185,6 +185,23 @@
 <p>と言っても一般論ではなくあくまで持論なので、そこはご容赦ください🙆<br />
 (タイトルも盛りましたがご容赦ください🙅)</p>
 
+<ul id="markdown-toc">
+  <li><a href="#lazyloadの対象" id="markdown-toc-lazyloadの対象">lazyloadの対象</a></li>
+  <li><a href="#lazyloadのトリガー" id="markdown-toc-lazyloadのトリガー">lazyloadのトリガー</a></li>
+  <li><a href="#loadイベントのobserver" id="markdown-toc-loadイベントのobserver">loadイベントのObserver</a>    <ul>
+      <li><a href="#1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する" id="markdown-toc-1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する">1. <code class="highlighter-rouge">LazyloadComponent</code>各々が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</a></li>
+      <li><a href="#2-scrollviewが自身のスクロールイベントを監視する" id="markdown-toc-2-scrollviewが自身のスクロールイベントを監視する">2. <code class="highlighter-rouge">ScrollView</code>が自身のスクロールイベントを監視する</a></li>
+      <li><a href="#3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する" id="markdown-toc-3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する">3. 第三者(<code class="highlighter-rouge">LazyLoadHandler</code>等)が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</a></li>
+    </ul>
+  </li>
+  <li><a href="#lazyloadcomponentの形式" id="markdown-toc-lazyloadcomponentの形式">LazyloadComponentの形式</a></li>
+  <li><a href="#ここまでのまとめ" id="markdown-toc-ここまでのまとめ">ここまでのまとめ</a></li>
+  <li><a href="#事例1-lazyloadする要素のサイズが決まっている場合" id="markdown-toc-事例1-lazyloadする要素のサイズが決まっている場合">事例1 lazyloadする要素のサイズが決まっている場合</a></li>
+  <li><a href="#事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合" id="markdown-toc-事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合">事例2 lazyloadする要素のサイズが決まっていて、スクロールするのがwindow以外の場合</a></li>
+  <li><a href="#事例3-lazyloadする要素のサイズが不確定な場合" id="markdown-toc-事例3-lazyloadする要素のサイズが不確定な場合">事例3 lazyloadする要素のサイズが不確定な場合</a></li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
 <h3 id="lazyloadの対象">lazyloadの対象</h3>
 <p>よくあるのは<strong>FirstViewに含まれない画像</strong>の読込を遅延させる手法ですが、lazyloadを適用する対象は他にもあります。大きく分けて以下の3つかなと思います。</p>
 
@@ -250,7 +267,7 @@
 
 <p>以降は、<strong>スクロールをトリガーにデータ取得とレンダリングを遅延させる</strong>仕組みについて3つの仕様例を挙げ、どのような実装ができるかををまとめてみます。サンプルのソースはReactを使って書きます。</p>
 
-<h3 id="ケース1-lazyloadする要素のサイズが決まっている場合">[ケース1] lazyloadする要素のサイズが決まっている場合</h3>
+<h3 id="事例1-lazyloadする要素のサイズが決まっている場合">事例1 lazyloadする要素のサイズが決まっている場合</h3>
 
 <p><code class="highlighter-rouge">LazyloadComponent</code>のHeight・Widthが一定の場合は<strong>Placeholderを事前にレンダリングしておき、各々のPlaceholderが自身のloadタイミングを管理する</strong>のがいいと思います。</p>
 
@@ -305,7 +322,7 @@
 <p>こうすることで遅延読込の処理をLazyloadComponent内で完結させることができ、外部に依存・影響が出ない実装をすることができます。<code class="highlighter-rouge">removeEventListener</code>まできちんとComponent内で行っているので、使い回ししやすいと思います。<br />
 実際に親要素である<code class="highlighter-rouge">Container</code>では特別なことをせずに<code class="highlighter-rouge">LazyloadComponent</code>を必要な分だけ描画しています。</p>
 
-<h3 id="ケース2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合">[ケース2] lazyloadする要素のサイズが決まっていて、スクロールするのがwindow以外の場合</h3>
+<h3 id="事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合">事例2 lazyloadする要素のサイズが決まっていて、スクロールするのがwindow以外の場合</h3>
 
 <p>ケース1では<code class="highlighter-rouge">LazyloadComponent</code>をPlaceholderとして予めレンダリングしておき、<code class="highlighter-rouge">window</code>のスクロールイベントをハンドリングさせました。しかしスクロールする要素が<code class="highlighter-rouge">window</code>以外である場合、<code class="highlighter-rouge">LazyloadComponent</code>はどうやって親要素のスクロールイベントをハンドリングすれば良いでしょうか。</p>
 
@@ -339,7 +356,7 @@
 
 <p>あとは、<code class="highlighter-rouge">LazyloadComponent#componentWillReceiveProps</code>でloadのトリガーとなるHeightと比較させればOKです。</p>
 
-<h3 id="ケース3-lazyloadする要素のサイズが不確定な場合">[ケース3] lazyloadする要素のサイズが不確定な場合</h3>
+<h3 id="事例3-lazyloadする要素のサイズが不確定な場合">事例3 lazyloadする要素のサイズが不確定な場合</h3>
 
 <p>サイズが不確定な場合、Placeholderを使ってしまうとPlaceholderと実Componentのサイズが合わずレンダリング時にガタつくことがあります。そのため<strong>空Divを使う</strong>か、<strong>レンダリングしない</strong>か、いずれかの方法をとる必要があります。結果的にスクロールイベントのハンドリングはScrollView自身(もしくは第三者)にさせることになります。</p>
 
