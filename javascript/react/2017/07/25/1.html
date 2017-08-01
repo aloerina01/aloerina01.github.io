@@ -227,7 +227,7 @@
 <p>※適当に名前つけました。</p>
 
 <p>①の『スクロール量をトリガーにする』ことが一般的に多いと思います。<br />
-が、広義の遅延読込の例として他のものも挙げました。代表的な<code class="highlighter-rouge">async</code>/<code class="highlighter-rouge">defer</code>を使ったスクリプトの遅延読込であったり、Reactの<code class="highlighter-rouge">componentDidMount</code>などを使いFirstViewのマウント後に追加の読込をさせる手法(Mount方式)であったり、<code class="highlighter-rouge">requestIdleCallback</code>などTimer系functionを使って遅延させる手法(Timer方式)などが考えられます。</p>
+が、広義の遅延読込の例として他のものも挙げました。<code class="highlighter-rouge">async</code>/<code class="highlighter-rouge">defer</code>を使ったスクリプトの遅延読込であったり(非同期なので結果的に後追いになることがあるって程度なので遅延というには微妙ですが)、Reactの<code class="highlighter-rouge">componentDidMount</code>などを使いFirstViewのマウント後に追加の読込をさせる手法(Mount方式)であったり、<code class="highlighter-rouge">requestIdleCallback</code>などTimer系functionを使って遅延させる手法(Timer方式)などが考えられます。</p>
 
 <h3 id="loadイベントのobserver">loadイベントのObserver</h3>
 
