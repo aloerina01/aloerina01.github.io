@@ -45,7 +45,7 @@ jekyll-archives:
     tag: '/tag/:name/'
 
 # Disqus comments
-disqus_shortname: https-aloerina01-github-io
+disqus_shortname: # https-aloerina01-github-io
 
 # Google analytics
 ga_tracking_id: "UA-39630080-4"
