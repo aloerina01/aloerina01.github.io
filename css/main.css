@@ -495,7 +495,7 @@ pre code.hljs {
   .page-content img {
     display: block;
     margin: auto;
-    width: 90%; }
+    width: 100%; }
   .page-content .post ul {
     margin-bottom: 1em; }
   .page-content .post .post-header-container .scrim {
