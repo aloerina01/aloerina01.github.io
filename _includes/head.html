@@ -51,7 +51,7 @@
 
   {% if site.protocols.twitter_image %}
   <!-- Twitter: card tags -->
-  <meta name="twitter:card" content="{% if page.ogimage or page.cover %}{ "summary_large_image" }{% else %}{ "summary" }{% endif %}">
+  <meta name="twitter:card" content="{% if page.ogimage or page.cover %}summary_large_image{% else %}summary{% endif %}">
   <meta name="twitter:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
   <meta name="twitter:description" content="{% if page.outline %}{{ page.outline | strip_html | strip_newlines | truncate: 160}}{% elsif page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
   <meta name="twitter:image" content="{% if page.ogimage %}{{ page.ogimage | prepend: site.baseurl | prepend: site.url }}{% elsif page.cover %}{{ page.cover | prepend: site.baseurl | prepend: site.url }}{% else %}{{ site.protocols.fb_image | prepend: site.baseurl | prepend: site.url }}{% endif %}">
