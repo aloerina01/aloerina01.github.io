@@ -245,6 +245,13 @@ code {
     background-color: #CC3732; }
   .share-button.share-button-pocket {
     background-color: #DC3D50; }
+  .share-button.share-button-hatebu {
+    background-color: #008FDE; }
+    .share-button.share-button-hatebu img {
+      border: none;
+      height: 24px;
+      width: 24px;
+      margin-top: 7px; }
   .share-button.share-button-line {
     background-color: #00C300; }
     .share-button.share-button-line img {
