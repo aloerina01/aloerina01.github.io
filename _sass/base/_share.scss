@@ -5,7 +5,7 @@
   transition: all 0.4s ease;
   border-radius: 50%;
   box-shadow: 1px 1px 10px #bbb;
-  tap-highlight-color:rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   &:hover {
     opacity: .7;
   }
@@ -47,7 +47,7 @@
   transition: opacity 0.4s ease;
   background-color: $color-hatebu;
   cursor: pointer;
-  tap-highlight-color:rgba(0,0,0,0);
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   &:hover {
     background-color: #0091C5;
     opacity: .7;
