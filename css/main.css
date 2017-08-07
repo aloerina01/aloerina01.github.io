@@ -265,7 +265,7 @@ code {
   padding: 3px;
   transition: opacity 0.4s ease;
   background-color: #00A4DE;
-  pointer: cursor; }
+  cursor: pointer; }
   .hatena-bookmark-button-frame:hover {
     background-color: #0091C5;
     opacity: .7; }
