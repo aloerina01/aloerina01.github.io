@@ -245,16 +245,6 @@ code {
     background-color: #CC3732; }
   .share-button.share-button-pocket {
     background-color: #DC3D50; }
-  .share-button .hatena-bookmark-button-frame {
-    width: 38px;
-    height: 38px;
-    border-radius: 50%;
-    box-shadow: 1px 1px 10px #bbb;
-    padding: 3px;
-    transition: opacity 0.4s ease;
-    background-color: #00A4DE; }
-    .share-button .hatena-bookmark-button-frame:hover {
-      background-color: #0091C5; }
   .share-button.share-button-line {
     background-color: #00C300; }
     .share-button.share-button-line img {
@@ -266,6 +256,19 @@ code {
       height: 28px;
       line-height: 2rem;
       box-sizing: content-box; }
+
+.hatena-bookmark-button-frame {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  box-shadow: 1px 1px 10px #bbb;
+  padding: 3px;
+  transition: opacity 0.4s ease;
+  background-color: #00A4DE;
+  pointer: cursor; }
+  .hatena-bookmark-button-frame:hover {
+    background-color: #0091C5;
+    opacity: .7; }
 
 html {
   box-sizing: border-box; }
