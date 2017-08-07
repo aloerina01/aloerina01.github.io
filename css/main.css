@@ -232,7 +232,8 @@ code {
   text-align: center;
   transition: all 0.4s ease;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px #bbb; }
+  box-shadow: 1px 1px 10px #bbb;
+  tap-highlight-color: transparent; }
   .share-button:hover {
     opacity: .7; }
   .share-button .fa {
@@ -265,7 +266,8 @@ code {
   padding: 3px;
   transition: opacity 0.4s ease;
   background-color: #00A4DE;
-  cursor: pointer; }
+  cursor: pointer;
+  tap-highlight-color: transparent; }
   .hatena-bookmark-button-frame:hover {
     background-color: #0091C5;
     opacity: .7; }
