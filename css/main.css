@@ -573,12 +573,11 @@ pre code.hljs {
     float: none;
     margin: 1.5rem auto;
     width: 100%;
-    max-width: 270px; }
+    max-width: 300px; }
     @media screen and (min-width: 480px) {
       .page-content .post .share {
         float: right;
-        margin: 0 0 1rem 0;
-        width: 270px; } }
+        margin: 0 0 1rem 0; } }
   .page-content .post .disqus {
     float: left;
     display: block;
