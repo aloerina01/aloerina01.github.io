@@ -333,11 +333,10 @@ pre code.hljs {
       float: none;
       margin: 1.5rem auto;
       width: 100%;
-      max-width: 270px;
+      max-width: 300px;
       @include media ($mobile) {
         float: right;
         margin: 0 0 1rem 0;
-        width: 270px;
       }
 		}
 		.disqus {
