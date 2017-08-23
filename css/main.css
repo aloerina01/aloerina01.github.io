@@ -531,8 +531,7 @@ pre code.hljs {
       font-style: italic;
       font-size: 90%; }
     .page-content .post .post-content code {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
+      padding: 0.8rem 1.0rem;
       line-height: 1.3;
       font-size: 92%; }
     .page-content .post .post-content h3 {
