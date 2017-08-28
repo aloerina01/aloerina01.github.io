@@ -290,9 +290,12 @@ pre code.hljs {
 				font-size: 90%;
 			}
 		      	code {
-				padding: 0.8rem 1.0rem;
+				padding: 0 0.5rem;
 				line-height: 1.3;
 				font-size: 92%;
+		      	}
+			.highlight code {
+				padding: 0.8rem 1.0rem;
 		      	}
 			h3 {
 				margin-top: 72px;
