@@ -180,20 +180,51 @@
 <article class="post-content">
   <h3 id="まえがき">まえがき</h3>
 
-<p>ここ最近、Vueを使って実装されたWebアプリが随分と増えてきたように感じます。自分も何度となく実装してきました。すごく小さなデモを作るときにも使えるし、中規模以上のWebアプリを作るときにも使えて、扱いやすいライブラリでとても好きです。</p>
+<p>ここ最近、Vueを使って実装されたWebアプリが随分と増えてきたように感じます。自分も何度となく実装してきました。すごく小さなデモを作るときにも使えるし、中規模以上のWebアプリを作るときにも使えるし、扱いやすいライブラリでとても好きです。</p>
 
 <p>ある程度の規模になってくると「複数の画面でデータを共有したい」「こっちのComponentの状態をあっちのComponentに伝えたい」といったような問題にぶち当たり、アーキテクチャを導入することでそれらを解決するというのもお馴染みな感じです。特にVueでは<strong>双方向データバインディング</strong>の特性上、<strong>MVVMアーキテクチャ</strong>が使われることが多いと思います。</p>
 
 <p>今回は、VueでMVVMを実現する際に起き得る設計上の問題について、現時点での私の解決方針をまとめてみました😌</p>
 
-<ul>
-  <li>TOC {:toc}</li>
+<ul id="markdown-toc">
+  <li><a href="#まえがき" id="markdown-toc-まえがき">まえがき</a></li>
+  <li><a href="#vuemvvm-はなぜ難しいのか" id="markdown-toc-vuemvvm-はなぜ難しいのか">Vue+MVVM はなぜ難しいのか</a>    <ul>
+      <li><a href="#一般的なmvvmを理解する" id="markdown-toc-一般的なmvvmを理解する">一般的なMVVMを理解する</a>        <ul>
+          <li><a href="#view" id="markdown-toc-view">View</a></li>
+          <li><a href="#viewmodel" id="markdown-toc-viewmodel">ViewModel</a></li>
+          <li><a href="#model" id="markdown-toc-model">Model</a></li>
+        </ul>
+      </li>
+      <li><a href="#vueで実現するmvvmはここが違う" id="markdown-toc-vueで実現するmvvmはここが違う">Vueで実現するMVVMはここが違う</a></li>
+    </ul>
+  </li>
+  <li><a href="#どのようにcomponentを分けるか" id="markdown-toc-どのようにcomponentを分けるか">どのようにComponentを分けるか</a>    <ul>
+      <li><a href="#component切り分けのルール" id="markdown-toc-component切り分けのルール">Component切り分けのルール</a></li>
+      <li><a href="#componentの分類" id="markdown-toc-componentの分類">Componentの分類</a>        <ul>
+          <li><a href="#1-完全自己完結型" id="markdown-toc-1-完全自己完結型">1. 完全自己完結型</a></li>
+          <li><a href="#2-半自己完結型" id="markdown-toc-2-半自己完結型">2. 半自己完結型</a></li>
+          <li><a href="#3-ループアイテム型" id="markdown-toc-3-ループアイテム型">3. ループアイテム型</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#modelはどうあるべきか" id="markdown-toc-modelはどうあるべきか">Modelはどうあるべきか</a></li>
+  <li><a href="#vuexをどのように利用すべきか" id="markdown-toc-vuexをどのように利用すべきか">Vuexをどのように利用すべきか</a>    <ul>
+      <li><a href="#ステート" id="markdown-toc-ステート">ステート</a></li>
+      <li><a href="#ミューテーションアクション" id="markdown-toc-ミューテーションアクション">ミューテーション、アクション</a></li>
+      <li><a href="#ゲッター" id="markdown-toc-ゲッター">ゲッター</a></li>
+      <li><a href="#まとめ" id="markdown-toc-まとめ">まとめ</a></li>
+    </ul>
+  </li>
+  <li><a href="#おまけvuefluxは成立するのか" id="markdown-toc-おまけvuefluxは成立するのか">おまけ　Vue+fluxは成立するのか</a></li>
+  <li><a href="#あとがき" id="markdown-toc-あとがき">あとがき</a></li>
 </ul>
 
-<h3 id="vuemvvmはなぜ難しいのか">Vue+MVVMはなぜ難しいのか</h3>
+<h3 id="vuemvvm-はなぜ難しいのか">Vue+MVVM はなぜ難しいのか</h3>
 
 <h4 id="一般的なmvvmを理解する">一般的なMVVMを理解する</h4>
-<p>WPFやSilverlightで使われるMVVMの登場人物の役割・依存関係をさらっと理解しておくと、Vueを使ってMVVMを作るときにも役立ちそうです。</p>
+
+<p>元来WPFやSilverlightで使われていたMVVMの登場人物の役割・依存関係についてさらっと理解しておくと、Vueを使ってMVVMを作るときにも役立ちそうです。</p>
 
 <h5 id="view">View</h5>
 <ul>
@@ -227,7 +258,7 @@
 <p><strong>VueComponentはView+ViewModelを表現してくれる</strong>ので、ViewとViewModelのつなぎ込みを意識することなく実装できます。その代わり、どのようにVueComponentをつくるかを考えないと親子関係が思うようにいかなかったり、データの受け渡しに苦労したりする羽目になります(過去にやらかしました😰)。</p>
 
 <p>反面、<strong>Modelについての仕組みやルールは提供していません</strong>。自前で用意するか、Vuexなどの状態管理ライブラリを利用する必要があります。<br />
-ここで本来のMVVMを正しく理解していないとオレオレModelを作ってしまったり(過去にやらかしました👿)、fluxをVueに導入できると妙な理解をして下手にVuexを導入しデータ管理が闇に包まれたりします(過去にやらかしました😇🔨)</p>
+ここで本来のMVVMを正しく理解していないとオレオレModelを作ってしまったり(過去にやらかしました👿)、fluxをVueに組み込めると妙な理解をして下手にVuexを導入しデータ管理が闇に包まれたりします(過去にやらかしました😇🔨)</p>
 
 <p>そんなわけで、VueでMVVMを設計するときは以下のような観点に注意すると良さそうな気がしています。</p>
 
@@ -244,28 +275,27 @@
 <p>ここで問題なのが、Componentをどの単位で区切るかです。<br />
 本来MVVMでは<strong>ViewはViewModelからデータを受け取るため、View同士(もしくはViewModel同士)でデータを受け渡すことを想定していません</strong>。そのため、VueComponentならではのComponentによる構造化を、MVVMにどう組み込むかを意識しComponent設計をする必要があります。</p>
 
-<p>そのため、以下のようなルールと分類をもとにComponentを分けるようにしています。</p>
+<p>そのため、以下のような<strong>ルールと分類</strong>をもとにComponentを分けるようにしています。</p>
 
 <h4 id="component切り分けのルール">Component切り分けのルール</h4>
 
 <ul>
   <li>ComponentはView+ViewModelなので、基本的にはそれ単体でデータのやり取りや振る舞いが完結する</li>
-  <li>親子関係を持ちうるComponentは以下の分類のうちどれに該当するかを明確にし、分類ごとのルールに沿って実装する</li>
+  <li>親子関係を持ち得るComponentは以下の分類のうちどれに該当するかを明確にし、分類ごとのルールに沿って実装する</li>
 </ul>
 
 <h4 id="componentの分類">Componentの分類</h4>
 
-<h5 id="完全自己完結型">完全自己完結型</h5>
-<p><strong>親からは何も受け取らず自身のView+ViewModelで全て完結するもの。propsを受け付けない。</strong></p>
-
-<p>1Page＝1templateだとtemplateが膨れてしまう場合に、要素ごとに分割された結果作られるものがほとんど。そのため再利用されず、ほとんどのケースで「あくまでtemplateを分割しただけのもの」となる。<br />
+<h5 id="1-完全自己完結型">1. 完全自己完結型</h5>
+<p><strong>親からは何も受け取らず自身のView+ViewModelで全て完結するもの。propsを受け付けない。</strong><br />
+1Page＝1templateだとtemplateが膨れてしまう場合に、要素ごとに分割された結果作られるものがほとんど。そのため再利用されず、ほとんどのケースで「あくまでtemplateを分割しただけのもの」となる。<br />
 TabコンポーネントやScrollViewコンポーネントなどのように、要素をラップする一番外側のコンポーネントである場合もある。</p>
 
-<h5 id="半自己完結型">半自己完結型</h5>
-<p><strong>必須パラメータのみを親から受け取り、決まった処理を行う共通パーツ</strong>。
+<h5 id="2-半自己完結型">2. 半自己完結型</h5>
+<p><strong>必須パラメータのみを親から受け取り、決まった処理を行う共通パーツ</strong>。<br />
 Share用URLを受け取って動作するシェアボタンや、メッセージを受け取って表示するアラートダイアログなど。</p>
 
-<h5 id="ループアイテム型">ループアイテム型</h5>
+<h5 id="3-ループアイテム型">3. ループアイテム型</h5>
 <p>ListItemのように<strong>ループされて使うことを前提としているコンポーネント</strong>。<br />
 ステートレスで親から全ての要素を受け取る。必要なfunctionも親からprops経由で受け取る。ReactComponentと同じ感じ。VueComponentとして実装されるものの役割はViewのみで、ViewModelの役割を持たせない。</p>
 
@@ -274,11 +304,11 @@ Share用URLを受け取って動作するシェアボタンや、メッセージ
 <h3 id="modelはどうあるべきか">Modelはどうあるべきか</h3>
 
 <p>APIを叩いてサーバから値を受け取ったり、それを加工してDomainとして保持したり、計算をしたり、Validationをかけたり、アプリケーション全体の状態(State)を管理したりするのがModelの役割です。色々ですね。<br />
-役割は多いのですが、Modelの実装上満たさなければならない要件は2つです。</p>
+役割は多いのですが、Modelの実装上満たさなければならない<strong>要件は2つ</strong>です。</p>
 
 <ul>
-  <li>ViewModelに公開するための、返り値のないModel操作functionを実装する</li>
-  <li>Modelの更新をEventとして発火する</li>
+  <li><strong>ViewModelに公開するための、返り値のないModel操作functionを実装する</strong></li>
+  <li><strong>Modelの更新をEventとして発火する</strong></li>
 </ul>
 
 <p>これさえきちんと満たしていればModelとしての役割を果たせるので、VueComponentと組み合わせて正しくMVVMを成立させることができます。Modelを階層化させたり、SingleStateにしたりと工夫をしても問題ありません。ViewやViewModelに依存しないため柔軟に実装できるとも言えるんですかね。</p>
@@ -287,7 +317,7 @@ Share用URLを受け取って動作するシェアボタンや、メッセージ
 
 <h3 id="vuexをどのように利用すべきか">Vuexをどのように利用すべきか</h3>
 
-<p>Modelは要件さえ満たせばどう工夫しても良いと書いた通り、Modelの部分をVuexを使って実装するのも選択肢のひとつです。SingleStateでWebアプリケーション全体のState管理をしたいのであれば役立つと思っています。</p>
+<p>Modelは要件さえ満たせばどう工夫しても良いと書いた通り、Modelの部分をVuexを使って実装するのも選択肢のひとつです。SingleStateでWebアプリケーション全体のState管理をしたいときは役立ちますよね。</p>
 
 <p>また、VuexはVueの中に組み込まれていることを自身が知っているため、VueComponentとのつなぎ込みがスムーズにできる利点があります。とは言えその利点を闇雲に使うとMVVMを破綻させることになり兼ねないので、<strong>ModelとしてVuexを使う</strong>ことを念頭に置いて、Vuexの基本機能を理解していくといいと思います。</p>
 
@@ -296,9 +326,9 @@ Share用URLを受け取って動作するシェアボタンや、メッセージ
 <p>VuexStoreの値をVueComponentに反映する一番シンプルな方法は<code class="highlighter-rouge">computed</code>プロパティで待ち受ける方法だと公式に書かれています。</p>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">{</span>
-	<span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;</span><span class="sr">/div&gt;`</span><span class="err">,
+	<span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt;`</span><span class="err">,
 </span>	<span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
-		<span class="nx">count</span><span class="p">()</span> <span class="p">{</span>
+		<span class="nx">counter</span><span class="p">()</span> <span class="p">{</span>
 			<span class="k">return</span> <span class="nx">store</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span>
 		<span class="p">}</span>
 	<span class="p">}</span>
