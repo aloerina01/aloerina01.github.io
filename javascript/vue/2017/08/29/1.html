@@ -363,18 +363,18 @@ Vuexを使うということは、全ての状態を Vuexの中に置くべき�
   <p>もしこの関数を複数のコンポーネントで利用したくなったら、関数をコピーするか、あるいは関数を共用のヘルパーに切り出して複数の場所でインポートする必要があります。しかし、どちらも理想的とはいえません。</p>
 </blockquote>
 
-<p>つまり、VuexStoreの値を加工して使う場合に、加工する処理をあちこちに書いたり、importして使いまわしたりするのはナンセンスだと言っています。</p>
+<p>つまり、VuexStoreの値を加工して使う場合に、加工する処理をあちこちに書いたり、importして使い回したりするのはナンセンスだと言っています。</p>
 
 <p>本来MVVMにおいて、<strong>Modelから受け取った値をViewで利用する値に加工するのはViewModelの役割</strong>です。ただし、<strong>複数のViewModelに同じような加工処理が実装されてしまうくらいなら、Model側で用意したほうがいいんじゃない？</strong> という思想なんですね。</p>
 
 <p>この扱いには注意が必要だと感じています。<br />
 言われるがままに何でもゲッターに実装してしまうとゲッターが膨れてしまったり、とはいえ結局VueComponentの中でもごにょごにょ加工してて処理がModelとViewModelに散ってしまったりと、暗黒面に落ちることが目に見えています。</p>
 
-<p>そのため、ゲッターは<strong>VuexStoreの中身をfilterするために使う</strong>とルール付けています。<br />
+<p>そのため、<strong>ゲッターはVuexStoreの中身をfilterするために使う</strong>とルール付けています。<br />
 SingleStoreであるためにひとつのModelが大きく、ViewModelが取得するときにはModelの一部のみを受け取れれば十分、というケースで、Modelの値をfilterするためにゲッターを使うというわけです。</p>
 
-<p>例えば<code class="highlighter-rouge">UsersStore</code>にUserが追加された場合に、<code class="highlighter-rouge">UserStore</code>丸ごとViewModelへ伝えるのではなく、該当Userのみを伝える…といった感じです。<br />
-そして、そのUserオブジェクトから<code class="highlighter-rouge">firstName</code>と<code class="highlighter-rouge">familyName</code>と<code class="highlighter-rouge">age</code>をつなげて<code class="highlighter-rouge">${familyName} ${firstName} (${age})</code>という文字列に加工するのはViewModelにさせるというわけです。</p>
+<p>例えば「<code class="highlighter-rouge">UsersStore</code>にUserが追加された場合に、<code class="highlighter-rouge">UserStore</code>丸ごとViewModelへ伝えるのではなく、該当Userのみを伝える」といった感じです。  
+そして、そのUserオブジェクトから<code class="highlighter-rouge">firstName</code>と<code class="highlighter-rouge">familyName</code>と<code class="highlighter-rouge">age</code>をつなげて<code class="highlighter-rouge">${familyName} ${firstName} (${age})</code>という文字列に加工するのはViewModelに任せるというわけです。</p>
 
 <h4 id="まとめ">まとめ</h4>
 
@@ -395,7 +395,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 <p>Vueを半年くらい触ってきたので現在地を書き残しておく意味も兼ねて記事にしました。半年後の自分が見たらダメダメな設計方針かもしれませんが今はこんな感じでVueを使っています。</p>
 
-<p>設計って考えだしたらキリがなくて、きっと経験を積めば積むほどブラッシュアップできるものだと思うので、恥ずかしがらずにディスカッションしていいんじゃないかなと思います。叩かれても何されても、得られるものはありそうな気がするので。</p>
+<p>設計って考えだしたらキリがなくて、きっと経験を積めば積むほどブラッシュアップできるものだと思うので、恥ずかしがらずにディスカッションしていいんじゃないかなと思って書きました。きっともっと優れた設計をするエンジニアもいるでしょうし、人はルールを守れないからこんな設計は不要だと考えるエンジニアもいると思います。それぞれの意見に、その人が経験してきた背景があると思うので、いろんな意見が聞けたらいいなと思います。ぜひ<a href="https://twitter.com/aloerina_">@aloerina_</a>まで。</p>
 
 </article>
 
