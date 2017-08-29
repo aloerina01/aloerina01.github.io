@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</title>
+  <meta name="description" content="Vue(+Vuex)設計時に迷ったら立ち返るためのMy設計論です。MVVMをどう実現すべきか、Vuexをどのように組み込むべきか、Componentはどう切るか…。現時点での自分の解をまとめました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2017">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Vue(+Vuex)設計時に迷ったら立ち返るためのMy設計論です。MVVMをどう実現すべきか、Vuexをどのように組み込むべきか、Componentはどう切るか…。現時点での自分の解をまとめました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/2017-08-29-1-mvvm.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと">
+  <meta name="twitter:description" content="Vue(+Vuex)設計時に迷ったら立ち返るためのMy設計論です。MVVMをどう実現すべきか、Vuexをどのように組み込むべきか、Componentはどう切るか…。現時点での自分の解をまとめました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/2017-08-29-1-mvvm.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/archives/">Archives</a>
+          
+        
+          
+        
+          
+        
+          
+          <li class="nav-link"><a href="/profile/">Profile</a>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-08-29</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>, 
+    
+  
+    
+    <a href="/category/vue/">Vue</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="まえがき">まえがき</h3>
+
+<p>ここ最近、Vueを使って実装されたWebアプリが随分と増えてきたように感じます。自分も何度となく実装してきました。すごく小さなデモを作るときにも使えるし、中規模以上のWebアプリを作るときにも使えて、扱いやすいライブラリでとても好きです。</p>
+
+<p>ある程度の規模になってくると「複数の画面でデータを共有したい」「こっちのComponentの状態をあっちのComponentに伝えたい」といったような問題にぶち当たり、アーキテクチャを導入することでそれらを解決するというのもお馴染みな感じです。特にVueでは<strong>双方向データバインディング</strong>の特性上、<strong>MVVMアーキテクチャ</strong>が使われることが多いと思います。</p>
+
+<p>今回は、VueでMVVMを実現する際に起き得る設計上の問題について、現時点での私の解決方針をまとめてみました😌</p>
+
+<ul>
+  <li>TOC {:toc}</li>
+</ul>
+
+<h3 id="vuemvvmはなぜ難しいのか">Vue+MVVMはなぜ難しいのか</h3>
+
+<h4 id="一般的なmvvmを理解する">一般的なMVVMを理解する</h4>
+<p>WPFやSilverlightで使われるMVVMの登場人物の役割・依存関係をさらっと理解しておくと、Vueを使ってMVVMを作るときにも役立ちそうです。</p>
+
+<h5 id="view">View</h5>
+<ul>
+  <li>UIテンプレートとUIロジック(コードビハインド)を持つ</li>
+  <li>ViewModelに依存する</li>
+  <li>ある操作を実行するときはViewModelから公開されるCommandを呼び出す</li>
+</ul>
+
+<h5 id="viewmodel">ViewModel</h5>
+<ul>
+  <li>PresentationロジックとStateを持つ</li>
+  <li>Modelに依存する</li>
+  <li>Viewから受け取った操作を必要に応じてModelへDispatchする</li>
+  <li>Modelを監視する</li>
+  <li>Viewと双方向データバインディングする</li>
+  <li>Viewに揮発性のあるデータを送るときはMessengerを発行する</li>
+</ul>
+
+<h5 id="model">Model</h5>
+<ul>
+  <li>BusinessロジックとDomainを持つ</li>
+  <li>ViewやViewModelに依存しない</li>
+  <li>自身を更新するためのfunctionを公開する</li>
+  <li>自身が更新された場合にはイベントを発火する</li>
+</ul>
+
+<p><img src="/assets/2017-08-29-1-mvvm.png" alt="MVVM" /></p>
+
+<h4 id="vueで実現するmvvmはここが違う">Vueで実現するMVVMはここが違う</h4>
+
+<p><strong>VueComponentはView+ViewModelを表現してくれる</strong>ので、ViewとViewModelのつなぎ込みを意識することなく実装できます。その代わり、どのようにVueComponentをつくるかを考えないと親子関係が思うようにいかなかったり、データの受け渡しに苦労したりする羽目になります(過去にやらかしました😰)。</p>
+
+<p>反面、<strong>Modelについての仕組みやルールは提供していません</strong>。自前で用意するか、Vuexなどの状態管理ライブラリを利用する必要があります。<br />
+ここで本来のMVVMを正しく理解していないとオレオレModelを作ってしまったり(過去にやらかしました👿)、fluxをVueに導入できると妙な理解をして下手にVuexを導入しデータ管理が闇に包まれたりします(過去にやらかしました😇🔨)</p>
+
+<p>そんなわけで、VueでMVVMを設計するときは以下のような観点に注意すると良さそうな気がしています。</p>
+
+<ul>
+  <li>どのようにComponentを分けるか</li>
+  <li>Modelはどうあるべきか</li>
+  <li>Vuexをどのように利用すべきか</li>
+</ul>
+
+<h3 id="どのようにcomponentを分けるか">どのようにComponentを分けるか</h3>
+
+<p>Componentを利用することでページを要素に分解でき、影響範囲を分けられたり再利用できたりと嬉しい感じになります。更にComponentは親子関係を持たせ<code class="highlighter-rouge">Props</code>と<code class="highlighter-rouge">Event</code>を使いデータを受け渡すことができるようになっているため、より構造的にComponentを組み合わせることができます。</p>
+
+<p>ここで問題なのが、Componentをどの単位で区切るかです。<br />
+本来MVVMでは<strong>ViewはViewModelからデータを受け取るため、View同士(もしくはViewModel同士)でデータを受け渡すことを想定していません</strong>。そのため、VueComponentならではのComponentによる構造化を、MVVMにどう組み込むかを意識しComponent設計をする必要があります。</p>
+
+<p>そのため、以下のようなルールと分類をもとにComponentを分けるようにしています。</p>
+
+<h4 id="component切り分けのルール">Component切り分けのルール</h4>
+
+<ul>
+  <li>ComponentはView+ViewModelなので、基本的にはそれ単体でデータのやり取りや振る舞いが完結する</li>
+  <li>親子関係を持ちうるComponentは以下の分類のうちどれに該当するかを明確にし、分類ごとのルールに沿って実装する</li>
+</ul>
+
+<h4 id="componentの分類">Componentの分類</h4>
+
+<h5 id="完全自己完結型">完全自己完結型</h5>
+<p><strong>親からは何も受け取らず自身のView+ViewModelで全て完結するもの。propsを受け付けない。</strong></p>
+
+<p>1Page＝1templateだとtemplateが膨れてしまう場合に、要素ごとに分割された結果作られるものがほとんど。そのため再利用されず、ほとんどのケースで「あくまでtemplateを分割しただけのもの」となる。<br />
+TabコンポーネントやScrollViewコンポーネントなどのように、要素をラップする一番外側のコンポーネントである場合もある。</p>
+
+<h5 id="半自己完結型">半自己完結型</h5>
+<p><strong>必須パラメータのみを親から受け取り、決まった処理を行う共通パーツ</strong>。
+Share用URLを受け取って動作するシェアボタンや、メッセージを受け取って表示するアラートダイアログなど。</p>
+
+<h5 id="ループアイテム型">ループアイテム型</h5>
+<p>ListItemのように<strong>ループされて使うことを前提としているコンポーネント</strong>。<br />
+ステートレスで親から全ての要素を受け取る。必要なfunctionも親からprops経由で受け取る。ReactComponentと同じ感じ。VueComponentとして実装されるものの役割はViewのみで、ViewModelの役割を持たせない。</p>
+
+<p>もしかしたら今後分類は増えるかもしれませんが、今のところこれで運用しています。</p>
+
+<h3 id="modelはどうあるべきか">Modelはどうあるべきか</h3>
+
+<p>APIを叩いてサーバから値を受け取ったり、それを加工してDomainとして保持したり、計算をしたり、Validationをかけたり、アプリケーション全体の状態(State)を管理したりするのがModelの役割です。色々ですね。<br />
+役割は多いのですが、Modelの実装上満たさなければならない要件は2つです。</p>
+
+<ul>
+  <li>ViewModelに公開するための、返り値のないModel操作functionを実装する</li>
+  <li>Modelの更新をEventとして発火する</li>
+</ul>
+
+<p>これさえきちんと満たしていればModelとしての役割を果たせるので、VueComponentと組み合わせて正しくMVVMを成立させることができます。Modelを階層化させたり、SingleStateにしたりと工夫をしても問題ありません。ViewやViewModelに依存しないため柔軟に実装できるとも言えるんですかね。</p>
+
+<p>ただし、<code class="highlighter-rouge">getter</code>を実装するのはNGです。MVVMはイベント駆動であるため、<strong>ViewModelがModelの値を知るにはModelを監視し変更を検知する</strong>という方法をとることがルールとなります。</p>
+
+<h3 id="vuexをどのように利用すべきか">Vuexをどのように利用すべきか</h3>
+
+<p>Modelは要件さえ満たせばどう工夫しても良いと書いた通り、Modelの部分をVuexを使って実装するのも選択肢のひとつです。SingleStateでWebアプリケーション全体のState管理をしたいのであれば役立つと思っています。</p>
+
+<p>また、VuexはVueの中に組み込まれていることを自身が知っているため、VueComponentとのつなぎ込みがスムーズにできる利点があります。とは言えその利点を闇雲に使うとMVVMを破綻させることになり兼ねないので、<strong>ModelとしてVuexを使う</strong>ことを念頭に置いて、Vuexの基本機能を理解していくといいと思います。</p>
+
+<h4 id="ステート">ステート</h4>
+
+<p>VuexStoreの値をVueComponentに反映する一番シンプルな方法は<code class="highlighter-rouge">computed</code>プロパティで待ち受ける方法だと公式に書かれています。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">{</span>
+	<span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="mi">8</span><span class="o">&lt;</span><span class="sr">/div&gt;`</span><span class="err">,
+</span>	<span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+		<span class="nx">count</span><span class="p">()</span> <span class="p">{</span>
+			<span class="k">return</span> <span class="nx">store</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span>
+		<span class="p">}</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>これは内部的には<strong>ViewModel(VueComponent)がModel(VuexStore)を監視し、変更を検知し値を受け取りViewに反映する</strong>、といったことをやっているのでMVVMをシンプルに実装できています。</p>
+
+<p>また、公式には</p>
+
+<blockquote>
+  <p>コンポーネントはまだローカルステートを持つことできる
+Vuex を使うということは、全ての状態を Vuex の中に置くべき、というわけではありません。</p>
+</blockquote>
+
+<p>と書かれています。この点について、個人的にはViewModelが持つべきもの(＝Viewが表示するために使うデータ)をローカルステートに持たせ、Modelが持つべきもの(＝アプリケーションのDomainとしてのデータ)をVuexStoreに持たせるようにしたほうがいいかなと思っています。</p>
+
+<h4 id="ミューテーションアクション">ミューテーション、アクション</h4>
+
+<p>VuexStoreを更新する唯一の方法として用意されているミューテーション。typeとpayloadを受け取ってstoreを更新するあたり、fluxに似ていると言われる所以なのでしょうか？</p>
+
+<p>そしてVuexStoreの更新(ミューテーション)を非同期処理に組み込めるアクション。これがModelの要件のひとつである<strong>返り値のないModel操作functionを実装する</strong>に該当しています。</p>
+
+<p>つまり、Vuexを使うことでModelの2つの要件を自然に満たせるということになりました。やっぱり公式のものってすごいですね。</p>
+
+<h4 id="ゲッター">ゲッター</h4>
+
+<p>Modelに<code class="highlighter-rouge">getter</code>は書くなというルールがあるはずなのに、Vuexにはゲッターの概念があります。ゲッターについて公式は以下のように言及しています。</p>
+
+<blockquote>
+  <p>しこの関数を複数のコンポーネントで利用したくなったら、関数をコピーするか、あるいは関数を共用のヘルパーに切り出して複数の場所でインポートする必要があります。しかし、どちらも理想的とはいえません。</p>
+</blockquote>
+
+<p>つまり、VuexStoreの値を加工して使う場合に、加工する処理をあちこちに書いたり、importして使いまわしたりするのはナンセンスだと言っています。</p>
+
+<p>本来MVVMにおいて、<strong>Modelから受け取った値をViewで利用する値に加工するのはViewModelの役割</strong>です。ただし、<strong>複数のViewModelに同じような加工処理が実装されてしまうくらいなら、Model側で用意したほうがいいんじゃない？</strong> という思想なんですね。</p>
+
+<p>この扱いには注意が必要だと感じています。<br />
+言われるがままに何でもゲッターに実装してしまうとゲッターが膨れてしまったり、とはいえ結局VueComponentの中でもごにょごにょ加工してて処理がModelとViewModelに散ってしまったりと、暗黒面に落ちることが目に見えています。</p>
+
+<p>そのため、ゲッターは<strong>VuexStoreの中身をfilterするために使う</strong>とルール付けています。<br />
+SingleStoreであるためにひとつのModelが大きく、ViewModelが取得するときにはModelの一部のみを受け取れれば十分、というケースで、Modelの値をfilterするためにゲッターを使うというわけです。</p>
+
+<p>例えば<code class="highlighter-rouge">UsersStore</code>にUserが追加された場合に、<code class="highlighter-rouge">UserStore</code>丸ごとViewModelへ伝えるのではなく、該当Userのみを伝える…といった感じです。<br />
+そして、そのUserオブジェクトから<code class="highlighter-rouge">firstName</code>と<code class="highlighter-rouge">familyName</code>と<code class="highlighter-rouge">age</code>をつなげて<code class="highlighter-rouge">${familyName} ${firstName} (${age})</code>という文字列に加工するのはViewModelにさせるというわけです。</p>
+
+<h4 id="まとめ">まとめ</h4>
+
+<p>Vuexの基本機能を使えば自然とModelの要件を満たせました。ただし、ModelとViewModelの間にある曖昧な機能もあるので、使い方にルールを持つと良さそう、という話でした😌</p>
+
+<h3 id="おまけvuefluxは成立するのか">おまけ　Vue+fluxは成立するのか</h3>
+
+<p>これはfluxという言葉の定義次第なので、あくまでおまけの話で個人の解釈です。あんまり大きい声で言える話でもありません。</p>
+
+<p>さて、fluxの定義の大きな要素は、<strong>単一フローを強制すること</strong>にあると思います。<br />
+MVVMも適切に作ればデータは決まった方向に流れますが、MVVMをMVVMたらしめる要素は<strong>双方向バインディング</strong>です。そのためView⇔ViewModelは単一フローになり得ません。</p>
+
+<p>ViewModel⇔Modelの部分だけを見れば、Dispatcher→Store→Viewと似たようなデータフローになるので、部分的にfluxに似ると言えるかもしれません。逆に言えば、こういうところが「fluxはMV*を再発明した」と言われる所以かもしれませんね。</p>
+
+<p>と言うわけで、Vueを使う以上双方向バインディングは活かしたいですし、そうなるとMVVMになるのは妥当ですし、厳密にはMVVM≠fluxですので、Vue+flux成立はしないと言ってもいいんじゃないかなと思っています。fluxにしたいならReactを使おうよ。</p>
+
+<h3 id="あとがき">あとがき</h3>
+
+<p>Vueを半年くらい触ってきたので現在地を書き残しておく意味も兼ねて記事にしました。半年後の自分が見たらダメダメな設計方針かもしれませんが今はこんな感じでVueを使っています。</p>
+
+<p>設計って考えだしたらキリがなくて、きっと経験を積めば積むほどブラッシュアップできるものだと思うので、恥ずかしがらずにディスカッションしていいんじゃないかなと思います。叩かれても何されても、得られるものはありそうな気がするので。</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+      <a href="http://b.hatena.ne.jp/entry/" 
+	 class="hatena-bookmark-button share-button share-button-hatebu" 
+	 data-hatena-bookmark-layout="touch" 
+	 data-hatena-bookmark-width="38" 
+	 data-hatena-bookmark-height="38" 
+	 title="このエントリーをはてなブックマークに追加" 
+	 style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;"
+      ">
+        <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+      </a>
+      <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=Vue%2BVuex%E3%81%A7MVVM%E3%81%AAWebApplication%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8&url=https://aloerina01.github.io/javascript/vue/2017/08/29/1.html&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Vue%2BVuex%E3%81%A7MVVM%E3%81%AAWebApplication%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8&u=https://aloerina01.github.io/javascript/vue/2017/08/29/1.html"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=Vue%2BVuex%E3%81%A7MVVM%E3%81%AAWebApplication%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8&url=https://aloerina01.github.io/javascript/vue/2017/08/29/1.html"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/javascript/vue/2017/08/29/1.html" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?Vue%2BVuex%E3%81%A7MVVM%E3%81%AAWebApplication%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E3%81%A8%E3%81%8D%E3%81%AB%E8%80%83%E3%81%88%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2Fvue%2F2017%2F08%2F29%2F1.html">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        
+        
+          <li class="nav-link"><a href="/archives/">Archives</a>
+        
+        
+        
+        
+        
+        
+        
+          <li class="nav-link"><a href="/profile/">Profile</a>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Link</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter">
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+          <li>
+            <a href="http://aloecity.hatenablog.com/" title="Open another blog">
+              <i class="fa fa-link"></i>
+              <span class="username">青空コメントアウト</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/javascript/vue/2017/08/29/1.html',
+    'title': 'Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと'
+  });
+</script>
+
+
+
+  </body>
+
+</html>
