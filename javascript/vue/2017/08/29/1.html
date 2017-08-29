@@ -326,8 +326,8 @@ Share用URLを受け取って動作するシェアボタンや、メッセージ
 <p>VuexStoreの値をVueComponentに反映する一番シンプルな方法は<code class="highlighter-rouge">computed</code>プロパティで待ち受ける方法だと公式に書かれています。</p>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">template</span><span class="p">:</span> <span class="err">`</span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;&lt;</span><span class="sr">/div&gt;`</span><span class="err">,
-</span>  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="s1">'&lt;div&gt;&lt;/div&gt;'</span><span class="p">,</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
     <span class="nx">counter</span><span class="p">()</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nx">store</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span>
     <span class="p">}</span>
