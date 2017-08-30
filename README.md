@@ -19,19 +19,15 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 ## Constitution
 
 ### development branch
-jekyllベースの構成ファイル(markdownによる記事、_config.yml等)を持つ。このブランチのソースをjekyll publishすることでブログの静的ファイル群が生成される。
+jekyllベースの構成ファイル(markdownによる記事、_config.yml等)を持つ。記事、Template、デザインなどの追加修正等を行う場合は、必ずこのブランチで(もしくはここからトピックブランチを切り)行う。
 
-記事の追加、修正、ブログのデザイン修正など、何か手を加える際は必ずこのブランチで(もしくはここからトピックブランチを切り)行う。
+`git push`するとCircleCIがrake taskを実行し、publishされる。
 
-`git push`するとCircleCIによって自動でpublishされる。
+
 
 ### master branch
 
 publishされたものがmasterブランチにpushされ、それがGithub Pagesとして公開される。
 
-#### rake task
-publishはrake taskによって行われている。
 
-`Jekyll::new`によってdeployされた`_site`ディレクトリが生成されるが、それをmasterに反映するためには`git init`が必要で、そのためにmasterブランチにコミットが積まれない問題がある。
-
-See: [Using Jekyll plugins on GitHub Pages](http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html)
+~~See: [Using Jekyll plugins on GitHub Pages](http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html)~~
