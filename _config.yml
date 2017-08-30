@@ -179,12 +179,12 @@ social:
     desc: Share to Reddit
     share: false
 
-  - name: Blog
-    icon: link
-    username: "青空コメントアウト"
-    url: http://aloecity.hatenablog.com/
-    desc: Open another blog
-    share: false
+#  - name: Blog
+#    icon: link
+#    username: "青空コメントアウト"
+#    url: http://aloecity.hatenablog.com/
+#    desc: Open another blog
+#    share: false
 
   - name: Pocket
     icon: get-pocket
