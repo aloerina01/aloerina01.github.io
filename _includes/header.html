@@ -35,7 +35,7 @@
         </li>
         <li itemprop="itemListElement" itemscope　itemtype="http://schema.org/ListItem">
           <a itemprop="item" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
-            <span itemprop="name">{ page.title }</span>
+            <span itemprop="name">{{ page.title }}</span>
           </a>
           <meta itemprop="position" content="3">
         </li>
