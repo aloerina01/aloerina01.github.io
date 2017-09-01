@@ -396,7 +396,7 @@ Vuexを使うということは、全ての状態を Vuexの中に置くべき�
 <p>そのため、<strong>ゲッターはVuexStoreの中身をfilterするために使う</strong>とルール付けています。<br />
 SingleStoreであるためにひとつのModelが大きく、ViewModelが取得するときにはModelの一部のみを受け取れれば十分、というケースで、Modelの値をfilterするためにゲッターを使うというわけです。</p>
 
-<p>例えば「<code class="highlighter-rouge">UsersStore</code>にUserが追加された場合に、<code class="highlighter-rouge">UserStore</code>丸ごとViewModelへ伝えるのではなく、該当Userのみを伝える」といった感じです。  
+<p>例えば「<code class="highlighter-rouge">UsersStore</code>にUserが追加された場合に、<code class="highlighter-rouge">UsersStore</code>丸ごとViewModelへ伝えるのではなく、該当Userオブジェクトのみを伝える」といった感じです。  
 そして、そのUserオブジェクトから<code class="highlighter-rouge">firstName</code>と<code class="highlighter-rouge">familyName</code>と<code class="highlighter-rouge">age</code>をつなげて<code class="highlighter-rouge">${familyName} ${firstName} (${age})</code>という文字列に加工するのはViewModelに任せるというわけです。</p>
 
 <h4 id="まとめ">まとめ</h4>
