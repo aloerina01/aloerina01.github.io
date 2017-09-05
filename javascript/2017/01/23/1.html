@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>RxJSをJava8のラムダ式と比較してみた</title>
-  <meta name="description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のラムダ式っぽくないか😌💡と閃いてしまったので比較してみました。">
+  <title>RxJSをJava8のStreamAPIと比較してみた</title>
+  <meta name="description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のStreamっぽくないか😌💡と閃いてしまったので比較してみました。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2017">
@@ -41,10 +41,10 @@
 
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のラムダ式っぽくないか😌💡と閃いてしまったので比較してみました。" />
+  <meta property="og:description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のStreamっぽくないか😌💡と閃いてしまったので比較してみました。" />
   <meta property="og:url" content="https://aloerina01.github.io/javascript/2017/01/23/1.html" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="RxJSをJava8のラムダ式と比較してみた" />
+  <meta property="og:title" content="RxJSをJava8のStreamAPIと比較してみた" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo.png" />
   <meta property="og:image:type" content="image/png" />
@@ -55,8 +55,8 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="RxJSをJava8のラムダ式と比較してみた">
-  <meta name="twitter:description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のラムダ式っぽくないか😌💡と閃いてしまったので比較してみました。">
+  <meta name="twitter:title" content="RxJSをJava8のStreamAPIと比較してみた">
+  <meta name="twitter:description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のStreamっぽくないか😌💡と閃いてしまったので比較してみました。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo.png">
   <meta name="twitter:url" content="https://aloerina01.github.io/javascript/2017/01/23/1.html">
   
@@ -153,7 +153,7 @@
   　　　　　　　　</li>
 　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
     　　　　　　<a itemprop="item" href="https://aloerina01.github.io/javascript/2017/01/23/1.html">
-      　　　　<span itemprop="name">RxJSをJava8のラムダ式と比較してみた</span>
+      　　　　<span itemprop="name">RxJSをJava8のStreamAPIと比較してみた</span>
       　　</a>
     　　　　　　<meta itemprop="position" content="3" />
   　　　　　　　　</li>
@@ -169,7 +169,7 @@
 <div class="post-header-container " >
   <div class="scrim ">
     <header class="post-header">
-      <h1 class="title">RxJSをJava8のラムダ式と比較してみた</h1>
+      <h1 class="title">RxJSをJava8のStreamAPIと比較してみた</h1>
       <!-- <p class="info">by <strong></strong></p> -->
     </header>
   </div>
@@ -200,11 +200,11 @@
 <article class="post-content">
   <h3 id="きっかけ">きっかけ</h3>
 <p>RxJSって何だと思ってググると必ず「関数型リアクティブプログラミング(FRP)を実現するライブラリ」と出てきて、じゃあFRPって何だと思ってググると、そこは修羅の道。<br />
-でもよくよく調べてみたらFRPなんてそんなに理解してなくてもRxJSって使えるじゃんということに気づきました。そう思えたキッカケが、一見するとなんだか似ていそうなJava8のラムダ式。そこで今回はラムダ式と比較しながらRxJSについて整理してみました。</p>
+でもよくよく調べてみたらFRPなんてそんなに理解してなくてもRxJSって使えるじゃんということに気づきました。そう思えたキッカケが、一見するとなんだか似ていそうなJava8のStreamAPI。そこで今回はStreamAPIと比較しながらRxJSについて整理してみました。</p>
 
 <p>良いから結論だけ知りたいという場合は、<a href="#section-1">まとめ</a>をどうぞ。</p>
 
-<h3 id="rxjsとはなんなのか--ラムダ式なのか編">RxJSとはなんなのか　- ラムダ式なのか？編</h3>
+<h3 id="rxjsとはなんなのか--streamapiなのか編">RxJSとはなんなのか　- StreamAPIなのか？編</h3>
 <p><a href="https://github.com/Reactive-Extensions/RxJS">RxJS</a>とは、Rx(Reactive Extensions)をJavaScriptで使えるようにしよう、というライブラリです。</p>
 
 <p>ではRxとは何なのかというと、ざっくり言うと<strong>ストリームというデータの流れを表すモノを、関数型のコレクションライブラリで加工できる仕組み</strong>みたいな感じです。<br />
@@ -218,7 +218,7 @@
   <li><code class="highlighter-rouge">Scheduler</code> = 実行するスレッドやタイミングを制御するもの</li>
 </ul>
 
-<p>と、概念を説明するよりソースを見たほうが理解が早いだろうということで、RxJSとJava8ラムダ式の比較ソースを用意しました。以下の仕様で実装したソースです。</p>
+<p>と、概念を説明するよりソースを見たほうが理解が早いだろうということで、RxJSとStreamAPIの比較ソースを用意しました。以下の仕様で実装したソースです。</p>
 
 <blockquote>
   <ol>
@@ -252,7 +252,7 @@
 </div>
 
 <p>なんというか、似てる。<br />
-FRPとかよくわからないけど、ラムダ式のつもりで使えば良さそうな気がしてきました。</p>
+FRPとかよくわからないけど、StreamAPIのつもりで使えば良さそうな気がしてきました。</p>
 
 <h3 id="rxjsとはなんなのか--コンテナかもしれない編">RxJSとはなんなのか　- コンテナかもしれない編</h3>
 <p>RxJSが表現するObservableとはストリームのことだと言いましたが、ストリームが何者かという話です。ただの配列とどう違うのかが分かりそうで分からない。そんなときに理解が捗ったのは「1種のオブジェクト(コンテナ)だろう」というざっくりとした考え方でした。<br />
@@ -283,7 +283,7 @@ FRPとかよくわからないけど、ラムダ式のつもりで使えば良�
 </table>
 
 <h3 id="まとめ">まとめ</h3>
-<p>結局Java8のラムダ式じゃん</p>
+<p>結局Java8のStreamAPIっぽいじゃん</p>
 
 <h3 id="まじめなまとめ">まじめなまとめ</h3>
 
@@ -295,7 +295,7 @@ FRPとかよくわからないけど、ラムダ式のつもりで使えば良�
   <li><strong>Observable</strong>はストリーム</li>
   <li><strong>LINQ</strong>は関数型のコレクションライブラリ</li>
   <li><strong>Scheduler</strong>は実行するスレッドやタイミングを制御する闇の力</li>
-  <li>結局Java8のラムダ式みたいなものと思ってれば十分触れる</li>
+  <li>結局Java8のStreamAPIみたいなものと思ってればとりあえず触れた</li>
 </ul>
 
 <h3 id="本気で理解したかったら">本気で理解したかったら</h3>
@@ -332,7 +332,7 @@ FRPとかよくわからないけど、ラムダ式のつもりで使えば良�
   
     
     
-      <a class="share-button share-button-twitter" href="//twitter.com/share?text=RxJS%E3%82%92Java8%E3%81%AE%E3%83%A9%E3%83%A0%E3%83%80%E5%BC%8F%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/javascript/2017/01/23/1.html&via=aloerina_"
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=RxJS%E3%82%92Java8%E3%81%AEStreamAPI%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/javascript/2017/01/23/1.html&via=aloerina_"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
         <i class="fa fa-twitter fa-inverse"></i>
       </a>
@@ -348,7 +348,7 @@ FRPとかよくわからないけど、ラムダ式のつもりで使えば良�
     
     
     
-      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=RxJS%E3%82%92Java8%E3%81%AE%E3%83%A9%E3%83%A0%E3%83%80%E5%BC%8F%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&u=https://aloerina01.github.io/javascript/2017/01/23/1.html"
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=RxJS%E3%82%92Java8%E3%81%AEStreamAPI%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&u=https://aloerina01.github.io/javascript/2017/01/23/1.html"
         onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
         <i class="fa fa-facebook fa-inverse"></i>
       </a>
@@ -384,7 +384,7 @@ FRPとかよくわからないけど、ラムダ式のつもりで使えば良�
     
     
     
-      <a class="share-button share-button-google" href="//plus.google.com/share?title=RxJS%E3%82%92Java8%E3%81%AE%E3%83%A9%E3%83%A0%E3%83%80%E5%BC%8F%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/javascript/2017/01/23/1.html"
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=RxJS%E3%82%92Java8%E3%81%AEStreamAPI%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/javascript/2017/01/23/1.html"
         onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
         <i class="fa fa-google-plus fa-inverse"></i>
       </a>
@@ -519,7 +519,7 @@ FRPとかよくわからないけど、ラムダ式のつもりで使えば良�
     
     
       <a class="share-button share-button-line" target="_blank"
-        href="//line.me/R/msg/text/?RxJS%E3%82%92Java8%E3%81%AE%E3%83%A9%E3%83%A0%E3%83%80%E5%BC%8F%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2017%2F01%2F23%2F1.html">
+        href="//line.me/R/msg/text/?RxJS%E3%82%92Java8%E3%81%AEStreamAPI%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fjavascript%2F2017%2F01%2F23%2F1.html">
         <img src="/assets/thirdparty/linebutton.png" />
       </a>
     
@@ -707,7 +707,7 @@ $(document).ready(function() {
   ga('create', 'UA-39630080-4', 'auto');
   ga('send', 'pageview', {
     'page': '/javascript/2017/01/23/1.html',
-    'title': 'RxJSをJava8のラムダ式と比較してみた'
+    'title': 'RxJSをJava8のStreamAPIと比較してみた'
   });
 </script>
 
