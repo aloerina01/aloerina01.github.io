@@ -80,16 +80,16 @@ pre code.hljs {
 			font-size: modular-scale(6);
 		}
 		.subtitle, .info {
-			font-size: modular-scale(1);
+			font-size: modular-scale(0);
 		}
 	}
 	.scrim {
 		padding: 3em 1em;
 		&.has-cover {
 			background-color: rgba(0,0,0,0.2);
-			padding: 6em 1em !important;
+			padding: 8em 1em 6em 1em !important;
 			@include media($tablet) {
-				padding: 9em 1em !important;
+				padding: 13em 1em 9em 1em !important;
 			}
 		}
 	}
