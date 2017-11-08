@@ -1,5 +1,192 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2017-10-13T16:51:31+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</title><link href="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html" rel="alternate" type="text/html" title="Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと" /><published>2017-08-29T00:00:00+09:00</published><updated>2017-08-29T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/vue/2017/08/29/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2017-11-08T14:58:20+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">Myトラブルシューティングメモを晒してみる - webpack動的module編 -</title><link href="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html" rel="alternate" type="text/html" title="Myトラブルシューティングメモを晒してみる - webpack動的module編 -" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/webpack/2017/11/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
+
+&lt;p&gt;PCのリニューアルにつき、旧PCのローカルに残ってたメモやらブログ用下書きの整理をしていたら、かつて自分がハマったトラブルの対応時のメモが発掘されました。読み返してみたら懐かしい気持ちになれたり、当時考えていたことが思い出せたりといいことが多かったので、晒してみようと思います。&lt;/p&gt;
+
+&lt;p&gt;ちなみにメモのタイトルには『&lt;strong&gt;webpackで動的module解決しようとして死にかけた&lt;/strong&gt;』と書いてありました。&lt;/p&gt;
+
+&lt;p&gt;&amp;lt;span style=“font-size:small;color:#999”&amp;gt;※ 2017年上旬に残したメモなので、内容に古い箇所があったり引用文とリンク先の文章にズレがあったりする可能性があります。&amp;lt;/span&amp;gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;メモ内容&quot;&gt;メモ内容&lt;/h3&gt;
+
+&lt;h4 id=&quot;こまったことになったぞ&quot;&gt;こまったことになったぞ&lt;/h4&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 省略&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// modulePathを動的に決定する&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ということをしようとするとエラーになる。&lt;/p&gt;
+
+&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error: Cannot find module &quot;.&quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;modulePath&lt;/code&gt;が文字列としてちゃんと認識できていないのかと思ったけどそうでもなかった。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 検証1&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 同様のエラー&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 検証2&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// string&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;もしや&lt;code class=&quot;highlighter-rouge&quot;&gt;modulePath&lt;/code&gt;は正規表現じゃないとだめ？　とか血迷ってみた。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/model&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;userlist/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// やはりエラー&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ここでようやくwebpackのモジュール解決に起因すると気づく。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Keep in mind that import() path cannot be fully dynamic (e.g., import(Math.random())). Rather either completely static (e.g., import(‘./locale/de.json’)) or partially static (e.g., import(‘./locale/’ + language + ‘.json’)).
+&lt;a href=&quot;https://webpack.js.org/guides/code-splitting-import/#dynamic-import&quot;&gt;Code Splitting - Using import()&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A context is created if your request contains expressions, so the exact module is not known on compile time.
+&lt;a href=&quot;https://webpack.js.org/guides/dependency-management/#require-with-expression&quot;&gt;Dependency Management&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;require-with-expression訳してみるgoogle翻訳&quot;&gt;require with expression　訳してみる(Google翻訳)&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A context is created if your request contains expressions, so the exact module is not known on compile time.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;リクエストに式が含まれている場合、コンテキストが作成されるため、コンパイル時に正確なモジュールが認識されません。&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./template/&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.ejs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;webpack parses the require() call and extracts some information:&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;webpackはrequire（）呼び出しを解析し、いくつかの情報を抽出します。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Directory: ./template
+Regular expression: /^.*\.ejs$/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;context-module-ってなんだ&quot;&gt;context module ってなんだ&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A context module is generated. It contains references to all modules in that directory that can be required with a request matching the regular expression. The context module contains a map which translates requests to module ids.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;コンテキストモジュールが生成されます。このディレクトリには、正規表現に一致する要求が必要な、そのディレクトリ内のすべてのモジュールへの参照が含まれています。コンテキストモジュールには、要求をモジュールIDに変換するマップが含まれています。&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;./table.ejs&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;./table-row.ejs&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s2&quot;&gt;&quot;./directory/folder.ejs&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;44&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The context module also contains some runtime logic to access the map.&lt;/p&gt;
+
+  &lt;p&gt;This means dynamic requires are supported but will cause all possible modules to be included in the bundle.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;コンテキストモジュールには、マップにアクセスするためのランタイムロジックも含まれています。 これは動的要件がサポートされているが、すべての可能なモジュールがバンドルに含まれることを意味します。&lt;/p&gt;
+
+&lt;h4 id=&quot;context-module-api&quot;&gt;context module API&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A context module exports a (require) function that takes one argument: the request.
+The exported function has 3 properties: resolve, keys, id.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;コンテキストモジュールは、1つの引数（request）を受け取る（require）関数をエクスポートします。 エクスポートされた関数には、resolve、keys、idという3つのプロパティがあります。&lt;/p&gt;
+
+&lt;h4 id=&quot;突如解決する&quot;&gt;突如解決する&lt;/h4&gt;
+
+&lt;p&gt;webpack1のドキュメントにこんな文章を見つける。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;If the module source contains a require that cannot be statically analyzed, the context is the current directory.
+In this case a Critical dependencies warning is emitted. You need to use the ContextReplacementPlugin in most cases.
+Examples: someFn(require) require.bind(null)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;静的解決できない&lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt;がソースに含まれている場合、そのときのcontextはカレントディレクトリとなる。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// ← modulePathがカレントからの相対パスでないとダメ…？&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;実はモジュールパス解決をしたくて&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;に手を入れていた。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 省略&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'.vue'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'.js'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// root: [ path.resolve('./js') ], // webpack 1&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// webpack 2&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/node_modules'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;path.resolve&lt;/code&gt;で指定したディレクトリをルートとした相対パスで書けるようにしていた(つもりだった)が、実際はカレントディレクトリからのパスが必要だった。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'../'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 動いた&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;更になんか見つける&quot;&gt;更になんか見つける&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://webpack.js.org/configuration/module/#module-contexts&quot;&gt;Module&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;These options describe the default settings for the context created when a dynamic dependency is encountered.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;これらのオプションは、動的依存関係が発生したときに作成されるコンテキストのデフォルト設定を記述します。&lt;/p&gt;
+
+&lt;p&gt;どうやら今回のように動的依存解決が発生している場合の「デフォルト」が内部的に指定されている模様。そしてそれを書き換えるプラグインもある模様(ただしDeprecated)。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;exprContextCritical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;exprContextRecursive&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;exprContextRegExp&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;exprContextRequest&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;unknownContextCritical&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;unknownContextRecursive&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;unknownContextRegExp&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;unknownContextRequest&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// ←エラーの文言で見覚えあるぞ！！！&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;wrappedContextCritical&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;wrappedContextRecursive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;wrappedContextRegExp&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Note: You can use the ContextReplacementPlugin to modify these values for individual dependencies. This also removes the warning.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;ContextReplacementPluginを使用して、個々の依存関係のこれらの値を変更できます。これにより、警告も削除されます。&lt;/p&gt;
+
+&lt;p&gt;ふむふむ🤔&lt;br /&gt;
+とりあえず動いてよかった。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえがき</summary></entry><entry><title type="html">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</title><link href="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html" rel="alternate" type="text/html" title="Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと" /><published>2017-08-29T00:00:00+09:00</published><updated>2017-08-29T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/vue/2017/08/29/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
 
 &lt;p&gt;ここ最近、Vueを使って実装されたWebアプリが随分と増えてきたように感じます。自分も何度となく実装してきました。すごく小さなデモを作るときにも使えるし、中規模以上のWebアプリを作るときにも使えるし、扱いやすいライブラリでとても好きです。&lt;/p&gt;
 
@@ -1947,89 +2134,4 @@ templateオプションは使いつつプリコンパイルも使う。できる
 
 &lt;p&gt;とは言え、工夫すればいい感じにビルドすることはできるし、そこでゴニョゴニョ工夫するくらいならイチから&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;書くなりして自前の環境を用意すればいいし、どうとでもなります。&lt;/p&gt;
 
-&lt;p&gt;こういうのはとっつきやすくて手っ取り早いのがいいところだと思うのであります。以上。&lt;/p&gt;</content><author><name></name></author><summary type="html">What is create-react-app</summary></entry><entry><title type="html">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</title><link href="https://aloerina01.github.io/javascript/2017/02/22/1.html" rel="alternate" type="text/html" title="JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法" /><published>2017-02-22T00:00:00+09:00</published><updated>2017-02-22T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/2017/02/22/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/2017/02/22/1.html">&lt;h3 id=&quot;実現したいこと&quot;&gt;実現したいこと&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;リリース環境と開発環境でAPIのオリジンを替えたい&lt;/li&gt;
-  &lt;li&gt;オリジンを環境変数として別ファイルに定義したい&lt;/li&gt;
-  &lt;li&gt;リリースするJSファイルに開発環境用の記述が混ざらないようにしたい&lt;/li&gt;
-  &lt;li&gt;クライアントサイド(JavaScript)内で完結させたい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;解決策&quot;&gt;解決策&lt;/h3&gt;
-
-&lt;p&gt;webpackを使ってビルドする前提で、&lt;strong&gt;ビルド時に&lt;code class=&quot;highlighter-rouge&quot;&gt;process.dev.NODE_ENV&lt;/code&gt;を見て読み込む設定ファイルを切り替える&lt;/strong&gt;方法をとりました。&lt;/p&gt;
-
-&lt;h4 id=&quot;ファイル構成&quot;&gt;ファイル構成&lt;/h4&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;app
-  ├ ...	
-  ├ webpack.config.js
-  └ src
-     ├ environment
-         ├ index.js
-         ├ _development.js
-         └ _production.js
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_development.js&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;_production.js&lt;/code&gt;がそれぞれ環境ごとの設定ファイルです。&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;index.js&lt;/code&gt;が設定ファイルを切り替えて読み込む主体です。&lt;/p&gt;
-
-&lt;h4 id=&quot;環境ごとの設定ファイル&quot;&gt;環境ごとの設定ファイル&lt;/h4&gt;
-
-&lt;script src=&quot;https://gist.github.com/aloerina01/5056c587e828980655b15547409c30c2.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;当然と言えば当然ですが、両方のファイルに同じ項目が用意されている状態にします。&lt;/p&gt;
-
-&lt;h4 id=&quot;設定を読み込む&quot;&gt;設定を読み込む&lt;/h4&gt;
-
-&lt;script src=&quot;https://gist.github.com/aloerina01/827895f64fc549cf70fe91d3162a2d09.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;ポイントは、後に指定する&lt;strong&gt;NODE_ENV = 設定ファイル名&lt;/strong&gt;となっていることです(今回は&lt;code class=&quot;highlighter-rouge&quot;&gt;environment/&lt;/code&gt;以外でrequireしないで欲しいという意味を込めて&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;の接頭辞をつけました)。&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'../environment/index'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;FETCH_API&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;API_ORIGIN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'user/articles'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;このように、&lt;code class=&quot;highlighter-rouge&quot;&gt;environment/index.js&lt;/code&gt;を呼び出せばどこでも環境ごとの設定値を参照できるようになりました。&lt;/p&gt;
-
-&lt;h4 id=&quot;processenvnode_env-を利用できるようにする&quot;&gt;process.env.NODE_ENV を利用できるようにする&lt;/h4&gt;
-
-&lt;p&gt;ロジック内で&lt;code class=&quot;highlighter-rouge&quot;&gt;process.env.NODE_ENV&lt;/code&gt;を利用するには、&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;に以下を追記します。&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;　　&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;webpack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DefinePlugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;　　　　&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'process.env.NODE_ENV'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;NODE_ENV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;err&quot;&gt;　　&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://webpack.js.org/plugins/define-plugin/&quot;&gt;DefinePlugin&lt;/a&gt;を使います。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The DefinePlugin allows you to create global constants which can be configured at compile time.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;コンパイル時にグローバル変数を定義してくれるというものです。&lt;/p&gt;
-
-&lt;h4 id=&quot;ビルド時に-processenvnode_dev-を指定する&quot;&gt;ビルド時に process.env.NODE_DEV を指定する&lt;/h4&gt;
-
-&lt;p&gt;用意が整ったのであとはビルドするだけです。ビルド時に&lt;strong&gt;productionビルド&lt;/strong&gt;か&lt;strong&gt;developmentビルド&lt;/strong&gt;かを指定してあげると、それに応じた設定ファイルを読み込んでコンパイルしてくれる算段です。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;NODE_DEV&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;production webpack
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ビルドコマンドをたたくときに&lt;code class=&quot;highlighter-rouge&quot;&gt;key=value&lt;/code&gt;と指定すると、&lt;code class=&quot;highlighter-rouge&quot;&gt;process.env.key&lt;/code&gt;に&lt;code class=&quot;highlighter-rouge&quot;&gt;value&lt;/code&gt;が紐付けられます。&lt;/p&gt;
-
-&lt;p&gt;あとはこれをnpm scriptsにして呼び出しやすいようにしておけば、手元で実行するもよし、CIに実行させるもよしです。
-&lt;script src=&quot;https://gist.github.com/aloerina01/58d7fd5ef9363457d82b228da47dde56.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;不要な設定ファイルがそもそもrequireされない、というのはけっこういい感じだなと思っています。が、もっといい方法もあると思うので気づいたら教えていただけると嬉しいです。その際は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までお気軽に。&lt;/p&gt;</content><author><name></name></author><summary type="html">実現したいこと</summary></entry></feed>
+&lt;p&gt;こういうのはとっつきやすくて手っ取り早いのがいいところだと思うのであります。以上。&lt;/p&gt;</content><author><name></name></author><summary type="html">What is create-react-app</summary></entry></feed>
