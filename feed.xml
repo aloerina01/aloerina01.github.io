@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-01-13T18:27:24+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-01-13T18:49:36+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">トラブルシューティングメモを晒してみる - webpack動的module編 -</title><link href="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる - webpack動的module編 -" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/webpack/2017/11/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
 
 &lt;p&gt;PCのリニューアルにつき、旧PCのローカルに残ってたメモやらブログ用下書きの整理をしていたら、かつて自分がハマったトラブルの対応時のメモが発掘されました。読み返してみたら懐かしい気持ちになれたり、当時考えていたことが思い出せたりといいことが多かったので、晒してみようと思います。&lt;/p&gt;
@@ -1058,7 +1058,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
   &lt;p&gt;Hyperapp is a JavaScript library for building web applications.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Hyperapp は Web アプリケーションのフロント(主に View)を担う JavaScript 用のライブラリです。このライブラリは 3 つのコンセプトで成り立っています。&lt;/p&gt;
+&lt;p&gt;HyperappはWebアプリケーションのフロント(主にView)を担うJavaScript用のライブラリです。このライブラリは3つのコンセプトで成り立っています。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;外部ライブラリに依存しない、超軽量&lt;strong&gt;1KB&lt;/strong&gt;ぐらいのライブラリ&lt;/li&gt;
@@ -1066,17 +1066,60 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
   &lt;li&gt;Elm Architecture に則ったスケーラブル可能な仕組み&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;今回は Hyperapp の&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/README.md#documentation&quot;&gt;ドキュメント&lt;/a&gt;を勝手に意訳&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;してみようと思います 😌💡&lt;/p&gt;
+&lt;p&gt;今回はHyperappの&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/README.md#documentation&quot;&gt;ドキュメント&lt;/a&gt;を勝手に意訳&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;してみようと思います😌💡&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;TOC {:toc}&lt;/li&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#introduction&quot; id=&quot;markdown-toc-introduction&quot;&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#getting-started&quot; id=&quot;markdown-toc-getting-started&quot;&gt;Getting Started&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#こんにちは世界&quot; id=&quot;markdown-toc-こんにちは世界&quot;&gt;こんにちは世界&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#jsxで書いた場合&quot; id=&quot;markdown-toc-jsxで書いた場合&quot;&gt;JSXで書いた場合&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#hyperxで書いた場合&quot; id=&quot;markdown-toc-hyperxで書いた場合&quot;&gt;Hyperxで書いた場合&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#build-setup&quot; id=&quot;markdown-toc-build-setup&quot;&gt;Build Setup&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jsxを使う環境の用意&quot; id=&quot;markdown-toc-jsxを使う環境の用意&quot;&gt;JSXを使う環境の用意&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#browserifyを使う場合&quot; id=&quot;markdown-toc-browserifyを使う場合&quot;&gt;Browserifyを使う場合&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#必要なモジュールのインストール&quot; id=&quot;markdown-toc-必要なモジュールのインストール&quot;&gt;必要なモジュールのインストール&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#babelrcの用意&quot; id=&quot;markdown-toc-babelrcの用意&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;の用意&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#ビルドの実行&quot; id=&quot;markdown-toc-ビルドの実行&quot;&gt;ビルドの実行&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#webpackを使う場合&quot; id=&quot;markdown-toc-webpackを使う場合&quot;&gt;Webpackを使う場合&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#必要なモジュールのインストール-1&quot; id=&quot;markdown-toc-必要なモジュールのインストール-1&quot;&gt;必要なモジュールのインストール&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#babelrcの用意-1&quot; id=&quot;markdown-toc-babelrcの用意-1&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;の用意&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#webpackconfigjsの用意&quot; id=&quot;markdown-toc-webpackconfigjsの用意&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;の用意&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#ビルドの実行-1&quot; id=&quot;markdown-toc-ビルドの実行-1&quot;&gt;ビルドの実行&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#rollupを使う場合&quot; id=&quot;markdown-toc-rollupを使う場合&quot;&gt;Rollupを使う場合&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#必要なモジュールのインストール-2&quot; id=&quot;markdown-toc-必要なモジュールのインストール-2&quot;&gt;必要なモジュールのインストール&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#rollupconfigjsの用意&quot; id=&quot;markdown-toc-rollupconfigjsの用意&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rollup.config.js&lt;/code&gt;の用意&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#ビルドの実行-2&quot; id=&quot;markdown-toc-ビルドの実行-2&quot;&gt;ビルドの実行&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#hyperxを使う環境の用意&quot; id=&quot;markdown-toc-hyperxを使う環境の用意&quot;&gt;Hyperxを使う環境の用意&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#api-reference&quot; id=&quot;markdown-toc-api-reference&quot;&gt;API Reference&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#h&quot; id=&quot;markdown-toc-h&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#app&quot; id=&quot;markdown-toc-app&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#state&quot; id=&quot;markdown-toc-state&quot;&gt;State&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#view&quot; id=&quot;markdown-toc-view&quot;&gt;View&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#actions&quot; id=&quot;markdown-toc-actions&quot;&gt;Actions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#global-events&quot; id=&quot;markdown-toc-global-events&quot;&gt;Global Events&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#lifecycle-methods&quot; id=&quot;markdown-toc-lifecycle-methods&quot;&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md&quot;&gt;Lifecycle Methods&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#afterword&quot; id=&quot;markdown-toc-afterword&quot;&gt;Afterword&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;getting-started&quot;&gt;Getting Started&lt;/h3&gt;
 
-&lt;p&gt;Hyperapp は器用に作られたもので、新規プロダクトに取り入れることはもちろん、既存の Web アプリケーションに組み込むこともできるよ。&lt;/p&gt;
+&lt;p&gt;Hyperappは器用に作られたもので、新規プロダクトに取り入れることはもちろん、既存のWebアプリケーションに組み込むこともできるよ。&lt;/p&gt;
 
-&lt;p&gt;一番簡単な方法は何と言っても CDN だね。&lt;/p&gt;
+&lt;p&gt;一番簡単な方法は何と言ってもCDNだね。&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://unpkg.com/hyperapp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -1090,11 +1133,11 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;h4 id=&quot;こんにちは世界&quot;&gt;こんにちは世界&lt;/h4&gt;
 
-&lt;p&gt;ではさっそく Hyperapp を使って「こんにちは世界」を表示させてみよう。&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;を用意して以下のコードをコピペしてブラウザで見てみよう 😄&lt;/p&gt;
+&lt;p&gt;ではさっそくHyperappを使って「こんにちは世界」を表示させてみよう。&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;を用意して以下のコードをコピペしてブラウザで見てみよう😄&lt;/p&gt;
 
-&lt;p&gt;Hyperapp では JSX をつかった記法と、ES6 のテンプレートリテラルを使った Hyperx という記法の２つが使えるよ。How wonderful!! それぞれのコード例を用意したから好きな方を使ってね。&lt;/p&gt;
+&lt;p&gt;Hyperappでは&lt;strong&gt;JSX&lt;/strong&gt;をつかった記法と、ES6のテンプレートリテラルを使った&lt;strong&gt;Hyperx&lt;/strong&gt;という記法の２つが使えるよ。How wonderful!! それぞれのコード例を用意したから好きな方を使ってね。&lt;/p&gt;
 
-&lt;h5 id=&quot;jsx-で書いた場合&quot;&gt;JSX で書いた場合&lt;/h5&gt;
+&lt;h5 id=&quot;jsxで書いた場合&quot;&gt;JSXで書いた場合&lt;/h5&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://unpkg.com/hyperapp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
@@ -1117,7 +1160,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h5 id=&quot;hyperx-で書いた場合&quot;&gt;Hyperx で書いた場合&lt;/h5&gt;
+&lt;h5 id=&quot;hyperxで書いた場合&quot;&gt;Hyperxで書いた場合&lt;/h5&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
   &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://unpkg.com/hyperapp&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
@@ -1141,15 +1184,15 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;/div&gt;
 
 &lt;p&gt;さて、ブラウザでは何が起きたかな？&lt;br /&gt;
-ブラウザは Hyperx や JSX を CDN 経由でダウンロードし、script の部分をコンパイルして描画したよ。&lt;/p&gt;
+ブラウザはHyperxやJSXをCDN経由でダウンロードし、scriptの部分をコンパイルして描画したよ。&lt;/p&gt;
 
-&lt;p&gt;この例では Hyperapp とは何かを手軽に知ることができたと思うけれど、これだけだと Web アプリケーション開発の例としては少々物足りないよね。わかるよ。&lt;/p&gt;
+&lt;p&gt;この例ではHyperappとは何かを手軽に知ることができたと思うけれど、これだけだとWebアプリケーション開発の例としては少々物足りないよね。わかるよ。&lt;/p&gt;
 
-&lt;p&gt;では、次に Webpack、Browserify、Rollup をつかったビルド環境のセットアップの例を見てみよう。&lt;/p&gt;
+&lt;p&gt;では、次にWebpack、Browserify、Rollupをつかったビルド環境のセットアップの例を見てみよう。&lt;/p&gt;
 
 &lt;h3 id=&quot;build-setup&quot;&gt;Build Setup&lt;/h3&gt;
 
-&lt;p&gt;Web アプリケーションの開発環境を用意するには 3 つの要素が必要なんだ。&lt;/p&gt;
+&lt;p&gt;Webアプリケーションの開発環境を用意するには3つの要素が必要なんだ。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;パッケージマネージャ(&lt;a href=&quot;https://www.npmjs.com/&quot;&gt;npm&lt;/a&gt;, &lt;a href=&quot;https://yarnpkg.com/lang/en/&quot;&gt;yarn&lt;/a&gt;)&lt;/li&gt;
@@ -1157,7 +1200,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
   &lt;li&gt;バンドラ(&lt;a href=&quot;https://webpack.js.org/&quot;&gt;Webpack&lt;/a&gt;, &lt;a href=&quot;http://browserify.org/&quot;&gt;Browserify&lt;/a&gt;, &lt;a href=&quot;http://rollupjs.org/&quot;&gt;Rollup&lt;/a&gt;)&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;なぜこれらが必要かというと、JSX/Hyperx で書かれたソースをコンパイルするためなんだ 💪 コンパイルされると、HyperApp の &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt; 関数という&lt;strong&gt;仮想 DOM を生成するための関数&lt;/strong&gt;になるのだけれど、それについてはまた後で語るからね。&lt;/p&gt;
+&lt;p&gt;なぜこれらが必要かというと、JSX/Hyperxで書かれたソースをコンパイルするためなんだ💪 コンパイルされると、Hyperappの&lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;関数という&lt;strong&gt;仮想DOMを生成するための関数&lt;/strong&gt;になるのだけれど、それについてはまた後で語るからね。&lt;/p&gt;
 
 &lt;p&gt;コンパイル前(JSX/Hyperx)&lt;/p&gt;
 
@@ -1172,21 +1215,21 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;/div&gt;
 
 &lt;p&gt;こんな具合だよ。いい具合だね。&lt;br /&gt;
-さぁ次の章では JSX と Hyperx 各々のためのビルド環境のセットアップを学ぶよ。ついておいで！&lt;/p&gt;
+さぁ次の章ではJSXとHyperx各々のためのビルド環境のセットアップを学ぶよ。ついておいで！&lt;/p&gt;
 
-&lt;h3 id=&quot;jsx-を使う環境の用意&quot;&gt;JSX を使う環境の用意&lt;/h3&gt;
+&lt;h3 id=&quot;jsxを使う環境の用意&quot;&gt;JSXを使う環境の用意&lt;/h3&gt;
 
-&lt;p&gt;JSX は XML と同様データの記法のひとつだよ。知ってたかい？ これを使うことで HTML(テンプレート)と JavaScript(処理)を一つのファイルに混在させることができるよ。&lt;/p&gt;
+&lt;p&gt;JSXはXMLと同様データの記法のひとつだよ。知ってたかい？ これを使うことでHTML(テンプレート)とJavaScript(処理)を一つのファイルに混在させることができるよ。&lt;/p&gt;
 
-&lt;p&gt;JSX を使うには上述の通りコンパイルが必要なんだ。JSX を &lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt; 関数に変換し、ひとつの js ファイルにバンドルし、配信しなければならないからね。ではさっそくビルド環境の用意をしよう。&lt;/p&gt;
+&lt;p&gt;JSXを使うには上述の通りコンパイルが必要なんだ。JSXを&lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;関数に変換し、ひとつのjsファイルにバンドルし、配信しなければならないからね。ではさっそくビルド環境の用意をしよう。&lt;/p&gt;
 
-&lt;h4 id=&quot;browserify-を使う場合&quot;&gt;Browserify を使う場合&lt;/h4&gt;
+&lt;h4 id=&quot;browserifyを使う場合&quot;&gt;Browserifyを使う場合&lt;/h4&gt;
 
 &lt;h5 id=&quot;必要なモジュールのインストール&quot;&gt;必要なモジュールのインストール&lt;/h5&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install hyperapp
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm i -S hyperapp
 
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D babel-plugin-transform-react-jsx babel-preset-es2015 babelify browserify bundle-collapser uglifyify uglifyjs
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm i -D babel-plugin-transform-react-jsx babel-preset-es2015 babelify browserify bundle-collapser uglifyify uglifyjs
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1215,13 +1258,13 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;webpack-を使う場合&quot;&gt;Webpack を使う場合&lt;/h4&gt;
+&lt;h4 id=&quot;webpackを使う場合&quot;&gt;Webpackを使う場合&lt;/h4&gt;
 
 &lt;h5 id=&quot;必要なモジュールのインストール-1&quot;&gt;必要なモジュールのインストール&lt;/h5&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install hyperapp
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm i -S hyperapp
 
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D webpack babel-core babel-loader babel-preset-es2015 babel-plugin-transform-react-jsx
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm i -D webpack babel-core babel-loader babel-preset-es2015 babel-plugin-transform-react-jsx
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1267,13 +1310,13 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;rollup-を使う場合&quot;&gt;Rollup を使う場合&lt;/h4&gt;
+&lt;h4 id=&quot;rollupを使う場合&quot;&gt;Rollupを使う場合&lt;/h4&gt;
 
 &lt;h5 id=&quot;必要なモジュールのインストール-2&quot;&gt;必要なモジュールのインストール&lt;/h5&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install hyperapp
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm i -S hyperapp
 
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D rollup rollup-plugin-babel rollup-plugin-node-resolve rollup-plugin-uglify babel-preset-es2015-rollup babel-plugin-transform-react-jsx
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm i -D rollup rollup-plugin-babel rollup-plugin-node-resolve rollup-plugin-uglify babel-preset-es2015-rollup babel-plugin-transform-react-jsx
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -1305,24 +1348,24 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h3 id=&quot;hyperx-を使う環境の用意&quot;&gt;Hyperx を使う環境の用意&lt;/h3&gt;
+&lt;h3 id=&quot;hyperxを使う環境の用意&quot;&gt;Hyperxを使う環境の用意&lt;/h3&gt;
 
-&lt;p&gt;JSX のときとインストールするファイルが少々変わるだけなので割愛するよ 😌&lt;/p&gt;
+&lt;p&gt;JSXのときとインストールするファイルが少々変わるだけなので割愛するよ 😌&lt;/p&gt;
 
 &lt;h3 id=&quot;api-reference&quot;&gt;API Reference&lt;/h3&gt;
 
-&lt;p&gt;ここでは Hyperapp のモジュールや関数の使い方について、サンプルと併せて紹介するよ。&lt;/p&gt;
+&lt;p&gt;ここではHyperappのモジュールや関数の使い方について、サンプルと併せて紹介するよ。&lt;/p&gt;
 
-&lt;p&gt;Hyperapp は大きく分けて 3 つの仕組みを提供しているんだ。&lt;/p&gt;
+&lt;p&gt;Hyperappは大きく分けて2つの仕組みを提供しているんだ。&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;h 関数&lt;/code&gt; … 仮想 DOM を生成する関数&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app 関数&lt;/code&gt; … Hyperapp を利用した Application を実行する関数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;h 関数&lt;/code&gt; … 仮想DOMを生成する関数&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app 関数&lt;/code&gt; … Hyperappを利用したApplicationを実行する関数&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h4 id=&quot;h&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;h&lt;/code&gt;&lt;/h4&gt;
 
-&lt;p&gt;仮想 DOM を返す関数だよ。ここで言う仮想 DOM とは、ネストされた DOM のツリーを JavaScript のオブジェクトとして表現しているものだよ 🌴&lt;/p&gt;
+&lt;p&gt;仮想DOMを返す関数だよ。ここで言う仮想DOMとは、ネストされたDOMのツリーをJavaScriptのオブジェクトとして表現しているものだよ🌴&lt;/p&gt;
 
 &lt;p&gt;Syntax&lt;/p&gt;
 
@@ -1331,8 +1374,8 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;name {String}&lt;/code&gt; … 「div」など、HTML 上でのタグ名&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props {Object}&lt;/code&gt; … Element に挿入される attributes&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;name {String}&lt;/code&gt; … 「div」など、HTML上でのタグ名&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props {Object}&lt;/code&gt; … Elementに挿入されるattributes&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;children {String | Array}&lt;/code&gt; … 子要素&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -1351,7 +1394,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;h4 id=&quot;app&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;app&lt;/code&gt;&lt;/h4&gt;
 
-&lt;p&gt;Hyperapp による Web アプリケーションを起動するよ。これを呼び出すことで全てが始まる。オプションを添えられるよ。&lt;/p&gt;
+&lt;p&gt;HyperappによるWebアプリケーションを起動するよ。これを呼び出すことで全てが始まる。オプションを添えられるよ。&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -1359,11 +1402,11 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;h4 id=&quot;state&quot;&gt;State&lt;/h4&gt;
 
-&lt;p&gt;アプリケーションの State を管理するオブジェクトだよ。Object でないとダメだよ！&lt;/p&gt;
+&lt;p&gt;アプリケーションのStateを管理するオブジェクトだよ。Objectでないとダメだよ！&lt;/p&gt;
 
 &lt;h4 id=&quot;view&quot;&gt;View&lt;/h4&gt;
 
-&lt;p&gt;仮想 DOM を返す関数だよ。引数に&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;actions&lt;/code&gt;をとるよ。&lt;/p&gt;
+&lt;p&gt;仮想DOMを返す関数だよ。引数に&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;actions&lt;/code&gt;をとるよ。&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
@@ -1383,7 +1426,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;h4 id=&quot;actions&quot;&gt;Actions&lt;/h4&gt;
 
-&lt;p&gt;Web アプリケーションの振る舞いを定義する関数のコレクションだよ。&lt;code class=&quot;highlighter-rouge&quot;&gt;actions&lt;/code&gt;は一般的に&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;を更新するために利用されるよ。そのため、返り値が新しい&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;であることがしばしば。&lt;/p&gt;
+&lt;p&gt;Webアプリケーションの振る舞いを定義する関数のコレクションだよ。&lt;code class=&quot;highlighter-rouge&quot;&gt;actions&lt;/code&gt;は一般的に&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;を更新するために利用されるよ。そのため、返り値が新しい&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;であることがしばしば。&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;actions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;na&quot;&gt;setValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
@@ -1398,9 +1441,9 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;/div&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; … action の処理(モデルの更新)に必要な情報&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt; … 現在の state&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;actions&lt;/code&gt; … アプリケーションが持つ大元の actions&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt; … actionの処理(モデルの更新)に必要な情報&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt; … 現在のstate&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;actions&lt;/code&gt; … アプリケーションが持つ大元のactions&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
@@ -1425,7 +1468,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;h4 id=&quot;global-events&quot;&gt;Global Events&lt;/h4&gt;
 
-&lt;p&gt;app 関数が返すオブジェクトに state と繋がっている元の actions がある。view に渡される actions と同じで、action を呼び出す時に、state が更新される！&lt;/p&gt;
+&lt;p&gt;app関数が返すオブジェクトにstateと繋がっている元のactionsがある。viewに渡されるactionsと同じで、actionを呼び出す時に、stateが更新される！&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;actions&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1446,13 +1489,13 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;h4 id=&quot;lifecycle-methods&quot;&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md&quot;&gt;Lifecycle Methods&lt;/a&gt;&lt;/h4&gt;
 
-&lt;p&gt;仮想 DOM のライフサイクルにまつわるイベントをハンドリングできるよ。&lt;/p&gt;
+&lt;p&gt;仮想DOMのライフサイクルにまつわるイベントをハンドリングできるよ。&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#oncreate&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oncreate&lt;/code&gt;&lt;/a&gt; … Element が DOM として構築されたとき&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#onupdate&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;onupdate&lt;/code&gt;&lt;/a&gt; … Element の要素が更新されたとき&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#onremove&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;onremove&lt;/code&gt;&lt;/a&gt; … Element が DOM から消える直前&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#ondestroy&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ondestroy&lt;/code&gt;&lt;/a&gt; … Element が DOM から消える直後&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#oncreate&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oncreate&lt;/code&gt;&lt;/a&gt; … ElementがDOMとして構築されたとき&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#onupdate&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;onupdate&lt;/code&gt;&lt;/a&gt; … Elementの要素が更新されたとき&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#onremove&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;onremove&lt;/code&gt;&lt;/a&gt; … ElementがDOMから消える直前&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#ondestroy&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ondestroy&lt;/code&gt;&lt;/a&gt; … ElementがDOMから消える直後&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;node&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;div&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
@@ -1479,10 +1522,10 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;p&gt;良さそうなところ&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;小さな開発用ツールなどをつくるときには高速で実装できるし、実行速度的にも ◎&lt;/li&gt;
-  &lt;li&gt;特に React で JSX 使ってた人はとっつきやすいかも&lt;/li&gt;
-  &lt;li&gt;小さなライブラリなので、初めての OSS コードリーディングにはもってこい&lt;/li&gt;
-  &lt;li&gt;同じく、初めての OSS コントリビュートにはもってこい(？)&lt;/li&gt;
+  &lt;li&gt;小さな開発用ツールなどをつくるときには高速で実装できるし、実行速度的にも◎&lt;/li&gt;
+  &lt;li&gt;特にReactでJSX使ってた人はとっつきやすいかも&lt;/li&gt;
+  &lt;li&gt;小さなライブラリなので、初めてのOSSコードリーディングにはもってこい&lt;/li&gt;
+  &lt;li&gt;同じく、初めてのOSSコントリビュートにはもってこい(？)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;ちょっと考えものなところ&lt;/p&gt;
@@ -1490,18 +1533,18 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;ul&gt;
   &lt;li&gt;テンプレートファイルを外出しできないとマークアップエンジニアとの分業がしにくいかも&lt;/li&gt;
   &lt;li&gt;もう少し細かい単位でライフサイクルのイベントハンドリングをしたくなるかも&lt;/li&gt;
-  &lt;li&gt;view の共通部品の定義(Abstract 的なもの)とか欲しくなりそう&lt;/li&gt;
+  &lt;li&gt;viewの共通部品の定義(Abstract的なもの)とか欲しくなりそう&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;一部訳すのをさぼりました。すみません 😵&lt;/p&gt;
+&lt;p&gt;一部訳すのをさぼりました。すみません😵&lt;/p&gt;
 
-&lt;p&gt;初めて翻訳(の真似事)をしたのですが、自然と海外ドキュメンタリーの吹き替えみたいな声が脳内再生されました。「&lt;a href=&quot;http://shirobako-anime.com/story/04.html&quot;&gt;私ゃ失敗こいちまってさ&lt;/a&gt;」的なやつです。ともあれ、とても楽しかったですし Hyperapp を好きになれて満足しました。&lt;/p&gt;
+&lt;p&gt;初めて翻訳(の真似事)をしたのですが、自然と海外ドキュメンタリーの吹き替えみたいな声が脳内再生されました。「&lt;a href=&quot;http://shirobako-anime.com/story/04.html&quot;&gt;私ゃ失敗こいちまってさ&lt;/a&gt;」的なやつです。ともあれ、とても楽しかったですしHyperappを好きになれて満足しました。&lt;/p&gt;
 
 &lt;p&gt;間違いや指摘箇所があれば&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;英語が得意でない者が雰囲気で訳したものです。本家 Hyperapp とは無関係の個人的な記事です。&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;英語が得意でない者が雰囲気で訳したものです。本家Hyperappとは無関係の個人的な記事です。&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</title><link href="https://aloerina01.github.io/javascript/2017/03/14/1.html" rel="alternate" type="text/html" title="ES6 Proxy をつかって堅牢なオブジェクトをつくるTips" /><published>2017-03-14T00:00:00+09:00</published><updated>2017-03-14T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/2017/03/14/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/2017/03/14/1.html">&lt;h3 id=&quot;what-is-proxy&quot;&gt;What is Proxy&lt;/h3&gt;
