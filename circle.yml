@@ -15,7 +15,7 @@ machine:
 
 dependencies:
   override:
-    - apt-get install gsl
+    - sudo apt-get install gsl
     - bundle install --frozen
 
 # running your tests
