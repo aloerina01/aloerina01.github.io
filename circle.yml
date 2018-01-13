@@ -15,6 +15,7 @@ machine:
 
 dependencies:
   override:
+    - brew install gsl
     - bundle install --frozen
 
 # running your tests
