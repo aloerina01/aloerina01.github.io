@@ -8,6 +8,8 @@ gems:
 
 exclude:
   - "/vendor/"
+  
+lsi: true
 
 # Site settings
 title: "mille-feuille code"
