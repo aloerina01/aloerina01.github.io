@@ -287,7 +287,7 @@
 
 <p>ではさっそくHyperappを使って「こんにちは世界」を表示させてみよう。<code class="highlighter-rouge">index.html</code>を用意して以下のコードをコピペしてブラウザで見てみよう😄</p>
 
-<p>Hyperappでは<strong>JSX</strong>をつかった記法と、ES6のテンプレートリテラルを使った<strong>Hyperx</strong>という記法の２つが使えるよ。How wonderful!! それぞれのコード例を用意したから好きな方を使ってね。</p>
+<p>Hyperappでは<strong>JSX</strong>を使った記法と、ES6のテンプレートリテラルを使った<strong>Hyperx</strong>という記法の２つが使えるよ。How wonderful!! それぞれのコード例を用意したから好きな方を使ってね。</p>
 
 <h5 id="jsxで書いた場合">JSXで書いた場合</h5>
 
@@ -326,7 +326,7 @@
     <span class="na">greeting</span><span class="p">:</span> <span class="s2">"こんにちは世界"</span>
   <span class="p">}</span>
   <span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="kr">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">htm</span><span class="err">`</span><span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"title"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">greeting</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">`
+  <span class="kr">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">html</span><span class="err">`</span><span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"title"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">greeting</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">`
 </span>
   <span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
 
