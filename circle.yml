@@ -14,6 +14,9 @@ machine:
 # database:
 
 dependencies:
+  cache_directories:
+    # We will store packages in this directory
+    - "vendor/apt"
   pre:
     # Remove the repositories provided in base image we don't need
     - sudo mv /etc/apt/sources.list.d /etc/apt/sources.list.d.save
