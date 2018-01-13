@@ -14,9 +14,36 @@ machine:
 # database:
 
 dependencies:
-  override:
+  pre:
+    # Remove the repositories provided in base image we don't need
+    - sudo mv /etc/apt/sources.list.d /etc/apt/sources.list.d.save
+    - sudo mkdir /etc/apt/sources.list.d
+    - sudo cp sources.list /etc/apt/sources.list
     - sudo apt-get update
-    - sudo apt-get upgrade
+
+    # Make the cache dir if it doesn't exist
+    - |
+      if ! [[ -d vendor/apt ]]; then
+        mkdir -p vendor/apt
+      fi
+    
+    # Install aspell if it doesn't exist
+    - |
+      if [[ ! -e /usr/bin/aspell ]]; then
+        # First check for archives cache
+        if ! [[ -d vendor/apt/archives ]]; then
+          # It doesn't so download the packages
+          sudo apt-get install --download-only aspell
+          # Then move them to our cache directory
+          sudo cp -R /var/cache/apt vendor/
+          # Making sure our user has ownership, in order to cache
+          sudo chown -R ubuntu:ubuntu vendor/apt
+        fi
+
+        # Install all packages in the cache
+        sudo dpkg -i vendor/apt/archives/*.deb
+      fi
+  override:
     - sudo apt-get install gsl
     - bundle install --frozen
 
