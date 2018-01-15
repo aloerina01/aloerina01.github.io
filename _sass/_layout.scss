@@ -341,6 +341,12 @@ pre code.hljs {
         margin: 0 0 1rem 0;
       }
 		}
+		.related-posts {
+			margin-top: 8em;
+			@include media ($mobile) {
+				margin-top: 6em;
+			}
+		}
 		.disqus {
 			@include span-columns(12);
 		}
