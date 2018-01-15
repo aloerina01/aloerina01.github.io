@@ -18,7 +18,7 @@ dependencies:
     # We will store packages in this directory
     - "vendor/apt"
   override:
-    - chmod -x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
+    - chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
 
 # running your tests
 # CircleCI automatically runs 'npm test'
