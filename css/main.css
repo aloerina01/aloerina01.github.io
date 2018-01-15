@@ -577,6 +577,11 @@ pre code.hljs {
       .page-content .post .share {
         float: right;
         margin: 0 0 1rem 0; } }
+  .page-content .post .related-posts {
+    margin-top: 8em; }
+    @media screen and (min-width: 480px) {
+      .page-content .post .related-posts {
+        margin-top: 6em; } }
   .page-content .post .disqus {
     float: left;
     display: block;
