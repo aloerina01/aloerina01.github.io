@@ -6,6 +6,8 @@ general:
 # adjusting the VM to your preferences and requirements
 machine:
   timezone: Asia/Tokyo
+  ruby:
+    version: 2.5.0
 
 # checking out and cloning your git repo
 # checkout: 
@@ -17,6 +19,7 @@ dependencies:
   cache_directories:
     # We will store packages in this directory
     - "vendor/apt"
+    - "vendor/bundle"
   override:
     - chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
 
