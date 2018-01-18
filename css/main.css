@@ -578,10 +578,16 @@ pre code.hljs {
         float: right;
         margin: 0 0 1rem 0; } }
   .page-content .post .related-posts {
-    margin-top: 8em; }
+    margin: 8em 0 4em 0; }
     @media screen and (min-width: 480px) {
       .page-content .post .related-posts {
-        margin-top: 6em; } }
+        margin: 4em 0 2em 0; } }
+    .page-content .post .related-posts strong {
+      display: block;
+      margin: 0 0 1.5em; }
+    .page-content .post .related-posts li {
+      list-style: none;
+      margin: 0.5em 0; }
   .page-content .post .disqus {
     float: left;
     display: block;
