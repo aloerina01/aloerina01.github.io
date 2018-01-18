@@ -31,3 +31,8 @@ publishされたものがmasterブランチにpushされ、それがGithub Pages
 
 
 ~~See: [Using Jekyll plugins on GitHub Pages](http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html)~~
+
+
+## Copyright
+
+Copyright since 2016 [aloerina](https://twitter.com/aloerina_) All Rights Reserved.
