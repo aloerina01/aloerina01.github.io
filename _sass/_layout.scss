@@ -117,9 +117,10 @@ pre code.hljs {
   }
   // Nav menu
   .navigation-wrapper {
-  	@include outer-container;
+    @include outer-container;
     @include clearfix;
     position: relative;
+    -webkit-tap-highlight-color:rgba(0,0,0,0);  
   }
   .logo {
     float: left;
