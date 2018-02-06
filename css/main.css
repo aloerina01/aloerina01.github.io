@@ -360,7 +360,7 @@ pre code.hljs {
       .navigation .navigation-menu-button {
         display: none; } }
   .navigation .navigation-wrapper {
-    max-width: 48em;
+    max-width: 42em;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -443,7 +443,7 @@ pre code.hljs {
    * custom section
    */ }
   .page-content .wrapper {
-    max-width: 48em;
+    max-width: 42em;
     margin-left: auto;
     margin-right: auto;
     padding: 1em; }
@@ -460,7 +460,7 @@ pre code.hljs {
     .page-content .post-link:hover {
       color: #F06292; }
   .page-content .post-meta {
-    max-width: 48em;
+    max-width: 42em;
     margin-left: auto;
     margin-right: auto;
     color: #90A4AE; }
@@ -512,6 +512,14 @@ pre code.hljs {
     margin-bottom: 1em; }
   .page-content .post .post-header-container .scrim {
     padding: 2em 1em 1em 1em; }
+  .page-content .post .post-header-container .post-header {
+    max-width: 42em;
+    margin-left: auto;
+    margin-right: auto; }
+    .page-content .post .post-header-container .post-header::after {
+      clear: both;
+      content: "";
+      display: table; }
   .page-content .post .post-meta {
     padding-bottom: 1em; }
     .page-content .post .post-meta .post-categories {
@@ -671,7 +679,7 @@ pre code.hljs {
     .site-footer a:active, .site-footer a:focus {
       outline: none; }
   .site-footer .wrapper {
-    max-width: 48em;
+    max-width: 42em;
     margin-left: auto;
     margin-right: auto; }
     .site-footer .wrapper::after {
