@@ -9,6 +9,7 @@ $b2: 768px;
 $tablet: $b2;
 $b1: 960px;
 $desktop: $b1;
+$pc-max-width: 42em;
 
 /*
 *	Globals
@@ -117,7 +118,7 @@ pre code.hljs {
   }
   // Nav menu
   .navigation-wrapper {
-    @include outer-container;
+    @include outer-container($pc-max-width);
     @include clearfix;
     position: relative;
     -webkit-tap-highlight-color:rgba(0,0,0,0);  
@@ -194,7 +195,7 @@ pre code.hljs {
 */
 .page-content {
 	.wrapper {
-		@include outer-container;
+		@include outer-container($pc-max-width);
 		padding: 1em;
 	}
 	/*
@@ -214,7 +215,7 @@ pre code.hljs {
 		}
 	}
 	.post-meta {
-		@include outer-container;
+		@include outer-container($pc-max-width);
 		// padding: 1em 0;
 		color: $blue-gray-300;
 		.post-date {
@@ -269,6 +270,9 @@ pre code.hljs {
 		.post-header-container {
 			.scrim {
 				padding: 2em 1em 1em 1em;
+			}
+			.post-header {
+				@include outer-container($pc-max-width);
 			}
 		}
 		.post-meta {
@@ -458,7 +462,7 @@ pre code.hljs {
 	  }
 	}
 	.wrapper {
-		@include outer-container;
+		@include outer-container($pc-max-width);
 	}
 	.footer-heading {
 
