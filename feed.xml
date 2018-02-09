@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-02-06T18:15:17+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-02-09T18:10:18+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">トラブルシューティングメモを晒してみる webpack動的module編</title><link href="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる  webpack動的module編" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/webpack/2017/11/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
 
 &lt;p&gt;PCのリニューアルにつき、旧PCのローカルに残ってたメモやらブログ用下書きの整理をしていたら、かつて自分がハマったトラブルの対応時のメモが発掘されました。読み返してみたら懐かしい気持ちになれたり、当時考えていたことが思い出せたりといいことが多かったので、晒してみようと思います。&lt;/p&gt;
@@ -1702,18 +1702,18 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 
 &lt;h3 id=&quot;tips-enumobjectをつくる-enumbuilder&quot;&gt;[Tips] EnumObjectをつくる！ EnumBuilder&lt;/h3&gt;
 
-&lt;p&gt;Enumの定義にオブジェクトを使うことケース。よくあります。&lt;br /&gt;
+&lt;p&gt;Enumの定義にオブジェクトを使うケース、よくありますよね。  
 あるオブジェクトがEnumである以上、&lt;strong&gt;値が書き換えられないこと&lt;/strong&gt;が厳密に管理されていると良いです。ということで、オブジェクトがEnumとして生まれ変わる&lt;code class=&quot;highlighter-rouge&quot;&gt;EnumBuilder&lt;/code&gt;をつくってみました。
 &lt;script src=&quot;https://gist.github.com/aloerina01/9c931d3918242767b9c9729a63b0952f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;set / delete&lt;/code&gt;ができないオブジェクトにする&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;して&lt;code class=&quot;highlighter-rouge&quot;&gt;Type.Inport&lt;/code&gt;のようにスタティックアクセス風に使える&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;して&lt;code class=&quot;highlighter-rouge&quot;&gt;Type.INSERT&lt;/code&gt;のようにスタティックアクセス風に使える&lt;/li&gt;
   &lt;li&gt;既に作られているEnum用オブジェクトにも簡単に適用できる&lt;/li&gt;
   &lt;li&gt;オブジェクトの中にオブジェクトが入れ子になるケースは想定してない&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;といったことを満たす仕様にしたくてこのような形にしました。ただ、渡すオプションがこれ以上増えなさそうなのでBuilderパターンにするのは過剰な実装だったかもしれません。すみません好みです🙇&lt;/p&gt;
+&lt;p&gt;といったことを満たす仕様にしたくてこのような形にしました。&lt;/p&gt;
 
 &lt;h3 id=&quot;tips-用途別に制約付きmoduleを定義してクラスベースな実装をする&quot;&gt;[Tips] 用途別に制約付きModuleを定義してクラスベースな実装をする！&lt;/h3&gt;
 
@@ -1727,7 +1727,7 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;こうなってしまうと悲惨なので😭、&lt;strong&gt;Module毎の性質に応じて機能を制約し、不本意な使われ方を防ぐ&lt;/strong&gt;ため、&lt;/p&gt;
+&lt;p&gt;こうなってしまうと悲惨なので、&lt;strong&gt;Module毎の性質に応じて機能を制約し、不本意な使われ方を防ぐ&lt;/strong&gt;ため、&lt;/p&gt;
 
 &lt;ol&gt;
   &lt;li&gt;Private変数を持つModule&lt;/li&gt;
