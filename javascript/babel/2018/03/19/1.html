@@ -459,12 +459,12 @@
     <tr>
       <td style="text-align: center">require babel-polyfill</td>
       <td style="text-align: center">全polyfillを利用できる<br /> 必要な分だけ入れられる</td>
-      <td style="text-align: center">二重読み込み制約のリスクがある<br /> グローバルが汚染される</td>
+      <td style="text-align: center">二重読み込みのリスクがある<br /> グローバルが汚染される</td>
     </tr>
     <tr>
       <td style="text-align: center">webpackで結合</td>
       <td style="text-align: center">二重読み込みのリスクがない<br /> 全polyfillを利用できる</td>
-      <td style="text-align: center">useBuiltIns オプションが効かない<br /> グローバルが汚染される</td>
+      <td style="text-align: center">useBuiltInsが効かない<br /> グローバルが汚染される</td>
     </tr>
     <tr>
       <td style="text-align: center">runtime transform</td>
