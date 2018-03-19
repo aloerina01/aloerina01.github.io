@@ -477,8 +477,8 @@
 <h3 id="細かい機能を上手く使いこなしたい">細かい機能を上手く使いこなしたい</h3>
 
 <h4 id="設定はショートハンドで書けるよ">設定はショートハンドで書けるよ</h4>
-<p><code class="highlighter-rouge">babel-preset-hoge</code>を npm install しているのに、設定ファイルには<code class="highlighter-rouge">"presets": [ "hoge" ]</code>って書くから分かりにくいな…と思ってました。これは<strong>presetとpluginは<code class="highlighter-rouge">babel-preset-</code> <code class="highlighter-rouge">babel-plugin-</code>の部分を省略</strong>して書くことができる故でした。<br />
-なので<code class="highlighter-rouge">"presets": [ "babel-preset-hoge" ]</code>と書いてもOK。ちなみにパッケージスコープの場合は<code class="highlighter-rouge">"presets": ["@org/hoge"]</code>という感じ。</p>
+<p><code class="highlighter-rouge">babel-preset-hoge</code>を npm install しているのに、設定ファイルには<code class="highlighter-rouge">"presets": ["hoge"]</code>って書くから分かりにくいな…と思ってました。これは<strong>presetとpluginは<code class="highlighter-rouge">babel-preset-</code> <code class="highlighter-rouge">babel-plugin-</code>の部分を省略</strong>して書くことができる故でした。<br />
+なので<code class="highlighter-rouge">"presets": ["babel-preset-hoge"]</code>と書いてもOK。ちなみにパッケージスコープの場合は<code class="highlighter-rouge">"presets": ["@org/hoge"]</code>という感じ。</p>
 
 <h4 id="babel-preset-esxxxx-はいくつを使えばいいんだ">babel-preset-esXXXX はいくつを使えばいいんだ</h4>
 <p>過去に書いたbabelrcを見てみたら<code class="highlighter-rouge">babel-preset-es2015</code>を入れていることがほとんどだったのですが、ES2016、ES2017と仕様が増えている現在では<code class="highlighter-rouge">babel-preset-env</code>を入れておくのがベターのようです。</p>
