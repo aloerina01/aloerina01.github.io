@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-19T14:38:08+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-19T15:53:33+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">Babelの設定を見直すための逆引きガイド</title><link href="https://aloerina01.github.io/javascript/babel/2018/03/19/1.html" rel="alternate" type="text/html" title="Babelの設定を見直すための逆引きガイド" /><published>2018-03-19T00:00:00+09:00</published><updated>2018-03-19T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/babel/2018/03/19/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/babel/2018/03/19/1.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#babelって結局なんなんだ&quot; id=&quot;markdown-toc-babelって結局なんなんだ&quot;&gt;Babelって結局なんなんだ&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#定義&quot; id=&quot;markdown-toc-定義&quot;&gt;定義&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#構成要素&quot; id=&quot;markdown-toc-構成要素&quot;&gt;構成要素&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#babel-core&quot; id=&quot;markdown-toc-babel-core&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/core-packages/&quot;&gt;babel-core&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#babel-polyfill&quot; id=&quot;markdown-toc-babel-polyfill&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/usage/polyfill/&quot;&gt;babel-polyfill&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#plugins&quot; id=&quot;markdown-toc-plugins&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/plugins/&quot;&gt;Plugins&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#babel-core&quot; id=&quot;markdown-toc-babel-core&quot;&gt;babel-core&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#babel-polyfill&quot; id=&quot;markdown-toc-babel-polyfill&quot;&gt;babel-polyfill&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#plugins&quot; id=&quot;markdown-toc-plugins&quot;&gt;Plugins&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -62,14 +62,14 @@
 &lt;h4 id=&quot;構成要素&quot;&gt;構成要素&lt;/h4&gt;
 &lt;p&gt;ドキュメントを見る限りBabelは大きく3要素から成ります。&lt;/p&gt;
 
-&lt;h5 id=&quot;babel-core&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/core-packages/&quot;&gt;babel-core&lt;/a&gt;&lt;/h5&gt;
+&lt;h5 id=&quot;babel-core&quot;&gt;babel-core&lt;/h5&gt;
 &lt;p&gt;&lt;strong&gt;コンパイル処理を行うBabelの本体&lt;/strong&gt;です。&lt;/p&gt;
 
-&lt;h5 id=&quot;babel-polyfill&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/usage/polyfill/&quot;&gt;babel-polyfill&lt;/a&gt;&lt;/h5&gt;
+&lt;h5 id=&quot;babel-polyfill&quot;&gt;babel-polyfill&lt;/h5&gt;
 &lt;p&gt;Babelが用意してくれているpolyfill集で、&lt;a href=&quot;https://github.com/zloirock/core-js&quot;&gt;core-js&lt;/a&gt; と &lt;a href=&quot;https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js&quot;&gt;regenerator runtime&lt;/a&gt; を内包しています。これら2つはそれぞれ独立した(Bebelとは関係ない外部の)poryfill集です。&lt;br /&gt;
 要は&lt;strong&gt;世の中のイケてるporyfillをまとめて提供してくれるものがbabel-polyfillだ&lt;/strong&gt;という認識でいいと思います。&lt;/p&gt;
 
-&lt;h5 id=&quot;plugins&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/plugins/&quot;&gt;Plugins&lt;/a&gt;&lt;/h5&gt;
+&lt;h5 id=&quot;plugins&quot;&gt;Plugins&lt;/h5&gt;
 &lt;p&gt;「設定に応じてJavaScriptをコンパイルしてくれるもの」の「設定に応じて」の部分を担当するのがpluginです。&lt;strong&gt;「どうコンパイルするか」を定義している&lt;/strong&gt;もので、よく見かける&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-es2015&lt;/code&gt;などがこれに該当します。&lt;/p&gt;
 
 &lt;p&gt;※ 正確には、複数のpluginを特定の用途に合わせてセットにしたものが「babel-preset-xxxx」です。よくつかうplugin集をpresetとして提供してくれているわけです。&lt;/p&gt;

@@ -208,9 +208,9 @@
   <li><a href="#babelって結局なんなんだ" id="markdown-toc-babelって結局なんなんだ">Babelって結局なんなんだ</a>    <ul>
       <li><a href="#定義" id="markdown-toc-定義">定義</a></li>
       <li><a href="#構成要素" id="markdown-toc-構成要素">構成要素</a>        <ul>
-          <li><a href="#babel-core" id="markdown-toc-babel-core"><a href="http://babeljs.io/docs/core-packages/">babel-core</a></a></li>
-          <li><a href="#babel-polyfill" id="markdown-toc-babel-polyfill"><a href="http://babeljs.io/docs/usage/polyfill/">babel-polyfill</a></a></li>
-          <li><a href="#plugins" id="markdown-toc-plugins"><a href="http://babeljs.io/docs/plugins/">Plugins</a></a></li>
+          <li><a href="#babel-core" id="markdown-toc-babel-core">babel-core</a></li>
+          <li><a href="#babel-polyfill" id="markdown-toc-babel-polyfill">babel-polyfill</a></li>
+          <li><a href="#plugins" id="markdown-toc-plugins">Plugins</a></li>
         </ul>
       </li>
     </ul>
@@ -267,14 +267,14 @@
 <h4 id="構成要素">構成要素</h4>
 <p>ドキュメントを見る限りBabelは大きく3要素から成ります。</p>
 
-<h5 id="babel-core"><a href="http://babeljs.io/docs/core-packages/">babel-core</a></h5>
+<h5 id="babel-core">babel-core</h5>
 <p><strong>コンパイル処理を行うBabelの本体</strong>です。</p>
 
-<h5 id="babel-polyfill"><a href="http://babeljs.io/docs/usage/polyfill/">babel-polyfill</a></h5>
+<h5 id="babel-polyfill">babel-polyfill</h5>
 <p>Babelが用意してくれているpolyfill集で、<a href="https://github.com/zloirock/core-js">core-js</a> と <a href="https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js">regenerator runtime</a> を内包しています。これら2つはそれぞれ独立した(Bebelとは関係ない外部の)poryfill集です。<br />
 要は<strong>世の中のイケてるporyfillをまとめて提供してくれるものがbabel-polyfillだ</strong>という認識でいいと思います。</p>
 
-<h5 id="plugins"><a href="http://babeljs.io/docs/plugins/">Plugins</a></h5>
+<h5 id="plugins">Plugins</h5>
 <p>「設定に応じてJavaScriptをコンパイルしてくれるもの」の「設定に応じて」の部分を担当するのがpluginです。<strong>「どうコンパイルするか」を定義している</strong>もので、よく見かける<code class="highlighter-rouge">babel-preset-es2015</code>などがこれに該当します。</p>
 
 <p>※ 正確には、複数のpluginを特定の用途に合わせてセットにしたものが「babel-preset-xxxx」です。よくつかうplugin集をpresetとして提供してくれているわけです。</p>
