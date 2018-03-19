@@ -1,5 +1,314 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-02-09T18:10:18+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">トラブルシューティングメモを晒してみる webpack動的module編</title><link href="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる  webpack動的module編" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/webpack/2017/11/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-19T13:20:25+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">Babelの設定を見直すための逆引き利用ガイド</title><link href="https://aloerina01.github.io/javascript/babel/2018/03/19/1.html" rel="alternate" type="text/html" title="Babelの設定を見直すための逆引き利用ガイド" /><published>2018-03-19T00:00:00+09:00</published><updated>2018-03-19T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/babel/2018/03/19/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/babel/2018/03/19/1.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#babelって結局なんなんだ&quot; id=&quot;markdown-toc-babelって結局なんなんだ&quot;&gt;Babelって結局なんなんだ&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#定義&quot; id=&quot;markdown-toc-定義&quot;&gt;定義&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#構成要素&quot; id=&quot;markdown-toc-構成要素&quot;&gt;構成要素&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#babel-core&quot; id=&quot;markdown-toc-babel-core&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/core-packages/&quot;&gt;babel-core&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#babel-polyfill&quot; id=&quot;markdown-toc-babel-polyfill&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/usage/polyfill/&quot;&gt;babel-polyfill&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#plugins&quot; id=&quot;markdown-toc-plugins&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/plugins/&quot;&gt;Plugins&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#最新の記法でjsを書くにはどうしたらいいんだ&quot; id=&quot;markdown-toc-最新の記法でjsを書くにはどうしたらいいんだ&quot;&gt;最新の記法でJSを書くにはどうしたらいいんだ&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#最低限の設定方法&quot; id=&quot;markdown-toc-最低限の設定方法&quot;&gt;最低限の設定方法&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#1-installする&quot; id=&quot;markdown-toc-1-installする&quot;&gt;1. Installする&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#2-babelrcに設定を書く&quot; id=&quot;markdown-toc-2-babelrcに設定を書く&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;に設定を書く&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#3-polyfillをrequireする&quot; id=&quot;markdown-toc-3-polyfillをrequireする&quot;&gt;3. polyfillをrequireする&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#4-babeる&quot; id=&quot;markdown-toc-4-babeる&quot;&gt;4. Babeる&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#webpackと組み合わせた実践例&quot; id=&quot;markdown-toc-webpackと組み合わせた実践例&quot;&gt;Webpackと組み合わせた実践例&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#キホンのキ&quot; id=&quot;markdown-toc-キホンのキ&quot;&gt;キホンのキ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#polyfillの機能を制限なく使いたいでも無駄なものは入れたくない&quot; id=&quot;markdown-toc-polyfillの機能を制限なく使いたいでも無駄なものは入れたくない&quot;&gt;polyfillの機能を制限なく使いたい、でも無駄なものは入れたくない&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot; id=&quot;markdown-toc-二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot;&gt;「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot; id=&quot;markdown-toc-グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot;&gt;グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#早見表&quot; id=&quot;markdown-toc-早見表&quot;&gt;早見表&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#細かい機能を上手く使いこなしたい&quot; id=&quot;markdown-toc-細かい機能を上手く使いこなしたい&quot;&gt;細かい機能を上手く使いこなしたい&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#設定はショートハンドで書けるよ&quot; id=&quot;markdown-toc-設定はショートハンドで書けるよ&quot;&gt;設定はショートハンドで書けるよ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#babel-preset-esxxxx-はいくつを使えばいいんだ&quot; id=&quot;markdown-toc-babel-preset-esxxxx-はいくつを使えばいいんだ&quot;&gt;babel-preset-esXXXX はいくつを使えばいいんだ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#es2015のソースをそのままminifyできるってよ&quot; id=&quot;markdown-toc-es2015のソースをそのままminifyできるってよ&quot;&gt;ES2015+のソースをそのままminifyできるってよ&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;babelって結局なんなんだ&quot;&gt;Babelって結局なんなんだ&lt;/h3&gt;
+
+&lt;h4 id=&quot;定義&quot;&gt;定義&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Babel is a JavaScript compiler.
+と、公式にでっかく書いてありますね。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;さらにドキュメントを読み進めていくと、&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Now, out of the box Babel doesn’t do anything. It basically acts like const babel = code =&amp;gt; code;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;と書いてあります。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;babel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;基本は受け取ったコードをそのまま吐き出すだけ、どう変換させるかは設定次第ということですね。つまり&lt;strong&gt;設定に応じてJavaScriptをコンパイルしてくれるもの&lt;/strong&gt;というのがBabelの定義のようです。  (正確にはトランスパイルだろと言いたいところですが、この記事では公式にならってコンパイルと表現します)&lt;/p&gt;
+
+&lt;h4 id=&quot;構成要素&quot;&gt;構成要素&lt;/h4&gt;
+&lt;p&gt;ドキュメントを見る限りBabelは大きく3要素から成ります。&lt;/p&gt;
+
+&lt;h5 id=&quot;babel-core&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/core-packages/&quot;&gt;babel-core&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;strong&gt;コンパイル処理を行うBabelの本体&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;h5 id=&quot;babel-polyfill&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/usage/polyfill/&quot;&gt;babel-polyfill&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;Babelが用意してくれているpolyfill集で、&lt;a href=&quot;https://github.com/zloirock/core-js&quot;&gt;core-js&lt;/a&gt; と &lt;a href=&quot;https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js&quot;&gt;regenerator runtime&lt;/a&gt; を内包しています。これら2つはそれぞれ独立した(Bebelとは関係ない外部の)poryfill集です。&lt;br /&gt;
+要は&lt;strong&gt;世の中のイケてるporyfillをまとめて提供してくれるものがbabel-polyfillだ&lt;/strong&gt;という認識でいいと思います。&lt;/p&gt;
+
+&lt;h5 id=&quot;plugins&quot;&gt;&lt;a href=&quot;http://babeljs.io/docs/plugins/&quot;&gt;Plugins&lt;/a&gt;&lt;/h5&gt;
+&lt;p&gt;「設定に応じてJavaScriptをコンパイルしてくれるもの」の「設定に応じて」の部分を担当するのがpluginです。&lt;strong&gt;「どうコンパイルするか」を定義している&lt;/strong&gt;もので、よく見かける&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-es2015&lt;/code&gt;などがこれに該当します。&lt;/p&gt;
+
+&lt;p&gt;※ 正確には、複数のpluginを特定の用途に合わせてセットにしたものが「babel-preset-xxxx」です。よくつかうplugin集をpresetとして提供してくれているわけです。&lt;/p&gt;
+
+&lt;h3 id=&quot;最新の記法でjsを書くにはどうしたらいいんだ&quot;&gt;最新の記法でJSを書くにはどうしたらいいんだ&lt;/h3&gt;
+&lt;p&gt;Babelのドキュメントを読んだ結果感じたことはこれでした。結局どうすりゃいいんだと。&lt;/p&gt;
+
+&lt;p&gt;ここでおさらいしておきます。&lt;br /&gt;
+最新の記法でJSを書く際には、ES2015〜で登場した&lt;strong&gt;新しい文法&lt;/strong&gt;と&lt;strong&gt;新しい関数&lt;/strong&gt;を使うことになります。前者はアロー関数やクラス記法などで、後者は&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Object.assign&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Array.prototype.find&lt;/code&gt;などです。&lt;/p&gt;
+
+&lt;p&gt;「最新の記法でJSを書く」＝「この2つを含むソースをBabeる(Babelでコンパイルする)」 ということになりますね。それには以下の2つのことが必要です。&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;などのplugin・presetを使って新しい文法をコンパイルできるようにする&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;などのpolyfillを入れて新しい関数が動くようにする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;最低限の設定方法&quot;&gt;最低限の設定方法&lt;/h4&gt;
+&lt;p&gt;ここまでの内容をCLIで実行するための最低限の手順は以下のようになります。&lt;/p&gt;
+
+&lt;h5 id=&quot;1-installする&quot;&gt;1. Installする&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D babel-cli babel-preset-env 
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -S babel-polyfill
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;2-babelrcに設定を書く&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;に設定を書く&lt;/h5&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;3-polyfillをrequireする&quot;&gt;3. polyfillをrequireする&lt;/h5&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// input.js&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 以下実装&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;4-babeる&quot;&gt;4. Babeる&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npx babel ./input.js -o ./output.js
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これが基本の使い方です。これを応用して、JSXをコンパイルさせたかったら&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-react&lt;/code&gt;を利用したり、bundleさせたかったらWebpackなどのツールと組み合わせたり…といったカスタマイズをしていく感じになると思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;webpackと組み合わせた実践例&quot;&gt;Webpackと組み合わせた実践例&lt;/h3&gt;
+
+&lt;p&gt;ここからは「ES02015+の記法で書いたJSをWebpackでbundleする」というよくあるパターンの実践例です。&lt;/p&gt;
+
+&lt;h4 id=&quot;キホンのキ&quot;&gt;キホンのキ&lt;/h4&gt;
+&lt;p&gt;まず基礎ですが、WebpackでBabelを使うには&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-loader&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-core&lt;/code&gt;を読み込みますよね。&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-loader&lt;/code&gt;はWebpackに「受け取ったコードをBabeってね」と指示を出すもので、指示に基づいて実際にBabeるのが&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-core&lt;/code&gt;、という感じです。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D babel-loader babel-core
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;webpack.config.js&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+      &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;js$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;na&quot;&gt;exclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/node_modules/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+      &lt;span class=&quot;na&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;babel-loader&quot;&lt;/span&gt; 
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;pluginの適用は上記の「最低限の設定」と同様に&lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;に書きます。polyfillの適用の仕方は3通りあるので、やりたいことベースで整理します。&lt;/p&gt;
+
+&lt;h4 id=&quot;polyfillの機能を制限なく使いたいでも無駄なものは入れたくない&quot;&gt;polyfillの機能を制限なく使いたい、でも無駄なものは入れたくない&lt;/h4&gt;
+&lt;p&gt;polyfillの対象となる機能には3つのタイプがあります。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;globals&lt;/strong&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise&lt;/code&gt;など新しいグローバルオブジェクト&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;native methods&lt;/strong&gt;&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Object.assign&lt;/code&gt;などの既存のグローバルオブジェクトに追加されたメソッド&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;instance methods&lt;/strong&gt; &lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Array.prototype.find&lt;/code&gt;などのインスタンスが持つメソッド&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらすべてを使うには&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;をbundleに含める&lt;/strong&gt;ことが必要です。それには&lt;strong&gt;entry pointとなるファイルの1行目&lt;/strong&gt;で&lt;strong&gt;1度だけ&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;を読み込みます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// CommonJS&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// ES6&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;「1度だけ」というのがとても重要で、&lt;strong&gt;複数回読み込むとpolyfillがぶっ壊れます&lt;/strong&gt;。あるHTMLで2つのjsファイルを読み込んでいて、それぞれで&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;を読み込んでいる場合もぶっ壊れます。とにかく2回読み込まれたらマズイのです。&lt;/p&gt;
+
+&lt;p&gt;この&lt;strong&gt;二重読み込み制約&lt;/strong&gt;にさえ気をつけていれば、この方法ですべてのpolyfillを利用することができます。加えて、&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;と組み合わせて利用する場合は、&lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#usebuiltins&quot;&gt;useBuiltIns&lt;/a&gt;オプションを設定することで&lt;strong&gt;全部入りの&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;を、必要なpolyfill(該当する&lt;code class=&quot;highlighter-rouge&quot;&gt;core-js&lt;/code&gt;のモジュール)のみに変換してくれます&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrc&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;useBuiltIns&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;app.js (entry point)&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// bundle前&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// bundle後 使っているものだけimportするように変換される&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'core-js/modules/es7.string.pad-start'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'core-js/modules/es7.string.pad-end'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;⭕：全polyfillを利用できる、必要な分だけ入れられる&lt;br /&gt;
+❌：二重読み込み制約のリスクがある、グローバルが汚染される&lt;/p&gt;
+
+&lt;h4 id=&quot;二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot;&gt;「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい&lt;/h4&gt;
+&lt;p&gt;WebpackとBabelを組み合わせる場合、二重読み込み制約のリスクを回避する方法があります。それはソース内でbabel-polyfillを読み込むのではなく、bundle時に&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;を結合する方法です。以下のように設定します。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;webpack.config.js&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;babel-polyfill&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./app.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;ただし、この方法は上述の&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションが効かなくなるので注意です。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;⭕：二重読み込みのリスクがない、全polyfillを利用できる&lt;br /&gt;
+❌：&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションが効かない、グローバルが汚染される&lt;/p&gt;
+
+&lt;h5 id=&quot;グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot;&gt;グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい&lt;/h5&gt;
+&lt;p&gt;ライブラリを実装する場合などでグローバルを汚染せずにES2015+の関数を利用したいときは、&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transform-runtime&lt;/code&gt;&lt;/strong&gt;pluginを使います。また、ひとつのアプリケーションで複数のJSファイルを読み込む場合など、polyfill読込が重複してしまうのを避けたいときにも&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transform-runtime&lt;/code&gt;&lt;/strong&gt;pluginが使えます。&lt;/p&gt;
+
+&lt;p&gt;これは&lt;strong&gt;ES2015+の関数を、&lt;code class=&quot;highlighter-rouge&quot;&gt;core-js&lt;/code&gt;のエイリアスである&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-runtime&lt;/code&gt;モジュールで書き換える&lt;/strong&gt;ものです。本来polyfillとは「そのままでは動かないコードを補うためのコード」を埋め込むものなので、対象コードそのものを書き換えてしまう&lt;code class=&quot;highlighter-rouge&quot;&gt;trunsform-runtime&lt;/code&gt;は正確にはpolyfillとは呼べないですが、おかげで上述の利点を得られるわけです。&lt;/p&gt;
+
+&lt;p&gt;そして、ここまでで勘の良い方はお気づきかもですが、&lt;strong&gt;instance methodsを利用できない&lt;/strong&gt;という制約がつきます。&lt;/p&gt;
+
+&lt;p&gt;設定するには、変換処理を行う&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-plugin-transform-runtime&lt;/code&gt;と、&lt;code class=&quot;highlighter-rouge&quot;&gt;core-js&lt;/code&gt;のエイリアスである&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-runtime&lt;/code&gt;を npm install します。後者はソースに含まれることになるので&lt;code class=&quot;highlighter-rouge&quot;&gt;--save&lt;/code&gt;オプションで。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D babel-plugin-transform-runtime
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -S babel-runtime
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrc&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;plugins&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;transform-runtime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;⭕：グローバルを汚染しない、使うものだけ置き換えられる&lt;br /&gt;
+❌：インスタンスメソッドは使えない&lt;/p&gt;
+
+&lt;p&gt;参考：&lt;a href=&quot;https://babeljs.io/docs/plugins/transform-runtime&quot;&gt;Runtime transform · Babel&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;早見表&quot;&gt;早見表&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;メリット&lt;/td&gt;
+      &lt;td&gt;デメリット&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:————————————:&lt;/td&gt;
+      &lt;td&gt;:————————————————————————:&lt;/td&gt;
+      &lt;td&gt;:——————————————————————:&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;require babel-polyfill&lt;/td&gt;
+      &lt;td&gt;全polyfillを利用できる  必要な分だけ入れられる&lt;/td&gt;
+      &lt;td&gt;二重読み込み制約のリスクがある  グローバルが汚染される&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;webpackで結合&lt;/td&gt;
+      &lt;td&gt;全polyfillを利用できる  二重読み込みのリスクがない&lt;/td&gt;
+      &lt;td&gt;useBuiltIns オプションが効かない  グローバルが汚染される&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;runtime transform&lt;/td&gt;
+      &lt;td&gt;グローバルを汚染しない  必要な分だけ変換される&lt;/td&gt;
+      &lt;td&gt;インスタンスメソッドのpolyfillは利用できない&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;細かい機能を上手く使いこなしたい&quot;&gt;細かい機能を上手く使いこなしたい&lt;/h3&gt;
+
+&lt;h4 id=&quot;設定はショートハンドで書けるよ&quot;&gt;設定はショートハンドで書けるよ&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-hoge&lt;/code&gt;を npm install しているのに、設定ファイルには&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;presets&quot;: [ &quot;hoge&quot; ]&lt;/code&gt;って書くから分かりにくいな…と思ってました。これは&lt;strong&gt;presetとpluginは&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;babel-plugin-&lt;/code&gt;の部分を省略&lt;/strong&gt;して書くことができる故でした。&lt;br /&gt;
+なので&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;presets&quot;: [ &quot;babel-preset-hoge&quot; ]&lt;/code&gt;と書いてもOK。ちなみにパッケージスコープの場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;presets&quot;: [&quot;@org/hoge&quot;]&lt;/code&gt;という感じ。&lt;/p&gt;
+
+&lt;h4 id=&quot;babel-preset-esxxxx-はいくつを使えばいいんだ&quot;&gt;babel-preset-esXXXX はいくつを使えばいいんだ&lt;/h4&gt;
+&lt;p&gt;過去に書いたbabelrcを見てみたら&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-es2015&lt;/code&gt;を入れていることがほとんどだったのですが、ES2016、ES2017と仕様が増えている現在では&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;を入れておくのがベターのようです。&lt;/p&gt;
+
+&lt;p&gt;これは何のオプションもなしで利用すると&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-latest&lt;/code&gt;と同じように機能し、設定次第で&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-es2015&lt;/code&gt;と同様の動きをさせることもできます。&lt;/p&gt;
+
+&lt;p&gt;また、上述した&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;のような便利なオプションを使うことができる利点があります。個人的にありがたいと思っているのが&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#targets&quot;&gt;Env preset · Babel&lt;/a&gt;&lt;/strong&gt;オプションです。ブラウザやNodeのバージョンを指定できるオプションで、指定されたバージョンに必要なpolyfillのみを入れてくれるようになります。&lt;/p&gt;
+
+&lt;p&gt;参考： &lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#options&quot;&gt;Env preset # Options&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;es2015のソースをそのままminifyできるってよ&quot;&gt;ES2015+のソースをそのままminifyできるってよ&lt;/h4&gt;
+&lt;p&gt;これはBabelの公式ブログ読んでて見つけて得た程度の知識なのですが、「古いブラウザで動かす必要がないならそのまま圧縮すれば？」ということで&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/blog/2016/08/30/babili&quot;&gt;Babili (babel-minify) · Babel&lt;/a&gt;&lt;/strong&gt;というものがあるそうです。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Install&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D babel-core babel-loader babel-preset-babili
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrc&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;babili&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;uglify-esでサポートされていない構文であっても圧縮可能なので、その点は利がありそうです。ただ、執筆時点(2018/03/16)ではBeta版ということもあって、個人的にはまだ使うことはなさそうです。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;公式ドキュメントを読み返してみたらけっこう知らないことがありました。それでも何となく雰囲気で使えていたので大きく困ることはなかったのですが、頭が整理されて今後新しいプロジェクトを立ち上げるときに迷わなくて済みそうなので整理した甲斐がありそうです。&lt;/p&gt;
+
+&lt;p&gt;それと公式ドキュメントがけっこう説明不足感が強くて、しかも日本語の資料もそんなに多く見当たらなくて、整理に時間かかり苦労したので、同じ苦労を誰かがせずに済むといいなと思います。  間違っているところを見つけた方は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">トラブルシューティングメモを晒してみる webpack動的module編</title><link href="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる  webpack動的module編" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/webpack/2017/11/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
 
 &lt;p&gt;PCのリニューアルにつき、旧PCのローカルに残ってたメモやらブログ用下書きの整理をしていたら、かつて自分がハマったトラブルの対応時のメモが発掘されました。読み返してみたら懐かしい気持ちになれたり、当時考えていたことが思い出せたりといいことが多かったので、晒してみようと思います。&lt;/p&gt;
 
@@ -2033,79 +2342,4 @@ templateオプションは使いつつプリコンパイルも使う。できる
 &lt;h3 id=&quot;おしまい&quot;&gt;おしまい&lt;/h3&gt;
 
 &lt;p&gt;長くなりました。&lt;br /&gt;
-分かりにくい部分や間違っている部分があれば是非&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえおき</summary></entry><entry><title type="html">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</title><link href="https://aloerina01.github.io/javascript/react/2017/02/28/1.html" rel="alternate" type="text/html" title="Reactを秒速で使い始められるcreate-react-appの使い方と使い心地" /><published>2017-02-28T00:00:00+09:00</published><updated>2017-02-28T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/react/2017/02/28/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/react/2017/02/28/1.html">&lt;h3 id=&quot;what-is-create-react-app&quot;&gt;What is create-react-app&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/facebookincubator/create-react-app&quot;&gt;GitHub - facebookincubator/create-react-app&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Create React apps with no build configuration.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;イマドキのJS開発環境でWebアプリを作ろうと思ったらビルド環境が必要ですが、それも含めて、Reactを使った開発環境の構築をしてくれるのがこのcreate-react-appです。create-react-appの依存関係に含まれる&lt;code class=&quot;highlighter-rouge&quot;&gt;react-scripts&lt;/code&gt;というモジュールがビルド周りを担っています。&lt;/p&gt;
-
-&lt;h3 id=&quot;how-to-use&quot;&gt;How to use&lt;/h3&gt;
-
-&lt;h4 id=&quot;セットアップ&quot;&gt;セットアップ&lt;/h4&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm i -g create-react-app         &lt;span class=&quot;c&quot;&gt;# create-react-appのインストール&lt;/span&gt;
-
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;create-react-app &amp;lt;project_name&amp;gt;   &lt;span class=&quot;c&quot;&gt;# 任意の名前のReactApplicationを作成してくれる&lt;/span&gt;
-
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm start                         &lt;span class=&quot;c&quot;&gt;# ビルド&amp;amp;ローカルサーバ起動(npmを利用する場合)&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;yarn start                        &lt;span class=&quot;c&quot;&gt;# 同上(yarnを利用する場合)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;ビルド&quot;&gt;ビルド&lt;/h4&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm run build    &lt;span class=&quot;c&quot;&gt;# npmを利用する場合&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;yarn run build   &lt;span class=&quot;c&quot;&gt;# yarnを利用する場合&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;how-do-feel&quot;&gt;How do feel&lt;/h3&gt;
-
-&lt;p&gt;コンセプトの通り簡単にReact Applicationの土台を用意することができるので、これからReactを実用として試したいという場面でとても役立ちました。フォルダ構成やビルドについても用意されているものに従うだけなので悩む必要がなく、Reactのキャッチアップやfluxライブラリの検証にも使えました。&lt;/p&gt;
-
-&lt;p&gt;そのお手軽さの反面、どうしても融通がききにくい部分がありました。特にビルド周りがガチガチに作り込まれていてカスタマイズできずに苦労したのはいい思い出…じゃない(´・ω・｀)&lt;/p&gt;
-
-&lt;h4 id=&quot;ビルド成果物に強制的にタグ番号が振られて困る&quot;&gt;ビルド成果物に強制的にタグ番号が振られて困る&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm start&lt;/code&gt;を叩くと、手元でお手軽にローカルサーバを起動し動作確認することができます。ちょっとの確認ならこれでいいのですが、複数人で開発している場合は開発環境用のサーバに適用(bundleされたjsを配信する等)して動作確認する場面もあるでしょう。&lt;/p&gt;
-
-&lt;p&gt;で、いざバンドル用のコマンド&lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;を叩いてみると、&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle.3969bbc2.js&lt;/code&gt;といった具合にタグ番号が振られます。これが迷惑。HTML側でいちいち&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt;タグを修正しないといけません。&lt;/p&gt;
-
-&lt;p&gt;リリースするjsファイルはそれでいいけど、開発環境に適用するjsファイルにはそんなのいらんのよ…(´・ω・｀)&lt;/p&gt;
-
-&lt;h4 id=&quot;ビルド結果が手元での実行時とciでの実行時で違って困る&quot;&gt;ビルド結果が手元での実行時とCIでの実行時で違って困る&lt;/h4&gt;
-
-&lt;p&gt;CircleCIに&lt;code class=&quot;highlighter-rouge&quot;&gt;npm run build&lt;/code&gt;させたところ、たくさんのWarningと「Failed to compile」の文字が。手元で同コマンドを叩いても何も起きなかったくせに！！&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Create React App treats warnings as failures in the build.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;CIでビルドさせるときはワーニングでもビルド失敗として扱うようです。&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;env&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CI&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compilation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;warnings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;printErrors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Failed to compile.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stats&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compilation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;warnings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-     &lt;span class=&quot;nx&quot;&gt;process&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;react-scripts&lt;/code&gt;のソースにもこの通り。&lt;/p&gt;
-
-&lt;p&gt;ここまでは親切でありがたいのだけれど、せめて手元でビルドしたときに同じWarningを表示しよう。なぜ手元ではWarning出してくれないんだ…(´・ω・｀)&lt;/p&gt;
-
-&lt;h4 id=&quot;つまりビルドの中身を簡単に変えられない&quot;&gt;つまりビルドの中身を簡単に変えられない&lt;/h4&gt;
-
-&lt;p&gt;ここまでで何となく伝わるかと思いますが、&lt;code class=&quot;highlighter-rouge&quot;&gt;react-scripts&lt;/code&gt;モジュールには&lt;strong&gt;カスタマイズの余地があまりありません&lt;/strong&gt;。内部的にWebpackを使っているのですが、&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;を外から上書く機構などがなく、&lt;code class=&quot;highlighter-rouge&quot;&gt;process.env&lt;/code&gt;に変数を追加してビルド時にゴニョゴニョしたい…みたいなことがサッとできずに少し困りました。&lt;br /&gt;
-(この話： &lt;a href=&quot;https://aloerina01.github.io/javascript/2017/02/22/1.html&quot;&gt;JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法&lt;/a&gt;)&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Reactを使ったWebApplicationをさっと立ち上げるには便利ですが、ビルド周りの融通がききにくい&lt;/strong&gt;、ということに尽きます。&lt;/p&gt;
-
-&lt;p&gt;とは言え、工夫すればいい感じにビルドすることはできるし、そこでゴニョゴニョ工夫するくらいならイチから&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;書くなりして自前の環境を用意すればいいし、どうとでもなります。&lt;/p&gt;
-
-&lt;p&gt;こういうのはとっつきやすくて手っ取り早いのがいいところだと思うのであります。以上。&lt;/p&gt;</content><author><name></name></author><summary type="html">What is create-react-app</summary></entry></feed>
+分かりにくい部分や間違っている部分があれば是非&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえおき</summary></entry></feed>
