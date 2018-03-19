@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-19T13:20:25+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-19T13:39:21+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">Babelの設定を見直すための逆引き利用ガイド</title><link href="https://aloerina01.github.io/javascript/babel/2018/03/19/1.html" rel="alternate" type="text/html" title="Babelの設定を見直すための逆引き利用ガイド" /><published>2018-03-19T00:00:00+09:00</published><updated>2018-03-19T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/babel/2018/03/19/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/babel/2018/03/19/1.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#babelって結局なんなんだ&quot; id=&quot;markdown-toc-babelって結局なんなんだ&quot;&gt;Babelって結局なんなんだ&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#定義&quot; id=&quot;markdown-toc-定義&quot;&gt;定義&lt;/a&gt;&lt;/li&gt;
@@ -15,7 +15,7 @@
           &lt;li&gt;&lt;a href=&quot;#1-installする&quot; id=&quot;markdown-toc-1-installする&quot;&gt;1. Installする&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#2-babelrcに設定を書く&quot; id=&quot;markdown-toc-2-babelrcに設定を書く&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;に設定を書く&lt;/a&gt;&lt;/li&gt;
           &lt;li&gt;&lt;a href=&quot;#3-polyfillをrequireする&quot; id=&quot;markdown-toc-3-polyfillをrequireする&quot;&gt;3. polyfillをrequireする&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#4-babeる&quot; id=&quot;markdown-toc-4-babeる&quot;&gt;4. Babeる&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#4-babeるbabelでコンパイルする&quot; id=&quot;markdown-toc-4-babeるbabelでコンパイルする&quot;&gt;4. Babeる(Babelでコンパイルする)&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -23,10 +23,8 @@
   &lt;li&gt;&lt;a href=&quot;#webpackと組み合わせた実践例&quot; id=&quot;markdown-toc-webpackと組み合わせた実践例&quot;&gt;Webpackと組み合わせた実践例&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#キホンのキ&quot; id=&quot;markdown-toc-キホンのキ&quot;&gt;キホンのキ&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#polyfillの機能を制限なく使いたいでも無駄なものは入れたくない&quot; id=&quot;markdown-toc-polyfillの機能を制限なく使いたいでも無駄なものは入れたくない&quot;&gt;polyfillの機能を制限なく使いたい、でも無駄なものは入れたくない&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot; id=&quot;markdown-toc-二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot;&gt;「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot; id=&quot;markdown-toc-グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot;&gt;グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot; id=&quot;markdown-toc-二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot;&gt;「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot; id=&quot;markdown-toc-グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot;&gt;グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#早見表&quot; id=&quot;markdown-toc-早見表&quot;&gt;早見表&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -44,9 +42,10 @@
 &lt;h4 id=&quot;定義&quot;&gt;定義&lt;/h4&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Babel is a JavaScript compiler.
-と、公式にでっかく書いてありますね。&lt;/p&gt;
+  &lt;p&gt;Babel is a JavaScript compiler.&lt;/p&gt;
 &lt;/blockquote&gt;
+
+&lt;p&gt;と、公式にでっかく書いてありますね。&lt;/p&gt;
 
 &lt;p&gt;さらにドキュメントを読み進めていくと、&lt;/p&gt;
 &lt;blockquote&gt;
@@ -81,7 +80,7 @@
 &lt;p&gt;ここでおさらいしておきます。&lt;br /&gt;
 最新の記法でJSを書く際には、ES2015〜で登場した&lt;strong&gt;新しい文法&lt;/strong&gt;と&lt;strong&gt;新しい関数&lt;/strong&gt;を使うことになります。前者はアロー関数やクラス記法などで、後者は&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Object.assign&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Array.prototype.find&lt;/code&gt;などです。&lt;/p&gt;
 
-&lt;p&gt;「最新の記法でJSを書く」＝「この2つを含むソースをBabeる(Babelでコンパイルする)」 ということになりますね。それには以下の2つのことが必要です。&lt;/p&gt;
+&lt;p&gt;「最新の記法でJSを書く」＝「この2つを含むソースをBabelでコンパイルする」 ということになりますね。それには以下の2つのことが必要です。&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;などのplugin・presetを使って新しい文法をコンパイルできるようにする&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;などのpolyfillを入れて新しい関数が動くようにする&lt;/li&gt;
@@ -111,7 +110,7 @@
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h5 id=&quot;4-babeる&quot;&gt;4. Babeる&lt;/h5&gt;
+&lt;h5 id=&quot;4-babeるbabelでコンパイルする&quot;&gt;4. Babeる(Babelでコンパイルする)&lt;/h5&gt;
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npx babel ./input.js -o ./output.js
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -161,6 +160,7 @@
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// CommonJS&lt;/span&gt;
 &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
 &lt;span class=&quot;c1&quot;&gt;// ES6&lt;/span&gt;
 &lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -180,10 +180,10 @@
 &lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;app.js (entry point)&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// bundle前&lt;/span&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Babeる前&lt;/span&gt;
 &lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;c1&quot;&gt;// bundle後 使っているものだけimportするように変換される&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;// Babeった後 使っているものだけimportするように変換される&lt;/span&gt;
 &lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'core-js/modules/es7.string.pad-start'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'core-js/modules/es7.string.pad-end'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -211,7 +211,7 @@
 &lt;p&gt;⭕：二重読み込みのリスクがない、全polyfillを利用できる&lt;br /&gt;
 ❌：&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションが効かない、グローバルが汚染される&lt;/p&gt;
 
-&lt;h5 id=&quot;グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot;&gt;グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい&lt;/h5&gt;
+&lt;h4 id=&quot;グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい&quot;&gt;グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい&lt;/h4&gt;
 &lt;p&gt;ライブラリを実装する場合などでグローバルを汚染せずにES2015+の関数を利用したいときは、&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transform-runtime&lt;/code&gt;&lt;/strong&gt;pluginを使います。また、ひとつのアプリケーションで複数のJSファイルを読み込む場合など、polyfill読込が重複してしまうのを避けたいときにも&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transform-runtime&lt;/code&gt;&lt;/strong&gt;pluginが使えます。&lt;/p&gt;
 
 &lt;p&gt;これは&lt;strong&gt;ES2015+の関数を、&lt;code class=&quot;highlighter-rouge&quot;&gt;core-js&lt;/code&gt;のエイリアスである&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-runtime&lt;/code&gt;モジュールで書き換える&lt;/strong&gt;ものです。本来polyfillとは「そのままでは動かないコードを補うためのコード」を埋め込むものなので、対象コードそのものを書き換えてしまう&lt;code class=&quot;highlighter-rouge&quot;&gt;trunsform-runtime&lt;/code&gt;は正確にはpolyfillとは呼べないですが、おかげで上述の利点を得られるわけです。&lt;/p&gt;
@@ -243,31 +243,28 @@
 &lt;h4 id=&quot;早見表&quot;&gt;早見表&lt;/h4&gt;
 
 &lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;メリット&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;デメリット&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt; &lt;/td&gt;
-      &lt;td&gt;メリット&lt;/td&gt;
-      &lt;td&gt;デメリット&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;require babel-polyfill&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;全polyfillを利用できる&lt;br /&gt; 必要な分だけ入れられる&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;二重読み込み制約のリスクがある&lt;br /&gt; グローバルが汚染される&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;:————————————:&lt;/td&gt;
-      &lt;td&gt;:————————————————————————:&lt;/td&gt;
-      &lt;td&gt;:——————————————————————:&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;webpackで結合&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;二重読み込みのリスクがない&lt;br /&gt; 全polyfillを利用できる&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;useBuiltIns オプションが効かない&lt;br /&gt; グローバルが汚染される&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;require babel-polyfill&lt;/td&gt;
-      &lt;td&gt;全polyfillを利用できる  必要な分だけ入れられる&lt;/td&gt;
-      &lt;td&gt;二重読み込み制約のリスクがある  グローバルが汚染される&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;webpackで結合&lt;/td&gt;
-      &lt;td&gt;全polyfillを利用できる  二重読み込みのリスクがない&lt;/td&gt;
-      &lt;td&gt;useBuiltIns オプションが効かない  グローバルが汚染される&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;runtime transform&lt;/td&gt;
-      &lt;td&gt;グローバルを汚染しない  必要な分だけ変換される&lt;/td&gt;
-      &lt;td&gt;インスタンスメソッドのpolyfillは利用できない&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;runtime transform&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;グローバルを汚染しない&lt;br /&gt; 必要な分だけ変換される&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;インスタンスメソッドのpolyfillは利用できない&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -283,12 +280,12 @@
 
 &lt;p&gt;これは何のオプションもなしで利用すると&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-latest&lt;/code&gt;と同じように機能し、設定次第で&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-es2015&lt;/code&gt;と同様の動きをさせることもできます。&lt;/p&gt;
 
-&lt;p&gt;また、上述した&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;のような便利なオプションを使うことができる利点があります。個人的にありがたいと思っているのが&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#targets&quot;&gt;Env preset · Babel&lt;/a&gt;&lt;/strong&gt;オプションです。ブラウザやNodeのバージョンを指定できるオプションで、指定されたバージョンに必要なpolyfillのみを入れてくれるようになります。&lt;/p&gt;
+&lt;p&gt;また、上述した&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;のような便利なオプションを使うことができる利点があります。個人的にありがたいと思っているのが&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#targets&quot;&gt;targets&lt;/a&gt;&lt;/strong&gt;オプションです。ブラウザやNodeのバージョンを指定できるオプションで、指定されたバージョンに必要なpolyfillのみを入れてくれるようになります。&lt;/p&gt;
 
 &lt;p&gt;参考： &lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#options&quot;&gt;Env preset # Options&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&quot;es2015のソースをそのままminifyできるってよ&quot;&gt;ES2015+のソースをそのままminifyできるってよ&lt;/h4&gt;
-&lt;p&gt;これはBabelの公式ブログ読んでて見つけて得た程度の知識なのですが、「古いブラウザで動かす必要がないならそのまま圧縮すれば？」ということで&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/blog/2016/08/30/babili&quot;&gt;Babili (babel-minify) · Babel&lt;/a&gt;&lt;/strong&gt;というものがあるそうです。&lt;/p&gt;
+&lt;p&gt;これはBabelの公式ブログ読んでて見つけて得た程度の知識なのですが、「古いブラウザで動かす必要がないならそのまま圧縮すれば？」ということで&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/blog/2016/08/30/babili&quot;&gt;Babili(babel-minify)&lt;/a&gt;&lt;/strong&gt;というものがあるそうです。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;Install&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D babel-core babel-loader babel-preset-babili
@@ -302,13 +299,14 @@
 &lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;uglify-esでサポートされていない構文であっても圧縮可能なので、その点は利がありそうです。ただ、執筆時点(2018/03/16)ではBeta版ということもあって、個人的にはまだ使うことはなさそうです。&lt;/p&gt;
+&lt;p&gt;uglify-esでサポートされていない構文であっても圧縮可能なので、その点は利がありそうです。ただ執筆時点(2018/03/19)ではBeta版ということもあって、個人的にはまだ使うことはなさそうです。&lt;/p&gt;
 
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 
-&lt;p&gt;公式ドキュメントを読み返してみたらけっこう知らないことがありました。それでも何となく雰囲気で使えていたので大きく困ることはなかったのですが、頭が整理されて今後新しいプロジェクトを立ち上げるときに迷わなくて済みそうなので整理した甲斐がありそうです。&lt;/p&gt;
+&lt;p&gt;今までなんとなくの理解だった部分が整理されたおかげで、今後新しいプロジェクトを立ち上げるときに迷わなくて済みそうです。よかった。&lt;/p&gt;
 
-&lt;p&gt;それと公式ドキュメントがけっこう説明不足感が強くて、しかも日本語の資料もそんなに多く見当たらなくて、整理に時間かかり苦労したので、同じ苦労を誰かがせずに済むといいなと思います。  間違っているところを見つけた方は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">トラブルシューティングメモを晒してみる webpack動的module編</title><link href="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる  webpack動的module編" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/webpack/2017/11/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
+&lt;p&gt;それと公式ドキュメントがけっこう説明不足感が強くて、しかも日本語の資料もそんなに見当たらなくて整理に苦労したので、同じ苦労を誰かがせずに済むといいなと思います。
+間違っているところを見つけた方は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">トラブルシューティングメモを晒してみる webpack動的module編</title><link href="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる  webpack動的module編" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/webpack/2017/11/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
 
 &lt;p&gt;PCのリニューアルにつき、旧PCのローカルに残ってたメモやらブログ用下書きの整理をしていたら、かつて自分がハマったトラブルの対応時のメモが発掘されました。読み返してみたら懐かしい気持ちになれたり、当時考えていたことが思い出せたりといいことが多かったので、晒してみようと思います。&lt;/p&gt;
 

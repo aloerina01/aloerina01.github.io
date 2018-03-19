@@ -220,7 +220,7 @@
           <li><a href="#1-installする" id="markdown-toc-1-installする">1. Installする</a></li>
           <li><a href="#2-babelrcに設定を書く" id="markdown-toc-2-babelrcに設定を書く">2. <code class="highlighter-rouge">.babelrc</code>に設定を書く</a></li>
           <li><a href="#3-polyfillをrequireする" id="markdown-toc-3-polyfillをrequireする">3. polyfillをrequireする</a></li>
-          <li><a href="#4-babeる" id="markdown-toc-4-babeる">4. Babeる</a></li>
+          <li><a href="#4-babeるbabelでコンパイルする" id="markdown-toc-4-babeるbabelでコンパイルする">4. Babeる(Babelでコンパイルする)</a></li>
         </ul>
       </li>
     </ul>
@@ -228,10 +228,8 @@
   <li><a href="#webpackと組み合わせた実践例" id="markdown-toc-webpackと組み合わせた実践例">Webpackと組み合わせた実践例</a>    <ul>
       <li><a href="#キホンのキ" id="markdown-toc-キホンのキ">キホンのキ</a></li>
       <li><a href="#polyfillの機能を制限なく使いたいでも無駄なものは入れたくない" id="markdown-toc-polyfillの機能を制限なく使いたいでも無駄なものは入れたくない">polyfillの機能を制限なく使いたい、でも無駄なものは入れたくない</a></li>
-      <li><a href="#二重読み込み制約のリスクを背負わずにpolyfillを使いたい" id="markdown-toc-二重読み込み制約のリスクを背負わずにpolyfillを使いたい">「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい</a>        <ul>
-          <li><a href="#グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい" id="markdown-toc-グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい">グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい</a></li>
-        </ul>
-      </li>
+      <li><a href="#二重読み込み制約のリスクを背負わずにpolyfillを使いたい" id="markdown-toc-二重読み込み制約のリスクを背負わずにpolyfillを使いたい">「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい</a></li>
+      <li><a href="#グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい" id="markdown-toc-グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい">グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい</a></li>
       <li><a href="#早見表" id="markdown-toc-早見表">早見表</a></li>
     </ul>
   </li>
@@ -249,9 +247,10 @@
 <h4 id="定義">定義</h4>
 
 <blockquote>
-  <p>Babel is a JavaScript compiler.
-と、公式にでっかく書いてありますね。</p>
+  <p>Babel is a JavaScript compiler.</p>
 </blockquote>
+
+<p>と、公式にでっかく書いてありますね。</p>
 
 <p>さらにドキュメントを読み進めていくと、</p>
 <blockquote>
@@ -286,7 +285,7 @@
 <p>ここでおさらいしておきます。<br />
 最新の記法でJSを書く際には、ES2015〜で登場した<strong>新しい文法</strong>と<strong>新しい関数</strong>を使うことになります。前者はアロー関数やクラス記法などで、後者は<code class="highlighter-rouge">Promise</code>, <code class="highlighter-rouge">Object.assign</code>, <code class="highlighter-rouge">Array.prototype.find</code>などです。</p>
 
-<p>「最新の記法でJSを書く」＝「この2つを含むソースをBabeる(Babelでコンパイルする)」 ということになりますね。それには以下の2つのことが必要です。</p>
+<p>「最新の記法でJSを書く」＝「この2つを含むソースをBabelでコンパイルする」 ということになりますね。それには以下の2つのことが必要です。</p>
 <ul>
   <li><code class="highlighter-rouge">babel-preset-env</code>などのplugin・presetを使って新しい文法をコンパイルできるようにする</li>
   <li><code class="highlighter-rouge">babel-polyfill</code>などのpolyfillを入れて新しい関数が動くようにする</li>
@@ -316,7 +315,7 @@
 </code></pre>
 </div>
 
-<h5 id="4-babeる">4. Babeる</h5>
+<h5 id="4-babeるbabelでコンパイルする">4. Babeる(Babelでコンパイルする)</h5>
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npx babel ./input.js -o ./output.js
 </code></pre>
 </div>
@@ -366,6 +365,7 @@
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// CommonJS</span>
 <span class="nx">require</span><span class="p">(</span><span class="s1">'babel-polyfill'</span><span class="p">);</span>
+
 <span class="c1">// ES6</span>
 <span class="kr">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
 </code></pre>
@@ -385,10 +385,10 @@
 </div>
 
 <p><strong>app.js (entry point)</strong></p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// bundle前</span>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// Babeる前</span>
 <span class="kr">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
 
-<span class="c1">// bundle後 使っているものだけimportするように変換される</span>
+<span class="c1">// Babeった後 使っているものだけimportするように変換される</span>
 <span class="kr">import</span> <span class="s1">'core-js/modules/es7.string.pad-start'</span><span class="p">;</span>
 <span class="kr">import</span> <span class="s1">'core-js/modules/es7.string.pad-end'</span><span class="p">;</span>
 </code></pre>
@@ -416,7 +416,7 @@
 <p>⭕：二重読み込みのリスクがない、全polyfillを利用できる<br />
 ❌：<code class="highlighter-rouge">useBuiltIns</code>オプションが効かない、グローバルが汚染される</p>
 
-<h5 id="グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい">グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい</h5>
+<h4 id="グローバルを汚染せずにpolyfillを使いたい複数箇所ファイルでpolyfillを使いたい">グローバルを汚染せずにpolyfillを使いたい、複数箇所ファイルでpolyfillを使いたい</h4>
 <p>ライブラリを実装する場合などでグローバルを汚染せずにES2015+の関数を利用したいときは、<strong><code class="highlighter-rouge">transform-runtime</code></strong>pluginを使います。また、ひとつのアプリケーションで複数のJSファイルを読み込む場合など、polyfill読込が重複してしまうのを避けたいときにも<strong><code class="highlighter-rouge">transform-runtime</code></strong>pluginが使えます。</p>
 
 <p>これは<strong>ES2015+の関数を、<code class="highlighter-rouge">core-js</code>のエイリアスである<code class="highlighter-rouge">babel-runtime</code>モジュールで書き換える</strong>ものです。本来polyfillとは「そのままでは動かないコードを補うためのコード」を埋め込むものなので、対象コードそのものを書き換えてしまう<code class="highlighter-rouge">trunsform-runtime</code>は正確にはpolyfillとは呼べないですが、おかげで上述の利点を得られるわけです。</p>
@@ -448,31 +448,28 @@
 <h4 id="早見表">早見表</h4>
 
 <table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">メリット</th>
+      <th style="text-align: center">デメリット</th>
+    </tr>
+  </thead>
   <tbody>
     <tr>
-      <td> </td>
-      <td>メリット</td>
-      <td>デメリット</td>
+      <td style="text-align: center">require babel-polyfill</td>
+      <td style="text-align: center">全polyfillを利用できる<br /> 必要な分だけ入れられる</td>
+      <td style="text-align: center">二重読み込み制約のリスクがある<br /> グローバルが汚染される</td>
     </tr>
     <tr>
-      <td>:————————————:</td>
-      <td>:————————————————————————:</td>
-      <td>:——————————————————————:</td>
+      <td style="text-align: center">webpackで結合</td>
+      <td style="text-align: center">二重読み込みのリスクがない<br /> 全polyfillを利用できる</td>
+      <td style="text-align: center">useBuiltIns オプションが効かない<br /> グローバルが汚染される</td>
     </tr>
     <tr>
-      <td>require babel-polyfill</td>
-      <td>全polyfillを利用できる  必要な分だけ入れられる</td>
-      <td>二重読み込み制約のリスクがある  グローバルが汚染される</td>
-    </tr>
-    <tr>
-      <td>webpackで結合</td>
-      <td>全polyfillを利用できる  二重読み込みのリスクがない</td>
-      <td>useBuiltIns オプションが効かない  グローバルが汚染される</td>
-    </tr>
-    <tr>
-      <td>runtime transform</td>
-      <td>グローバルを汚染しない  必要な分だけ変換される</td>
-      <td>インスタンスメソッドのpolyfillは利用できない</td>
+      <td style="text-align: center">runtime transform</td>
+      <td style="text-align: center">グローバルを汚染しない<br /> 必要な分だけ変換される</td>
+      <td style="text-align: center">インスタンスメソッドのpolyfillは利用できない</td>
     </tr>
   </tbody>
 </table>
@@ -488,12 +485,12 @@
 
 <p>これは何のオプションもなしで利用すると<code class="highlighter-rouge">babel-preset-latest</code>と同じように機能し、設定次第で<code class="highlighter-rouge">babel-preset-es2015</code>と同様の動きをさせることもできます。</p>
 
-<p>また、上述した<code class="highlighter-rouge">useBuiltIns</code>のような便利なオプションを使うことができる利点があります。個人的にありがたいと思っているのが<strong><a href="https://babeljs.io/docs/plugins/preset-env/#targets">Env preset · Babel</a></strong>オプションです。ブラウザやNodeのバージョンを指定できるオプションで、指定されたバージョンに必要なpolyfillのみを入れてくれるようになります。</p>
+<p>また、上述した<code class="highlighter-rouge">useBuiltIns</code>のような便利なオプションを使うことができる利点があります。個人的にありがたいと思っているのが<strong><a href="https://babeljs.io/docs/plugins/preset-env/#targets">targets</a></strong>オプションです。ブラウザやNodeのバージョンを指定できるオプションで、指定されたバージョンに必要なpolyfillのみを入れてくれるようになります。</p>
 
 <p>参考： <a href="https://babeljs.io/docs/plugins/preset-env/#options">Env preset # Options</a></p>
 
 <h4 id="es2015のソースをそのままminifyできるってよ">ES2015+のソースをそのままminifyできるってよ</h4>
-<p>これはBabelの公式ブログ読んでて見つけて得た程度の知識なのですが、「古いブラウザで動かす必要がないならそのまま圧縮すれば？」ということで<strong><a href="https://babeljs.io/blog/2016/08/30/babili">Babili (babel-minify) · Babel</a></strong>というものがあるそうです。</p>
+<p>これはBabelの公式ブログ読んでて見つけて得た程度の知識なのですが、「古いブラウザで動かす必要がないならそのまま圧縮すれば？」ということで<strong><a href="https://babeljs.io/blog/2016/08/30/babili">Babili(babel-minify)</a></strong>というものがあるそうです。</p>
 
 <p><strong>Install</strong></p>
 <div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -D babel-core babel-loader babel-preset-babili
@@ -507,13 +504,14 @@
 </span></code></pre>
 </div>
 
-<p>uglify-esでサポートされていない構文であっても圧縮可能なので、その点は利がありそうです。ただ、執筆時点(2018/03/16)ではBeta版ということもあって、個人的にはまだ使うことはなさそうです。</p>
+<p>uglify-esでサポートされていない構文であっても圧縮可能なので、その点は利がありそうです。ただ執筆時点(2018/03/19)ではBeta版ということもあって、個人的にはまだ使うことはなさそうです。</p>
 
 <h3 id="おわりに">おわりに</h3>
 
-<p>公式ドキュメントを読み返してみたらけっこう知らないことがありました。それでも何となく雰囲気で使えていたので大きく困ることはなかったのですが、頭が整理されて今後新しいプロジェクトを立ち上げるときに迷わなくて済みそうなので整理した甲斐がありそうです。</p>
+<p>今までなんとなくの理解だった部分が整理されたおかげで、今後新しいプロジェクトを立ち上げるときに迷わなくて済みそうです。よかった。</p>
 
-<p>それと公式ドキュメントがけっこう説明不足感が強くて、しかも日本語の資料もそんなに多く見当たらなくて、整理に時間かかり苦労したので、同じ苦労を誰かがせずに済むといいなと思います。  間違っているところを見つけた方は<a href="https://twitter.com/aloerina_">@aloerina_</a>までご一報ください。</p>
+<p>それと公式ドキュメントがけっこう説明不足感が強くて、しかも日本語の資料もそんなに見当たらなくて整理に苦労したので、同じ苦労を誰かがせずに済むといいなと思います。
+間違っているところを見つけた方は<a href="https://twitter.com/aloerina_">@aloerina_</a>までご一報ください。</p>
 
 
 </article>
