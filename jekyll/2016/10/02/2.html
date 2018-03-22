@@ -203,7 +203,7 @@
   <h3 id="前提知識">前提知識</h3>
 
 <h4 id="github-pages">GitHub Pages</h4>
-<p>GitHubのリポジトリで管理されるhtml/css等をもとに静的ページを公開するサービス・仕組み。これを利用してブログをつくったり、ライブラリのドキュメントページをつくったりできる。</p>
+<p>GitHubのリポジトリで管理されるhtml/css等を静的ページとして公開するサービス・仕組み。これを利用してブログをつくったり、ライブラリのドキュメントページをつくったりできます。</p>
 
 <ul>
   <li>ブログの例：<a href="https://aloerina01.github.io/">あなたが読んでるこのブログ</a></li>
@@ -211,8 +211,15 @@
 </ul>
 
 <h4 id="jekyll">Jekyll</h4>
-<p><strong>Markdownでページを作れる</strong>静的ページジェネレーター。Rubyで書かれたプログラムで、<a href="https://www.ruby-lang.org/ja/">Ruby</a>のパッケージ管理ツールの<a href="https://rubygems.org/">RubyGems</a>で配信されている。
-【<a href="http://melborne.github.io/2013/05/20/now-the-time-to-start-jekyll/">Jekyllいつやるの？ジキやルの？今でしょ！</a>】にいろいろ書いてあって助かりました。</p>
+<p>Rubyで書かれた静的ページジェネレーター。<strong>Markdownを静的ページに変換してくれる</strong>ツールです。具体的には、以下の3つのファイルを用意するとそれを元に静的ページを生成してくれます。</p>
+
+<ul>
+  <li>Markdownで書かれたコンテンツ(ブログの記事など)</li>
+  <li>TemplateとなるHTMLやCSS</li>
+  <li>設定ファイル( <code class="highlighter-rouge">_config.yml</code> )</li>
+</ul>
+
+<p>基本の設定の仕方もかんたん。</p>
 
 <ol>
   <li>Rubyを<a href="https://www.ruby-lang.org/ja/downloads/">公式サイト</a>からダウンロード＆インストール<br />
@@ -220,7 +227,7 @@
   <li><code class="highlighter-rouge">gem install jekyll</code></li>
 </ol>
 
-<p>これだけで使えるから楽ちん。</p>
+<p>参考：<a href="http://melborne.github.io/2013/05/20/now-the-time-to-start-jekyll/">Jekyllいつやるの？ジキやルの？今でしょ！</a></p>
 
 <h3 id="やりたいこと">やりたいこと</h3>
 
@@ -231,13 +238,15 @@
   <li>広告とかごちゃごちゃしたものはいらない</li>
 </ul>
 
-<p>これを満たすのが <strong>GitHubPages + Jekyll</strong> でした。ちなみにGitHubPagesは裏ではJekyllが動いているようで、ビルドやサーバ再起動なんかも勝手にやってくれるので、その点もありがたい😂</p>
+<p>これを満たすのが <strong>GitHubPages + Jekyll</strong> でした。ちなみにGitHubPagesは内部でJekyllが動いているので、上記の必要な3つのファイルをGitHubのリポジトリに配置すると、自動でジェネレートしてデプロイまでしてくれます。ありがたい😂</p>
+
+<p>(このブログではもう少し複雑なことをしたかったので、ジェネレート部分はGitHubに任せずに自分でやることにしました)</p>
 
 <h3 id="やったこと">やったこと</h3>
 
 <h4 id="jekyll用のファイルの準備">Jekyll用のファイルの準備</h4>
 
-<p>Jekyllのコマンド叩いてもよかったんだけど、お手軽そうかつReadme読みやすそうだったので<a href="https://github.com/barryclark/jekyll-now">Jekyll-now</a>を利用。書いてある通りだれど、このブランチからソースをフォークしてくることで必要なファイルが全部そろっちゃうよ🎉</p>
+<p>Jekyllのコマンド叩いてもよかったんだけど、お手軽そうかつReadme読みやすそうだったので<a href="https://github.com/barryclark/jekyll-now">Jekyll-now</a>を利用して一度ベースを用意しました。書いてある通りだれど、このブランチからソースをフォークしてくることで必要なファイルが全部そろっちゃいます🎉</p>
 
 <h4 id="テーマ選び適用">テーマ選び＆適用</h4>
 <p><a href="http://jekyllthemes.org/">Jekyll Themes</a>からよりどりみどり。他にもテーマを選ぶサイトはいくつかあるみたい(似たような名前のサイトばっかりだな…)。</p>
@@ -247,21 +256,22 @@
   <li><a href="http://themes.jekyllrc.org/">Jekyll Themes</a></li>
 </ul>
 
-<p>適用方法は様々だけど、それぞれのThemeのリポジトリのソースをまるっと持ってくるってものが多いので、その場合は上の「Jekyll用のファイルの準備」の手順が不要になる。あろえの場合は、<code class="highlighter-rouge">_includes</code>、<code class="highlighter-rouge">_sass</code>、<code class="highlighter-rouge">_config.yml</code>、<code class="highlighter-rouge">*.html</code>を置き換えました。</p>
+<p>適用方法は様々だけど、それぞれのThemeのリポジトリのソースをまるっと持ってくるってものが多いので、その場合は上の「Jekyll用のファイルの準備」の手順が不要になります。このブログの場合はJekyll-nowでつくったベースにして、<code class="highlighter-rouge">_includes</code>、<code class="highlighter-rouge">_sass</code>、<code class="highlighter-rouge">_config.yml</code>、<code class="highlighter-rouge">*.html</code>をTemplateリポジトリのもので置き換えました。</p>
 
 <h4 id="_configymlの編集">_config.ymlの編集</h4>
-<p>ブログタイトルや作者の情報などは<code class="highlighter-rouge">_config.yml</code>に書かれているので、それを書き換える必要がある。また、テーマによってカテゴリやSNS連携情報なども記載しているので、そのへんも適宜。</p>
 
-<h4 id="トップページの続きを読む">トップページの「続きを読む」</h4>
-<p>はてなブログにて<a href="http://aloecity.hatenablog.com/">青空コメントアウト</a>というブログを並行運営してるのだけれど、あちらではトップページに<strong>一定の高さで記事を並べる</strong>(はみ出る部分を「…」として統一のレイアウトで記事が並ぶ状態にする)ことができなかったので、なんとかこっちで実現したかった。
-現在このブログに使っているテーマでは<a href="https://shopify.github.io/liquid/">Liquid</a>というテンプレートエンジンが採用されていて、これによって<strong>最初の50単語までを表示して残りを「…」で省略する</strong>ということが可能になったのだ😉</p>
+<p>ブログタイトルや作者の情報などは<code class="highlighter-rouge">_config.yml</code>に書かれているので、それを書き換える必要があります。その他SNS連携情報など静的ページを作る際に利用する値を定義しているので適宜修正＆追記していきます。</p>
+
+<h4 id="トップページの続きを読む構成">トップページの「続きを読む」構成</h4>
+<p>はてなブログにて<a href="http://aloecity.hatenablog.com/">青空コメントアウト</a>というブログを並行運営してるのですが、あちらではトップページに<strong>一定の高さで記事を並べる</strong>(はみ出る部分を「…」として統一のレイアウトで記事が並ぶ状態にする)ことができなかったので、なんとかこっちで実現したいと思っていました。
+このブログでは<a href="https://shopify.github.io/liquid/">Liquid</a>というテンプレートエンジンを採用していて、このエンジンの記法を使って<strong>最初の50単語までを表示して残りを「…」で省略する</strong>ということを実現しています😉</p>
 
 <div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>{{ post.content | strip_html | truncatewords: 50 }}<span class="nt">&lt;/p&gt;</span>
 </code></pre>
 </div>
 
 <p>けど落とし穴が…。50単語というのは英単語の話。日本語には適用されない！！！😰<br />
-というわけで対応が必要なんだけれど、どうせなら最初の○文字とかじゃなくて記事の要約を書けないかなーと思って、記事冒頭のメタデータに(タイトルと同じように)要約を書いて、それを表示するようにしました。</p>
+というわけで対応が必要なわけですが、どうせなら最初の○文字とかじゃなくて記事の要約を書けないかなーと思い、記事冒頭のメタデータに(タイトルと同じように)要約を書いてそれを表示するようにしました。</p>
 
 <p><strong>記事.md</strong></p>
 
@@ -283,11 +293,9 @@ outline: このブログを公開するまでの道のりを公開します。Je
 </div>
 
 <h3 id="いったんこれにて">いったんこれにて</h3>
-<p>いったんこれにてブログの体裁が整ったので、後はどんどん記事を書いて<code class="highlighter-rouge">_post</code>に投下するだけ。所感としては、デザインテーマがいろんなプラグインを組み込んでくれてるおかげでカスタマイズしやすそう(依存性が低くて切り離したりプラグイン追加したりしやすそう)だったり、
-Liquidテンプレートが扱いやすくてカスタマイズページもガンガン作れそうだったり、何もせずともレスポンシブデザインだったり、GitHub上で「New File」とかやって記事つくれちゃったり…いろいろ便利。メインブログの青空コメントアウトの下書きとしても活躍しそう。</p>
+<p>いったんこれにてブログの体裁が整ったので、後はどんどん記事を書いて<code class="highlighter-rouge">_post</code>に投下するだけ。所感としては、デザインテーマがいろんなプラグインを組み込んでくれてるおかげでカスタマイズしやすそう(依存性が低くて切り離したりプラグイン追加したりしやすそう)だったり、Liquidテンプレートが扱いやすくてカスタマイズページもガンガン作れそうだったり、何もせずともレスポンシブデザインだったり、GitHub上で「New File」とかやって記事つくれちゃったり…いろいろ便利だなーという感じです。</p>
 
-<p>両ブログを今後ともよろしくっ😘</p>
-
+<p>というわけで今後ともよろしくお願いします。</p>
 
 </article>
 
@@ -511,9 +519,9 @@ Liquidテンプレートが扱いやすくてカスタマイズページもガ�
 <section class="related-posts">
   <strong>関連する記事</strong>
   
-    <li><a href="/javascript/hyperapp/2017/03/17/1.html">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
-  
     <li><a href="/javascript/vue/2017/03/08/1.html">Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ</a></li>
+  
+    <li><a href="/javascript/hyperapp/2017/03/17/1.html">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
   
     <li><a href="/seo/2016/10/25/1.html">META Robots タグの使い方を覚えてWebコンテンツの質を高めよう</a></li>
   
