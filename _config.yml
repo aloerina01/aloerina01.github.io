@@ -8,6 +8,9 @@ gems:
 
 exclude:
   - "/vendor/"
+
+include:
+  - "/_pages/"
   
 lsi: true
 
