@@ -32,7 +32,7 @@
         {% for social in site.social %}
           {% if social.url != null %}
           <li>
-            <a href="{{ social.url }}" title="{{ social.desc }}">
+            <a href="{{ social.url }}" title="{{ social.desc }}" target=”_blank”>
               <i class="fa fa-{{ social.icon }}"></i>
               <span class="username">{% if social.username %}{{ social.username }}{% else %}{{ social.name }}{% endif %}</span>
             </a>
