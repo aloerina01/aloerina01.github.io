@@ -8,9 +8,12 @@ gems:
 
 exclude:
   - "/vendor/"
+  - "scripts"
+  - "Gemfile"
+  - "gemfile.lock"
 
 include:
-  - "/_pages/"
+  - "_pages/"
   
 lsi: true
 
