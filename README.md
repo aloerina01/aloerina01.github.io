@@ -16,6 +16,13 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 * [centrarium](https://github.com/bencentra/centrarium) - Design template
 
 
+## Setup
+
+1. git clone https://github.com/aloerina01/aloerina01.github.io.git
+2. bundle install
+3. bundle exec jekyll serve --watch
+
+
 ## Constitution
 
 ### development branch
