@@ -20,7 +20,7 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 
 1. git clone https://github.com/aloerina01/aloerina01.github.io.git
 2. bundle install
-3. bundle exec jekyll serve --watch
+3. bundle exec jekyll serve --watch --destination demo
 
 
 ## Constitution
