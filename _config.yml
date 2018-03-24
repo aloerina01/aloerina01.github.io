@@ -11,9 +11,10 @@ exclude:
   - "scripts"
   - "Gemfile"
   - "gemfile.lock"
+  - "Rakefile"
 
 include:
-  - "_pages/"
+  - "_pages"
   
 lsi: true
 
