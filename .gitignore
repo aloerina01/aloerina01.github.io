@@ -5,5 +5,4 @@ _site
 .bundle
 .sass-cache
 node_modules
-package.json
 demo
