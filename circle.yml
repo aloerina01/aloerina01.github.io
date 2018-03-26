@@ -36,5 +36,5 @@ deployment:
     branch: /development/
     commands: 
       - git config --global user.name "aloerina01"
-      - git config --global user.email "kiss_mint27@yahoo.co.jp"
+      - git config --global user.email "4443321+aloerina01@users.noreply.github.com"
       - bundle exec rake deploy --trace
