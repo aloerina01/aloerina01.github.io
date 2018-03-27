@@ -12,9 +12,9 @@
     </a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu show">
-        {% for page in site.pages %}
-          {% if page.title and page.nav == true %}
-          <li class="nav-link"><a href="{{ page.url | prepend: site.baseurl }}">{{ page.title }}</a>
+        {% for navigation in site.data.navigations %}
+          {% if navigation.title and navigation.path %}
+          <li class="nav-link"><a href="{{ navigation.path | prepend: site.baseurl }}">{{ navigation.title }}</a>
           {% endif %}
         {% endfor %}
       </ul>
