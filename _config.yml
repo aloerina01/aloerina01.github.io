@@ -33,9 +33,6 @@ url: "https://aloerina01.github.io" # the base hostname & protocol for your site
 cover: "/assets/header_image.jpg"
 logo: "/assets/logo.png"
 
-main_nav:
-  - { url: '/archives/', title: 'Archives' }
-  - { url: '/profile/', title: 'Profile' }
 
 # Build settings
 markdown: kramdown
