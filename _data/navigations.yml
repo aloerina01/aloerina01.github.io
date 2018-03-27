@@ -1,5 +1,8 @@
-- title: 'Archives'
-  path: '/archives'
+- title: 'Blog'
+  url: '/archives'
+
+#- title: 'Tips'
+#  url: '/tips'
 
 - title: 'Profile'
-  path: '/profile'
+  url: '/profile'
