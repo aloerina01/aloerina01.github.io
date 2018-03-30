@@ -12,9 +12,8 @@ exclude:
   - "Gemfile"
   - "gemfile.lock"
   - "Rakefile"
-
-include:
-  - "_pages"
+  - "package.json"
+  - "CNAME"
   
 lsi: true
 
@@ -50,6 +49,33 @@ jekyll-archives:
   permalinks:
     category: '/category/:name/'
     tag: '/tag/:name/'
+
+# Collections (Define post type)
+collections:
+  pages:
+    output: true
+  posts:
+    output: true
+    permalink: /:path
+  old:
+    output: true
+
+# Front Matter default
+defaults:
+  # - scope:
+  #     path: ""
+  #     type: "pages"
+  #   values:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: "old"
+    values:
+      permalink: /:categories/:year/:month/:day/:title:output_ext
 
 # Disqus comments
 disqus_shortname: # https-aloerina01-github-io

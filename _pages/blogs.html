@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "All tags"
-permalink: /archives
+title: "Blogs"
+permalink: /blogs
 ---
 
 {% for category in site.categories %}
@@ -14,12 +14,14 @@ permalink: /archives
   {% endfor %}
   <ul class="posts-list">
   {% for post in site.categories[cat] %}
+  {% unless post.tips == true %}
     <li>
       <strong>
         <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
       </strong>
       <span class="post-date">- {{ post.date | date: "%F" }}</span>
     </li>
+  {% endunless %}
   {% endfor %}
   </ul>
   {% if forloop.last == false %}<hr>{% endif %}

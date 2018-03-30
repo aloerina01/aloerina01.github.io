@@ -1,8 +1,8 @@
-- title: 'Blog'
-  url: '/archives'
+- title: 'Blogs'
+  url: '/blogs'
 
-#- title: 'Tips'
-#  url: '/tips'
+- title: 'Tips'
+  url: '/tips'
 
 - title: 'Profile'
   url: '/profile'
