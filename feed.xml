@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-30T18:33:55+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-30T19:37:49+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">毎回忘れるanyenvの使い方メモ</title><link href="https://aloerina01.github.io/tip/2018-03-26-1" rel="alternate" type="text/html" title="毎回忘れるanyenvの使い方メモ" /><published>2018-03-26T00:00:00+09:00</published><updated>2018-03-26T00:00:00+09:00</updated><id>https://aloerina01.github.io/tip/1</id><content type="html" xml:base="https://aloerina01.github.io/tip/2018-03-26-1">&lt;h3 id=&quot;what-is&quot;&gt;What is&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/riywo/anyenv&quot;&gt;anyenv&lt;/a&gt;とは&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;と名のつくバージョン管理ツールのWrapperです。&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;とは例えばNodeのバージョン管理をするndenvがあげられます。anyenvでできるのは以下のようなことです。&lt;/p&gt;
 
@@ -34,8 +34,7 @@ ndenv install v9.9.0
 
 &lt;h5 id=&quot;インストール済みのバージョンを確認する&quot;&gt;インストール済みのバージョンを確認する&lt;/h5&gt;
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv versions
-  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; system
-    v8.10.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;by /Users/JP21369/news-client/.node-version&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; v8.10.0
     v9.0.0
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
