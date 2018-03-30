@@ -42,7 +42,7 @@
   
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="キャッシュからデータを取得、なければサーバにリクエストを投げて取得。そして取得したものを加工して返す。なんてことをPromise.race()を使って簡単にやれると気持ちいいです。" />
-  <meta property="og:url" content="https://aloerina01.github.io/javascript/2016/10/05/1.html" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2016-10-05-1" />
   <meta property="og:site_name" content="mille-feuille code" />
   <meta property="og:title" content="キャッシュとサーバからデータ取得する鮮やかなPromise.raceの使い方" />
   <meta property="og:type" content="website" />
@@ -58,14 +58,14 @@
   <meta name="twitter:title" content="キャッシュとサーバからデータ取得する鮮やかなPromise.raceの使い方">
   <meta name="twitter:description" content="キャッシュからデータを取得、なければサーバにリクエストを投げて取得。そして取得したものを加工して返す。なんてことをPromise.race()を使って簡単にやれると気持ちいいです。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/javascript/2016/10/05/1.html">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2016-10-05-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/javascript/2016/10/05/1.html">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2016-10-05-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 </head>
 
@@ -86,55 +86,15 @@
       <ul id="js-navigation-menu" class="navigation-menu show">
         
           
-          <li class="nav-link"><a href="/archives">Archives</a>
+          <li class="nav-link"><a href="/blogs">Blogs</a>
           
         
           
-        
+          <li class="nav-link"><a href="/tips">Tips</a>
           
         
           
           <li class="nav-link"><a href="/profile">Profile</a>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
           
         
       </ul>
@@ -200,7 +160,12 @@
 </section>
 
 <article class="post-content">
-  <p>コンテンツ一覧を表示するページなど、表示するアイテムの件数が多い場合は、サーバへの問い合わせを毎回せずキャッシュを使う場面がよくあります。
+  <p style="color:#90A4AE;font-size:14px;display:inline-block;width:100%;text-align:center;o;padding:20px 0;">
+<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+この記事には新しい<a href="https://aloerina01.github.io/blog/2016-10-05-1">URL</a>が設定されています
+</p>
+
+<p>コンテンツ一覧を表示するページなど、表示するアイテムの件数が多い場合は、サーバへの問い合わせを毎回せずキャッシュを使う場面がよくあります。
 加えて、ユーザおすすめのコンテンツを最上部に表示したり、既読のコンテンツを隠したり、端末の向きに合わせて表示方法を変えたりと、取得したデータをクライアント側で加工したい場面なんかもあったりします(もちろん全部サーバ側でやることも可能です）。</p>
 
 <p>そんなことをスマートにこなせる<a href="https://www.promisejs.org/api/#Promise_race">Promise.race()</a>の使い方をメモしますよ😌💡</p>
@@ -456,17 +421,6 @@
 </section>
 
 
-<section class="related-posts">
-  <strong>関連する記事</strong>
-  
-    <li><a href="/javascript/2016/10/14/1.html">外部スクリプトを動的読込して同期的に処理をする方法</a></li>
-  
-    <li><a href="/javascript/2017/02/22/1.html">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</a></li>
-  
-    <li><a href="/javascript/2017/01/10/1.html">JavaScriptの新しいモジュールバンドラ rollup.js とは</a></li>
-  
-</section>
-
 
 
 
@@ -487,57 +441,18 @@
 
       <p><strong>Site Map</strong></p>
       <ul class="pages">
+        <li class="nav-link"><a href="https://aloerina01.github.io">Top</a>
         
         
-          <li class="nav-link"><a href="/archives">Archives</a>
+          <li class="nav-link"><a href="/blogs">Blogs</a>
         
         
         
-        
+          <li class="nav-link"><a href="/tips">Tips</a>
         
         
         
           <li class="nav-link"><a href="/profile">Profile</a>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
       </ul>

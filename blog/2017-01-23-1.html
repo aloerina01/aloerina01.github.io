@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>RxJSをJava8のStreamAPIと比較してみた</title>
+  <meta name="description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のStreamっぽくないか😌💡と閃いてしまったので比較してみました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のStreamっぽくないか😌💡と閃いてしまったので比較してみました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-01-23-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="RxJSをJava8のStreamAPIと比較してみた" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="RxJSをJava8のStreamAPIと比較してみた">
+  <meta name="twitter:description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のStreamっぽくないか😌💡と閃いてしまったので比較してみました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-01-23-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-01-23-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/blogs">Blogs</a>
+          
+        
+          
+          <li class="nav-link"><a href="/tips">Tips</a>
+          
+        
+          
+          <li class="nav-link"><a href="/profile">Profile</a>
+          
+        
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+  　　　　　　　　　　<li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    　　　　　　　　<a itemprop="item" href="https://aloerina01.github.io/">
+        　　<span itemprop="name">mille-feuille code</span>
+        </a>
+    　　　　　　　　<meta itemprop="position" content="1" />
+  　　　　　　　　　　</li>
+　　　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+   　　　　　　 <a itemprop="item" href="https://aloerina01.github.io/archives/">
+      　　　　<span itemprop="name">記事</span>
+       </a>
+    　　　　　　<meta itemprop="position" content="2" />
+  　　　　　　　　</li>
+　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    　　　　　　<a itemprop="item" href="https://aloerina01.github.io/blog/2017-01-23-1">
+      　　　　<span itemprop="name">RxJSをJava8のStreamAPIと比較してみた</span>
+      　　</a>
+    　　　　　　<meta itemprop="position" content="3" />
+  　　　　　　　　</li>
+　　　　　　　　　　</ol>
+    </div>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">RxJSをJava8のStreamAPIと比較してみた</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-01-23</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="きっかけ">きっかけ</h3>
+<p>RxJSって何だと思ってググると必ず「関数型リアクティブプログラミング(FRP)を実現するライブラリ」と出てきて、じゃあFRPって何だと思ってググると、そこは修羅の道。<br />
+でもよくよく調べてみたらFRPなんてそんなに理解してなくてもRxJSって使えるじゃんということに気づきました。そう思えたキッカケが、一見するとなんだか似ていそうなJava8のStreamAPI。そこで今回はStreamAPIと比較しながらRxJSについて整理してみました。</p>
+
+<p>良いから結論だけ知りたいという場合は、<a href="#section-1">まとめ</a>をどうぞ。</p>
+
+<h3 id="rxjsとはなんなのか--streamapiなのか編">RxJSとはなんなのか　- StreamAPIなのか？編</h3>
+<p><a href="https://github.com/Reactive-Extensions/RxJS">RxJS</a>とは、Rx(Reactive Extensions)をJavaScriptで使えるようにしよう、というライブラリです。</p>
+
+<p>ではRxとは何なのかというと、ざっくり言うと<strong>ストリームというデータの流れを表すモノを、関数型のコレクションライブラリで加工できる仕組み</strong>みたいな感じです。<br />
+もう少し正確な表現だと<code class="highlighter-rouge">Rx = Observable + LINQ + Scheduler</code>となります。知らないものを3つも並べられると少しイラッとしますね😌</p>
+
+<p>簡単に意訳すると…</p>
+
+<ul>
+  <li><code class="highlighter-rouge">Observable</code> = ストリームのこと</li>
+  <li><code class="highlighter-rouge">LINQ</code> = ストリームを操作する(subcribeする)ための関数型コレクションライブラリみたいなもの</li>
+  <li><code class="highlighter-rouge">Scheduler</code> = 実行するスレッドやタイミングを制御するもの</li>
+</ul>
+
+<p>と、概念を説明するよりソースを見たほうが理解が早いだろうということで、RxJSとStreamAPIの比較ソースを用意しました。以下の仕様で実装したソースです。</p>
+
+<blockquote>
+  <ol>
+    <li>全ユーザーリストを取得する</li>
+    <li>「2017/01/01以降に入会した人」という条件でフィルタリングする</li>
+    <li>フィルタリングされたユーザーのリストを返す</li>
+    <li>フィルタリングされたユーザーをキャッシュする</li>
+  </ol>
+</blockquote>
+
+<p>JavaScript</p>
+
+<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">users</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">fetchUsers</span><span class="p">();</span>                                <span class="c1">// userの配列を取得する</span>
+<span class="kd">let</span> <span class="nx">userStream</span> <span class="o">=</span> <span class="nx">Ex</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromArray</span><span class="p">(</span><span class="nx">users</span><span class="p">);</span>              <span class="c1">// userリストをstreamにする</span>
+<span class="kd">let</span> <span class="nx">campaignTargets</span> <span class="o">=</span> 
+	<span class="nx">userStream</span>
+		<span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nx">e</span><span class="p">.</span><span class="nx">getJoinDate</span><span class="p">().</span><span class="nx">after</span><span class="p">(</span><span class="s1">'2017-01-01'</span><span class="p">)})</span>  <span class="c1">// フィルタリングする</span>
+		<span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">(</span><span class="nx">e</span><span class="p">)});</span>                         <span class="c1">// cacheする</span>
+</code></pre>
+</div>
+
+<p>Java</p>
+
+<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">fetchUsers</span><span class="o">();</span>                                                <span class="c1">// userリストを取得する</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">campaignTargets</span> <span class="o">=</span> 
+	<span class="n">users</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>                                                          <span class="c1">// streamにする</span>
+		<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="n">e</span><span class="o">.</span><span class="na">getJoinDate</span><span class="o">().</span><span class="na">after</span><span class="o">(</span><span class="n">DateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2017</span><span class="o">,</span> <span class="mi">01</span><span class="o">,</span> <span class="mi">01</span><span class="o">))})</span> <span class="c1">// フィルタリングする</span>
+		<span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">this</span><span class="o">::</span><span class="n">cache</span><span class="o">(</span><span class="n">e</span><span class="o">))</span>                                            <span class="c1">// cacheする</span>
+		<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+</code></pre>
+</div>
+
+<p>なんというか、似てる。<br />
+FRPとかよくわからないけど、StreamAPIのつもりで使えば良さそうな気がしてきました。</p>
+
+<h3 id="rxjsとはなんなのか--コンテナかもしれない編">RxJSとはなんなのか　- コンテナかもしれない編</h3>
+<p>RxJSが表現するObservableとはストリームのことだと言いましたが、ストリームが何者かという話です。ただの配列とどう違うのかが分かりそうで分からない。そんなときに理解が捗ったのは「1種のオブジェクト(コンテナ)だろう」というざっくりとした考え方でした。<br />
+システム的には配列よりは器用なことができて、要素をラップするコンテナの仲間だなーと思ってみたらしっくりきました。</p>
+
+<p>こんな表が <a href="http://okapies.hateblo.jp/entry/2015/03/15/184247">関数型プログラマのための Rx 入門（後編）</a>に記載されていて参考になりました。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center"> </th>
+      <th style="text-align: center">単数</th>
+      <th style="text-align: center">複数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">同期</td>
+      <td style="text-align: center">Object</td>
+      <td style="text-align: center">Iterable</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">非同期</td>
+      <td style="text-align: center">Promise</td>
+      <td style="text-align: center">Observable</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="まとめ">まとめ</h3>
+<p>結局Java8のStreamAPIっぽいじゃん</p>
+
+<h3 id="まじめなまとめ">まじめなまとめ</h3>
+
+<ul>
+  <li>RxJSはRxの概念をJavaScriptで実現するためのライブラリ</li>
+  <li>RxJSはざっくりいうとストリームを実現するためのライブラリ</li>
+  <li>RxとはFRPの一種</li>
+  <li>Rx = Observable + LINQ + Scheduler</li>
+  <li><strong>Observable</strong>はストリーム</li>
+  <li><strong>LINQ</strong>は関数型のコレクションライブラリ</li>
+  <li><strong>Scheduler</strong>は実行するスレッドやタイミングを制御する闇の力</li>
+  <li>結局Java8のStreamAPIみたいなものと思っていればとりあえず触れた</li>
+</ul>
+
+<h3 id="本気で理解したかったら">本気で理解したかったら</h3>
+<p>以下を参考にするといいです。</p>
+
+<ul>
+  <li><a href="http://ninjinkun.hatenablog.com/entry/introrxja">【翻訳】あなたが求めていたリアクティブプログラミング入門 - ninjinkun’s diary</a></li>
+  <li><a href="http://okapies.hateblo.jp/entry/2015/03/04/031148">関数型プログラマのための Rx 入門（前編） - Okapies’ Archive</a></li>
+  <li><a href="http://okapies.hateblo.jp/entry/2015/03/15/184247">関数型プログラマのための Rx 入門（後編） - Okapies’ Archive</a></li>
+</ul>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+      <a href="http://b.hatena.ne.jp/entry/" 
+	 class="hatena-bookmark-button share-button share-button-hatebu" 
+	 data-hatena-bookmark-layout="touch" 
+	 data-hatena-bookmark-width="38" 
+	 data-hatena-bookmark-height="38" 
+	 title="このエントリーをはてなブックマークに追加" 
+	 style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+        <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+      </a>
+      <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=RxJS%E3%82%92Java8%E3%81%AEStreamAPI%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/blog/2017-01-23-1&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=RxJS%E3%82%92Java8%E3%81%AEStreamAPI%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&u=https://aloerina01.github.io/blog/2017-01-23-1"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=RxJS%E3%82%92Java8%E3%81%AEStreamAPI%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/blog/2017-01-23-1"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2017-01-23-1" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?RxJS%E3%82%92Java8%E3%81%AEStreamAPI%E3%81%A8%E6%AF%94%E8%BC%83%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2017-01-23-1">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+<section class="related-posts">
+  <strong>関連する記事</strong>
+  
+    <li><a href="/blog/2017-03-14-1">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</a></li>
+  
+    <li><a href="/blog/2016-10-03-1">スクロールインしたイベントをキャッチする</a></li>
+  
+    <li><a href="/blog/2017-08-03-1">throttleとdebounce</a></li>
+  
+</section>
+
+
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        <li class="nav-link"><a href="https://aloerina01.github.io">Top</a>
+        
+        
+          <li class="nav-link"><a href="/blogs">Blogs</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tips">Tips</a>
+        
+        
+        
+          <li class="nav-link"><a href="/profile">Profile</a>
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Follow Me</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter" target=”_blank”>
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub" target=”_blank”>
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2017-01-23-1',
+    'title': 'RxJSをJava8のStreamAPIと比較してみた'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

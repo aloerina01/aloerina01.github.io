@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>lazyloadの解剖学</title>
+  <meta name="description" content="Webでもアプリのようなスムーズなインタラクションを実現したいですよね。そこでよく使われる手法のひとつにlazyloadが挙げられます💡 フロントエンドエンジニアにとってlazyloadとは何なのか、徹底的に調べて試してみましたので、その記録をここに残します😇">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Webでもアプリのようなスムーズなインタラクションを実現したいですよね。そこでよく使われる手法のひとつにlazyloadが挙げられます💡 フロントエンドエンジニアにとってlazyloadとは何なのか、徹底的に調べて試してみましたので、その記録をここに残します😇" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-07-25-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="lazyloadの解剖学" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/2017-07-25-1-main.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="lazyloadの解剖学">
+  <meta name="twitter:description" content="Webでもアプリのようなスムーズなインタラクションを実現したいですよね。そこでよく使われる手法のひとつにlazyloadが挙げられます💡 フロントエンドエンジニアにとってlazyloadとは何なのか、徹底的に調べて試してみましたので、その記録をここに残します😇">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/2017-07-25-1-main.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-07-25-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-07-25-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/blogs">Blogs</a>
+          
+        
+          
+          <li class="nav-link"><a href="/tips">Tips</a>
+          
+        
+          
+          <li class="nav-link"><a href="/profile">Profile</a>
+          
+        
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+  　　　　　　　　　　<li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    　　　　　　　　<a itemprop="item" href="https://aloerina01.github.io/">
+        　　<span itemprop="name">mille-feuille code</span>
+        </a>
+    　　　　　　　　<meta itemprop="position" content="1" />
+  　　　　　　　　　　</li>
+　　　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+   　　　　　　 <a itemprop="item" href="https://aloerina01.github.io/archives/">
+      　　　　<span itemprop="name">記事</span>
+       </a>
+    　　　　　　<meta itemprop="position" content="2" />
+  　　　　　　　　</li>
+　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    　　　　　　<a itemprop="item" href="https://aloerina01.github.io/blog/2017-07-25-1">
+      　　　　<span itemprop="name">lazyloadの解剖学</span>
+      　　</a>
+    　　　　　　<meta itemprop="position" content="3" />
+  　　　　　　　　</li>
+　　　　　　　　　　</ol>
+    </div>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">lazyloadの解剖学</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-07-25</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>, 
+    
+  
+    
+    <a href="/category/react/">React</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p><img src="/assets/2017-07-25-1-main.png" alt="main_visual" /></p>
+
+<p>Webのパフォーマンスを改善するテクニックとしてよく使われるlazyloadですが、一口にlazyloadといっても、その仕組みを解剖すると種類や実装方法は様々でした。今回はlazyloadを広義の『遅延読込』と捉えいくつかの視点から分類してまとめ、仕様に応じた実装方法について紹介します。</p>
+
+<p>と言っても一般論ではなくあくまで持論なので、そこはご容赦ください🙆<br />
+(タイトルも盛りましたがご容赦ください🙅)</p>
+
+<ul id="markdown-toc">
+  <li><a href="#lazyloadの対象" id="markdown-toc-lazyloadの対象">lazyloadの対象</a></li>
+  <li><a href="#lazyloadのトリガー" id="markdown-toc-lazyloadのトリガー">lazyloadのトリガー</a></li>
+  <li><a href="#loadイベントのobserver" id="markdown-toc-loadイベントのobserver">loadイベントのObserver</a>    <ul>
+      <li><a href="#1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する" id="markdown-toc-1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する">1. <code class="highlighter-rouge">LazyloadComponent</code>各々が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</a></li>
+      <li><a href="#2-scrollviewが自身のスクロールイベントを監視する" id="markdown-toc-2-scrollviewが自身のスクロールイベントを監視する">2. <code class="highlighter-rouge">ScrollView</code>が自身のスクロールイベントを監視する</a></li>
+      <li><a href="#3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する" id="markdown-toc-3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する">3. 第三者(<code class="highlighter-rouge">LazyLoadHandler</code>等)が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</a></li>
+    </ul>
+  </li>
+  <li><a href="#lazyloadcomponentの形式" id="markdown-toc-lazyloadcomponentの形式">LazyloadComponentの形式</a></li>
+  <li><a href="#ここまでのまとめ" id="markdown-toc-ここまでのまとめ">ここまでのまとめ</a></li>
+  <li><a href="#事例1-lazyloadする要素のサイズが決まっている場合" id="markdown-toc-事例1-lazyloadする要素のサイズが決まっている場合">事例1 lazyloadする要素のサイズが決まっている場合</a></li>
+  <li><a href="#事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合" id="markdown-toc-事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合">事例2 lazyloadする要素のサイズが決まっていて、スクロールするのがwindow以外の場合</a></li>
+  <li><a href="#事例3-lazyloadする要素のサイズが不確定な場合" id="markdown-toc-事例3-lazyloadする要素のサイズが不確定な場合">事例3 lazyloadする要素のサイズが不確定な場合</a></li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="lazyloadの対象">lazyloadの対象</h3>
+<p>よくあるのは<strong>FirstViewに含まれない画像</strong>の読込を遅延させる手法ですが、lazyloadを適用する対象は他にもあります。大きく分けて以下の3つかなと思います。</p>
+
+<ol>
+  <li>画像の読込とそのレンダリングを遅らせる</li>
+  <li>jsonなどのデータの取得とそれを用いた要素のレンダリングを遅らせる</li>
+  <li>レンダリングのみ遅らせる</li>
+</ol>
+
+<p>②はTwitterなどのタイムライン系アプリ(要素を半永久的に読み込むもの)によく見られます。一定量スクロールすると後続要素を取得し描画する、アレです。</p>
+
+<p>対して、読み込む総量が決まっているページでは、最初に全データを一括で取得するもののレンダリングは見えている範囲のみ行う、という③の手法が使われるケースがあります。VirtualRenderingをこの手法で実装するケースもあります(たぶん)。</p>
+
+<h3 id="lazyloadのトリガー">lazyloadのトリガー</h3>
+
+<ol>
+  <li>一定量のスクロールをトリガーとする<strong>Scroll方式</strong></li>
+  <li>scriptの読込をトリガーとする<strong>async/defer方式</strong></li>
+  <li>FirstViewの描画完了時をトリガーとする<strong>Mount方式</strong></li>
+  <li>一定時間が経過したことをトリガーとする<strong>Timer方式</strong></li>
+</ol>
+
+<p>※適当に名前つけました。</p>
+
+<p>①の『スクロール量をトリガーにする』ことが一般的に多いと思います。<br />
+が、広義の遅延読込の例として他のものも挙げました。<code class="highlighter-rouge">async</code>/<code class="highlighter-rouge">defer</code>を使ったスクリプトの遅延読込であったり(非同期なので結果的に後追いになることがあるって程度なので遅延というには微妙ですが)、Reactの<code class="highlighter-rouge">componentDidMount</code>などを使いFirstViewのマウント後に追加の読込をさせる手法(Mount方式)であったり、<code class="highlighter-rouge">requestIdleCallback</code>などTimer系functionを使って遅延させる手法(Timer方式)などが考えられます。</p>
+
+<h3 id="loadイベントのobserver">loadイベントのObserver</h3>
+
+<p>たとえばスクロールをトリガーにlazyloadを行う場合、「どの要素のスクロールを」「だれが監視するのか」を考える必要があります。SVO構文ですね(主語/動詞/目的語のアレ)。</p>
+
+<p>今回は下図のように、スクロールする要素を<code class="highlighter-rouge">ScrollView</code>、遅延読込される要素たちを<code class="highlighter-rouge">LazyloadComponent</code>と呼び、イベントの関係をまとめます。</p>
+
+<p><img src="/assets/2017-07-25-1-explain.png" alt="scrollview_lazyloadcomponent" /></p>
+
+<h5 id="1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する">1. <code class="highlighter-rouge">LazyloadComponent</code>各々が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</h5>
+
+<p>この場合、LazyloadComponentはあらかじめ高さを確保したPlaceholderを描画しておき、ScrollViewのスクロールが一定のところまできたら自身の読込をし、Placeholderと実データを入れ替えます。</p>
+
+<h5 id="2-scrollviewが自身のスクロールイベントを監視する">2. <code class="highlighter-rouge">ScrollView</code>が自身のスクロールイベントを監視する</h5>
+
+<p>この場合は、ScrollViewは自身のスクロールが一定量になったら一定数のLazyloadComponentを読込みレンダリングします。そのため、ScrollViewはLazyloadComponentのリストを保持しておいて、「どれが読込済みか」「次はどの○件を読込むか」を把握しておく必要があります。</p>
+
+<h5 id="3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する">3. 第三者(<code class="highlighter-rouge">LazyLoadHandler</code>等)が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</h5>
+
+<p>②の方法から、スクロールするDOMと、それをハンドリングするfunctionを分離したパターンです。画面内に複数のlazyload要素がある場合、handlerを分離してモジュール化しておくと取り回しやすくなります。</p>
+
+<h3 id="lazyloadcomponentの形式">LazyloadComponentの形式</h3>
+
+<p>遅延読込される要素(=<code class="highlighter-rouge">LazyloadComponent</code>)を予め空Divなどで読み込んでおくかどうか、等のパターンです。</p>
+
+<ol>
+  <li>遅延読み込みされる部分と<strong>同じHeight・WidthのPlaceholder</strong>をDivなどで予め描画しておく</li>
+  <li>遅延読み込みされる部分を<strong>空のDiv</strong>などで予め描画しておく</li>
+  <li>遅延読み込みされる部分は読み込まれるまで何も描画しない</li>
+</ol>
+
+<p>タイムライン系のアプリでは③の手法が多いですが、AmazonやZOZOTOWNのような商品リスト系のアプリでは①の手法も見受けられます。</p>
+
+<h3 id="ここまでのまとめ">ここまでのまとめ</h3>
+
+<p>lazyloadを<strong>①対象</strong>、<strong>②トリガー</strong>、<strong>③Observer</strong>、<strong>④load対象の形式</strong>、の4つの視点から分類しました。これをいかに組み合わせるかは仕様や状況によって異なると思います。</p>
+
+<p>以降は、<strong>スクロールをトリガーにデータ取得とレンダリングを遅延させる</strong>仕組みについて3つの仕様例を挙げ、どのような実装ができるかををまとめてみます。サンプルのソースはReactを使って書きます。</p>
+
+<h3 id="事例1-lazyloadする要素のサイズが決まっている場合">事例1 lazyloadする要素のサイズが決まっている場合</h3>
+
+<p><code class="highlighter-rouge">LazyloadComponent</code>のHeight・Widthが一定の場合は<strong>Placeholderを事前にレンダリングしておき、各々のPlaceholderが自身のloadタイミングを管理する</strong>のがいいと思います。</p>
+
+<p><strong>LazyloadComponent.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">LazyloadComponent</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  
+  <span class="cm">/** いろいろ省略、大事な部分だけ書きます */</span>
+ 
+  <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">triggerHeight</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'scroll'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">();</span> <span class="p">},</span> <span class="p">{</span> <span class="na">passive</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">componentWillUnmount</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">'scroll'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">();</span> <span class="p">},</span> <span class="p">{</span> <span class="na">passive</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">onScroll</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">triggerHeight</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">lazyload</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span> <span class="na">isLoaded</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isLoaded</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">children</span> <span class="p">:</span>
+                 <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">style</span><span class="o">=&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>Container.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Container</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">each</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+          <span class="o">&lt;</span><span class="nx">LazyloadComponent</span> <span class="nx">height</span><span class="o">=</span><span class="s2">"200"</span> <span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Content</span> <span class="nx">item</span><span class="o">=</span><span class="p">{</span><span class="nx">each</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/LazyloadComponent</span><span class="err">&gt;
+</span>        <span class="p">);</span>
+      <span class="p">});</span>
+    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>雰囲気はこんな感じです。load処理だったり、読み込んだデータをStoreする処理だったりは省略です。注目してほしいのは、<code class="highlighter-rouge">LazyloadComponent#render</code>が、未ロード時は高さを確保したPlaceholderをレンダリングし、ロード後には<code class="highlighter-rouge">this.props.children</code>をレンダリングしている点です。</p>
+
+<p>こうすることで遅延読込の処理をLazyloadComponent内で完結させることができ、外部に依存・影響が出ない実装をすることができます。<code class="highlighter-rouge">removeEventListener</code>まできちんとComponent内で行っているので、使い回ししやすいと思います。<br />
+実際に親要素である<code class="highlighter-rouge">Container</code>では特別なことをせずに<code class="highlighter-rouge">LazyloadComponent</code>を必要な分だけ描画しています。</p>
+
+<h3 id="事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合">事例2 lazyloadする要素のサイズが決まっていて、スクロールするのがwindow以外の場合</h3>
+
+<p>ケース1では<code class="highlighter-rouge">LazyloadComponent</code>をPlaceholderとして予めレンダリングしておき、<code class="highlighter-rouge">window</code>のスクロールイベントをハンドリングさせました。しかしスクロールする要素が<code class="highlighter-rouge">window</code>以外である場合、<code class="highlighter-rouge">LazyloadComponent</code>はどうやって親要素のスクロールイベントをハンドリングすれば良いでしょうか。</p>
+
+<p>Reactは入れ子になっている子要素から順にマウントされるため、<code class="highlighter-rouge">LazyloadComponent#componentDidMount</code>が呼ばれるタイミングでは、スクロールする親要素を取得できずイベントハンドリングができません。</p>
+
+<p>この場合は、<strong>親要素から<code class="highlighter-rouge">props</code>経由でスクロール量を渡す</strong>方法が使えます(手段のひとつであり、別の方法もあります。あらゆる場面での最適解ではありません)。スクロールする親要素を<code class="highlighter-rouge">ScrollView</code>として実装してみます。</p>
+
+<p><strong>ScrollView.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ScrollView</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">onScroll</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span> <span class="p">{</span> <span class="na">scrollTop</span><span class="p">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="p">});</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">onScroll</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">}</span> <span class="o">&gt;</span>
+      <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">each</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">(</span>
+          <span class="o">&lt;</span><span class="nx">LazyloadComponent</span> <span class="nx">height</span><span class="o">=</span><span class="s2">"200"</span> <span class="nx">scroll</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">}</span> <span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">Content</span> <span class="nx">item</span><span class="o">=</span><span class="p">{</span><span class="nx">each</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>          <span class="o">&lt;</span><span class="sr">/LazyloadComponent</span><span class="err">&gt;
+</span>      <span class="p">);})}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">ScrollView</code>内ではスクロール量を<code class="highlighter-rouge">state</code>として持っておくことで、これが更新される度に<code class="highlighter-rouge">render</code>が呼ばれ<code class="highlighter-rouge">LazyloadComponent</code>へスクロール量を渡すことができます。</p>
+
+<p>あとは、<code class="highlighter-rouge">LazyloadComponent#componentWillReceiveProps</code>でloadのトリガーとなるHeightと比較させればOKです。</p>
+
+<h3 id="事例3-lazyloadする要素のサイズが不確定な場合">事例3 lazyloadする要素のサイズが不確定な場合</h3>
+
+<p>サイズが不確定な場合、Placeholderを使ってしまうとPlaceholderと実Componentのサイズが合わずレンダリング時にガタつくことがあります。そのため<strong>空Divを使う</strong>か、<strong>レンダリングしない</strong>か、いずれかの方法をとる必要があります。結果的にスクロールイベントのハンドリングはScrollView自身(もしくは第三者)にさせることになります。</p>
+
+<p>以下はScrollView自身にイベントハンドリングさせる例です。</p>
+
+<p><strong>ScrollView.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ScrollView</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">loadedPages</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>       <span class="c1">// 初期読込で1ページ分は読み込んでいる</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">triggerHeight</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>  <span class="c1">// 1000pxごとにlazyloadを行う</span>
+  <span class="p">}</span>
+  <span class="nx">onScroll</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="o">&gt;</span> <span class="nx">triggerHeight</span> <span class="o">*</span> <span class="nx">isLoadedPage</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">lazyLoad</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">loadedPages</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">});</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span><span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">onScroll</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">}</span> <span class="o">&gt;</span>
+        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">each</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+          <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Content</span> <span class="nx">item</span><span class="o">=</span><span class="p">{</span><span class="nx">each</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err">;
+</span>        <span class="p">})}</span>
+      <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">ScrollView#lazyload</code>が呼ばれると追加読込分がStoreされ、そこから取得される<code class="highlighter-rouge">this.state.items</code>の件数が増えることでlazyloadが実現される仕組みです。</p>
+
+<p><code class="highlighter-rouge">ScrollView#lazyload</code>の関数内では、<strong>既にどれだけのデータが読み込まれているか、追加で何件読み込むのか、といったpager的な処理</strong>をすることが必要になってきます。今回はそれを簡易的に<code class="highlighter-rouge">loadedPages</code>という値で表現しました。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>lazyloadについて分類分けしたり仕様に応じた使い方の紹介をしましたが、もちろんこれらが全てではありませんし、自前で実装するよりもライブラリを使う方が良いケースもあると思います。そこはご理解を。</p>
+
+<p>また、スクロールイベントの取扱いは注意しないとカクつきなどの原因となります。ご利用の際は<code class="highlighter-rouge">throttle</code>等の併用をお忘れなく、また用法用量を守ってご利用ください。</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+      <a href="http://b.hatena.ne.jp/entry/" 
+	 class="hatena-bookmark-button share-button share-button-hatebu" 
+	 data-hatena-bookmark-layout="touch" 
+	 data-hatena-bookmark-width="38" 
+	 data-hatena-bookmark-height="38" 
+	 title="このエントリーをはてなブックマークに追加" 
+	 style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+        <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+      </a>
+      <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=lazyload%E3%81%AE%E8%A7%A3%E5%89%96%E5%AD%A6&url=https://aloerina01.github.io/blog/2017-07-25-1&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=lazyload%E3%81%AE%E8%A7%A3%E5%89%96%E5%AD%A6&u=https://aloerina01.github.io/blog/2017-07-25-1"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=lazyload%E3%81%AE%E8%A7%A3%E5%89%96%E5%AD%A6&url=https://aloerina01.github.io/blog/2017-07-25-1"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2017-07-25-1" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?lazyload%E3%81%AE%E8%A7%A3%E5%89%96%E5%AD%A6%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2017-07-25-1">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+<section class="related-posts">
+  <strong>関連する記事</strong>
+  
+    <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+  
+    <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+  
+    <li><a href="/blog/2017-04-28-1">escape と encodeURI と encodeURIComponent を正しく使い分ける</a></li>
+  
+</section>
+
+
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        <li class="nav-link"><a href="https://aloerina01.github.io">Top</a>
+        
+        
+          <li class="nav-link"><a href="/blogs">Blogs</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tips">Tips</a>
+        
+        
+        
+          <li class="nav-link"><a href="/profile">Profile</a>
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Follow Me</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter" target=”_blank”>
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub" target=”_blank”>
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2017-07-25-1',
+    'title': 'lazyloadの解剖学'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

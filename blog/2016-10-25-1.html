@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>META Robots タグの使い方を覚えてWebコンテンツの質を高めよう</title>
+  <meta name="description" content="検索エンジンのクローラを制御するためのタグ。これの使い方を覚えて、検索に最適化されたよりよいWebサイトに一歩近づこう！と思っている人が書いた記事です。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="検索エンジンのクローラを制御するためのタグ。これの使い方を覚えて、検索に最適化されたよりよいWebサイトに一歩近づこう！と思っている人が書いた記事です。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2016-10-25-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="META Robots タグの使い方を覚えてWebコンテンツの質を高めよう" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="META Robots タグの使い方を覚えてWebコンテンツの質を高めよう">
+  <meta name="twitter:description" content="検索エンジンのクローラを制御するためのタグ。これの使い方を覚えて、検索に最適化されたよりよいWebサイトに一歩近づこう！と思っている人が書いた記事です。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2016-10-25-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2016-10-25-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/blogs">Blogs</a>
+          
+        
+          
+          <li class="nav-link"><a href="/tips">Tips</a>
+          
+        
+          
+          <li class="nav-link"><a href="/profile">Profile</a>
+          
+        
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+  　　　　　　　　　　<li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    　　　　　　　　<a itemprop="item" href="https://aloerina01.github.io/">
+        　　<span itemprop="name">mille-feuille code</span>
+        </a>
+    　　　　　　　　<meta itemprop="position" content="1" />
+  　　　　　　　　　　</li>
+　　　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+   　　　　　　 <a itemprop="item" href="https://aloerina01.github.io/archives/">
+      　　　　<span itemprop="name">記事</span>
+       </a>
+    　　　　　　<meta itemprop="position" content="2" />
+  　　　　　　　　</li>
+　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    　　　　　　<a itemprop="item" href="https://aloerina01.github.io/blog/2016-10-25-1">
+      　　　　<span itemprop="name">META Robots タグの使い方を覚えてWebコンテンツの質を高めよう</span>
+      　　</a>
+    　　　　　　<meta itemprop="position" content="3" />
+  　　　　　　　　</li>
+　　　　　　　　　　</ol>
+    </div>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">META Robots タグの使い方を覚えてWebコンテンツの質を高めよう</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2016-10-25</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/seo/">SEO</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>私達のつくったWebサイトには、各検索エンジンのクローラさんが警備員よろしく定期的に巡回してくるので、それによって検索エンジンに適切に載ることができています。しかし彼らは時に幼児のように自由気ままに、時に姑のように重箱の隅をつつくように、巡回します。それに歯止めをかけることのできる技について覚えたことをメモしておこうと思います。</p>
+
+<h3 id="meta-robots-タグ-とは">META Robots タグ とは？</h3>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>👆<strong>これ</strong>👆</p>
+
+<p>真面目に言うとHTMLの<code class="highlighter-rouge">&lt;head&gt;</code>内に配置しそのページの情報を表現する<code class="highlighter-rouge">&lt;meta&gt;</code>タグの用法の一つです。検索エンジンのクローラの動作を制御することができます。サイトをよりよく、より自分の意図通りに検索結果に表示させるため活用していきましょう。</p>
+
+<h3 id="どんなことができるの">どんなことができるの？</h3>
+<p>SEO対策として、サイト内に適切なページを用意したり、リンクを整備したり、ということはよくされますよね。そのときに「このリンクは残しておきたいけど、SEOの評価には使われたくない」といったような特殊な指示をクローラにすることができます。ほかにも</p>
+
+<ul>
+  <li>クローラの指定をする(特定のクローラでのみ評価する)</li>
+  <li>検索結果に対象ページを表示させないようにする</li>
+  <li>Googleにページをキャッシュさせないようにする</li>
+  <li>翻訳へのリンクを表示させないようにする</li>
+</ul>
+
+<p>などいろいろな指示が出せます(ここに挙げたものは具体例です、これで全てではありません)。しかもSEO対策としてだけでなくいろいろな場面で活用できるようです。</p>
+
+<h3 id="お作法">お作法</h3>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"xxx"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<h4 id="name-属性">name 属性</h4>
+<p>どのクローラへの制御か、を表現します。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">robots</code> = 全ての検索エンジンのクローラを対象</li>
+  <li><code class="highlighter-rouge">googlebot</code> = Googleのクローラを対象</li>
+</ul>
+
+<h4 id="content-属性">content 属性</h4>
+<p>クローラへの指示内容になります。複数指定するときはカンマで区切ります。</p>
+
+<p>ちなみに<code class="highlighter-rouge">&lt;meta&gt;</code>タグ内は大文字小文字の違いは認識されません。</p>
+
+<h3 id="実例で覚える使い方">実例で覚える使い方</h3>
+
+<h4 id="検索結果にページを表示しないようにする">検索結果にページを表示しないようにする</h4>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"noindex"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>会員限定ページのように「特定の人はアクセスできるが、検索エンジンの検索結果には表示したくない」というページで使います。クローラへの制御内容は「このページをクローラしてほしいけどインデックスには載せないで」という感じです。</p>
+
+<h4 id="ページ内のリンクをpagerank評価対象から外す">ページ内のリンクをPageRank評価対象から外す</h4>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">”robots”</span> <span class="na">content=</span><span class="s">”nofollow”</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>「これらのリンクはスパムリンクです！ご注意を！」っていうありがた〜い記事を書いたのに、そこで紹介してるスパムなリンク先をクローラに巡回されて、「この記事はなんて悪質なリンクをはってるんだ！PageRank下げるぞ！👊😠」ってなったら悲しすぎる…。
+そんなときにこれをつかうと、「このページ内のリンクはクローラの巡回をやめてね」と指示できます。</p>
+
+<p>ページ全体ではなくリンク単位で指定することもでき、その場合は<code class="highlighter-rouge">&lt;a rel="nofollow"&gt;</code>と<code class="highlighter-rouge">&lt;a&gt;</code>タグ内に記載します。誰にどんなリンクを貼られるか分からないコメント欄などで力を発揮します。</p>
+
+<h4 id="検索結果に表示させず評価対象からも外す">検索結果に表示させず、評価対象からも外す</h4>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"none"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>いつ使うんだろう…。</p>
+
+<h4 id="翻訳のリンクを表示させない">翻訳のリンクを表示させない</h4>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"notranslate"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>翻訳しにくいコンテンツを載せているページや、ある特定の言語で読ませたいページなどに使いましょう。</p>
+
+<h4 id="google画像検索結果に画像を表示させない">Google画像検索結果に画像を表示させない</h4>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"noimageindex"</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>個人のイラストを掲載している人で、画像を保存されたくないって人たまにいます。自分のサイト内の制御はかけられても画像検索までは…と思っていたアナタへの朗報ですね。</p>
+
+<h4 id="ページをキャッシュさせない">ページをキャッシュさせない</h4>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">”robots”</span> <span class="na">content=</span><span class="s">”noarchive”</span><span class="nt">&gt;</span>
+</code></pre>
+</div>
+
+<p>ECサイトの会員制ページや、情報が更新され得るニュースページなどで利用されています。</p>
+
+<h3 id="おわり">おわり</h3>
+
+<p>SEO対策についても然りですが、こういった情報は鮮度が命です。古い仕様を参考にしていると「実はその仕様はもうなくなった」なんてことになりかねないので、この記事を参考にする場合はその点にご注意ください。この記事は2016/10/27に書いていてそれ以降の情報更新はしていません。</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+      <a href="http://b.hatena.ne.jp/entry/" 
+	 class="hatena-bookmark-button share-button share-button-hatebu" 
+	 data-hatena-bookmark-layout="touch" 
+	 data-hatena-bookmark-width="38" 
+	 data-hatena-bookmark-height="38" 
+	 title="このエントリーをはてなブックマークに追加" 
+	 style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+        <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+      </a>
+      <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=META+Robots+%E3%82%BF%E3%82%B0%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E8%A6%9A%E3%81%88%E3%81%A6Web%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%81%AE%E8%B3%AA%E3%82%92%E9%AB%98%E3%82%81%E3%82%88%E3%81%86&url=https://aloerina01.github.io/blog/2016-10-25-1&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=META+Robots+%E3%82%BF%E3%82%B0%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E8%A6%9A%E3%81%88%E3%81%A6Web%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%81%AE%E8%B3%AA%E3%82%92%E9%AB%98%E3%82%81%E3%82%88%E3%81%86&u=https://aloerina01.github.io/blog/2016-10-25-1"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=META+Robots+%E3%82%BF%E3%82%B0%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E8%A6%9A%E3%81%88%E3%81%A6Web%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%81%AE%E8%B3%AA%E3%82%92%E9%AB%98%E3%82%81%E3%82%88%E3%81%86&url=https://aloerina01.github.io/blog/2016-10-25-1"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2016-10-25-1" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?META+Robots+%E3%82%BF%E3%82%B0%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%82%92%E8%A6%9A%E3%81%88%E3%81%A6Web%E3%82%B3%E3%83%B3%E3%83%86%E3%83%B3%E3%83%84%E3%81%AE%E8%B3%AA%E3%82%92%E9%AB%98%E3%82%81%E3%82%88%E3%81%86%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2016-10-25-1">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+<section class="related-posts">
+  <strong>関連する記事</strong>
+  
+    <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+  
+    <li><a href="/blog/2017-03-08-1">Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ</a></li>
+  
+    <li><a href="/blog/2016-10-14-1">外部スクリプトを動的読込して同期的に処理をする方法</a></li>
+  
+</section>
+
+
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        <li class="nav-link"><a href="https://aloerina01.github.io">Top</a>
+        
+        
+          <li class="nav-link"><a href="/blogs">Blogs</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tips">Tips</a>
+        
+        
+        
+          <li class="nav-link"><a href="/profile">Profile</a>
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Follow Me</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter" target=”_blank”>
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub" target=”_blank”>
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2016-10-25-1',
+    'title': 'META Robots タグの使い方を覚えてWebコンテンツの質を高めよう'
+  });
+</script>
+
+
+
+  </body>
+
+</html>

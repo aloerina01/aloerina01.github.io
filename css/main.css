@@ -623,6 +623,17 @@ pre code.hljs {
   .page-content .page .posts-list li {
     padding: 0.48225em;
     padding-left: 0; }
+  .page-content .page .posts-list .post-tips-line:before {
+    content: '\f0eb';
+    font-family: FontAwesome;
+    color: #999;
+    display: inline-block;
+    padding: 0 6px 1px 0;
+    transition: all 0.4s ease;
+    font-size: 18px; }
+  .page-content .page .posts-list .post-tips-line:hover:before {
+    color: #9B63F8;
+    text-shadow: 1px 1px 5px #fff; }
   .page-content .page .posts-list .desc {
     font-size: 0.9em; }
   .page-content .page .posts-list .post-date {

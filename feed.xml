@@ -1,5 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-26T11:32:17+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">Babelの設定を見直すための逆引きガイド</title><link href="https://aloerina01.github.io/javascript/babel/2018/03/19/1.html" rel="alternate" type="text/html" title="Babelの設定を見直すための逆引きガイド" /><published>2018-03-19T00:00:00+09:00</published><updated>2018-03-19T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/babel/2018/03/19/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/babel/2018/03/19/1.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-30T18:33:55+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">毎回忘れるanyenvの使い方メモ</title><link href="https://aloerina01.github.io/tip/2018-03-26-1" rel="alternate" type="text/html" title="毎回忘れるanyenvの使い方メモ" /><published>2018-03-26T00:00:00+09:00</published><updated>2018-03-26T00:00:00+09:00</updated><id>https://aloerina01.github.io/tip/1</id><content type="html" xml:base="https://aloerina01.github.io/tip/2018-03-26-1">&lt;h3 id=&quot;what-is&quot;&gt;What is&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/riywo/anyenv&quot;&gt;anyenv&lt;/a&gt;とは&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;と名のつくバージョン管理ツールのWrapperです。&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;とは例えばNodeのバージョン管理をするndenvがあげられます。anyenvでできるのは以下のようなことです。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;自分のPCにどの&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;が入っているかを確認する&lt;/li&gt;
+  &lt;li&gt;自分のPCに必要な&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;をインストールする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;how-to-use&quot;&gt;How to use&lt;/h3&gt;
+
+&lt;p&gt;グローバルのNodeを8.10.0に、&lt;code class=&quot;highlighter-rouge&quot;&gt;project_a&lt;/code&gt;ディレクトリのNodeを9.9.0にする例です。&lt;/p&gt;
+
+&lt;h5 id=&quot;anyenvをつかってndenvをインストールする&quot;&gt;anyenvをつかってndenvをインストールする&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;anyenv install ndenv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;インストールできるnodeのバージョンを確認する&quot;&gt;インストールできるNodeのバージョンを確認する&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv install -l
+  Available versions:
+    v0.1.14
+    v0.1.15
+    v0.1.16
+    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;以下略&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;必要なバージョンをインストールする&quot;&gt;必要なバージョンをインストールする&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv install v8.10.0
+ndenv install v9.9.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;インストール済みのバージョンを確認する&quot;&gt;インストール済みのバージョンを確認する&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv versions
+  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; system
+    v8.10.0 &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set &lt;/span&gt;by /Users/JP21369/news-client/.node-version&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+    v9.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;グローバルのnodeバージョンを指定する&quot;&gt;グローバルのNodeバージョンを指定する&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv global v8.10.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;ディレクトリ別にnodeバージョンを指定する&quot;&gt;ディレクトリ別にNodeバージョンを指定する&lt;/h5&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/project_a
+ndenv &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;v9.9.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">What is anyenvとは**envと名のつくバージョン管理ツールのWrapperです。**envとは例えばNodeのバージョン管理をするndenvがあげられます。anyenvでできるのは以下のようなことです。</summary></entry><entry><title type="html">Babelの設定を見直すための逆引きガイド</title><link href="https://aloerina01.github.io/blog/2018-03-19-1" rel="alternate" type="text/html" title="Babelの設定を見直すための逆引きガイド" /><published>2018-03-19T00:00:00+09:00</published><updated>2018-03-19T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-03-19-1">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#babelって結局なんなんだ&quot; id=&quot;markdown-toc-babelって結局なんなんだ&quot;&gt;Babelって結局なんなんだ&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#定義&quot; id=&quot;markdown-toc-定義&quot;&gt;定義&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#構成要素&quot; id=&quot;markdown-toc-構成要素&quot;&gt;構成要素&lt;/a&gt;        &lt;ul&gt;
@@ -306,7 +356,7 @@
 &lt;p&gt;今までなんとなくの理解だった部分が整理されたおかげで、今後新しいプロジェクトを立ち上げるときに迷わなくて済みそうです。よかった。&lt;/p&gt;
 
 &lt;p&gt;それと公式ドキュメントがけっこう説明不足感が強くて、しかも日本語の資料もそんなに見当たらなくて整理に苦労したので、同じ苦労を誰かがせずに済むといいなと思います。
-間違っているところを見つけた方は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">トラブルシューティングメモを晒してみる webpack動的module編</title><link href="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる  webpack動的module編" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/webpack/2017/11/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/webpack/2017/11/08/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
+間違っているところを見つけた方は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">トラブルシューティングメモを晒してみる webpack動的module編</title><link href="https://aloerina01.github.io/blog/2017-11-08-1" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる  webpack動的module編" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-11-08-1">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
 
 &lt;p&gt;PCのリニューアルにつき、旧PCのローカルに残ってたメモやらブログ用下書きの整理をしていたら、かつて自分がハマったトラブルの対応時のメモが発掘されました。読み返してみたら懐かしい気持ちになれたり、当時考えていたことが思い出せたりといいことが多かったので、晒してみようと思います。&lt;/p&gt;
 
@@ -493,7 +543,7 @@ Examples: someFn(require) require.bind(null)&lt;/p&gt;
 &lt;p&gt;ContextReplacementPluginを使用して、個々の依存関係のこれらの値を変更できます。これにより、警告も削除されます。&lt;/p&gt;
 
 &lt;p&gt;ふむふむ🤔&lt;br /&gt;
-とりあえず動いてよかった。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえがき</summary></entry><entry><title type="html">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</title><link href="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html" rel="alternate" type="text/html" title="Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと" /><published>2017-08-29T00:00:00+09:00</published><updated>2017-08-29T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/vue/2017/08/29/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/vue/2017/08/29/1.html">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
+とりあえず動いてよかった。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえがき</summary></entry><entry><title type="html">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</title><link href="https://aloerina01.github.io/blog/2017-08-29-1" rel="alternate" type="text/html" title="Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと" /><published>2017-08-29T00:00:00+09:00</published><updated>2017-08-29T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-08-29-1">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
 
 &lt;p&gt;ここ最近、Vueを使って実装されたWebアプリが随分と増えてきたように感じます。自分も何度となく実装してきました。すごく小さなデモを作るときにも使えるし、中規模以上のWebアプリを作るときにも使えるし、扱いやすいライブラリでとても好きです。&lt;/p&gt;
 
@@ -709,7 +759,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;Vueを半年くらい触ってきたので現在地を書き残しておく意味も兼ねて記事にしました。半年後の自分が見たらダメダメな設計方針かもしれませんが今はこんな感じでVueを使っています。&lt;/p&gt;
 
-&lt;p&gt;設計って考えだしたらキリがなくて、経験を積めば積むほどブラッシュアップできるものだと思うので、恥ずかしがらずにディスカッションしていいんじゃないかなと思って書きました。きっともっと優れた設計をするエンジニアもいるでしょうし、人はルールを守れないからこんな設計は不要だと考えるエンジニアもいると思います。それぞれの意見にその人が経験してきた背景があると思うので、いろんな意見が聞けたらいいなと思います。ぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;まで。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえがき</summary></entry><entry><title type="html">throttleとdebounce</title><link href="https://aloerina01.github.io/javascript/2017/08/03/1.html" rel="alternate" type="text/html" title="throttleとdebounce" /><published>2017-08-03T00:00:00+09:00</published><updated>2017-08-03T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/2017/08/03/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/2017/08/03/1.html">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;debounce&lt;/code&gt;といきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。&lt;/p&gt;
+&lt;p&gt;設計って考えだしたらキリがなくて、経験を積めば積むほどブラッシュアップできるものだと思うので、恥ずかしがらずにディスカッションしていいんじゃないかなと思って書きました。きっともっと優れた設計をするエンジニアもいるでしょうし、人はルールを守れないからこんな設計は不要だと考えるエンジニアもいると思います。それぞれの意見にその人が経験してきた背景があると思うので、いろんな意見が聞けたらいいなと思います。ぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;まで。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえがき</summary></entry><entry><title type="html">throttleとdebounce</title><link href="https://aloerina01.github.io/blog/2017-08-03-1" rel="alternate" type="text/html" title="throttleとdebounce" /><published>2017-08-03T00:00:00+09:00</published><updated>2017-08-03T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-08-03-1">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;debounce&lt;/code&gt;といきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。&lt;/p&gt;
 
 &lt;p&gt;なぜ今更こんなことをするのかというと、自分が先日忘れていたからです😳&lt;/p&gt;
 
@@ -784,7 +834,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;jQueryにもこれらの関数は用意されていますし、それ以外にも世の中にはたくさんのライブラリがあります。が、このくらいなら自分で書いてしまったほうがファイルサイズが小さくなって良いケースもあったりします。&lt;/p&gt;
 
-&lt;p&gt;適材適所、良しなにやっていきたいものですね☺&lt;/p&gt;</content><author><name></name></author><summary type="html">throttleとdebounceといきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。</summary></entry><entry><title type="html">lazyloadの解剖学</title><link href="https://aloerina01.github.io/javascript/react/2017/07/25/1.html" rel="alternate" type="text/html" title="lazyloadの解剖学" /><published>2017-07-25T00:00:00+09:00</published><updated>2017-07-25T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/react/2017/07/25/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/react/2017/07/25/1.html">&lt;p&gt;&lt;img src=&quot;/assets/2017-07-25-1-main.png&quot; alt=&quot;main_visual&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;適材適所、良しなにやっていきたいものですね☺&lt;/p&gt;</content><author><name></name></author><summary type="html">throttleとdebounceといきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。</summary></entry><entry><title type="html">lazyloadの解剖学</title><link href="https://aloerina01.github.io/blog/2017-07-25-1" rel="alternate" type="text/html" title="lazyloadの解剖学" /><published>2017-07-25T00:00:00+09:00</published><updated>2017-07-25T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-07-25-1">&lt;p&gt;&lt;img src=&quot;/assets/2017-07-25-1-main.png&quot; alt=&quot;main_visual&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Webのパフォーマンスを改善するテクニックとしてよく使われるlazyloadですが、一口にlazyloadといっても、その仕組みを解剖すると種類や実装方法は様々でした。今回はlazyloadを広義の『遅延読込』と捉えいくつかの視点から分類してまとめ、仕様に応じた実装方法について紹介します。&lt;/p&gt;
 
@@ -1003,18 +1053,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;lazyloadについて分類分けしたり仕様に応じた使い方の紹介をしましたが、もちろんこれらが全てではありませんし、自前で実装するよりもライブラリを使う方が良いケースもあると思います。そこはご理解を。&lt;/p&gt;
 
-&lt;p&gt;また、スクロールイベントの取扱いは注意しないとカクつきなどの原因となります。ご利用の際は&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;等の併用をお忘れなく、また用法用量を守ってご利用ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</title><link href="https://aloerina01.github.io/javascript/react/2017/05/18/1.html" rel="alternate" type="text/html" title="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方" /><published>2017-05-18T00:00:00+09:00</published><updated>2017-05-18T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/react/2017/05/18/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/react/2017/05/18/1.html">&lt;h3 id=&quot;プロローグ読み飛ばしてください&quot;&gt;プロローグ(読み飛ばしてください)&lt;/h3&gt;
-
-&lt;p&gt;今は昔、ひとつのモダンなWebアプリ「りあくと君」というものがありました。レガシーさや人依存といったクラシカルな趣のあるシステムを開発・保守し続けた人々が一念発起して作り上げた近代的なWebアプリ、それがりあくと君でした。&lt;/p&gt;
-
-&lt;p&gt;ルーチンワークをしていた人々の心にはどす黒い「飽き」と「ストレス」が渦巻いていました。その負のエネルギーを全解放してつくられたりあくと君は大変賢く、斬新で、急成長を遂げる期待の星でした。一縷の望みを背負ったりあくと君でしたが、間もなくして成長はとまり、バグが増え、ソースの各所が絡まり、みるみるうちに業にまみれた存在となってしまいました。&lt;/p&gt;
-
-&lt;p&gt;そして、りあくと君は朽ちました。&lt;/p&gt;
-
-&lt;p&gt;エンジニア各々のオレオレ実装でツギハギまみれになりガチガチに仕様で固められて朽ちてしまったりあくと君……きみを蘇生させてみせる！！
-そう言って立ち上がった一人のエンジニアの物語が、今ここにはじまろうとしています。&lt;/p&gt;
-
-&lt;h3 id=&quot;まえおき&quot;&gt;まえおき&lt;/h3&gt;
+&lt;p&gt;また、スクロールイベントの取扱いは注意しないとカクつきなどの原因となります。ご利用の際は&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;等の併用をお忘れなく、また用法用量を守ってご利用ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</title><link href="https://aloerina01.github.io/blog/2017-05-18-1" rel="alternate" type="text/html" title="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方" /><published>2017-05-18T00:00:00+09:00</published><updated>2017-05-18T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-05-18-1">&lt;h3 id=&quot;まえおき&quot;&gt;まえおき&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;リファクタリングしたいのでまずはテストを用意しようと思いました&lt;/li&gt;
@@ -1028,7 +1067,6 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;p&gt;Jestの公式サイト内にもcreate-react-appを使った解説が載っているので、公式派の人は&lt;a href=&quot;https://facebook.github.io/jest/docs/tutorial-react.html&quot;&gt;そちら&lt;/a&gt;をどうぞ。&lt;/p&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#プロローグ読み飛ばしてください&quot; id=&quot;markdown-toc-プロローグ読み飛ばしてください&quot;&gt;プロローグ(読み飛ばしてください)&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#まえおき&quot; id=&quot;markdown-toc-まえおき&quot;&gt;まえおき&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#environments&quot; id=&quot;markdown-toc-environments&quot;&gt;Environments&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#create-react-app-のおさらい&quot; id=&quot;markdown-toc-create-react-app-のおさらい&quot;&gt;create-react-app のおさらい&lt;/a&gt;&lt;/li&gt;
@@ -1300,7 +1338,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;そんな感じでJestとEnzymeはよかったものの、create-react-appは便利な反面制約が多くハマりどころが多々あるので、ハマったときはこうして記録を残していこうと思います。&lt;/p&gt;
 
-&lt;p&gt;それでは。&lt;/p&gt;</content><author><name></name></author><summary type="html">プロローグ(読み飛ばしてください)</summary></entry><entry><title type="html">escape と encodeURI と encodeURIComponent を正しく使い分ける</title><link href="https://aloerina01.github.io/javascript/2017/04/28/1.html" rel="alternate" type="text/html" title="escape と encodeURI と encodeURIComponent を正しく使い分ける" /><published>2017-04-28T00:00:00+09:00</published><updated>2017-04-28T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/2017/04/28/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/2017/04/28/1.html">&lt;h3 id=&quot;escape&quot;&gt;escape&lt;/h3&gt;
+&lt;p&gt;それでは。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえおき</summary></entry><entry><title type="html">escape と encodeURI と encodeURIComponent を正しく使い分ける</title><link href="https://aloerina01.github.io/blog/2017-04-28-1" rel="alternate" type="text/html" title="escape と encodeURI と encodeURIComponent を正しく使い分ける" /><published>2017-04-28T00:00:00+09:00</published><updated>2017-04-28T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-04-28-1">&lt;h3 id=&quot;escape&quot;&gt;escape&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;非推奨&lt;/strong&gt;、Web標準から削除されている&lt;/li&gt;
@@ -1357,7 +1395,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;ざっくりとこんな感じです。&lt;/p&gt;
 
-&lt;p&gt;大した話でもないのでまとめとか後書きは抜きにして、現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">escape</summary></entry><entry><title type="html">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</title><link href="https://aloerina01.github.io/javascript/hyperapp/2017/03/17/1.html" rel="alternate" type="text/html" title="超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か" /><published>2017-03-17T00:00:00+09:00</published><updated>2017-03-17T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/hyperapp/2017/03/17/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/hyperapp/2017/03/17/1.html">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
+&lt;p&gt;大した話でもないのでまとめとか後書きは抜きにして、現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">escape</summary></entry><entry><title type="html">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</title><link href="https://aloerina01.github.io/blog/2017-03-17-1" rel="alternate" type="text/html" title="超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か" /><published>2017-03-17T00:00:00+09:00</published><updated>2017-03-17T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-03-17-1">&lt;h3 id=&quot;introduction&quot;&gt;Introduction&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp&quot;&gt;Hyperapp - GitHub&lt;/a&gt;&lt;/p&gt;
 
@@ -1854,7 +1892,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
       &lt;p&gt;英語が得意でない者が雰囲気で訳したものです。本家Hyperappとは無関係の個人的な記事です。&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</title><link href="https://aloerina01.github.io/javascript/2017/03/14/1.html" rel="alternate" type="text/html" title="ES6 Proxy をつかって堅牢なオブジェクトをつくるTips" /><published>2017-03-14T00:00:00+09:00</published><updated>2017-03-14T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/2017/03/14/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/2017/03/14/1.html">&lt;h3 id=&quot;what-is-proxy&quot;&gt;What is Proxy&lt;/h3&gt;
+&lt;/div&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</title><link href="https://aloerina01.github.io/blog/2017-03-14-1" rel="alternate" type="text/html" title="ES6 Proxy をつかって堅牢なオブジェクトをつくるTips" /><published>2017-03-14T00:00:00+09:00</published><updated>2017-03-14T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-03-14-1">&lt;h3 id=&quot;what-is-proxy&quot;&gt;What is Proxy&lt;/h3&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;The Proxy object is used to define custom behavior for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc).&lt;/p&gt;
@@ -2079,265 +2117,4 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 
 &lt;p&gt;もっと良い実装がある、間違っている部分がある、という場合はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt; までご一報いただけると嬉しいです。&lt;/p&gt;
 
-&lt;p&gt;現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">What is Proxy</summary></entry><entry><title type="html">Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ</title><link href="https://aloerina01.github.io/javascript/vue/2017/03/08/1.html" rel="alternate" type="text/html" title="Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ" /><published>2017-03-08T00:00:00+09:00</published><updated>2017-03-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/javascript/vue/2017/03/08/1</id><content type="html" xml:base="https://aloerina01.github.io/javascript/vue/2017/03/08/1.html">&lt;h3 id=&quot;まえおき&quot;&gt;まえおき&lt;/h3&gt;
-
-&lt;p&gt;Vue2.xでは仮想DOMが使われるようになりました。それに伴い、&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Vue用のテンプレート&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;仮想DOMをレンダリングするための関数&lt;/code&gt;に変換する&lt;/strong&gt;という処理を&lt;strong&gt;コンパイル時に行ってくれる&lt;/strong&gt;仕組みが組み込まれています。&lt;/p&gt;
-
-&lt;p&gt;そして、お手軽にVueを試したい人、プロダクトにVueを使いたい人、コンポーネント志向でアトミックに実装したい人など、様々な用途に応じたテンプレートの書き方(＆コンパイルの方法)を用意してくれています。&lt;/p&gt;
-
-&lt;p&gt;そのためテンプレートの書き方とコンパイルの種類については仕様がやや複雑で、&lt;a href=&quot;https://jp.vuejs.org/v2/guide/installation.html&quot;&gt;公式ドキュメント&lt;/a&gt;だけでは理解が難しくけっこうハマりどころだと感じている(事実ずっぽりハマりました)ので、知見を残しておこうと思います。&lt;/p&gt;
-
-&lt;p&gt;※この記事を書いている時点でのVueのバージョンは&lt;a href=&quot;https://github.com/vuejs/vue/tree/v2.2.1&quot;&gt;2.2.1&lt;/a&gt;です。&lt;/p&gt;
-
-&lt;h3 id=&quot;おさらい-vuejsの利用方法3パターン&quot;&gt;おさらい Vue.jsの利用方法3パターン&lt;/h3&gt;
-
-&lt;p&gt;まずVueの利用方法の確認から。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt;埋め込み&lt;/li&gt;
-  &lt;li&gt;vue-cli&lt;/li&gt;
-  &lt;li&gt;npmモジュール(webpack,  browserify, rollup等の利用)&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;の3つがありますという単純なお話なので、知ってる場合は読み飛ばしてください。&lt;/p&gt;
-
-&lt;h4 id=&quot;1-script埋め込み&quot;&gt;1. &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt;埋め込み&lt;/h4&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://unpkg.com/vue&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;これでグローバルに&lt;code class=&quot;highlighter-rouge&quot;&gt;Vue&lt;/code&gt;が用意されます。よくあるHTMLにscript直読込させる方法です。プロダクト開発には向かないですが、軽くVueを試すのには十分ですね。&lt;/p&gt;
-
-&lt;h4 id=&quot;2-vue-cli&quot;&gt;2. vue-cli&lt;/h4&gt;
-
-&lt;p&gt;Vueを使ったSPAをつくる環境を用意してくれるcliです。ビルド用のスクリプトやエントリーポイントになるHTMLなどが一括で生成されます。Reactで言うcreate-react-appのようなもの…というとかえって分かりにくい？&lt;/p&gt;
-
-&lt;p&gt;以下のコマンドを叩きます。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -g vue-cli               &lt;span class=&quot;c&quot;&gt;# まずはcliのグローバルインストール&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;vue init webpack &amp;lt;project_name&amp;gt;      &lt;span class=&quot;c&quot;&gt;# webpackを利用したプロジェクトを生成する&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; &amp;lt;project_name&amp;gt;                    &lt;span class=&quot;c&quot;&gt;# プロジェクトのディレクトリに移動して…&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install                          &lt;span class=&quot;c&quot;&gt;# 依存関係のあるファイルを落としてきて…&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm run dev                          &lt;span class=&quot;c&quot;&gt;# ビルド&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;公式に「Node.js ベースのツールについて精通していない場合、初心者が vue-cli で始めることは推奨しません」と明記された手法です。たしかにビルド周りの前提知識なしに使うのは難しそうですし、前提知識ある人の多くは自前でビルド環境用意しそうなもので、非推奨であり不人気な気がします😳&lt;/p&gt;
-
-&lt;h4 id=&quot;3-npmモジュール&quot;&gt;3. npmモジュール&lt;/h4&gt;
-
-&lt;p&gt;SPAをつくろうと思ったらやっぱりこの方法に行き着きますよね。行き着きました。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -S vue
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D vue-loader         &lt;span class=&quot;c&quot;&gt;# webpackでビルドする場合&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D vueify             &lt;span class=&quot;c&quot;&gt;# browserifyでビルドする場合&lt;/span&gt;
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;npm install -D rollup-plugin-vue  &lt;span class=&quot;c&quot;&gt;# rollupでビルドする場合&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ユーザー各々のビルド環境にvueを組み込めるよう、&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;browserify&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;rollup&lt;/code&gt;とモジュールバンドラごとにvueのコンパイラが用意されています。&lt;/p&gt;
-
-&lt;p&gt;以降、実用例が多いと勝手に思っている&lt;strong&gt;webpackを使い自前でビルド環境を用意する&lt;/strong&gt;前提で、テンプレートの実装方法とコンパイル方法について話を進めていきます。&lt;/p&gt;
-
-&lt;h3 id=&quot;vueテンプレートの実装方法&quot;&gt;Vueテンプレートの実装方法&lt;/h3&gt;
-
-&lt;p&gt;ここから本題。&lt;br /&gt;
-Vueのテンプレートの実装方法は大きく3種類あります。&lt;/p&gt;
-
-&lt;h4 id=&quot;1-templateオプションを使う&quot;&gt;1. templateオプションを使う&lt;/h4&gt;
-
-&lt;p&gt;Vue1.xからあった記法で、コンポーネントオブジェクト内に&lt;code class=&quot;highlighter-rouge&quot;&gt;template&lt;/code&gt;をキーに定義します。&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;‘&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;’&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;‘&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/p&amp;gt;’  /&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;等でテンプレートを分割する場合も含む&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;2-render関数を使う&quot;&gt;2. render関数を使う&lt;/h4&gt;
-
-&lt;p&gt;Reactライクな書き方…と言っていいんですかね、微妙なとこですね。個人的には可読性が低くてあまり実用的とは思えない方法です。&lt;/p&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;Vue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;‘&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hello&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;world&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;’&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createElement&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'p'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;3-単一ファイルコンポーネントのtemplatetemplateを使う&quot;&gt;3. 単一ファイルコンポーネントの&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;template&amp;gt;&amp;lt;/template&amp;gt;&lt;/code&gt;を使う&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.vue&lt;/code&gt;の拡張子で表現される単一ファイルコンポーネント。テンプレートとスタイルとスクリプトをひとまとめのコンポーネントとしてカプセル化したものです。&lt;br /&gt;
-参考： &lt;a href=&quot;https://jp.vuejs.org/v2/guide/single-file-components.html#ad&quot;&gt;単一ファイルコンポーネント - Vue.js&lt;/a&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;Hello! &lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/template&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// 省略&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;この3つの書き方には、「render関数に変換する(コンパイルする)タイミング」の違いがあります。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt; &lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;render関数への変換&lt;br /&gt;(コンパイル)&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;変換のタイミング&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;1.templateオプション&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;必要&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;JITコンパイル時&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;2.render関数&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;不要&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;3.単一ファイルコンポーネント&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;必要&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;プリコンパイル時&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;②はそもそもrender関数を利用しているので変換の必要がないのですが、上述のとおり実用性が低いので無視。となると、実用手段は①と③でしょうか。つまりテンプレートの実装方法は、単一ファイルコンポーネントを使うかどうかとどのタイミングでコンパイルするかの2つのポイントから選ぶということになりそうです。&lt;/p&gt;
-
-&lt;h3 id=&quot;プリコンパイルとjitコンパイル&quot;&gt;プリコンパイルとJITコンパイル&lt;/h3&gt;
-
-&lt;p&gt;コンパイルのタイミングには、Webpackなどで事前にされる&lt;strong&gt;プリコンパイル&lt;/strong&gt;と、実行時にコンパイルする&lt;strong&gt;JustInTimeコンパイル&lt;/strong&gt;の2種類があります。上述のとおり、テンプレートの実装方法によりどのタイミングでコンパイル(render関数への変換)を行うかが異なります。&lt;/p&gt;
-
-&lt;h4 id=&quot;単一ファイルコンポーネントをつかっている場合&quot;&gt;単一ファイルコンポーネントをつかっている場合&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;Webpack等によりプリコンパイルされる時&lt;/strong&gt;にrender関数への変換がなされます。そのためbundleされたファイルにはrender関数に変換済みの自前ロジックとvue本体(vue.js)が含まれることになります。  
-実行時にコンパイルする必要がないので高速で、vue本体にも余計なものが含まれないので軽量です。&lt;/p&gt;
-
-&lt;h4 id=&quot;templateオプションをつかっている場合&quot;&gt;templateオプションをつかっている場合&lt;/h4&gt;
-
-&lt;p&gt;プリコンパイルでは変換されず、&lt;strong&gt;ブラウザにてJITコンパイルされる時&lt;/strong&gt;render関数へ変換されます。そのためWebpack等でビルドしていたとしても、ブラウザで実行するときに(内部的に)コンパイルが走り変換が行われます。  
-そのため、実行速度がやや遅くなります。Vue公式ではこう言っています。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;これは十分高速ですが、アプリケーションのパフォーマンスが重要な場合は避けるのが最善です。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;また、bundleされたファイルには&lt;code class=&quot;highlighter-rouge&quot;&gt;vue本体 + コンパイラ&lt;/code&gt;というコンパイラを内包するvue.jsが含まれることになります(そりゃそうですね、実行時にコンパイルしてもらうんですから)。そのためvue.jsの容量がやや大きくなります。&lt;/p&gt;
-
-&lt;h4 id=&quot;比較&quot;&gt;比較&lt;/h4&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt; &lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;render関数への変換&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;読み込むVue&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;単一ファイルコンポーネント&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;プリコンパイル時&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;vueロジック本体&lt;br /&gt;(&lt;strong&gt;ランタイム限定ビルド&lt;/strong&gt; されたVue.js)&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;&lt;strong&gt;templateオプション&lt;/strong&gt;&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;JITコンパイル時&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;vueロジック本体 + コンパイラ&lt;br /&gt;(&lt;strong&gt;完全ビルド&lt;/strong&gt; されたVue.js)&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;完全ビルドとランタイム限定ビルドの読み込み方&quot;&gt;完全ビルドとランタイム限定ビルドの読み込み方&lt;/h3&gt;
-
-&lt;p&gt;templateの書き方によってコンパイルのタイミングが違い、それにより読み込むVue.jsにも差が出ることがわかりました。次はそれぞれをどうやって読み込むかです。&lt;/p&gt;
-
-&lt;p&gt;vueは&lt;strong&gt;デフォルトでランタイム限定ビルド(されたVue.js)を読み込みます&lt;/strong&gt;[^*1]&lt;br /&gt;
-完全ビルド(されたVue.js)を読み込むように変更するには以下の修正が必要です。&lt;/p&gt;
-
-&lt;h4 id=&quot;webpackの場合はwebpackconfigjsに追記&quot;&gt;webpackの場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;に追記&lt;/h4&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s1&quot;&gt;'vue$'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'vue/dist/vue.esm.js'&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;browserifyの場合はpackagejsonに追記&quot;&gt;browserifyの場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;に追記&lt;/h4&gt;
-
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;browser&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;vue&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;vue/dist/vue.common.js&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;rollupjsの場合はrollupconfigjsに追記&quot;&gt;rollup.jsの場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;rollup.config.js&lt;/code&gt;に追記&lt;/h4&gt;
-
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;alias&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'rollup-plugin-alias'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;rollup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;plugins&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;alias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-      &lt;span class=&quot;s1&quot;&gt;'vue'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'vue/dist/vue.esm.js'&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;テンプレートの実装&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;render関数への変換&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;必要なvueモジュール&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;単一ファイルコンポーネント&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;プリコンパイル時&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;ランタイム限定&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;templateオプション&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;JITコンパイル時&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;完全&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;軽量高速なランタイム限定をつかいたいけど単一ファイルコンポーネントはいやだ&quot;&gt;軽量＆高速なランタイム限定をつかいたいけど単一ファイルコンポーネントはいやだ&lt;/h3&gt;
-
-&lt;p&gt;そんな人はいませんか、私です。&lt;br /&gt;
-Riot.jsなんかも単一ファイル形式ですけど流行りなんですかね。個人的にはテンプレートは別ファイルに切り出したいのですが…。しかも速度とファイル容量を良くしたいからランタイム限定ビルドを使いたい。そんな場合は分離できるそうです。&lt;br /&gt;
-参考：&lt;a href=&quot;https://jp.vuejs.org/v2/guide/single-file-components.html#関心の分離について&quot;&gt;単一ファイルコンポーネント 関心の分離について&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ちなみに私はテンプレートだけ別ファイルにしました。
-&lt;script src=&quot;https://gist.github.com/aloerina01/b4c99e5c5d554e33beb4c7c35af78108.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;軽量高速なランタイム限定をつかいたいし1系の書き方を踏襲させろ&quot;&gt;軽量＆高速なランタイム限定をつかいたいし1系の書き方を踏襲させろ&lt;/h3&gt;
-
-&lt;p&gt;そんな人いませんか、欲張りさんめ。&lt;br /&gt;
-templateオプションは使いつつプリコンパイルも使う。できるみたいですがやったことありません。&lt;br /&gt;
-参考： &lt;a href=&quot;https://github.com/ktsn/vue-template-loader&quot;&gt;GitHub - ktsn/vue-template-loader: Vue.js 2.0 template loader for webpack&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;おしまい&quot;&gt;おしまい&lt;/h3&gt;
-
-&lt;p&gt;長くなりました。&lt;br /&gt;
-分かりにくい部分や間違っている部分があれば是非&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえおき</summary></entry></feed>
+&lt;p&gt;現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">What is Proxy</summary></entry></feed>

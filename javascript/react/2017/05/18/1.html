@@ -42,7 +42,7 @@
   
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。" />
-  <meta property="og:url" content="https://aloerina01.github.io/javascript/react/2017/05/18/1.html" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-05-18-1" />
   <meta property="og:site_name" content="mille-feuille code" />
   <meta property="og:title" content="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方" />
   <meta property="og:type" content="website" />
@@ -58,14 +58,14 @@
   <meta name="twitter:title" content="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方">
   <meta name="twitter:description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/javascript/react/2017/05/18/1.html">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-05-18-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/javascript/react/2017/05/18/1.html">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-05-18-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 </head>
 
@@ -86,55 +86,15 @@
       <ul id="js-navigation-menu" class="navigation-menu show">
         
           
-          <li class="nav-link"><a href="/archives">Archives</a>
+          <li class="nav-link"><a href="/blogs">Blogs</a>
           
         
           
-        
+          <li class="nav-link"><a href="/tips">Tips</a>
           
         
           
           <li class="nav-link"><a href="/profile">Profile</a>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
           
         
       </ul>
@@ -204,16 +164,10 @@
 </section>
 
 <article class="post-content">
-  <h3 id="プロローグ読み飛ばしてください">プロローグ(読み飛ばしてください)</h3>
-
-<p>今は昔、ひとつのモダンなWebアプリ「りあくと君」というものがありました。レガシーさや人依存といったクラシカルな趣のあるシステムを開発・保守し続けた人々が一念発起して作り上げた近代的なWebアプリ、それがりあくと君でした。</p>
-
-<p>ルーチンワークをしていた人々の心にはどす黒い「飽き」と「ストレス」が渦巻いていました。その負のエネルギーを全解放してつくられたりあくと君は大変賢く、斬新で、急成長を遂げる期待の星でした。一縷の望みを背負ったりあくと君でしたが、間もなくして成長はとまり、バグが増え、ソースの各所が絡まり、みるみるうちに業にまみれた存在となってしまいました。</p>
-
-<p>そして、りあくと君は朽ちました。</p>
-
-<p>エンジニア各々のオレオレ実装でツギハギまみれになりガチガチに仕様で固められて朽ちてしまったりあくと君……きみを蘇生させてみせる！！
-そう言って立ち上がった一人のエンジニアの物語が、今ここにはじまろうとしています。</p>
+  <p style="color:#90A4AE;font-size:14px;display:inline-block;width:100%;text-align:center;o;padding:20px 0;">
+<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+この記事には新しい<a href="https://aloerina01.github.io/blog/2017-05-18-1">URL</a>が設定されています
+</p>
 
 <h3 id="まえおき">まえおき</h3>
 
@@ -229,7 +183,6 @@
 <p>Jestの公式サイト内にもcreate-react-appを使った解説が載っているので、公式派の人は<a href="https://facebook.github.io/jest/docs/tutorial-react.html">そちら</a>をどうぞ。</p>
 
 <ul id="markdown-toc">
-  <li><a href="#プロローグ読み飛ばしてください" id="markdown-toc-プロローグ読み飛ばしてください">プロローグ(読み飛ばしてください)</a></li>
   <li><a href="#まえおき" id="markdown-toc-まえおき">まえおき</a></li>
   <li><a href="#environments" id="markdown-toc-environments">Environments</a></li>
   <li><a href="#create-react-app-のおさらい" id="markdown-toc-create-react-app-のおさらい">create-react-app のおさらい</a></li>
@@ -722,17 +675,6 @@
 </section>
 
 
-<section class="related-posts">
-  <strong>関連する記事</strong>
-  
-    <li><a href="/javascript/hyperapp/2017/03/17/1.html">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
-  
-    <li><a href="/javascript/webpack/2017/11/08/1.html">トラブルシューティングメモを晒してみる  webpack動的module編</a></li>
-  
-    <li><a href="/javascript/react/2017/02/28/1.html">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a></li>
-  
-</section>
-
 
 
 
@@ -753,57 +695,18 @@
 
       <p><strong>Site Map</strong></p>
       <ul class="pages">
+        <li class="nav-link"><a href="https://aloerina01.github.io">Top</a>
         
         
-          <li class="nav-link"><a href="/archives">Archives</a>
+          <li class="nav-link"><a href="/blogs">Blogs</a>
         
         
         
-        
+          <li class="nav-link"><a href="/tips">Tips</a>
         
         
         
           <li class="nav-link"><a href="/profile">Profile</a>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
       </ul>

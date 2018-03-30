@@ -1,0 +1,838 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</title>
+  <meta name="description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-05-18-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方">
+  <meta name="twitter:description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-05-18-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-05-18-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        
+          
+          <li class="nav-link"><a href="/blogs">Blogs</a>
+          
+        
+          
+          <li class="nav-link"><a href="/tips">Tips</a>
+          
+        
+          
+          <li class="nav-link"><a href="/profile">Profile</a>
+          
+        
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+  　　　　　　　　　　<li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    　　　　　　　　<a itemprop="item" href="https://aloerina01.github.io/">
+        　　<span itemprop="name">mille-feuille code</span>
+        </a>
+    　　　　　　　　<meta itemprop="position" content="1" />
+  　　　　　　　　　　</li>
+　　　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+   　　　　　　 <a itemprop="item" href="https://aloerina01.github.io/archives/">
+      　　　　<span itemprop="name">記事</span>
+       </a>
+    　　　　　　<meta itemprop="position" content="2" />
+  　　　　　　　　</li>
+　　　　　　　　  <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+    　　　　　　<a itemprop="item" href="https://aloerina01.github.io/blog/2017-05-18-1">
+      　　　　<span itemprop="name">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</span>
+      　　</a>
+    　　　　　　<meta itemprop="position" content="3" />
+  　　　　　　　　</li>
+　　　　　　　　　　</ol>
+    </div>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container " >
+  <div class="scrim ">
+    <header class="post-header">
+      <h1 class="title">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</h1>
+      <!-- <p class="info">by <strong></strong></p> -->
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+ <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+
+<section class="post-meta">
+  <div class="post-date">2017-05-18</div>
+  <div class="post-categories">
+  
+	<i class="fa fa-fw fa-tag"></i>
+  
+    
+    <a href="/category/javascript/">JavaScript</a>, 
+    
+  
+    
+    <a href="/category/react/">React</a>
+    
+  
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <h3 id="まえおき">まえおき</h3>
+
+<ul>
+  <li>リファクタリングしたいのでまずはテストを用意しようと思いました</li>
+  <li>Facebook謹製の<strong>Jest</strong>というオールインワンなツールでテストをします</li>
+  <li>Airbnb謹製の<strong>Enzyme</strong>というTest Utilitiesを使ってテストコードを書きます</li>
+  <li>もとのWebアプリは<strong>create-react-app</strong>でつくられています</li>
+</ul>
+
+<p>create-react-app + Jest + Enzyme でテストを書きはじめようと思ったときにしたこと、つまづいたことを書き留めておく回です。</p>
+
+<p>Jestの公式サイト内にもcreate-react-appを使った解説が載っているので、公式派の人は<a href="https://facebook.github.io/jest/docs/tutorial-react.html">そちら</a>をどうぞ。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#まえおき" id="markdown-toc-まえおき">まえおき</a></li>
+  <li><a href="#environments" id="markdown-toc-environments">Environments</a></li>
+  <li><a href="#create-react-app-のおさらい" id="markdown-toc-create-react-app-のおさらい">create-react-app のおさらい</a></li>
+  <li><a href="#jestとはenzymeとは" id="markdown-toc-jestとはenzymeとは">Jestとは、Enzymeとは</a>    <ul>
+      <li><a href="#jest" id="markdown-toc-jest">Jest</a></li>
+      <li><a href="#enzyme" id="markdown-toc-enzyme">Enzyme</a></li>
+    </ul>
+  </li>
+  <li><a href="#テストの書き始め方" id="markdown-toc-テストの書き始め方">テストの書き始め方</a>    <ul>
+      <li><a href="#1-テストファイルの配置場所を知る" id="markdown-toc-1-テストファイルの配置場所を知る">1. テストファイルの配置場所を知る</a></li>
+      <li><a href="#2-テストファイルを作成する" id="markdown-toc-2-テストファイルを作成する">2. テストファイルを作成する</a></li>
+      <li><a href="#3-テストコードを書く" id="markdown-toc-3-テストコードを書く">3. テストコードを書く</a></li>
+    </ul>
+  </li>
+  <li><a href="#enzymeを使ってスナップショットのテストをする" id="markdown-toc-enzymeを使ってスナップショットのテストをする">Enzymeを使ってスナップショットのテストをする</a></li>
+  <li><a href="#ハマったところ" id="markdown-toc-ハマったところ">ハマったところ</a>    <ul>
+      <li><a href="#localstorage-is-not-defined" id="markdown-toc-localstorage-is-not-defined">🙅localStorage is not defined</a></li>
+      <li><a href="#reacttestutils-has-been-moved-to-react-domtest-utils" id="markdown-toc-reacttestutils-has-been-moved-to-react-domtest-utils">🙅ReactTestUtils has been moved to react-dom/test-utils.</a></li>
+    </ul>
+  </li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="environments">Environments</h3>
+
+<ul>
+  <li>React 15.4.2</li>
+  <li>create-react-app 0.8.5</li>
+  <li>Jest 17.0.2</li>
+  <li>Enzyme 2.8.2</li>
+</ul>
+
+<p>での経験談を元にしています。</p>
+
+<h3 id="create-react-app-のおさらい">create-react-app のおさらい</h3>
+
+<p>コマンド一発でReactの開発環境をつくることができるツールです。<br />
+(参考：<a href="https://aloerina01.github.io/javascript/react/2017/02/28/1.html">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a>)</p>
+
+<p>これを使って構築した環境には標準でJestが組み込まれていて、<code class="highlighter-rouge">yarn test</code>コマンドですぐにテストを実行することができます。</p>
+
+<blockquote>
+  <p>Create React App uses Jest as its test runner. To prepare for this integration, we did a major revamp of Jest so if you heard bad things about it years ago, give it another try.</p>
+</blockquote>
+
+<p><em><a href="https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests">create-react-app/README.md at master · facebookincubator/create-react-app · GitHub</a>より</em></p>
+
+<h3 id="jestとはenzymeとは">Jestとは、Enzymeとは</h3>
+
+<h4 id="jest">Jest</h4>
+
+<ul>
+  <li><a href="https://facebook.github.io/jest/">Jest · 🃏 Delightful JavaScript Testing</a></li>
+  <li>Reactのテストをするためのツールです</li>
+  <li>単体テストを書くための<strong>function群</strong>と、テストを実行する<strong>テストランナー</strong>が含まれています(オールインワン)</li>
+</ul>
+
+<h4 id="enzyme">Enzyme</h4>
+
+<ul>
+  <li><a href="http://airbnb.io/enzyme/">Enzyme</a></li>
+  <li>Reactのテストコードを書くためのUtilityです</li>
+  <li>Jestだけではできない高度なテストを書くことができるfunction群です(Jestと重なる部分もあります)</li>
+  <li>Reactコンポーネントをrenderingする<code class="highlighter-rouge">shallow</code> <code class="highlighter-rouge">mount</code> <code class="highlighter-rouge">render</code>の3つのfunctionがキモです</li>
+</ul>
+
+<h3 id="テストの書き始め方">テストの書き始め方</h3>
+
+<h4 id="1-テストファイルの配置場所を知る">1. テストファイルの配置場所を知る</h4>
+<p>Jestは任意のディレクトリからテストコードを探し出し順に実行してくれます。本来このディレクトリは<code class="highlighter-rouge">package.json</code>に<code class="highlighter-rouge">rootDir</code>という名前で定義するものなのですが、create-react-appでつくられた環境では<code class="highlighter-rouge">src/</code>と決められています。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// react-scripts/utils/createJestConfig.js</span>
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">rootDir</span><span class="p">,</span> <span class="nx">isEjecting</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// (省略)</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">rootDir</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">config</span><span class="p">.</span><span class="nx">rootDir</span> <span class="o">=</span> <span class="nx">rootDir</span><span class="p">;</span>  <span class="c1">// ← ここで引数をもとにrootDirを指定している</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">config</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="c1">// react-scripts/scripts/test.js</span>
+<span class="nx">argv</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'--config'</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">createJestConfig</span><span class="p">(</span>
+  <span class="nx">relativePath</span> <span class="o">=&gt;</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">,</span> <span class="nx">relativePath</span><span class="p">),</span>
+  <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">appSrc</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">),</span> <span class="c1">// ← ここで引数rootDirを指定している</span>
+  <span class="kc">false</span>
+<span class="p">)));</span>
+
+</code></pre>
+</div>
+
+<p>したがって、<code class="highlighter-rouge">src/</code>にテストファイルを配置していきます。</p>
+
+<h4 id="2-テストファイルを作成する">2. テストファイルを作成する</h4>
+
+<p>Jestにテストファイルを認識させるには2つの方法があります。</p>
+
+<ol>
+  <li><code class="highlighter-rouge">__test__</code>というディレクトリ以下にテストファイルを置く</li>
+  <li><code class="highlighter-rouge">.test.js</code>という拡張子のファイルを作成する</li>
+</ol>
+
+<p>私は②を採用しました。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>src
+  ├ actions
+  ├ components
+  ︙    ├ CheckboxWithLabel.js  (Buttonコンポーネント)
+        └ test
+            └ CheckboxWithLabel.test.js  (Buttonコンポーネントのテスト)
+</code></pre>
+</div>
+
+<h4 id="3-テストコードを書く">3. テストコードを書く</h4>
+
+<p>Jestの各functionの使い方はこの記事が分かりやすかったです。  
+<a href="http://qiita.com/chimame/items/e97883fd46b67529d59f">Facebook製のJavaScriptテストツール「Jest」の逆引き使用例 - Qiita</a></p>
+
+<p>ここでは、「チェックボックスのOn/Offに応じてラベルの文言が切り替わるコンポーネント」のテストの実装例を挙げます。ソースを読んで雰囲気がつかめるかと思います(がいかがでしょう)。</p>
+
+<p><strong>src/components/CheckboxWithLabel.js</strong></p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kr">class</span> <span class="nx">CheckboxWithLabel</span> <span class="kr">extends</span> <span class="nx">Component</span> <span class="p">{</span>
+
+  <span class="nx">constructor</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kr">super</span><span class="p">(</span><span class="nx">props</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span><span class="na">isChecked</span><span class="p">:</span> <span class="kc">false</span><span class="p">};</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">onChange</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">onChange</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+  <span class="p">}</span>
+
+  <span class="nx">onChange</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">({</span><span class="na">isChecked</span><span class="p">:</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isChecked</span><span class="p">});</span>
+  <span class="p">}</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"checkbox"</span> <span class="nx">checked</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isChecked</span><span class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onChange</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+</span>        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isChecked</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">labelOn</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">labelOff</span><span class="p">}</span>
+      <span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
+</span>    <span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>src/components/test/CheckboxWithLabel.test.js</strong></p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="p">{</span> <span class="nx">shallow</span><span class="p">,</span> <span class="nx">mount</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">'enzyme'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">CheckboxWithLabel</span> <span class="nx">from</span> <span class="s1">'../CheckboxWithLabel'</span><span class="p">;</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="s1">'ChecboxWithLabel'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="s1">'Changes the label after click'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+ <span class="err"> </span> <span class="err"> </span><span class="c1">// Componentをレンダリングする</span>
+    <span class="kr">const</span> <span class="nx">checkbox</span> <span class="o">=</span> <span class="nx">shallow</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">CheckboxWithLabel</span> <span class="nx">labelOn</span><span class="o">=</span><span class="s2">"On"</span> <span class="nx">labelOff</span><span class="o">=</span><span class="s2">"Off"</span> <span class="o">/&gt;</span><span class="p">);</span>
+    <span class="c1">// expect(検査対象).toEqual(想定結果)</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">checkbox</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'Off'</span><span class="p">);</span>
+ <span class="err"> </span> <span class="err"> </span><span class="c1">// shallowでレンダリングされた要素から特定のセレクタを取得する</span>
+    <span class="nx">checkbox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">'change'</span><span class="p">);</span>
+    <span class="c1">// expect(検査対象).toEqual(想定結果)</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">checkbox</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'On'</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p>ここでつかった<code class="highlighter-rouge">shallow</code>という関数は、その名の通りComponentを浅くレンダリングします。Componentの中にComponentがある入れ子構造の場合、一番外側のComponentしかレンダリングされません。子コンポーネントに依存していない結果を検査することができます。</p>
+
+<blockquote>
+  <p>Shallow rendering is useful to constrain yourself to testing a component as a unit, and to ensure that your tests aren’t indirectly asserting on behavior of child components.</p>
+</blockquote>
+
+<p><em><a href="http://airbnb.io/enzyme/docs/api/shallow.html">Shallow Rendering</a>より</em></p>
+
+<h3 id="enzymeを使ってスナップショットのテストをする">Enzymeを使ってスナップショットのテストをする</h3>
+
+<p>ここからはJest + Enzymeの話です。<br />
+これらを組み合わせることで、<strong>Componentのレンダリング結果をスナップショットとして残しておき、それと比較してレンダリング結果に差異がないか</strong>のテストをすることができます。</p>
+
+<p>上記のCheckboxWithLabelでその例を書いてみます。</p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">describe</span><span class="p">(</span><span class="s1">'CheckboxWithLabel'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="s1">'Matches with the snapshot when checkbox is OFF'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kr">const</span> <span class="nx">dom</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">CheckboxWithLabel</span> <span class="nx">labelOn</span><span class="o">=</span><span class="s2">"On"</span> <span class="nx">labelOff</span><span class="o">=</span><span class="s2">"Off"</span> <span class="o">/&gt;</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">dom</span><span class="p">).</span><span class="nx">toMatchSnapshot</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">toMatchSnapshot()</code>は、既存のスナップショットと比較してレンダリング結果が一致しているかどうかを判定します。最初の一回目はsnapshotがないため必ずpassします。snapshotを更新する場合は<code class="highlighter-rouge">jest --update</code>または<code class="highlighter-rouge">jest -u</code>コマンドを叩きます。</p>
+
+<p>ここで使った<code class="highlighter-rouge">mount</code>という関数は、Componentを完全にレンダリングします。その分テストの実行速度が遅くなるため、入れ子の深いComponentをmountしたり、mountを使ったテストをたくさん書くとなかなかテストが終わりません。
+その場合はテストを分割して行うなどの工夫が必要でした。</p>
+
+<blockquote>
+  <p>Full DOM rendering is ideal for use cases where you have components that may interact with DOM APIs, or may require the full lifecycle in order to fully test the component (i.e., componentDidMount etc.)</p>
+</blockquote>
+
+<p><em><a href="http://airbnb.io/enzyme/docs/api/mount.html">Full DOM Rendering</a>より</em></p>
+
+<h3 id="ハマったところ">ハマったところ</h3>
+
+<h4 id="localstorage-is-not-defined">🙅localStorage is not defined</h4>
+
+<p>テストするComponentが依存しているあるモジュールは、内部でlocalStorageを利用していました。そのためimport時に<code class="highlighter-rouge">localStorage is not defined</code>のエラーが起きました。</p>
+
+<p>Jestはテスト実行前にテスト環境を構築するコードを実行することができるので、それを利用してlocalStorageモックを定義することで対処できます。一般的には、<code class="highlighter-rouge">package.json</code>に<code class="highlighter-rouge">setupFiles</code>または<code class="highlighter-rouge">setupTestFrameworkScriptFile</code>として定義したファイルがテスト前に実行されます。<br />
+(参考： <a href="http://facebook.github.io/jest/docs/configuration.html#setupfiles-array">Configuring package.json · Jest</a>)</p>
+<pre><code class="language-package.json">"jest": {
+  "setupFiles": ["createLocalStorageMock.js"]
+}
+</code></pre>
+
+<p>ただし、create-react-appを使っている場合はやはりこの設定が効かず、独自の設定ファイル<code class="highlighter-rouge">src/setupTests.js</code>にモックを書く必要がありました。</p>
+
+<p><strong>src/setupTests.js</strong></p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">localStorageMock</span> <span class="o">=</span> <span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">storage</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="na">setItem</span><span class="p">:</span> <span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">storage</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">||</span> <span class="s1">''</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">getItem</span><span class="p">:</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">storage</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">removeItem</span><span class="p">:</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">delete</span> <span class="nx">storage</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+    <span class="p">},</span>
+    <span class="nx">get</span> <span class="nx">length</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">storage</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="na">key</span><span class="p">:</span> <span class="p">(</span><span class="nx">i</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">keys</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">storage</span><span class="p">);</span>
+      <span class="k">return</span> <span class="nx">keys</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">};</span>
+<span class="p">})();</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">global</span><span class="p">,</span> <span class="s1">'localStorage'</span><span class="p">,</span> <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="nx">localStorageMock</span> <span class="p">});</span>
+</code></pre>
+</div>
+
+<h4 id="reacttestutils-has-been-moved-to-react-domtest-utils">🙅ReactTestUtils has been moved to react-dom/test-utils.</h4>
+
+<p>テスト結果に以下のワーニング文が表示されていました。</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>Warning: ReactTestUtils has been moved to react-dom/test-utils. Update references to remove this warning.
+</code></pre>
+</div>
+
+<p>ReactTestUtilsの依存元が変わったってことだと思いReact公式を調べたところ、以下の対応をするように記載がありました。</p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">ReactTestUtils</span> <span class="nx">from</span> <span class="s1">'react-dom/test-utils'</span><span class="p">;</span> <span class="c1">// ES6</span>
+<span class="kd">var</span> <span class="nx">ReactTestUtils</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'react-dom/test-utils'</span><span class="p">);</span> <span class="c1">// ES5 with npm</span>
+</code></pre>
+</div>
+
+<p>言われるがままにためしたものの、<code class="highlighter-rouge">Cannot find module 'react-dom/test-utils’</code>と怒られる。いかがなものですかね。</p>
+
+<p>ということで、今度はワーニング文の<code class="highlighter-rouge">Update references</code>にバカ正直に従い依存モジュールを丸々アップデートしてみました。</p>
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>yarn cache clean
+<span class="gp">$ </span>yarn upgrade
+</code></pre>
+</div>
+
+<p>解決しちゃいました。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>リファクタしてまるっと書き直したい部分があったのですが、デグレしない保証をとる手段がなさそうだったのでひとまずテストを用意しよう！　ということで書き始めたテストですが(遅い)、思った以上に融通が効くし書き心地が良くて充実したテストコーディングとなりました。とくにレンダリング結果をsnapshotで比較できるのは重宝しそうな感じです。</p>
+
+<p>そんな感じでJestとEnzymeはよかったものの、create-react-appは便利な反面制約が多くハマりどころが多々あるので、ハマったときはこうして記録を残していこうと思います。</p>
+
+<p>それでは。</p>
+
+</article>
+
+
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+      <a href="http://b.hatena.ne.jp/entry/" 
+	 class="hatena-bookmark-button share-button share-button-hatebu" 
+	 data-hatena-bookmark-layout="touch" 
+	 data-hatena-bookmark-width="38" 
+	 data-hatena-bookmark-height="38" 
+	 title="このエントリーをはてなブックマークに追加" 
+	 style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+        <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+      </a>
+      <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+  
+    
+    
+      <a class="share-button share-button-twitter" href="//twitter.com/share?text=create-react-app+%2B+Jest+%2B+Enzyme+%E3%81%A7%E6%9B%B8%E3%81%8FReact%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%A7%8B%E3%82%81%E6%96%B9&url=https://aloerina01.github.io/blog/2017-05-18-1&via=aloerina_"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+        <i class="fa fa-twitter fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+      <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=create-react-app+%2B+Jest+%2B+Enzyme+%E3%81%A7%E6%9B%B8%E3%81%8FReact%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%A7%8B%E3%82%81%E6%96%B9&u=https://aloerina01.github.io/blog/2017-05-18-1"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+        <i class="fa fa-facebook fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+      <a class="share-button share-button-google" href="//plus.google.com/share?title=create-react-app+%2B+Jest+%2B+Enzyme+%E3%81%A7%E6%9B%B8%E3%81%8FReact%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%A7%8B%E3%82%81%E6%96%B9&url=https://aloerina01.github.io/blog/2017-05-18-1"
+        onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+        <i class="fa fa-google-plus fa-inverse"></i>
+      </a>
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2017-05-18-1" target="_blank">
+        <i class="fa fa-get-pocket fa-inverse"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <a class="share-button share-button-line" target="_blank"
+        href="//line.me/R/msg/text/?create-react-app+%2B+Jest+%2B+Enzyme+%E3%81%A7%E6%9B%B8%E3%81%8FReact%E3%82%B3%E3%83%B3%E3%83%9D%E3%83%BC%E3%83%8D%E3%83%B3%E3%83%88%E3%83%86%E3%82%B9%E3%83%88%E3%81%AE%E5%A7%8B%E3%82%81%E6%96%B9%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2017-05-18-1">
+        <img src="/assets/thirdparty/linebutton.png" />
+      </a>
+    
+  
+</section>
+
+
+<section class="related-posts">
+  <strong>関連する記事</strong>
+  
+    <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+  
+    <li><a href="/blog/2017-11-08-1">トラブルシューティングメモを晒してみる  webpack動的module編</a></li>
+  
+    <li><a href="/blog/2017-02-28-1">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a></li>
+  
+</section>
+
+
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">mille-feuille code</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+        <li class="nav-link"><a href="https://aloerina01.github.io">Top</a>
+        
+        
+          <li class="nav-link"><a href="/blogs">Blogs</a>
+        
+        
+        
+          <li class="nav-link"><a href="/tips">Tips</a>
+        
+        
+        
+          <li class="nav-link"><a href="/profile">Profile</a>
+        
+        
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Follow Me</strong></p>
+      <ul class="social-media-list">
+        
+
+        
+          
+          <li>
+            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter" target=”_blank”>
+              <i class="fa fa-twitter"></i>
+              <span class="username">aloerina_</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+          <li>
+            <a href="https://github.com/aloerina01" title="Fork me on GitHub" target=”_blank”>
+              <i class="fa fa-github"></i>
+              <span class="username">aloerina01</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</p>
+    </div>
+
+  </div>
+  
+  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+<script>
+
+$(document).ready(function() {
+
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+
+});
+
+</script>
+
+
+<!-- Google Analytics -->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2017-05-18-1',
+    'title': 'create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方'
+  });
+</script>
+
+
+
+  </body>
+
+</html>
