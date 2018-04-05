@@ -1,5 +1,241 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-03-30T19:37:49+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">毎回忘れるanyenvの使い方メモ</title><link href="https://aloerina01.github.io/tip/2018-03-26-1" rel="alternate" type="text/html" title="毎回忘れるanyenvの使い方メモ" /><published>2018-03-26T00:00:00+09:00</published><updated>2018-03-26T00:00:00+09:00</updated><id>https://aloerina01.github.io/tip/1</id><content type="html" xml:base="https://aloerina01.github.io/tip/2018-03-26-1">&lt;h3 id=&quot;what-is&quot;&gt;What is&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-04-05T13:33:17+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">Jekyllで作るWebサイトのURLをいい感じにする方法</title><link href="https://aloerina01.github.io/blog/2018-04-05-1" rel="alternate" type="text/html" title="Jekyllで作るWebサイトのURLをいい感じにする方法" /><published>2018-04-05T00:00:00+09:00</published><updated>2018-04-05T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-04-05-1">&lt;p&gt;&lt;img src=&quot;/assets/2018-04-05-1.png&quot; alt=&quot;jekyll&quot; /&gt;&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#この記事の効能&quot; id=&quot;markdown-toc-この記事の効能&quot;&gt;この記事の効能&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#仕組みを知る&quot; id=&quot;markdown-toc-仕組みを知る&quot;&gt;仕組みを知る&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#変換対象となるディレクトリ構成&quot; id=&quot;markdown-toc-変換対象となるディレクトリ構成&quot;&gt;変換対象となるディレクトリ構成&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#url生成のルールとファイル命名ルール&quot; id=&quot;markdown-toc-url生成のルールとファイル命名ルール&quot;&gt;URL生成のルールとファイル命名ルール&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1つ1つの記事に任意のurlを付与する&quot; id=&quot;markdown-toc-1つ1つの記事に任意のurlを付与する&quot;&gt;1つ1つの記事に任意のURLを付与する&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#すべてのpostsに一定のルールでurlを付与する&quot; id=&quot;markdown-toc-すべてのpostsに一定のルールでurlを付与する&quot;&gt;すべてのpostsに一定のルールでURLを付与する&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#_configymlの設定例&quot; id=&quot;markdown-toc-_configymlの設定例&quot;&gt;_config.ymlの設定例&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ポイント1--front-matterのデフォルト値を指定する&quot; id=&quot;markdown-toc-ポイント1--front-matterのデフォルト値を指定する&quot;&gt;ポイント1:  Front Matterのデフォルト値を指定する&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ポイント2-frontmatterのデフォルト値の適用範囲を指定する&quot; id=&quot;markdown-toc-ポイント2-frontmatterのデフォルト値の適用範囲を指定する&quot;&gt;ポイント2: FrontMatterのデフォルト値の適用範囲を指定する&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ポイント3-collectionsの機能を使ってtypeを追加する&quot; id=&quot;markdown-toc-ポイント3-collectionsの機能を使ってtypeを追加する&quot;&gt;ポイント3: Collectionsの機能を使ってtypeを追加する&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;この記事の効能&quot;&gt;この記事の効能&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;一つ一つのページに任意のURLを設定出来るようになります&lt;/li&gt;
+  &lt;li&gt;各ページに一定のルールでURLを割り振れるようになります&lt;/li&gt;
+  &lt;li&gt;公式に書いてある&lt;a href=&quot;https://jekyllrb.com/docs/permalinks/&quot;&gt;Permalinks&lt;/a&gt;, &lt;a href=&quot;https://jekyllrb.com/docs/frontmatter/&quot;&gt;Front Matter&lt;/a&gt;あたりの仕組みを理解できます&lt;/li&gt;
+  &lt;li&gt;ついでに関連する&lt;a href=&quot;https://jekyllrb.com/docs/collections/&quot;&gt;Collections&lt;/a&gt;という機能をやんわり理解できます&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;仕組みを知る&quot;&gt;仕組みを知る&lt;/h3&gt;
+
+&lt;h4 id=&quot;変換対象となるディレクトリ構成&quot;&gt;変換対象となるディレクトリ構成&lt;/h4&gt;
+
+&lt;p&gt;Jekyllのルールに則ったディレクトリにコンテンツ(ファイル)を配置すると、Jekyllはそのファイルを静的ページ(HTML)に変換してくれます。そして静的ページ1つ1つに対してURLが付与されます。&lt;br /&gt;
+例えば記事のように蓄積されていくコンテンツの場合、&lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;以下にコンテンツファイルを配置することで記事ごとのHTMLを生成してくれます。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
+├── _config.yml
+|
+(省略)
+| 
+├── _posts
+|   ├── 2018-04-01.md
+|   └── 2018-04-02-how-to-use.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;url生成のルールとファイル命名ルール&quot;&gt;URL生成のルールとファイル命名ルール&lt;/h4&gt;
+
+&lt;p&gt;Jekyllはコンテンツのファイル名をもとにURLを自動生成します。そのため、コンテンツファイルは&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;year4桁&amp;gt;-&amp;lt;month2桁&amp;gt;-&amp;lt;day2桁&amp;gt;-&amp;lt;タイトル&amp;gt;.md&lt;/code&gt;と命名する必要があります。&lt;/p&gt;
+
+&lt;p&gt;これをもとにJekyllは&lt;code class=&quot;highlighter-rouge&quot;&gt;/year4桁/month2桁/day2桁/タイトル.html&lt;/code&gt;というURLのHTMLを生成します。加えて、記事にカテゴリを指定している場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;/カテゴリ/year4桁/month2桁/day2桁/タイトル.html&lt;/code&gt;というURLのHTMLを生成します。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;例&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;2018-04-01.md&lt;br /&gt;
+      → &lt;code class=&quot;highlighter-rouge&quot;&gt;/2018/04/01.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;2018-04-02-how-to-use.md&lt;br /&gt;
+      → &lt;code class=&quot;highlighter-rouge&quot;&gt;/2018/04/02/how-to-use.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;2018-04-03.mdに「diary」カテゴリを指定&lt;br /&gt;
+      →&lt;code class=&quot;highlighter-rouge&quot;&gt;/diary/2018/04/03.html&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;2018-04-04-cooking.md「diary」「recipe」カテゴリを指定&lt;br /&gt;
+      →&lt;code class=&quot;highlighter-rouge&quot;&gt;/diary/recipe/2018/04/04/cooking.html&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;このURL生成ルールをJekyllの設定的には&lt;code class=&quot;highlighter-rouge&quot;&gt;/:categories/:year/:month/:day/:title.html&lt;/code&gt;と表現します。&lt;/p&gt;
+
+&lt;h3 id=&quot;1つ1つの記事に任意のurlを付与する&quot;&gt;1つ1つの記事に任意のURLを付与する&lt;/h3&gt;
+&lt;p&gt;上述のURL生成ルールがJekyllのデフォルトなのですが、このルールを無視して記事ごとに独自のURLを付与することができます。記事の冒頭でタイトルなどを定義する領域( = &lt;strong&gt;Front Matter&lt;/strong&gt; )に&lt;code class=&quot;highlighter-rouge&quot;&gt;permalink&lt;/code&gt;という項目を追記します。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2018-04-01.md&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Jekyllの使い方
+permalink: /article/how-to-use
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;こうすることでファイル名の日付を無視して&lt;code class=&quot;highlighter-rouge&quot;&gt;/article/how-to-use&lt;/code&gt;というURLで記事を生成してくれます。&lt;/p&gt;
+
+&lt;p&gt;余談ですが、このFront Matterはテンプレート内で使える変数を宣言することができます。たとえば複数人から入稿されるサイトにて記事内にWriter名を表示したい場合は、以下のようにFront Matterを利用できます。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;_posts/2018-04-01.md のFrontMatterに&lt;code class=&quot;highlighter-rouge&quot;&gt;writer&lt;/code&gt;という項目を定義&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
+title: Jekyllの使い方
+permalink: /article/how-to-use
+writer: aloerina  
+---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;_layouts/post.html テンプレートから&lt;code class=&quot;highlighter-rouge&quot;&gt;page.writer&lt;/code&gt;という変数で値を利用&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;{{ page.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 省略 --&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ page.writer }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;すべてのpostsに一定のルールでurlを付与する&quot;&gt;すべてのpostsに一定のルールでURLを付与する&lt;/h3&gt;
+&lt;p&gt;Front Matterを使えば記事1つ1つに個別のURLを設定できました。しかしこれを毎回書くのは面倒くさいですよね。そこで&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;を使ってFrontMatterのデフォルト値を指定します。「URLを&lt;code class=&quot;highlighter-rouge&quot;&gt;/artilce/&amp;lt;タイトル名&amp;gt;.html&lt;/code&gt;とする」例を使って解説します。&lt;/p&gt;
+
+&lt;h4 id=&quot;_configymlの設定例&quot;&gt;_config.ymlの設定例&lt;/h4&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;defaults&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;posts&quot;&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/article/:title.html&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;ポイント1--front-matterのデフォルト値を指定する&quot;&gt;ポイント1:  Front Matterのデフォルト値を指定する&lt;/h4&gt;
+&lt;p&gt;Front Matterのデフォルト値を指定する&lt;code class=&quot;highlighter-rouge&quot;&gt;defaults&lt;/code&gt;には、大きく2つの項目があります。&lt;strong&gt;どのファイルに対してデフォルト値を設定するかを表す&lt;code class=&quot;highlighter-rouge&quot;&gt;scope&lt;/code&gt;&lt;/strong&gt;と、&lt;strong&gt;どんなデフォルト値にするかを表す&lt;code class=&quot;highlighter-rouge&quot;&gt;values&lt;/code&gt;&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;values&lt;/code&gt;ほうが理解は簡単で、FrontMatterに書くときと同じように書けばOKです。URLを指定したいなら&lt;code class=&quot;highlighter-rouge&quot;&gt;permalink: xxxx&lt;/code&gt;と、カテゴリを指定したいなら&lt;code class=&quot;highlighter-rouge&quot;&gt;categories: xxxxx&lt;/code&gt;と書くだけです。上述した&lt;code class=&quot;highlighter-rouge&quot;&gt;writer&lt;/code&gt;のような独自の変数をここで定義することもできますし、複数の項目を並べて指定することもできます。&lt;/p&gt;
+
+&lt;p&gt;今回はURLにタイトルを入れたいので&lt;code class=&quot;highlighter-rouge&quot;&gt;:title&lt;/code&gt;という変数を使いましたが、他にもpermalinkの指定に使える変数があります。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;変数名&lt;/th&gt;
+      &lt;th&gt;説明&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:year&lt;/td&gt;
+      &lt;td&gt;Postのファイル名から取得できる年&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:month&lt;/td&gt;
+      &lt;td&gt;Postのファイル名から取得できる月&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:i_month&lt;/td&gt;
+      &lt;td&gt;Postのファイル名から取得できる0埋めしない月&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:day&lt;/td&gt;
+      &lt;td&gt;Postのファイル名から取得できる日&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:i_day&lt;/td&gt;
+      &lt;td&gt;Postのファイル名から取得できる0埋めしない日&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:short_year&lt;/td&gt;
+      &lt;td&gt;Postのファイル名から取得できる年の下2桁&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:title&lt;/td&gt;
+      &lt;td&gt;Postのファイル名から取得できるタイトル&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:categories&lt;/td&gt;
+      &lt;td&gt;Postに対して指定されたカテゴリ&lt;br /&gt; もしカテゴリが存在しない場合は無視&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:date&lt;/td&gt;
+      &lt;td&gt;/:categories/:year/:month/:day/:title.html&lt;br /&gt; Jekyllに組み込まれているPermalink&lt;br /&gt; 何も指定しない場合はこれが適用される&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:pretty&lt;/td&gt;
+      &lt;td&gt;/:categories/:year/:month/:day/:title/&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;:none&lt;/td&gt;
+      &lt;td&gt;/:categories/:title.html&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;ポイント2-frontmatterのデフォルト値の適用範囲を指定する&quot;&gt;ポイント2: FrontMatterのデフォルト値の適用範囲を指定する&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;scope&lt;/code&gt;は&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;という2つの要素を持ちます&lt;/strong&gt;。&lt;code class=&quot;highlighter-rouge&quot;&gt;values&lt;/code&gt;とは違いこれら以外の要素を追加することはできません。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;とはどのディレクトリにあるファイルに対してデフォルト値を適用するのか&lt;/strong&gt;を表します。上の例のように空文字にした場合はすべてのファイルが適用対象になります。空文字でもいいのですが必須の項目です。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;はpath内にあるファイルのうち、該当するタイプのファイルに対してデフォルト値を適用する&lt;/strong&gt;という絞込を行う機能です。そのためtypeはなくてもOKな項目です。ちなみに&lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;以下にあるファイルには内部的に&lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt;というタイプが割り当てられています。&lt;/p&gt;
+
+&lt;p&gt;つまり今回の設定例では、&lt;strong&gt;全ファイルの中で&lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt;タイプのファイルに&lt;code class=&quot;highlighter-rouge&quot;&gt;permalink&lt;/code&gt;をデフォルトとして適用する&lt;/strong&gt;となるわけです。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;を組み合わせてデフォルト値の適用範囲を設定できるわけですが、この&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;が聞きなれず設定の仕方も少し厄介なので次項でまとめてみます。&lt;/p&gt;
+
+&lt;h4 id=&quot;ポイント3-collectionsの機能を使ってtypeを追加する&quot;&gt;ポイント3: Collectionsの機能を使ってtypeを追加する&lt;/h4&gt;
+&lt;p&gt;Webサイトは記事ページ(Jekyll内ではpostsと呼ばれるもの)だけですべてがまかなえるわけではなく、たとえば写真や制作物を載せるページであったり、Documentを載せるページであったりと、様々な様式のページが必要になることがあります。これを表現するのが&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;という概念であり、&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;を定義するものがCollectionsです&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;実は&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;には内部的に以下のような設定を持っています。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;collections:
+  posts:
+    output: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これは「&lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt;というタイプを用意して、これをJekyllの変換対象とする」ということを表現しています。そしてこのtype名に&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;をつなげた_postsディレクトリ以下にあるファイルが、&lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt;タイプのファイルとなります。&lt;/p&gt;
+
+&lt;p&gt;つまりtypeを増やしたい場合は以下の2つの作業が必要ということになります。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Collectionにtypeを定義する&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;定義したtype名の先頭に&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;をつけたディレクトリを用意する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;この機能により、最初に記した「変換対象となるディレクトリ」を増やすことができ、また&lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;と組み合わせて&lt;code class=&quot;highlighter-rouge&quot;&gt;defaults&lt;/code&gt;の適用範囲を柔軟に指定できるようになるわけです。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Jekyllのコンテンツファイルには命名ルール(&lt;code class=&quot;highlighter-rouge&quot;&gt;:year-:month-:day-:title.md&lt;/code&gt;)がある&lt;/li&gt;
+  &lt;li&gt;Jekyllはデフォルトで&lt;code class=&quot;highlighter-rouge&quot;&gt;/:year/:month/:day/:title.html&lt;/code&gt;というURLを生成する&lt;/li&gt;
+  &lt;li&gt;記事個別にURLを指定する場合は&lt;strong&gt;Front Matter&lt;/strong&gt;を使う&lt;/li&gt;
+  &lt;li&gt;記事一括でURLを指定する場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;に&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;defaults&lt;/code&gt;&lt;/strong&gt;を指定する
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;values&lt;/code&gt;&lt;/strong&gt;でデフォルト値を定義する&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;scope&lt;/code&gt;&lt;/strong&gt;でデフォルト値の指定範囲を定義する
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;は適用対象となるディレクトリを表す&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;はpath内にあるファイルをさらに絞り込むのに使う&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;typeを増やすには&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;に&lt;strong&gt;Collections&lt;/strong&gt;を指定する
+    &lt;ul&gt;
+      &lt;li&gt;何も指定せずとも&lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt;タイプだけは内部的に定義されている&lt;/li&gt;
+      &lt;li&gt;Collectionsにtypeを指定したら、&lt;code class=&quot;highlighter-rouge&quot;&gt;_type名&lt;/code&gt;というディレクトリを用意する&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;けっこう複雑で理解するまでに苦労しましたが、わかってしまえば自在にURLを設定することができて便利でした。このブログのソースも&lt;a href=&quot;https://github.com/aloerina01/aloerina01.github.io&quot;&gt;Github&lt;/a&gt;上で公開していますので、ご参考にどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">毎回忘れるanyenvの使い方メモ</title><link href="https://aloerina01.github.io/tip/2018-03-26-1" rel="alternate" type="text/html" title="毎回忘れるanyenvの使い方メモ" /><published>2018-03-26T00:00:00+09:00</published><updated>2018-03-26T00:00:00+09:00</updated><id>https://aloerina01.github.io/tip/1</id><content type="html" xml:base="https://aloerina01.github.io/tip/2018-03-26-1">&lt;h3 id=&quot;what-is&quot;&gt;What is&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/riywo/anyenv&quot;&gt;anyenv&lt;/a&gt;とは&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;と名のつくバージョン管理ツールのWrapperです。&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;とは例えばNodeのバージョン管理をするndenvがあげられます。anyenvでできるのは以下のようなことです。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1891,229 +2127,4 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
       &lt;p&gt;英語が得意でない者が雰囲気で訳したものです。本家Hyperappとは無関係の個人的な記事です。&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
-&lt;/div&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry><entry><title type="html">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</title><link href="https://aloerina01.github.io/blog/2017-03-14-1" rel="alternate" type="text/html" title="ES6 Proxy をつかって堅牢なオブジェクトをつくるTips" /><published>2017-03-14T00:00:00+09:00</published><updated>2017-03-14T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-03-14-1">&lt;h3 id=&quot;what-is-proxy&quot;&gt;What is Proxy&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The Proxy object is used to define custom behavior for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;オブジェクトをラップし、オブジェクトが持つ基本的な機能(&lt;code class=&quot;highlighter-rouge&quot;&gt;obj.key&lt;/code&gt;と書いてvalueを取得する機能など)を上書くことができるのが&lt;code class=&quot;highlighter-rouge&quot;&gt;Proxy Object&lt;/code&gt;です。&lt;br /&gt;
-(高機能なオブジェクトを生成することができる、けっこうイカした仕様だと思います😋)&lt;/p&gt;
-
-&lt;h4 id=&quot;つかいかた&quot;&gt;つかいかた&lt;/h4&gt;
-
-&lt;p&gt;詳細な用法やパラメータの説明は &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy&quot;&gt;MDN&lt;/a&gt;に任せるとして、基本的なSyntaxだけ記します。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proxy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;target&lt;/code&gt; …Proxyでラップする対象となるObject&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;handler&lt;/code&gt;…上書く関数をプロパティに持つObject&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;用例&quot;&gt;用例&lt;/h4&gt;
-
-&lt;p&gt;実際のソースをみたほうがピンとくるかもしれません💡&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Aloerina'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;17&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;は上書き禁止です`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proxy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// objをラップしたproxyを生成する&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Margherita'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// nameは上書き禁止です&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;concole&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Aloerina&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;handlerの種類&quot;&gt;Handlerの種類&lt;/h4&gt;
-
-&lt;p&gt;オブジェクトが持つ基本的な機能、つまり「オブジェクトのプロパティへのアクセスを提供するメソッド」のことを&lt;strong&gt;トラップ&lt;/strong&gt;といいます。&lt;br /&gt;
-handlerとは、トラップの処理を上書きするものなので、各トラップに対して対応するhandlerが用意されています。「Proxyで何ができるか」を知りたいときはこれを見るのが分かりやすそうです。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;handler&lt;/th&gt;
-      &lt;th&gt;trap&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getPrototypeOf&quot;&gt;handler.getPrototypeOf(target)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Object.getPrototypeOf&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/setPrototypeOf&quot;&gt;handler.setPrototypeOf(target, prototype)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Object.setPrototypeOf&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/isExtensible&quot;&gt;handler.isExtensible(target)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Object.isExtensible&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/preventExtensions&quot;&gt;handler.preventExtensions(target)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Object.preventExtensions&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/getOwnPropertyDescriptor&quot;&gt;handler.getOwnPropertyDescriptor(target, prop)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Object.getOwnPropertyDescriptor&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/defineProperty&quot;&gt;handler.defineProperty(target, prop, descriptor)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Object.defineProperty&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/has&quot;&gt;handler.has(target, prop)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;em&gt;in&lt;/em&gt; operator&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/get&quot;&gt;handler.get(target, prop, receiver)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;getting property values&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/set&quot;&gt;handler.set(target, prop, value, receiver)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;setting property values&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/deleteProperty&quot;&gt;handler.deleteProperty(target, prop)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;em&gt;delete&lt;/em&gt; operator&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/ownKeys&quot;&gt;handler.ownKeys(target)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;Object.getOwnPropertyNames&lt;br /&gt;Object.getOwnPropertySymbols&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/apply&quot;&gt;handler.apply(target, thisArg, argumentsList)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;function call&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy/handler/construct&quot;&gt;handler.construct(target, argumentsList, newTarget)&lt;/a&gt;&lt;/td&gt;
-      &lt;td&gt;&lt;em&gt;new&lt;/em&gt; operator&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&quot;reflect&quot;&gt;Reflect&lt;/h4&gt;
-
-&lt;p&gt;handlerの中で「本来の処理を呼び出したい」場面があると思います。この場合に使えるのが&lt;code class=&quot;highlighter-rouge&quot;&gt;Reflect&lt;/code&gt;です。&lt;code class=&quot;highlighter-rouge&quot;&gt;handler&lt;/code&gt;と同じメソッド群を持ちます。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Before set'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;Reflect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;prop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// targetオブジェクトのsetterを呼び出す&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proxy&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;handler&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Margherita'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Before set&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;concole&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;proxy&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Margherita&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;can-i-use&quot;&gt;Can I Use&lt;/h4&gt;
-
-&lt;p&gt;執筆時点(2017/03/14)でのものです。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-03-14-1.png&quot; alt=&quot;caniuse&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;polyfill&quot;&gt;Polyfill&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/GoogleChrome/proxy-polyfill&quot;&gt;GoogleChrome/proxy-polyfill&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;このPolyfillでは&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;get&lt;/li&gt;
-  &lt;li&gt;set&lt;/li&gt;
-  &lt;li&gt;apply&lt;/li&gt;
-  &lt;li&gt;construct&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;のトラップにしか対応していないので、その点ご注意を…。&lt;/p&gt;
-
-&lt;p&gt;以上、ざっとProxyの使い方でした。ここからはProxyの実用例の話です。&lt;/p&gt;
-
-&lt;h3 id=&quot;tips-enumobjectをつくる-enumbuilder&quot;&gt;[Tips] EnumObjectをつくる！ EnumBuilder&lt;/h3&gt;
-
-&lt;p&gt;Enumの定義にオブジェクトを使うケース、よくありますよね。  
-あるオブジェクトがEnumである以上、&lt;strong&gt;値が書き換えられないこと&lt;/strong&gt;が厳密に管理されていると良いです。ということで、オブジェクトがEnumとして生まれ変わる&lt;code class=&quot;highlighter-rouge&quot;&gt;EnumBuilder&lt;/code&gt;をつくってみました。
-&lt;script src=&quot;https://gist.github.com/aloerina01/9c931d3918242767b9c9729a63b0952f.js&quot;&gt;&lt;/script&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;set / delete&lt;/code&gt;ができないオブジェクトにする&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;して&lt;code class=&quot;highlighter-rouge&quot;&gt;Type.INSERT&lt;/code&gt;のようにスタティックアクセス風に使える&lt;/li&gt;
-  &lt;li&gt;既に作られているEnum用オブジェクトにも簡単に適用できる&lt;/li&gt;
-  &lt;li&gt;オブジェクトの中にオブジェクトが入れ子になるケースは想定してない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といったことを満たす仕様にしたくてこのような形にしました。&lt;/p&gt;
-
-&lt;h3 id=&quot;tips-用途別に制約付きmoduleを定義してクラスベースな実装をする&quot;&gt;[Tips] 用途別に制約付きModuleを定義してクラスベースな実装をする！&lt;/h3&gt;
-
-&lt;p&gt;class構文で用意したModuleを&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;して&lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt;して使うと本当にクラスをインスタンス化してるように見えて、読みやすいクラスベース(風)の実装となりますよね。&lt;br /&gt;
-しかし実際にはインスタンス化されたソレはただのオブジェクトです。やろうと思えばfunctionを外から追加することも、privateな用途で用意した変数を強引に書き換えることもできてしまいます。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./User'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user01&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;user01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Aloerina'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// やめてー！ private用の変数を書き換えないでー！&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;こうなってしまうと悲惨なので、&lt;strong&gt;Module毎の性質に応じて機能を制約し、不本意な使われ方を防ぐ&lt;/strong&gt;ため、&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Private変数を持つModule&lt;/li&gt;
-  &lt;li&gt;Immutableな値を定義するModule&lt;/li&gt;
-  &lt;li&gt;SingletonなModule&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;の3パターンのModuleを定義するための&lt;code class=&quot;highlighter-rouge&quot;&gt;ModuleBuilder&lt;/code&gt;を作ってみました。&lt;/p&gt;
-
-&lt;script src=&quot;https://gist.github.com/aloerina01/1fa30b0d81384681a4480d80e69893fe.js&quot;&gt;&lt;/script&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;既に作られているModuleにも適用できる&lt;/li&gt;
-  &lt;li&gt;Moduleのソース内に、どの性質を持っているのかが明記されている&lt;/li&gt;
-  &lt;li&gt;今まで通りModuleを&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;して&lt;code class=&quot;highlighter-rouge&quot;&gt;new&lt;/code&gt;して使える。呼び出し側で修正が不要(singletonは除く)&lt;/li&gt;
-  &lt;li&gt;上記3つ以外にもパターンを拡張できる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といったことを意識してつくってみました。Builderパターンなのは言わずもがな。&lt;br /&gt;
-任意のクラスと用意されたhandlerを選択してBuilderに渡し、出来上がったProxyをModuleとしてExportさせて使います。以下に実用例を2つ挙げます。&lt;/p&gt;
-
-&lt;h4 id=&quot;immutableなオブジェクト&quot;&gt;Immutableなオブジェクト&lt;/h4&gt;
-
-&lt;script src=&quot;https://gist.github.com/aloerina01/2d3a998bc7dc8f90c91ddc318e50214a.js&quot;&gt;&lt;/script&gt;
-
-&lt;h4 id=&quot;singletonなオブジェクト&quot;&gt;Singletonなオブジェクト&lt;/h4&gt;
-
-&lt;script src=&quot;https://gist.github.com/aloerina01/d9537a60291363555b95df5c33a4f9da.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;ちなみに、設計当初は&lt;code class=&quot;highlighter-rouge&quot;&gt;Handlers&lt;/code&gt;を組み合わせていろんな性質を持つModuleをつくれるようにしたい(Javaの&lt;a href=&quot;http://dev.classmethod.jp/server-side/java/use_lombok_short/&quot;&gt;lombok&lt;/a&gt;アノテーションみたいな感じで簡単に付与できるようにしたい)と思っていたのですが、handlerの競合が起きるのでやめました…。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;オブジェクトが持つ基本機能を上書くことでJavaScript特有の自由さに制限を設けて堅牢な実装をしよう！&lt;/strong&gt; というお話でした。&lt;/p&gt;
-
-&lt;p&gt;とは言え、やや強引な実装なので粗があることも事実です(上記の例ではSingletonの実装は微妙。そもそもJSでSingletonなんて使わなくてもいいかもなと思ったり…)。&lt;br /&gt;
-&lt;strong&gt;クラスベースな書き方をゴリ押しで実現している&lt;/strong&gt;とも言えるので、そもそもJavaScriptの実装としてふさわしいかという議論の余地はありそうです。&lt;/p&gt;
-
-&lt;p&gt;ただ、そういった点も踏まえた上で使うのであれば強力な効果を発揮してくれるのがProxyだと思います。今回は自分で試用してみたものだけをまとめましたが、他にも有用な使い方はあるようです。下記のサイトが参考になりました。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://dealwithjs.io/es6-features-10-use-cases-for-proxy/&quot;&gt;ES6 Features - 10 Use Cases for Proxy&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;もっと良い実装がある、間違っている部分がある、という場合はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt; までご一報いただけると嬉しいです。&lt;/p&gt;
-
-&lt;p&gt;現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">What is Proxy</summary></entry></feed>
+&lt;/div&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry></feed>
