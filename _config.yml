@@ -67,10 +67,21 @@ defaults:
   #     type: "pages"
   #   values:
   - scope:
-      path: ""
+      path: "_posts/blog"
       type: "posts"
     values:
       layout: post
+      posttype: blog
+      posttype_url: /blogs
+      posttype_name: "記事"
+  - scope:
+      path: "_posts/tip"
+      type: "posts"
+    values:
+      layout: post
+      posttype: tip
+      posttype_url: /tips
+      posttype_name: "Tips"
   - scope:
       path: ""
       type: "old"
