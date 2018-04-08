@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-04-05T15:12:19+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-04-08T22:16:55+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">Jekyllで作るWebサイトのURLをいい感じにする方法</title><link href="https://aloerina01.github.io/blog/2018-04-05-1" rel="alternate" type="text/html" title="Jekyllで作るWebサイトのURLをいい感じにする方法" /><published>2018-04-05T00:00:00+09:00</published><updated>2018-04-05T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-04-05-1">&lt;p&gt;&lt;img src=&quot;/assets/2018-04-05-1.png&quot; alt=&quot;jekyll&quot; /&gt;&lt;/p&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1689,7 +1689,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
       &lt;li&gt;&lt;a href=&quot;#view&quot; id=&quot;markdown-toc-view&quot;&gt;View&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#actions&quot; id=&quot;markdown-toc-actions&quot;&gt;Actions&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#global-events&quot; id=&quot;markdown-toc-global-events&quot;&gt;Global Events&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#lifecycle-methods&quot; id=&quot;markdown-toc-lifecycle-methods&quot;&gt;&lt;a href=&quot;https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md&quot;&gt;Lifecycle Methods&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#lifecycle-methods&quot; id=&quot;markdown-toc-lifecycle-methods&quot;&gt;Lifecycle Methods&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#afterword&quot; id=&quot;markdown-toc-afterword&quot;&gt;Afterword&lt;/a&gt;&lt;/li&gt;
@@ -2124,7 +2124,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 &lt;div class=&quot;footnotes&quot;&gt;
   &lt;ol&gt;
     &lt;li id=&quot;fn:1&quot;&gt;
-      &lt;p&gt;英語が得意でない者が雰囲気で訳したものです。本家Hyperappとは無関係の個人的な記事です。&amp;nbsp;&lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+      &lt;p&gt;英語が得意でない者が雰囲気で訳したものです。本家Hyperappとは無関係の個人的な記事です。 &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
     &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/div&gt;</content><author><name></name></author><summary type="html">Introduction</summary></entry></feed>

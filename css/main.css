@@ -189,7 +189,7 @@ h4 {
   font-size: 1.2em; }
 
 h6 {
-  font-size: 0.69444em; }
+  font-size: 0.6944444444em; }
 
 p {
   margin: 0 0 14.4px; }
@@ -229,7 +229,7 @@ code {
   transition: all 0.4s ease;
   border-radius: 50%;
   box-shadow: 1px 1px 10px #bbb;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   .share-button:hover {
     opacity: .7; }
   .share-button .fa {
@@ -263,7 +263,7 @@ code {
   transition: opacity 0.4s ease;
   background-color: #00A4DE;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
   .hatena-bookmark-button-frame:hover {
     background-color: #0091C5;
     opacity: .7; }
@@ -292,7 +292,7 @@ code {
   padding: 0 3px; }
 
 pre code.hljs {
-  font-size: 0.83333em; }
+  font-size: 0.8333333333em; }
 
 .page-divider {
   display: block;
@@ -329,7 +329,7 @@ pre code.hljs {
     background-position: 50% 50%;
     background-size: cover; }
     .site-header-container.has-cover .title, .post-header-container.has-cover .title {
-      font-size: 2.98598em; }
+      font-size: 2.985984em; }
     .site-header-container.has-cover .subtitle, .site-header-container.has-cover .info, .post-header-container.has-cover .subtitle, .post-header-container.has-cover .info {
       font-size: 1em; }
   .site-header-container .scrim, .post-header-container .scrim {
@@ -364,7 +364,7 @@ pre code.hljs {
     margin-left: auto;
     margin-right: auto;
     position: relative;
-    -webkit-tap-highlight-color: transparent; }
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0); }
     .navigation .navigation-wrapper::after {
       clear: both;
       content: "";
@@ -471,8 +471,8 @@ pre code.hljs {
     .page-content .post-meta .post-date {
       float: left;
       display: block;
-      margin-right: 2.35765%;
-      width: 48.82117%;
+      margin-right: 2.3576515979%;
+      width: 48.821174201%;
       text-align: left;
       font-size: 0.9em; }
       .page-content .post-meta .post-date:last-child {
@@ -480,8 +480,8 @@ pre code.hljs {
     .page-content .post-meta .post-categories {
       float: left;
       display: block;
-      margin-right: 2.35765%;
-      width: 48.82117%;
+      margin-right: 2.3576515979%;
+      width: 48.821174201%;
       margin-right: 0;
       text-align: right;
       font-size: 0.9em;
@@ -500,7 +500,7 @@ pre code.hljs {
     color: #fff;
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.33); }
     .page-content .site-header-container .site-header .title {
-      font-size: 2.98598em; }
+      font-size: 2.985984em; }
     .page-content .site-header-container .site-header .subtitle {
       font-style: italic;
       font-size: 1em; }
@@ -560,7 +560,7 @@ pre code.hljs {
     margin: 1em 0 0 0;
     float: left;
     display: block;
-    margin-right: 2.35765%;
+    margin-right: 2.3576515979%;
     width: 100%; }
     .page-content .post .rss:last-child {
       margin-right: 0; }
@@ -569,8 +569,8 @@ pre code.hljs {
         margin: 1em 0;
         float: left;
         display: block;
-        margin-right: 2.35765%;
-        width: 48.82117%; }
+        margin-right: 2.3576515979%;
+        width: 48.821174201%; }
         .page-content .post .rss:last-child {
           margin-right: 0; } }
   .page-content .post .share {
@@ -598,7 +598,7 @@ pre code.hljs {
   .page-content .post .disqus {
     float: left;
     display: block;
-    margin-right: 2.35765%;
+    margin-right: 2.3576515979%;
     width: 100%; }
     .page-content .post .disqus:last-child {
       margin-right: 0; }
@@ -621,7 +621,7 @@ pre code.hljs {
     padding: 0.5em 1em 1em 1em;
     text-align: center; }
   .page-content .page .posts-list li {
-    padding: 0.48225em;
+    padding: 0.4822530864em;
     padding-left: 0; }
   .page-content .page .posts-list .post-tips-line:before {
     content: '\f0eb';
@@ -700,7 +700,7 @@ pre code.hljs {
   .site-footer .site-navigation {
     float: left;
     display: block;
-    margin-right: 2.35765%;
+    margin-right: 2.3576515979%;
     width: 100%;
     font-size: 0.9em; }
     .site-footer .site-navigation:last-child {
@@ -709,23 +709,23 @@ pre code.hljs {
       .site-footer .site-navigation {
         float: left;
         display: block;
-        margin-right: 2.35765%;
-        width: 48.82117%; }
+        margin-right: 2.3576515979%;
+        width: 48.821174201%; }
         .site-footer .site-navigation:last-child {
           margin-right: 0; } }
     @media screen and (min-width: 768px) {
       .site-footer .site-navigation {
         float: left;
         display: block;
-        margin-right: 2.35765%;
-        width: 31.76157%; }
+        margin-right: 2.3576515979%;
+        width: 31.7615656014%; }
         .site-footer .site-navigation:last-child {
           margin-right: 0; } }
   .site-footer .site-contact {
     margin-top: 1em;
     float: left;
     display: block;
-    margin-right: 2.35765%;
+    margin-right: 2.3576515979%;
     width: 100%;
     font-size: 0.9em; }
     .site-footer .site-contact:last-child {
@@ -734,8 +734,8 @@ pre code.hljs {
       .site-footer .site-contact {
         float: left;
         display: block;
-        margin-right: 2.35765%;
-        width: 48.82117%;
+        margin-right: 2.3576515979%;
+        width: 48.821174201%;
         margin-top: 0;
         margin-right: 0; }
         .site-footer .site-contact:last-child {
@@ -744,8 +744,8 @@ pre code.hljs {
       .site-footer .site-contact {
         float: left;
         display: block;
-        margin-right: 2.35765%;
-        width: 31.76157%;
+        margin-right: 2.3576515979%;
+        width: 31.7615656014%;
         margin-top: 0; }
         .site-footer .site-contact:last-child {
           margin-right: 0; } }
@@ -756,7 +756,7 @@ pre code.hljs {
     margin-top: 1em;
     float: left;
     display: block;
-    margin-right: 2.35765%;
+    margin-right: 2.3576515979%;
     width: 100%;
     font-size: 0.9em; }
     .site-footer .site-signature:last-child {
@@ -765,8 +765,8 @@ pre code.hljs {
       .site-footer .site-signature {
         float: left;
         display: block;
-        margin-right: 2.35765%;
-        width: 31.76157%;
+        margin-right: 2.3576515979%;
+        width: 31.7615656014%;
         margin-right: 0;
         margin-top: 0; }
         .site-footer .site-signature:last-child {
