@@ -1,5 +1,194 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-04-30T00:10:42+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">経験の棚卸し 2018年4月編</title><link href="https://aloerina01.github.io/blog/2018-04-13-1" rel="alternate" type="text/html" title="経験の棚卸し 2018年4月編" /><published>2018-04-13T00:00:00+09:00</published><updated>2018-04-13T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-04-13-1">&lt;h3 id=&quot;ことはじめ&quot;&gt;ことはじめ&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-01T20:09:35+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">メンテナンスしやすい Vue Component の切り方の提案</title><link href="https://aloerina01.github.io/blog/2018-05-01-1" rel="alternate" type="text/html" title="メンテナンスしやすい Vue Component の切り方の提案" /><published>2018-05-01T00:00:00+09:00</published><updated>2018-05-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-01-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
+&lt;p&gt;VueをつかってWebアプリケーションを実装するとき、Componentをどう切るかって誰でも一度は悩みますよね(悩みますよね？)。とりあえず思いつくままに切ってみたり、繰り返し使いそうなもので切ってみたり、CSSのスコープで切ってみたり…。いろいろな切り口があると思います。&lt;/p&gt;
+
+&lt;p&gt;この「いろいろな切り口」でコンポーネントを切ることができる点が、コンポーネント設計を難しくしている所以だと考えています。&lt;/p&gt;
+
+&lt;p&gt;そこで今回は、&lt;strong&gt;どのような切り口・観点でコンポーネントを切ればよいのか&lt;/strong&gt;、&lt;strong&gt;そのときに気をつけるべきことは何か&lt;/strong&gt;、といったComponentの設計方法についてまとめてみます。&lt;br /&gt;
+すべての実用ケースを想定できているわけではないと思いますが、大小いくつかのWebアプリを開発する際に利用してみて今のところいい感じに運用できている方法です(というか自然と収束して出来上がった考え方という感じです)。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#はじめに&quot; id=&quot;markdown-toc-はじめに&quot;&gt;はじめに&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#基本の考え方は責務の分離&quot; id=&quot;markdown-toc-基本の考え方は責務の分離&quot;&gt;基本の考え方は「責務の分離」&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#containerの責務&quot; id=&quot;markdown-toc-containerの責務&quot;&gt;「Container」の責務&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-画面の構成を表現すること&quot; id=&quot;markdown-toc-1-画面の構成を表現すること&quot;&gt;1. 画面の構成を表現すること&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-他画面との関係性を表現すること&quot; id=&quot;markdown-toc-2-他画面との関係性を表現すること&quot;&gt;2. 他画面との関係性を表現すること&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#viewmodel-componentの責務&quot; id=&quot;markdown-toc-viewmodel-componentの責務&quot;&gt;「ViewModel Component」の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#view-componentの責務&quot; id=&quot;markdown-toc-view-componentの責務&quot;&gt;「View Component」の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#design-componentの責務&quot; id=&quot;markdown-toc-design-componentの責務&quot;&gt;「Design Component」の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#factory-componentの責務&quot; id=&quot;markdown-toc-factory-componentの責務&quot;&gt;「Factory Component」の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#high-order-componentの責務&quot; id=&quot;markdown-toc-high-order-componentの責務&quot;&gt;「High Order Component」の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;基本の考え方は責務の分離&quot;&gt;基本の考え方は「責務の分離」&lt;/h3&gt;
+
+&lt;p&gt;コンポーネントを切るときに心がけていることは&lt;strong&gt;責務を分けるためにコンポーネントを切る&lt;/strong&gt;ということです。責務を分けるということは、「変更理由」「影響範囲」「役割」を明確にするということに繋がります。&lt;/p&gt;
+
+&lt;p&gt;ではVueのコンポーネントには具体的にどんな責務を持ち得るのか。リストアップしてみます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;「&lt;strong&gt;Container&lt;/strong&gt;」の責務&lt;/li&gt;
+  &lt;li&gt;「Component」の責務
+    &lt;ul&gt;
+      &lt;li&gt;MVVMにおける「&lt;strong&gt;ViewModel&lt;/strong&gt;」の責務&lt;/li&gt;
+      &lt;li&gt;Templateが肥大化したときに分割されつくられる「&lt;strong&gt;View&lt;/strong&gt;」の責務&lt;/li&gt;
+      &lt;li&gt;「&lt;strong&gt;汎用UIパーツ&lt;/strong&gt;」としての責務&lt;/li&gt;
+      &lt;li&gt;「&lt;strong&gt;動的コンポーネント(Factory)&lt;/strong&gt;」としての責務&lt;/li&gt;
+      &lt;li&gt;「&lt;strong&gt;High Order Component&lt;/strong&gt;」の責務&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;現時点で私が必要だと感じているのは、これら、Containerの責務と5つのComponentの責務です。&lt;br /&gt;
+少し用語の補足をすると、1つの画面を表現するコンポーネントのことをこの記事ではReactにならって「&lt;strong&gt;Container&lt;/strong&gt;」と呼びます(Vueの世界だと「View」や「Page」と呼ばれたりしていますが、曖昧なのでReactにならいます)。例えばブログを作る場合、「TopページContainer」「記事ページContainer」「カテゴリページContainer」などが考えられます。そしてContainer内に配置される(Containerの子コンポーネントとなる)コンポーネントのことを「&lt;strong&gt;Component&lt;/strong&gt;」と表記します。&lt;/p&gt;
+
+&lt;p&gt;では、これらの責務がどんなものなのか考えていきます。&lt;/p&gt;
+
+&lt;h3 id=&quot;containerの責務&quot;&gt;「Container」の責務&lt;/h3&gt;
+
+&lt;p&gt;画面を表現するContainerの責務とは、ざっくり言うと&lt;strong&gt;①画面の構成を表現すること&lt;/strong&gt;、&lt;strong&gt;②他画面との関係性を表現すること&lt;/strong&gt;、の2つです。掘り下げると以下のような機能・役割が考えられます。&lt;/p&gt;
+
+&lt;h4 id=&quot;1-画面の構成を表現すること&quot;&gt;1. 画面の構成を表現すること&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;画面内に配置するComponentを定義する&lt;br /&gt;
+(Templateを見れば画面内にどんなComponentが並ぶのかが分かる)&lt;/li&gt;
+  &lt;li&gt;画面全体で必要なModelやStateを管理する&lt;br /&gt;
+(&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;を見ればどんなデータを扱うのかが分かる)&lt;/li&gt;
+  &lt;li&gt;画面内で共通の処理を定義する&lt;br /&gt;
+(&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;を見れば共通のロジックが分かる)&lt;/li&gt;
+  &lt;li&gt;Component間のイベントバスになる&lt;br /&gt;
+(子ComponentAのイベントをトリガーに子ComponentBの状態を変える、等)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;2-他画面との関係性を表現すること&quot;&gt;2. 他画面との関係性を表現すること&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;画面同士でデータや状態のやりとりを行う&lt;/li&gt;
+  &lt;li&gt;ルーティング処理を定義する&lt;/li&gt;
+  &lt;li&gt;vue-routerがurlと紐付けるコンポーネントとなる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Containerは1画面に1つと基準が明確なので、コンポーネントを切るときにはあまり困らないです。が、機能を実装する際に「これは本当にContainerが持つべきもものか」を意識していないと、&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;はどんどん肥大化してしまいます。言い換えれば「とりあえずContainerに実装しておけば動く」という機能が多いということです。&lt;br /&gt;
+なので画面に機能を足すときには、後述する各Componentに機能を移譲できないか？ を常に検討するようにし、Containerの責務を必要最低限を保つようにしています。&lt;/p&gt;
+
+&lt;h3 id=&quot;viewmodel-componentの責務&quot;&gt;「ViewModel Component」の責務&lt;/h3&gt;
+&lt;p&gt;ここからはContainer内に配置するComponentについてのパターンです。&lt;br /&gt;
+Vueは双方向バインディングができることから、MVVMな設計で利用されることがよくあります。&lt;a href=&quot;/blog/2017-08-29-1&quot;&gt;Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと&lt;/a&gt;の記事にも書きましたが、Vueのコンポーネントは&lt;strong&gt;MVVMのV(View)とVM(ViewModel)の機能を併せ持っています&lt;/strong&gt;。簡単に言えば単一コンポーネントの&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;template&amp;gt;&lt;/code&gt;の部分がViewで、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt;の部分がViewModelという感じです。&lt;/p&gt;
+
+&lt;p&gt;つまりComponentは、標準で&lt;strong&gt;ViewModel(とView)の責務を持っている&lt;/strong&gt;ということです。&lt;br /&gt;
+ここでViewModelの役割を見直してみます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PresentationロジックとStateを持つ&lt;/li&gt;
+  &lt;li&gt;Modelに依存する&lt;/li&gt;
+  &lt;li&gt;Modelを監視する&lt;/li&gt;
+  &lt;li&gt;Viewと双方向データバインディングする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といったことが挙げられます。これをVueの言葉で言い換えると&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;にコンポーネントを操作するロジックを持つ&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;にコンポーネントのStateを定義する&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;にコンポーネントに必要なModelを定義し、リアクティブに更新する&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Templateに&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;で定義した値を反映する、また&lt;code class=&quot;highlighter-rouge&quot;&gt;v-model&lt;/code&gt;等でTemplateの変更を検知する&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;となります。これらが過不足なく実装されていると、ViewModelとしての責務を持つComponentだと言えそうです。&lt;/p&gt;
+
+&lt;p&gt;では過不足なくとはどういう状態か。&lt;br /&gt;
+これはViewModelの設計の粒度に依るので正解はないと思いますが、ViewModel Component各々が1機能ずつ責務を担っていて、その粒度が揃っていればいいと思います。&lt;/p&gt;
+
+&lt;p&gt;これができているか確認するのは案外簡単で、ViewModel Componentの名前をリストアップしてみたときに、「&lt;strong&gt;名前から責務が分かるか&lt;/strong&gt;」「&lt;strong&gt;その粒度が同程度に見えるか&lt;/strong&gt;」で判断できます。責務は1つなのでそれが適切に名前に反映されていれば合格で、もし反映できないなら責務を持ちすぎていている可能性があります。&lt;br /&gt;
+(Componentを細かく切りすぎてしまって責務のないComponentができているケースもたまにありますが、個人的に多い例は責務を持ちすぎているパターンです……)&lt;/p&gt;
+
+&lt;p&gt;Vueのコンポーネントは、Vueの仕様的に見てもそれ単体で動作するように実装できる仕様であり、MVVM的に見てもViewModelはそれ単体で1つの機能を実現するものです。そのためVueのコンポーネントは、&lt;strong&gt;基本的にはそれ単体で動くViewModel Componentとして切るのが良い&lt;/strong&gt;と思います。&lt;/p&gt;
+
+&lt;p&gt;ただそれだけだと対応できないパターンがいくつかあるので、そのために以下に別パターンのComponentの切り方を用意しています。&lt;/p&gt;
+
+&lt;h3 id=&quot;view-componentの責務&quot;&gt;「View Component」の責務&lt;/h3&gt;
+&lt;p&gt;コンポーネントのTemplateを書いていると、ループ対象を別コンポーネントとして抜き出したい場合や、Templateがでかすぎるので分割したい場合などがあると思います。こういった例で使えるのがView Componentです。&lt;/p&gt;
+
+&lt;p&gt;View ComponentはReactのように&lt;strong&gt;ステートレスなコンポーネントで、親コンポーネントから受け取る&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;のみで動作させます&lt;/strong&gt;。そのため、基本的には&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;は定義しません。&lt;/p&gt;
+
+&lt;p&gt;親から受け取ったものをTemplateにはめ込んで表示し、親から受け取った関数をたたく。それだけの責務を持つこのComponentは、&lt;strong&gt;独自のViewのみを持ちViewModelを持たないComponent&lt;/strong&gt;だと言えます。&lt;/p&gt;
+
+&lt;p&gt;このView Componentを実装するときに意識していることは、このコンポーネントが「親の一部である」ということです。親のTemplateを分割しただけのものであるということを意識し、ロジックを実装したり過剰に機能を持たせたりしないように注意しています。それができない場合は、コンポーネントの切り方が間違っている可能性を疑います。&lt;br /&gt;
+例外はあるかもしれませんが、多くの場合は切り方を変えることで解決します。&lt;/p&gt;
+
+&lt;h3 id=&quot;design-componentの責務&quot;&gt;「Design Component」の責務&lt;/h3&gt;
+
+&lt;p&gt;これはView Componentの亜種で、実装の仕方はView Componentと同様です。つまりステートレスで&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;を受け取って動作します。&lt;/p&gt;
+
+&lt;p&gt;ただ目的が違い、View Componentが親のTemplate分割を目的に作られるのに対し、こちらは&lt;strong&gt;UIパーツのデザイン共通化を目的に作られます&lt;/strong&gt;。アプリ内でButtonのUIを統一したい、InputのUIを統一したい、といった場合に作られます。&lt;/p&gt;
+
+&lt;p&gt;そのため、粒度の小さいパーツはTemplateと&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;をHTML標準のタグと同じ状態にしておくと、使うときに楽だったり後々置き換えが効いたりして便利です。&lt;/p&gt;
+
+&lt;h3 id=&quot;factory-componentの責務&quot;&gt;「Factory Component」の責務&lt;/h3&gt;
+
+&lt;p&gt;今までのコンポーネントとは性質が少し違い、&lt;strong&gt;表示するComponentを動的に切り替える機能を持つComponentがFactory Component&lt;/strong&gt;です。&lt;br /&gt;
+&lt;strong&gt;正確には後述のHigh Order Componentの1機能&lt;/strong&gt;なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;でtypeを受け取る&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://jp.vuejs.org/v2/api/#is&quot;&gt;v-bind:is&lt;/a&gt;を使ってtypeに応じたComponentをレンダリングする&lt;/li&gt;
+  &lt;li&gt;描画するComponentたちの&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;を抽象化する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;漠然としていてピンとこないかもしれないのでサンプルコードを載せます。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;lt;template&amp;gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;component&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:is=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;componentName&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:componentData=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;componentData&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;&amp;lt;script&amp;gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;componentData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;components&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;componentA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;componentB&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;componentName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'component-a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'B'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'component-b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;で受け取ったtypeに応じて、描画するComponentを&lt;code class=&quot;highlighter-rouge&quot;&gt;v-bind:is&lt;/code&gt;で切り替えています。switch文を使っていますが、type名がそのままComponent名となるようにしてもいいですし、Factory Methodっぽくしてもいいと思います。&lt;/p&gt;
+
+&lt;p&gt;また、どのComponentにも&lt;code class=&quot;highlighter-rouge&quot;&gt;componentData&lt;/code&gt;を渡しています。この部分が&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;の抽象化です。抽象化しているので、Factory Componentを呼び出している側はどのComponentが描画されるのかを気にする必要がなくなりますね。&lt;/p&gt;
+
+&lt;h3 id=&quot;high-order-componentの責務&quot;&gt;「High Order Component」の責務&lt;/h3&gt;
+
+&lt;p&gt;上述のFactoryをはじめ、&lt;strong&gt;Componentを様々な方法で再利用できる仕組みがHigh Order Component&lt;/strong&gt;です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Factoryとなり、表示するComponentを動的に切り替える&lt;/li&gt;
+  &lt;li&gt;ComponentをWrapし、Adapterパターンのように機能を追加する&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;をproxyし、加工する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;このようなことができます(他にもいろいろできます)。&lt;br /&gt;
+Factoryのサンプルコードのように、&lt;strong&gt;あるComponentをTemplateに含むComponentをつくることで、対象のComponentをWrapし様々なロジックを噛ませることができる&lt;/strong&gt;というものです。&lt;/p&gt;
+
+&lt;p&gt;これはやろうとすればかなりトリッキーなこともできる仕組みで、また(抽象レイヤーであるために)責務が曖昧になりやすいので、個人的にはなるべく使わないようにしています。唯一それなりの頻度で使うものがFactory Componentという感じです。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;Containerとしての責務と、Componentとしての責務5パターンをまとめました。&lt;br /&gt;
+これら以外にも様々な切り口があると思いますが、現時点で自分の中で有用だと思うものを整理してみました。ディスカッションのたたき台にでもなればと思いますので、ご感想・ご意見がありましたらぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;まで。&lt;/p&gt;</content><author><name></name></author><summary type="html">はじめに VueをつかってWebアプリケーションを実装するとき、Componentをどう切るかって誰でも一度は悩みますよね(悩みますよね？)。とりあえず思いつくままに切ってみたり、繰り返し使いそうなもので切ってみたり、CSSのスコープで切ってみたり…。いろいろな切り口があると思います。</summary></entry><entry><title type="html">経験の棚卸し 2018年4月編</title><link href="https://aloerina01.github.io/blog/2018-04-13-1" rel="alternate" type="text/html" title="経験の棚卸し 2018年4月編" /><published>2018-04-13T00:00:00+09:00</published><updated>2018-04-13T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-04-13-1">&lt;h3 id=&quot;ことはじめ&quot;&gt;ことはじめ&lt;/h3&gt;
 
 &lt;p&gt;業務やプライベートで開発していて躓いたことや考えたことをブログにまとめていますが、&lt;strong&gt;まとめるほどじゃないけど経験したこと&lt;/strong&gt;がけっこうあるなあと感じていました。&lt;br /&gt;
 それらの中には時間が経つと忘れてしまうことも多くて、経験が蒸発していってしまうような気がしてどこかもったいなさを感じていました。&lt;/p&gt;
@@ -1647,61 +1836,4 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;そんな感じでJestとEnzymeはよかったものの、create-react-appは便利な反面制約が多くハマりどころが多々あるので、ハマったときはこうして記録を残していこうと思います。&lt;/p&gt;
 
-&lt;p&gt;それでは。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえおき</summary></entry><entry><title type="html">escape と encodeURI と encodeURIComponent を正しく使い分ける</title><link href="https://aloerina01.github.io/blog/2017-04-28-1" rel="alternate" type="text/html" title="escape と encodeURI と encodeURIComponent を正しく使い分ける" /><published>2017-04-28T00:00:00+09:00</published><updated>2017-04-28T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-04-28-1">&lt;h3 id=&quot;escape&quot;&gt;escape&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;非推奨&lt;/strong&gt;、Web標準から削除されている&lt;/li&gt;
-  &lt;li&gt;ブラウザやそのバージョンにより仕様が違う&lt;/li&gt;
-  &lt;li&gt;変換されない文字がある&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;encodeuri&quot;&gt;encodeURI&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;UTF8ベースのエンコード&lt;/li&gt;
-  &lt;li&gt;その名の通り、&lt;strong&gt;URIそのもの&lt;/strong&gt;を渡しエンコードしてもらうもの&lt;/li&gt;
-  &lt;li&gt;そのため、URI内で意味をもつ&lt;code class=&quot;highlighter-rouge&quot;&gt;#$&amp;amp;+,/:;=?@&lt;/code&gt;の文字は変換されない&lt;/li&gt;
-  &lt;li&gt;スペースのエンコードは&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;ではなく&lt;code class=&quot;highlighter-rouge&quot;&gt;%20&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;encodeuricomponent&quot;&gt;encodeURIComponent&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;UTF-8ベースのエンコード&lt;/li&gt;
-  &lt;li&gt;その名の通り、&lt;strong&gt;URIを構成する一部分&lt;/strong&gt;を渡しエンコードしてもらうもの&lt;/li&gt;
-  &lt;li&gt;URI内で意味を持つ&lt;code class=&quot;highlighter-rouge&quot;&gt;#$&amp;amp;+,/:;=?@&lt;/code&gt;もエンコードする&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;encodeURI&lt;/code&gt;との差は&lt;code class=&quot;highlighter-rouge&quot;&gt;#$&amp;amp;+,/:;=?@&lt;/code&gt;をエンコードするか否か&lt;/li&gt;
-  &lt;li&gt;URI全体をこの関数でエンコードすると、URIとして機能しなくなる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;比較ツールつくった&quot;&gt;比較ツールつくった&lt;/h3&gt;
-
-&lt;p&gt;3つの関数によりどのようにエンコードされるかが分かるツールをつくりました。&lt;br /&gt;
-&lt;a href=&quot;https://aloerina01.github.io/encoder/&quot;&gt;encoder&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;htmlエスケープ用の関数はない&quot;&gt;HTMLエスケープ用の関数はない&lt;/h3&gt;
-
-&lt;p&gt;ついでの話。&lt;br /&gt;
-「HTMLエスケープは基本的にはサーバサイドでするもの」という認識が漠然とあります。が、SPAの登場などもあってクライアントサイドでレンダリングする場面もチラホラあるので、その場合は自前でエスケープ関数を作る必要があります。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;escapeHtml&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'string'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;target&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;replace&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;&amp;amp;'`&quot;&amp;lt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/g&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;s1&quot;&gt;'&amp;amp;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;amp;amp;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s2&quot;&gt;&quot;'&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;amp;#x27;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s1&quot;&gt;'`'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;amp;#x60;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s1&quot;&gt;'&quot;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;amp;quot;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s1&quot;&gt;'&amp;lt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;amp;lt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;s1&quot;&gt;'&amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&amp;amp;gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;match&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ざっくりとこんな感じです。&lt;/p&gt;
-
-&lt;p&gt;大した話でもないのでまとめとか後書きは抜きにして、現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">escape</summary></entry></feed>
+&lt;p&gt;それでは。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえおき</summary></entry></feed>
