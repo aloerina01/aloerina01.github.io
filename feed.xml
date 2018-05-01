@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-01T20:27:21+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-01T20:38:08+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">メンテナンスしやすい Vue Component の切り方の提案</title><link href="https://aloerina01.github.io/blog/2018-05-01-1" rel="alternate" type="text/html" title="メンテナンスしやすい Vue Component の切り方の提案" /><published>2018-05-01T00:00:00+09:00</published><updated>2018-05-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-01-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
 &lt;p&gt;VueをつかってWebアプリケーションを実装するとき、Componentをどう切るかって誰でも一度は悩みますよね(悩みますよね？)。とりあえず思いつくままに切ってみたり、繰り返し使いそうなもので切ってみたり、CSSのスコープで切ってみたり…。いろいろな切り口があると思います。&lt;/p&gt;
 
@@ -19,7 +19,7 @@
   &lt;li&gt;&lt;a href=&quot;#view-componentの責務&quot; id=&quot;markdown-toc-view-componentの責務&quot;&gt;「View Component」の責務&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#design-componentの責務&quot; id=&quot;markdown-toc-design-componentの責務&quot;&gt;「Design Component」の責務&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#factory-componentの責務&quot; id=&quot;markdown-toc-factory-componentの責務&quot;&gt;「Factory Component」の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#high-order-componentの責務&quot; id=&quot;markdown-toc-high-order-componentの責務&quot;&gt;「High Order Component」の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#higher-order-componentの責務&quot; id=&quot;markdown-toc-higher-order-componentの責務&quot;&gt;「Higher-Order Component」の責務&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -37,7 +37,7 @@
       &lt;li&gt;Templateが肥大化したときに分割されつくられる「&lt;strong&gt;View&lt;/strong&gt;」の責務&lt;/li&gt;
       &lt;li&gt;「&lt;strong&gt;汎用UIパーツ&lt;/strong&gt;」としての責務&lt;/li&gt;
       &lt;li&gt;「&lt;strong&gt;動的コンポーネント(Factory)&lt;/strong&gt;」としての責務&lt;/li&gt;
-      &lt;li&gt;「&lt;strong&gt;High Order Component&lt;/strong&gt;」の責務&lt;/li&gt;
+      &lt;li&gt;「&lt;strong&gt;Higher-Order Component&lt;/strong&gt;」の責務&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -131,7 +131,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 &lt;h3 id=&quot;factory-componentの責務&quot;&gt;「Factory Component」の責務&lt;/h3&gt;
 
 &lt;p&gt;今までのコンポーネントとは性質が少し違い、&lt;strong&gt;表示するComponentを動的に切り替える機能を持つComponentがFactory Component&lt;/strong&gt;です。&lt;br /&gt;
-&lt;strong&gt;正確には後述のHigh Order Componentの1機能&lt;/strong&gt;なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。&lt;/p&gt;
+&lt;strong&gt;正確には後述のHigher-Order Componentの1機能&lt;/strong&gt;なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;でtypeを受け取る&lt;/li&gt;
@@ -170,9 +170,9 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 &lt;p&gt;また、どのComponentにも&lt;code class=&quot;highlighter-rouge&quot;&gt;componentData&lt;/code&gt;を渡しています。この部分が&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;の抽象化です。抽象化しているので、Factory Componentを呼び出している側はどのComponentが描画されるのかを気にする必要がなくなりますね。&lt;/p&gt;
 
-&lt;h3 id=&quot;high-order-componentの責務&quot;&gt;「High Order Component」の責務&lt;/h3&gt;
+&lt;h3 id=&quot;higher-order-componentの責務&quot;&gt;「Higher-Order Component」の責務&lt;/h3&gt;
 
-&lt;p&gt;上述のFactoryをはじめ、&lt;strong&gt;Componentを様々な方法で再利用できる仕組みがHigh Order Component&lt;/strong&gt;です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。&lt;/p&gt;
+&lt;p&gt;上述のFactoryをはじめ、&lt;strong&gt;Componentを様々な方法で再利用できる仕組みがHigher-Order Component&lt;/strong&gt;です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Factoryとなり、表示するComponentを動的に切り替える&lt;/li&gt;

@@ -181,7 +181,7 @@
   <li><a href="#view-componentの責務" id="markdown-toc-view-componentの責務">「View Component」の責務</a></li>
   <li><a href="#design-componentの責務" id="markdown-toc-design-componentの責務">「Design Component」の責務</a></li>
   <li><a href="#factory-componentの責務" id="markdown-toc-factory-componentの責務">「Factory Component」の責務</a></li>
-  <li><a href="#high-order-componentの責務" id="markdown-toc-high-order-componentの責務">「High Order Component」の責務</a></li>
+  <li><a href="#higher-order-componentの責務" id="markdown-toc-higher-order-componentの責務">「Higher-Order Component」の責務</a></li>
   <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
 </ul>
 
@@ -199,7 +199,7 @@
       <li>Templateが肥大化したときに分割されつくられる「<strong>View</strong>」の責務</li>
       <li>「<strong>汎用UIパーツ</strong>」としての責務</li>
       <li>「<strong>動的コンポーネント(Factory)</strong>」としての責務</li>
-      <li>「<strong>High Order Component</strong>」の責務</li>
+      <li>「<strong>Higher-Order Component</strong>」の責務</li>
     </ul>
   </li>
 </ul>
@@ -293,7 +293,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 <h3 id="factory-componentの責務">「Factory Component」の責務</h3>
 
 <p>今までのコンポーネントとは性質が少し違い、<strong>表示するComponentを動的に切り替える機能を持つComponentがFactory Component</strong>です。<br />
-<strong>正確には後述のHigh Order Componentの1機能</strong>なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。</p>
+<strong>正確には後述のHigher-Order Componentの1機能</strong>なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。</p>
 
 <ul>
   <li><code class="highlighter-rouge">props</code>でtypeを受け取る</li>
@@ -332,9 +332,9 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <p>また、どのComponentにも<code class="highlighter-rouge">componentData</code>を渡しています。この部分が<code class="highlighter-rouge">props</code>の抽象化です。抽象化しているので、Factory Componentを呼び出している側はどのComponentが描画されるのかを気にする必要がなくなりますね。</p>
 
-<h3 id="high-order-componentの責務">「High Order Component」の責務</h3>
+<h3 id="higher-order-componentの責務">「Higher-Order Component」の責務</h3>
 
-<p>上述のFactoryをはじめ、<strong>Componentを様々な方法で再利用できる仕組みがHigh Order Component</strong>です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。</p>
+<p>上述のFactoryをはじめ、<strong>Componentを様々な方法で再利用できる仕組みがHigher-Order Component</strong>です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。</p>
 
 <ul>
   <li>Factoryとなり、表示するComponentを動的に切り替える</li>
