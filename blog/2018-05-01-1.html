@@ -286,7 +286,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <p>これはView Componentの亜種で、実装の仕方はView Componentと同様です。つまりステートレスで<code class="highlighter-rouge">props</code>を受け取って動作します。</p>
 
-<p>ただ目的が違い、View Componentが親のTemplate分割を目的に作られるのに対し、こちらは<strong>UIパーツのデザイン共通化を目的に作られます</strong>。アプリ内でButtonのUIを統一したい、InputのUIを統一したい、といった場合に作られます。</p>
+<p>ただ目的が違い、View Componentが親のTemplate分割を目的に作られるのに対し、こちらは<strong>UIパーツのデザイン共通化を目的に作られます</strong>。アプリ内でLabel付きButtonのUIを統一したい、ダイアログのUIを統一したい、といった場合に作られます。</p>
 
 <p>そのため、粒度の小さいパーツはTemplateと<code class="highlighter-rouge">props</code>をHTML標準のタグと同じ状態にしておくと、使うときに楽だったり後々置き換えが効いたりして便利です。</p>
 
