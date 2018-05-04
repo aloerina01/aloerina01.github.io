@@ -172,16 +172,16 @@
 <ul id="markdown-toc">
   <li><a href="#はじめに" id="markdown-toc-はじめに">はじめに</a></li>
   <li><a href="#基本の考え方は責務の分離" id="markdown-toc-基本の考え方は責務の分離">基本の考え方は「責務の分離」</a></li>
-  <li><a href="#containerの責務" id="markdown-toc-containerの責務">「Container」の責務</a>    <ul>
+  <li><a href="#container-の責務" id="markdown-toc-container-の責務">Container の責務</a>    <ul>
       <li><a href="#1-画面の構成を表現すること" id="markdown-toc-1-画面の構成を表現すること">1. 画面の構成を表現すること</a></li>
       <li><a href="#2-他画面との関係性を表現すること" id="markdown-toc-2-他画面との関係性を表現すること">2. 他画面との関係性を表現すること</a></li>
     </ul>
   </li>
-  <li><a href="#viewmodel-componentの責務" id="markdown-toc-viewmodel-componentの責務">「ViewModel Component」の責務</a></li>
-  <li><a href="#view-componentの責務" id="markdown-toc-view-componentの責務">「View Component」の責務</a></li>
-  <li><a href="#design-componentの責務" id="markdown-toc-design-componentの責務">「Design Component」の責務</a></li>
-  <li><a href="#factory-componentの責務" id="markdown-toc-factory-componentの責務">「Factory Component」の責務</a></li>
-  <li><a href="#higher-order-componentの責務" id="markdown-toc-higher-order-componentの責務">「Higher-Order Component」の責務</a></li>
+  <li><a href="#viewmodel-component-の責務" id="markdown-toc-viewmodel-component-の責務">ViewModel Component の責務</a></li>
+  <li><a href="#view-component-の責務" id="markdown-toc-view-component-の責務">View Component の責務</a></li>
+  <li><a href="#design-component-の責務" id="markdown-toc-design-component-の責務">Design Component の責務</a></li>
+  <li><a href="#factory-component-の責務" id="markdown-toc-factory-component-の責務">Factory Component の責務</a></li>
+  <li><a href="#higher-order-component-の責務" id="markdown-toc-higher-order-component-の責務">Higher-Order Component の責務</a></li>
   <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
 </ul>
 
@@ -209,7 +209,7 @@
 
 <p>では、これらの責務がどんなものなのか考えていきます。</p>
 
-<h3 id="containerの責務">「Container」の責務</h3>
+<h3 id="container-の責務">Container の責務</h3>
 
 <p>画面を表現するContainerの責務とは、ざっくり言うと<strong>①画面の構成を表現すること</strong>、<strong>②他画面との関係性を表現すること</strong>、の2つです。掘り下げると以下のような機能・役割が考えられます。</p>
 
@@ -237,7 +237,7 @@
 <p>Containerは1画面に1つと基準が明確なので、コンポーネントを切るときにはあまり困らないです。が、機能を実装する際に「これは本当にContainerが持つべきもものか」を意識していないと、<code class="highlighter-rouge">data</code>や<code class="highlighter-rouge">methods</code>はどんどん肥大化してしまいます。言い換えれば「とりあえずContainerに実装しておけば動く」という機能が多いということです。<br />
 なので画面に機能を足すときには、後述する各Componentに機能を移譲できないか？ を常に検討するようにし、Containerの責務を必要最低限を保つようにしています。</p>
 
-<h3 id="viewmodel-componentの責務">「ViewModel Component」の責務</h3>
+<h3 id="viewmodel-component-の責務">ViewModel Component の責務</h3>
 <p>ここからはContainer内に配置するComponentについてのパターンです。<br />
 Vueは双方向バインディングができることから、MVVMな設計で利用されることがよくあります。<a href="/blog/2017-08-29-1">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</a>の記事にも書きましたが、Vueのコンポーネントは<strong>MVVMのV(View)とVM(ViewModel)の機能を併せ持っています</strong>。簡単に言えば単一コンポーネントの<code class="highlighter-rouge">&lt;template&gt;</code>の部分がViewで、<code class="highlighter-rouge">&lt;script&gt;</code>の部分がViewModelという感じです。</p>
 
@@ -272,7 +272,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <p>ただそれだけだと対応できないパターンがいくつかあるので、そのために以下に別パターンのComponentの切り方を用意しています。</p>
 
-<h3 id="view-componentの責務">「View Component」の責務</h3>
+<h3 id="view-component-の責務">View Component の責務</h3>
 <p>コンポーネントのTemplateを書いていると、ループ対象を別コンポーネントとして抜き出したい場合や、Templateがでかすぎるので分割したい場合などがあると思います。こういった例で使えるのがView Componentです。</p>
 
 <p>View ComponentはReactのように<strong>ステートレスなコンポーネントで、親コンポーネントから受け取る<code class="highlighter-rouge">props</code>のみで動作させます</strong>。そのため、基本的には<code class="highlighter-rouge">methods</code>や<code class="highlighter-rouge">data</code>は定義しません。</p>
@@ -282,7 +282,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 <p>このView Componentを実装するときに意識していることは、このコンポーネントが「親の一部である」ということです。親のTemplateを分割しただけのものであるということを意識し、ロジックを実装したり過剰に機能を持たせたりしないように注意しています。それができない場合は、コンポーネントの切り方が間違っている可能性を疑います。<br />
 例外はあるかもしれませんが、多くの場合は切り方を変えることで解決します。</p>
 
-<h3 id="design-componentの責務">「Design Component」の責務</h3>
+<h3 id="design-component-の責務">Design Component の責務</h3>
 
 <p>これはView Componentの亜種で、実装の仕方はView Componentと同様です。つまりステートレスで<code class="highlighter-rouge">props</code>を受け取って動作します。</p>
 
@@ -290,7 +290,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <p>そのため、粒度の小さいパーツはTemplateと<code class="highlighter-rouge">props</code>をHTML標準のタグと同じ状態にしておくと、使うときに楽だったり後々置き換えが効いたりして便利です。</p>
 
-<h3 id="factory-componentの責務">「Factory Component」の責務</h3>
+<h3 id="factory-component-の責務">Factory Component の責務</h3>
 
 <p>今までのコンポーネントとは性質が少し違い、<strong>表示するComponentを動的に切り替える機能を持つComponentがFactory Component</strong>です。<br />
 <strong>正確には後述のHigher-Order Componentの1機能</strong>なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。</p>
@@ -332,7 +332,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <p>また、どのComponentにも<code class="highlighter-rouge">componentData</code>を渡しています。この部分が<code class="highlighter-rouge">props</code>の抽象化です。抽象化しているので、Factory Componentを呼び出している側はどのComponentが描画されるのかを気にする必要がなくなりますね。</p>
 
-<h3 id="higher-order-componentの責務">「Higher-Order Component」の責務</h3>
+<h3 id="higher-order-component-の責務">Higher-Order Component の責務</h3>
 
 <p>上述のFactoryをはじめ、<strong>Componentを様々な方法で再利用できる仕組みがHigher-Order Component</strong>です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。</p>
 

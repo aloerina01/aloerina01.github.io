@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-02T01:16:06+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-04T14:59:42+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">メンテナンスしやすいVueComponentを設計するために気をつけていること</title><link href="https://aloerina01.github.io/blog/2018-05-01-1" rel="alternate" type="text/html" title="メンテナンスしやすいVueComponentを設計するために気をつけていること" /><published>2018-05-01T00:00:00+09:00</published><updated>2018-05-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-01-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
 &lt;p&gt;VueをつかってWebアプリケーションを実装するとき、Componentをどう切るかって誰でも一度は悩みますよね(悩みますよね？)。とりあえず思いつくままに切ってみたり、繰り返し使いそうなもので切ってみたり、CSSのスコープで切ってみたり…。いろいろな切り口があると思います。&lt;/p&gt;
 
@@ -10,16 +10,16 @@
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#はじめに&quot; id=&quot;markdown-toc-はじめに&quot;&gt;はじめに&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#基本の考え方は責務の分離&quot; id=&quot;markdown-toc-基本の考え方は責務の分離&quot;&gt;基本の考え方は「責務の分離」&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#containerの責務&quot; id=&quot;markdown-toc-containerの責務&quot;&gt;「Container」の責務&lt;/a&gt;    &lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;#container-の責務&quot; id=&quot;markdown-toc-container-の責務&quot;&gt;Container の責務&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#1-画面の構成を表現すること&quot; id=&quot;markdown-toc-1-画面の構成を表現すること&quot;&gt;1. 画面の構成を表現すること&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#2-他画面との関係性を表現すること&quot; id=&quot;markdown-toc-2-他画面との関係性を表現すること&quot;&gt;2. 他画面との関係性を表現すること&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#viewmodel-componentの責務&quot; id=&quot;markdown-toc-viewmodel-componentの責務&quot;&gt;「ViewModel Component」の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#view-componentの責務&quot; id=&quot;markdown-toc-view-componentの責務&quot;&gt;「View Component」の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#design-componentの責務&quot; id=&quot;markdown-toc-design-componentの責務&quot;&gt;「Design Component」の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#factory-componentの責務&quot; id=&quot;markdown-toc-factory-componentの責務&quot;&gt;「Factory Component」の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#higher-order-componentの責務&quot; id=&quot;markdown-toc-higher-order-componentの責務&quot;&gt;「Higher-Order Component」の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#viewmodel-component-の責務&quot; id=&quot;markdown-toc-viewmodel-component-の責務&quot;&gt;ViewModel Component の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#view-component-の責務&quot; id=&quot;markdown-toc-view-component-の責務&quot;&gt;View Component の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#design-component-の責務&quot; id=&quot;markdown-toc-design-component-の責務&quot;&gt;Design Component の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#factory-component-の責務&quot; id=&quot;markdown-toc-factory-component-の責務&quot;&gt;Factory Component の責務&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#higher-order-component-の責務&quot; id=&quot;markdown-toc-higher-order-component-の責務&quot;&gt;Higher-Order Component の責務&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
@@ -47,7 +47,7 @@
 
 &lt;p&gt;では、これらの責務がどんなものなのか考えていきます。&lt;/p&gt;
 
-&lt;h3 id=&quot;containerの責務&quot;&gt;「Container」の責務&lt;/h3&gt;
+&lt;h3 id=&quot;container-の責務&quot;&gt;Container の責務&lt;/h3&gt;
 
 &lt;p&gt;画面を表現するContainerの責務とは、ざっくり言うと&lt;strong&gt;①画面の構成を表現すること&lt;/strong&gt;、&lt;strong&gt;②他画面との関係性を表現すること&lt;/strong&gt;、の2つです。掘り下げると以下のような機能・役割が考えられます。&lt;/p&gt;
 
@@ -75,7 +75,7 @@
 &lt;p&gt;Containerは1画面に1つと基準が明確なので、コンポーネントを切るときにはあまり困らないです。が、機能を実装する際に「これは本当にContainerが持つべきもものか」を意識していないと、&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;はどんどん肥大化してしまいます。言い換えれば「とりあえずContainerに実装しておけば動く」という機能が多いということです。&lt;br /&gt;
 なので画面に機能を足すときには、後述する各Componentに機能を移譲できないか？ を常に検討するようにし、Containerの責務を必要最低限を保つようにしています。&lt;/p&gt;
 
-&lt;h3 id=&quot;viewmodel-componentの責務&quot;&gt;「ViewModel Component」の責務&lt;/h3&gt;
+&lt;h3 id=&quot;viewmodel-component-の責務&quot;&gt;ViewModel Component の責務&lt;/h3&gt;
 &lt;p&gt;ここからはContainer内に配置するComponentについてのパターンです。&lt;br /&gt;
 Vueは双方向バインディングができることから、MVVMな設計で利用されることがよくあります。&lt;a href=&quot;/blog/2017-08-29-1&quot;&gt;Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと&lt;/a&gt;の記事にも書きましたが、Vueのコンポーネントは&lt;strong&gt;MVVMのV(View)とVM(ViewModel)の機能を併せ持っています&lt;/strong&gt;。簡単に言えば単一コンポーネントの&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;template&amp;gt;&lt;/code&gt;の部分がViewで、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt;の部分がViewModelという感じです。&lt;/p&gt;
 
@@ -110,7 +110,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 &lt;p&gt;ただそれだけだと対応できないパターンがいくつかあるので、そのために以下に別パターンのComponentの切り方を用意しています。&lt;/p&gt;
 
-&lt;h3 id=&quot;view-componentの責務&quot;&gt;「View Component」の責務&lt;/h3&gt;
+&lt;h3 id=&quot;view-component-の責務&quot;&gt;View Component の責務&lt;/h3&gt;
 &lt;p&gt;コンポーネントのTemplateを書いていると、ループ対象を別コンポーネントとして抜き出したい場合や、Templateがでかすぎるので分割したい場合などがあると思います。こういった例で使えるのがView Componentです。&lt;/p&gt;
 
 &lt;p&gt;View ComponentはReactのように&lt;strong&gt;ステートレスなコンポーネントで、親コンポーネントから受け取る&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;のみで動作させます&lt;/strong&gt;。そのため、基本的には&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;は定義しません。&lt;/p&gt;
@@ -120,7 +120,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 &lt;p&gt;このView Componentを実装するときに意識していることは、このコンポーネントが「親の一部である」ということです。親のTemplateを分割しただけのものであるということを意識し、ロジックを実装したり過剰に機能を持たせたりしないように注意しています。それができない場合は、コンポーネントの切り方が間違っている可能性を疑います。&lt;br /&gt;
 例外はあるかもしれませんが、多くの場合は切り方を変えることで解決します。&lt;/p&gt;
 
-&lt;h3 id=&quot;design-componentの責務&quot;&gt;「Design Component」の責務&lt;/h3&gt;
+&lt;h3 id=&quot;design-component-の責務&quot;&gt;Design Component の責務&lt;/h3&gt;
 
 &lt;p&gt;これはView Componentの亜種で、実装の仕方はView Componentと同様です。つまりステートレスで&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;を受け取って動作します。&lt;/p&gt;
 
@@ -128,7 +128,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 &lt;p&gt;そのため、粒度の小さいパーツはTemplateと&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;をHTML標準のタグと同じ状態にしておくと、使うときに楽だったり後々置き換えが効いたりして便利です。&lt;/p&gt;
 
-&lt;h3 id=&quot;factory-componentの責務&quot;&gt;「Factory Component」の責務&lt;/h3&gt;
+&lt;h3 id=&quot;factory-component-の責務&quot;&gt;Factory Component の責務&lt;/h3&gt;
 
 &lt;p&gt;今までのコンポーネントとは性質が少し違い、&lt;strong&gt;表示するComponentを動的に切り替える機能を持つComponentがFactory Component&lt;/strong&gt;です。&lt;br /&gt;
 &lt;strong&gt;正確には後述のHigher-Order Componentの1機能&lt;/strong&gt;なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。&lt;/p&gt;
@@ -170,7 +170,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 &lt;p&gt;また、どのComponentにも&lt;code class=&quot;highlighter-rouge&quot;&gt;componentData&lt;/code&gt;を渡しています。この部分が&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;の抽象化です。抽象化しているので、Factory Componentを呼び出している側はどのComponentが描画されるのかを気にする必要がなくなりますね。&lt;/p&gt;
 
-&lt;h3 id=&quot;higher-order-componentの責務&quot;&gt;「Higher-Order Component」の責務&lt;/h3&gt;
+&lt;h3 id=&quot;higher-order-component-の責務&quot;&gt;Higher-Order Component の責務&lt;/h3&gt;
 
 &lt;p&gt;上述のFactoryをはじめ、&lt;strong&gt;Componentを様々な方法で再利用できる仕組みがHigher-Order Component&lt;/strong&gt;です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。&lt;/p&gt;
 
