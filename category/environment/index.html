@@ -15,7 +15,10 @@
   
 
   <!-- External libraries -->
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
 
@@ -83,20 +86,17 @@
       
       <img src="/assets/logo.png" alt="mille-feuille code"> 
     </a>
-    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
-      <i class="fa fa-bars"></i>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
     </a>
     <nav role="navigation">
-      <ul id="js-navigation-menu" class="navigation-menu show">
+      <ul id="js-navigation-menu" class="navigation-menu">
          
         <li class="nav-link">
           <a href="/blogs">Blogs</a>
             
         <li class="nav-link">
           <a href="/tips">Tips</a>
-            
-        <li class="nav-link">
-          <a href="/profile">Profile</a>
            
       </ul>
     </nav>
@@ -130,7 +130,7 @@
 <div class="page">
 
   <header class="post-header">
-    <h1 class="post-title"><i class="fa fa-fw fa-tag" style="margin-left: -5%;"></i>Environment</h1>
+    <h1 class="post-title"><i class="fas fa-fw fa-tag" style="margin-left: -5%;vertical-align: -0.1em;"></i>Environment</h1>
   </header>
 
   <span class="page-divider">
@@ -161,134 +161,134 @@
 
     </div>
 
-    <footer class="site-footer">
-
-  <div class="wrapper">
-
-    <h3 class="footer-heading">mille-feuille code</h3>
-
-    <div class="site-navigation">
-
-      <p><strong>Site Map</strong></p>
-      <ul class="pages">
-        <li class="nav-link"><a href="https://aloerina01.github.io">Top</a>
-        
-        
-          <li class="nav-link"><a href="/blogs">Blogs</a>
-        
-        
-        
-          <li class="nav-link"><a href="/tips">Tips</a>
-        
-        
-        
-          <li class="nav-link"><a href="/profile">Profile</a>
-        
-        
-      </ul>
+    <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
     </div>
-
-    <div class="site-contact">
-
-      <p><strong>Follow Me</strong></p>
-      <ul class="social-media-list">
-        
-
-        
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
           
-          <li>
-            <a href="https://twitter.com/aloerina_" title="Follow me on Twitter" target=”_blank”>
-              <i class="fa fa-twitter"></i>
-              <span class="username">aloerina_</span>
-            </a>
-          </li>
-          
-        
-          
-        
-          
-          <li>
-            <a href="https://github.com/aloerina01" title="Fork me on GitHub" target=”_blank”>
-              <i class="fa fa-github"></i>
-              <span class="username">aloerina01</span>
-            </a>
-          </li>
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-
-      </ul>
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
     </div>
-
-    <div class="site-signature">
-      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
-      <p class="text">Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</p>
-    </div>
-
   </div>
-  
-  <div class="copyright">Copyright since 2016 aloerina All Rights Reserved.</div>
+</section>
 
+    <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        <a href="/category/react/">React</a>
+      
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        <a href="/category/skills/">Skills</a>
+      
+    </div>
+  </div>
+</section>
+
+    <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
 </footer>
 
-<!-- Scripts -->
-<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
 <script>
-
-$(document).ready(function() {
-
+window.addEventListener('DOMContentLoaded', function() {
   // Syntax highlighting
   hljs.initHighlightingOnLoad();
 
   // Header
-  var menuToggle = $('#js-mobile-menu').unbind();
-  $('#js-navigation-menu').removeClass("show");
-  menuToggle.on('click', function(e) {
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
     e.preventDefault();
-    $('#js-navigation-menu').slideToggle(function(){
-      if($('#js-navigation-menu').is(':hidden')) {
-        $('#js-navigation-menu').removeAttr('style');
-      }
-    });
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
   });
-
-
 });
 
+
+//   var menuToggle = $('#js-mobile-menu').unbind();
+//   $('#js-navigation-menu').removeClass("show");
+//   menuToggle.on('click', function(e) {
+//     e.preventDefault();
+//     $('#js-navigation-menu').slideToggle(function(){
+//       if($('#js-navigation-menu').is(':hidden')) {
+//         $('#js-navigation-menu').removeAttr('style');
+//       }
+//     });
+//   });
+// });
 </script>
 
 
-<!-- Google Analytics -->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -300,7 +300,6 @@ $(document).ready(function() {
     'title': 'Environment'
   });
 </script>
-
 
 
   </body>
