@@ -4,5 +4,5 @@
 - title: 'Tips'
   url: '/tips'
 
-- title: 'Profile'
-  url: '/profile'
+# - title: 'Profile'
+#   url: '/profile'

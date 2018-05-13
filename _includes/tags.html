@@ -1,0 +1,14 @@
+<section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      {% for category in site.categories %}
+        {% capture cat %}{{ category | first }}{% endcapture %}
+        <a {% if page.url contains cat %}class="active" {% endif %}href="{{ site.baseurl }}/category/{{ cat | downcase }}/">{{ cat }}</a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

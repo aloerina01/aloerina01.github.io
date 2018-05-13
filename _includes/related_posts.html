@@ -1,0 +1,13 @@
+<section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      {% for post in site.related_posts limit:3 %}
+      <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
+      {% endfor %}
+    </div>
+  </div>
+</section>
