@@ -51,7 +51,7 @@
           {% for social in site.social %}
             {% capture full_url %}{{ site.url }}{{ site.baseurl }}{{ page.url }}{% endcapture %}
             {% if social.name == "Twitter" and social.share == true %}
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text={{ page.title | cgi_escape }}&url={{ full_url }}&via={{social.username}}&hashtags=mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text={{ page.title | cgi_escape }}&url={{ full_url }}&via={{social.username}}&hashtags={% if page.categories.size > 0 %}{% for cat in page.categories %}{{ cat }},{% endfor %}{% endif %}mfcode"
               onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;">
               <i class="fab fa-{{ social.icon }} fa-inverse"></i>
             </a>
