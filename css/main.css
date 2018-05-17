@@ -791,7 +791,7 @@ pre code.hljs {
     max-width: 42em;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.8em 1em; }
+    padding: 1.8em 1em 2.2em 1em; }
     .related-posts .sub-contents-wrapper::after {
       clear: both;
       content: "";
@@ -832,7 +832,7 @@ pre code.hljs {
     max-width: 42em;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.8em 1em; }
+    padding: 1.8em 1em 2.2em 1em; }
     .profile-bar .sub-contents-wrapper::after {
       clear: both;
       content: "";
@@ -915,7 +915,7 @@ pre code.hljs {
   max-width: 42em;
   margin-left: auto;
   margin-right: auto;
-  padding: 1.8em 1em; }
+  padding: 1.8em 1em 2.2em 1em; }
   .tag-list .sub-contents-wrapper::after {
     clear: both;
     content: "";
@@ -971,7 +971,7 @@ pre code.hljs {
     max-width: 42em;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.8em 1em; }
+    padding: 1.8em 1em 2.2em 1em; }
     .site-footer-v2 .sub-contents-wrapper::after {
       clear: both;
       content: "";
@@ -1022,3 +1022,64 @@ pre code.hljs {
       align-items: flex-end;
       justify-content: space-between;
       text-align: start; } }
+
+.present {
+  position: relative;
+  background: url("/assets/present_image.jpg") left top;
+  overflow: hidden;
+  z-index: 0; }
+  .present::before {
+    content: '';
+    position: absolute;
+    background: inherit;
+    -webkit-filter: blur(6px);
+    -moz-filter: blur(6px);
+    -o-filter: blur(6px);
+    -ms-filter: blur(6px);
+    filter: blur(6px);
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1; }
+  .present::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.2); }
+  .present-wrapper {
+    max-width: 42em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1.8em 1em;
+    text-align: center;
+    color: #fff; }
+    .present-wrapper::after {
+      clear: both;
+      content: "";
+      display: table; }
+    @media screen and (min-width: 768px) {
+      .present-wrapper {
+        padding: 28px 1em 40px 1em; } }
+  .present-title {
+    font-size: 1.44em;
+    font-weight: 500; }
+  .present-description {
+    font-size: 0.9em; }
+  .present-qr {
+    margin: 1.5em auto 1em; }
+    .present-qr img {
+      display: block;
+      margin: 0 auto 0.3em auto;
+      height: 100px;
+      width: 100px; }
+    .present-qr span {
+      font-size: 0.9em; }
+    .present-qr a, .present-qr a:hover, .present-qr a:focus {
+      color: #fff; }
+  .present-notes {
+    font-size: 0.7em; }
