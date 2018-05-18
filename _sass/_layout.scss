@@ -768,13 +768,13 @@ pre code.hljs {
 		right: 0;
 		bottom: 0;
 		z-index: -1;
-		background-color: rgba(0, 0, 0, 0.2);
+		background-color: rgba(0, 0, 0, 0.4);
 	}
 	&-wrapper {
 		@include outer-container($pc-max-width);
-		padding: 1.8em 1em;
+		padding: 1.8em 1em 1em 1em;
 		@include media($tablet) {
-			padding: 28px 1em 40px 1em;
+			padding: 28px 1em 20px 1em;
 		}
 		text-align: center;
 		color: $white;
@@ -788,17 +788,38 @@ pre code.hljs {
 	}
 	&-qr {
 		margin: 1.5em auto 1em;
-		img {
+		.qr-execute-button {
 			display: block;
+			margin: 0 auto 0.3em auto;
+			padding: 12px 20px;
+			max-width: 10em;
+			background: #FF4081;
+    		background: -webkit-linear-gradient(to right, #ff6884, #FF4081);
+    		background: linear-gradient(to right, #ff6884, #FF4081);
+			color: white;
+			font-weight: 800;
+			border-radius: 28px;
+			box-shadow: 0 1px 14px #333;
+		}
+		img {
+			display: none;
 			margin: 0 auto 0.3em auto;
 			height: 100px;
 			width: 100px;
 		}
 		span {
-			font-size: 0.9em;
+			font-size: 0.8em;
 		}
 		a, a:hover, a:focus {
 			color: $white;
+		}
+		@include media($mobile) {
+			img {
+				display: block;
+			}
+			.qr-execute-button {
+				display: none;
+			}
 		}
 	}
 	&-notes {
