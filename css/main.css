@@ -1050,12 +1050,12 @@ pre code.hljs {
     right: 0;
     bottom: 0;
     z-index: -1;
-    background-color: rgba(0, 0, 0, 0.2); }
+    background-color: rgba(0, 0, 0, 0.4); }
   .present-wrapper {
     max-width: 42em;
     margin-left: auto;
     margin-right: auto;
-    padding: 1.8em 1em;
+    padding: 1.8em 1em 1em 1em;
     text-align: center;
     color: #fff; }
     .present-wrapper::after {
@@ -1064,7 +1064,7 @@ pre code.hljs {
       display: table; }
     @media screen and (min-width: 768px) {
       .present-wrapper {
-        padding: 28px 1em 40px 1em; } }
+        padding: 28px 1em 20px 1em; } }
   .present-title {
     font-size: 1.44em;
     font-weight: 500; }
@@ -1072,14 +1072,31 @@ pre code.hljs {
     font-size: 0.9em; }
   .present-qr {
     margin: 1.5em auto 1em; }
-    .present-qr img {
+    .present-qr .qr-execute-button {
       display: block;
+      margin: 0 auto 0.3em auto;
+      padding: 12px 20px;
+      max-width: 10em;
+      background: #FF4081;
+      background: -webkit-linear-gradient(to right, #ff6884, #FF4081);
+      background: linear-gradient(to right, #ff6884, #FF4081);
+      color: white;
+      font-weight: 800;
+      border-radius: 28px;
+      box-shadow: 0 1px 14px #333; }
+    .present-qr img {
+      display: none;
       margin: 0 auto 0.3em auto;
       height: 100px;
       width: 100px; }
     .present-qr span {
-      font-size: 0.9em; }
+      font-size: 0.8em; }
     .present-qr a, .present-qr a:hover, .present-qr a:focus {
       color: #fff; }
+    @media screen and (min-width: 480px) {
+      .present-qr img {
+        display: block; }
+      .present-qr .qr-execute-button {
+        display: none; } }
   .present-notes {
     font-size: 0.7em; }
