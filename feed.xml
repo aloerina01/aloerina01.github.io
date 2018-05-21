@@ -1,5 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-18T10:58:24+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">メンテナンスしやすいVueComponentを設計するために気をつけていること</title><link href="https://aloerina01.github.io/blog/2018-05-01-1" rel="alternate" type="text/html" title="メンテナンスしやすいVueComponentを設計するために気をつけていること" /><published>2018-05-01T00:00:00+09:00</published><updated>2018-05-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-01-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-21T11:21:06+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする</title><link href="https://aloerina01.github.io/tip/2018-05-21-1" rel="alternate" type="text/html" title="ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする" /><published>2018-05-21T00:00:00+09:00</published><updated>2018-05-21T00:00:00+09:00</updated><id>https://aloerina01.github.io/tip/1</id><content type="html" xml:base="https://aloerina01.github.io/tip/2018-05-21-1">&lt;p&gt;Forkして作ったリポジトリだけれどFork元にMergeしたりせず普通のリポジトリとして扱いたい、という稀なケースの対応を経験したので知見をメモします。&lt;/p&gt;
+
+&lt;h3 id=&quot;結論&quot;&gt;結論&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;To detach the fork and turn it into a standalone repository on GitHub, contact GitHub Support. If the fork has forks of its own, let support know if the forks should move with your repository into a new network or remain in the current network.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;と&lt;a href=&quot;https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/#commit-was-made-in-a-fork&quot;&gt;Github Help&lt;/a&gt;に書いてありました。&lt;/p&gt;
+
+&lt;p&gt;Fork元から切り離しStandaloneなリポジトリにしたい場合はGithub Supportに連絡してね、そのときはリポジトリをどこのネットワーク化に配置したいのかも教えてね、とのことです。&lt;br /&gt;
+自身ではできないようです。&lt;/p&gt;
+
+&lt;h3 id=&quot;実際にやってみたときのこと&quot;&gt;実際にやってみたときのこと&lt;/h3&gt;
+
+&lt;p&gt;拙い英語で連絡しました。2通やり取りしたのですが、だいたい翌日の朝方2時〜3時くらいに返信が来たのでとても素早く対応いただけたと感じました。&lt;/p&gt;
+
+&lt;p&gt;やり取りの内容の雰囲気を載せておきます(原文ママではないです)。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;1通目&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;In the below repository, I want to detach the fork and turn it into a standalone repository.&lt;br /&gt;
+https://github.com/aloerina01/aloerina01.github.io&lt;/p&gt;
+
+  &lt;p&gt;How can I do ? 
+ Thank you for being patient with my English.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;1通目の返信&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;I’d be happy to help you with that! I see that your fork has 1 fork of its own. Would you like it to remain under aloerina01/aloerina01.github.io, or should it move under [fork元リポジトリ名]?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;2通目&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Thanks for your helping!&lt;/p&gt;
+
+  &lt;p&gt;Please excuse my lack of explanation…&lt;br /&gt;
+I would like to remain under aloerina01/aloerina01.github.io.&lt;br /&gt;
+This is my Github Pages repository, therefore I never merge to [fork元リポジトリ名].&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;2通目の返信&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;Thanks for confirming! I’ve detached that fork with it’s child for you. It may take a few minutes for that to complete.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Helpページを熟読せずにSupportに連絡してしまったせいでやり取りが2往復になってしまって迷惑をかけてしまいましたが、素早くそして快く対応してくれたGithubに感謝です。&lt;/p&gt;
+
+&lt;p&gt;以上。&lt;/p&gt;</content><author><name></name></author><summary type="html">Forkして作ったリポジトリだけれどFork元にMergeしたりせず普通のリポジトリとして扱いたい、という稀なケースの対応を経験したので知見をメモします。</summary></entry><entry><title type="html">メンテナンスしやすいVueComponentを設計するために気をつけていること</title><link href="https://aloerina01.github.io/blog/2018-05-01-1" rel="alternate" type="text/html" title="メンテナンスしやすいVueComponentを設計するために気をつけていること" /><published>2018-05-01T00:00:00+09:00</published><updated>2018-05-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-01-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
 &lt;p&gt;VueをつかってWebアプリケーションを実装するとき、Componentをどう切るかって誰でも一度は悩みますよね(悩みますよね？)。とりあえず思いつくままに切ってみたり、繰り返し使いそうなもので切ってみたり、CSSのスコープで切ってみたり…。いろいろな切り口があると思います。&lt;/p&gt;
 
 &lt;p&gt;この「いろいろな切り口」でコンポーネントを切ることができる点が、コンポーネント設計を難しくしている所以だと考えています。&lt;/p&gt;
@@ -1447,7 +1496,7 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
   &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isLoaded&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+                 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
 &lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
@@ -1551,289 +1600,4 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;lazyloadについて分類分けしたり仕様に応じた使い方の紹介をしましたが、もちろんこれらが全てではありませんし、自前で実装するよりもライブラリを使う方が良いケースもあると思います。そこはご理解を。&lt;/p&gt;
 
-&lt;p&gt;また、スクロールイベントの取扱いは注意しないとカクつきなどの原因となります。ご利用の際は&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;等の併用をお忘れなく、また用法用量を守ってご利用ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</title><link href="https://aloerina01.github.io/blog/2017-05-18-1" rel="alternate" type="text/html" title="create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方" /><published>2017-05-18T00:00:00+09:00</published><updated>2017-05-18T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-05-18-1">&lt;h3 id=&quot;まえおき&quot;&gt;まえおき&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;リファクタリングしたいのでまずはテストを用意しようと思いました&lt;/li&gt;
-  &lt;li&gt;Facebook謹製の&lt;strong&gt;Jest&lt;/strong&gt;というオールインワンなツールでテストをします&lt;/li&gt;
-  &lt;li&gt;Airbnb謹製の&lt;strong&gt;Enzyme&lt;/strong&gt;というTest Utilitiesを使ってテストコードを書きます&lt;/li&gt;
-  &lt;li&gt;もとのWebアプリは&lt;strong&gt;create-react-app&lt;/strong&gt;でつくられています&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;create-react-app + Jest + Enzyme でテストを書きはじめようと思ったときにしたこと、つまづいたことを書き留めておく回です。&lt;/p&gt;
-
-&lt;p&gt;Jestの公式サイト内にもcreate-react-appを使った解説が載っているので、公式派の人は&lt;a href=&quot;https://facebook.github.io/jest/docs/tutorial-react.html&quot;&gt;そちら&lt;/a&gt;をどうぞ。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#まえおき&quot; id=&quot;markdown-toc-まえおき&quot;&gt;まえおき&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#environments&quot; id=&quot;markdown-toc-environments&quot;&gt;Environments&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#create-react-app-のおさらい&quot; id=&quot;markdown-toc-create-react-app-のおさらい&quot;&gt;create-react-app のおさらい&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#jestとはenzymeとは&quot; id=&quot;markdown-toc-jestとはenzymeとは&quot;&gt;Jestとは、Enzymeとは&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#jest&quot; id=&quot;markdown-toc-jest&quot;&gt;Jest&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#enzyme&quot; id=&quot;markdown-toc-enzyme&quot;&gt;Enzyme&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#テストの書き始め方&quot; id=&quot;markdown-toc-テストの書き始め方&quot;&gt;テストの書き始め方&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-テストファイルの配置場所を知る&quot; id=&quot;markdown-toc-1-テストファイルの配置場所を知る&quot;&gt;1. テストファイルの配置場所を知る&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-テストファイルを作成する&quot; id=&quot;markdown-toc-2-テストファイルを作成する&quot;&gt;2. テストファイルを作成する&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#3-テストコードを書く&quot; id=&quot;markdown-toc-3-テストコードを書く&quot;&gt;3. テストコードを書く&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#enzymeを使ってスナップショットのテストをする&quot; id=&quot;markdown-toc-enzymeを使ってスナップショットのテストをする&quot;&gt;Enzymeを使ってスナップショットのテストをする&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ハマったところ&quot; id=&quot;markdown-toc-ハマったところ&quot;&gt;ハマったところ&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#localstorage-is-not-defined&quot; id=&quot;markdown-toc-localstorage-is-not-defined&quot;&gt;🙅localStorage is not defined&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#reacttestutils-has-been-moved-to-react-domtest-utils&quot; id=&quot;markdown-toc-reacttestutils-has-been-moved-to-react-domtest-utils&quot;&gt;🙅ReactTestUtils has been moved to react-dom/test-utils.&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;environments&quot;&gt;Environments&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;React 15.4.2&lt;/li&gt;
-  &lt;li&gt;create-react-app 0.8.5&lt;/li&gt;
-  &lt;li&gt;Jest 17.0.2&lt;/li&gt;
-  &lt;li&gt;Enzyme 2.8.2&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;での経験談を元にしています。&lt;/p&gt;
-
-&lt;h3 id=&quot;create-react-app-のおさらい&quot;&gt;create-react-app のおさらい&lt;/h3&gt;
-
-&lt;p&gt;コマンド一発でReactの開発環境をつくることができるツールです。&lt;br /&gt;
-(参考：&lt;a href=&quot;https://aloerina01.github.io/javascript/react/2017/02/28/1.html&quot;&gt;Reactを秒速で使い始められるcreate-react-appの使い方と使い心地&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;これを使って構築した環境には標準でJestが組み込まれていて、&lt;code class=&quot;highlighter-rouge&quot;&gt;yarn test&lt;/code&gt;コマンドですぐにテストを実行することができます。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Create React App uses Jest as its test runner. To prepare for this integration, we did a major revamp of Jest so if you heard bad things about it years ago, give it another try.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;a href=&quot;https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md#running-tests&quot;&gt;create-react-app/README.md at master · facebookincubator/create-react-app · GitHub&lt;/a&gt;より&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;jestとはenzymeとは&quot;&gt;Jestとは、Enzymeとは&lt;/h3&gt;
-
-&lt;h4 id=&quot;jest&quot;&gt;Jest&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://facebook.github.io/jest/&quot;&gt;Jest · 🃏 Delightful JavaScript Testing&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Reactのテストをするためのツールです&lt;/li&gt;
-  &lt;li&gt;単体テストを書くための&lt;strong&gt;function群&lt;/strong&gt;と、テストを実行する&lt;strong&gt;テストランナー&lt;/strong&gt;が含まれています(オールインワン)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;enzyme&quot;&gt;Enzyme&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;http://airbnb.io/enzyme/&quot;&gt;Enzyme&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Reactのテストコードを書くためのUtilityです&lt;/li&gt;
-  &lt;li&gt;Jestだけではできない高度なテストを書くことができるfunction群です(Jestと重なる部分もあります)&lt;/li&gt;
-  &lt;li&gt;Reactコンポーネントをrenderingする&lt;code class=&quot;highlighter-rouge&quot;&gt;shallow&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;mount&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;の3つのfunctionがキモです&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;テストの書き始め方&quot;&gt;テストの書き始め方&lt;/h3&gt;
-
-&lt;h4 id=&quot;1-テストファイルの配置場所を知る&quot;&gt;1. テストファイルの配置場所を知る&lt;/h4&gt;
-&lt;p&gt;Jestは任意のディレクトリからテストコードを探し出し順に実行してくれます。本来このディレクトリは&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;に&lt;code class=&quot;highlighter-rouge&quot;&gt;rootDir&lt;/code&gt;という名前で定義するものなのですが、create-react-appでつくられた環境では&lt;code class=&quot;highlighter-rouge&quot;&gt;src/&lt;/code&gt;と決められています。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// react-scripts/utils/createJestConfig.js&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rootDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isEjecting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// (省略)&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rootDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;rootDir&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;rootDir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// ← ここで引数をもとにrootDirを指定している&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// react-scripts/scripts/test.js&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;argv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'--config'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;createJestConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;relativePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'..'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;relativePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;appSrc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'..'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ← ここで引数rootDirを指定している&lt;/span&gt;
-  &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;したがって、&lt;code class=&quot;highlighter-rouge&quot;&gt;src/&lt;/code&gt;にテストファイルを配置していきます。&lt;/p&gt;
-
-&lt;h4 id=&quot;2-テストファイルを作成する&quot;&gt;2. テストファイルを作成する&lt;/h4&gt;
-
-&lt;p&gt;Jestにテストファイルを認識させるには2つの方法があります。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;__test__&lt;/code&gt;というディレクトリ以下にテストファイルを置く&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.test.js&lt;/code&gt;という拡張子のファイルを作成する&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;私は②を採用しました。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;src
-  ├ actions
-  ├ components
-  ︙    ├ CheckboxWithLabel.js  (Buttonコンポーネント)
-        └ test
-            └ CheckboxWithLabel.test.js  (Buttonコンポーネントのテスト)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;3-テストコードを書く&quot;&gt;3. テストコードを書く&lt;/h4&gt;
-
-&lt;p&gt;Jestの各functionの使い方はこの記事が分かりやすかったです。  
-&lt;a href=&quot;http://qiita.com/chimame/items/e97883fd46b67529d59f&quot;&gt;Facebook製のJavaScriptテストツール「Jest」の逆引き使用例 - Qiita&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;ここでは、「チェックボックスのOn/Offに応じてラベルの文言が切り替わるコンポーネント」のテストの実装例を挙げます。ソースを読んで雰囲気がつかめるかと思います(がいかがでしょう)。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;src/components/CheckboxWithLabel.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CheckboxWithLabel&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isChecked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onChange&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onChange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;onChange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;isChecked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isChecked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isChecked&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onChange&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onChange&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isChecked&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;labelOn&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;labelOff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/label&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;src/components/test/CheckboxWithLabel.test.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shallow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mount&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'enzyme'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;CheckboxWithLabel&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'../CheckboxWithLabel'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'ChecboxWithLabel'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Changes the label after click'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
- &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// Componentをレンダリングする&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;checkbox&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shallow&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CheckboxWithLabel&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;labelOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;On&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;labelOff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Off&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// expect(検査対象).toEqual(想定結果)&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;checkbox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Off'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
- &lt;span class=&quot;err&quot;&gt; &lt;/span&gt; &lt;span class=&quot;err&quot;&gt; &lt;/span&gt;&lt;span class=&quot;c1&quot;&gt;// shallowでレンダリングされた要素から特定のセレクタを取得する&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;checkbox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'input'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;simulate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'change'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// expect(検査対象).toEqual(想定結果)&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;checkbox&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'On'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ここでつかった&lt;code class=&quot;highlighter-rouge&quot;&gt;shallow&lt;/code&gt;という関数は、その名の通りComponentを浅くレンダリングします。Componentの中にComponentがある入れ子構造の場合、一番外側のComponentしかレンダリングされません。子コンポーネントに依存していない結果を検査することができます。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Shallow rendering is useful to constrain yourself to testing a component as a unit, and to ensure that your tests aren’t indirectly asserting on behavior of child components.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;a href=&quot;http://airbnb.io/enzyme/docs/api/shallow.html&quot;&gt;Shallow Rendering&lt;/a&gt;より&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;enzymeを使ってスナップショットのテストをする&quot;&gt;Enzymeを使ってスナップショットのテストをする&lt;/h3&gt;
-
-&lt;p&gt;ここからはJest + Enzymeの話です。&lt;br /&gt;
-これらを組み合わせることで、&lt;strong&gt;Componentのレンダリング結果をスナップショットとして残しておき、それと比較してレンダリング結果に差異がないか&lt;/strong&gt;のテストをすることができます。&lt;/p&gt;
-
-&lt;p&gt;上記のCheckboxWithLabelでその例を書いてみます。&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;describe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'CheckboxWithLabel'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Matches with the snapshot when checkbox is OFF'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dom&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;CheckboxWithLabel&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;labelOn&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;On&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;labelOff&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Off&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;expect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dom&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;toMatchSnapshot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;toMatchSnapshot()&lt;/code&gt;は、既存のスナップショットと比較してレンダリング結果が一致しているかどうかを判定します。最初の一回目はsnapshotがないため必ずpassします。snapshotを更新する場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;jest --update&lt;/code&gt;または&lt;code class=&quot;highlighter-rouge&quot;&gt;jest -u&lt;/code&gt;コマンドを叩きます。&lt;/p&gt;
-
-&lt;p&gt;ここで使った&lt;code class=&quot;highlighter-rouge&quot;&gt;mount&lt;/code&gt;という関数は、Componentを完全にレンダリングします。その分テストの実行速度が遅くなるため、入れ子の深いComponentをmountしたり、mountを使ったテストをたくさん書くとなかなかテストが終わりません。
-その場合はテストを分割して行うなどの工夫が必要でした。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Full DOM rendering is ideal for use cases where you have components that may interact with DOM APIs, or may require the full lifecycle in order to fully test the component (i.e., componentDidMount etc.)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;em&gt;&lt;a href=&quot;http://airbnb.io/enzyme/docs/api/mount.html&quot;&gt;Full DOM Rendering&lt;/a&gt;より&lt;/em&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;ハマったところ&quot;&gt;ハマったところ&lt;/h3&gt;
-
-&lt;h4 id=&quot;localstorage-is-not-defined&quot;&gt;🙅localStorage is not defined&lt;/h4&gt;
-
-&lt;p&gt;テストするComponentが依存しているあるモジュールは、内部でlocalStorageを利用していました。そのためimport時に&lt;code class=&quot;highlighter-rouge&quot;&gt;localStorage is not defined&lt;/code&gt;のエラーが起きました。&lt;/p&gt;
-
-&lt;p&gt;Jestはテスト実行前にテスト環境を構築するコードを実行することができるので、それを利用してlocalStorageモックを定義することで対処できます。一般的には、&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;に&lt;code class=&quot;highlighter-rouge&quot;&gt;setupFiles&lt;/code&gt;または&lt;code class=&quot;highlighter-rouge&quot;&gt;setupTestFrameworkScriptFile&lt;/code&gt;として定義したファイルがテスト前に実行されます。&lt;br /&gt;
-(参考： &lt;a href=&quot;http://facebook.github.io/jest/docs/configuration.html#setupfiles-array&quot;&gt;Configuring package.json · Jest&lt;/a&gt;)&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-package.json&quot;&gt;&quot;jest&quot;: {
-  &quot;setupFiles&quot;: [&quot;createLocalStorageMock.js&quot;]
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ただし、create-react-appを使っている場合はやはりこの設定が効かず、独自の設定ファイル&lt;code class=&quot;highlighter-rouge&quot;&gt;src/setupTests.js&lt;/code&gt;にモックを書く必要がありました。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;src/setupTests.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;localStorageMock&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;storage&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;setItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;getItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;removeItem&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;delete&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;get&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;storage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})();&lt;/span&gt;
-&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defineProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;global&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'localStorage'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;localStorageMock&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;reacttestutils-has-been-moved-to-react-domtest-utils&quot;&gt;🙅ReactTestUtils has been moved to react-dom/test-utils.&lt;/h4&gt;
-
-&lt;p&gt;テスト結果に以下のワーニング文が表示されていました。&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Warning: ReactTestUtils has been moved to react-dom/test-utils. Update references to remove this warning.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ReactTestUtilsの依存元が変わったってことだと思いReact公式を調べたところ、以下の対応をするように記載がありました。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactTestUtils&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react-dom/test-utils'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ES6&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ReactTestUtils&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'react-dom/test-utils'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// ES5 with npm&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;言われるがままにためしたものの、&lt;code class=&quot;highlighter-rouge&quot;&gt;Cannot find module 'react-dom/test-utils’&lt;/code&gt;と怒られる。いかがなものですかね。&lt;/p&gt;
-
-&lt;p&gt;ということで、今度はワーニング文の&lt;code class=&quot;highlighter-rouge&quot;&gt;Update references&lt;/code&gt;にバカ正直に従い依存モジュールを丸々アップデートしてみました。&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;yarn cache clean
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;yarn upgrade
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;解決しちゃいました。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;リファクタしてまるっと書き直したい部分があったのですが、デグレしない保証をとる手段がなさそうだったのでひとまずテストを用意しよう！　ということで書き始めたテストですが(遅い)、思った以上に融通が効くし書き心地が良くて充実したテストコーディングとなりました。とくにレンダリング結果をsnapshotで比較できるのは重宝しそうな感じです。&lt;/p&gt;
-
-&lt;p&gt;そんな感じでJestとEnzymeはよかったものの、create-react-appは便利な反面制約が多くハマりどころが多々あるので、ハマったときはこうして記録を残していこうと思います。&lt;/p&gt;
-
-&lt;p&gt;それでは。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえおき</summary></entry></feed>
+&lt;p&gt;また、スクロールイベントの取扱いは注意しないとカクつきなどの原因となります。ご利用の際は&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;等の併用をお忘れなく、また用法用量を守ってご利用ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
