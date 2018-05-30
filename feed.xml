@@ -1,5 +1,161 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-21T16:54:47+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする</title><link href="https://aloerina01.github.io/tip/2018-05-21-1" rel="alternate" type="text/html" title="ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする" /><published>2018-05-21T00:00:00+09:00</published><updated>2018-05-21T00:00:00+09:00</updated><id>https://aloerina01.github.io/tip/1</id><content type="html" xml:base="https://aloerina01.github.io/tip/2018-05-21-1">&lt;p&gt;Forkして作ったリポジトリだけれどFork元にMergeしたりせず普通のリポジトリとして扱いたい、という稀なケースの対応を経験したので知見をメモします。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-05-30T17:51:24+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</title><link href="https://aloerina01.github.io/blog/2018-05-30-1" rel="alternate" type="text/html" title="コマンド一つでReactの開発環境が100％整うライブラリx0の紹介" /><published>2018-05-30T00:00:00+09:00</published><updated>2018-05-30T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-30-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
+
+&lt;p&gt;いきなりですが、Reactの開発環境を用意するのって大変だと思うのです。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;React&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ReactDOM&lt;/code&gt;をnpm installする&lt;/li&gt;
+  &lt;li&gt;ES6+で書くためにpolyfillを入れる&lt;/li&gt;
+  &lt;li&gt;ES6+で書くためにBabelの設定をする&lt;/li&gt;
+  &lt;li&gt;JSXを書くためにBabelの設定をする&lt;/li&gt;
+  &lt;li&gt;ビルドするためにWebpackの設定をする&lt;/li&gt;
+  &lt;li&gt;bundleしたJSを読み込むindexページのHTMLを作成する&lt;/li&gt;
+  &lt;li&gt;作ったものを確認するためにローカルサーバの設定(実装)をする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;他にもサーバサイドのことまで含めると更にやることが増えます。知っていれば大した作業ではないのかもしれませんが、セットアップってたまにしかやらないのでやり方を忘れがち、そしてハマりがちです。ちょっとReact触ってみよう、ちょっとコンポーネント試作してみよう、という意欲を消滅させるには十分すぎる障害だと思います。&lt;/p&gt;
+
+&lt;p&gt;先日、この問題をコマンド一つで解決してくれる &lt;strong&gt;&lt;a href=&quot;https://compositor.io/x0/&quot;&gt;x0&lt;/a&gt;&lt;/strong&gt; というライブラリを触ってみたので、使い方と使用感をまとめました。&lt;/p&gt;
+
+&lt;h3 id=&quot;whats-this&quot;&gt;What’s this&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-05-30-hellox0.gif&quot; alt=&quot;x0demo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://compositor.io/x0/&quot;&gt;@compositor/x0&lt;/a&gt; より&lt;/small&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Zero-config React development environment and static site generator&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;設定なしで使えるReact開発環境＆静的サイトジェネレーター&lt;/strong&gt;とのことです。上述したnpm install・ビルドスクリプトの用意・ローカルサーバの用意などをまとめてやってくれます。これでReactのコンポーネントを書くことのみに専念できますね。&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-use&quot;&gt;How to use&lt;/h3&gt;
+
+&lt;h4 id=&quot;1-install-する&quot;&gt;1. install する&lt;/h4&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm install -g @compositor/x0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;公式ではグローバルに入れて使うことを促していますが、私は作業ディレクトリにdevDependencyでインストールしています。&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir sample-x0
+$ cd sample-x0
+$ npm init
+$ npm install -D @compositor/x0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;2-componentを実装する&quot;&gt;2. componentを実装する&lt;/h4&gt;
+
+&lt;p&gt;今回はこのようなディレクトリ構成にします。&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sample-x0
+  ├ package.json
+  └ components
+      ├ HelloWorld.js
+      ├ ...
+      └ ...(その他コンポーネント)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;HelloWorld.js&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;World&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h1&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;3-ビルドデプロイする&quot;&gt;3. ビルド＆デプロイする&lt;/h4&gt;
+
+&lt;p&gt;ビルドしてローカルサーバにデプロイするには&lt;code class=&quot;highlighter-rouge&quot;&gt;x0 [componentを含むディレクトリ]&lt;/code&gt;というコマンドを叩きます。&lt;code class=&quot;highlighter-rouge&quot;&gt;--open (-o)&lt;/code&gt;のオプションをつけると、サーバ起動後にデフォルトブラウザを起動してくれます。&lt;/p&gt;
+
+&lt;p&gt;グローバルインストールしている場合&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ x0 components --open
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;devDependencyでインストールしている場合&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npx x0 components --open
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;デプロイされると&lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;以下に配置したコンポーネント名が一覧で表示され、選択するとそのコンポーネントが描画されたページへ遷移します。&lt;/p&gt;
+
+&lt;h4 id=&quot;4-エントリーポイントをつくる&quot;&gt;4. エントリーポイントをつくる&lt;/h4&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;以下に配置されたコンポーネントはそれぞれ単体で画面に表示されますが、それらを組み合わせた画面をつくることもできます。&lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;以下にいくつかのコンポーネントとエントリーポイントとなる&lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt;を実装します。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Title.js&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h1&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;Contents.js&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contents&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/li&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;}&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;main.js&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Title&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./Title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;kr&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Contents&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./Contents'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Title&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Fruits Basket&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Contents&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contents&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'apple'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'orange'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'peach'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これで&lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:8080/main&lt;/code&gt;に2つのコンポーネントが表示されます。&lt;/p&gt;
+
+&lt;h3 id=&quot;feeling&quot;&gt;Feeling&lt;/h3&gt;
+
+&lt;p&gt;使用感はけっこう良かったです。実際に利用した場面を挙げておきます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;最新バージョンのReactを試す&lt;/li&gt;
+  &lt;li&gt;複雑なロジックを持つコンポーネントを試作する&lt;/li&gt;
+  &lt;li&gt;コンポーネントのPlayBookをつくる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;最新バージョンのReactを軽く触ろうと思ったとき、本当にシンプルに&lt;strong&gt;コンポーネントのロジックのみを実装して動作確認までできた&lt;/strong&gt;ので、お手軽さは100点でした。&lt;/p&gt;
+
+&lt;p&gt;また、指定したディレクトリ以下のコンポーネントを一覧表示してくれるので、簡易版のコンポーネントPlayBookとしても利用できました。&lt;/p&gt;
+
+&lt;p&gt;その他にも、まだ触っていませんが役立ちそうな機能がいくつかありました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;webpackの設定を時前で用意してbundleできる
+    &lt;ul&gt;
+      &lt;li&gt;CLIのオプション&lt;code class=&quot;highlighter-rouge&quot;&gt;--webpack&lt;/code&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;のpathを指定できるので、productionビルド時は自前のビルドスクリプトを通す、等できそう&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;画面に表示するHTMLを自前で用意して差し替えられる
+    &lt;ul&gt;
+      &lt;li&gt;PlayBookのIndexページをリッチにできそう&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/mdx-js/mdx&quot;&gt;MDX&lt;/a&gt;を使える(使ったことはない)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;気になる点は&lt;strong&gt;公式のドキュメントが薄い&lt;/strong&gt;点です。かなりのことを自動でやってくれているので、その内部がどうなっているのか、どこをカスタマイズできるのか、についてもう少し簡単に把握できるとより使いやすいと思います。&lt;/p&gt;
+
+&lt;p&gt;もう1点気になるのは&lt;strong&gt;依存ライブラリがかなり多い点&lt;/strong&gt;です。これも自動でいろいろしてくれる代償ですが、babelのPluginだけでも相当数依存していました。&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-stage-0&lt;/code&gt;まで使うのは個人的にはやり過ぎと感じました。&lt;/p&gt;
+
+&lt;h3 id=&quot;create-react-appとの使い分け&quot;&gt;create-react-appとの使い分け&lt;/h3&gt;
+
+&lt;p&gt;最後にcreate-react-appとの使い分けについてですが、&lt;strong&gt;ローカルで実行する環境の用意&lt;/strong&gt;や&lt;strong&gt;ちょっとしたものの開発&lt;/strong&gt;が目的ならx0で十分という印象です。&lt;/p&gt;
+
+&lt;p&gt;逆に&lt;strong&gt;production用のプロジェクトの簡易セットアップ&lt;/strong&gt;にはcreate-react-appを使うほうが後々カスタマイズしやすいかなと思います(実績の面でも良いかなと)。&lt;br /&gt;
+create-react-appの使い方については&lt;a href=&quot;/blog/2017-02-28-1&quot;&gt;Reactを秒速で使い始められるcreate-react-appの使い方と使い心地&lt;/a&gt;にまとめてありますので併せてどうぞ。&lt;/p&gt;
+
+&lt;p&gt;ちなみに、大規模なアプリケーションであったりビルドの仕方やテストなど細かいところまで調整したいときはライブラリに頼らず全部自前で用意しています。適材適所使い分けて幸せな開発ライフを送っていきたいですね。&lt;/p&gt;</content><author><name></name></author><summary type="html">はじめに</summary></entry><entry><title type="html">ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする</title><link href="https://aloerina01.github.io/tip/2018-05-21-1" rel="alternate" type="text/html" title="ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする" /><published>2018-05-21T00:00:00+09:00</published><updated>2018-05-21T00:00:00+09:00</updated><id>https://aloerina01.github.io/tip/1</id><content type="html" xml:base="https://aloerina01.github.io/tip/2018-05-21-1">&lt;p&gt;Forkして作ったリポジトリだけれどFork元にMergeしたりせず普通のリポジトリとして扱いたい、という稀なケースの対応を経験したので知見をメモします。&lt;/p&gt;
 
 &lt;h3 id=&quot;結論&quot;&gt;結論&lt;/h3&gt;
 
@@ -1381,223 +1537,4 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;jQueryにもこれらの関数は用意されていますし、それ以外にも世の中にはたくさんのライブラリがあります。が、このくらいなら自分で書いてしまったほうがファイルサイズが小さくなって良いケースもあったりします。&lt;/p&gt;
 
-&lt;p&gt;適材適所、良しなにやっていきたいものですね☺&lt;/p&gt;</content><author><name></name></author><summary type="html">throttleとdebounceといきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。</summary></entry><entry><title type="html">lazyloadの解剖学</title><link href="https://aloerina01.github.io/blog/2017-07-25-1" rel="alternate" type="text/html" title="lazyloadの解剖学" /><published>2017-07-25T00:00:00+09:00</published><updated>2017-07-25T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-07-25-1">&lt;p&gt;&lt;img src=&quot;/assets/2017-07-25-1-main.png&quot; alt=&quot;main_visual&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Webのパフォーマンスを改善するテクニックとしてよく使われるlazyloadですが、一口にlazyloadといっても、その仕組みを解剖すると種類や実装方法は様々でした。今回はlazyloadを広義の『遅延読込』と捉えいくつかの視点から分類してまとめ、仕様に応じた実装方法について紹介します。&lt;/p&gt;
-
-&lt;p&gt;と言っても一般論ではなくあくまで持論なので、そこはご容赦ください🙆&lt;br /&gt;
-(タイトルも盛りましたがご容赦ください🙅)&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#lazyloadの対象&quot; id=&quot;markdown-toc-lazyloadの対象&quot;&gt;lazyloadの対象&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#lazyloadのトリガー&quot; id=&quot;markdown-toc-lazyloadのトリガー&quot;&gt;lazyloadのトリガー&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#loadイベントのobserver&quot; id=&quot;markdown-toc-loadイベントのobserver&quot;&gt;loadイベントのObserver&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する&quot; id=&quot;markdown-toc-1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する&quot;&gt;1. &lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;各々が&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;のスクロールイベントを監視する&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-scrollviewが自身のスクロールイベントを監視する&quot; id=&quot;markdown-toc-2-scrollviewが自身のスクロールイベントを監視する&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;が自身のスクロールイベントを監視する&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する&quot; id=&quot;markdown-toc-3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する&quot;&gt;3. 第三者(&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyLoadHandler&lt;/code&gt;等)が&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;のスクロールイベントを監視する&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#lazyloadcomponentの形式&quot; id=&quot;markdown-toc-lazyloadcomponentの形式&quot;&gt;LazyloadComponentの形式&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ここまでのまとめ&quot; id=&quot;markdown-toc-ここまでのまとめ&quot;&gt;ここまでのまとめ&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#事例1-lazyloadする要素のサイズが決まっている場合&quot; id=&quot;markdown-toc-事例1-lazyloadする要素のサイズが決まっている場合&quot;&gt;事例1 lazyloadする要素のサイズが決まっている場合&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合&quot; id=&quot;markdown-toc-事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合&quot;&gt;事例2 lazyloadする要素のサイズが決まっていて、スクロールするのがwindow以外の場合&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#事例3-lazyloadする要素のサイズが不確定な場合&quot; id=&quot;markdown-toc-事例3-lazyloadする要素のサイズが不確定な場合&quot;&gt;事例3 lazyloadする要素のサイズが不確定な場合&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;lazyloadの対象&quot;&gt;lazyloadの対象&lt;/h3&gt;
-&lt;p&gt;よくあるのは&lt;strong&gt;FirstViewに含まれない画像&lt;/strong&gt;の読込を遅延させる手法ですが、lazyloadを適用する対象は他にもあります。大きく分けて以下の3つかなと思います。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;画像の読込とそのレンダリングを遅らせる&lt;/li&gt;
-  &lt;li&gt;jsonなどのデータの取得とそれを用いた要素のレンダリングを遅らせる&lt;/li&gt;
-  &lt;li&gt;レンダリングのみ遅らせる&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;②はTwitterなどのタイムライン系アプリ(要素を半永久的に読み込むもの)によく見られます。一定量スクロールすると後続要素を取得し描画する、アレです。&lt;/p&gt;
-
-&lt;p&gt;対して、読み込む総量が決まっているページでは、最初に全データを一括で取得するもののレンダリングは見えている範囲のみ行う、という③の手法が使われるケースがあります。VirtualRenderingをこの手法で実装するケースもあります(たぶん)。&lt;/p&gt;
-
-&lt;h3 id=&quot;lazyloadのトリガー&quot;&gt;lazyloadのトリガー&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;一定量のスクロールをトリガーとする&lt;strong&gt;Scroll方式&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;scriptの読込をトリガーとする&lt;strong&gt;async/defer方式&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;FirstViewの描画完了時をトリガーとする&lt;strong&gt;Mount方式&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;一定時間が経過したことをトリガーとする&lt;strong&gt;Timer方式&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;※適当に名前つけました。&lt;/p&gt;
-
-&lt;p&gt;①の『スクロール量をトリガーにする』ことが一般的に多いと思います。&lt;br /&gt;
-が、広義の遅延読込の例として他のものも挙げました。&lt;code class=&quot;highlighter-rouge&quot;&gt;async&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;defer&lt;/code&gt;を使ったスクリプトの遅延読込であったり(非同期なので結果的に後追いになることがあるって程度なので遅延というには微妙ですが)、Reactの&lt;code class=&quot;highlighter-rouge&quot;&gt;componentDidMount&lt;/code&gt;などを使いFirstViewのマウント後に追加の読込をさせる手法(Mount方式)であったり、&lt;code class=&quot;highlighter-rouge&quot;&gt;requestIdleCallback&lt;/code&gt;などTimer系functionを使って遅延させる手法(Timer方式)などが考えられます。&lt;/p&gt;
-
-&lt;h3 id=&quot;loadイベントのobserver&quot;&gt;loadイベントのObserver&lt;/h3&gt;
-
-&lt;p&gt;たとえばスクロールをトリガーにlazyloadを行う場合、「どの要素のスクロールを」「だれが監視するのか」を考える必要があります。SVO構文ですね(主語/動詞/目的語のアレ)。&lt;/p&gt;
-
-&lt;p&gt;今回は下図のように、スクロールする要素を&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;、遅延読込される要素たちを&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;と呼び、イベントの関係をまとめます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2017-07-25-1-explain.png&quot; alt=&quot;scrollview_lazyloadcomponent&quot; /&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する&quot;&gt;1. &lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;各々が&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;のスクロールイベントを監視する&lt;/h5&gt;
-
-&lt;p&gt;この場合、LazyloadComponentはあらかじめ高さを確保したPlaceholderを描画しておき、ScrollViewのスクロールが一定のところまできたら自身の読込をし、Placeholderと実データを入れ替えます。&lt;/p&gt;
-
-&lt;h5 id=&quot;2-scrollviewが自身のスクロールイベントを監視する&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;が自身のスクロールイベントを監視する&lt;/h5&gt;
-
-&lt;p&gt;この場合は、ScrollViewは自身のスクロールが一定量になったら一定数のLazyloadComponentを読込みレンダリングします。そのため、ScrollViewはLazyloadComponentのリストを保持しておいて、「どれが読込済みか」「次はどの○件を読込むか」を把握しておく必要があります。&lt;/p&gt;
-
-&lt;h5 id=&quot;3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する&quot;&gt;3. 第三者(&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyLoadHandler&lt;/code&gt;等)が&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;のスクロールイベントを監視する&lt;/h5&gt;
-
-&lt;p&gt;②の方法から、スクロールするDOMと、それをハンドリングするfunctionを分離したパターンです。画面内に複数のlazyload要素がある場合、handlerを分離してモジュール化しておくと取り回しやすくなります。&lt;/p&gt;
-
-&lt;h3 id=&quot;lazyloadcomponentの形式&quot;&gt;LazyloadComponentの形式&lt;/h3&gt;
-
-&lt;p&gt;遅延読込される要素(=&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;)を予め空Divなどで読み込んでおくかどうか、等のパターンです。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;遅延読み込みされる部分と&lt;strong&gt;同じHeight・WidthのPlaceholder&lt;/strong&gt;をDivなどで予め描画しておく&lt;/li&gt;
-  &lt;li&gt;遅延読み込みされる部分を&lt;strong&gt;空のDiv&lt;/strong&gt;などで予め描画しておく&lt;/li&gt;
-  &lt;li&gt;遅延読み込みされる部分は読み込まれるまで何も描画しない&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;タイムライン系のアプリでは③の手法が多いですが、AmazonやZOZOTOWNのような商品リスト系のアプリでは①の手法も見受けられます。&lt;/p&gt;
-
-&lt;h3 id=&quot;ここまでのまとめ&quot;&gt;ここまでのまとめ&lt;/h3&gt;
-
-&lt;p&gt;lazyloadを&lt;strong&gt;①対象&lt;/strong&gt;、&lt;strong&gt;②トリガー&lt;/strong&gt;、&lt;strong&gt;③Observer&lt;/strong&gt;、&lt;strong&gt;④load対象の形式&lt;/strong&gt;、の4つの視点から分類しました。これをいかに組み合わせるかは仕様や状況によって異なると思います。&lt;/p&gt;
-
-&lt;p&gt;以降は、&lt;strong&gt;スクロールをトリガーにデータ取得とレンダリングを遅延させる&lt;/strong&gt;仕組みについて3つの仕様例を挙げ、どのような実装ができるかををまとめてみます。サンプルのソースはReactを使って書きます。&lt;/p&gt;
-
-&lt;h3 id=&quot;事例1-lazyloadする要素のサイズが決まっている場合&quot;&gt;事例1 lazyloadする要素のサイズが決まっている場合&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;のHeight・Widthが一定の場合は&lt;strong&gt;Placeholderを事前にレンダリングしておき、各々のPlaceholderが自身のloadタイミングを管理する&lt;/strong&gt;のがいいと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;LazyloadComponent.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LazyloadComponent&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  
-  &lt;span class=&quot;cm&quot;&gt;/** いろいろ省略、大事な部分だけ書きます */&lt;/span&gt;
- 
-  &lt;span class=&quot;nx&quot;&gt;componentDidMount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;triggerHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;300&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;addEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'scroll'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;passive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;componentWillUnmount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;removeEventListener&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'scroll'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;passive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;window&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pageYOffset&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;triggerHeight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lazyload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;isLoaded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isLoaded&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;children&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-                 &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Container.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Container&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LazyloadComponent&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;200&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/LazyloadComponent&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;雰囲気はこんな感じです。load処理だったり、読み込んだデータをStoreする処理だったりは省略です。注目してほしいのは、&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent#render&lt;/code&gt;が、未ロード時は高さを確保したPlaceholderをレンダリングし、ロード後には&lt;code class=&quot;highlighter-rouge&quot;&gt;this.props.children&lt;/code&gt;をレンダリングしている点です。&lt;/p&gt;
-
-&lt;p&gt;こうすることで遅延読込の処理をLazyloadComponent内で完結させることができ、外部に依存・影響が出ない実装をすることができます。&lt;code class=&quot;highlighter-rouge&quot;&gt;removeEventListener&lt;/code&gt;まできちんとComponent内で行っているので、使い回ししやすいと思います。&lt;br /&gt;
-実際に親要素である&lt;code class=&quot;highlighter-rouge&quot;&gt;Container&lt;/code&gt;では特別なことをせずに&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;を必要な分だけ描画しています。&lt;/p&gt;
-
-&lt;h3 id=&quot;事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合&quot;&gt;事例2 lazyloadする要素のサイズが決まっていて、スクロールするのがwindow以外の場合&lt;/h3&gt;
-
-&lt;p&gt;ケース1では&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;をPlaceholderとして予めレンダリングしておき、&lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt;のスクロールイベントをハンドリングさせました。しかしスクロールする要素が&lt;code class=&quot;highlighter-rouge&quot;&gt;window&lt;/code&gt;以外である場合、&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;はどうやって親要素のスクロールイベントをハンドリングすれば良いでしょうか。&lt;/p&gt;
-
-&lt;p&gt;Reactは入れ子になっている子要素から順にマウントされるため、&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent#componentDidMount&lt;/code&gt;が呼ばれるタイミングでは、スクロールする親要素を取得できずイベントハンドリングができません。&lt;/p&gt;
-
-&lt;p&gt;この場合は、&lt;strong&gt;親要素から&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;経由でスクロール量を渡す&lt;/strong&gt;方法が使えます(手段のひとつであり、別の方法もあります。あらゆる場面での最適解ではありません)。スクロールする親要素を&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;として実装してみます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ScrollView.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ScrollView&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentTarget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LazyloadComponent&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;200&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;scroll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;          &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/LazyloadComponent&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;);})}&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView&lt;/code&gt;内ではスクロール量を&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;として持っておくことで、これが更新される度に&lt;code class=&quot;highlighter-rouge&quot;&gt;render&lt;/code&gt;が呼ばれ&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent&lt;/code&gt;へスクロール量を渡すことができます。&lt;/p&gt;
-
-&lt;p&gt;あとは、&lt;code class=&quot;highlighter-rouge&quot;&gt;LazyloadComponent#componentWillReceiveProps&lt;/code&gt;でloadのトリガーとなるHeightと比較させればOKです。&lt;/p&gt;
-
-&lt;h3 id=&quot;事例3-lazyloadする要素のサイズが不確定な場合&quot;&gt;事例3 lazyloadする要素のサイズが不確定な場合&lt;/h3&gt;
-
-&lt;p&gt;サイズが不確定な場合、Placeholderを使ってしまうとPlaceholderと実Componentのサイズが合わずレンダリング時にガタつくことがあります。そのため&lt;strong&gt;空Divを使う&lt;/strong&gt;か、&lt;strong&gt;レンダリングしない&lt;/strong&gt;か、いずれかの方法をとる必要があります。結果的にスクロールイベントのハンドリングはScrollView自身(もしくは第三者)にさせることになります。&lt;/p&gt;
-
-&lt;p&gt;以下はScrollView自身にイベントハンドリングさせる例です。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ScrollView.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ScrollView&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadedPages&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 初期読込で1ページ分は読み込んでいる&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;triggerHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 1000pxごとにlazyloadを行う&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentTarget&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;triggerHeight&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isLoadedPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;lazyLoad&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadedPages&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;onScroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;item&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;
-&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;})}&lt;/span&gt;
-      &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView#lazyload&lt;/code&gt;が呼ばれると追加読込分がStoreされ、そこから取得される&lt;code class=&quot;highlighter-rouge&quot;&gt;this.state.items&lt;/code&gt;の件数が増えることでlazyloadが実現される仕組みです。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ScrollView#lazyload&lt;/code&gt;の関数内では、&lt;strong&gt;既にどれだけのデータが読み込まれているか、追加で何件読み込むのか、といったpager的な処理&lt;/strong&gt;をすることが必要になってきます。今回はそれを簡易的に&lt;code class=&quot;highlighter-rouge&quot;&gt;loadedPages&lt;/code&gt;という値で表現しました。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;lazyloadについて分類分けしたり仕様に応じた使い方の紹介をしましたが、もちろんこれらが全てではありませんし、自前で実装するよりもライブラリを使う方が良いケースもあると思います。そこはご理解を。&lt;/p&gt;
-
-&lt;p&gt;また、スクロールイベントの取扱いは注意しないとカクつきなどの原因となります。ご利用の際は&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;等の併用をお忘れなく、また用法用量を守ってご利用ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
+&lt;p&gt;適材適所、良しなにやっていきたいものですね☺&lt;/p&gt;</content><author><name></name></author><summary type="html">throttleとdebounceといきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。</summary></entry></feed>

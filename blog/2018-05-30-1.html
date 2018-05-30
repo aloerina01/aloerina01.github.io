@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</title>
+  <meta name="description" content="Reactに入門してみようと思ったものの開発環境のセットアップに苦労してなかなか開発着手できない…なんて経験ありませんか？  それ、もうやらなくても大丈夫なんです。コマンド一つで簡単に済ます方法がありました😌">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Reactに入門してみようと思ったものの開発環境のセットアップに苦労してなかなか開発着手できない…なんて経験ありませんか？  それ、もうやらなくても大丈夫なんです。コマンド一つで簡単に済ます方法がありました😌" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-05-30-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="コマンド一つでReactの開発環境が100％整うライブラリx0の紹介" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="コマンド一つでReactの開発環境が100％整うライブラリx0の紹介">
+  <meta name="twitter:description" content="Reactに入門してみようと思ったものの開発環境のセットアップに苦労してなかなか開発着手できない…なんて経験ありませんか？  それ、もうやらなくても大丈夫なんです。コマンド一つで簡単に済ます方法がありました😌">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-05-30-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-05-30-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/js/drift.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+         
+        <li class="nav-link">
+          <a href="/blogs">Blogs</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-05-30-1">
+            <span itemprop="name">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2018-05-30</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/javascript/">JavaScript</a>,    
+            <a href="/category/react/">React</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <h3 id="はじめに">はじめに</h3>
+
+<p>いきなりですが、Reactの開発環境を用意するのって大変だと思うのです。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">React</code>, <code class="highlighter-rouge">ReactDOM</code>をnpm installする</li>
+  <li>ES6+で書くためにpolyfillを入れる</li>
+  <li>ES6+で書くためにBabelの設定をする</li>
+  <li>JSXを書くためにBabelの設定をする</li>
+  <li>ビルドするためにWebpackの設定をする</li>
+  <li>bundleしたJSを読み込むindexページのHTMLを作成する</li>
+  <li>作ったものを確認するためにローカルサーバの設定(実装)をする</li>
+</ul>
+
+<p>他にもサーバサイドのことまで含めると更にやることが増えます。知っていれば大した作業ではないのかもしれませんが、セットアップってたまにしかやらないのでやり方を忘れがち、そしてハマりがちです。ちょっとReact触ってみよう、ちょっとコンポーネント試作してみよう、という意欲を消滅させるには十分すぎる障害だと思います。</p>
+
+<p>先日、この問題をコマンド一つで解決してくれる <strong><a href="https://compositor.io/x0/">x0</a></strong> というライブラリを触ってみたので、使い方と使用感をまとめました。</p>
+
+<h3 id="whats-this">What’s this</h3>
+
+<p><img src="/assets/2018-05-30-hellox0.gif" alt="x0demo" /></p>
+
+<p><small><a href="https://compositor.io/x0/">@compositor/x0</a> より</small></p>
+
+<blockquote>
+  <p>Zero-config React development environment and static site generator</p>
+</blockquote>
+
+<p><strong>設定なしで使えるReact開発環境＆静的サイトジェネレーター</strong>とのことです。上述したnpm install・ビルドスクリプトの用意・ローカルサーバの用意などをまとめてやってくれます。これでReactのコンポーネントを書くことのみに専念できますね。</p>
+
+<h3 id="how-to-use">How to use</h3>
+
+<h4 id="1-install-する">1. install する</h4>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ npm install -g @compositor/x0
+</code></pre>
+</div>
+
+<p>公式ではグローバルに入れて使うことを促していますが、私は作業ディレクトリにdevDependencyでインストールしています。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir sample-x0
+$ cd sample-x0
+$ npm init
+$ npm install -D @compositor/x0
+</code></pre>
+</div>
+
+<h4 id="2-componentを実装する">2. componentを実装する</h4>
+
+<p>今回はこのようなディレクトリ構成にします。</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>sample-x0
+  ├ package.json
+  └ components
+      ├ HelloWorld.js
+      ├ ...
+      └ ...(その他コンポーネント)
+</code></pre>
+</div>
+
+<p><strong>HelloWorld.js</strong></p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">!!&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
+</span></code></pre>
+</div>
+
+<h4 id="3-ビルドデプロイする">3. ビルド＆デプロイする</h4>
+
+<p>ビルドしてローカルサーバにデプロイするには<code class="highlighter-rouge">x0 [componentを含むディレクトリ]</code>というコマンドを叩きます。<code class="highlighter-rouge">--open (-o)</code>のオプションをつけると、サーバ起動後にデフォルトブラウザを起動してくれます。</p>
+
+<p>グローバルインストールしている場合</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ x0 components --open
+</code></pre>
+</div>
+
+<p>devDependencyでインストールしている場合</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>$ npx x0 components --open
+</code></pre>
+</div>
+
+<p>デプロイされると<code class="highlighter-rouge">components</code>以下に配置したコンポーネント名が一覧で表示され、選択するとそのコンポーネントが描画されたページへ遷移します。</p>
+
+<h4 id="4-エントリーポイントをつくる">4. エントリーポイントをつくる</h4>
+<p><code class="highlighter-rouge">components</code>以下に配置されたコンポーネントはそれぞれ単体で画面に表示されますが、それらを組み合わせた画面をつくることもできます。<code class="highlighter-rouge">components</code>以下にいくつかのコンポーネントとエントリーポイントとなる<code class="highlighter-rouge">main.js</code>を実装します。</p>
+
+<p><strong>Title.js</strong></p>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">({</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span> <span class="nx">title</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
+</span></code></pre>
+</div>
+
+<p><strong>Contents.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="kr">export</span> <span class="k">default</span> <span class="p">({</span> <span class="nx">contents</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">contents</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">each</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span> <span class="nx">each</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/li&gt;</span><span class="se">)</span><span class="sr">}&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p><strong>main.js</strong></p>
+
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Title</span> <span class="nx">from</span> <span class="s1">'./Title'</span><span class="p">;</span>
+<span class="kr">import</span> <span class="nx">Contents</span> <span class="nx">from</span> <span class="s1">'./Contents'</span><span class="p">;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Title</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"Fruits Basket"</span> <span class="o">/&gt;</span>
+    <span class="o">&lt;</span><span class="nx">Contents</span> <span class="nx">contents</span><span class="o">=</span><span class="p">{[</span><span class="s1">'apple'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'peach'</span><span class="p">]}</span> <span class="sr">/</span><span class="err">&gt;
+</span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<p>これで<code class="highlighter-rouge">localhost:8080/main</code>に2つのコンポーネントが表示されます。</p>
+
+<h3 id="feeling">Feeling</h3>
+
+<p>使用感はけっこう良かったです。実際に利用した場面を挙げておきます。</p>
+
+<ul>
+  <li>最新バージョンのReactを試す</li>
+  <li>複雑なロジックを持つコンポーネントを試作する</li>
+  <li>コンポーネントのPlayBookをつくる</li>
+</ul>
+
+<p>最新バージョンのReactを軽く触ろうと思ったとき、本当にシンプルに<strong>コンポーネントのロジックのみを実装して動作確認までできた</strong>ので、お手軽さは100点でした。</p>
+
+<p>また、指定したディレクトリ以下のコンポーネントを一覧表示してくれるので、簡易版のコンポーネントPlayBookとしても利用できました。</p>
+
+<p>その他にも、まだ触っていませんが役立ちそうな機能がいくつかありました。</p>
+
+<ul>
+  <li>webpackの設定を時前で用意してbundleできる
+    <ul>
+      <li>CLIのオプション<code class="highlighter-rouge">--webpack</code>で<code class="highlighter-rouge">webpack.config.js</code>のpathを指定できるので、productionビルド時は自前のビルドスクリプトを通す、等できそう</li>
+    </ul>
+  </li>
+  <li>画面に表示するHTMLを自前で用意して差し替えられる
+    <ul>
+      <li>PlayBookのIndexページをリッチにできそう</li>
+    </ul>
+  </li>
+  <li><a href="https://github.com/mdx-js/mdx">MDX</a>を使える(使ったことはない)</li>
+</ul>
+
+<p>気になる点は<strong>公式のドキュメントが薄い</strong>点です。かなりのことを自動でやってくれているので、その内部がどうなっているのか、どこをカスタマイズできるのか、についてもう少し簡単に把握できるとより使いやすいと思います。</p>
+
+<p>もう1点気になるのは<strong>依存ライブラリがかなり多い点</strong>です。これも自動でいろいろしてくれる代償ですが、babelのPluginだけでも相当数依存していました。<code class="highlighter-rouge">babel-preset-stage-0</code>まで使うのは個人的にはやり過ぎと感じました。</p>
+
+<h3 id="create-react-appとの使い分け">create-react-appとの使い分け</h3>
+
+<p>最後にcreate-react-appとの使い分けについてですが、<strong>ローカルで実行する環境の用意</strong>や<strong>ちょっとしたものの開発</strong>が目的ならx0で十分という印象です。</p>
+
+<p>逆に<strong>production用のプロジェクトの簡易セットアップ</strong>にはcreate-react-appを使うほうが後々カスタマイズしやすいかなと思います(実績の面でも良いかなと)。<br />
+create-react-appの使い方については<a href="/blog/2017-02-28-1">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a>にまとめてありますので併せてどうぞ。</p>
+
+<p>ちなみに、大規模なアプリケーションであったりビルドの仕方やテストなど細かいところまで調整したいときはライブラリに頼らず全部自前で用意しています。適材適所使い分けて幸せな開発ライフを送っていきたいですね。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E3%81%A4%E3%81%A7React%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%8C100%EF%BC%85%E6%95%B4%E3%81%86%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AAx0%E3%81%AE%E7%B4%B9%E4%BB%8B&url=https://aloerina01.github.io/blog/2018-05-30-1&via=aloerina_&hashtags=JavaScript,React,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E3%81%A4%E3%81%A7React%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%8C100%EF%BC%85%E6%95%B4%E3%81%86%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AAx0%E3%81%AE%E7%B4%B9%E4%BB%8B&u=https://aloerina01.github.io/blog/2018-05-30-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E3%81%A4%E3%81%A7React%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%8C100%EF%BC%85%E6%95%B4%E3%81%86%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AAx0%E3%81%AE%E7%B4%B9%E4%BB%8B&url=https://aloerina01.github.io/blog/2018-05-30-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-05-30-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%82%B3%E3%83%9E%E3%83%B3%E3%83%89%E4%B8%80%E3%81%A4%E3%81%A7React%E3%81%AE%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%81%8C100%EF%BC%85%E6%95%B4%E3%81%86%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AAx0%E3%81%AE%E7%B4%B9%E4%BB%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-05-30-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+      
+      <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        <a href="/category/react/">React</a>
+      
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        <a href="/category/skills/">Skills</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <p class="present-title">aloerinaのサポーターになる</p>
+    <p class="present-description">気に入った記事がありましたらお小遣いをあげて支援してみませんか？ aloerinaの生計を支えるサポーターになることができます！</p>
+    <div class="present-qr">
+        <a href="kyash://qr/u/7297457164651391829" target="_blank" class="qr-execute-button">Kyashでサポートする</a>
+        <img src="/assets/kyash_qr.png">
+        <span><a href="https://kyash.co/" target="_blank">またはKyashで id: <b>aloerina</b> に送金する</a></span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+  });
+});
+
+
+//   var menuToggle = $('#js-mobile-menu').unbind();
+//   $('#js-navigation-menu').removeClass("show");
+//   menuToggle.on('click', function(e) {
+//     e.preventDefault();
+//     $('#js-navigation-menu').slideToggle(function(){
+//       if($('#js-navigation-menu').is(':hidden')) {
+//         $('#js-navigation-menu').removeAttr('style');
+//       }
+//     });
+//   });
+// });
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2018-05-30-1',
+    'title': 'コマンド一つでReactの開発環境が100％整うライブラリx0の紹介'
+  });
+</script>
+
+
+</body>
+
+</html>
