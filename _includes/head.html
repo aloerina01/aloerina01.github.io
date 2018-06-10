@@ -74,5 +74,5 @@
   <link rel="canonical" href="{% if page.canonical  %}{{ page.canonical | prepend: site.url }}{% else %}{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}{% endif %}">
   <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ "/feed.xml" | prepend: site.baseurl | prepend: site.url }}" />
 
-  <script src="/js/drift.js" defer></script>
+  <script src="/dist/drift.js" defer></script>
 </head>
