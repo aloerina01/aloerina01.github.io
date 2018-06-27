@@ -7,7 +7,8 @@
     <div class="sub-contents-main">
       {% for category in site.categories %}
         {% capture cat %}{{ category | first }}{% endcapture %}
-        <a {% if page.url contains cat %}class="active" {% endif %}href="{{ site.baseurl }}/category/{{ cat | downcase }}/">{{ cat }}</a>
+        {% capture downcase_cat %}{{ cat | downcase }}{% endcapture %}
+        <a {% if page.url contains downcase_cat %}class="active" {% endif %}href="{{ site.baseurl }}/category/{{ downcase_cat }}/">{{ cat }}</a>
       {% endfor %}
     </div>
   </div>
