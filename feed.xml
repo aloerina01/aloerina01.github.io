@@ -1,5 +1,108 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-06-24T20:16:55+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</title><link href="https://aloerina01.github.io/blog/2018-05-30-1" rel="alternate" type="text/html" title="コマンド一つでReactの開発環境が100％整うライブラリx0の紹介" /><published>2018-05-30T00:00:00+09:00</published><updated>2018-05-30T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-30-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-06-27T12:37:55+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた</title><link href="https://aloerina01.github.io/blog/2018-06-15-1" rel="alternate" type="text/html" title="ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた" /><published>2018-06-15T00:00:00+09:00</published><updated>2018-06-15T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-06-15-1">&lt;p&gt;git-flowで運用していると、releaseブランチとhotfixブランチなど複数のブランチからリリースが行われるケースがあります。その場合リリースされたものを次のreleaseブランチにきちんと反映しないと、ソースが巻き戻ってしまう事故に繋がります。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-06-15-1-main.jpg&quot; alt=&quot;flow図&quot; /&gt;
+(あくまでイメージ図です、developブランチなどの詳細は省略しています)&lt;/p&gt;
+
+&lt;p&gt;私の業務ではgit-flowを少しカスタマイズした運用をしています。なのでまさに上図のように&lt;strong&gt;hotfixブランチをreleaseブランチに反映し忘れる&lt;/strong&gt;問題を起こしてしまうことがありました。これを防ぐための方法はいろいろありますが、今回は&lt;strong&gt;「releaseブランチとmasterブランチが枝分かれしたコミット」&lt;/strong&gt;と&lt;strong&gt;「最新のmasterブランチのコミット」&lt;/strong&gt;を比較し結果を教えてくれるスクリプトを用意してみました。&lt;/p&gt;
+
+&lt;p&gt;以下のような使用を想定しています。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CIに仕込み、releaseブランチのPull Requestに結果をコメントさせる&lt;/li&gt;
+  &lt;li&gt;slack botに仕込み、定期的に結果を通知する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;実装&quot;&gt;実装&lt;/h3&gt;
+
+&lt;h4 id=&quot;全体の構成&quot;&gt;全体の構成&lt;/h4&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;masterブランチ(baseとなるブランチ)の最新コミットの&lt;code class=&quot;highlighter-rouge&quot;&gt;commit id&lt;/code&gt;を取得する&lt;/li&gt;
+  &lt;li&gt;ターゲットとなるブランチとmasterブランチ(baseとなるブランチ)が枝分かれした&lt;code class=&quot;highlighter-rouge&quot;&gt;commit id&lt;/code&gt;を取得する&lt;/li&gt;
+  &lt;li&gt;それらを比較し、差分がないかどうかを判定する&lt;/li&gt;
+  &lt;li&gt;CIから実行された場合は判定結果をPull Requestにコメントする&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;ソース&quot;&gt;ソース&lt;/h4&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; -e
+
+&lt;span class=&quot;nv&quot;&gt;text_color_red&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;33[37;41;1m&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;text_color_green&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;33[37;42;1m&quot;&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;text_color_reset&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\0&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;33[0m&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 第1引数にチェック対象のbranch&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;target_branch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$1&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# 第2引数に比較対象のbranch、指定がなければmasterとする&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;base_branch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;:-&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;master&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;
+
+git fetch
+
+&lt;span class=&quot;c&quot;&gt;# base_branchの最新のcommitを取得する&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;latest_commit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;git log origin/&lt;span class=&quot;nv&quot;&gt;$base_branch&lt;/span&gt; -n 1 | head -1 | sed -e &lt;span class=&quot;s2&quot;&gt;&quot;s/commit &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# target_branchがbase_branchのどのcommitから枝分かれしたのかを調べる&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;base_commit&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;git show-branch --merge-base origin/&lt;span class=&quot;nv&quot;&gt;$target_branch&lt;/span&gt; origin/&lt;span class=&quot;nv&quot;&gt;$base_branch&lt;/span&gt; | head -1&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;latest commit: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;git log &lt;span class=&quot;nv&quot;&gt;$latest_commit&lt;/span&gt; --oneline | head -1&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;based  commit: &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;git log &lt;span class=&quot;nv&quot;&gt;$base_commit&lt;/span&gt; --oneline | head -1&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 「base_branchの最新commit」と「枝分かれしたcommit」を比較&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$latest_commit&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$base_commit&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;最新の&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$base_branch&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;が取り込まれています&quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;✅ &quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;APPROVE&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;text_color_green&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;text_color_reset&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;else
+  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$base_branch&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;が進んでいる可能性があります&quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;🚫 &quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;REQUEST_CHANGES&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; -e &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;text_color_red&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;comment&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;text_color_reset&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# CIによる実行でなければここで終了&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CI&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CI&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 該当のPull Requestを取得できているか確認する&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CI_PULL_REQUEST&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt; -z &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$CI_PULL_REQUEST&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'Fail to find a pull request.'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;exit &lt;/span&gt;0
+&lt;span class=&quot;k&quot;&gt;fi
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;pr_number&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;CI_PULL_REQUEST&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt; | sed -e &lt;span class=&quot;s2&quot;&gt;&quot;s/^.*pull&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\/\(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;.*&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\1&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# 結果をPull RequestにReviewとしてコメントする&lt;/span&gt;
+curl -XPOST &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  -H &lt;span class=&quot;s2&quot;&gt;&quot;Authorization: token &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$GITHUB_ACCESS_TOKEN&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  -H &lt;span class=&quot;s2&quot;&gt;&quot;Content-Type: application/json&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+  -d &lt;span class=&quot;s2&quot;&gt;&quot;{&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$icon$comment&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;, &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;event&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$event&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;}&quot;&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
+ https://github.com/api/v3/repos/&lt;span class=&quot;nv&quot;&gt;$CIRCLE_PROJECT_USERNAME&lt;/span&gt;/&lt;span class=&quot;nv&quot;&gt;$CIRCLE_PROJECT_REPONAME&lt;/span&gt;/pulls/&lt;span class=&quot;nv&quot;&gt;$pr_number&lt;/span&gt;/reviews
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;(CircleCIを使う前提で変数を定義しています)&lt;/p&gt;
+
+&lt;p&gt;ソースは&lt;a href=&quot;https://github.com/aloerina01/check-master-history&quot;&gt;GitHub&lt;/a&gt;でも公開しています。&lt;/p&gt;
+
+&lt;h4 id=&quot;感想&quot;&gt;感想&lt;/h4&gt;
+
+&lt;h5 id=&quot;ログに色をつけたらいい感じでした&quot;&gt;ログに色をつけたらいい感じでした&lt;/h5&gt;
+&lt;p&gt;ログを読みやすくしたくて文字色や背景色を変えています。色属性を変数化して&lt;code class=&quot;highlighter-rouge&quot;&gt;echo ${text_color_red}hoge${text_color_reset}&lt;/code&gt;のように使えるようにしたら、ログの見やすさもコードの見やすさもいい感じでした。&lt;a href=&quot;https://qiita.com/dojineko/items/49aa30018bb721b0b4a9&quot;&gt;こちらの記事&lt;/a&gt;の色見本帳がとても便利で感謝です。&lt;/p&gt;
+
+&lt;h5 id=&quot;head-と-tail-が便利で乱用しました&quot;&gt;head と tail が便利で乱用しました&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;head -n&lt;/code&gt;は&lt;strong&gt;入力の冒頭からn行を抽出し出力する&lt;/strong&gt;コマンドです。&lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;git show-branch&lt;/code&gt;は複数に渡り情報が表示されるので、head/tailを使うと最新/最古の情報を抽出できて便利でした。&lt;/p&gt;
+
+&lt;h5 id=&quot;sedも便利で乱用しました&quot;&gt;sedも便利で乱用しました&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sed&lt;/code&gt;は&lt;strong&gt;入力をコマンドに従って処理し出力する&lt;/strong&gt;コマンドです。今回は&lt;code class=&quot;highlighter-rouge&quot;&gt;sed -e s/置換前/置換後&lt;/code&gt;として文字列を置換します。置換前で&lt;code class=&quot;highlighter-rouge&quot;&gt;()&lt;/code&gt;に入れた部分(グループ化した部分)を、置換後に&lt;code class=&quot;highlighter-rouge&quot;&gt;\1(特殊変数)&lt;/code&gt;で抜き出しています。これが便利すぎて、入力から一部の文字列を切りとって出力する場面では乱用してしまいます。&lt;/p&gt;
+
+&lt;h5 id=&quot;そこそこ活躍するスクリプトになりました&quot;&gt;そこそこ活躍するスクリプトになりました&lt;/h5&gt;
+
+&lt;p&gt;Merge漏れ事故の対策は他にもいろいろ案がある中、諸々の事情により一旦の場しのぎとして作った程度でしたが、そこそこ活躍しているようで作った甲斐がありました。shellを書く機会があまりないので、作ること自体も楽しめました。&lt;/p&gt;
+
+&lt;p&gt;現場からの報告は以上です。引き続きよろしくお願いします。&lt;/p&gt;</content><author><name></name></author><summary type="html">git-flowで運用していると、releaseブランチとhotfixブランチなど複数のブランチからリリースが行われるケースがあります。その場合リリースされたものを次のreleaseブランチにきちんと反映しないと、ソースが巻き戻ってしまう事故に繋がります。</summary></entry><entry><title type="html">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</title><link href="https://aloerina01.github.io/blog/2018-05-30-1" rel="alternate" type="text/html" title="コマンド一つでReactの開発環境が100％整うライブラリx0の紹介" /><published>2018-05-30T00:00:00+09:00</published><updated>2018-05-30T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-30-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
 
 &lt;p&gt;いきなりですが、Reactの開発環境を用意するのって大変だと思うのです。&lt;/p&gt;
 
@@ -1462,79 +1565,4 @@ MVVMも適切に作ればデータは決まった方向に流れますが、MVVM
 
 &lt;p&gt;Vueを半年くらい触ってきたので現在地を書き残しておく意味も兼ねて記事にしました。半年後の自分が見たらダメダメな設計方針かもしれませんが今はこんな感じでVueを使っています。&lt;/p&gt;
 
-&lt;p&gt;設計って考えだしたらキリがなくて、経験を積めば積むほどブラッシュアップできるものだと思うので、恥ずかしがらずにディスカッションしていいんじゃないかなと思って書きました。きっともっと優れた設計をするエンジニアもいるでしょうし、人はルールを守れないからこんな設計は不要だと考えるエンジニアもいると思います。それぞれの意見にその人が経験してきた背景があると思うので、いろんな意見が聞けたらいいなと思います。ぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;まで。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえがき</summary></entry><entry><title type="html">throttleとdebounce</title><link href="https://aloerina01.github.io/blog/2017-08-03-1" rel="alternate" type="text/html" title="throttleとdebounce" /><published>2017-08-03T00:00:00+09:00</published><updated>2017-08-03T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-08-03-1">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;debounce&lt;/code&gt;といきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。&lt;/p&gt;
-
-&lt;p&gt;なぜ今更こんなことをするのかというと、自分が先日忘れていたからです😳&lt;/p&gt;
-
-&lt;h3 id=&quot;ナニコレ&quot;&gt;ナニコレ&lt;/h3&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;debounce&lt;/code&gt;とは、簡単に言うと間引き処理の一種です。連続して大量に繰り返される処理を間引いて負荷を軽減させたりするときに使います。&lt;/p&gt;
-
-&lt;h4 id=&quot;throttle&quot;&gt;throttle&lt;/h4&gt;
-
-&lt;p&gt;連続して大量に繰り返される処理を&lt;strong&gt;一定感覚で間引く&lt;/strong&gt;ものです。&lt;br /&gt;
-よく使われるのはscrollイベントです。スクロールイベントをすべてハンドリングすると処理回数が多くなり、場合によってはスクロールがもっさりしてしまいますよね。それを防ぎます。&lt;/p&gt;
-
-&lt;h4 id=&quot;debounce&quot;&gt;debounce&lt;/h4&gt;
-
-&lt;p&gt;連続して大量に繰り返される処理が&lt;strong&gt;指定時間内に何度発生しても最後の1回だけ実行する&lt;/strong&gt;ものです。
-よく使われるのはresizeイベントです。「ウインドウサイズが変わったときに要素のサイズを変える」みたいなケースってありますよね。その時、ウインドウの端っこをつまんでぐりぐりとドラッグするイベントを全て取得しても意味がありません。マウスから手を話しresizeが完了したときのイベントをとれば十分です。&lt;/p&gt;
-
-&lt;h3 id=&quot;つくりかた&quot;&gt;つくりかた&lt;/h3&gt;
-
-&lt;h4 id=&quot;throttle-1&quot;&gt;throttle&lt;/h4&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;throttle&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;timerId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lastExecTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;elapsedTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;performance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;lastExecTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;execute&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;lastExecTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;performance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timerId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timerId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;clearTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timerId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;elapsedTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt; 
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;timerId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;delay&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;throttle&lt;/code&gt;関数が呼び出される最初の1回と、&lt;code class=&quot;highlighter-rouge&quot;&gt;elapsedTime(経過時間)&lt;/code&gt;が指定の間引き時間を上回るときと、最後の1回が実行されます。説明を読むよりソースを読むほうが分かりやすいですね。&lt;/p&gt;
-
-&lt;h4 id=&quot;debounce-1&quot;&gt;debounce&lt;/h4&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kr&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;debounce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;timerId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;clearTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;timerId&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;kr&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;arguments&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;timerId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;apply&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;interval&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;の時間だけ処理を待っています。待っている間に連続してdebounce関数が実行されると、待っている処理を&lt;code class=&quot;highlighter-rouge&quot;&gt;clearTimeout&lt;/code&gt;してタイマーを再セットします。&lt;/p&gt;
-
-&lt;p&gt;こうすることで、&lt;code class=&quot;highlighter-rouge&quot;&gt;interval&lt;/code&gt;時間内に連続して行われる処理は、最後の1回だけが実行されます。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわり&quot;&gt;おわり&lt;/h3&gt;
-
-&lt;p&gt;jQueryにもこれらの関数は用意されていますし、それ以外にも世の中にはたくさんのライブラリがあります。が、このくらいなら自分で書いてしまったほうがファイルサイズが小さくなって良いケースもあったりします。&lt;/p&gt;
-
-&lt;p&gt;適材適所、良しなにやっていきたいものですね☺&lt;/p&gt;</content><author><name></name></author><summary type="html">throttleとdebounceといきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。</summary></entry></feed>
+&lt;p&gt;設計って考えだしたらキリがなくて、経験を積めば積むほどブラッシュアップできるものだと思うので、恥ずかしがらずにディスカッションしていいんじゃないかなと思って書きました。きっともっと優れた設計をするエンジニアもいるでしょうし、人はルールを守れないからこんな設計は不要だと考えるエンジニアもいると思います。それぞれの意見にその人が経験してきた背景があると思うので、いろんな意見が聞けたらいいなと思います。ぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;まで。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえがき</summary></entry></feed>

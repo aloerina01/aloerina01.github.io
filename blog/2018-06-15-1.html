@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた</title>
+  <meta name="description" content="チームで開発していると復数のブランチが切られますが、きちんとマージを重ねていかないとリリース事故などのトラブルに繋がり兼ねません。それを少しでも防ぐためのスクリプトを書いて運用している話を書きました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="チームで開発していると復数のブランチが切られますが、きちんとマージを重ねていかないとリリース事故などのトラブルに繋がり兼ねません。それを少しでも防ぐためのスクリプトを書いて運用している話を書きました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-06-15-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた">
+  <meta name="twitter:description" content="チームで開発していると復数のブランチが切られますが、きちんとマージを重ねていかないとリリース事故などのトラブルに繋がり兼ねません。それを少しでも防ぐためのスクリプトを書いて運用している話を書きました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-06-15-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-06-15-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/dist/drift.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+         
+        <li class="nav-link">
+          <a href="/blogs">Blogs</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-06-15-1">
+            <span itemprop="name">ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2018-06-15</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/shell/">shell</a>,    
+            <a href="/category/environment/">Environment</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>git-flowで運用していると、releaseブランチとhotfixブランチなど複数のブランチからリリースが行われるケースがあります。その場合リリースされたものを次のreleaseブランチにきちんと反映しないと、ソースが巻き戻ってしまう事故に繋がります。</p>
+
+<p><img src="/assets/2018-06-15-1-main.jpg" alt="flow図" />
+(あくまでイメージ図です、developブランチなどの詳細は省略しています)</p>
+
+<p>私の業務ではgit-flowを少しカスタマイズした運用をしています。なのでまさに上図のように<strong>hotfixブランチをreleaseブランチに反映し忘れる</strong>問題を起こしてしまうことがありました。これを防ぐための方法はいろいろありますが、今回は<strong>「releaseブランチとmasterブランチが枝分かれしたコミット」</strong>と<strong>「最新のmasterブランチのコミット」</strong>を比較し結果を教えてくれるスクリプトを用意してみました。</p>
+
+<p>以下のような使用を想定しています。</p>
+
+<ul>
+  <li>CIに仕込み、releaseブランチのPull Requestに結果をコメントさせる</li>
+  <li>slack botに仕込み、定期的に結果を通知する</li>
+</ul>
+
+<h3 id="実装">実装</h3>
+
+<h4 id="全体の構成">全体の構成</h4>
+
+<ol>
+  <li>masterブランチ(baseとなるブランチ)の最新コミットの<code class="highlighter-rouge">commit id</code>を取得する</li>
+  <li>ターゲットとなるブランチとmasterブランチ(baseとなるブランチ)が枝分かれした<code class="highlighter-rouge">commit id</code>を取得する</li>
+  <li>それらを比較し、差分がないかどうかを判定する</li>
+  <li>CIから実行された場合は判定結果をPull Requestにコメントする</li>
+</ol>
+
+<h4 id="ソース">ソース</h4>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">set</span> -e
+
+<span class="nv">text_color_red</span><span class="o">=</span><span class="s2">"</span><span class="se">\0</span><span class="s2">33[37;41;1m"</span>
+<span class="nv">text_color_green</span><span class="o">=</span><span class="s2">"</span><span class="se">\0</span><span class="s2">33[37;42;1m"</span>
+<span class="nv">text_color_reset</span><span class="o">=</span><span class="s2">"</span><span class="se">\0</span><span class="s2">33[0m"</span>
+
+<span class="c"># 第1引数にチェック対象のbranch</span>
+<span class="nv">target_branch</span><span class="o">=</span><span class="nv">$1</span>
+<span class="c"># 第2引数に比較対象のbranch、指定がなければmasterとする</span>
+<span class="nv">base_branch</span><span class="o">=</span><span class="k">${</span><span class="nv">2</span><span class="k">:-</span><span class="nv">master</span><span class="k">}</span>
+
+git fetch
+
+<span class="c"># base_branchの最新のcommitを取得する</span>
+<span class="nv">latest_commit</span><span class="o">=</span><span class="k">$(</span>git log origin/<span class="nv">$base_branch</span> -n 1 | head -1 | sed -e <span class="s2">"s/commit </span><span class="se">\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="k">)</span>
+<span class="c"># target_branchがbase_branchのどのcommitから枝分かれしたのかを調べる</span>
+<span class="nv">base_commit</span><span class="o">=</span><span class="k">$(</span>git show-branch --merge-base origin/<span class="nv">$target_branch</span> origin/<span class="nv">$base_branch</span> | head -1<span class="k">)</span>
+
+<span class="nb">echo</span> <span class="s2">"latest commit: </span><span class="k">$(</span>git log <span class="nv">$latest_commit</span> --oneline | head -1<span class="k">)</span><span class="s2">"</span>
+<span class="nb">echo</span> <span class="s2">"based  commit: </span><span class="k">$(</span>git log <span class="nv">$base_commit</span> --oneline | head -1<span class="k">)</span><span class="s2">"</span>
+
+<span class="c"># 「base_branchの最新commit」と「枝分かれしたcommit」を比較</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$latest_commit</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$base_commit</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+  </span><span class="nv">comment</span><span class="o">=</span><span class="s2">"最新の</span><span class="nv">$base_branch</span><span class="s2">が取り込まれています"</span>
+  <span class="nv">icon</span><span class="o">=</span><span class="s2">"✅ "</span>
+  <span class="nv">event</span><span class="o">=</span><span class="s2">"APPROVE"</span>
+  <span class="nb">echo</span> -e <span class="s2">"</span><span class="k">${</span><span class="nv">text_color_green</span><span class="k">}${</span><span class="nv">comment</span><span class="k">}${</span><span class="nv">text_color_reset</span><span class="k">}</span><span class="s2">"</span>
+<span class="k">else
+  </span><span class="nv">comment</span><span class="o">=</span><span class="s2">"</span><span class="nv">$base_branch</span><span class="s2">が進んでいる可能性があります"</span>
+  <span class="nv">icon</span><span class="o">=</span><span class="s2">"🚫 "</span>
+  <span class="nv">event</span><span class="o">=</span><span class="s2">"REQUEST_CHANGES"</span>
+  <span class="nb">echo</span> -e <span class="s2">"</span><span class="k">${</span><span class="nv">text_color_red</span><span class="k">}${</span><span class="nv">comment</span><span class="k">}${</span><span class="nv">text_color_reset</span><span class="k">}</span><span class="s2">"</span>
+<span class="k">fi</span>
+
+<span class="c"># CIによる実行でなければここで終了</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CI</span><span class="s2">"</span> <span class="o">==</span> <span class="nb">false</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$CI</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+  </span><span class="nb">exit </span>0
+<span class="k">fi</span>
+
+<span class="c"># 該当のPull Requestを取得できているか確認する</span>
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CI_PULL_REQUEST</span><span class="s2">"</span> <span class="o">==</span> <span class="nb">false</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$CI_PULL_REQUEST</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+  </span><span class="nb">echo</span> <span class="s1">'Fail to find a pull request.'</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0
+<span class="k">fi
+</span><span class="nv">pr_number</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="k">${</span><span class="nv">CI_PULL_REQUEST</span><span class="k">}</span> | sed -e <span class="s2">"s/^.*pull</span><span class="se">\/\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="k">)</span>
+
+<span class="c"># 結果をPull RequestにReviewとしてコメントする</span>
+curl -XPOST <span class="se">\</span>
+  -H <span class="s2">"Authorization: token </span><span class="nv">$GITHUB_ACCESS_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="nv">$icon$comment</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">event</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="nv">$event</span><span class="se">\"</span><span class="s2">}"</span> <span class="se">\</span>
+ https://github.com/api/v3/repos/<span class="nv">$CIRCLE_PROJECT_USERNAME</span>/<span class="nv">$CIRCLE_PROJECT_REPONAME</span>/pulls/<span class="nv">$pr_number</span>/reviews
+</code></pre>
+</div>
+
+<p>(CircleCIを使う前提で変数を定義しています)</p>
+
+<p>ソースは<a href="https://github.com/aloerina01/check-master-history">GitHub</a>でも公開しています。</p>
+
+<h4 id="感想">感想</h4>
+
+<h5 id="ログに色をつけたらいい感じでした">ログに色をつけたらいい感じでした</h5>
+<p>ログを読みやすくしたくて文字色や背景色を変えています。色属性を変数化して<code class="highlighter-rouge">echo ${text_color_red}hoge${text_color_reset}</code>のように使えるようにしたら、ログの見やすさもコードの見やすさもいい感じでした。<a href="https://qiita.com/dojineko/items/49aa30018bb721b0b4a9">こちらの記事</a>の色見本帳がとても便利で感謝です。</p>
+
+<h5 id="head-と-tail-が便利で乱用しました">head と tail が便利で乱用しました</h5>
+
+<p><code class="highlighter-rouge">head -n</code>は<strong>入力の冒頭からn行を抽出し出力する</strong>コマンドです。<code class="highlighter-rouge">git log</code>や<code class="highlighter-rouge">git show-branch</code>は複数に渡り情報が表示されるので、head/tailを使うと最新/最古の情報を抽出できて便利でした。</p>
+
+<h5 id="sedも便利で乱用しました">sedも便利で乱用しました</h5>
+
+<p><code class="highlighter-rouge">sed</code>は<strong>入力をコマンドに従って処理し出力する</strong>コマンドです。今回は<code class="highlighter-rouge">sed -e s/置換前/置換後</code>として文字列を置換します。置換前で<code class="highlighter-rouge">()</code>に入れた部分(グループ化した部分)を、置換後に<code class="highlighter-rouge">\1(特殊変数)</code>で抜き出しています。これが便利すぎて、入力から一部の文字列を切りとって出力する場面では乱用してしまいます。</p>
+
+<h5 id="そこそこ活躍するスクリプトになりました">そこそこ活躍するスクリプトになりました</h5>
+
+<p>Merge漏れ事故の対策は他にもいろいろ案がある中、諸々の事情により一旦の場しのぎとして作った程度でしたが、そこそこ活躍しているようで作った甲斐がありました。shellを書く機会があまりないので、作ること自体も楽しめました。</p>
+
+<p>現場からの報告は以上です。引き続きよろしくお願いします。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%82%92Merge%E3%81%99%E3%82%8B%E5%89%8D%E3%81%ABbase%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%81%8C%E9%80%B2%E3%82%93%E3%81%A7%E3%81%84%E3%81%AA%E3%81%84%E3%81%8B%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E6%9B%B8%E3%81%84%E3%81%9F&url=https://aloerina01.github.io/blog/2018-06-15-1&via=aloerina_&hashtags=shell,Environment,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%82%92Merge%E3%81%99%E3%82%8B%E5%89%8D%E3%81%ABbase%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%81%8C%E9%80%B2%E3%82%93%E3%81%A7%E3%81%84%E3%81%AA%E3%81%84%E3%81%8B%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E6%9B%B8%E3%81%84%E3%81%9F&u=https://aloerina01.github.io/blog/2018-06-15-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%82%92Merge%E3%81%99%E3%82%8B%E5%89%8D%E3%81%ABbase%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%81%8C%E9%80%B2%E3%82%93%E3%81%A7%E3%81%84%E3%81%AA%E3%81%84%E3%81%8B%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E6%9B%B8%E3%81%84%E3%81%9F&url=https://aloerina01.github.io/blog/2018-06-15-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-06-15-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%82%92Merge%E3%81%99%E3%82%8B%E5%89%8D%E3%81%ABbase%E3%83%96%E3%83%A9%E3%83%B3%E3%83%81%E3%81%AE%E5%B1%A5%E6%AD%B4%E3%81%8C%E9%80%B2%E3%82%93%E3%81%A7%E3%81%84%E3%81%AA%E3%81%84%E3%81%8B%E3%82%92%E7%A2%BA%E8%AA%8D%E3%81%99%E3%82%8B%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E3%82%92%E6%9B%B8%E3%81%84%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-06-15-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2017-11-08-1">トラブルシューティングメモを晒してみる  webpack動的module編</a></li>
+      
+      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        <a href="/category/react/">React</a>
+      
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        <a href="/category/skills/">Skills</a>
+      
+        
+        <a href="/category/shell/">shell</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <p class="present-title">aloerinaのサポーターになる</p>
+    <p class="present-description">気に入った記事がありましたらお小遣いをあげて支援してみませんか？ aloerinaの生計を支えるサポーターになることができます！</p>
+    <div class="present-qr">
+        <a href="kyash://qr/u/7297457164651391829" target="_blank" class="qr-execute-button">Kyashでサポートする</a>
+        <img src="/assets/kyash_qr.png">
+        <span><a href="https://kyash.co/" target="_blank">またはKyashで id: <b>aloerina</b> に送金する</a></span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+  });
+});
+
+
+//   var menuToggle = $('#js-mobile-menu').unbind();
+//   $('#js-navigation-menu').removeClass("show");
+//   menuToggle.on('click', function(e) {
+//     e.preventDefault();
+//     $('#js-navigation-menu').slideToggle(function(){
+//       if($('#js-navigation-menu').is(':hidden')) {
+//         $('#js-navigation-menu').removeAttr('style');
+//       }
+//     });
+//   });
+// });
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2018-06-15-1',
+    'title': 'ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた'
+  });
+</script>
+
+
+</body>
+
+</html>
