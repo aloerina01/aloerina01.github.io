@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-07-04T17:00:34+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-07-05T12:09:25+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた</title><link href="https://aloerina01.github.io/blog/2018-06-15-1" rel="alternate" type="text/html" title="ブランチをMergeする前にbaseブランチの履歴が進んでいないかを確認するスクリプトを書いた" /><published>2018-06-15T00:00:00+09:00</published><updated>2018-06-15T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-06-15-1">&lt;p&gt;git-flowで運用していると、releaseブランチとhotfixブランチなど複数のブランチからリリースが行われるケースがあります。その場合リリースされたものを次のreleaseブランチにきちんと反映しないと、ソースが巻き戻ってしまう事故に繋がります。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/2018-06-15-1-main.jpg&quot; alt=&quot;flow図&quot; /&gt;
@@ -88,7 +88,7 @@ curl -XPOST &lt;span class=&quot;se&quot;&gt;\&lt;/span&gt;
 &lt;h4 id=&quot;感想&quot;&gt;感想&lt;/h4&gt;
 
 &lt;h5 id=&quot;ログに色をつけたらいい感じでした&quot;&gt;ログに色をつけたらいい感じでした&lt;/h5&gt;
-&lt;p&gt;ログを読みやすくしたくて文字色や背景色を変えています。色属性を変数化して&lt;code class=&quot;highlighter-rouge&quot;&gt;echo ${text_color_red}hoge${text_color_reset}&lt;/code&gt;のように使えるようにしたら、ログの見やすさもコードの見やすさもいい感じでした。&lt;a href=&quot;https://qiita.com/dojineko/items/49aa30018bb721b0b4a9&quot;&gt;こちらの記事&lt;/a&gt;の色見本帳がとても便利で感謝です。&lt;/p&gt;
+&lt;p&gt;ログを読みやすくしたくて文字色や背景色を変えています。色属性を変数化したら、ログの見やすさもコードの見やすさもいい感じでした。&lt;a href=&quot;https://qiita.com/dojineko/items/49aa30018bb721b0b4a9&quot;&gt;こちらの記事&lt;/a&gt;の色見本帳がとても便利で感謝です。&lt;/p&gt;
 
 &lt;h5 id=&quot;head-と-tail-が便利で乱用しました&quot;&gt;head と tail が便利で乱用しました&lt;/h5&gt;
 
