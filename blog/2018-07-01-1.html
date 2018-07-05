@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>WebフロントエンジニアがDart × Flutterに入門した話</title>
+  <meta name="description" content="普段Webアプリを作っている人がFlutterを使ってアプリ開発をしてみた体験記です。どうやって入門したか、入門してみてどうだったか、Webエンジニアの視点でFlutter・Dartに期待することなどをまとめました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="普段Webアプリを作っている人がFlutterを使ってアプリ開発をしてみた体験記です。どうやって入門したか、入門してみてどうだったか、Webエンジニアの視点でFlutter・Dartに期待することなどをまとめました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-07-01-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="WebフロントエンジニアがDart × Flutterに入門した話" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="WebフロントエンジニアがDart × Flutterに入門した話">
+  <meta name="twitter:description" content="普段Webアプリを作っている人がFlutterを使ってアプリ開発をしてみた体験記です。どうやって入門したか、入門してみてどうだったか、Webエンジニアの視点でFlutter・Dartに期待することなどをまとめました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-07-01-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-07-01-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/dist/drift.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+         
+        <li class="nav-link">
+          <a href="/blogs">Blogs</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-07-01-1">
+            <span itemprop="name">WebフロントエンジニアがDart × Flutterに入門した話</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">WebフロントエンジニアがDart × Flutterに入門した話</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2018-07-01</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/dart/">Dart</a>,    
+            <a href="/category/flutter/">Flutter</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>Flutterとは、Dartという言語でモバイルアプリを開発するためのSDKです。iOSアプリとAndroidアプリを同じコードベースで実装できるとのことで、普段はWebアプリを開発している私にもとっつきやすそうなので入門してみました。</p>
+
+<p>一通り入門が済んだので、どうやって入門したか、入門してみてどうだったか、Webエンジニアの視点でFlutter・Dartに期待することなどをまとめました。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#基礎知識" id="markdown-toc-基礎知識">基礎知識</a>    <ul>
+      <li><a href="#dartとは" id="markdown-toc-dartとは">Dartとは</a></li>
+      <li><a href="#flutterとは" id="markdown-toc-flutterとは">Flutterとは</a></li>
+    </ul>
+  </li>
+  <li><a href="#入門の仕方" id="markdown-toc-入門の仕方">入門の仕方</a>    <ul>
+      <li><a href="#概要" id="markdown-toc-概要">概要</a></li>
+      <li><a href="#ハンズオン" id="markdown-toc-ハンズオン">ハンズオン</a>        <ul>
+          <li><a href="#dart-sdkのインストール" id="markdown-toc-dart-sdkのインストール">Dart SDKのインストール</a></li>
+          <li><a href="#flutterのインストール" id="markdown-toc-flutterのインストール">Flutterのインストール</a></li>
+          <li><a href="#vscodeプラグインのインストール" id="markdown-toc-vscodeプラグインのインストール">VSCodeプラグインのインストール</a></li>
+          <li><a href="#android端末検証端末の接続そしてdeploy" id="markdown-toc-android端末検証端末の接続そしてdeploy">Android端末(検証端末)の接続、そしてDeploy</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#入門してみてどうだったか" id="markdown-toc-入門してみてどうだったか">入門してみてどうだったか</a>    <ul>
+      <li><a href="#dart言語について" id="markdown-toc-dart言語について">Dart言語について</a></li>
+      <li><a href="#開発環境について" id="markdown-toc-開発環境について">開発環境について</a></li>
+      <li><a href="#flutterについて" id="markdown-toc-flutterについて">Flutterについて</a></li>
+    </ul>
+  </li>
+  <li><a href="#おすすめの読み物" id="markdown-toc-おすすめの読み物">おすすめの読み物</a></li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="基礎知識">基礎知識</h3>
+
+<h4 id="dartとは"><a href="https://www.dartlang.org/">Dart</a>とは</h4>
+
+<ul>
+  <li>Googleが開発している言語</li>
+  <li>JavaやJavaScriptに似たシンタックス</li>
+  <li>型を付けても付けなくても書ける</li>
+  <li>DartVM上で動く</li>
+  <li>JavaScriptにコンパイルできる</li>
+</ul>
+
+<p>Dartの文法については<a href="https://www.dartlang.org/guides/language/language-tour">Language Tour</a>をさらっと眺めるだけでも結構把握できると思います。普段JavaやJavaScriptを使っている人ならすぐに書けそうなワクワク感を味わえるかも(私がそうでした)。</p>
+
+<h4 id="flutterとは"><a href="https://flutter.io/">Flutter</a>とは</h4>
+
+<ul>
+  <li>iOSとAndroidアプリを開発するためのSDK</li>
+  <li>マテリアルデザインに則ったUIパーツを標準提供</li>
+  <li>hot reloadでサクサクアプリ開発できる</li>
+</ul>
+
+<p>React Nativeと比較してみて感じたことは</p>
+<ul>
+  <li>FlutterにはOSのガイドラインに則ったWidgetが<strong>公式に</strong>用意されている</li>
+  <li>Widgetでの画面構築はHTML＆CSSに慣れきった人にはツライ(詳細後述します)</li>
+  <li>どちらも設計が<strong>ステートレスView＆単一データフロー</strong>になるという点は似ている</li>
+</ul>
+
+<p>こんな感じです。どんなWidgetがあるかを把握し使いこなせれば高速に開発できる反面、慣れるまで(暗記するまで)がけっこうしんどい…という所感です。</p>
+
+<h3 id="入門の仕方">入門の仕方</h3>
+
+<h4 id="概要">概要</h4>
+<p>公式ドキュメントが丁寧に作られているので、それに沿っていくだけで開発環境の準備ができます。私は<strong>Mac × Visual Studio Code</strong>で開発したかったので、ざっくり以下のことをしました。</p>
+
+<ol>
+  <li><strong>Dart SDK</strong>のインストール(参考：<a href="https://www.dartlang.org/tools/sdk">Install Dart</a>)</li>
+  <li><strong>Flutter</strong>のインストール(参考：<a href="https://flutter.io/get-started/install/">Get Started: Install - Flutter</a>)</li>
+  <li>開発したいアプリのOSに応じて<strong>Xcode, Android Studio</strong>のインストール</li>
+  <li>VSCode用の<a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code">Dartプラグイン</a>、<a href="https://marketplace.visualstudio.com/items?itemName=franzsilva.fs-flutter-snippets">Flutterプラグイン</a>のインストール</li>
+</ol>
+
+<p>Flutterの公式ドキュメントにはエディタの設定の方法まで書いてあり、VSCode以外にもAndroid Studioでの設定方法が載っています。Androidアプリ開発者、Webアプリ開発者の両方にスムーズに使ってもらうことを想定しているのでしょうか(ありがたいですね)。</p>
+
+<h4 id="ハンズオン">ハンズオン</h4>
+
+<h5 id="dart-sdkのインストール">Dart SDKのインストール</h5>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>brew tap dart-lang/dart
+brew install dart --with-content-shell --with-dartium
+</code></pre>
+</div>
+
+<h5 id="flutterのインストール">Flutterのインストール</h5>
+
+<p><a href="https://flutter.io/get-started/install/">Get Started: Install - Flutter</a>からzipを落とし展開しPATHを通します。そのあとは</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>flutter doctor
+</code></pre>
+</div>
+
+<p>このコマンドを叩くと、Flutterの開発に必要なものが揃っているかどうか、揃えるために次に何をすればいいのかを教えてくれます。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>Doctor summary <span class="o">(</span>to see all details, run flutter doctor -v<span class="o">)</span>:
+<span class="o">[</span>- <span class="o">[</span>x] <span class="o">]</span> Flutter <span class="o">(</span>Channel beta, v0.4.4, on Mac OS X 10.12.6 16G1212, locale ja-JP<span class="o">)</span>
+<span class="o">[</span>✗] Android toolchain - develop <span class="k">for </span>Android devices
+<span class="k">**</span>✗ Unable to locate Android SDK.<span class="k">**</span>
+<span class="k">**</span>Install Android Studio from: https://developer.android.com/studio/index.html<span class="k">**</span>
+<span class="k">**</span>On first launch it will assist you <span class="k">in </span>installing the Android SDK components.<span class="k">**</span>
+<span class="k">**</span><span class="o">(</span>or visit https://flutter.io/setup/#android-setup <span class="k">for </span>detailed instructions<span class="o">)</span>.<span class="k">**</span>
+<span class="k">**</span>If Android SDK has been installed to a custom location, <span class="nb">set</span> <span class="nv">$ANDROID_HOME</span> to that location.<span class="k">**</span>
+<span class="o">[</span>!] iOS toolchain - develop <span class="k">for </span>iOS devices
+<span class="k">**</span>✗ Xcode installation is incomplete; a full installation is necessary <span class="k">for </span>iOS development.<span class="k">**</span>
+<span class="k">**</span>Download at: https://developer.apple.com/xcode/download/<span class="k">**</span>
+<span class="k">**</span>Or install Xcode via the App Store.<span class="k">**</span>
+<span class="k">**</span>Once installed, run:<span class="k">**</span>
+<span class="k">**</span>sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer<span class="k">**</span>
+<span class="k">**</span>✗ libimobiledevice and ideviceinstaller are not installed. To install, run:<span class="k">**</span>
+<span class="k">**</span>brew install --HEAD libimobiledevice<span class="k">**</span>
+<span class="k">**</span>brew install ideviceinstaller<span class="k">**</span>
+<span class="k">**</span>✗ ios-deploy not installed. To install:<span class="k">**</span>
+<span class="k">**</span>brew install ios-deploy<span class="k">**</span>
+<span class="k">**</span>✗ CocoaPods not installed.<span class="k">**</span>
+<span class="k">**</span>CocoaPods is used to retrieve the iOS platform side<span class="s1">'s plugin code that responds to your plugin usage on the Dart side.**
+**Without resolving iOS dependencies with CocoaPods, plugins will not work on iOS.**
+**For more info, see https://flutter.io/platform-plugins**
+**To install:**
+**brew install cocoapods**
+**pod setup**
+[✗] Android Studio (not installed)
+[!] VS Code (version 1.23.1)
+[!] Connected devices
+    ! No devices available
+
+! Doctor found issues in 5 categories.
+</span></code></pre>
+</div>
+
+<p>(Android Studioがインストールされてないよ！等、教えてくれていますね)</p>
+
+<p>このコマンドが大変ありがたく、その後もつまずいたらとりあえず<code class="highlighter-rouge">flutter doctor</code>を叩くと何かしら前に進みました。開発環境の構築でハマるのは入門あるあるだと思うので、Flutterの心遣いに感謝するばかりです。</p>
+
+<h5 id="vscodeプラグインのインストール">VSCodeプラグインのインストール</h5>
+
+<p><a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code">Dartプラグイン</a>、<a href="https://marketplace.visualstudio.com/items?itemName=franzsilva.fs-flutter-snippets">Flutterプラグイン</a>をインストールしたものの、VSCodeのコマンドパレットから<code class="highlighter-rouge">Flutter: New Project</code>をしようとしたらFlutter SDKがないと怒られました。設定にFlutterの所在を追記することで解決。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>"dart.flutterSdkPath": "/Users/aloerina/flutter"
+</code></pre>
+</div>
+
+<p>ちなみにNew ProjectでつくられたディレクトリにはHelloWorld的なコードが最初から入っていました。</p>
+
+<h5 id="android端末検証端末の接続そしてdeploy">Android端末(検証端末)の接続、そしてDeploy</h5>
+
+<p>今回はAndroidアプリで検証をします。<br />
+USBデバッグを許可した実機を接続するか、Android Studioのエミュレータを起動するかが必要なので後者を選択しました。Android Studioの公式の<a href="https://developer.android.com/studio/run/managing-avds">仮想端末の作成と管理</a>に書いてある通りにやるとスムーズでした。</p>
+
+<p>エミュレータを起動したらVSCodeのステータスバー(右下)に起動したエミュレータ名が書いてあればOKです。書いてない場合は<code class="highlighter-rouge">flutter emulators</code>を叩いて表示に従えばOKです。</p>
+
+<p>検証端末の準備ができたらflutterを起動します。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code>flutter run
+</code></pre>
+</div>
+
+<p>これでDeployが済んでエミュレータにアプリが表示されます🎉</p>
+
+<blockquote>
+  <p>🔥  To hot reload your app on the fly, press “r”. To restart the app entirely, press “R”.</p>
+</blockquote>
+
+<p>hot reloadの準備できてるよ！といって待機してくれていますね。これで開発環境の構築は完了です。ここからはチュートリアルを試したり写経したりして楽しみました。</p>
+
+<h3 id="入門してみてどうだったか">入門してみてどうだったか</h3>
+
+<h4 id="dart言語について">Dart言語について</h4>
+
+<p>新しい言語を書いているとは思えないくらい、学習コストほぼゼロで読み書きできることに感動します。hot reloadと相まって新しいことを試してすぐに画面に反映されるスピード感・ワクワク感はたまりません。</p>
+
+<p>すぐ書ける楽しみだけでなく、JavaScriptのような手軽さや、静的型付けやジェネリクスなどを取り揃えた安心感などにも好感でした。公式の<a href="https://www.dartlang.org/guides/language/language-tour#important-concepts">Important Concepts</a>にこれらに関係するDartのコンセプトがまとまっていたので、ざっくり意訳してみます。</p>
+
+<ul>
+  <li>変数に代入できる値はすべて(数値、関数、null、など何でも)<em>Object</em>であり、すべての<em>Object</em>は<em>Class</em>のインスタンスです。すべての<em>Object</em>は<code class="highlighter-rouge">Object</code>クラスを継承します。</li>
+  <li>Dartは強く型付けされていますが、Dartは型を推測できるため型定義は必須ではありません。型が不明であることを明示的に宣言したいときは、特殊な型である<code class="highlighter-rouge">dynamic</code>を使用することができます。</li>
+  <li>Dartは<code class="highlighter-rouge">List&lt;int&gt;</code>や<code class="highlighter-rouge">List&lt;dynamic&gt;</code>などのジェネリクスに対応しています。</li>
+  <li>Dartは<code class="highlighter-rouge">main()</code>などのトップレベル関数、staticメソッドやインスタンスメソッド、ローカル関数などを定義できます。</li>
+  <li>Javaと違い<code class="highlighter-rouge">public</code>, <code class="highlighter-rouge">private</code>などのスコープ定義はありません。代わりに変数名を<code class="highlighter-rouge">_</code>から始めることでprivateと認識します。</li>
+</ul>
+
+<p>変数のスコープを<code class="highlighter-rouge">_</code>で判別する点は好みではないのですが(命名は書く側の好きにさせて欲しい)、それ以外はいいと思いました。Interfaceとジェネリクスがあると手堅く設計できますし、DIなども可能になりますよね。<code class="highlighter-rouge">async/await</code>や<code class="highlighter-rouge">Stream</code>などで<a href="https://www.dartlang.org/guides/language/language-tour#asynchrony-support">非同期処理</a>を自然に書けるのもステキです。</p>
+
+<p>言語機能を更に深掘りするには<a href="https://www.dartlang.org/guides/language/effective-dart">Effective Dart</a>がおすすめです。Dartはとにかく公式ドキュメントの充実っぷりがすごいですね。</p>
+
+<p>魅力的な言語だと思うので今後も継続的に発展していってほしいと思います。いずれAltJSのひとつとなる日が来たりするのでしょうか。</p>
+
+<h4 id="開発環境について">開発環境について</h4>
+
+<p>べた褒め続きで少々気まずさもありますが、私が開発環境に必要だと思う<strong>セットアップ・メンテの手軽さ</strong>と<strong>開発速度</strong>が保たれていてよかったです。特に上述した<code class="highlighter-rouge">flutter doctor</code>コマンドには幾度となく助けられました。問題にぶち当たってもググらず解決できるってすごいですよね。</p>
+
+<p>hot reloadは普段Webフロントを開発している自分には必須の機能でした。アプリはビルドやら何やらに時間のかかるイメージだったので(あくまでイメージです)、アプリ開発への敷居が下がったように感じました。</p>
+
+<p>また、些細なことかもしれませんがVSCodeのプラグインが<strong>閉じカッコの位置をコメントアウトのように表示してくれる</strong>のが便利でした(コメントアウト「のように」表示しているだけで実際にコメントが追記されるわけではありません)。</p>
+
+<p><img src="/assets/2018-07-01-1-editor.png" alt="editor sample" /></p>
+
+<p>この機能に初めて出会って感動したのですが、これって一般的なんでしょうか？</p>
+
+<h4 id="flutterについて">Flutterについて</h4>
+
+<p>OS推奨のUIがWidgetとして網羅されているため誰でも一定レベルのデザインのアプリを作れるのはすごいと思いますが、いかんせんWidgetの使い方にクセがありました。</p>
+
+<p>画面の情報すべてをWidgetで表現するため、Layoutに関わる<a href="https://docs.flutter.io/flutter/widgets/Padding-class.html">Padding</a>や<a href="https://docs.flutter.io/flutter/widgets/Align-class.html">Alignment</a>などもWidgetとして組み込まなければなりません。たとえばカードリスト画面を作る場合、以下のようにWidgetを入れ子にする必要があります。</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>Scaffold Widget (画面全体を構成する) 
+  &gt; ListView Widget (Scaffoldの中にListViewを配置する)
+    &gt; Padding Widget (ListView内の要素にPaddingをつける)
+      &gt; Card Widget (Paddingのとられた空間にカードを配置する)
+        &gt; Column Widget (カード内に復数の要素を縦積みする)
+          &gt; Padding Widget (縦積みする要素にPaddingをつける)
+            &gt; Text Widget (タイトルなどの文字列を表示する)
+              &gt; TextAlign Widget (文字列のAlignmentを指定する)
+</code></pre>
+</div>
+<p>表示要素を表す<code class="highlighter-rouge">ListView</code>, <code class="highlighter-rouge">Card</code>, <code class="highlighter-rouge">Text</code>と並列関係で<code class="highlighter-rouge">Padding</code>などが存在するわけです。ものによってもっと簡単に記述できる仕組みもあるのですが、HTMLで要素を構成してCSSで装飾する手法に慣れている人にはかなり抵抗があるのではないでしょうか…。</p>
+
+<p>ただ、アプリのビルドなど詳しく知らない部分を棚上げしたまま開発できる点はよかったです。とりあえず動くものを作ってみてリリースするときに改めてキャッチアップする、とすると開発意欲を落とさず完成にこぎつけそうです。</p>
+
+<h3 id="おすすめの読み物">おすすめの読み物</h3>
+
+<ul>
+  <li>DartとFlutterの魅力を知るには <a href="https://adwd.github.io/dart-flutter-slide/#/">DART/FLUTTER 入門 + 最強の勤怠アプリを作った話</a></li>
+  <li>Flutterで何が作れるかを把握するには <a href="https://flutter.io/showcase/">Showcase - Flutter</a></li>
+  <li>とりあえずFlutterで動くサンプルを作るなら <a href="https://codelabs.developers.google.com/codelabs/flutter/index.html?index=..%2F..%2Findex#0">Building Beautiful UIs with Flutter</a></li>
+  <li>Firebaseと組み合せる方法を理解するには <a href="https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html?index=..%2F..%2Findex#0">Firebase for Flutter</a></li>
+  <li>Widgetでレイアウトする方法を理解するには <a href="https://flutter.io/tutorials/layout/">Building Layouts in Flutter</a></li>
+  <li>Stateの概念を理解するなら <a href="https://flutter.io/tutorials/interactive/">Adding Interactivity to Your Flutter App</a></li>
+  <li>Flutterで作られたアプリのコードリーディングには <a href="https://github.com/konifar/droidkaigi2018-flutter">konifar/droidkaigi2018-flutter</a></li>
+</ul>
+
+<p>本文中で紹介した以外にも、これらを読みながら実装をしていくとかなり理解が捗りました。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>Webアプリとネイティブアプリそれぞれのメリット・デメリットや向き不向きを把握していると、なにか作ろうと思ったときに引出しが多くなっていいんじゃないかなと思います。その第一歩としてDartとFlutterは有用だと思いました。Webエンジニアが取り組みやすいネイティブアプリ開発のプラットフォームであるFlutter、JSに似たシンタックスで書きやすいDart。これから更に理解を深めていこうと思います。<br />
+DartやFlutterについて語りたい場合は是非<a href="https://twitter.com/aloerina_">@aloerina_</a>までどうぞ。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Web%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%8CDart+%C3%97+Flutter%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F%E8%A9%B1&url=https://aloerina01.github.io/blog/2018-07-01-1&via=aloerina_&hashtags=Dart,Flutter,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Web%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%8CDart+%C3%97+Flutter%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F%E8%A9%B1&u=https://aloerina01.github.io/blog/2018-07-01-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=Web%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%8CDart+%C3%97+Flutter%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F%E8%A9%B1&url=https://aloerina01.github.io/blog/2018-07-01-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-07-01-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Web%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%8B%E3%82%A2%E3%81%8CDart+%C3%97+Flutter%E3%81%AB%E5%85%A5%E9%96%80%E3%81%97%E3%81%9F%E8%A9%B1%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-07-01-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/tip/2018-03-26-1">毎回忘れるanyenvの使い方メモ</a></li>
+      
+      <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/skills/">Skills</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <p class="present-title">aloerinaのサポーターになる</p>
+    <p class="present-description">気に入った記事がありましたらお小遣いをあげて支援してみませんか？ aloerinaの生計を支えるサポーターになることができます！</p>
+    <div class="present-qr">
+        <a href="kyash://qr/u/7297457164651391829" target="_blank" class="qr-execute-button">Kyashでサポートする</a>
+        <img src="/assets/kyash_qr.png">
+        <span><a href="https://kyash.co/" target="_blank">またはKyashで id: <b>aloerina</b> に送金する</a></span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+  });
+});
+
+
+//   var menuToggle = $('#js-mobile-menu').unbind();
+//   $('#js-navigation-menu').removeClass("show");
+//   menuToggle.on('click', function(e) {
+//     e.preventDefault();
+//     $('#js-navigation-menu').slideToggle(function(){
+//       if($('#js-navigation-menu').is(':hidden')) {
+//         $('#js-navigation-menu').removeAttr('style');
+//       }
+//     });
+//   });
+// });
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2018-07-01-1',
+    'title': 'WebフロントエンジニアがDart × Flutterに入門した話'
+  });
+</script>
+
+
+</body>
+
+</html>
