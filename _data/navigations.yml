@@ -4,5 +4,9 @@
 - title: 'Tips'
   url: '/tips'
 
+- title: 'Contact'
+  url: 'https://goo.gl/forms/CpmOgk2omnWqTzz43'
+  isAnotherTab: true
+
 # - title: 'Profile'
 #   url: '/profile'

@@ -636,6 +636,9 @@ pre code.hljs {
 			}
 			&-description {
 				font-size: 0.9em;
+				a, a:hover {
+					color: $white;
+				}
 			}
 			&-sns {
 				margin-top: 20px;
