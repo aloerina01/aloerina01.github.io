@@ -882,6 +882,8 @@ pre code.hljs {
         padding-top: 8px; }
       .profile-bar-main .profile-content-description {
         font-size: 0.9em; }
+        .profile-bar-main .profile-content-description a, .profile-bar-main .profile-content-description a:hover {
+          color: #fff; }
       .profile-bar-main .profile-content-sns {
         margin-top: 20px; }
         .profile-bar-main .profile-content-sns .sns-icon {
