@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-07-11T19:26:11+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-07-12T14:56:47+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">WebフロントエンジニアがDart × Flutterに入門した話</title><link href="https://aloerina01.github.io/blog/2018-07-01-1" rel="alternate" type="text/html" title="WebフロントエンジニアがDart × Flutterに入門した話" /><published>2018-07-01T00:00:00+09:00</published><updated>2018-07-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-07-01-1">&lt;p&gt;Flutterとは、Dartという言語でモバイルアプリを開発するためのSDKです。iOSアプリとAndroidアプリを同じコードベースで実装できるとのことで、普段はWebアプリを開発している私にもとっつきやすそうなので入門してみました。&lt;/p&gt;
 
 &lt;p&gt;一通り入門が済んだので、どうやって入門したか、入門してみてどうだったか、Webエンジニアの視点でFlutter・Dartに期待することなどをまとめました。&lt;/p&gt;
@@ -146,7 +146,7 @@ brew install dart --with-content-shell --with-dartium
 &lt;h5 id=&quot;android端末検証端末の接続そしてdeploy&quot;&gt;Android端末(検証端末)の接続、そしてDeploy&lt;/h5&gt;
 
 &lt;p&gt;今回はAndroidアプリで検証をします。&lt;br /&gt;
-USBデバッグを許可した実機を接続するか、Android Studioのエミュレータを起動するかが必要なので後者を選択しました。Android Studioの公式の&lt;a href=&quot;https://developer.android.com/studio/run/managing-avds&quot;&gt;仮想端末の作成と管理&lt;/a&gt;に書いてある通りにやるとスムーズでした。&lt;/p&gt;
+USBデバッグを許可した実機を接続するか、Android Studioのエミュレータを起動するかが必要なので後者を選択しました。Android Studioの公式の&lt;a href=&quot;https://developer.android.com/studio/run/managing-avds&quot;&gt;仮想端末の作成と管理&lt;/a&gt;に書いてある通りにやるとスムーズでした。&lt;/p&gt;
 
 &lt;p&gt;エミュレータを起動したらVSCodeのステータスバー(右下)に起動したエミュレータ名が書いてあればOKです。書いてない場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;flutter emulators&lt;/code&gt;を叩いて表示に従えばOKです。&lt;/p&gt;
 
