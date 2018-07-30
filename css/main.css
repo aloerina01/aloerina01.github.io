@@ -142,12 +142,12 @@ table {
 th {
   border-bottom: 1px solid #b7b7b7;
   font-weight: 600;
-  padding: 14.4px 0;
+  padding: 14.4px 4px;
   text-align: left; }
 
 td {
   border-bottom: 1px solid #ddd;
-  padding: 14.4px 0; }
+  padding: 14.4px 4px; }
 
 tr,
 td,
