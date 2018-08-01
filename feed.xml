@@ -1,5 +1,329 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-07-31T20:05:09+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">WebフロントエンジニアがDart × Flutterに入門した話</title><link href="https://aloerina01.github.io/blog/2018-07-01-1" rel="alternate" type="text/html" title="WebフロントエンジニアがDart × Flutterに入門した話" /><published>2018-07-01T00:00:00+09:00</published><updated>2018-07-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-07-01-1">&lt;p&gt;Flutterとは、Dartという言語でモバイルアプリを開発するためのSDKです。iOSアプリとAndroidアプリを同じコードベースで実装できるとのことで、普段はWebアプリを開発している私にもとっつきやすそうなので入門してみました。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-08-01T12:18:41+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</title><link href="https://aloerina01.github.io/blog/2018-08-01-1" rel="alternate" type="text/html" title="DartでWebフロントの開発はできる？ エコシステムから見るDartの現状" /><published>2018-08-01T00:00:00+09:00</published><updated>2018-08-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-08-01-1">&lt;p&gt;JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、&lt;strong&gt;iOS、Android、Webの3大Clientで使える言語&lt;/strong&gt;を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。&lt;/p&gt;
+
+&lt;p&gt;ただ、言語がよければすぐに使えるというわけではなく、使いやすさや開発環境も大切な要素の1つです。&lt;br /&gt;
+昨今のWebフロントエンドはできることが増え、それに伴いエコシステムもとても進歩していて、複雑で大規模な開発でもスムーズに行えるようになってきている印象です(1番最初の環境構築が大変とよく言われますが、その大変さも徐々に緩和されてきていると思います)。&lt;/p&gt;
+
+&lt;p&gt;そこで、&lt;strong&gt;DartでのWebフロントエンド開発がどの程度現実的なのか&lt;/strong&gt;を「エコシステム」という観点でまとめてみました。各々のツールの簡単な使い方も併記しています。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-dart-sdk&quot; id=&quot;markdown-toc-1-dart-sdk&quot;&gt;1. Dart SDK&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-パッケージ管理ツール-pub&quot; id=&quot;markdown-toc-2-パッケージ管理ツール-pub&quot;&gt;2. パッケージ管理ツール pub&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#pubspecyaml&quot; id=&quot;markdown-toc-pubspecyaml&quot;&gt;pubspec.yaml&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#den&quot; id=&quot;markdown-toc-den&quot;&gt;den&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#pubの基本コマンド&quot; id=&quot;markdown-toc-pubの基本コマンド&quot;&gt;pubの基本コマンド&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#pub-get&quot; id=&quot;markdown-toc-pub-get&quot;&gt;pub get&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#pub-global-activate-&quot; id=&quot;markdown-toc-pub-global-activate-&quot;&gt;pub global activate &lt;package&gt;&lt;/package&gt;&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#pub-run&quot; id=&quot;markdown-toc-pub-run&quot;&gt;pub run&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#pub-upgrade&quot; id=&quot;markdown-toc-pub-upgrade&quot;&gt;pub upgrade&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#npmとの比較表&quot; id=&quot;markdown-toc-npmとの比較表&quot;&gt;npmとの比較表&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#pub用語&quot; id=&quot;markdown-toc-pub用語&quot;&gt;pub用語&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#application-package--library-package&quot; id=&quot;markdown-toc-application-package--library-package&quot;&gt;Application package / Library package&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#entrypoint&quot; id=&quot;markdown-toc-entrypoint&quot;&gt;Entrypoint&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-projectの雛形構築ツール-stagehand&quot; id=&quot;markdown-toc-3-projectの雛形構築ツール-stagehand&quot;&gt;3. projectの雛形構築ツール stagehand&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#4-コンパイラとビルド環境&quot; id=&quot;markdown-toc-4-コンパイラとビルド環境&quot;&gt;4. コンパイラとビルド環境&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#2つのコンパイラ-dart2js-と-ddc&quot; id=&quot;markdown-toc-2つのコンパイラ-dart2js-と-ddc&quot;&gt;2つのコンパイラ dart2js と DDC&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#dart1xでのビルド環境&quot; id=&quot;markdown-toc-dart1xでのビルド環境&quot;&gt;Dart1.xでのビルド環境&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#dart2xでのビルド環境&quot; id=&quot;markdown-toc-dart2xでのビルド環境&quot;&gt;Dart2.xでのビルド環境&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#build_runner-を使ったビルドのカスタマイズ&quot; id=&quot;markdown-toc-build_runner-を使ったビルドのカスタマイズ&quot;&gt;build_runner を使ったビルドのカスタマイズ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sassのビルド&quot; id=&quot;markdown-toc-sassのビルド&quot;&gt;sassのビルド&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#5-感想&quot; id=&quot;markdown-toc-5-感想&quot;&gt;5. 感想&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#6-おまけ-公式ドキュメントの読み方&quot; id=&quot;markdown-toc-6-おまけ-公式ドキュメントの読み方&quot;&gt;6. おまけ 公式ドキュメントの読み方&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;1-dart-sdk&quot;&gt;1. Dart SDK&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.dartlang.org/tools/sdk&quot; target=&quot;_blank&quot;&gt;Dart SDK&lt;/a&gt; はDartの開発に必要なライブラリ群とCLIツールです。執筆時点では安定版の&lt;code class=&quot;highlighter-rouge&quot;&gt;1.24.3&lt;/code&gt;と、プレリリース版の&lt;code class=&quot;highlighter-rouge&quot;&gt;2.0.0-dev.69.2&lt;/code&gt;が存在します。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew tap dart-lang/dart
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install dart         &lt;span class=&quot;c&quot;&gt;# 安定版をインストールする場合&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew sintall dart --devel &lt;span class=&quot;c&quot;&gt;# プレリリース版をインストールする場合&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;なお、Web開発のためにDartをインストールする場合は、インストール時に&lt;code class=&quot;highlighter-rouge&quot;&gt;--with-dartium --with-content-shell&lt;/code&gt;オプションをつけることが推奨されていますが、これらは&lt;strong&gt;Dart1.xでのみ利用する&lt;/strong&gt;ものです。&lt;strong&gt;Dartium&lt;/strong&gt;はDartVMを内蔵するブラウザで、&lt;strong&gt;content shell&lt;/strong&gt;は同じくDartVMを内蔵するテスト用のヘッドレスブラウザですが、Dart2.xでは開発環境が大幅に変わりこれらが不要となったためです(開発環境の詳細は後述します)。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-パッケージ管理ツール-pub&quot;&gt;2. パッケージ管理ツール pub&lt;/h3&gt;
+
+&lt;p&gt;DartSDKをインストールすると併せて&lt;strong&gt;&lt;a href=&quot;https://www.dartlang.org/tools/pub&quot; target=&quot;_blank&quot;&gt;pub&lt;/a&gt;というパッケージ管理ツール&lt;/strong&gt;がインストールされます。パッケージの依存関係とバージョン情報を載せたファイルを用意してコマンドで一発インストール、というnpmでもお馴染みのものです。&lt;/p&gt;
+
+&lt;h4 id=&quot;pubspecyaml&quot;&gt;pubspec.yaml&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;依存するパッケージ&lt;/strong&gt;と&lt;strong&gt;そのバージョン情報&lt;/strong&gt;などを記しておくファイルです。&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;のような役割をします。npmと使い方が似ているので、とっつきやすくてありがたいですね。&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sample&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1.0.0&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sample project&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Aloerina&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;sdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;=2.0.0-dev.68.0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;lt;3.0.0'&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;bootstrap_sass&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^4.1.2&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;dev_dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;build_web_compilers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^0.4.0&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;=0.6.0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;lt;0.12.0'&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;強いて言うなら、依存パッケージを追加するときにエディタで直接修正する必要があるのは少し面倒だと思いました。&lt;a href=&quot;https://pub.dartlang.org/&quot; target=&quot;_blank&quot;&gt;Dart Packages&lt;/a&gt;でインストールしたいパッケージを調べ&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt;への記述方法を確認しコピペする…というのはやはり手間です。&lt;/p&gt;
+
+&lt;h4 id=&quot;den&quot;&gt;den&lt;/h4&gt;
+&lt;p&gt;そこで助かるツールが&lt;strong&gt;&lt;a href=&quot;https://github.com/seaneagan/den&quot; target=&quot;_blank&quot;&gt;den&lt;/a&gt;&lt;/strong&gt;です。&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt;の初期化や依存関係の追記をしてくれるCLIツールです。&lt;code class=&quot;highlighter-rouge&quot;&gt;npm init&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -S &amp;lt;package名&amp;gt;&lt;/code&gt;に相当するツールですね。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pub global activate den   &lt;span class=&quot;c&quot;&gt;# denのインストール&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;den spec                  &lt;span class=&quot;c&quot;&gt;# pubspec.yamlの生成&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;den install &amp;lt;package名&amp;gt;   &lt;span class=&quot;c&quot;&gt;# 依存関係の追加&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;pubの基本コマンド&quot;&gt;pubの基本コマンド&lt;/h4&gt;
+
+&lt;h5 id=&quot;pub-get&quot;&gt;pub get&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt;に書かれている依存ライブラリを一括インストールしローカルにキャッシュします。同時に、初回であれば&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.lock&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;.packages&lt;/code&gt;が作成されます。前者は名前の通りバージョンのロックファイルで、後者はローカルのどのディレクトリにキャッシュしたかを記すファイルです。ローカルキャッシュから再インストールする場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;--offline&lt;/code&gt;オプションを使います。&lt;/p&gt;
+
+&lt;h5 id=&quot;pub-global-activate-&quot;&gt;pub global activate &lt;package&gt;&lt;/package&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -g&lt;/code&gt;と同じです。パッケージをグローバルにインストールします。&lt;/p&gt;
+
+&lt;h5 id=&quot;pub-run&quot;&gt;pub run&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub get&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;pub global&lt;/code&gt;でインストールしたexecutable(CLIから実行可能な)packageを実行します。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pub run &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;package名]
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pub global run &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;package名]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h5 id=&quot;pub-upgrade&quot;&gt;pub upgrade&lt;/h5&gt;
+
+&lt;p&gt;依存パッケージのバージョンを最新にあげ、&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.lock&lt;/code&gt;の内容を更新します。&lt;/p&gt;
+
+&lt;h4 id=&quot;npmとの比較表&quot;&gt;npmとの比較表&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;npm&lt;/th&gt;
+      &lt;th&gt;pub (den)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;npm init&lt;/td&gt;
+      &lt;td&gt;den spec&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;npm install&lt;/td&gt;
+      &lt;td&gt;pub get&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;npm run [npm_script名]&lt;/td&gt;
+      &lt;td&gt;pub run [package名]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;npm install -g [package名]&lt;/td&gt;
+      &lt;td&gt;pub global activate [package名]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;npm install -S [package名]&lt;/td&gt;
+      &lt;td&gt;den install [package名]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;npm install -D [package名]&lt;/td&gt;
+      &lt;td&gt;den install –dev [package名]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;npm upgrade&lt;/td&gt;
+      &lt;td&gt;pub upgrade&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;npm ls&lt;/td&gt;
+      &lt;td&gt;pub deps&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;pub用語&quot;&gt;pub用語&lt;/h4&gt;
+
+&lt;p&gt;npmと同じ感覚でドキュメントを読み進めていくと齟齬が出る(出た)用語をピックアップしておきます。詳細は&lt;a href=&quot;https://www.dartlang.org/tools/pub/glossary&quot; target=&quot;_blank&quot;&gt;公式の用語集&lt;/a&gt;からどうぞ。&lt;/p&gt;
+
+&lt;h5 id=&quot;application-package--library-package&quot;&gt;Application package / Library package&lt;/h5&gt;
+
+&lt;p&gt;Application packageとLibrary packageは対義語です。Application packageとはコマンドラインやブラウザから直接呼び出させるpackageを指し、Library packageはApplication packageからライブラリとして利用されるpackageです。&lt;/p&gt;
+
+&lt;h5 id=&quot;entrypoint&quot;&gt;Entrypoint&lt;/h5&gt;
+
+&lt;p&gt;意味合い的にはJavaScriptを実装するときと同じなのですが、Dartにおいては一般的に&lt;code class=&quot;highlighter-rouge&quot;&gt;main()&lt;/code&gt;が実装されている&lt;code class=&quot;highlighter-rouge&quot;&gt;.dart&lt;/code&gt;ファイルがエントリーポイントとなります。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-projectの雛形構築ツール-stagehand&quot;&gt;3. projectの雛形構築ツール stagehand&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/dart-lang/stagehand&quot; target=&quot;_blank&quot;&gt;stagehand&lt;/a&gt;&lt;/strong&gt;というツールを利用してDartのプロジェクトの雛形を作ることができます。Reactでいうcreate-react-appやVueでいうvue-cliのようなものです。グローバルにインストールして雛形を作りたいディレクトリで実行します。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pub global activate stagehand
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;mkdir first_project
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;first_project
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;stagehand &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;template名]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Templateは現時点で6種類ありますが、Webアプリ開発用は&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;必要最低限のみ用意された&lt;strong&gt;&lt;a href=&quot;https://github.com/dart-lang/stagehand/tree/master/templates/web-simple&quot; target=&quot;_blank&quot;&gt;web-simple&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;AndularDartを組み込むための&lt;strong&gt;&lt;a href=&quot;https://github.com/dart-lang/stagehand/tree/master/templates/web-angular&quot; target=&quot;_blank&quot;&gt;web-angular&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;の2つです。web-simpleでプロジェクトを作ってみたところ、HelloWorld的なHTML/CSS/Dartファイルとpubspec.yamlなどが用意されました。雛形が用意されたあとは依存するpackageをインストールしてローカルサーバを立ち上げればブラウザで確認できます。このあたりも&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt;からの&lt;code class=&quot;highlighter-rouge&quot;&gt;npm start&lt;/code&gt;と同じ流れなので理解しやすいしお手軽でした。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pub get       &lt;span class=&quot;c&quot;&gt;# 依存packageのインストール&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;webdev serve  &lt;span class=&quot;c&quot;&gt;# ローカルサーバの起動&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;サーバの起動に使っているwebdevについては後述します。&lt;/p&gt;
+
+&lt;h3 id=&quot;4-コンパイラとビルド環境&quot;&gt;4. コンパイラとビルド環境&lt;/h3&gt;
+
+&lt;p&gt;Dartで作られたWebアプリを実行するには、&lt;strong&gt;DartVMが搭載されたブラウザで直接実行する&lt;/strong&gt;か、&lt;strong&gt;JavaScriptにコンパイルしてから標準ブラウザで実行する&lt;/strong&gt;か、の2つの方法があります。開発やテストといった過程では前者でも十分ですが、リリースするには後者の方法をとる必要があるため、用途に応じてコンパイラや実行環境を使い分ける必要があります。&lt;/p&gt;
+
+&lt;p&gt;Dartのコンパイラにはどんなものがあるのかと、それぞれのDartバージョンでどのようにそれらを使えばよいかをまとめておきます。&lt;/p&gt;
+
+&lt;h4 id=&quot;2つのコンパイラ-dart2js-と-ddc&quot;&gt;2つのコンパイラ dart2js と DDC&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://webdev.dartlang.org/tools/dart2js&quot; target=&quot;_blank&quot;&gt;Dart-to-JavaScript Compiler(dart2js)&lt;/a&gt;&lt;/strong&gt;はDart1.xから存在するコンパイラです。&lt;strong&gt;コードの最適化&lt;/strong&gt;をしたり&lt;strong&gt;minify&lt;/strong&gt;などのオプションがあったりと本番用のコンパイルができるだけでなく、問題のある箇所をワーニング表示したりと開発用に利用することもできます。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://webdev.dartlang.org/tools/dartdevc&quot; target=&quot;_blank&quot;&gt;Dart Development Compiler(DDC)&lt;/a&gt;&lt;/strong&gt;はDart2.xで登場したコンパイラです。その名の通り開発用に特化しており、&lt;strong&gt;差分ビルド&lt;/strong&gt;や&lt;strong&gt;ホットリロード&lt;/strong&gt;に対応しています。&lt;/p&gt;
+
+&lt;h4 id=&quot;dart1xでのビルド環境&quot;&gt;Dart1.xでのビルド環境&lt;/h4&gt;
+
+&lt;p&gt;dart1.xでは、開発時はDartVMを搭載した&lt;strong&gt;Dartium&lt;/strong&gt;や&lt;strong&gt;content shell&lt;/strong&gt;を利用し、リリース時にはdart2jsでコンパイルしてjsを生成します。それぞれpubコマンドを利用して行えます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub serve&lt;/code&gt; … ローカルサーバを起動します。Dariumで確認することができます。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub build&lt;/code&gt; … dart2jsを実行します。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;dart2xでのビルド環境&quot;&gt;Dart2.xでのビルド環境&lt;/h4&gt;
+
+&lt;p&gt;Dart2.xではDartVMを一切使わずに開発できます。そのためDartiumもcontent shellも必要なくなります。&lt;br /&gt;
+またDart2.xではbuildやserveのコマンドを、pubの代わりに&lt;strong&gt;&lt;a href=&quot;https://webdev.dartlang.org/tools/webdev&quot; target=&quot;_blank&quot;&gt;webdev&lt;/a&gt;&lt;/strong&gt;というCLIツールを使って行います。webdevはpubからインストールして使います。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pub global activate webdev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;コマンド名はpubでビルドするときと同じなのでDart1.xから2.xへマイグレーションした場合も気楽そうです。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev serve&lt;/code&gt; … DDCを実行しローカルサーバを起動します。標準ブラウザで確認することができます。&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev build&lt;/code&gt; … dart2jsを実行します。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;まとめ&quot;&gt;まとめ&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt; &lt;/th&gt;
+      &lt;th&gt;for release&lt;/th&gt;
+      &lt;th&gt;for development&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Dart1.x&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub build&lt;/code&gt;&lt;br /&gt; dart2jsでjsを生成&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub serve&lt;/code&gt;&lt;br /&gt; Dartium, content shell などのDartVM上で直接実行&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Dart2.x&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev build&lt;/code&gt;&lt;br /&gt; dart2jsでjsを生成&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev serve&lt;/code&gt;&lt;br /&gt; DDCでコンパイルしたものを標準ブラウザで実行&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;build_runner-を使ったビルドのカスタマイズ&quot;&gt;build_runner を使ったビルドのカスタマイズ&lt;/h4&gt;
+
+&lt;p&gt;webdevを使えば特別な設定なくすぐにビルドを行えますが、&lt;strong&gt;&lt;a href=&quot;https://webdev.dartlang.org/tools/build_runner&quot; target=&quot;_blank&quot;&gt;build_runner&lt;/a&gt;&lt;/strong&gt;を使ってビルドをカスタマイズすることも可能です。簡単に言うとタスクランナーのようなものです。&lt;/p&gt;
+
+&lt;p&gt;まずはインストール方法から。pubspec.yamlにdependencyを追記して&lt;code class=&quot;highlighter-rouge&quot;&gt;pub get&lt;/code&gt;します。&lt;/p&gt;
+
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;dev_dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;build_runner&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^0.9.0&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;build_web_compilers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^0.4.0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;次にコンフィグファイルを用意します。build_runnnerはデフォルトで&lt;code class=&quot;highlighter-rouge&quot;&gt;build.yaml&lt;/code&gt;という名前のファイルを読み込んで実行しますが、&lt;code class=&quot;highlighter-rouge&quot;&gt;build.hoge.yaml&lt;/code&gt;と命名すればオプションをつけて指定することができます。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pub run build_runner build                &lt;span class=&quot;c&quot;&gt;# build.yamlを読み込む&lt;/span&gt;
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;pub run build_runner build --config hoge  &lt;span class=&quot;c&quot;&gt;# build.hoge.yamlを読み込む&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;webpackの設定ファイルを本番用と開発用で分ける時に&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.prod.js&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.dev.js&lt;/code&gt;とするケースがありますが、同じような感覚で使えそうです。&lt;/p&gt;
+
+&lt;p&gt;あとはコンフィグファイルの中身次第でビルドをカスタマイズできますが、詳しい&lt;a href=&quot;https://github.com/dart-lang/build/tree/master/docs&quot; target=&quot;_blank&quot;&gt;設定の仕方&lt;/a&gt;については情報が多いのでいずれ別記事にて。&lt;/p&gt;
+
+&lt;h4 id=&quot;sassのビルド&quot;&gt;sassのビルド&lt;/h4&gt;
+
+&lt;p&gt;DDCを使えばホットリロードに対応できると書きましたが、sassも同様にあるべきです。これは公式のツールでは(原時点では)対応できないのでライブラリを利用します。&lt;strong&gt;&lt;a href=&quot;https://pub.dartlang.org/packages/sass_builder&quot; target=&quot;_blank&quot;&gt;sass_builder&lt;/a&gt;&lt;/strong&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;pub get&lt;/code&gt;して、build_runnerで実行するよう設定します。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;pubspec.yaml&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;dev_dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;sass_builder&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^2.0.0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;build.yaml&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;targets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;$default&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;builders&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;sass_builder&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;outputStyle&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;compressed&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;これで&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev serve&lt;/code&gt;をすればsassのビルドも実行されます。&lt;/p&gt;
+
+&lt;p&gt;別の方法として、sassは今まで通りnode-sassなどを使うというのもアリだと思います。それなら既存のビルド環境を引き継いで使えますし、無理に全部Dartに寄せなくてもいいかもしれませんね。&lt;/p&gt;
+
+&lt;h3 id=&quot;5-感想&quot;&gt;5. 感想&lt;/h3&gt;
+
+&lt;p&gt;一通り触りながら簡単な実装をしてみた感想は「&lt;strong&gt;それなりに揃っている&lt;/strong&gt;」でした。npmなどと比較してみても必要なものは最低限あるし、簡単に利用するための仕組みも用意されています。本気でWebクライアント開発言語になろうとしていることを感じられました。&lt;/p&gt;
+
+&lt;p&gt;また、DartはWebだけでなくネイティブアプリの開発も視野に入れていて、こちらも入門しやすい仕組みが用意されていました。&lt;a href=&quot;/blog/2018-07-01-1&quot;&gt;WebフロントエンジニアがDart × Flutterに入門した話&lt;/a&gt;に詳細をまとめてありますので、よければ併せてどうぞ。&lt;/p&gt;
+
+&lt;p&gt;一方で「productionレベルで利用できるか」については即答できなさそうです。productionで利用するには信頼のおけるライブラリや大規模アプリに向くフレームワークなども必要でしょうし、dart2jsの最適化の品質についても検証の余地があると思います。そういったことも今後検証してみようと思いますので、一緒にDart × Webフロントエンドを盛り上げていきたい！という方はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご感想・ご意見をお願いします。&lt;/p&gt;
+
+&lt;h3 id=&quot;6-おまけ-公式ドキュメントの読み方&quot;&gt;6. おまけ 公式ドキュメントの読み方&lt;/h3&gt;
+
+&lt;p&gt;Dartはドキュメントが豊富なのがいいところですが、体系的に理解するには何から読めばいいのか…と少し悩みました。ので、最後に私が読んだドキュメントをまとめて締めくくります。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Web開発用のツールの一覧を眺める &lt;a href=&quot;https://webdev.dartlang.org/tools&quot; target=&quot;_blank&quot;&gt;Dart Tools for the Web&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;jsへのコンパイルの基本を知る &lt;a href=&quot;https://webdev.dartlang.org/tools/dart2js&quot; target=&quot;_blank&quot;&gt;dart2js&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;最新の開発用コンパイラをdart2jsと比較する &lt;a href=&quot;https://webdev.dartlang.org/tools/dartdevc&quot; target=&quot;_blank&quot;&gt;dartdevc&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;ビルドツールを知る &lt;a href=&quot;https://webdev.dartlang.org/tools/webdev&quot; target=&quot;_blank&quot;&gt;webdev&lt;/a&gt;, &lt;a href=&quot;https://webdev.dartlang.org/tools/build_runner&quot; target=&quot;_blank&quot;&gt;build_runner&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Dartの1.xと2.xを比較する &lt;a href=&quot;https://webdev.dartlang.org/dart-2&quot; target=&quot;_blank&quot;&gt;Dart 2 Migration Guide for Web Apps&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Get Startedする &lt;a href=&quot;https://webdev.dartlang.org/guides/get-started&quot; target=&quot;_blank&quot;&gt;Get Started&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;pubのパッケージ管理を理解する &lt;a href=&quot;https://www.dartlang.org/tools/pub&quot; target=&quot;_blank&quot;&gt;Pub Package Manager&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、iOS、Android、Webの3大Clientで使える言語を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。</summary></entry><entry><title type="html">WebフロントエンジニアがDart × Flutterに入門した話</title><link href="https://aloerina01.github.io/blog/2018-07-01-1" rel="alternate" type="text/html" title="WebフロントエンジニアがDart × Flutterに入門した話" /><published>2018-07-01T00:00:00+09:00</published><updated>2018-07-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-07-01-1">&lt;p&gt;Flutterとは、Dartという言語でモバイルアプリを開発するためのSDKです。iOSアプリとAndroidアプリを同じコードベースで実装できるとのことで、普段はWebアプリを開発している私にもとっつきやすそうなので入門してみました。&lt;/p&gt;
 
 &lt;p&gt;一通り入門が済んだので、どうやって入門したか、入門してみてどうだったか、Webエンジニアの視点でFlutter・Dartに期待することなどをまとめました。&lt;/p&gt;
 
@@ -1398,191 +1722,4 @@ ndenv &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;v9.9.0
 &lt;p&gt;今までなんとなくの理解だった部分が整理されたおかげで、今後新しいプロジェクトを立ち上げるときに迷わなくて済みそうです。よかった。&lt;/p&gt;
 
 &lt;p&gt;それと公式ドキュメントがけっこう説明不足感が強くて、しかも日本語の資料もそんなに見当たらなくて整理に苦労したので、同じ苦労を誰かがせずに済むといいなと思います。
-間違っているところを見つけた方は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">トラブルシューティングメモを晒してみる webpack動的module編</title><link href="https://aloerina01.github.io/blog/2017-11-08-1" rel="alternate" type="text/html" title="トラブルシューティングメモを晒してみる  webpack動的module編" /><published>2017-11-08T00:00:00+09:00</published><updated>2017-11-08T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2017-11-08-1">&lt;h3 id=&quot;まえがき&quot;&gt;まえがき&lt;/h3&gt;
-
-&lt;p&gt;PCのリニューアルにつき、旧PCのローカルに残ってたメモやらブログ用下書きの整理をしていたら、かつて自分がハマったトラブルの対応時のメモが発掘されました。読み返してみたら懐かしい気持ちになれたり、当時考えていたことが思い出せたりといいことが多かったので、晒してみようと思います。&lt;/p&gt;
-
-&lt;p&gt;ちなみにメモのタイトルには『&lt;strong&gt;webpackで動的module解決しようとして死にかけた&lt;/strong&gt;』と書いてありました。&lt;/p&gt;
-
-&lt;p&gt;※ 2017年上旬に残したメモなので、内容に古い箇所があったり引用文とリンク先の文章にズレがあったりする可能性があります。&lt;/p&gt;
-
-&lt;h3 id=&quot;メモ内容&quot;&gt;メモ内容&lt;/h3&gt;
-
-&lt;h4 id=&quot;こまったことになったぞ&quot;&gt;こまったことになったぞ&lt;/h4&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 省略&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// modulePathを動的に決定する&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ということをしようとするとエラーになる。&lt;/p&gt;
-
-&lt;div class=&quot;language-console highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Error: Cannot find module &quot;.&quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;modulePath&lt;/code&gt;が文字列としてちゃんと認識できていないのかと思ったけどそうでもなかった。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 検証1&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;''&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 同様のエラー&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 検証2&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// string&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;もしや&lt;code class=&quot;highlighter-rouge&quot;&gt;modulePath&lt;/code&gt;は正規表現じゃないとだめ？　とか血迷ってみた。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/model&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\/&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;userlist/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// やはりエラー&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;ここでようやくwebpackのモジュール解決に起因すると気づく。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Keep in mind that import() path cannot be fully dynamic (e.g., import(Math.random())). Rather either completely static (e.g., import(‘./locale/de.json’)) or partially static (e.g., import(‘./locale/’ + language + ‘.json’)).
-&lt;a href=&quot;https://webpack.js.org/guides/code-splitting-import/#dynamic-import&quot;&gt;Code Splitting - Using import()&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A context is created if your request contains expressions, so the exact module is not known on compile time.
-&lt;a href=&quot;https://webpack.js.org/guides/dependency-management/#require-with-expression&quot;&gt;Dependency Management&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;h4 id=&quot;require-with-expression訳してみるgoogle翻訳&quot;&gt;require with expression　訳してみる(Google翻訳)&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A context is created if your request contains expressions, so the exact module is not known on compile time.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;リクエストに式が含まれている場合、コンテキストが作成されるため、コンパイル時に正確なモジュールが認識されません。&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;./template/&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.ejs&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;webpack parses the require() call and extracts some information:&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;webpackはrequire（）呼び出しを解析し、いくつかの情報を抽出します。&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Directory: ./template
-Regular expression: /^.*\.ejs$/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;context-module-ってなんだ&quot;&gt;context module ってなんだ&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A context module is generated. It contains references to all modules in that directory that can be required with a request matching the regular expression. The context module contains a map which translates requests to module ids.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;コンテキストモジュールが生成されます。このディレクトリには、正規表現に一致する要求が必要な、そのディレクトリ内のすべてのモジュールへの参照が含まれています。コンテキストモジュールには、要求をモジュールIDに変換するマップが含まれています。&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;./table.ejs&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;./table-row.ejs&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;43&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;s2&quot;&gt;&quot;./directory/folder.ejs&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;44&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;The context module also contains some runtime logic to access the map.&lt;/p&gt;
-
-  &lt;p&gt;This means dynamic requires are supported but will cause all possible modules to be included in the bundle.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;コンテキストモジュールには、マップにアクセスするためのランタイムロジックも含まれています。 これは動的要件がサポートされているが、すべての可能なモジュールがバンドルに含まれることを意味します。&lt;/p&gt;
-
-&lt;h4 id=&quot;context-module-api&quot;&gt;context module API&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;A context module exports a (require) function that takes one argument: the request.
-The exported function has 3 properties: resolve, keys, id.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;コンテキストモジュールは、1つの引数（request）を受け取る（require）関数をエクスポートします。 エクスポートされた関数には、resolve、keys、idという3つのプロパティがあります。&lt;/p&gt;
-
-&lt;h4 id=&quot;突如解決する&quot;&gt;突如解決する&lt;/h4&gt;
-
-&lt;p&gt;webpack1のドキュメントにこんな文章を見つける。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;If the module source contains a require that cannot be statically analyzed, the context is the current directory.
-In this case a Critical dependencies warning is emitted. You need to use the ContextReplacementPlugin in most cases.
-Examples: someFn(require) require.bind(null)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;静的解決できない&lt;code class=&quot;highlighter-rouge&quot;&gt;require&lt;/code&gt;がソースに含まれている場合、そのときのcontextはカレントディレクトリとなる。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// ← modulePathがカレントからの相対パスでないとダメ…？&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;実はモジュールパス解決をしたくて&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;に手を入れていた。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 省略&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;extensions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'.vue'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'.js'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;// root: [ path.resolve('./js') ], // webpack 1&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/js'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// webpack 2&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/node_modules'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;path.resolve&lt;/code&gt;で指定したディレクトリをルートとした相対パスで書けるようにしていた(つもりだった)が、実際はカレントディレクトリからのパスが必要だった。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Constructor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'../'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;modulePath&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 動いた&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;更になんか見つける&quot;&gt;更になんか見つける&lt;/h4&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://webpack.js.org/configuration/module/#module-contexts&quot;&gt;Module&lt;/a&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;These options describe the default settings for the context created when a dynamic dependency is encountered.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;これらのオプションは、動的依存関係が発生したときに作成されるコンテキストのデフォルト設定を記述します。&lt;/p&gt;
-
-&lt;p&gt;どうやら今回のように動的依存解決が発生している場合の「デフォルト」が内部的に指定されている模様。そしてそれを書き換えるプラグインもある模様(ただしDeprecated)。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;exprContextCritical&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;exprContextRecursive&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;exprContextRegExp&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;exprContextRequest&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;unknownContextCritical&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;unknownContextRecursive&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;unknownContextRegExp&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;unknownContextRequest&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// ←エラーの文言で見覚えあるぞ！！！&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;wrappedContextCritical&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;wrappedContextRecursive&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;wrappedContextRegExp&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;,
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Note: You can use the ContextReplacementPlugin to modify these values for individual dependencies. This also removes the warning.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;ContextReplacementPluginを使用して、個々の依存関係のこれらの値を変更できます。これにより、警告も削除されます。&lt;/p&gt;
-
-&lt;p&gt;ふむふむ🤔&lt;br /&gt;
-とりあえず動いてよかった。&lt;/p&gt;</content><author><name></name></author><summary type="html">まえがき</summary></entry></feed>
+間違っているところを見つけた方は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>

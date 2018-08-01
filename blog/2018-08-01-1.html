@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</title>
+  <meta name="description" content="Webのクライアント開発をターゲットのひとつに見据えるDart。そのエコシステムの現状と使い方について、Webフロントエンド開発と比較しながら実用性について考えてみました。Dartにサクッと入門するガイドとしてもどうぞ。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Webのクライアント開発をターゲットのひとつに見据えるDart。そのエコシステムの現状と使い方について、Webフロントエンド開発と比較しながら実用性について考えてみました。Dartにサクッと入門するガイドとしてもどうぞ。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-08-01-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="DartでWebフロントの開発はできる？ エコシステムから見るDartの現状" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="DartでWebフロントの開発はできる？ エコシステムから見るDartの現状">
+  <meta name="twitter:description" content="Webのクライアント開発をターゲットのひとつに見据えるDart。そのエコシステムの現状と使い方について、Webフロントエンド開発と比較しながら実用性について考えてみました。Dartにサクッと入門するガイドとしてもどうぞ。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-08-01-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-08-01-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/dist/drift.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/CpmOgk2omnWqTzz43"target="_blank">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-08-01-1">
+            <span itemprop="name">DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2018-08-01</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/dart/">Dart</a>,    
+            <a href="/category/environment/">Environment</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、<strong>iOS、Android、Webの3大Clientで使える言語</strong>を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。</p>
+
+<p>ただ、言語がよければすぐに使えるというわけではなく、使いやすさや開発環境も大切な要素の1つです。<br />
+昨今のWebフロントエンドはできることが増え、それに伴いエコシステムもとても進歩していて、複雑で大規模な開発でもスムーズに行えるようになってきている印象です(1番最初の環境構築が大変とよく言われますが、その大変さも徐々に緩和されてきていると思います)。</p>
+
+<p>そこで、<strong>DartでのWebフロントエンド開発がどの程度現実的なのか</strong>を「エコシステム」という観点でまとめてみました。各々のツールの簡単な使い方も併記しています。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#1-dart-sdk" id="markdown-toc-1-dart-sdk">1. Dart SDK</a></li>
+  <li><a href="#2-パッケージ管理ツール-pub" id="markdown-toc-2-パッケージ管理ツール-pub">2. パッケージ管理ツール pub</a>    <ul>
+      <li><a href="#pubspecyaml" id="markdown-toc-pubspecyaml">pubspec.yaml</a></li>
+      <li><a href="#den" id="markdown-toc-den">den</a></li>
+      <li><a href="#pubの基本コマンド" id="markdown-toc-pubの基本コマンド">pubの基本コマンド</a>        <ul>
+          <li><a href="#pub-get" id="markdown-toc-pub-get">pub get</a></li>
+          <li><a href="#pub-global-activate-" id="markdown-toc-pub-global-activate-">pub global activate <package></package></a></li>
+          <li><a href="#pub-run" id="markdown-toc-pub-run">pub run</a></li>
+          <li><a href="#pub-upgrade" id="markdown-toc-pub-upgrade">pub upgrade</a></li>
+        </ul>
+      </li>
+      <li><a href="#npmとの比較表" id="markdown-toc-npmとの比較表">npmとの比較表</a></li>
+      <li><a href="#pub用語" id="markdown-toc-pub用語">pub用語</a>        <ul>
+          <li><a href="#application-package--library-package" id="markdown-toc-application-package--library-package">Application package / Library package</a></li>
+          <li><a href="#entrypoint" id="markdown-toc-entrypoint">Entrypoint</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#3-projectの雛形構築ツール-stagehand" id="markdown-toc-3-projectの雛形構築ツール-stagehand">3. projectの雛形構築ツール stagehand</a></li>
+  <li><a href="#4-コンパイラとビルド環境" id="markdown-toc-4-コンパイラとビルド環境">4. コンパイラとビルド環境</a>    <ul>
+      <li><a href="#2つのコンパイラ-dart2js-と-ddc" id="markdown-toc-2つのコンパイラ-dart2js-と-ddc">2つのコンパイラ dart2js と DDC</a></li>
+      <li><a href="#dart1xでのビルド環境" id="markdown-toc-dart1xでのビルド環境">Dart1.xでのビルド環境</a></li>
+      <li><a href="#dart2xでのビルド環境" id="markdown-toc-dart2xでのビルド環境">Dart2.xでのビルド環境</a></li>
+      <li><a href="#まとめ" id="markdown-toc-まとめ">まとめ</a></li>
+      <li><a href="#build_runner-を使ったビルドのカスタマイズ" id="markdown-toc-build_runner-を使ったビルドのカスタマイズ">build_runner を使ったビルドのカスタマイズ</a></li>
+      <li><a href="#sassのビルド" id="markdown-toc-sassのビルド">sassのビルド</a></li>
+    </ul>
+  </li>
+  <li><a href="#5-感想" id="markdown-toc-5-感想">5. 感想</a></li>
+  <li><a href="#6-おまけ-公式ドキュメントの読み方" id="markdown-toc-6-おまけ-公式ドキュメントの読み方">6. おまけ 公式ドキュメントの読み方</a></li>
+</ul>
+
+<h3 id="1-dart-sdk">1. Dart SDK</h3>
+
+<p><a href="https://www.dartlang.org/tools/sdk" target="_blank">Dart SDK</a> はDartの開発に必要なライブラリ群とCLIツールです。執筆時点では安定版の<code class="highlighter-rouge">1.24.3</code>と、プレリリース版の<code class="highlighter-rouge">2.0.0-dev.69.2</code>が存在します。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>brew tap dart-lang/dart
+<span class="gp">$ </span>brew install dart         <span class="c"># 安定版をインストールする場合</span>
+<span class="gp">$ </span>brew sintall dart --devel <span class="c"># プレリリース版をインストールする場合</span>
+</code></pre>
+</div>
+
+<p>なお、Web開発のためにDartをインストールする場合は、インストール時に<code class="highlighter-rouge">--with-dartium --with-content-shell</code>オプションをつけることが推奨されていますが、これらは<strong>Dart1.xでのみ利用する</strong>ものです。<strong>Dartium</strong>はDartVMを内蔵するブラウザで、<strong>content shell</strong>は同じくDartVMを内蔵するテスト用のヘッドレスブラウザですが、Dart2.xでは開発環境が大幅に変わりこれらが不要となったためです(開発環境の詳細は後述します)。</p>
+
+<h3 id="2-パッケージ管理ツール-pub">2. パッケージ管理ツール pub</h3>
+
+<p>DartSDKをインストールすると併せて<strong><a href="https://www.dartlang.org/tools/pub" target="_blank">pub</a>というパッケージ管理ツール</strong>がインストールされます。パッケージの依存関係とバージョン情報を載せたファイルを用意してコマンドで一発インストール、というnpmでもお馴染みのものです。</p>
+
+<h4 id="pubspecyaml">pubspec.yaml</h4>
+
+<p><strong>依存するパッケージ</strong>と<strong>そのバージョン情報</strong>などを記しておくファイルです。<code class="highlighter-rouge">package.json</code>のような役割をします。npmと使い方が似ているので、とっつきやすくてありがたいですね。</p>
+
+<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">name</span><span class="pi">:</span> <span class="s">Sample</span>
+<span class="s">version</span><span class="pi">:</span> <span class="s">1.0.0</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s">Sample project</span>
+<span class="s">author</span><span class="pi">:</span> <span class="s">Aloerina</span>
+<span class="s">environment</span><span class="pi">:</span>
+  <span class="s">sdk</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&gt;=2.0.0-dev.68.0</span><span class="nv"> </span><span class="s">&lt;3.0.0'</span>
+<span class="s">dependencies</span><span class="pi">:</span>
+  <span class="s">bootstrap_sass</span><span class="pi">:</span> <span class="s">^4.1.2</span>
+<span class="s">dev_dependencies</span><span class="pi">:</span>
+  <span class="s">build_web_compilers</span><span class="pi">:</span> <span class="s">^0.4.0</span>
+  <span class="s">test</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&gt;=0.6.0</span><span class="nv"> </span><span class="s">&lt;0.12.0'</span>
+</code></pre>
+</div>
+
+<p>強いて言うなら、依存パッケージを追加するときにエディタで直接修正する必要があるのは少し面倒だと思いました。<a href="https://pub.dartlang.org/" target="_blank">Dart Packages</a>でインストールしたいパッケージを調べ<code class="highlighter-rouge">pubspec.yaml</code>への記述方法を確認しコピペする…というのはやはり手間です。</p>
+
+<h4 id="den">den</h4>
+<p>そこで助かるツールが<strong><a href="https://github.com/seaneagan/den" target="_blank">den</a></strong>です。<code class="highlighter-rouge">pubspec.yaml</code>の初期化や依存関係の追記をしてくれるCLIツールです。<code class="highlighter-rouge">npm init</code>や<code class="highlighter-rouge">npm install -S &lt;package名&gt;</code>に相当するツールですね。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pub global activate den   <span class="c"># denのインストール</span>
+<span class="gp">$ </span>den spec                  <span class="c"># pubspec.yamlの生成</span>
+<span class="gp">$ </span>den install &lt;package名&gt;   <span class="c"># 依存関係の追加</span>
+</code></pre>
+</div>
+
+<h4 id="pubの基本コマンド">pubの基本コマンド</h4>
+
+<h5 id="pub-get">pub get</h5>
+
+<p><code class="highlighter-rouge">pubspec.yaml</code>に書かれている依存ライブラリを一括インストールしローカルにキャッシュします。同時に、初回であれば<code class="highlighter-rouge">pubspec.lock</code>と<code class="highlighter-rouge">.packages</code>が作成されます。前者は名前の通りバージョンのロックファイルで、後者はローカルのどのディレクトリにキャッシュしたかを記すファイルです。ローカルキャッシュから再インストールする場合は<code class="highlighter-rouge">--offline</code>オプションを使います。</p>
+
+<h5 id="pub-global-activate-">pub global activate <package></package></h5>
+
+<p><code class="highlighter-rouge">npm install -g</code>と同じです。パッケージをグローバルにインストールします。</p>
+
+<h5 id="pub-run">pub run</h5>
+
+<p><code class="highlighter-rouge">pub get</code>や<code class="highlighter-rouge">pub global</code>でインストールしたexecutable(CLIから実行可能な)packageを実行します。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pub run <span class="o">[</span>package名]
+<span class="gp">$ </span>pub global run <span class="o">[</span>package名]
+</code></pre>
+</div>
+
+<h5 id="pub-upgrade">pub upgrade</h5>
+
+<p>依存パッケージのバージョンを最新にあげ、<code class="highlighter-rouge">pubspec.lock</code>の内容を更新します。</p>
+
+<h4 id="npmとの比較表">npmとの比較表</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th>npm</th>
+      <th>pub (den)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>npm init</td>
+      <td>den spec</td>
+    </tr>
+    <tr>
+      <td>npm install</td>
+      <td>pub get</td>
+    </tr>
+    <tr>
+      <td>npm run [npm_script名]</td>
+      <td>pub run [package名]</td>
+    </tr>
+    <tr>
+      <td>npm install -g [package名]</td>
+      <td>pub global activate [package名]</td>
+    </tr>
+    <tr>
+      <td>npm install -S [package名]</td>
+      <td>den install [package名]</td>
+    </tr>
+    <tr>
+      <td>npm install -D [package名]</td>
+      <td>den install –dev [package名]</td>
+    </tr>
+    <tr>
+      <td>npm upgrade</td>
+      <td>pub upgrade</td>
+    </tr>
+    <tr>
+      <td>npm ls</td>
+      <td>pub deps</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="pub用語">pub用語</h4>
+
+<p>npmと同じ感覚でドキュメントを読み進めていくと齟齬が出る(出た)用語をピックアップしておきます。詳細は<a href="https://www.dartlang.org/tools/pub/glossary" target="_blank">公式の用語集</a>からどうぞ。</p>
+
+<h5 id="application-package--library-package">Application package / Library package</h5>
+
+<p>Application packageとLibrary packageは対義語です。Application packageとはコマンドラインやブラウザから直接呼び出させるpackageを指し、Library packageはApplication packageからライブラリとして利用されるpackageです。</p>
+
+<h5 id="entrypoint">Entrypoint</h5>
+
+<p>意味合い的にはJavaScriptを実装するときと同じなのですが、Dartにおいては一般的に<code class="highlighter-rouge">main()</code>が実装されている<code class="highlighter-rouge">.dart</code>ファイルがエントリーポイントとなります。</p>
+
+<h3 id="3-projectの雛形構築ツール-stagehand">3. projectの雛形構築ツール stagehand</h3>
+
+<p><strong><a href="https://github.com/dart-lang/stagehand" target="_blank">stagehand</a></strong>というツールを利用してDartのプロジェクトの雛形を作ることができます。Reactでいうcreate-react-appやVueでいうvue-cliのようなものです。グローバルにインストールして雛形を作りたいディレクトリで実行します。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pub global activate stagehand
+<span class="gp">$ </span>mkdir first_project
+<span class="gp">$ </span><span class="nb">cd </span>first_project
+<span class="gp">$ </span>stagehand <span class="o">[</span>template名]
+</code></pre>
+</div>
+
+<p>Templateは現時点で6種類ありますが、Webアプリ開発用は</p>
+
+<ul>
+  <li>必要最低限のみ用意された<strong><a href="https://github.com/dart-lang/stagehand/tree/master/templates/web-simple" target="_blank">web-simple</a></strong></li>
+  <li>AndularDartを組み込むための<strong><a href="https://github.com/dart-lang/stagehand/tree/master/templates/web-angular" target="_blank">web-angular</a></strong></li>
+</ul>
+
+<p>の2つです。web-simpleでプロジェクトを作ってみたところ、HelloWorld的なHTML/CSS/Dartファイルとpubspec.yamlなどが用意されました。雛形が用意されたあとは依存するpackageをインストールしてローカルサーバを立ち上げればブラウザで確認できます。このあたりも<code class="highlighter-rouge">npm install</code>からの<code class="highlighter-rouge">npm start</code>と同じ流れなので理解しやすいしお手軽でした。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pub get       <span class="c"># 依存packageのインストール</span>
+<span class="gp">$ </span>webdev serve  <span class="c"># ローカルサーバの起動</span>
+</code></pre>
+</div>
+
+<p>サーバの起動に使っているwebdevについては後述します。</p>
+
+<h3 id="4-コンパイラとビルド環境">4. コンパイラとビルド環境</h3>
+
+<p>Dartで作られたWebアプリを実行するには、<strong>DartVMが搭載されたブラウザで直接実行する</strong>か、<strong>JavaScriptにコンパイルしてから標準ブラウザで実行する</strong>か、の2つの方法があります。開発やテストといった過程では前者でも十分ですが、リリースするには後者の方法をとる必要があるため、用途に応じてコンパイラや実行環境を使い分ける必要があります。</p>
+
+<p>Dartのコンパイラにはどんなものがあるのかと、それぞれのDartバージョンでどのようにそれらを使えばよいかをまとめておきます。</p>
+
+<h4 id="2つのコンパイラ-dart2js-と-ddc">2つのコンパイラ dart2js と DDC</h4>
+
+<p><strong><a href="https://webdev.dartlang.org/tools/dart2js" target="_blank">Dart-to-JavaScript Compiler(dart2js)</a></strong>はDart1.xから存在するコンパイラです。<strong>コードの最適化</strong>をしたり<strong>minify</strong>などのオプションがあったりと本番用のコンパイルができるだけでなく、問題のある箇所をワーニング表示したりと開発用に利用することもできます。</p>
+
+<p><strong><a href="https://webdev.dartlang.org/tools/dartdevc" target="_blank">Dart Development Compiler(DDC)</a></strong>はDart2.xで登場したコンパイラです。その名の通り開発用に特化しており、<strong>差分ビルド</strong>や<strong>ホットリロード</strong>に対応しています。</p>
+
+<h4 id="dart1xでのビルド環境">Dart1.xでのビルド環境</h4>
+
+<p>dart1.xでは、開発時はDartVMを搭載した<strong>Dartium</strong>や<strong>content shell</strong>を利用し、リリース時にはdart2jsでコンパイルしてjsを生成します。それぞれpubコマンドを利用して行えます。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">pub serve</code> … ローカルサーバを起動します。Dariumで確認することができます。</li>
+  <li><code class="highlighter-rouge">pub build</code> … dart2jsを実行します。</li>
+</ul>
+
+<h4 id="dart2xでのビルド環境">Dart2.xでのビルド環境</h4>
+
+<p>Dart2.xではDartVMを一切使わずに開発できます。そのためDartiumもcontent shellも必要なくなります。<br />
+またDart2.xではbuildやserveのコマンドを、pubの代わりに<strong><a href="https://webdev.dartlang.org/tools/webdev" target="_blank">webdev</a></strong>というCLIツールを使って行います。webdevはpubからインストールして使います。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pub global activate webdev
+</code></pre>
+</div>
+
+<p>コマンド名はpubでビルドするときと同じなのでDart1.xから2.xへマイグレーションした場合も気楽そうです。</p>
+
+<ul>
+  <li><code class="highlighter-rouge">webdev serve</code> … DDCを実行しローカルサーバを起動します。標準ブラウザで確認することができます。</li>
+  <li><code class="highlighter-rouge">webdev build</code> … dart2jsを実行します。</li>
+</ul>
+
+<h4 id="まとめ">まとめ</h4>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left"> </th>
+      <th>for release</th>
+      <th>for development</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Dart1.x</td>
+      <td><code class="highlighter-rouge">pub build</code><br /> dart2jsでjsを生成</td>
+      <td><code class="highlighter-rouge">pub serve</code><br /> Dartium, content shell などのDartVM上で直接実行</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Dart2.x</td>
+      <td><code class="highlighter-rouge">webdev build</code><br /> dart2jsでjsを生成</td>
+      <td><code class="highlighter-rouge">webdev serve</code><br /> DDCでコンパイルしたものを標準ブラウザで実行</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="build_runner-を使ったビルドのカスタマイズ">build_runner を使ったビルドのカスタマイズ</h4>
+
+<p>webdevを使えば特別な設定なくすぐにビルドを行えますが、<strong><a href="https://webdev.dartlang.org/tools/build_runner" target="_blank">build_runner</a></strong>を使ってビルドをカスタマイズすることも可能です。簡単に言うとタスクランナーのようなものです。</p>
+
+<p>まずはインストール方法から。pubspec.yamlにdependencyを追記して<code class="highlighter-rouge">pub get</code>します。</p>
+
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">dev_dependencies</span><span class="pi">:</span>
+  <span class="s">build_runner</span><span class="pi">:</span> <span class="s">^0.9.0</span>
+  <span class="s">build_web_compilers</span><span class="pi">:</span> <span class="s">^0.4.0</span>
+</code></pre>
+</div>
+
+<p>次にコンフィグファイルを用意します。build_runnnerはデフォルトで<code class="highlighter-rouge">build.yaml</code>という名前のファイルを読み込んで実行しますが、<code class="highlighter-rouge">build.hoge.yaml</code>と命名すればオプションをつけて指定することができます。</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>pub run build_runner build                <span class="c"># build.yamlを読み込む</span>
+<span class="gp">$ </span>pub run build_runner build --config hoge  <span class="c"># build.hoge.yamlを読み込む</span>
+</code></pre>
+</div>
+
+<p>webpackの設定ファイルを本番用と開発用で分ける時に<code class="highlighter-rouge">webpack.config.prod.js</code>/<code class="highlighter-rouge">webpack.config.dev.js</code>とするケースがありますが、同じような感覚で使えそうです。</p>
+
+<p>あとはコンフィグファイルの中身次第でビルドをカスタマイズできますが、詳しい<a href="https://github.com/dart-lang/build/tree/master/docs" target="_blank">設定の仕方</a>については情報が多いのでいずれ別記事にて。</p>
+
+<h4 id="sassのビルド">sassのビルド</h4>
+
+<p>DDCを使えばホットリロードに対応できると書きましたが、sassも同様にあるべきです。これは公式のツールでは(原時点では)対応できないのでライブラリを利用します。<strong><a href="https://pub.dartlang.org/packages/sass_builder" target="_blank">sass_builder</a></strong>を<code class="highlighter-rouge">pub get</code>して、build_runnerで実行するよう設定します。</p>
+
+<p><strong>pubspec.yaml</strong></p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">dev_dependencies</span><span class="pi">:</span>
+    <span class="s">sass_builder</span><span class="pi">:</span> <span class="s">^2.0.0</span>
+</code></pre>
+</div>
+
+<p><strong>build.yaml</strong></p>
+<div class="language-yaml highlighter-rouge"><pre class="highlight"><code><span class="s">targets</span><span class="pi">:</span>
+  <span class="s">$default</span><span class="pi">:</span>
+    <span class="s">builders</span><span class="pi">:</span>
+      <span class="s">sass_builder</span><span class="pi">:</span>
+        <span class="s">options</span><span class="pi">:</span>
+          <span class="s">outputStyle</span><span class="pi">:</span> <span class="s">compressed</span>
+</code></pre>
+</div>
+
+<p>これで<code class="highlighter-rouge">webdev serve</code>をすればsassのビルドも実行されます。</p>
+
+<p>別の方法として、sassは今まで通りnode-sassなどを使うというのもアリだと思います。それなら既存のビルド環境を引き継いで使えますし、無理に全部Dartに寄せなくてもいいかもしれませんね。</p>
+
+<h3 id="5-感想">5. 感想</h3>
+
+<p>一通り触りながら簡単な実装をしてみた感想は「<strong>それなりに揃っている</strong>」でした。npmなどと比較してみても必要なものは最低限あるし、簡単に利用するための仕組みも用意されています。本気でWebクライアント開発言語になろうとしていることを感じられました。</p>
+
+<p>また、DartはWebだけでなくネイティブアプリの開発も視野に入れていて、こちらも入門しやすい仕組みが用意されていました。<a href="/blog/2018-07-01-1">WebフロントエンジニアがDart × Flutterに入門した話</a>に詳細をまとめてありますので、よければ併せてどうぞ。</p>
+
+<p>一方で「productionレベルで利用できるか」については即答できなさそうです。productionで利用するには信頼のおけるライブラリや大規模アプリに向くフレームワークなども必要でしょうし、dart2jsの最適化の品質についても検証の余地があると思います。そういったことも今後検証してみようと思いますので、一緒にDart × Webフロントエンドを盛り上げていきたい！という方はぜひ<a href="https://twitter.com/aloerina_" target="_blank">@aloerina_</a>までご感想・ご意見をお願いします。</p>
+
+<h3 id="6-おまけ-公式ドキュメントの読み方">6. おまけ 公式ドキュメントの読み方</h3>
+
+<p>Dartはドキュメントが豊富なのがいいところですが、体系的に理解するには何から読めばいいのか…と少し悩みました。ので、最後に私が読んだドキュメントをまとめて締めくくります。</p>
+
+<ul>
+  <li>Web開発用のツールの一覧を眺める <a href="https://webdev.dartlang.org/tools" target="_blank">Dart Tools for the Web</a>
+    <ul>
+      <li>jsへのコンパイルの基本を知る <a href="https://webdev.dartlang.org/tools/dart2js" target="_blank">dart2js</a></li>
+      <li>最新の開発用コンパイラをdart2jsと比較する <a href="https://webdev.dartlang.org/tools/dartdevc" target="_blank">dartdevc</a></li>
+      <li>ビルドツールを知る <a href="https://webdev.dartlang.org/tools/webdev" target="_blank">webdev</a>, <a href="https://webdev.dartlang.org/tools/build_runner" target="_blank">build_runner</a></li>
+    </ul>
+  </li>
+  <li>Dartの1.xと2.xを比較する <a href="https://webdev.dartlang.org/dart-2" target="_blank">Dart 2 Migration Guide for Web Apps</a></li>
+  <li>Get Startedする <a href="https://webdev.dartlang.org/guides/get-started" target="_blank">Get Started</a></li>
+  <li>pubのパッケージ管理を理解する <a href="https://www.dartlang.org/tools/pub" target="_blank">Pub Package Manager</a></li>
+</ul>
+
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Dart%E3%81%A7Web%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%81%AE%E9%96%8B%E7%99%BA%E3%81%AF%E3%81%A7%E3%81%8D%E3%82%8B%EF%BC%9F+%E3%82%A8%E3%82%B3%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%8B%E3%82%89%E8%A6%8B%E3%82%8BDart%E3%81%AE%E7%8F%BE%E7%8A%B6&url=https://aloerina01.github.io/blog/2018-08-01-1&via=aloerina_&hashtags=Dart,Environment,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Dart%E3%81%A7Web%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%81%AE%E9%96%8B%E7%99%BA%E3%81%AF%E3%81%A7%E3%81%8D%E3%82%8B%EF%BC%9F+%E3%82%A8%E3%82%B3%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%8B%E3%82%89%E8%A6%8B%E3%82%8BDart%E3%81%AE%E7%8F%BE%E7%8A%B6&u=https://aloerina01.github.io/blog/2018-08-01-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=Dart%E3%81%A7Web%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%81%AE%E9%96%8B%E7%99%BA%E3%81%AF%E3%81%A7%E3%81%8D%E3%82%8B%EF%BC%9F+%E3%82%A8%E3%82%B3%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%8B%E3%82%89%E8%A6%8B%E3%82%8BDart%E3%81%AE%E7%8F%BE%E7%8A%B6&url=https://aloerina01.github.io/blog/2018-08-01-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-08-01-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Dart%E3%81%A7Web%E3%83%95%E3%83%AD%E3%83%B3%E3%83%88%E3%81%AE%E9%96%8B%E7%99%BA%E3%81%AF%E3%81%A7%E3%81%8D%E3%82%8B%EF%BC%9F+%E3%82%A8%E3%82%B3%E3%82%B7%E3%82%B9%E3%83%86%E3%83%A0%E3%81%8B%E3%82%89%E8%A6%8B%E3%82%8BDart%E3%81%AE%E7%8F%BE%E7%8A%B6%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-08-01-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2018-07-01-1">WebフロントエンジニアがDart × Flutterに入門した話</a></li>
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/skills/">Skills</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <p class="present-title">aloerinaのサポーターになる</p>
+    <p class="present-description">気に入った記事がありましたらお小遣いをあげて支援してみませんか？ aloerinaの生計を支えるサポーターになることができます！</p>
+    <div class="present-qr">
+        <a href="kyash://qr/u/7297457164651391829" target="_blank" class="qr-execute-button">Kyashでサポートする</a>
+        <img src="/assets/kyash_qr.png">
+        <span><a href="https://kyash.co/" target="_blank">またはKyashで id: <b>aloerina</b> に送金する</a></span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+  });
+});
+
+
+//   var menuToggle = $('#js-mobile-menu').unbind();
+//   $('#js-navigation-menu').removeClass("show");
+//   menuToggle.on('click', function(e) {
+//     e.preventDefault();
+//     $('#js-navigation-menu').slideToggle(function(){
+//       if($('#js-navigation-menu').is(':hidden')) {
+//         $('#js-navigation-menu').removeAttr('style');
+//       }
+//     });
+//   });
+// });
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2018-08-01-1',
+    'title': 'DartでWebフロントの開発はできる？ エコシステムから見るDartの現状'
+  });
+</script>
+
+
+</body>
+
+</html>
