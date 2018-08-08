@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-08-01T12:18:41+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.5">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-08-08T10:56:02+09:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</title><link href="https://aloerina01.github.io/blog/2018-08-01-1" rel="alternate" type="text/html" title="DartでWebフロントの開発はできる？ エコシステムから見るDartの現状" /><published>2018-08-01T00:00:00+09:00</published><updated>2018-08-01T00:00:00+09:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-08-01-1">&lt;p&gt;JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、&lt;strong&gt;iOS、Android、Webの3大Clientで使える言語&lt;/strong&gt;を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。&lt;/p&gt;
 
 &lt;p&gt;ただ、言語がよければすぐに使えるというわけではなく、使いやすさや開発環境も大切な要素の1つです。&lt;br /&gt;
@@ -44,13 +44,21 @@
 
 &lt;p&gt;&lt;a href=&quot;https://www.dartlang.org/tools/sdk&quot; target=&quot;_blank&quot;&gt;Dart SDK&lt;/a&gt; はDartの開発に必要なライブラリ群とCLIツールです。執筆時点では安定版の&lt;code class=&quot;highlighter-rouge&quot;&gt;1.24.3&lt;/code&gt;と、プレリリース版の&lt;code class=&quot;highlighter-rouge&quot;&gt;2.0.0-dev.69.2&lt;/code&gt;が存在します。&lt;/p&gt;
 
+&lt;div style=&quot;border-radius:10px;background-color:#eaf7ff;padding:12px 20px;margin:42px 0 48px;&quot;&gt;
+
+&lt;p style=&quot;font-weight:600&quot;&gt;2018/08/08 追記&lt;/p&gt;
+
+Dart2.0.0が正式にリリースされ安定版となりました。記事内でDart1.xへの言及がところどころありますが、これからDartを使い始める場合はDart2.xを利用するのが良いと思います。
+
+&lt;/div&gt;
+
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew tap dart-lang/dart
 &lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew install dart         &lt;span class=&quot;c&quot;&gt;# 安定版をインストールする場合&lt;/span&gt;
 &lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;brew sintall dart --devel &lt;span class=&quot;c&quot;&gt;# プレリリース版をインストールする場合&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;p&gt;なお、Web開発のためにDartをインストールする場合は、インストール時に&lt;code class=&quot;highlighter-rouge&quot;&gt;--with-dartium --with-content-shell&lt;/code&gt;オプションをつけることが推奨されていますが、これらは&lt;strong&gt;Dart1.xでのみ利用する&lt;/strong&gt;ものです。&lt;strong&gt;Dartium&lt;/strong&gt;はDartVMを内蔵するブラウザで、&lt;strong&gt;content shell&lt;/strong&gt;は同じくDartVMを内蔵するテスト用のヘッドレスブラウザですが、Dart2.xでは開発環境が大幅に変わりこれらが不要となったためです(開発環境の詳細は後述します)。&lt;/p&gt;
+&lt;p&gt;なお、Web開発のためにDartをインストールする場合は、インストール時に&lt;code class=&quot;highlighter-rouge&quot;&gt;--with-dartium --with-content-shell&lt;/code&gt;オプションをつけるよう推奨されることがありますが、これらは&lt;strong&gt;Dart1.xでのみ利用する&lt;/strong&gt;ものです。&lt;strong&gt;Dartium&lt;/strong&gt;はDartVMを内蔵するブラウザで、&lt;strong&gt;content shell&lt;/strong&gt;は同じくDartVMを内蔵するテスト用のヘッドレスブラウザですが、Dart2.xでは開発環境が大幅に変わりこれらが不要となったためです(開発環境の詳細は後述します)。&lt;/p&gt;
 
 &lt;h3 id=&quot;2-パッケージ管理ツール-pub&quot;&gt;2. パッケージ管理ツール pub&lt;/h3&gt;
 
