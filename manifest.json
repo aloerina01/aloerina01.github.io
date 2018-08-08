@@ -1,0 +1,34 @@
+{
+  "short_name": "mfcode",
+  "name": "mille-feuille code",
+  "icons": [
+    {
+      "src": "assets/icons/favicon 1mdpi.png",
+      "type": "image/png",
+      "sizes": "146x146"
+    },
+    {
+      "src": "assets/icons/favicon 1hdpi.png",
+      "type": "image/png",
+      "sizes": "218x218"
+    },
+    {
+      "src": "assets/icons/favicon 1xhdpi.png",
+      "type": "image/png",
+      "sizes": "290x290"
+    },
+    {
+      "src": "assets/icons/favicon 1xxhdpi.png",
+      "type": "image/png",
+      "sizes": "435x435"
+    },
+    {
+      "src": "assets/icons/favicon 1xxxhdpi.png",
+      "type": "image/png",
+      "sizes": "580x580"
+    }
+  ],
+  "start_url": "https://aloerina01.github.io",
+  "display": "standalone",
+  "theme_color": "#F06292"
+}
