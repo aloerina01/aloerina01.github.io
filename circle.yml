@@ -38,3 +38,4 @@ deployment:
       - git config --global user.name "aloerina01"
       - git config --global user.email "4443321+aloerina01@users.noreply.github.com"
       - bundle exec rake deploy --trace
+      - ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia   
