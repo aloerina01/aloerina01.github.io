@@ -202,9 +202,8 @@
 
 <p>と書いてあります。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">babel</span> <span class="o">=</span> <span class="nx">code</span> <span class="o">=&gt;</span> <span class="nx">code</span><span class="p">;</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">babel</span> <span class="o">=</span> <span class="nx">code</span> <span class="o">=&gt;</span> <span class="nx">code</span><span class="p">;</span>
+</code></pre></div></div>
 <p>基本は受け取ったコードをそのまま吐き出すだけ、どう変換させるかは設定次第ということですね。つまり<strong>設定に応じてJavaScriptをコンパイルしてくれるもの</strong>というのがBabelの定義のようです。  (正確にはトランスパイルだろと言いたいところですが、この記事では公式にならってコンパイルと表現します)</p>
 
 <h4 id="構成要素">構成要素</h4>
@@ -238,30 +237,26 @@
 <p>ここまでの内容をCLIで実行するための最低限の手順は以下のようになります。</p>
 
 <h5 id="1-installする">1. Installする</h5>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -D babel-cli babel-preset-env 
-<span class="gp">$ </span>npm install -S babel-polyfill
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> babel-cli babel-preset-env 
+<span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-S</span> babel-polyfill
+</code></pre></div></div>
 
 <h5 id="2-babelrcに設定を書く">2. <code class="highlighter-rouge">.babelrc</code>に設定を書く</h5>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
-  <span class="s2">"presets"</span><span class="err">:</span> <span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"presets"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="3-polyfillをrequireする">3. polyfillをrequireする</h5>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// input.js</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// input.js</span>
 <span class="nx">require</span><span class="p">(</span><span class="s1">'babel-polyfill'</span><span class="p">);</span>
 
 <span class="c1">// 以下実装</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="4-babeるbabelでコンパイルする">4. Babeる(Babelでコンパイルする)</h5>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npx babel ./input.js -o ./output.js
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx babel ./input.js <span class="nt">-o</span> ./output.js
+</code></pre></div></div>
 
 <p>これが基本の使い方です。これを応用して、JSXをコンパイルさせたかったら<code class="highlighter-rouge">babel-preset-react</code>を利用したり、bundleさせたかったらWebpackなどのツールと組み合わせたり…といったカスタマイズをしていく感じになると思います。</p>
 
@@ -273,12 +268,11 @@
 <p>まず基礎ですが、WebpackでBabelを使うには<code class="highlighter-rouge">babel-loader</code>と<code class="highlighter-rouge">babel-core</code>を読み込みますよね。<code class="highlighter-rouge">babel-loader</code>はWebpackに「受け取ったコードをBabeってね」と指示を出すもので、指示に基づいて実際にBabeるのが<code class="highlighter-rouge">babel-core</code>、という感じです。</p>
 
 <p><strong>Install</strong></p>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -D babel-loader babel-core
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> babel-loader babel-core
+</code></pre></div></div>
 
 <p><strong>webpack.config.js</strong></p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="err">:</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
   <span class="nl">rules</span><span class="p">:</span> <span class="p">[</span>
     <span class="p">{</span> 
       <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span> 
@@ -287,8 +281,7 @@
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>pluginの適用は上記の「最低限の設定」と同様に<code class="highlighter-rouge">.babelrc</code>に書きます。polyfillの適用の仕方は3通りあるので、やりたいことベースで整理します。</p>
 
@@ -306,36 +299,33 @@
 
 <p>これらすべてを使うには<strong><code class="highlighter-rouge">babel-polyfill</code>をbundleに含める</strong>ことが必要です。それには<strong>entry pointとなるファイルの1行目</strong>で<strong>1度だけ</strong><code class="highlighter-rouge">babel-polyfill</code>を読み込みます。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// CommonJS</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// CommonJS</span>
 <span class="nx">require</span><span class="p">(</span><span class="s1">'babel-polyfill'</span><span class="p">);</span>
 
 <span class="c1">// ES6</span>
-<span class="kr">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
-</code></pre>
-</div>
+<span class="k">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
+</code></pre></div></div>
 
 <p>「1度だけ」というのがとても重要で、<strong>複数回読み込むとpolyfillがぶっ壊れます</strong>。あるHTMLで2つのjsファイルを読み込んでいて、それぞれで<code class="highlighter-rouge">babel-polyfill</code>を読み込んでいる場合もぶっ壊れます。とにかく2回読み込まれたらマズイのです。</p>
 
 <p>この<strong>二重読み込み制約</strong>にさえ気をつけていれば、この方法ですべてのpolyfillを利用することができます。加えて、<code class="highlighter-rouge">babel-preset-env</code>と組み合わせて利用する場合は、<a href="https://babeljs.io/docs/plugins/preset-env/#usebuiltins">useBuiltIns</a>オプションを設定することで<strong>全部入りの<code class="highlighter-rouge">babel-polyfill</code>を、必要なpolyfill(該当する<code class="highlighter-rouge">core-js</code>のモジュール)のみに変換してくれます</strong>。</p>
 
 <p><strong>.babelrc</strong></p>
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="s2">"env"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"useBuiltIns"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}]</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"env"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"useBuiltIns"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}]</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p><strong>app.js (entry point)</strong></p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// Babeる前</span>
-<span class="kr">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Babeる前</span>
+<span class="k">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
 
 <span class="c1">// Babeった後 使っているものだけimportするように変換される</span>
-<span class="kr">import</span> <span class="s1">'core-js/modules/es7.string.pad-start'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="s1">'core-js/modules/es7.string.pad-end'</span><span class="p">;</span>
-</code></pre>
-</div>
+<span class="k">import</span> <span class="s1">'core-js/modules/es7.string.pad-start'</span><span class="p">;</span>
+<span class="k">import</span> <span class="s1">'core-js/modules/es7.string.pad-end'</span><span class="p">;</span>
+</code></pre></div></div>
 
 <p><strong>まとめ</strong></p>
 
@@ -346,11 +336,10 @@
 <p>WebpackとBabelを組み合わせる場合、二重読み込み制約のリスクを回避する方法があります。それはソース内でbabel-polyfillを読み込むのではなく、bundle時に<code class="highlighter-rouge">babel-polyfill</code>を結合する方法です。以下のように設定します。</p>
 
 <p><strong>webpack.config.js</strong></p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">entry</span><span class="p">:</span> <span class="p">[</span><span class="s2">"babel-polyfill"</span><span class="p">,</span> <span class="s2">"./app.js"</span><span class="p">]</span>
 <span class="p">};</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>ただし、この方法は上述の<code class="highlighter-rouge">useBuiltIns</code>オプションが効かなくなるので注意です。</p>
 
@@ -369,17 +358,15 @@
 <p>設定するには、変換処理を行う<code class="highlighter-rouge">babel-plugin-transform-runtime</code>と、<code class="highlighter-rouge">core-js</code>のエイリアスである<code class="highlighter-rouge">babel-runtime</code>を npm install します。後者はソースに含まれることになるので<code class="highlighter-rouge">--save</code>オプションで。</p>
 
 <p><strong>Install</strong></p>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -D babel-plugin-transform-runtime
-<span class="gp">$ </span>npm install -S babel-runtime
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> babel-plugin-transform-runtime
+<span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-S</span> babel-runtime
+</code></pre></div></div>
 
 <p><strong>.babelrc</strong></p>
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"transform-runtime"</span><span class="p">]</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"transform-runtime"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p><strong>まとめ</strong></p>
 
@@ -436,16 +423,14 @@
 <p>これはBabelの公式ブログ読んでて見つけて得た程度の知識なのですが、「古いブラウザで動かす必要がないならそのまま圧縮すれば？」ということで<strong><a href="https://babeljs.io/blog/2016/08/30/babili">Babili(babel-minify)</a></strong>というものがあるそうです。</p>
 
 <p><strong>Install</strong></p>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm install -D babel-core babel-loader babel-preset-babili
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> babel-core babel-loader babel-preset-babili
+</code></pre></div></div>
 
 <p><strong>.babelrc</strong></p>
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"babili"</span><span class="p">]</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"babili"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p>uglify-esでサポートされていない構文であっても圧縮可能なので、その点は利がありそうです。ただ執筆時点(2018/03/19)ではBeta版ということもあって、個人的にはまだ使うことはなさそうです。</p>
 

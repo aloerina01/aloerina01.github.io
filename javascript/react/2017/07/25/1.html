@@ -246,7 +246,7 @@
 
 <p><strong>LazyloadComponent.js</strong></p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">LazyloadComponent</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">LazyloadComponent</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   
   <span class="cm">/** いろいろ省略、大事な部分だけ書きます */</span>
  
@@ -269,12 +269,11 @@
                  <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">style</span><span class="o">=&gt;&lt;</span><span class="sr">/div</span><span class="err">&gt;
 </span>  <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>Container.js</strong></p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">Container</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Container</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">each</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -287,8 +286,7 @@
     <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>雰囲気はこんな感じです。load処理だったり、読み込んだデータをStoreする処理だったりは省略です。注目してほしいのは、<code class="highlighter-rouge">LazyloadComponent#render</code>が、未ロード時は高さを確保したPlaceholderをレンダリングし、ロード後には<code class="highlighter-rouge">this.props.children</code>をレンダリングしている点です。</p>
 
@@ -305,7 +303,7 @@
 
 <p><strong>ScrollView.js</strong></p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ScrollView</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">ScrollView</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="nx">onScroll</span><span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">setState</span><span class="p">(</span> <span class="p">{</span> <span class="na">scrollTop</span><span class="p">:</span> <span class="nx">event</span><span class="p">.</span><span class="nx">currentTarget</span><span class="p">.</span><span class="nx">scrollTop</span> <span class="p">});</span>
   <span class="p">}</span>
@@ -322,8 +320,7 @@
 </span>    <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><code class="highlighter-rouge">ScrollView</code>内ではスクロール量を<code class="highlighter-rouge">state</code>として持っておくことで、これが更新される度に<code class="highlighter-rouge">render</code>が呼ばれ<code class="highlighter-rouge">LazyloadComponent</code>へスクロール量を渡すことができます。</p>
 
@@ -337,8 +334,8 @@
 
 <p><strong>ScrollView.js</strong></p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">class</span> <span class="nx">ScrollView</span> <span class="kr">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
-  <span class="nx">constructor</span><span class="p">()</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">ScrollView</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">loadedPages</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>       <span class="c1">// 初期読込で1ページ分は読み込んでいる</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">triggerHeight</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>  <span class="c1">// 1000pxごとにlazyloadを行う</span>
   <span class="p">}</span>
@@ -359,8 +356,7 @@
 </span>    <span class="p">);</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><code class="highlighter-rouge">ScrollView#lazyload</code>が呼ばれると追加読込分がStoreされ、そこから取得される<code class="highlighter-rouge">this.state.items</code>の件数が増えることでlazyloadが実現される仕組みです。</p>
 
@@ -585,6 +581,24 @@
 
   </div>
 
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a></li>
+      
+      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
+      
+      <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
+      
+    </div>
+  </div>
+</section>
   
 
   <section class="sub-contents profile-bar">

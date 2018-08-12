@@ -290,12 +290,11 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <p><strong>&lt;template&gt;</strong></p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;component</span> <span class="na">:is=</span><span class="s">"componentName"</span> <span class="na">:componentData=</span><span class="s">"componentData"</span> <span class="nt">/&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;component</span> <span class="na">:is=</span><span class="s">"componentName"</span> <span class="na">:componentData=</span><span class="s">"componentData"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
 
 <p><strong>&lt;script&gt;</strong></p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="na">props</span><span class="p">:</span> <span class="p">{</span> <span class="na">type</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span> <span class="na">componentData</span><span class="p">:</span> <span class="nb">Object</span> <span class="p">},</span>
   <span class="na">components</span><span class="p">:</span> <span class="p">{</span> <span class="nx">componentA</span><span class="p">,</span> <span class="nx">componentB</span> <span class="p">},</span>
   <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
@@ -310,8 +309,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><code class="highlighter-rouge">props</code>で受け取ったtypeに応じて、描画するComponentを<code class="highlighter-rouge">v-bind:is</code>で切り替えています。switch文を使っていますが、type名がそのままComponent名となるようにしてもいいですし、Factory Methodっぽくしてもいいと思います。</p>
 

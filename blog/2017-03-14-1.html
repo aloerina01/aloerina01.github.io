@@ -158,9 +158,8 @@
 
 <p>詳細な用法やパラメータの説明は <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy">MDN</a>に任せるとして、基本的なSyntaxだけ記します。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Proxy</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+</code></pre></div></div>
 
 <ul>
   <li><code class="highlighter-rouge">target</code> …Proxyでラップする対象となるObject</li>
@@ -171,23 +170,22 @@
 
 <p>実際のソースをみたほうがピンとくるかもしれません💡</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">name</span><span class="p">:</span> <span class="s1">'Aloerina'</span><span class="p">,</span>
   <span class="na">age</span><span class="p">:</span> <span class="mi">17</span>
 <span class="p">};</span>
 
-<span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">set</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="err">`</span><span class="nx">$</span><span class="p">{</span><span class="nx">prop</span><span class="p">}</span><span class="err">は上書き禁止です`</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s2">`</span><span class="p">${</span><span class="nx">prop</span><span class="p">}</span><span class="s2">は上書き禁止です`</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">};</span>
 
-<span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Proxy</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>  <span class="c1">// objをラップしたproxyを生成する</span>
+<span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>  <span class="c1">// objをラップしたproxyを生成する</span>
 
 <span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Margherita'</span><span class="p">;</span>  <span class="c1">// nameは上書き禁止です</span>
 <span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Aloerina</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="handlerの種類">Handlerの種類</h4>
 
@@ -261,19 +259,18 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 
 <p>handlerの中で「本来の処理を呼び出したい」場面があると思います。この場合に使えるのが<code class="highlighter-rouge">Reflect</code>です。<code class="highlighter-rouge">handler</code>と同じメソッド群を持ちます。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">set</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Before set'</span><span class="p">);</span>
-    <span class="nx">Reflect</span><span class="p">.</span><span class="nx">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>  <span class="c1">// targetオブジェクトのsetterを呼び出す</span>
+    <span class="nb">Reflect</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>  <span class="c1">// targetオブジェクトのsetterを呼び出す</span>
   <span class="p">}</span>
 <span class="p">};</span>
 
-<span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Proxy</span><span class="p">({},</span> <span class="nx">handler</span><span class="p">);</span>
+<span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">({},</span> <span class="nx">handler</span><span class="p">);</span>
 
 <span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Margherita'</span><span class="p">;</span>  <span class="c1">// Before set</span>
 <span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Margherita</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="can-i-use">Can I Use</h4>
 
@@ -318,12 +315,11 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 <p>class構文で用意したModuleを<code class="highlighter-rouge">import</code>して<code class="highlighter-rouge">new</code>して使うと本当にクラスをインスタンス化してるように見えて、読みやすいクラスベース(風)の実装となりますよね。<br />
 しかし実際にはインスタンス化されたソレはただのオブジェクトです。やろうと思えばfunctionを外から追加することも、privateな用途で用意した変数を強引に書き換えることもできてしまいます。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">User</span> <span class="nx">from</span> <span class="s1">'./User'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">User</span> <span class="k">from</span> <span class="s1">'./User'</span><span class="p">;</span>
 
 <span class="kd">let</span> <span class="nx">user01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
 <span class="nx">user01</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="s1">'Aloerina'</span><span class="p">;</span>        <span class="c1">// やめてー！ private用の変数を書き換えないでー！</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>こうなってしまうと悲惨なので、<strong>Module毎の性質に応じて機能を制約し、不本意な使われ方を防ぐ</strong>ため、</p>
 

@@ -162,7 +162,7 @@
 
 <p><strong>※動的読込の例</strong></p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">conditions</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">scriptElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
   <span class="nx">scriptElement</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'//cdn.hoge.com/library.js'</span><span class="p">;</span>
@@ -171,8 +171,7 @@
   <span class="nx">headElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptElement</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="nt">&lt;/script&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>でも<code class="highlighter-rouge">document.write</code>が使われているライブラリは動的読込しようとしても読み込めません！💢💢<br />
 HTML解析が始まりDOM操作によって追加された外部スクリプトの<code class="highlighter-rouge">document.write</code>は<strong>無視されます</strong>。そのせいで普通に動的読込しても何も起こらないのでした😉</p>
@@ -419,6 +418,24 @@ iframeを使うことで擬似的に別のHTMLをつくり、そいつにライ�
 
   </div>
 
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a></li>
+      
+      <li><a href="/blog/2017-01-10-1">JavaScriptの新しいモジュールバンドラ rollup.js とは</a></li>
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+    </div>
+  </div>
+</section>
   
 
   <section class="sub-contents profile-bar">

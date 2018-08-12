@@ -183,25 +183,23 @@
 
 <p>JavaScript</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">users</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">fetchUsers</span><span class="p">();</span>                                <span class="c1">// userの配列を取得する</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">users</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">fetchUsers</span><span class="p">();</span>                                <span class="c1">// userの配列を取得する</span>
 <span class="kd">let</span> <span class="nx">userStream</span> <span class="o">=</span> <span class="nx">Ex</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromArray</span><span class="p">(</span><span class="nx">users</span><span class="p">);</span>              <span class="c1">// userリストをstreamにする</span>
 <span class="kd">let</span> <span class="nx">campaignTargets</span> <span class="o">=</span> 
 	<span class="nx">userStream</span>
 		<span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nx">e</span><span class="p">.</span><span class="nx">getJoinDate</span><span class="p">().</span><span class="nx">after</span><span class="p">(</span><span class="s1">'2017-01-01'</span><span class="p">)})</span>  <span class="c1">// フィルタリングする</span>
 		<span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">(</span><span class="nx">e</span><span class="p">)});</span>                         <span class="c1">// cacheする</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Java</p>
 
-<div class="language-java highlighter-rouge"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">fetchUsers</span><span class="o">();</span>                                                <span class="c1">// userリストを取得する</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">fetchUsers</span><span class="o">();</span>                                                <span class="c1">// userリストを取得する</span>
 <span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">campaignTargets</span> <span class="o">=</span> 
 	<span class="n">users</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>                                                          <span class="c1">// streamにする</span>
-		<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="n">e</span><span class="o">.</span><span class="na">getJoinDate</span><span class="o">().</span><span class="na">after</span><span class="o">(</span><span class="n">DateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2017</span><span class="o">,</span> <span class="mi">01</span><span class="o">,</span> <span class="mi">01</span><span class="o">))})</span> <span class="c1">// フィルタリングする</span>
+		<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="n">e</span><span class="o">.</span><span class="na">getJoinDate</span><span class="o">().</span><span class="na">after</span><span class="o">(</span><span class="n">DateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2017</span><span class="o">,</span> <span class="mo">01</span><span class="o">,</span> <span class="mo">01</span><span class="o">))})</span> <span class="c1">// フィルタリングする</span>
 		<span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">this</span><span class="o">::</span><span class="n">cache</span><span class="o">(</span><span class="n">e</span><span class="o">))</span>                                            <span class="c1">// cacheする</span>
 		<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>なんというか、似てる。<br />
 FRPとかよくわからないけど、StreamAPIのつもりで使えば良さそうな気がしてきました。</p>
@@ -472,6 +470,24 @@ FRPとかよくわからないけど、StreamAPIのつもりで使えば良さ�
 
   </div>
 
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a></li>
+      
+      <li><a href="/blog/2017-01-23-1">RxJSをJava8のStreamAPIと比較してみた</a></li>
+      
+      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
+      
+    </div>
+  </div>
+</section>
   
 
   <section class="sub-contents profile-bar">

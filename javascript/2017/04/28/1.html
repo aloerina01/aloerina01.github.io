@@ -187,7 +187,7 @@
 <p>ついでの話。<br />
 「HTMLエスケープは基本的にはサーバサイドでするもの」という認識が漠然とあります。が、SPAの登場などもあってクライアントサイドでレンダリングする場面もチラホラあるので、その場合は自前でエスケープ関数を作る必要があります。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">escapeHtml</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">escapeHtml</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">!==</span> <span class="s1">'string'</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">target</span><span class="p">;</span>
   <span class="p">}</span>
@@ -202,8 +202,7 @@
     <span class="p">}[</span><span class="nx">match</span><span class="p">]</span>
   <span class="p">});</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>ざっくりとこんな感じです。</p>
 
@@ -422,6 +421,24 @@
 
   </div>
 
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a></li>
+      
+      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+    </div>
+  </div>
+</section>
   
 
   <section class="sub-contents profile-bar">

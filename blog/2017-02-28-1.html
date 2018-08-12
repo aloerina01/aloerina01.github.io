@@ -160,21 +160,19 @@
 
 <h4 id="セットアップ">セットアップ</h4>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm i -g create-react-app         <span class="c"># create-react-appのインストール</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i <span class="nt">-g</span> create-react-app         <span class="c"># create-react-appのインストール</span>
 
-<span class="gp">$ </span>create-react-app &lt;project_name&gt;   <span class="c"># 任意の名前のReactApplicationを作成してくれる</span>
+<span class="nv">$ </span>create-react-app &lt;project_name&gt;   <span class="c"># 任意の名前のReactApplicationを作成してくれる</span>
 
-<span class="gp">$ </span>npm start                         <span class="c"># ビルド&amp;ローカルサーバ起動(npmを利用する場合)</span>
-<span class="gp">$ </span>yarn start                        <span class="c"># 同上(yarnを利用する場合)</span>
-</code></pre>
-</div>
+<span class="nv">$ </span>npm start                         <span class="c"># ビルド&amp;ローカルサーバ起動(npmを利用する場合)</span>
+<span class="nv">$ </span>yarn start                        <span class="c"># 同上(yarnを利用する場合)</span>
+</code></pre></div></div>
 
 <h4 id="ビルド">ビルド</h4>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm run build    <span class="c"># npmを利用する場合</span>
-<span class="gp">$ </span>yarn run build   <span class="c"># yarnを利用する場合</span>
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm run build    <span class="c"># npmを利用する場合</span>
+<span class="nv">$ </span>yarn run build   <span class="c"># yarnを利用する場合</span>
+</code></pre></div></div>
 
 <h3 id="how-do-feel">How do feel</h3>
 
@@ -200,12 +198,11 @@
 
 <p>CIでビルドさせるときはワーニングでもビルド失敗として扱うようです。</p>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CI</span> <span class="o">&amp;&amp;</span> <span class="nx">stats</span><span class="p">.</span><span class="nx">compilation</span><span class="p">.</span><span class="nx">warnings</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">CI</span> <span class="o">&amp;&amp;</span> <span class="nx">stats</span><span class="p">.</span><span class="nx">compilation</span><span class="p">.</span><span class="nx">warnings</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span> <span class="p">{</span>
      <span class="nx">printErrors</span><span class="p">(</span><span class="s1">'Failed to compile.'</span><span class="p">,</span> <span class="nx">stats</span><span class="p">.</span><span class="nx">compilation</span><span class="p">.</span><span class="nx">warnings</span><span class="p">);</span>
      <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
    <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p><code class="highlighter-rouge">react-scripts</code>のソースにもこの通り。</p>
 
 <p>ここまでは親切でありがたいのだけれど、せめて手元でビルドしたときに同じWarningを表示しよう。なぜ手元ではWarning出してくれないんだ…(´・ω・｀)</p>

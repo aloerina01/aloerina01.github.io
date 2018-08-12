@@ -181,7 +181,7 @@
 <p>Jekyllのルールに則ったディレクトリにコンテンツ(ファイル)を配置すると、Jekyllはそのファイルを静的ページ(HTML)に変換してくれます。そして静的ページ1つ1つに対してURLが付与されます。<br />
 例えば記事のように蓄積されていくコンテンツの場合、<code class="highlighter-rouge">_posts</code>以下にコンテンツファイルを配置することで記事ごとのHTMLを生成してくれます。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>.
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
 ├── _config.yml
 |
 (省略)
@@ -189,8 +189,7 @@
 ├── _posts
 |   ├── 2018-04-01.md
 |   └── 2018-04-02-how-to-use.md
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="url生成のルールとファイル命名ルール">URL生成のルールとファイル命名ルール</h4>
 
@@ -217,12 +216,11 @@
 
 <p><strong>2018-04-01.md</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>---
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 title: Jekyllの使い方
 permalink: /article/how-to-use
 ---
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>こうすることでファイル名の日付を無視して<code class="highlighter-rouge">/article/how-to-use</code>というURLで記事を生成してくれます。</p>
 
@@ -230,35 +228,32 @@ permalink: /article/how-to-use
 
 <p><strong>_posts/2018-04-01.md のFrontMatterに<code class="highlighter-rouge">writer</code>という項目を定義</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>---
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 title: Jekyllの使い方
 permalink: /article/how-to-use
 writer: aloerina  
 ---
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>_layouts/post.html テンプレートから<code class="highlighter-rouge">page.writer</code>という変数で値を利用</strong></p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>{{ page.title }}<span class="nt">&lt;/h1&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>{{ page.title }}<span class="nt">&lt;/h1&gt;</span>
 <span class="c">&lt;!-- 省略 --&gt;</span>
 <span class="nt">&lt;p&gt;</span>{{ page.writer }}<span class="nt">&lt;/p&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="すべてのpostsに一定のルールでurlを付与する">すべてのpostsに一定のルールでURLを付与する</h3>
 <p>Front Matterを使えば記事1つ1つに個別のURLを設定できました。しかしこれを毎回書くのは面倒くさいですよね。そこで<code class="highlighter-rouge">_config.yml</code>を使ってFrontMatterのデフォルト値を指定します。「URLを<code class="highlighter-rouge">/artilce/&lt;タイトル名&gt;.html</code>とする」例を使って解説します。</p>
 
 <h4 id="_configymlの設定例">_config.ymlの設定例</h4>
 
-<div class="language-yml highlighter-rouge"><pre class="highlight"><code><span class="s">defaults</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s">scope</span><span class="pi">:</span>
-      <span class="s">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
-      <span class="s">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">posts"</span>
-    <span class="s">values</span><span class="pi">:</span>
-      <span class="s">permalink</span><span class="pi">:</span> <span class="s">/article/:title.html</span>
-</code></pre>
-</div>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
+      <span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">posts"</span>
+    <span class="na">values</span><span class="pi">:</span>
+      <span class="na">permalink</span><span class="pi">:</span> <span class="s">/article/:title.html</span>
+</code></pre></div></div>
 
 <h4 id="ポイント1--front-matterのデフォルト値を指定する">ポイント1:  Front Matterのデフォルト値を指定する</h4>
 <p>Front Matterのデフォルト値を指定する<code class="highlighter-rouge">defaults</code>には、大きく2つの項目があります。<strong>どのファイルに対してデフォルト値を設定するかを表す<code class="highlighter-rouge">scope</code></strong>と、<strong>どんなデフォルト値にするかを表す<code class="highlighter-rouge">values</code></strong>です。</p>
@@ -339,11 +334,10 @@ writer: aloerina
 
 <p>実は<code class="highlighter-rouge">_config.yml</code>には内部的に以下のような設定を持っています。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>collections:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>collections:
   posts:
     output: true
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>これは「<code class="highlighter-rouge">posts</code>というタイプを用意して、これをJekyllの変換対象とする」ということを表現しています。そしてこのtype名に<code class="highlighter-rouge">_</code>をつなげた_postsディレクトリ以下にあるファイルが、<code class="highlighter-rouge">posts</code>タイプのファイルとなります。</p>
 

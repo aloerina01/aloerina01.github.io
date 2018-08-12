@@ -226,22 +226,20 @@
 
 <h5 id="dart-sdkのインストール">Dart SDKのインストール</h5>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>brew tap dart-lang/dart
-brew install dart --with-content-shell --with-dartium
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>brew tap dart-lang/dart
+brew <span class="nb">install </span>dart <span class="nt">--with-content-shell</span> <span class="nt">--with-dartium</span>
+</code></pre></div></div>
 
 <h5 id="flutterのインストール">Flutterのインストール</h5>
 
 <p><a href="https://flutter.io/get-started/install/">Get Started: Install - Flutter</a>からzipを落とし展開しPATHを通します。そのあとは</p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>flutter doctor
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flutter doctor
+</code></pre></div></div>
 
 <p>このコマンドを叩くと、Flutterの開発に必要なものが揃っているかどうか、揃えるために次に何をすればいいのかを教えてくれます。</p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>Doctor summary <span class="o">(</span>to see all details, run flutter doctor -v<span class="o">)</span>:
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Doctor summary <span class="o">(</span>to see all details, run flutter doctor <span class="nt">-v</span><span class="o">)</span>:
 <span class="o">[</span>- <span class="o">[</span>x] <span class="o">]</span> Flutter <span class="o">(</span>Channel beta, v0.4.4, on Mac OS X 10.12.6 16G1212, locale ja-JP<span class="o">)</span>
 <span class="o">[</span>✗] Android toolchain - develop <span class="k">for </span>Android devices
 <span class="k">**</span>✗ Unable to locate Android SDK.<span class="k">**</span>
@@ -249,17 +247,17 @@ brew install dart --with-content-shell --with-dartium
 <span class="k">**</span>On first launch it will assist you <span class="k">in </span>installing the Android SDK components.<span class="k">**</span>
 <span class="k">**</span><span class="o">(</span>or visit https://flutter.io/setup/#android-setup <span class="k">for </span>detailed instructions<span class="o">)</span>.<span class="k">**</span>
 <span class="k">**</span>If Android SDK has been installed to a custom location, <span class="nb">set</span> <span class="nv">$ANDROID_HOME</span> to that location.<span class="k">**</span>
-<span class="o">[</span>!] iOS toolchain - develop <span class="k">for </span>iOS devices
-<span class="k">**</span>✗ Xcode installation is incomplete; a full installation is necessary <span class="k">for </span>iOS development.<span class="k">**</span>
+<span class="o">[!]</span> iOS toolchain - develop <span class="k">for </span>iOS devices
+<span class="k">**</span>✗ Xcode installation is incomplete<span class="p">;</span> a full installation is necessary <span class="k">for </span>iOS development.<span class="k">**</span>
 <span class="k">**</span>Download at: https://developer.apple.com/xcode/download/<span class="k">**</span>
-<span class="k">**</span>Or install Xcode via the App Store.<span class="k">**</span>
+<span class="k">**</span>Or <span class="nb">install </span>Xcode via the App Store.<span class="k">**</span>
 <span class="k">**</span>Once installed, run:<span class="k">**</span>
-<span class="k">**</span>sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer<span class="k">**</span>
-<span class="k">**</span>✗ libimobiledevice and ideviceinstaller are not installed. To install, run:<span class="k">**</span>
-<span class="k">**</span>brew install --HEAD libimobiledevice<span class="k">**</span>
-<span class="k">**</span>brew install ideviceinstaller<span class="k">**</span>
-<span class="k">**</span>✗ ios-deploy not installed. To install:<span class="k">**</span>
-<span class="k">**</span>brew install ios-deploy<span class="k">**</span>
+<span class="k">**</span><span class="nb">sudo </span>xcode-select <span class="nt">--switch</span> /Applications/Xcode.app/Contents/Developer<span class="k">**</span>
+<span class="k">**</span>✗ libimobiledevice and ideviceinstaller are not installed. To <span class="nb">install</span>, run:<span class="k">**</span>
+<span class="k">**</span>brew <span class="nb">install</span> <span class="nt">--HEAD</span> libimobiledevice<span class="k">**</span>
+<span class="k">**</span>brew <span class="nb">install </span>ideviceinstaller<span class="k">**</span>
+<span class="k">**</span>✗ ios-deploy not installed. To <span class="nb">install</span>:<span class="k">**</span>
+<span class="k">**</span>brew <span class="nb">install </span>ios-deploy<span class="k">**</span>
 <span class="k">**</span>✗ CocoaPods not installed.<span class="k">**</span>
 <span class="k">**</span>CocoaPods is used to retrieve the iOS platform side<span class="s1">'s plugin code that responds to your plugin usage on the Dart side.**
 **Without resolving iOS dependencies with CocoaPods, plugins will not work on iOS.**
@@ -273,8 +271,7 @@ brew install dart --with-content-shell --with-dartium
     ! No devices available
 
 ! Doctor found issues in 5 categories.
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p>(Android Studioがインストールされてないよ！等、教えてくれていますね)</p>
 
@@ -284,9 +281,8 @@ brew install dart --with-content-shell --with-dartium
 
 <p><a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code">Dartプラグイン</a>、<a href="https://marketplace.visualstudio.com/items?itemName=franzsilva.fs-flutter-snippets">Flutterプラグイン</a>をインストールしたものの、VSCodeのコマンドパレットから<code class="highlighter-rouge">Flutter: New Project</code>をしようとしたらFlutter SDKがないと怒られました。設定にFlutterの所在を追記することで解決。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>"dart.flutterSdkPath": "/Users/aloerina/flutter"
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>"dart.flutterSdkPath": "/Users/aloerina/flutter"
+</code></pre></div></div>
 
 <p>ちなみにNew ProjectでつくられたディレクトリにはHelloWorld的なコードが最初から入っていました。</p>
 
@@ -299,9 +295,8 @@ USBデバッグを許可した実機を接続するか、Android Studioのエミ
 
 <p>検証端末の準備ができたらflutterを起動します。</p>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>flutter run
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>flutter run
+</code></pre></div></div>
 
 <p>これでDeployが済んでエミュレータにアプリが表示されます🎉</p>
 
@@ -351,7 +346,7 @@ USBデバッグを許可した実機を接続するか、Android Studioのエミ
 
 <p>画面の情報すべてをWidgetで表現するため、Layoutに関わる<a href="https://docs.flutter.io/flutter/widgets/Padding-class.html">Padding</a>や<a href="https://docs.flutter.io/flutter/widgets/Align-class.html">Alignment</a>などもWidgetとして組み込まなければなりません。たとえばカードリスト画面を作る場合、以下のようにWidgetを入れ子にする必要があります。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Scaffold Widget (画面全体を構成する) 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Scaffold Widget (画面全体を構成する) 
   &gt; ListView Widget (Scaffoldの中にListViewを配置する)
     &gt; Padding Widget (ListView内の要素にPaddingをつける)
       &gt; Card Widget (Paddingのとられた空間にカードを配置する)
@@ -359,8 +354,7 @@ USBデバッグを許可した実機を接続するか、Android Studioのエミ
           &gt; Padding Widget (縦積みする要素にPaddingをつける)
             &gt; Text Widget (タイトルなどの文字列を表示する)
               &gt; TextAlign Widget (文字列のAlignmentを指定する)
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>表示要素を表す<code class="highlighter-rouge">ListView</code>, <code class="highlighter-rouge">Card</code>, <code class="highlighter-rouge">Text</code>と並列関係で<code class="highlighter-rouge">Padding</code>などが存在するわけです。ものによってもっと簡単に記述できる仕組みもあるのですが、HTMLで要素を構成してCSSで装飾する手法に慣れている人にはかなり抵抗があるのではないでしょうか…。</p>
 
 <p>ただ、アプリのビルドなど詳しく知らない部分を棚上げしたまま開発できる点はよかったです。とりあえず動くものを作ってみてリリースするときに改めてキャッチアップする、とすると開発意欲を落とさず完成にこぎつけそうです。</p>

@@ -163,38 +163,34 @@
 
 <h4 id="こまったことになったぞ">こまったことになったぞ</h4>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">modulePath</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">modulePath</span><span class="p">;</span>
 <span class="k">switch</span> <span class="p">(</span><span class="nx">flag</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// 省略</span>
   <span class="c1">// modulePathを動的に決定する</span>
 <span class="p">}</span>
 <span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span><span class="p">);</span>
 <span class="kd">let</span> <span class="nx">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Constructor</span><span class="p">();</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>ということをしようとするとエラーになる。</p>
 
-<div class="language-console highlighter-rouge"><pre class="highlight"><code>Error: Cannot find module "."
-</code></pre>
-</div>
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">Error: Cannot find module "."
+</span></code></pre></div></div>
 
 <p><code class="highlighter-rouge">modulePath</code>が文字列としてちゃんと認識できていないのかと思ったけどそうでもなかった。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="c1">// 検証1</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 検証1</span>
 <span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span> <span class="o">+</span> <span class="s1">''</span><span class="p">);</span>  <span class="c1">// 同様のエラー</span>
 
 <span class="c1">// 検証2</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// string</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>もしや<code class="highlighter-rouge">modulePath</code>は正規表現じゃないとだめ？　とか血迷ってみた。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">modulePath</span> <span class="o">=</span> <span class="sr">/model</span><span class="se">\/</span><span class="sr">userlist/</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">modulePath</span> <span class="o">=</span> <span class="sr">/model</span><span class="se">\/</span><span class="sr">userlist/</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// やはりエラー</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>ここでようやくwebpackのモジュール解決に起因すると気づく。</p>
 
@@ -217,9 +213,8 @@
 <p>リクエストに式が含まれている場合、コンテキストが作成されるため、コンパイル時に正確なモジュールが認識されません。</p>
 
 <p>Example:</p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="s2">"./template/"</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">".ejs"</span><span class="p">);</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="s2">"./template/"</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">".ejs"</span><span class="p">);</span>
+</code></pre></div></div>
 
 <blockquote>
   <p>webpack parses the require() call and extracts some information:</p>
@@ -227,10 +222,9 @@
 
 <p>webpackはrequire（）呼び出しを解析し、いくつかの情報を抽出します。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>Directory: ./template
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Directory: ./template
 Regular expression: /^.*\.ejs$/
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="context-module-ってなんだ">context module ってなんだ</h4>
 
@@ -241,13 +235,12 @@ Regular expression: /^.*\.ejs$/
 <p>コンテキストモジュールが生成されます。このディレクトリには、正規表現に一致する要求が必要な、そのディレクトリ内のすべてのモジュールへの参照が含まれています。コンテキストモジュールには、要求をモジュールIDに変換するマップが含まれています。</p>
 
 <p>Example:</p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
-    <span class="s2">"./table.ejs"</span><span class="err">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">"./table-row.ejs"</span><span class="err">:</span> <span class="mi">43</span><span class="p">,</span>
-    <span class="s2">"./directory/folder.ejs"</span><span class="err">:</span> <span class="mi">44</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+    <span class="s2">"./table.ejs"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="s2">"./table-row.ejs"</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span>
+    <span class="s2">"./directory/folder.ejs"</span><span class="p">:</span> <span class="mi">44</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>The context module also contains some runtime logic to access the map.</p>
@@ -278,13 +271,12 @@ Examples: someFn(require) require.bind(null)</p>
 
 <p>静的解決できない<code class="highlighter-rouge">require</code>がソースに含まれている場合、そのときのcontextはカレントディレクトリとなる。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// ← modulePathがカレントからの相対パスでないとダメ…？</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// ← modulePathがカレントからの相対パスでないとダメ…？</span>
+</code></pre></div></div>
 
 <p>実はモジュールパス解決をしたくて<code class="highlighter-rouge">webpack.config.js</code>に手を入れていた。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="c1">// 省略</span>
   <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.vue'</span><span class="p">,</span> <span class="s1">'.js'</span> <span class="p">],</span>
@@ -294,14 +286,12 @@ Examples: someFn(require) require.bind(null)</p>
       <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/node_modules'</span><span class="p">)</span>
     <span class="p">]</span>
   <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><code class="highlighter-rouge">path.resolve</code>で指定したディレクトリをルートとした相対パスで書けるようにしていた(つもりだった)が、実際はカレントディレクトリからのパスが必要だった。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../'</span> <span class="o">+</span> <span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// 動いた</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../'</span> <span class="o">+</span> <span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// 動いた</span>
+</code></pre></div></div>
 
 <h4 id="更になんか見つける">更になんか見つける</h4>
 
@@ -315,21 +305,20 @@ Examples: someFn(require) require.bind(null)</p>
 
 <p>どうやら今回のように動的依存解決が発生している場合の「デフォルト」が内部的に指定されている模様。そしてそれを書き換えるプラグインもある模様(ただしDeprecated)。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="err">:</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">:</span> <span class="p">{</span>
   <span class="nl">exprContextCritical</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">exprContextRecursive</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">exprContextRegExp</span><span class="err">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nx">exprContextRequest</span><span class="err">:</span> <span class="s2">"."</span><span class="p">,</span>
-  <span class="nx">unknownContextCritical</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">unknownContextRecursive</span><span class="err">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">unknownContextRegExp</span><span class="err">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nx">unknownContextRequest</span><span class="err">:</span> <span class="s2">"."</span><span class="p">,</span>          <span class="c1">// ←エラーの文言で見覚えあるぞ！！！</span>
-  <span class="nx">wrappedContextCritical</span><span class="err">:</span> <span class="kc">false</span>
-  <span class="nl">wrappedContextRecursive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nx">wrappedContextRegExp</span><span class="err">:</span> <span class="o">/</span><span class="p">.</span><span class="o">*</span><span class="sr">/</span><span class="err">,
+  <span class="nx">exprContextRecursive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">exprContextRegExp</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">exprContextRequest</span><span class="p">:</span> <span class="s2">"."</span><span class="p">,</span>
+  <span class="nx">unknownContextCritical</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">unknownContextRecursive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">unknownContextRegExp</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nx">unknownContextRequest</span><span class="p">:</span> <span class="s2">"."</span><span class="p">,</span>          <span class="c1">// ←エラーの文言で見覚えあるぞ！！！</span>
+  <span class="nx">wrappedContextCritical</span><span class="p">:</span> <span class="kc">false</span>
+  <span class="nx">wrappedContextRecursive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nx">wrappedContextRegExp</span><span class="p">:</span> <span class="o">/</span><span class="p">.</span><span class="o">*</span><span class="sr">/</span><span class="err">,
 </span><span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>Note: You can use the ContextReplacementPlugin to modify these values for individual dependencies. This also removes the warning.</p>
@@ -553,6 +542,24 @@ Examples: someFn(require) require.bind(null)</p>
 
   </div>
 
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-11-08-1">トラブルシューティングメモを晒してみる  webpack動的module編</a></li>
+      
+      <li><a href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a></li>
+      
+      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+      
+    </div>
+  </div>
+</section>
   
 
   <section class="sub-contents profile-bar">

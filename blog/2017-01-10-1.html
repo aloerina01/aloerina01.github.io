@@ -162,9 +162,8 @@
 <h4 id="インストール">インストール</h4>
 
 <h5 id="rollupjsのインストール">rollup.jsのインストール</h5>
-<div class="highlighter-rouge"><pre class="highlight"><code>npm install -D rollup
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm install -D rollup
+</code></pre></div></div>
 
 <h5 id="関連するプラグインのインストール">関連するプラグインのインストール</h5>
 
@@ -175,9 +174,8 @@
   <li><code class="highlighter-rouge">babel-preset-es2015-rollup</code>  - 同上</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>npm i -D rollup-plugin-node-resolve rollup-plugin-commonjs rollup-plugin-babel babel-preset-es2015-rollup
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i -D rollup-plugin-node-resolve rollup-plugin-commonjs rollup-plugin-babel babel-preset-es2015-rollup
+</code></pre></div></div>
 
 <h4 id="コンフィグファイル">コンフィグファイル</h4>
 
@@ -186,27 +184,24 @@
 
 <h5 id="babelrc-いつものアレ">.babelrc いつものアレ</h5>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
-  <span class="s2">"presets"</span><span class="err">:</span> <span class="p">[</span> <span class="s2">"es2015-rollup"</span> <span class="p">]</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"presets"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"es2015-rollup"</span> <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="packagejson-こっちもいつものアレ">package.json こっちもいつものアレ</h5>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
 	<span class="nl">scripts</span><span class="p">:</span> <span class="p">{</span>
-		<span class="s2">"build"</span> <span class="err">:</span> <span class="s2">"rollup -c"</span>  <span class="c1">// コンフィグを利用する場合は -c / --config</span>
+		<span class="s2">"build"</span> <span class="p">:</span> <span class="s2">"rollup -c"</span>  <span class="c1">// コンフィグを利用する場合は -c / --config</span>
 	<span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="実行">実行</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>npm run build
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
 
 <h3 id="かんそう">かんそう</h3>
 <p>コンフィグファイルもすっきりしてて読みやすいし、Tree-shakingもイケてる考え方だし、導入のハードルも高くないし、いい感じのような気がします。とは言え、こういう噛ませ役はいずれなくなってくれることを願って、置き換えの効く最小のものを利用するという考え方が一番な気がしますね。</p>

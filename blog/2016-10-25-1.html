@@ -149,9 +149,8 @@
 
 <h3 id="meta-robots-タグ-とは">META Robots タグ とは？</h3>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 <p>👆<strong>これ</strong>👆</p>
 
@@ -171,9 +170,8 @@
 
 <h3 id="お作法">お作法</h3>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"xxx"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"xxx"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 <h4 id="name-属性">name 属性</h4>
 <p>どのクローラへの制御か、を表現します。</p>
@@ -192,17 +190,15 @@
 
 <h4 id="検索結果にページを表示しないようにする">検索結果にページを表示しないようにする</h4>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"noindex"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"noindex"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 <p>会員限定ページのように「特定の人はアクセスできるが、検索エンジンの検索結果には表示したくない」というページで使います。クローラへの制御内容は「このページをクローラしてほしいけどインデックスには載せないで」という感じです。</p>
 
 <h4 id="ページ内のリンクをpagerank評価対象から外す">ページ内のリンクをPageRank評価対象から外す</h4>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">”robots”</span> <span class="na">content=</span><span class="s">”nofollow”</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">”robots”</span> <span class="na">content=</span><span class="s">”nofollow”</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 <p>「これらのリンクはスパムリンクです！ご注意を！」っていうありがた〜い記事を書いたのに、そこで紹介してるスパムなリンク先をクローラに巡回されて、「この記事はなんて悪質なリンクをはってるんだ！PageRank下げるぞ！👊😠」ってなったら悲しすぎる…。
 そんなときにこれをつかうと、「このページ内のリンクはクローラの巡回をやめてね」と指示できます。</p>
@@ -211,33 +207,29 @@
 
 <h4 id="検索結果に表示させず評価対象からも外す">検索結果に表示させず、評価対象からも外す</h4>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"none"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"none"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 <p>いつ使うんだろう…。</p>
 
 <h4 id="翻訳のリンクを表示させない">翻訳のリンクを表示させない</h4>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"notranslate"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"notranslate"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 <p>翻訳しにくいコンテンツを載せているページや、ある特定の言語で読ませたいページなどに使いましょう。</p>
 
 <h4 id="google画像検索結果に画像を表示させない">Google画像検索結果に画像を表示させない</h4>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"noimageindex"</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">"robots"</span> <span class="na">content=</span><span class="s">"noimageindex"</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 <p>個人のイラストを掲載している人で、画像を保存されたくないって人たまにいます。自分のサイト内の制御はかけられても画像検索までは…と思っていたアナタへの朗報ですね。</p>
 
 <h4 id="ページをキャッシュさせない">ページをキャッシュさせない</h4>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">”robots”</span> <span class="na">content=</span><span class="s">”noarchive”</span><span class="nt">&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;meta</span> <span class="na">name=</span><span class="s">”robots”</span> <span class="na">content=</span><span class="s">”noarchive”</span><span class="nt">&gt;</span>
+</code></pre></div></div>
 
 <p>ECサイトの会員制ページや、情報が更新され得るニュースページなどで利用されています。</p>
 

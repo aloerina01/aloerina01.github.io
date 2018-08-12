@@ -216,31 +216,28 @@
 <p>はてなブログにて<a href="http://aloecity.hatenablog.com/">青空コメントアウト</a>というブログを並行運営してるのですが、あちらではトップページに<strong>一定の高さで記事を並べる</strong>(はみ出る部分を「…」として統一のレイアウトで記事が並ぶ状態にする)ことができなかったので、なんとかこっちで実現したいと思っていました。
 このブログでは<a href="https://shopify.github.io/liquid/">Liquid</a>というテンプレートエンジンを採用していて、このエンジンの記法を使って<strong>最初の50単語までを表示して残りを「…」で省略する</strong>ということを実現しています😉</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>{{ post.content | strip_html | truncatewords: 50 }}<span class="nt">&lt;/p&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;p&gt;</span>{{ post.content | strip_html | truncatewords: 50 }}<span class="nt">&lt;/p&gt;</span>
+</code></pre></div></div>
 
 <p>けど落とし穴が…。50単語というのは英単語の話。日本語には適用されない！！！😰<br />
 というわけで対応が必要なわけですが、どうせなら最初の○文字とかじゃなくて記事の要約を書けないかなーと思い、記事冒頭のメタデータに(タイトルと同じように)要約を書いてそれを表示するようにしました。</p>
 
 <p><strong>記事.md</strong></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>---
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
 title: Jekyll + GitHub Pages でブログをつくってみた
 outline: このブログを公開するまでの道のりを公開します。Jekyllについてはネット上に情報が多い分散り散りになっているイメージがあるので、シンプルに必要なことだけまとめました。
 ---
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>index.html</strong></p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code>{% if post.outline %}
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{% if post.outline %}
 <span class="nt">&lt;p&gt;</span>{{ post.outline }}<span class="nt">&lt;/p&gt;</span>
 {% else %}
 <span class="nt">&lt;p&gt;</span>{{ post.content | strip_html | truncatewords: 50 }}<span class="nt">&lt;/p&gt;</span>
 {% endif %}
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="いったんこれにて">いったんこれにて</h3>
 <p>いったんこれにてブログの体裁が整ったので、後はどんどん記事を書いて<code class="highlighter-rouge">_post</code>に投下するだけ。所感としては、デザインテーマがいろんなプラグインを組み込んでくれてるおかげでカスタマイズしやすそう(依存性が低くて切り離したりプラグイン追加したりしやすそう)だったり、Liquidテンプレートが扱いやすくてカスタマイズページもガンガン作れそうだったり、何もせずともレスポンシブデザインだったり、GitHub上で「New File」とかやって記事つくれちゃったり…いろいろ便利だなーという感じです。</p>
@@ -460,6 +457,24 @@ outline: このブログを公開するまでの道のりを公開します。Je
 
   </div>
 
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a></li>
+      
+      <li><a href="/blog/2018-05-30-1">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</a></li>
+      
+      <li><a href="/blog/2017-01-01-1">Node.js + Express を試してみた</a></li>
+      
+    </div>
+  </div>
+</section>
   
 
   <section class="sub-contents profile-bar">

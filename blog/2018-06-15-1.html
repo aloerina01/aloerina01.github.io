@@ -173,8 +173,8 @@
 
 <h4 id="ソース">ソース</h4>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
-<span class="nb">set</span> -e
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+<span class="nb">set</span> <span class="nt">-e</span>
 
 <span class="nv">text_color_red</span><span class="o">=</span><span class="s2">"</span><span class="se">\0</span><span class="s2">33[37;41;1m"</span>
 <span class="nv">text_color_green</span><span class="o">=</span><span class="s2">"</span><span class="se">\0</span><span class="s2">33[37;42;1m"</span>
@@ -188,45 +188,44 @@
 git fetch
 
 <span class="c"># base_branchの最新のcommitを取得する</span>
-<span class="nv">latest_commit</span><span class="o">=</span><span class="k">$(</span>git log origin/<span class="nv">$base_branch</span> -n 1 | head -1 | sed -e <span class="s2">"s/commit </span><span class="se">\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="k">)</span>
+<span class="nv">latest_commit</span><span class="o">=</span><span class="k">$(</span>git log origin/<span class="nv">$base_branch</span> <span class="nt">-n</span> 1 | <span class="nb">head</span> <span class="nt">-1</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s/commit </span><span class="se">\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="k">)</span>
 <span class="c"># target_branchがbase_branchのどのcommitから枝分かれしたのかを調べる</span>
-<span class="nv">base_commit</span><span class="o">=</span><span class="k">$(</span>git show-branch --merge-base origin/<span class="nv">$target_branch</span> origin/<span class="nv">$base_branch</span> | head -1<span class="k">)</span>
+<span class="nv">base_commit</span><span class="o">=</span><span class="k">$(</span>git show-branch <span class="nt">--merge-base</span> origin/<span class="nv">$target_branch</span> origin/<span class="nv">$base_branch</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="k">)</span>
 
-<span class="nb">echo</span> <span class="s2">"latest commit: </span><span class="k">$(</span>git log <span class="nv">$latest_commit</span> --oneline | head -1<span class="k">)</span><span class="s2">"</span>
-<span class="nb">echo</span> <span class="s2">"based  commit: </span><span class="k">$(</span>git log <span class="nv">$base_commit</span> --oneline | head -1<span class="k">)</span><span class="s2">"</span>
+<span class="nb">echo</span> <span class="s2">"latest commit: </span><span class="k">$(</span>git log <span class="nv">$latest_commit</span> <span class="nt">--oneline</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="k">)</span><span class="s2">"</span>
+<span class="nb">echo</span> <span class="s2">"based  commit: </span><span class="k">$(</span>git log <span class="nv">$base_commit</span> <span class="nt">--oneline</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="k">)</span><span class="s2">"</span>
 
 <span class="c"># 「base_branchの最新commit」と「枝分かれしたcommit」を比較</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$latest_commit</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$base_commit</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$latest_commit</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$base_commit</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
   </span><span class="nv">comment</span><span class="o">=</span><span class="s2">"最新の</span><span class="nv">$base_branch</span><span class="s2">が取り込まれています"</span>
   <span class="nv">icon</span><span class="o">=</span><span class="s2">"✅ "</span>
   <span class="nv">event</span><span class="o">=</span><span class="s2">"APPROVE"</span>
-  <span class="nb">echo</span> -e <span class="s2">"</span><span class="k">${</span><span class="nv">text_color_green</span><span class="k">}${</span><span class="nv">comment</span><span class="k">}${</span><span class="nv">text_color_reset</span><span class="k">}</span><span class="s2">"</span>
+  <span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="k">${</span><span class="nv">text_color_green</span><span class="k">}${</span><span class="nv">comment</span><span class="k">}${</span><span class="nv">text_color_reset</span><span class="k">}</span><span class="s2">"</span>
 <span class="k">else
   </span><span class="nv">comment</span><span class="o">=</span><span class="s2">"</span><span class="nv">$base_branch</span><span class="s2">が進んでいる可能性があります"</span>
   <span class="nv">icon</span><span class="o">=</span><span class="s2">"🚫 "</span>
   <span class="nv">event</span><span class="o">=</span><span class="s2">"REQUEST_CHANGES"</span>
-  <span class="nb">echo</span> -e <span class="s2">"</span><span class="k">${</span><span class="nv">text_color_red</span><span class="k">}${</span><span class="nv">comment</span><span class="k">}${</span><span class="nv">text_color_reset</span><span class="k">}</span><span class="s2">"</span>
+  <span class="nb">echo</span> <span class="nt">-e</span> <span class="s2">"</span><span class="k">${</span><span class="nv">text_color_red</span><span class="k">}${</span><span class="nv">comment</span><span class="k">}${</span><span class="nv">text_color_reset</span><span class="k">}</span><span class="s2">"</span>
 <span class="k">fi</span>
 
 <span class="c"># CIによる実行でなければここで終了</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CI</span><span class="s2">"</span> <span class="o">==</span> <span class="nb">false</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$CI</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CI</span><span class="s2">"</span> <span class="o">==</span> <span class="nb">false</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$CI</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
   </span><span class="nb">exit </span>0
 <span class="k">fi</span>
 
 <span class="c"># 該当のPull Requestを取得できているか確認する</span>
-<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CI_PULL_REQUEST</span><span class="s2">"</span> <span class="o">==</span> <span class="nb">false</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> -z <span class="s2">"</span><span class="nv">$CI_PULL_REQUEST</span><span class="s2">"</span> <span class="o">]</span>; <span class="k">then
+<span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CI_PULL_REQUEST</span><span class="s2">"</span> <span class="o">==</span> <span class="nb">false</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$CI_PULL_REQUEST</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
   </span><span class="nb">echo</span> <span class="s1">'Fail to find a pull request.'</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0
 <span class="k">fi
-</span><span class="nv">pr_number</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="k">${</span><span class="nv">CI_PULL_REQUEST</span><span class="k">}</span> | sed -e <span class="s2">"s/^.*pull</span><span class="se">\/\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="k">)</span>
+</span><span class="nv">pr_number</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="k">${</span><span class="nv">CI_PULL_REQUEST</span><span class="k">}</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s/^.*pull</span><span class="se">\/\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="k">)</span>
 
 <span class="c"># 結果をPull RequestにReviewとしてコメントする</span>
-curl -XPOST <span class="se">\</span>
-  -H <span class="s2">"Authorization: token </span><span class="nv">$GITHUB_ACCESS_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
-  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
-  -d <span class="s2">"{</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="nv">$icon$comment</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">event</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="nv">$event</span><span class="se">\"</span><span class="s2">}"</span> <span class="se">\</span>
+curl <span class="nt">-XPOST</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: token </span><span class="nv">$GITHUB_ACCESS_TOKEN</span><span class="s2">"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"{</span><span class="se">\"</span><span class="s2">body</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="nv">$icon$comment</span><span class="se">\"</span><span class="s2">, </span><span class="se">\"</span><span class="s2">event</span><span class="se">\"</span><span class="s2">: </span><span class="se">\"</span><span class="nv">$event</span><span class="se">\"</span><span class="s2">}"</span> <span class="se">\</span>
  https://github.com/api/v3/repos/<span class="nv">$CIRCLE_PROJECT_USERNAME</span>/<span class="nv">$CIRCLE_PROJECT_REPONAME</span>/pulls/<span class="nv">$pr_number</span>/reviews
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>(CircleCIを使う前提で変数を定義しています)</p>
 

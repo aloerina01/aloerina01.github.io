@@ -162,19 +162,18 @@ HTTP通信まわりをいい感じにやってくれるので、<code class="hig
 
 <h4 id="routing">Routing</h4>
 
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/routes/index.html'</span><span class="p">);</span>
 <span class="p">});</span>
 
-<span class="nx">app</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'/get'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
+<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/get'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
     <span class="nx">request</span>
-        <span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">'http://qiita.com/api/v2/items?page=1&amp;per_page=20'</span><span class="p">)</span>
+        <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'http://qiita.com/api/v2/items?page=1&amp;per_page=20'</span><span class="p">)</span>
         <span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">apiErr</span><span class="p">,</span> <span class="nx">apiRes</span><span class="p">)</span> <span class="p">{</span>
             <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/routes/itemlist'</span><span class="p">,</span> <span class="p">{</span> <span class="na">items</span><span class="p">:</span> <span class="nx">apiRes</span><span class="p">.</span><span class="nx">body</span> <span class="p">});</span>
         <span class="p">});</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>エントリーポイントとなるこの<code class="highlighter-rouge">app.js</code>をNode上で実行すると、<code class="highlighter-rouge">localhost:3000</code>で待ち受けてくれるようになります。</p>
 

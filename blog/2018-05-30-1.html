@@ -180,51 +180,45 @@
 
 <h4 id="1-install-する">1. install する</h4>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ npm install -g @compositor/x0
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npm install -g @compositor/x0
+</code></pre></div></div>
 
 <p>公式ではグローバルに入れて使うことを促していますが、私は作業ディレクトリにdevDependencyでインストールしています。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>$ mkdir sample-x0
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ mkdir sample-x0
 $ cd sample-x0
 $ npm init
 $ npm install -D @compositor/x0
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="2-componentを実装する">2. componentを実装する</h4>
 
 <p>今回はこのようなディレクトリ構成にします。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>sample-x0
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sample-x0
   ├ package.json
   └ components
       ├ HelloWorld.js
       ├ ...
       └ ...(その他コンポーネント)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><strong>HelloWorld.js</strong></p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">!!&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
-</span></code></pre>
-</div>
+<span class="k">export</span> <span class="k">default</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="nx">World</span><span class="o">!!&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
+</span></code></pre></div></div>
 
 <h4 id="3-ビルドデプロイする">3. ビルド＆デプロイする</h4>
 
 <p>ビルドしてローカルサーバにデプロイするには<code class="highlighter-rouge">x0 [componentを含むディレクトリ]</code>というコマンドを叩きます。<code class="highlighter-rouge">--open (-o)</code>のオプションをつけると、サーバ起動後にデフォルトブラウザを起動してくれます。</p>
 
 <p>グローバルインストールしている場合</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ x0 components --open
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ x0 components --open
+</code></pre></div></div>
 
 <p>devDependencyでインストールしている場合</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>$ npx x0 components --open
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>$ npx x0 components --open
+</code></pre></div></div>
 
 <p>デプロイされると<code class="highlighter-rouge">components</code>以下に配置したコンポーネント名が一覧で表示され、選択するとそのコンポーネントが描画されたページへ遷移します。</p>
 
@@ -232,32 +226,29 @@ $ npm install -D @compositor/x0
 <p><code class="highlighter-rouge">components</code>以下に配置されたコンポーネントはそれぞれ単体で画面に表示されますが、それらを組み合わせた画面をつくることもできます。<code class="highlighter-rouge">components</code>以下にいくつかのコンポーネントとエントリーポイントとなる<code class="highlighter-rouge">main.js</code>を実装します。</p>
 
 <p><strong>Title.js</strong></p>
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="kr">export</span> <span class="k">default</span> <span class="p">({</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span> <span class="nx">title</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
-</span></code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">({</span> <span class="nx">title</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span> <span class="nx">title</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">;
+</span></code></pre></div></div>
 
 <p><strong>Contents.js</strong></p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="kr">export</span> <span class="k">default</span> <span class="p">({</span> <span class="nx">contents</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">contents</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">each</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span> <span class="nx">each</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/li&gt;</span><span class="se">)</span><span class="sr">}&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span><span class="p">;</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">({</span> <span class="nx">contents</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">ul</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">contents</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">each</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">li</span><span class="o">&gt;</span><span class="p">{</span> <span class="nx">each</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/li&gt;</span><span class="se">)</span><span class="sr">}&lt;/</span><span class="nx">ul</span><span class="o">&gt;</span><span class="p">;</span>
+</code></pre></div></div>
 
 <p><strong>main.js</strong></p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">Title</span> <span class="nx">from</span> <span class="s1">'./Title'</span><span class="p">;</span>
-<span class="kr">import</span> <span class="nx">Contents</span> <span class="nx">from</span> <span class="s1">'./Contents'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Title</span> <span class="k">from</span> <span class="s1">'./Title'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">Contents</span> <span class="k">from</span> <span class="s1">'./Contents'</span><span class="p">;</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">Title</span> <span class="nx">title</span><span class="o">=</span><span class="s2">"Fruits Basket"</span> <span class="o">/&gt;</span>
     <span class="o">&lt;</span><span class="nx">Contents</span> <span class="nx">contents</span><span class="o">=</span><span class="p">{[</span><span class="s1">'apple'</span><span class="p">,</span> <span class="s1">'orange'</span><span class="p">,</span> <span class="s1">'peach'</span><span class="p">]}</span> <span class="sr">/</span><span class="err">&gt;
 </span>  <span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
 </span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>これで<code class="highlighter-rouge">localhost:8080/main</code>に2つのコンポーネントが表示されます。</p>
 

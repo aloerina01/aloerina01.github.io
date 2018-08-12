@@ -158,43 +158,37 @@
 <p>グローバルのNodeを8.10.0に、<code class="highlighter-rouge">project_a</code>ディレクトリのNodeを9.9.0にする例です。</p>
 
 <h5 id="anyenvをつかってndenvをインストールする">anyenvをつかってndenvをインストールする</h5>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>anyenv install ndenv
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>anyenv <span class="nb">install </span>ndenv
+</code></pre></div></div>
 
 <h5 id="インストールできるnodeのバージョンを確認する">インストールできるNodeのバージョンを確認する</h5>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>ndenv install -l
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ndenv <span class="nb">install</span> <span class="nt">-l</span>
   Available versions:
     v0.1.14
     v0.1.15
     v0.1.16
     <span class="o">(</span>以下略<span class="o">)</span> 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="必要なバージョンをインストールする">必要なバージョンをインストールする</h5>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>ndenv install v8.10.0
-ndenv install v9.9.0
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ndenv <span class="nb">install </span>v8.10.0
+ndenv <span class="nb">install </span>v9.9.0
+</code></pre></div></div>
 
 <h5 id="インストール済みのバージョンを確認する">インストール済みのバージョンを確認する</h5>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>ndenv versions
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ndenv versions
   <span class="k">*</span> v8.10.0
     v9.0.0
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="グローバルのnodeバージョンを指定する">グローバルのNodeバージョンを指定する</h5>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code>ndenv global v8.10.0
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ndenv global v8.10.0
+</code></pre></div></div>
 
 <h5 id="ディレクトリ別にnodeバージョンを指定する">ディレクトリ別にNodeバージョンを指定する</h5>
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="nb">cd</span> ~/project_a
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/project_a
 ndenv <span class="nb">local </span>v9.9.0
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
         </article>

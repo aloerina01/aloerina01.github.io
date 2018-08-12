@@ -217,15 +217,13 @@
 
 <p>一番簡単な方法は何と言ってもCDNだね。</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
 
 <p>バージョンを指定したいかな？ そんなときはこう。</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp@1.0.1"</span><span class="nt">&gt;&lt;/script&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp@1.0.1"</span><span class="nt">&gt;&lt;/script&gt;</span>
+</code></pre></div></div>
 
 <h4 id="こんにちは世界">こんにちは世界</h4>
 
@@ -235,49 +233,47 @@
 
 <h5 id="jsxで書いた場合">JSXで書いた場合</h5>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/babel-standalone"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;script </span><span class="na">type=</span><span class="s">"text/babel"</span><span class="nt">&gt;</span>
 
-  <span class="kr">const</span> <span class="p">{</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">app</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">hyperapp</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">app</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">hyperapp</span>
   <span class="cm">/** @jsx h */</span>
 
-  <span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">greeting</span><span class="p">:</span> <span class="s2">"こんにちは世界"</span>
   <span class="p">}</span>
-  <span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="kr">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"title"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">greeting</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+  <span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"title"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">greeting</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
 </span>
   <span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
 
   <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="hyperxで書いた場合">Hyperxで書いた場合</h5>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;body&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/hyperapp"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://wzrd.in/standalone/hyperx"</span><span class="nt">&gt;&lt;/script&gt;</span>
   <span class="nt">&lt;script&gt;</span>
 
-  <span class="kr">const</span> <span class="p">{</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">app</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">hyperapp</span>
-  <span class="kr">const</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">hyperx</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="p">{</span> <span class="nx">h</span><span class="p">,</span> <span class="nx">app</span> <span class="p">}</span> <span class="o">=</span> <span class="nx">hyperapp</span>
+  <span class="kd">const</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">hyperx</span><span class="p">(</span><span class="nx">h</span><span class="p">)</span>
 
-  <span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
     <span class="na">greeting</span><span class="p">:</span> <span class="s2">"こんにちは世界"</span>
   <span class="p">}</span>
-  <span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{}</span>
-  <span class="kr">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">html</span><span class="err">`</span><span class="o">&lt;</span><span class="nx">h1</span> <span class="nx">id</span><span class="o">=</span><span class="s2">"title"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">greeting</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1&gt;</span><span class="err">`
-</span>
+  <span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{}</span>
+  <span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">html</span><span class="s2">`&lt;h1 id="title"&gt;{state.greeting}&lt;/h1&gt;`</span>
+
   <span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
 
   <span class="nt">&lt;/script&gt;</span>
 <span class="nt">&lt;/body&gt;</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>さて、ブラウザでは何が起きたかな？<br />
 ブラウザはHyperxやJSXをCDN経由でダウンロードし、scriptの部分をコンパイルして描画したよ。</p>
@@ -300,15 +296,13 @@
 
 <p>コンパイル前(JSX/Hyperx)</p>
 
-<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"test"</span><span class="nt">&gt;</span>Hi.<span class="nt">&lt;/h1&gt;</span>
-</code></pre>
-</div>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1</span> <span class="na">id=</span><span class="s">"test"</span><span class="nt">&gt;</span>Hi.<span class="nt">&lt;/h1&gt;</span>
+</code></pre></div></div>
 
 <p>コンパイル後</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">,</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="s2">"test"</span> <span class="p">},</span> <span class="s2">"Hi."</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="s2">"h1"</span><span class="p">,</span> <span class="p">{</span> <span class="na">id</span><span class="p">:</span> <span class="s2">"test"</span> <span class="p">},</span> <span class="s2">"Hi."</span><span class="p">)</span>
+</code></pre></div></div>
 
 <p>こんな具合だよ。いい具合だね。<br />
 さぁ次の章ではJSXとHyperx各々のためのビルド環境のセットアップを学ぶよ。ついておいで！</p>
@@ -323,66 +317,61 @@
 
 <h5 id="必要なモジュールのインストール">必要なモジュールのインストール</h5>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm i -S hyperapp
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i <span class="nt">-S</span> hyperapp
 
-<span class="gp">$ </span>npm i -D babel-plugin-transform-react-jsx babel-preset-es2015 babelify browserify bundle-collapser uglifyify uglifyjs
-</code></pre>
-</div>
+<span class="nv">$ </span>npm i <span class="nt">-D</span> babel-plugin-transform-react-jsx babel-preset-es2015 babelify browserify bundle-collapser uglifyify uglifyjs
+</code></pre></div></div>
 
 <h5 id="babelrcの用意"><code class="highlighter-rouge">.babelrc</code>の用意</h5>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"es2015"</span><span class="p">],</span><span class="w">
-  </span><span class="nt">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"es2015"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">[</span><span class="w">
       </span><span class="s2">"transform-react-jsx"</span><span class="p">,</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"pragma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h"</span><span class="w">
+        </span><span class="s2">"pragma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <h5 id="ビルドの実行">ビルドの実行</h5>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/browserify <span class="se">\</span>
-  -t babelify <span class="se">\</span>
-  -g uglifyify <span class="se">\</span>
-  -p bundle-collapser/plugin index.js | uglifyjs &gt; bundle.js
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/browserify <span class="se">\</span>
+  <span class="nt">-t</span> babelify <span class="se">\</span>
+  <span class="nt">-g</span> uglifyify <span class="se">\</span>
+  <span class="nt">-p</span> bundle-collapser/plugin index.js | uglifyjs <span class="o">&gt;</span> bundle.js
+</code></pre></div></div>
 
 <h4 id="webpackを使う場合">Webpackを使う場合</h4>
 
 <h5 id="必要なモジュールのインストール-1">必要なモジュールのインストール</h5>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm i -S hyperapp
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i <span class="nt">-S</span> hyperapp
 
-<span class="gp">$ </span>npm i -D webpack babel-core babel-loader babel-preset-es2015 babel-plugin-transform-react-jsx
-</code></pre>
-</div>
+<span class="nv">$ </span>npm i <span class="nt">-D</span> webpack babel-core babel-loader babel-preset-es2015 babel-plugin-transform-react-jsx
+</code></pre></div></div>
 
 <h5 id="babelrcの用意-1"><code class="highlighter-rouge">.babelrc</code>の用意</h5>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"es2015"</span><span class="p">],</span><span class="w">
-  </span><span class="nt">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"es2015"</span><span class="p">],</span><span class="w">
+  </span><span class="s2">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">[</span><span class="w">
       </span><span class="s2">"transform-react-jsx"</span><span class="p">,</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"pragma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h"</span><span class="w">
+        </span><span class="s2">"pragma"</span><span class="p">:</span><span class="w"> </span><span class="s2">"h"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <h5 id="webpackconfigjsの用意"><code class="highlighter-rouge">webpack.config.js</code>の用意</h5>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">entry</span><span class="p">:</span> <span class="s2">"./index.js"</span><span class="p">,</span>
   <span class="na">output</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">filename</span><span class="p">:</span> <span class="s2">"bundle.js"</span>
@@ -397,32 +386,29 @@
     <span class="p">]</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="ビルドの実行-1">ビルドの実行</h5>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/webpack -p
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/webpack <span class="nt">-p</span>
+</code></pre></div></div>
 
 <h4 id="rollupを使う場合">Rollupを使う場合</h4>
 
 <h5 id="必要なモジュールのインストール-2">必要なモジュールのインストール</h5>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>npm i -S hyperapp
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm i <span class="nt">-S</span> hyperapp
 
-<span class="gp">$ </span>npm i -D rollup rollup-plugin-babel rollup-plugin-node-resolve rollup-plugin-uglify babel-preset-es2015-rollup babel-plugin-transform-react-jsx
-</code></pre>
-</div>
+<span class="nv">$ </span>npm i <span class="nt">-D</span> rollup rollup-plugin-babel rollup-plugin-node-resolve rollup-plugin-uglify babel-preset-es2015-rollup babel-plugin-transform-react-jsx
+</code></pre></div></div>
 
 <h5 id="rollupconfigjsの用意"><code class="highlighter-rouge">rollup.config.js</code>の用意</h5>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">babel</span> <span class="nx">from</span> <span class="s2">"rollup-plugin-babel"</span>
-<span class="kr">import</span> <span class="nx">resolve</span> <span class="nx">from</span> <span class="s2">"rollup-plugin-node-resolve"</span>
-<span class="kr">import</span> <span class="nx">uglify</span> <span class="nx">from</span> <span class="s2">"rollup-plugin-uglify"</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">babel</span> <span class="k">from</span> <span class="s2">"rollup-plugin-babel"</span>
+<span class="k">import</span> <span class="nx">resolve</span> <span class="k">from</span> <span class="s2">"rollup-plugin-node-resolve"</span>
+<span class="k">import</span> <span class="nx">uglify</span> <span class="k">from</span> <span class="s2">"rollup-plugin-uglify"</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="p">{</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
     <span class="nx">babel</span><span class="p">({</span>
       <span class="na">babelrc</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
@@ -435,14 +421,12 @@
     <span class="nx">uglify</span><span class="p">()</span>
   <span class="p">]</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h5 id="ビルドの実行-2">ビルドの実行</h5>
 
-<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/rollup -cf iife -i index.js -o bundle.js
-</code></pre>
-</div>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">$(</span>npm bin<span class="k">)</span>/rollup <span class="nt">-cf</span> iife <span class="nt">-i</span> index.js <span class="nt">-o</span> bundle.js
+</code></pre></div></div>
 
 <h3 id="hyperxを使う環境の用意">Hyperxを使う環境の用意</h3>
 
@@ -465,9 +449,8 @@
 
 <p>Syntax</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">props</span><span class="p">,</span> <span class="nx">children</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">props</span><span class="p">,</span> <span class="nx">children</span><span class="p">)</span>
+</code></pre></div></div>
 
 <ul>
   <li><code class="highlighter-rouge">name {String}</code> … 「div」など、HTML上でのタグ名</li>
@@ -475,7 +458,7 @@
   <li><code class="highlighter-rouge">children {String | Array}</code> … 子要素</li>
 </ul>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="p">{</span> <span class="na">href</span><span class="p">:</span> <span class="s2">"#"</span> <span class="p">},</span> <span class="s2">"next page"</span><span class="p">)</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="p">{</span> <span class="na">href</span><span class="p">:</span> <span class="s2">"#"</span> <span class="p">},</span> <span class="s2">"next page"</span><span class="p">)</span>
 
 <span class="c1">// return object</span>
 <span class="c1">// {</span>
@@ -485,16 +468,14 @@
 <span class="c1">//   },</span>
 <span class="c1">//   children: 'next page'</span>
 <span class="c1">// }</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="app"><code class="highlighter-rouge">app</code></h4>
 
 <p>HyperappによるWebアプリケーションを起動するよ。これを呼び出すことで全てが始まる。オプションを添えられるよ。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nx">container</span><span class="p">)</span>
-</code></pre>
-</div>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nx">container</span><span class="p">)</span>
+</code></pre></div></div>
 
 <h4 id="state">State</h4>
 
@@ -504,27 +485,26 @@
 
 <p>仮想DOMを返す関数だよ。引数に<code class="highlighter-rouge">state</code>と<code class="highlighter-rouge">actions</code>をとるよ。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">on</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 
-<span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">toggle</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">on</span><span class="p">:</span> <span class="o">!</span><span class="nx">state</span><span class="p">.</span><span class="nx">on</span> <span class="p">})</span>
 <span class="p">}</span>
 
-<span class="kr">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+<span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onclick</span><span class="o">=</span><span class="p">{</span><span class="nx">actions</span><span class="p">.</span><span class="nx">toggle</span><span class="p">}</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">on</span><span class="p">.</span><span class="nx">toString</span><span class="p">()}</span><span class="o">&lt;</span><span class="sr">/button</span><span class="err">&gt;
 </span><span class="p">)</span>
 
 <span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="actions">Actions</h4>
 
 <p>Webアプリケーションの振る舞いを定義する関数のコレクションだよ。<code class="highlighter-rouge">actions</code>は一般的に<code class="highlighter-rouge">state</code>を更新するために利用されるよ。そのため、返り値が新しい<code class="highlighter-rouge">state</code>であることがしばしば。</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">setValue</span><span class="p">:</span> <span class="nx">value</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">value</span> <span class="p">}),</span>
   <span class="na">addValue</span><span class="p">:</span> <span class="nx">value</span> <span class="o">=&gt;</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="na">value</span><span class="p">:</span> <span class="nx">state</span><span class="p">.</span><span class="nx">value</span> <span class="o">+</span> <span class="nx">value</span> <span class="p">}),</span>
   <span class="na">addValueLater</span><span class="p">:</span> <span class="nx">value</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -533,8 +513,7 @@
     <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <ul>
   <li><code class="highlighter-rouge">data</code> … actionの処理(モデルの更新)に必要な情報</li>
@@ -542,13 +521,13 @@
   <li><code class="highlighter-rouge">actions</code> … アプリケーションが持つ大元のactions</li>
 </ul>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">count</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
-<span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">count</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">sub</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">state</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span>
   <span class="na">add</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">state</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="p">}</span>
 
-<span class="kr">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
+<span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">(</span>
   <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span>
     <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
 </span>    <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onclick</span><span class="o">=</span><span class="p">{</span><span class="nx">actions</span><span class="p">.</span><span class="nx">sub</span><span class="p">}</span> <span class="nx">disabled</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">count</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">}</span><span class="o">&gt;</span>
@@ -559,20 +538,19 @@
 </span><span class="p">)</span>
 
 <span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="global-events">Global Events</h4>
 
 <p>app関数が返すオブジェクトにstateと繋がっている元のactionsがある。viewに渡されるactionsと同じで、actionを呼び出す時に、stateが更新される！</p>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
-<span class="kr">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">x</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="na">y</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
+<span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">move</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">x</span><span class="p">,</span> <span class="nx">y</span> <span class="p">})</span>
 <span class="p">}</span>
-<span class="kr">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span> <span class="nx">state</span><span class="p">.</span><span class="nx">y</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
+<span class="kd">const</span> <span class="nx">view</span> <span class="o">=</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">h1</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">state</span><span class="p">.</span><span class="nx">x</span> <span class="o">+</span> <span class="s2">", "</span> <span class="o">+</span> <span class="nx">state</span><span class="p">.</span><span class="nx">y</span><span class="p">}</span><span class="o">&lt;</span><span class="sr">/h1</span><span class="err">&gt;
 </span>
-<span class="kr">const</span> <span class="nx">MyApp</span> <span class="o">=</span> <span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">MyApp</span> <span class="o">=</span> <span class="nx">app</span><span class="p">(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">actions</span><span class="p">,</span> <span class="nx">view</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">)</span>
 
 <span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"mousemove"</span><span class="p">,</span> <span class="nx">e</span> <span class="o">=&gt;</span>
   <span class="nx">MyApp</span><span class="p">.</span><span class="nx">move</span><span class="p">({</span>
@@ -580,8 +558,7 @@
     <span class="na">y</span><span class="p">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">clientY</span>
   <span class="p">})</span>
 <span class="p">)</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h4 id="lifecycle-methods"><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md">Lifecycle Methods</a></h4>
 
@@ -594,24 +571,23 @@
   <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#ondestroy"><code class="highlighter-rouge">ondestroy</code></a> … ElementがDOMから消える直後</li>
 </ul>
 
-<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span>
-<span class="kr">const</span> <span class="nx">editor</span> <span class="o">=</span> <span class="nx">CodeMirror</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s2">"div"</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">editor</span> <span class="o">=</span> <span class="nx">CodeMirror</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
 
-<span class="kr">const</span> <span class="nx">Editor</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">setOptions</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">=&gt;</span>
+<span class="kd">const</span> <span class="nx">Editor</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">setOptions</span> <span class="o">=</span> <span class="nx">options</span> <span class="o">=&gt;</span>
     <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">options</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="nx">editor</span><span class="p">.</span><span class="nx">setOption</span><span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">options</span><span class="p">[</span><span class="nx">key</span><span class="p">]))</span>
 
-  <span class="kr">const</span> <span class="nx">oncreate</span> <span class="o">=</span> <span class="nx">elm</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">oncreate</span> <span class="o">=</span> <span class="nx">elm</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">setOptions</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
     <span class="nx">elm</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">node</span><span class="p">)</span>
   <span class="p">}</span>
 
-  <span class="kr">const</span> <span class="nx">onupdate</span> <span class="o">=</span> <span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">setOptions</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
+  <span class="kd">const</span> <span class="nx">onupdate</span> <span class="o">=</span> <span class="nx">_</span> <span class="o">=&gt;</span> <span class="nx">setOptions</span><span class="p">(</span><span class="nx">options</span><span class="p">)</span>
 
   <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">oncreate</span><span class="o">=</span><span class="p">{</span><span class="nx">oncreate</span><span class="p">}</span> <span class="nx">onupdate</span><span class="o">=</span><span class="p">{</span><span class="nx">onupdate</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
 </span><span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="afterword">Afterword</h3>
 
