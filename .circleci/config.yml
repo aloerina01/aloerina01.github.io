@@ -33,4 +33,4 @@ workflows:
     - build
     - indexing:
         requires:
-          - build
+            - build
