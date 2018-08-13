@@ -32,5 +32,5 @@ workflows:
   build_and_indexing:
     - build
     - indexing:
-      requires:
-        - build
+        requires:
+          - build
