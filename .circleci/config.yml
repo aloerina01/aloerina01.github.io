@@ -5,6 +5,8 @@ jobs:
       - image: circleci/ruby:2.5.0
     environment:
       TZ: /usr/share/zoneinfo/Asia/Tokyo
+    branches:
+      only: /development/
     steps:
       - checkout
       - run: chmod +x ../scripts/install_gsl.sh && ../scripts/install_gsl.sh
@@ -18,6 +20,8 @@ jobs:
       - image: circleci/ruby:2.5.0
     environment:
       TZ: /usr/share/zoneinfo/Asia/Tokyo
+    branches:
+      only: /development/
     steps:
       - checkout
       - run: bundle install
