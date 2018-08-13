@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby: 2.5.0
+      - image: circleci/ruby:2.5.0
     environment:
       TZ: /usr/share/zoneinfo/Asia/Tokyo
     steps:
@@ -15,7 +15,7 @@ jobs:
 
   indexing:
     docker:
-      - image: circleci/ruby: 2.5.0
+      - image: circleci/ruby:2.5.0
     environment:
       TZ: /usr/share/zoneinfo/Asia/Tokyo
     steps:
