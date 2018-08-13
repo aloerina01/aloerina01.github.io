@@ -1,0 +1,32 @@
+version: 2
+  jobs:
+    build:
+      docker:
+        - image: circleci/ruby: 2.5.0
+      environment:
+        TZ: /usr/share/zoneinfo/Asia/Tokyo
+      steps:
+        - checkout
+        - run: chmod +x ../scripts/install_gsl.sh && ../scripts/install_gsl.sh
+        - run: bundle install --frozen
+        - run: git config --global user.name "aloerina01"
+        - run: git config --global user.email "4443321+aloerina01@users.noreply.github.com"
+        - run: bundle exec rake deploy --trace
+
+    indexing:
+      docker:
+        - image: circleci/ruby: 2.5.0
+      environment:
+        TZ: /usr/share/zoneinfo/Asia/Tokyo
+      steps:
+        - checkout
+        - run: bundle install
+        - run: ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia  
+
+  workflows:
+    version: 2
+    build_and_indexing:
+      - build
+      - indexing:
+        requires:
+          - build
