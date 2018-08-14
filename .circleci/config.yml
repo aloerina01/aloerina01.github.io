@@ -10,23 +10,18 @@ jobs:
       - run: git config --global user.name "aloerina01"
       - run: git config --global user.email "4443321+aloerina01@users.noreply.github.com"
       - run: bundle exec rake deploy --trace
-
   indexing:
     docker:
       - image: circleci/ruby:2.5.0
     steps:
       - checkout
       - run: bundle install
-      - run: ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia  
-
+      - run: ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia
 workflows:
   version: 2
   build_and_indexing:
     jobs:
       - build
-          filters:
-            branches:
-              only: development
       - indexing:
           requires:
             - build
