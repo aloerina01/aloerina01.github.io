@@ -3,8 +3,6 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.5.0
-    environment:
-      TZ: /usr/share/zoneinfo/Asia/Tokyo
     steps:
       - checkout
       - run: chmod +x ../scripts/install_gsl.sh && ../scripts/install_gsl.sh
@@ -16,8 +14,6 @@ jobs:
   indexing:
     docker:
       - image: circleci/ruby:2.5.0
-    environment:
-      TZ: /usr/share/zoneinfo/Asia/Tokyo
     steps:
       - checkout
       - run: bundle install
