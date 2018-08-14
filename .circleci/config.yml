@@ -1,16 +1,18 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/workspace
     docker:
       - image: circleci/ruby:2.5.0
     steps:
       - checkout
-      - run: chmod +x ../scripts/install_gsl.sh && ../scripts/install_gsl.sh
+      - run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
       - run: bundle install --frozen
       - run: git config --global user.name "aloerina01"
       - run: git config --global user.email "4443321+aloerina01@users.noreply.github.com"
       - run: bundle exec rake deploy --trace
   indexing:
+    working_directory: ~/workspace
     docker:
       - image: circleci/ruby:2.5.0
     steps:
