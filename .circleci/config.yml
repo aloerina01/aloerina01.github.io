@@ -30,6 +30,3 @@ workflows:
       - indexing:
           requires:
             - build
-          filters:
-            branches:
-              only: development
