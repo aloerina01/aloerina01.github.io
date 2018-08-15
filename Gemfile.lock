@@ -118,7 +118,7 @@ DEPENDENCIES
   jekyll-paginate
   jekyll-sitemap
   rake-jekyll
-  rb-gsl (~> 1.16.0)
+  rb-gsl (~> 1.16.0.6)
 
 BUNDLED WITH
    1.16.1
