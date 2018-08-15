@@ -15,6 +15,7 @@ exclude:
   - "package.json"
   - "CNAME"
   - "circle.yml"
+  - ".circleci"
   - "package.json"
   - "package-lock.json"
   - "webpack.config.js"
