@@ -13,7 +13,7 @@ jobs:
             - bundle-cache-
       - run: bundle check || bundle install --frozen
       - save_cache:
-          keys: bundle-cache-{{ checksum "Gemfile.lock" }}
+          key: bundle-cache-{{ checksum "Gemfile.lock" }}
           path:
             - vendor/bundle
       - run: git config --global user.name "aloerina01"
@@ -31,7 +31,7 @@ jobs:
             - bundle-cache-
       - run: bundle check || bundle install --frozen
       - save_cache:
-          keys: bundle-cache-{{ checksum "Gemfile.lock" }}
+          key: bundle-cache-{{ checksum "Gemfile.lock" }}
           path:
             - vendor/bundle
       - run: ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia
