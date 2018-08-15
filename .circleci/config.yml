@@ -17,7 +17,7 @@ jobs:
       - image: circleci/ruby:2.5.0
     steps:
       - checkout
-      - run: bundle install
+      - run: bundle install --frozen
       - run: ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia
 workflows:
   version: 2
