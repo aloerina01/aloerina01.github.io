@@ -7,7 +7,15 @@ jobs:
     steps:
       - checkout
       - run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
-      - run: bundle install --frozen
+      - restore_cache:
+          keys:
+            - bundle-cache-{{ checksum "Gemfile.lock" }}
+            - bundle-cache-
+      - run: bundle check || bundle install --frozen
+      - save_cache:
+          keys: bundle-cache-{{ checksum "Gemfile.lock" }}
+          path:
+            - vendor/bundle
       - run: git config --global user.name "aloerina01"
       - run: git config --global user.email "4443321+aloerina01@users.noreply.github.com"
       - run: bundle exec rake deploy --trace
@@ -17,7 +25,15 @@ jobs:
       - image: circleci/ruby:2.5.0
     steps:
       - checkout
-      - run: bundle install --frozen
+      - restore_cache:
+          keys:
+            - bundle-cache-{{ checksum "Gemfile.lock" }}
+            - bundle-cache-
+      - run: bundle check || bundle install --frozen
+      - save_cache:
+          keys: bundle-cache-{{ checksum "Gemfile.lock" }}
+          path:
+            - vendor/bundle
       - run: ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia
 workflows:
   version: 2
