@@ -6,11 +6,11 @@ jobs:
       - image: circleci/ruby:2.5.0
     steps:
       - checkout
-      - run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
       - restore_cache:
           keys:
             - bundle-cache-{{ checksum "Gemfile.lock" }}
             - bundle-cache-
+      - run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
       - run: bundle check || bundle install --frozen
       - save_cache:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
@@ -29,6 +29,7 @@ jobs:
           keys:
             - bundle-cache-{{ checksum "Gemfile.lock" }}
             - bundle-cache-
+      - run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
       - run: bundle check || bundle install --frozen
       - save_cache:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
