@@ -11,7 +11,7 @@ jobs:
             - bundle-cache-{{ checksum "Gemfile.lock" }}
             - bundle-cache-
       - run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
-      - run: bundle check || bundle install --frozen
+      - run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
       - save_cache:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
@@ -30,7 +30,7 @@ jobs:
             - bundle-cache-{{ checksum "Gemfile.lock" }}
             - bundle-cache-
       - run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
-      - run: bundle check || bundle install --frozen
+      - run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
       - save_cache:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
