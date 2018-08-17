@@ -35,7 +35,7 @@ jobs:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run: ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia
+      - run: chmod +x ./scripts/check_diff.sh && ./scripts/check_diff.sh $CI_API_TOKEN && ALGOLIA_API_KEY=$ALGOLIA_ADMIN_API_KEY bundle exec jekyll algolia
 workflows:
   version: 2
   build_and_indexing:

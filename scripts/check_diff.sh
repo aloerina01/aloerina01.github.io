@@ -17,5 +17,6 @@ diffs=$(git diff --name-only $(eval echo $revision)... | grep -E "^.*_posts.*$")
 if [ -z "$diffs" ]; then
   echo "${text_color_green}Success${text_color_reset} No diff in /_posts/" && exit 1
 else
-  echo "$diff" && exit 0
+  echo "$diffs"
+  echo "{text_color_green}Success${text_color_reset} Start indexing." && exit 0
 fi
