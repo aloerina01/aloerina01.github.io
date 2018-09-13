@@ -4,7 +4,7 @@
     "start": "npm run demo",
     "build": "bundle exec jekyll serve",
     "pre-build": "bundle exec jekyll serve  --destination demo",
-    "demo": "bundle exec jekyll serve --watch --destination demo",
+    "demo": "bundle exec jekyll serve --incremental --draft --watch --destination demo --config ./_config.dev.yml",
     "webpack": "NODE_ENV=development webpack",
     "webpack:w": "NODE_ENV=development webpack -w",
     "webpack:prod": "NODE_ENV=production webpack"
