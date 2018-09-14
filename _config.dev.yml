@@ -65,7 +65,7 @@ collections:
     permalink: /:path
   drafts:
     output: true
-    permalink: /draft/:title
+    permalink: /draft/:year-:month-:day-:title
   old:
     output: true
 
@@ -93,7 +93,6 @@ defaults:
       posttype_name: "Tips"
   - scope:
       path: "_drafts"  # draftsはtypeではない https://github.com/jekyll/jekyll/issues/4080
-      type: ""
     values:
       layout: post
       posttype: draft
