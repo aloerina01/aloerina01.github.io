@@ -277,8 +277,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <h3 id="factory-component-の責務">Factory Component の責務</h3>
 
-<p>今までのコンポーネントとは性質が少し違い、<strong>表示するComponentを動的に切り替える機能を持つComponentがFactory Component</strong>です。<br />
-<strong>正確には後述のHigher-Order Componentの1機能</strong>なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。</p>
+<p>今までのコンポーネントとは性質が少し違い、<strong>表示するComponentを動的に切り替える機能を持つComponentがFactory Component</strong>です。  具体的には以下のような役割を持ちます。</p>
 
 <ul>
   <li><code class="highlighter-rouge">props</code>でtypeを受け取る</li>
@@ -317,18 +316,16 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <h3 id="higher-order-component-の責務">Higher-Order Component の責務</h3>
 
-<p>上述のFactoryをはじめ、<strong>Componentを様々な方法で再利用できる仕組みがHigher-Order Component</strong>です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。</p>
+<p>Componentを引数にとり新たなComponentを返す関数、言い換えると<strong>Componentを様々な方法で再利用できる仕組みがHigher-Order Component</strong>です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。</p>
 
 <ul>
   <li>Factoryとなり、表示するComponentを動的に切り替える</li>
-  <li>ComponentをWrapし、Adapterパターンのように機能を追加する</li>
+  <li>ComponentをWrapし、Decoratorパターンのように機能を追加する</li>
   <li><code class="highlighter-rouge">props</code>をproxyし、加工する</li>
 </ul>
 
 <p>このようなことができます(他にもいろいろできます)。<br />
-Factoryのサンプルコードのように、<strong>あるComponentをTemplateに含むComponentをつくることで、対象のComponentをWrapし様々なロジックを噛ませることができる</strong>というものです。</p>
-
-<p>これはやろうとすればかなりトリッキーなこともできる仕組みで、また(抽象レイヤーであるために)責務が曖昧になりやすいので、個人的にはなるべく使わないようにしています。唯一それなりの頻度で使うものがFactory Componentという感じです。</p>
+これはやろうとすればかなりトリッキーなこともできる仕組みで、また(抽象レイヤーであるために)責務が曖昧になりやすいので、個人的にはなるべく使わないようにしています。</p>
 
 <h3 id="おわりに">おわりに</h3>
 

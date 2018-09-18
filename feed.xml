@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-09-17T15:00:48+00:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-09-18T01:27:02+00:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</title><link href="https://aloerina01.github.io/blog/2018-08-01-1" rel="alternate" type="text/html" title="DartでWebフロントの開発はできる？ エコシステムから見るDartの現状" /><published>2018-08-01T00:00:00+00:00</published><updated>2018-08-01T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-08-01-1">&lt;p&gt;JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、&lt;strong&gt;iOS、Android、Webの3大Clientで使える言語&lt;/strong&gt;を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。&lt;/p&gt;
 
 &lt;p&gt;ただ、言語がよければすぐに使えるというわけではなく、使いやすさや開発環境も大切な要素の1つです。&lt;br /&gt;
@@ -979,8 +979,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 &lt;h3 id=&quot;factory-component-の責務&quot;&gt;Factory Component の責務&lt;/h3&gt;
 
-&lt;p&gt;今までのコンポーネントとは性質が少し違い、&lt;strong&gt;表示するComponentを動的に切り替える機能を持つComponentがFactory Component&lt;/strong&gt;です。&lt;br /&gt;
-&lt;strong&gt;正確には後述のHigher-Order Componentの1機能&lt;/strong&gt;なのですが、Factory機能だけを抜き出して使う例が個人的に多いので別扱いとしました。具体的には以下のような役割を持ちます。&lt;/p&gt;
+&lt;p&gt;今までのコンポーネントとは性質が少し違い、&lt;strong&gt;表示するComponentを動的に切り替える機能を持つComponentがFactory Component&lt;/strong&gt;です。  具体的には以下のような役割を持ちます。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;でtypeを受け取る&lt;/li&gt;
@@ -1019,18 +1018,16 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 &lt;h3 id=&quot;higher-order-component-の責務&quot;&gt;Higher-Order Component の責務&lt;/h3&gt;
 
-&lt;p&gt;上述のFactoryをはじめ、&lt;strong&gt;Componentを様々な方法で再利用できる仕組みがHigher-Order Component&lt;/strong&gt;です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。&lt;/p&gt;
+&lt;p&gt;Componentを引数にとり新たなComponentを返す関数、言い換えると&lt;strong&gt;Componentを様々な方法で再利用できる仕組みがHigher-Order Component&lt;/strong&gt;です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Factoryとなり、表示するComponentを動的に切り替える&lt;/li&gt;
-  &lt;li&gt;ComponentをWrapし、Adapterパターンのように機能を追加する&lt;/li&gt;
+  &lt;li&gt;ComponentをWrapし、Decoratorパターンのように機能を追加する&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;をproxyし、加工する&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;このようなことができます(他にもいろいろできます)。&lt;br /&gt;
-Factoryのサンプルコードのように、&lt;strong&gt;あるComponentをTemplateに含むComponentをつくることで、対象のComponentをWrapし様々なロジックを噛ませることができる&lt;/strong&gt;というものです。&lt;/p&gt;
-
-&lt;p&gt;これはやろうとすればかなりトリッキーなこともできる仕組みで、また(抽象レイヤーであるために)責務が曖昧になりやすいので、個人的にはなるべく使わないようにしています。唯一それなりの頻度で使うものがFactory Componentという感じです。&lt;/p&gt;
+これはやろうとすればかなりトリッキーなこともできる仕組みで、また(抽象レイヤーであるために)責務が曖昧になりやすいので、個人的にはなるべく使わないようにしています。&lt;/p&gt;
 
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 
