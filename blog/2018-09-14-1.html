@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>React+Fluxで良きWebアプリを設計するためのFlux入門</title>
+  <meta name="description" content="Fluxとは何なのか、どう実装するのが良いのか…。Fluxを100％理解するために必要なことを整理してみました。「なんとなく理解している」から「ちゃんと理解している」にステップアップするためのFlux再入門話でもあります。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Fluxとは何なのか、どう実装するのが良いのか…。Fluxを100％理解するために必要なことを整理してみました。「なんとなく理解している」から「ちゃんと理解している」にステップアップするためのFlux再入門話でもあります。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-09-14-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="React+Fluxで良きWebアプリを設計するためのFlux入門" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="React+Fluxで良きWebアプリを設計するためのFlux入門">
+  <meta name="twitter:description" content="Fluxとは何なのか、どう実装するのが良いのか…。Fluxを100％理解するために必要なことを整理してみました。「なんとなく理解している」から「ちゃんと理解している」にステップアップするためのFlux再入門話でもあります。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-09-14-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-09-14-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/dist/drift.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/CpmOgk2omnWqTzz43"target="_blank">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-09-14-1">
+            <span itemprop="name">React+Fluxで良きWebアプリを設計するためのFlux入門</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">React+Fluxで良きWebアプリを設計するためのFlux入門</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2018-09-14</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/react/">React</a>,    
+            <a href="/category/flux/">Flux</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>Reactの良さを活かしやすいFluxは、Webアプリケーションの設計手法としてずいぶん馴染みのあるものになったように感じます。私もFluxを取り入れた開発を2年近く経験し、知見も溜まり、使い慣れたような気持ちでいました。</p>
+
+<p>が、使い始めた頃はもちろん、今でも何となく分かったつもりでいる部分があったり、複雑な実装が必要な場面で悩むことがあったりします。「Fluxはダメだ！うまく実現できない！」と投げ出したくなるときもありますが、そんなときこそ基礎へ立ち返る機会。<br />
+そんなわけでFluxに再入門し、<strong>Fluxとは何なのか、どう実装するのが適切なのか</strong>を<a href="http://facebook.github.io/flux/" target="_blank">公式ドキュメント</a>に則って整理してみようと思います。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#fluxとは" id="markdown-toc-fluxとは">Fluxとは</a></li>
+  <li><a href="#dispatcher" id="markdown-toc-dispatcher">Dispatcher</a>    <ul>
+      <li><a href="#要件1-イベントが発生したらすべてのcallbackを実行すること" id="markdown-toc-要件1-イベントが発生したらすべてのcallbackを実行すること">要件1 イベントが発生したらすべてのCallbackを実行すること</a></li>
+      <li><a href="#要件2-callbackの実行順序を制御できること" id="markdown-toc-要件2-callbackの実行順序を制御できること">要件2 Callbackの実行順序を制御できること</a></li>
+    </ul>
+  </li>
+  <li><a href="#action" id="markdown-toc-action">Action</a>    <ul>
+      <li><a href="#actionに必要なたった2つのこと" id="markdown-toc-actionに必要なたった2つのこと">Actionに必要なたった2つのこと</a></li>
+      <li><a href="#actioncreator" id="markdown-toc-actioncreator">ActionCreator</a></li>
+      <li><a href="#flux-standard-action" id="markdown-toc-flux-standard-action">Flux Standard Action</a></li>
+    </ul>
+  </li>
+  <li><a href="#store" id="markdown-toc-store">Store</a>    <ul>
+      <li><a href="#storeの役割" id="markdown-toc-storeの役割">Storeの役割</a></li>
+      <li><a href="#initialstateの実装" id="markdown-toc-initialstateの実装">InitialStateの実装</a></li>
+      <li><a href="#reduceの実装そしてimmutablestate" id="markdown-toc-reduceの実装そしてimmutablestate">Reduceの実装、そしてImmutableState</a></li>
+    </ul>
+  </li>
+  <li><a href="#view" id="markdown-toc-view">View</a>    <ul>
+      <li><a href="#状態を持たないviews" id="markdown-toc-状態を持たないviews">状態を持たないViews</a></li>
+      <li><a href="#storeとのパイプラインとなり状態を受け取るcontroller-views" id="markdown-toc-storeとのパイプラインとなり状態を受け取るcontroller-views">Storeとのパイプラインとなり状態を受け取るController-Views</a></li>
+      <li><a href="#viewのまとめ" id="markdown-toc-viewのまとめ">Viewのまとめ</a></li>
+    </ul>
+  </li>
+  <li><a href="#私がfluxを採用する理由" id="markdown-toc-私がfluxを採用する理由">私がFluxを採用する理由</a></li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="fluxとは">Fluxとは</h3>
+
+<p>Fluxとは、<strong>クライアントサイドのデータフローの設計パターン</strong>です。</p>
+
+<p><img src="/assets/2018-09-14-1-flux.png" alt="flux data flow" />
+<small><a href="https://facebook.github.io/flux/docs/in-depth-overview.html#content" target="_blank">In Depth Overview - Flux</a>より</small></p>
+
+<p>Fluxの代名詞的なこの図でも示されている通り、Fluxは<strong>データの流れを一方向に強制します</strong>。そして一方向に流れるデータを受け取る/送る4つの登場人物(Action, Dispatcher, Store, View)が<strong>どのようにデータを扱うかを定義する</strong>ことで、アプリケーション内の見通しを良く保つ設計となっています。</p>
+
+<p>この一方向データフローは<strong>イベント駆動</strong>で実現されます。詳細は後述しますが簡単に流れをまとめると、</p>
+
+<ul>
+  <li>ボタンクリックなどをトリガーにして</li>
+  <li><strong>Action</strong>と呼ばれるイベントとデータのかたまりが</li>
+  <li><strong>Dispatcher</strong>と呼ばれるイベントハブに集約され</li>
+  <li>Dispatcherに登録されたCallbackによって<strong>Store</strong>の状態を更新し</li>
+  <li>そしてStoreの変更を検知した<strong>View</strong>が自身を更新します。</li>
+</ul>
+
+<p>このように、Fluxは<strong>一方向データフロー</strong>と<strong>イベント駆動</strong>を根幹とする設計手法となっています。これを念頭に置いた上で、Fluxの4つの役割がどういうものなのか考えていきます。</p>
+
+<h3 id="dispatcher">Dispatcher</h3>
+
+<p>Dispatcherはアプリケーション全体で唯一のイベントハブです。イベント駆動であるFluxのコアであり、Fluxのデータフローを支えるための2つの要件を満たす必要があります。</p>
+
+<h4 id="要件1-イベントが発生したらすべてのcallbackを実行すること">要件1 イベントが発生したらすべてのCallbackを実行すること</h4>
+
+<p>Dispatcherは、<code class="highlighter-rouge">addEventListener</code>のように「特定のイベントに特定のCallbackを紐づける」のではなく、<strong>何らかのイベントがdispatchされたら登録されている全てのCallbackを実行します</strong>。その際、Callbackには<strong>Payload</strong>と呼ばれる「イベントに関する情報を持つオブジェクト」を引数として渡します。ここまでがDispatcherの役割です。</p>
+
+<p>Payloadに応じてStoreの中身をどう更新するか(または更新しないか)は、Callback側で判断することになります。</p>
+
+<p>ここまでをまとめると、Dispatcherとは「Callbackを登録し、イベントがdispatchされたら登録されたすべてのCallbackにPayloadを渡し実行する」ものであると言えます。コードで表現すると以下のようになります。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">Dispatcher</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="p">}</span>
+  <span class="nx">register</span><span class="p">(</span><span class="nx">callback</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">callback</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="nx">dispatch</span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">callbacks</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">callback</span> <span class="o">=&gt;</span> <span class="nx">callback</span><span class="p">(</span><span class="nx">payload</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">instance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Dispatcher</span><span class="p">();</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">instance</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>余談ですが、Dispatcherは「アプリケーション全体で<strong>唯一の</strong>イベントハブ」なのでシングルトンで実装しています。</p>
+
+<h4 id="要件2-callbackの実行順序を制御できること">要件2 Callbackの実行順序を制御できること</h4>
+
+<p>Storeを更新する際、実行順序を意識しなければならない場面もあると思います。例えば「ユーザーの設定を更新して、それに応じて表示する情報を更新する」といったケースですね。これに対応することがDispatcherのもう一つの要件です。つまり<strong>Callbackの実行順序を制御する</strong>ことです。</p>
+
+<p>Fluxの設計手法を実現するための最小限のライブラリである<a href="http://facebook.github.io/flux/docs/flux-utils.html#content" target="_blank">Flux Utils</a>で実例を確認してみます。Flux Utilsに実装されている<a href="https://github.com/facebook/flux/blob/master/src/Dispatcher.js" target="_blank">Dispatcher.js</a>には<code class="highlighter-rouge">waitFor</code>という関数が定義されていて、これがCallbackの実行順序を制御しています。</p>
+
+<p>waitFor関数はCallbackの中から呼び出すもので、「あのCallbackの実行を待ってから自身を実行する」という制御をすることができます。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">callback1</span> <span class="o">=</span> <span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">UserSettingStore</span><span class="p">.</span><span class="nx">hoge</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">hoge</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">const</span> <span class="nx">callbackId1</span> <span class="o">=</span> <span class="nx">dispatcher</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">callback1</span><span class="p">);</span>  <span class="c1">// callbackを登録すると、識別子が発行されます</span>
+
+<span class="kd">const</span> <span class="nx">callback2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">dispatcher</span><span class="p">.</span><span class="nx">waitFor</span><span class="p">([</span><span class="nx">callbackId1</span><span class="p">]);</span>                 <span class="c1">// UsdrSettingStoreの更新を待ちます</span>
+  <span class="kd">const</span> <span class="nx">userSetting</span> <span class="o">=</span> <span class="nx">UserSettingStore</span><span class="p">.</span><span class="nx">getState</span><span class="p">();</span>   <span class="c1">// UserSettingStoreの更新後に最新の状態を取得します</span>
+  <span class="c1">// do something</span>
+<span class="p">}</span>
+<span class="nx">dispatcher</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="nx">callback2</span><span class="p">);</span>
+</code></pre></div></div>
+
+<ol>
+  <li>DispatcherにCallbackを登録すると、Callbackの識別子が発行されます</li>
+  <li>Callback内で<code class="highlighter-rouge">waitFor</code>を呼び出し、引数に実行を待ちたい識別子を渡します</li>
+  <li>あとは同期的に処理を書くだけでOKです</li>
+</ol>
+
+<p>waitFor関数は実装の一例ですが、このようにCallbackの実行順序を管理できる仕組みを持っておくことが必要です。</p>
+
+<h3 id="action">Action</h3>
+
+<h4 id="actionに必要なたった2つのこと">Actionに必要なたった2つのこと</h4>
+
+<p>Actionは、そのアプリケーション内でどんなユーザーオペレーションが起きるのか(ログインする、登録する、等)を定義するものです。言い換えると<strong>ユースケースを定義するもの</strong>です。Actionの要件は以下の2つです。</p>
+
+<ol>
+  <li>プレーンなオブジェクトであること</li>
+  <li>ユースケースを表す<code class="highlighter-rouge">type</code>プロパティを持っていること</li>
+</ol>
+
+<p>とてもシンプルですね。ちなみにActionオブジェクト内に定義される<code class="highlighter-rouge">type</code>は一般的に<strong>ActionType</strong>と呼ばれます。</p>
+
+<p>また、Actionには<code class="highlighter-rouge">type</code>プロパティ以外に、ユースケースを実行するために必要な値を持たせることもできます。以下のコードはTODOアプリの「TODOを追加する」Actionの実装例です。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">todoAction</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">type</span><span class="p">:</span> <span class="s1">'ADD_TODO'</span><span class="p">,</span>  <span class="c1">// ActionType</span>
+  <span class="na">text</span><span class="p">:</span> <span class="s1">'hoge'</span>       <span class="c1">// 新しく追加するTODOの文字列</span>
+<span class="p">}</span>
+
+<span class="nx">dispatcher</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">todoAction</span><span class="p">);</span>  <span class="c1">// actionをdispatcherにわたす</span>
+</code></pre></div></div>
+
+<p>このActionがDispatcherに渡されることで、Fluxのデータフローが始まります。</p>
+
+<h4 id="actioncreator">ActionCreator</h4>
+
+<p>実際のコードでは、Actionを生成しDispatcherに送るまでの一連の処理を行うヘルパーメソッドを実装するケースが多く、このヘルパーメソッドを<strong>ActionCreator</strong>と呼びます。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ActionTypes</span> <span class="k">from</span> <span class="s1">'./ActionTypes'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">dispatcher</span> <span class="k">from</span> <span class="s1">'./Dispatcher'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">addTodo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">action</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">type</span><span class="p">:</span> <span class="nx">ActionTypes</span><span class="p">.</span><span class="nx">ADD_TODO</span><span class="p">,</span>  <span class="c1">// 定数化されたActionType</span>
+    <span class="na">text</span><span class="p">:</span> <span class="nx">text</span>
+  <span class="p">};</span>
+  <span class="nx">dispatcher</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">action</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<h4 id="flux-standard-action">Flux Standard Action</h4>
+
+<p>Flux思想のライブラリのひとつである<a href="https://redux.js.org/" target="_blank">Redux</a>では、「Actionとはこう実装すべき」という指標を定義しています。それが<a href="https://github.com/redux-utilities/flux-standard-action" target="_blank">Flux Standard Action (FSA)</a>です。</p>
+
+<p>FSAは「読みやすさ」「使いやすさ」「シンプルさ」をコンセプトとし、上述の2つの要件に加え4つのルールを設けています。</p>
+
+<ul>
+  <li>Actionは<code class="highlighter-rouge">payload</code>プロパティを持つことができる</li>
+  <li>Actionは<code class="highlighter-rouge">error</code>プロパティを持つことができる</li>
+  <li>Actionは<code class="highlighter-rouge">meta</code>プロパティを持つことができる</li>
+  <li>Actionは<code class="highlighter-rouge">type</code>, <code class="highlighter-rouge">payload</code>, <code class="highlighter-rouge">error</code>, <code class="highlighter-rouge">meta</code>以外のプロパティを持ってはいけない</li>
+</ul>
+
+<p><code class="highlighter-rouge">type</code>プロパティはActionTypeのことですね。「typeは<code class="highlighter-rouge">===</code>を使って同じものか判定できるべきだ」と定義していますが、一般的にActionTypeはStringで実装することが多いと思うので、特に意識する必要はなさそうです。</p>
+
+<p>FSAにおける<code class="highlighter-rouge">payload</code>プロパティは今まで説明してきた「Payload」より狭義です。先述したPayloadは「Dispatcherに渡されるもの」であり、つまりActionオブジェクトそのものを指していました。それに対してFSAのPayloadは「Actionの実行に必要な値」のみを指しています。「TODOを追加する」Actionの例でいうと、<code class="highlighter-rouge">text</code>部分のみがPayloadということになります。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="nl">type</span><span class="p">:</span> <span class="nx">ActionType</span><span class="p">.</span><span class="nx">ADD_TODO</span><span class="p">,</span>
+  <span class="nx">payload</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">text</span><span class="p">:</span> <span class="s1">'hoge'</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>FSAにおける<code class="highlighter-rouge">error</code>プロパティは、エラーが起きたことを通知するために<code class="highlighter-rouge">true</code>をセットして使います。「エラーであることを正常時と同じ方法で伝達する」という点で<code class="highlighter-rouge">Promise.reject</code>に似ている、と説明されています。<code class="highlighter-rouge">error: true</code>のときは<code class="highlighter-rouge">payload</code>にはエラーオブジェクトを詰めるのが一般的な用法です。</p>
+
+<p>FSAにおける<code class="highlighter-rouge">meta</code>プロパティは、<code class="highlighter-rouge">payload</code>に詰めるべきでないものを持つための補助的なものです。</p>
+
+<p>以上がFSAのルールです。<br />
+FSAはReduxを使う上で守るべきものですが、Redux以外の方法でFlux設計をする場合でも選択肢のひとつとして検討してみるといいと思います。</p>
+
+<h3 id="store">Store</h3>
+
+<h4 id="storeの役割">Storeの役割</h4>
+
+<p>Storeは<strong>アプリケーションのState(状態)</strong>と、<strong>それを操作するロジック</strong>を持ちます。これだけ聞くとMVW(Whatever)のModelにも似ていますが、いくつか大きく異なる点があります。</p>
+
+<ul>
+  <li>getterのみを持ち、setterを持たない</li>
+  <li>setterの代わりにStoreを更新するための関数を持ち、それをDispatcherのCallbackとして登録する</li>
+  <li>Storeが変更されたら、イベントを発火し変更をViewに伝える</li>
+</ul>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ActionTypes</span> <span class="k">from</span> <span class="s1">'./ActionTypes'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">dispatcher</span> <span class="k">from</span> <span class="s1">'./Dispatcher'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">TodoStore</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">todo</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="na">done</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">};</span>
+    <span class="nx">dispatcher</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">update</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">));</span> <span class="c1">// CallbackをDispatcherに登録</span>
+  <span class="p">}</span>
+  
+  <span class="c1">// getter</span>
+  <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// Storeが持つStateを更新するための関数</span>
+  <span class="nx">update</span><span class="p">(</span><span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="nx">ActionTypes</span><span class="p">.</span><span class="nx">ADD_TODO</span><span class="p">:</span>
+        <span class="kd">const</span> <span class="nx">nextState</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">);</span>
+        <span class="nx">nextState</span><span class="p">.</span><span class="nx">todo</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">text</span><span class="p">);</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="nx">nextState</span><span class="p">;</span>
+        <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">emit</span><span class="p">();</span>  <span class="c1">// Store内のStateが更新されたらイベントを発火</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>このように、Storeが保持する値を直接更新する方法(Setter)は存在しません。Storeが持つ値をひとまとめの<code class="highlighter-rouge">State</code>とみなし、<strong>どのような条件でどのようにStateを更新するかを定義している</strong>関数が実装されています。Dispatcherの説明時に度々登場した「Callback」は、Storeで実装されるというわけですね。</p>
+
+<p>ここまでの話をまとめると、<strong>何らかのActionがDispatcherに渡されると、Dispatcherに登録されているすべてのCallbackが実行され、そのCallbackが各々のStoreを更新していく</strong>ということになります。</p>
+
+<p>ここまでで「どのようにViewを変更するか」の話が出ていないことからも分かるように、Viewとロジックは完全に切り離されることになります。アプリケーションの状態を変更するレイヤーでは「どのように状態を変えるか」にのみ専念すれば良く、変更後の状態に応じてViewをどのように変えるかはView側が気にかければ良いというわけです。</p>
+
+<div style="border-radius:10px;background-color:#f7f7f7;padding:12px 20px;margin:42px 0 48px;">
+
+ただし、実際にはStoreがViewの状態を保持しなければならない場面も出てくると思います。つまりSoteには「アプリケーションの状態を保持するStore」と「Viewの状態を保持するStore」という2種類が存在するということになります。  
+とはいえこれは公式ドキュメント外のお話。また別の機会に考えをまとめてみようと思います。
+
+</div>
+
+<h4 id="initialstateの実装">InitialStateの実装</h4>
+
+<p>ViewはStateを取得するためにStoreのgetterを叩きます。ただ、初期描画時にはStoreが空っぽなので、初期値を定義しておく必要があります。上の実装例では<code class="highlighter-rouge">constructor</code>の中で初期値を定義していますが、別の関数としてくくり出しておくのが一般的です。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">TodoStore</span> <span class="p">{</span>
+  <span class="nx">getInitialState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">todo</span><span class="p">:</span> <span class="p">[],</span>
+      <span class="na">done</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="nx">getState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">||</span> <span class="k">this</span><span class="p">.</span><span class="nx">getInitialState</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="reduceの実装そしてimmutablestate">Reduceの実装、そしてImmutableState</h4>
+
+<p>Stateを更新するCallbackの実装方法においても、一般的に良しとされているパターンがあります。それが<strong>Reduce関数</strong>です。Reduce関数は<strong>現在のStateとPayloadを受け取り、新しいStateを返す純粋関数</strong>です。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">TodoStore</span> <span class="p">{</span>
+  <span class="nx">reduce</span><span class="p">(</span><span class="nx">currentState</span><span class="p">,</span> <span class="nx">action</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">switch</span><span class="p">(</span><span class="nx">action</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">case</span> <span class="nx">ActionTypes</span><span class="p">.</span><span class="nx">ADD_TODO</span><span class="p">:</span>
+        <span class="kd">const</span> <span class="nx">nextState</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">assign</span><span class="p">({},</span> <span class="nx">currentState</span><span class="p">);</span>
+        <span class="c1">// do something</span>
+        <span class="k">return</span> <span class="nx">nextState</span><span class="p">;</span>
+      <span class="nl">default</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nx">currentState</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>こうすることでStoreのテストがしやすかったり、データの更新ロジックの周りに副作用が起きにくかったり、<code class="highlighter-rouge">dispatcher.waitFor</code>などと組み合わせても煩雑にならず可読性の高い状態を維持できたり…といったことが期待されます。</p>
+
+<p>Reduce関数と併せて、<strong>StateをImmutableにする</strong>実装パターンもよく使われます。Reduce関数以外のところで意図せずStateが書き換えられてしまうことを防ぎ、堅牢性を高める手法です。</p>
+
+<p>Flux Utilsの<a href="https://github.com/facebook/flux/blob/master/src/stores/FluxReduceStore.js" target="_blank">FluxReduceStore.js</a>は、これらのパターンを組み込んだStoreを実装するためのライブラリです。このStoreを継承したStoreを実装すると、自然に由緒正しきStoreを実装することができます(できました)。</p>
+
+<h3 id="view">View</h3>
+
+<p>Fluxにおける「View」という役割には、実は2つの登場人物が含まれます。</p>
+
+<ul>
+  <li>状態を持たない<strong>Views</strong> (役割としてのViewと区別するために複数形で表現しています)</li>
+  <li>Storeとのパイプラインとなり状態を受け取る<strong>Controller-Views</strong></li>
+</ul>
+
+<h4 id="状態を持たないviews">状態を持たないViews</h4>
+
+<p>Fluxにおける「View」の基本的な役割はシンプルで、<strong>外から状態を受け取り、テンプレートにはめ込み表示する</strong>のみです。これが「自身では状態を持たない」ということです。</p>
+
+<p>ReactComponentで表現すると、<strong>Stateを持たず、Propsを受け取るだけのComponent</strong>です。<strong><a href="https://reactjs.org/docs/components-and-props.html#functional-and-class-components" target="_blank">Functional Component</a></strong>を使って実装します。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">TodoComponet</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"checkbox"</span> <span class="nx">checked</span><span class="o">=</span><span class="s2">"{props.isDone}"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span>
+<span class="p">}</span> 
+</code></pre></div></div>
+
+<p>このように関数としてComponentを定義するのがFunctional Componentです。<br />
+従来のClass Componentと違いStateを持ったりインスタンス変数を持ったりできず、「propsを受け取る」機能だけを持つComponentです。そのためViewsの役割を明示的に守れるので、推奨されています。</p>
+
+<p>とはいえ、Viewsが状態を絶対持ってはいけないというわけではなくて、Component内で完結する「表示に関わる状態」を持つことは可能です。Reactで実装する場合は、Class Componentとして実装します。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">TodoListComponent</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="p">();</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="na">isEmpty</span><span class="p">:</span> <span class="kc">false</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="cm">/* 略 */</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>これらのComponentをツリー状に組み合わせて(つまりReactの一般的な用法で)FluxのViewは構成されます。ツリーの上から下へとpropsのバケツリレーをしながら状態を渡して、画面に要素を表示していくわけです。</p>
+
+<h4 id="storeとのパイプラインとなり状態を受け取るcontroller-views">Storeとのパイプラインとなり状態を受け取るController-Views</h4>
+
+<p>ViewsだけではStoreの情報を受け取る仕組みがありません。これを担うのが、<strong>ツリーの最上部に配置される(つまりルートComponentとなる)Controller-Views</strong>です。具体的な要件は2つです。</p>
+
+<ol>
+  <li>Storeの変更を監視する</li>
+  <li>StoreからStateを取得し、Viewsに流し込むStateを形成する</li>
+</ol>
+
+<p>Flux UtilsではController-Viewsを<strong>Container</strong>と呼んでいて、ReactComponentをベースにContainerを生成する<a href="https://github.com/facebook/flux/blob/master/src/container/FluxContainer.js" target="_blank">FluxContanier.js</a>が用意されています。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">TodoStore</span> <span class="k">from</span> <span class="s1">'./TodoStore'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">HogeStore</span> <span class="k">from</span> <span class="s1">'./HogeStore'</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nx">RootComponent</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
+  <span class="c1">// 1. 変更を監視するStoreを列挙する</span>
+  <span class="kr">static</span> <span class="nx">getStores</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span> <span class="nx">TodoStore</span><span class="p">,</span> <span class="nx">HogeStore</span> <span class="p">];</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 2. Viewsに流し込むStateを生成する</span>
+  <span class="kr">static</span> <span class="nx">calculateState</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">todoState</span><span class="p">:</span> <span class="nx">TodoStore</span><span class="p">.</span><span class="nx">getState</span><span class="p">(),</span>
+      <span class="na">hogeState</span><span class="p">:</span> <span class="nx">HogeStore</span><span class="p">.</span><span class="nx">getState</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="c1">// 3. ViewsのpropsにStateを流し込む</span>
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">&lt;</span><span class="nx">ChildComponent</span> <span class="p">{...</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">}</span> <span class="sr">/&gt;</span><span class="err"> 
+</span>  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 4. Container化する</span>
+<span class="k">export</span> <span class="k">default</span> <span class="nx">Container</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">RootComponent</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>FluxContainerを使ったController-Viewsの実装例です。</p>
+
+<p>FluxContainerとFluxStoreとつなぎ込むため、2つのstaticメソッドが用意されています。<code class="highlighter-rouge">getStores</code>で変更を監視するStoreを決め、Storeが変更されたら呼出される<code class="highlighter-rouge">calculateState</code>でViewsに流し込むStateを形成します。このStateはComponentの<code class="highlighter-rouge">state</code>にセットされるので、あとは通常のReactComponentのようにRender関数で子Componentへ渡せばOKです。</p>
+
+<p>ちなみにFluxContainer.js内で<code class="highlighter-rouge">import</code>されている<a href="https://github.com/facebook/flux/blob/master/src/container/FluxContainerSubscriptions.js" target="_blank">FluxContainerSubscriptions.js</a>に「①Storeの変更を監視する」ロジックがまとまっていて参考になりました。</p>
+
+<h4 id="viewのまとめ">Viewのまとめ</h4>
+
+<ul>
+  <li>Fluxの「View」には2つの登場人物がいる</li>
+  <li>状態を持たないViews
+    <ul>
+      <li>原則<code class="highlighter-rouge">state</code>を持たないReactComponent</li>
+      <li>Functinal Componentで実装することが推奨されている</li>
+      <li>表示に関する状態を持つ場合はClass Componentで実装する</li>
+    </ul>
+  </li>
+  <li>Storeとのパイプラインとなり状態を受け取るController-Views
+    <ul>
+      <li>要件①「Storeの変更を監視する」</li>
+      <li>要件②「StoreからStateを取得し、Viewsに流し込むStateを形成する」</li>
+      <li>Flux UtilsではController-Viewsを「Container」と呼ぶ</li>
+      <li>FluxContainer.jsを利用してController-Viewsを実装できる
+        <ul>
+          <li><code class="highlighter-rouge">getStores</code>で監視するStoreを決める</li>
+          <li><code class="highlighter-rouge">calculateState</code>で流し込むStateを形成する</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="私がfluxを採用する理由">私がFluxを採用する理由</h3>
+
+<p>Fluxを利用することで得られた一番のメリットは「チーム開発において破綻しにくいこと」でした。</p>
+
+<p>複数人で開発しているとアプリケーションの成長スピードが早く、コード量はどんどん増えていきます。時期が過ぎれば「特定の機能を一新する」なんて場面も出てきたりします。そのような場面でも影響範囲が最小限に抑えられ、ベースの設計が破綻することなく対応し続けられたと感じています。</p>
+
+<p>Fluxは現代のWebアプリケーションでよくある<strong>複雑なUIとデータ構造を持つアプリケーション</strong>を想定して作られています。それ故、アプリケーションが肥大化しても各Moduleの責務が分離されていて、互いに疎結合で、一部の修正が他に影響せず、堅牢なアプリケーションを維持することが(比較的)しやすくなるわけですね。</p>
+
+<p>また、誰が実装しても大きなバラツキが生じにくかったという点でも、破綻しにくさが感じられました。「状態をどこで管理するべきか」「ビジネスロジックをどこに書くべきか」といったような実装の差(もしくは迷い)は、MVWで実装してたときに比べ少なかったように感じます。<br />
+MVWのほうがドメイン層やアプリケーション層の柔軟さ・解釈の広さ等があるからかもしれません。</p>
+
+<p>まとめると、Fluxの破綻しにくさとは、①明確に責務が分離された設計思想であること、②どこに何を実装するかという迷いや個人差が少なくなること、にあると感じています。もちろんFluxのメリット・デメリットの体感には個人差がありますが、これが私がFluxを採用する理由です(MVWも好きですし、もちろん時と場合によってそちらを採用することもあります)。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>FluxはWebアプリケーションの設計方法の選択肢として今後も利用されていくのだと思います。でもFluxは完璧ではありません。<br />
+Fluxの問題点や苦手分野については様々なところで議論されている通りで、基本的な用法では対応しきれない場面も出てくると思います。非同期処理、複雑なドメイン層の表現、アニメーション…、他にも課題はいろいろです(体感的には山盛りです)。が、それらに立ち向かうためにも、まずは基礎を100％理解していることが必要だと思います。</p>
+
+<p>そんなわけで今回はFlux再入門の話でした。気になる箇所や間違っている箇所がありましたら<a href="https://twitter.com/aloerina_" target="_blank">@aloerina_</a>までご連絡ください。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=React%2BFlux%E3%81%A7%E8%89%AF%E3%81%8DWeb%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEFlux%E5%85%A5%E9%96%80&url=https://aloerina01.github.io/blog/2018-09-14-1&via=aloerina_&hashtags=React,Flux,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=React%2BFlux%E3%81%A7%E8%89%AF%E3%81%8DWeb%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEFlux%E5%85%A5%E9%96%80&u=https://aloerina01.github.io/blog/2018-09-14-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=React%2BFlux%E3%81%A7%E8%89%AF%E3%81%8DWeb%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEFlux%E5%85%A5%E9%96%80&url=https://aloerina01.github.io/blog/2018-09-14-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-09-14-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?React%2BFlux%E3%81%A7%E8%89%AF%E3%81%8DWeb%E3%82%A2%E3%83%97%E3%83%AA%E3%82%92%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AEFlux%E5%85%A5%E9%96%80%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-09-14-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+      
+      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/skills/">Skills</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <p class="present-title">aloerinaのサポーターになる</p>
+    <p class="present-description">気に入った記事がありましたらお小遣いをあげて支援してみませんか？ aloerinaの生計を支えるサポーターになることができます！</p>
+    <div class="present-qr">
+        <a href="kyash://qr/u/7297457164651391829" target="_blank" class="qr-execute-button">Kyashでサポートする</a>
+        <img src="/assets/kyash_qr.png">
+        <span><a href="https://kyash.co/" target="_blank">またはKyashで id: <b>aloerina</b> に送金する</a></span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // Syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+  });
+});
+
+
+//   var menuToggle = $('#js-mobile-menu').unbind();
+//   $('#js-navigation-menu').removeClass("show");
+//   menuToggle.on('click', function(e) {
+//     e.preventDefault();
+//     $('#js-navigation-menu').slideToggle(function(){
+//       if($('#js-navigation-menu').is(':hidden')) {
+//         $('#js-navigation-menu').removeAttr('style');
+//       }
+//     });
+//   });
+// });
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2018-09-14-1',
+    'title': 'React+Fluxで良きWebアプリを設計するためのFlux入門'
+  });
+</script>
+
+
+</body>
+
+</html>

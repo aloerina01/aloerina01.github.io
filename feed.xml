@@ -1,5 +1,417 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-09-19T15:03:59+00:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</title><link href="https://aloerina01.github.io/blog/2018-08-01-1" rel="alternate" type="text/html" title="DartでWebフロントの開発はできる？ エコシステムから見るDartの現状" /><published>2018-08-01T00:00:00+00:00</published><updated>2018-08-01T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-08-01-1">&lt;p&gt;JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、&lt;strong&gt;iOS、Android、Webの3大Clientで使える言語&lt;/strong&gt;を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-09-20T05:39:50+00:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">React+Fluxで良きWebアプリを設計するためのFlux入門</title><link href="https://aloerina01.github.io/blog/2018-09-14-1" rel="alternate" type="text/html" title="React+Fluxで良きWebアプリを設計するためのFlux入門" /><published>2018-09-14T00:00:00+00:00</published><updated>2018-09-14T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-09-14-1">&lt;p&gt;Reactの良さを活かしやすいFluxは、Webアプリケーションの設計手法としてずいぶん馴染みのあるものになったように感じます。私もFluxを取り入れた開発を2年近く経験し、知見も溜まり、使い慣れたような気持ちでいました。&lt;/p&gt;
+
+&lt;p&gt;が、使い始めた頃はもちろん、今でも何となく分かったつもりでいる部分があったり、複雑な実装が必要な場面で悩むことがあったりします。「Fluxはダメだ！うまく実現できない！」と投げ出したくなるときもありますが、そんなときこそ基礎へ立ち返る機会。&lt;br /&gt;
+そんなわけでFluxに再入門し、&lt;strong&gt;Fluxとは何なのか、どう実装するのが適切なのか&lt;/strong&gt;を&lt;a href=&quot;http://facebook.github.io/flux/&quot; target=&quot;_blank&quot;&gt;公式ドキュメント&lt;/a&gt;に則って整理してみようと思います。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#fluxとは&quot; id=&quot;markdown-toc-fluxとは&quot;&gt;Fluxとは&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#dispatcher&quot; id=&quot;markdown-toc-dispatcher&quot;&gt;Dispatcher&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#要件1-イベントが発生したらすべてのcallbackを実行すること&quot; id=&quot;markdown-toc-要件1-イベントが発生したらすべてのcallbackを実行すること&quot;&gt;要件1 イベントが発生したらすべてのCallbackを実行すること&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#要件2-callbackの実行順序を制御できること&quot; id=&quot;markdown-toc-要件2-callbackの実行順序を制御できること&quot;&gt;要件2 Callbackの実行順序を制御できること&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#action&quot; id=&quot;markdown-toc-action&quot;&gt;Action&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#actionに必要なたった2つのこと&quot; id=&quot;markdown-toc-actionに必要なたった2つのこと&quot;&gt;Actionに必要なたった2つのこと&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#actioncreator&quot; id=&quot;markdown-toc-actioncreator&quot;&gt;ActionCreator&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#flux-standard-action&quot; id=&quot;markdown-toc-flux-standard-action&quot;&gt;Flux Standard Action&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#store&quot; id=&quot;markdown-toc-store&quot;&gt;Store&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#storeの役割&quot; id=&quot;markdown-toc-storeの役割&quot;&gt;Storeの役割&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#initialstateの実装&quot; id=&quot;markdown-toc-initialstateの実装&quot;&gt;InitialStateの実装&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#reduceの実装そしてimmutablestate&quot; id=&quot;markdown-toc-reduceの実装そしてimmutablestate&quot;&gt;Reduceの実装、そしてImmutableState&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#view&quot; id=&quot;markdown-toc-view&quot;&gt;View&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#状態を持たないviews&quot; id=&quot;markdown-toc-状態を持たないviews&quot;&gt;状態を持たないViews&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#storeとのパイプラインとなり状態を受け取るcontroller-views&quot; id=&quot;markdown-toc-storeとのパイプラインとなり状態を受け取るcontroller-views&quot;&gt;Storeとのパイプラインとなり状態を受け取るController-Views&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#viewのまとめ&quot; id=&quot;markdown-toc-viewのまとめ&quot;&gt;Viewのまとめ&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#私がfluxを採用する理由&quot; id=&quot;markdown-toc-私がfluxを採用する理由&quot;&gt;私がFluxを採用する理由&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;fluxとは&quot;&gt;Fluxとは&lt;/h3&gt;
+
+&lt;p&gt;Fluxとは、&lt;strong&gt;クライアントサイドのデータフローの設計パターン&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2018-09-14-1-flux.png&quot; alt=&quot;flux data flow&quot; /&gt;
+&lt;small&gt;&lt;a href=&quot;https://facebook.github.io/flux/docs/in-depth-overview.html#content&quot; target=&quot;_blank&quot;&gt;In Depth Overview - Flux&lt;/a&gt;より&lt;/small&gt;&lt;/p&gt;
+
+&lt;p&gt;Fluxの代名詞的なこの図でも示されている通り、Fluxは&lt;strong&gt;データの流れを一方向に強制します&lt;/strong&gt;。そして一方向に流れるデータを受け取る/送る4つの登場人物(Action, Dispatcher, Store, View)が&lt;strong&gt;どのようにデータを扱うかを定義する&lt;/strong&gt;ことで、アプリケーション内の見通しを良く保つ設計となっています。&lt;/p&gt;
+
+&lt;p&gt;この一方向データフローは&lt;strong&gt;イベント駆動&lt;/strong&gt;で実現されます。詳細は後述しますが簡単に流れをまとめると、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ボタンクリックなどをトリガーにして&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Action&lt;/strong&gt;と呼ばれるイベントとデータのかたまりが&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Dispatcher&lt;/strong&gt;と呼ばれるイベントハブに集約され&lt;/li&gt;
+  &lt;li&gt;Dispatcherに登録されたCallbackによって&lt;strong&gt;Store&lt;/strong&gt;の状態を更新し&lt;/li&gt;
+  &lt;li&gt;そしてStoreの変更を検知した&lt;strong&gt;View&lt;/strong&gt;が自身を更新します。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;このように、Fluxは&lt;strong&gt;一方向データフロー&lt;/strong&gt;と&lt;strong&gt;イベント駆動&lt;/strong&gt;を根幹とする設計手法となっています。これを念頭に置いた上で、Fluxの4つの役割がどういうものなのか考えていきます。&lt;/p&gt;
+
+&lt;h3 id=&quot;dispatcher&quot;&gt;Dispatcher&lt;/h3&gt;
+
+&lt;p&gt;Dispatcherはアプリケーション全体で唯一のイベントハブです。イベント駆動であるFluxのコアであり、Fluxのデータフローを支えるための2つの要件を満たす必要があります。&lt;/p&gt;
+
+&lt;h4 id=&quot;要件1-イベントが発生したらすべてのcallbackを実行すること&quot;&gt;要件1 イベントが発生したらすべてのCallbackを実行すること&lt;/h4&gt;
+
+&lt;p&gt;Dispatcherは、&lt;code class=&quot;highlighter-rouge&quot;&gt;addEventListener&lt;/code&gt;のように「特定のイベントに特定のCallbackを紐づける」のではなく、&lt;strong&gt;何らかのイベントがdispatchされたら登録されている全てのCallbackを実行します&lt;/strong&gt;。その際、Callbackには&lt;strong&gt;Payload&lt;/strong&gt;と呼ばれる「イベントに関する情報を持つオブジェクト」を引数として渡します。ここまでがDispatcherの役割です。&lt;/p&gt;
+
+&lt;p&gt;Payloadに応じてStoreの中身をどう更新するか(または更新しないか)は、Callback側で判断することになります。&lt;/p&gt;
+
+&lt;p&gt;ここまでをまとめると、Dispatcherとは「Callbackを登録し、イベントがdispatchされたら登録されたすべてのCallbackにPayloadを渡し実行する」ものであると言えます。コードで表現すると以下のようになります。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dispatcher&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dispatcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;instance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;余談ですが、Dispatcherは「アプリケーション全体で&lt;strong&gt;唯一の&lt;/strong&gt;イベントハブ」なのでシングルトンで実装しています。&lt;/p&gt;
+
+&lt;h4 id=&quot;要件2-callbackの実行順序を制御できること&quot;&gt;要件2 Callbackの実行順序を制御できること&lt;/h4&gt;
+
+&lt;p&gt;Storeを更新する際、実行順序を意識しなければならない場面もあると思います。例えば「ユーザーの設定を更新して、それに応じて表示する情報を更新する」といったケースですね。これに対応することがDispatcherのもう一つの要件です。つまり&lt;strong&gt;Callbackの実行順序を制御する&lt;/strong&gt;ことです。&lt;/p&gt;
+
+&lt;p&gt;Fluxの設計手法を実現するための最小限のライブラリである&lt;a href=&quot;http://facebook.github.io/flux/docs/flux-utils.html#content&quot; target=&quot;_blank&quot;&gt;Flux Utils&lt;/a&gt;で実例を確認してみます。Flux Utilsに実装されている&lt;a href=&quot;https://github.com/facebook/flux/blob/master/src/Dispatcher.js&quot; target=&quot;_blank&quot;&gt;Dispatcher.js&lt;/a&gt;には&lt;code class=&quot;highlighter-rouge&quot;&gt;waitFor&lt;/code&gt;という関数が定義されていて、これがCallbackの実行順序を制御しています。&lt;/p&gt;
+
+&lt;p&gt;waitFor関数はCallbackの中から呼び出すもので、「あのCallbackの実行を待ってから自身を実行する」という制御をすることができます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;UserSettingStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hoge&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hoge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callbackId1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callback1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// callbackを登録すると、識別子が発行されます&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callback2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;dispatcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;waitFor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callbackId1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;                 &lt;span class=&quot;c1&quot;&gt;// UsdrSettingStoreの更新を待ちます&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;userSetting&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UserSettingStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// UserSettingStoreの更新後に最新の状態を取得します&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// do something&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;dispatcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;callback2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;DispatcherにCallbackを登録すると、Callbackの識別子が発行されます&lt;/li&gt;
+  &lt;li&gt;Callback内で&lt;code class=&quot;highlighter-rouge&quot;&gt;waitFor&lt;/code&gt;を呼び出し、引数に実行を待ちたい識別子を渡します&lt;/li&gt;
+  &lt;li&gt;あとは同期的に処理を書くだけでOKです&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;waitFor関数は実装の一例ですが、このようにCallbackの実行順序を管理できる仕組みを持っておくことが必要です。&lt;/p&gt;
+
+&lt;h3 id=&quot;action&quot;&gt;Action&lt;/h3&gt;
+
+&lt;h4 id=&quot;actionに必要なたった2つのこと&quot;&gt;Actionに必要なたった2つのこと&lt;/h4&gt;
+
+&lt;p&gt;Actionは、そのアプリケーション内でどんなユーザーオペレーションが起きるのか(ログインする、登録する、等)を定義するものです。言い換えると&lt;strong&gt;ユースケースを定義するもの&lt;/strong&gt;です。Actionの要件は以下の2つです。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;プレーンなオブジェクトであること&lt;/li&gt;
+  &lt;li&gt;ユースケースを表す&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;プロパティを持っていること&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;とてもシンプルですね。ちなみにActionオブジェクト内に定義される&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;は一般的に&lt;strong&gt;ActionType&lt;/strong&gt;と呼ばれます。&lt;/p&gt;
+
+&lt;p&gt;また、Actionには&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;プロパティ以外に、ユースケースを実行するために必要な値を持たせることもできます。以下のコードはTODOアプリの「TODOを追加する」Actionの実装例です。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;todoAction&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'ADD_TODO'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// ActionType&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hoge'&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// 新しく追加するTODOの文字列&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;dispatcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todoAction&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// actionをdispatcherにわたす&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;このActionがDispatcherに渡されることで、Fluxのデータフローが始まります。&lt;/p&gt;
+
+&lt;h4 id=&quot;actioncreator&quot;&gt;ActionCreator&lt;/h4&gt;
+
+&lt;p&gt;実際のコードでは、Actionを生成しDispatcherに送るまでの一連の処理を行うヘルパーメソッドを実装するケースが多く、このヘルパーメソッドを&lt;strong&gt;ActionCreator&lt;/strong&gt;と呼びます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./ActionTypes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatcher&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./Dispatcher'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;addTodo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ADD_TODO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// 定数化されたActionType&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;dispatcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;flux-standard-action&quot;&gt;Flux Standard Action&lt;/h4&gt;
+
+&lt;p&gt;Flux思想のライブラリのひとつである&lt;a href=&quot;https://redux.js.org/&quot; target=&quot;_blank&quot;&gt;Redux&lt;/a&gt;では、「Actionとはこう実装すべき」という指標を定義しています。それが&lt;a href=&quot;https://github.com/redux-utilities/flux-standard-action&quot; target=&quot;_blank&quot;&gt;Flux Standard Action (FSA)&lt;/a&gt;です。&lt;/p&gt;
+
+&lt;p&gt;FSAは「読みやすさ」「使いやすさ」「シンプルさ」をコンセプトとし、上述の2つの要件に加え4つのルールを設けています。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Actionは&lt;code class=&quot;highlighter-rouge&quot;&gt;payload&lt;/code&gt;プロパティを持つことができる&lt;/li&gt;
+  &lt;li&gt;Actionは&lt;code class=&quot;highlighter-rouge&quot;&gt;error&lt;/code&gt;プロパティを持つことができる&lt;/li&gt;
+  &lt;li&gt;Actionは&lt;code class=&quot;highlighter-rouge&quot;&gt;meta&lt;/code&gt;プロパティを持つことができる&lt;/li&gt;
+  &lt;li&gt;Actionは&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;payload&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;error&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;meta&lt;/code&gt;以外のプロパティを持ってはいけない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;プロパティはActionTypeのことですね。「typeは&lt;code class=&quot;highlighter-rouge&quot;&gt;===&lt;/code&gt;を使って同じものか判定できるべきだ」と定義していますが、一般的にActionTypeはStringで実装することが多いと思うので、特に意識する必要はなさそうです。&lt;/p&gt;
+
+&lt;p&gt;FSAにおける&lt;code class=&quot;highlighter-rouge&quot;&gt;payload&lt;/code&gt;プロパティは今まで説明してきた「Payload」より狭義です。先述したPayloadは「Dispatcherに渡されるもの」であり、つまりActionオブジェクトそのものを指していました。それに対してFSAのPayloadは「Actionの実行に必要な値」のみを指しています。「TODOを追加する」Actionの例でいうと、&lt;code class=&quot;highlighter-rouge&quot;&gt;text&lt;/code&gt;部分のみがPayloadということになります。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ADD_TODO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hoge'&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;FSAにおける&lt;code class=&quot;highlighter-rouge&quot;&gt;error&lt;/code&gt;プロパティは、エラーが起きたことを通知するために&lt;code class=&quot;highlighter-rouge&quot;&gt;true&lt;/code&gt;をセットして使います。「エラーであることを正常時と同じ方法で伝達する」という点で&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise.reject&lt;/code&gt;に似ている、と説明されています。&lt;code class=&quot;highlighter-rouge&quot;&gt;error: true&lt;/code&gt;のときは&lt;code class=&quot;highlighter-rouge&quot;&gt;payload&lt;/code&gt;にはエラーオブジェクトを詰めるのが一般的な用法です。&lt;/p&gt;
+
+&lt;p&gt;FSAにおける&lt;code class=&quot;highlighter-rouge&quot;&gt;meta&lt;/code&gt;プロパティは、&lt;code class=&quot;highlighter-rouge&quot;&gt;payload&lt;/code&gt;に詰めるべきでないものを持つための補助的なものです。&lt;/p&gt;
+
+&lt;p&gt;以上がFSAのルールです。&lt;br /&gt;
+FSAはReduxを使う上で守るべきものですが、Redux以外の方法でFlux設計をする場合でも選択肢のひとつとして検討してみるといいと思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;store&quot;&gt;Store&lt;/h3&gt;
+
+&lt;h4 id=&quot;storeの役割&quot;&gt;Storeの役割&lt;/h4&gt;
+
+&lt;p&gt;Storeは&lt;strong&gt;アプリケーションのState(状態)&lt;/strong&gt;と、&lt;strong&gt;それを操作するロジック&lt;/strong&gt;を持ちます。これだけ聞くとMVW(Whatever)のModelにも似ていますが、いくつか大きく異なる点があります。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;getterのみを持ち、setterを持たない&lt;/li&gt;
+  &lt;li&gt;setterの代わりにStoreを更新するための関数を持ち、それをDispatcherのCallbackとして登録する&lt;/li&gt;
+  &lt;li&gt;Storeが変更されたら、イベントを発火し変更をViewに伝える&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./ActionTypes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatcher&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./Dispatcher'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;dispatcher&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;register&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bind&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// CallbackをDispatcherに登録&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  
+  &lt;span class=&quot;c1&quot;&gt;// getter&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;getState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// Storeが持つStateを更新するための関数&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;update&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ADD_TODO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({},&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;nextState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;emit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Store内のStateが更新されたらイベントを発火&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;このように、Storeが保持する値を直接更新する方法(Setter)は存在しません。Storeが持つ値をひとまとめの&lt;code class=&quot;highlighter-rouge&quot;&gt;State&lt;/code&gt;とみなし、&lt;strong&gt;どのような条件でどのようにStateを更新するかを定義している&lt;/strong&gt;関数が実装されています。Dispatcherの説明時に度々登場した「Callback」は、Storeで実装されるというわけですね。&lt;/p&gt;
+
+&lt;p&gt;ここまでの話をまとめると、&lt;strong&gt;何らかのActionがDispatcherに渡されると、Dispatcherに登録されているすべてのCallbackが実行され、そのCallbackが各々のStoreを更新していく&lt;/strong&gt;ということになります。&lt;/p&gt;
+
+&lt;p&gt;ここまでで「どのようにViewを変更するか」の話が出ていないことからも分かるように、Viewとロジックは完全に切り離されることになります。アプリケーションの状態を変更するレイヤーでは「どのように状態を変えるか」にのみ専念すれば良く、変更後の状態に応じてViewをどのように変えるかはView側が気にかければ良いというわけです。&lt;/p&gt;
+
+&lt;div style=&quot;border-radius:10px;background-color:#f7f7f7;padding:12px 20px;margin:42px 0 48px;&quot;&gt;
+
+ただし、実際にはStoreがViewの状態を保持しなければならない場面も出てくると思います。つまりSoteには「アプリケーションの状態を保持するStore」と「Viewの状態を保持するStore」という2種類が存在するということになります。  
+とはいえこれは公式ドキュメント外のお話。また別の機会に考えをまとめてみようと思います。
+
+&lt;/div&gt;
+
+&lt;h4 id=&quot;initialstateの実装&quot;&gt;InitialStateの実装&lt;/h4&gt;
+
+&lt;p&gt;ViewはStateを取得するためにStoreのgetterを叩きます。ただ、初期描画時にはStoreが空っぽなので、初期値を定義しておく必要があります。上の実装例では&lt;code class=&quot;highlighter-rouge&quot;&gt;constructor&lt;/code&gt;の中で初期値を定義していますが、別の関数としてくくり出しておくのが一般的です。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;getInitialState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;getState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getInitialState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;reduceの実装そしてimmutablestate&quot;&gt;Reduceの実装、そしてImmutableState&lt;/h4&gt;
+
+&lt;p&gt;Stateを更新するCallbackの実装方法においても、一般的に良しとされているパターンがあります。それが&lt;strong&gt;Reduce関数&lt;/strong&gt;です。Reduce関数は&lt;strong&gt;現在のStateとPayloadを受け取り、新しいStateを返す純粋関数&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;reduce&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;currentState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;action&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ADD_TODO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextState&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({},&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// do something&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;currentState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;こうすることでStoreのテストがしやすかったり、データの更新ロジックの周りに副作用が起きにくかったり、&lt;code class=&quot;highlighter-rouge&quot;&gt;dispatcher.waitFor&lt;/code&gt;などと組み合わせても煩雑にならず可読性の高い状態を維持できたり…といったことが期待されます。&lt;/p&gt;
+
+&lt;p&gt;Reduce関数と併せて、&lt;strong&gt;StateをImmutableにする&lt;/strong&gt;実装パターンもよく使われます。Reduce関数以外のところで意図せずStateが書き換えられてしまうことを防ぎ、堅牢性を高める手法です。&lt;/p&gt;
+
+&lt;p&gt;Flux Utilsの&lt;a href=&quot;https://github.com/facebook/flux/blob/master/src/stores/FluxReduceStore.js&quot; target=&quot;_blank&quot;&gt;FluxReduceStore.js&lt;/a&gt;は、これらのパターンを組み込んだStoreを実装するためのライブラリです。このStoreを継承したStoreを実装すると、自然に由緒正しきStoreを実装することができます(できました)。&lt;/p&gt;
+
+&lt;h3 id=&quot;view&quot;&gt;View&lt;/h3&gt;
+
+&lt;p&gt;Fluxにおける「View」という役割には、実は2つの登場人物が含まれます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;状態を持たない&lt;strong&gt;Views&lt;/strong&gt; (役割としてのViewと区別するために複数形で表現しています)&lt;/li&gt;
+  &lt;li&gt;Storeとのパイプラインとなり状態を受け取る&lt;strong&gt;Controller-Views&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;状態を持たないviews&quot;&gt;状態を持たないViews&lt;/h4&gt;
+
+&lt;p&gt;Fluxにおける「View」の基本的な役割はシンプルで、&lt;strong&gt;外から状態を受け取り、テンプレートにはめ込み表示する&lt;/strong&gt;のみです。これが「自身では状態を持たない」ということです。&lt;/p&gt;
+
+&lt;p&gt;ReactComponentで表現すると、&lt;strong&gt;Stateを持たず、Propsを受け取るだけのComponent&lt;/strong&gt;です。&lt;strong&gt;&lt;a href=&quot;https://reactjs.org/docs/components-and-props.html#functional-and-class-components&quot; target=&quot;_blank&quot;&gt;Functional Component&lt;/a&gt;&lt;/strong&gt;を使って実装します。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoComponet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;checkbox&quot;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;checked&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{props.isDone}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;このように関数としてComponentを定義するのがFunctional Componentです。&lt;br /&gt;
+従来のClass Componentと違いStateを持ったりインスタンス変数を持ったりできず、「propsを受け取る」機能だけを持つComponentです。そのためViewsの役割を明示的に守れるので、推奨されています。&lt;/p&gt;
+
+&lt;p&gt;とはいえ、Viewsが状態を絶対持ってはいけないというわけではなくて、Component内で完結する「表示に関わる状態」を持つことは可能です。Reactで実装する場合は、Class Componentとして実装します。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoListComponent&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;super&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;isEmpty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* 略 */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;これらのComponentをツリー状に組み合わせて(つまりReactの一般的な用法で)FluxのViewは構成されます。ツリーの上から下へとpropsのバケツリレーをしながら状態を渡して、画面に要素を表示していくわけです。&lt;/p&gt;
+
+&lt;h4 id=&quot;storeとのパイプラインとなり状態を受け取るcontroller-views&quot;&gt;Storeとのパイプラインとなり状態を受け取るController-Views&lt;/h4&gt;
+
+&lt;p&gt;ViewsだけではStoreの情報を受け取る仕組みがありません。これを担うのが、&lt;strong&gt;ツリーの最上部に配置される(つまりルートComponentとなる)Controller-Views&lt;/strong&gt;です。具体的な要件は2つです。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Storeの変更を監視する&lt;/li&gt;
+  &lt;li&gt;StoreからStateを取得し、Viewsに流し込むStateを形成する&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Flux UtilsではController-Viewsを&lt;strong&gt;Container&lt;/strong&gt;と呼んでいて、ReactComponentをベースにContainerを生成する&lt;a href=&quot;https://github.com/facebook/flux/blob/master/src/container/FluxContainer.js&quot; target=&quot;_blank&quot;&gt;FluxContanier.js&lt;/a&gt;が用意されています。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./TodoStore'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HogeStore&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./HogeStore'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;RootComponent&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 1. 変更を監視するStoreを列挙する&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getStores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HogeStore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 2. Viewsに流し込むStateを生成する&lt;/span&gt;
+  &lt;span class=&quot;kr&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;calculateState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;todoState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(),&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;hogeState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;HogeStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 3. ViewsのpropsにStateを流し込む&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ChildComponent&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{...&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt; 
+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 4. Container化する&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;RootComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;FluxContainerを使ったController-Viewsの実装例です。&lt;/p&gt;
+
+&lt;p&gt;FluxContainerとFluxStoreとつなぎ込むため、2つのstaticメソッドが用意されています。&lt;code class=&quot;highlighter-rouge&quot;&gt;getStores&lt;/code&gt;で変更を監視するStoreを決め、Storeが変更されたら呼出される&lt;code class=&quot;highlighter-rouge&quot;&gt;calculateState&lt;/code&gt;でViewsに流し込むStateを形成します。このStateはComponentの&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;にセットされるので、あとは通常のReactComponentのようにRender関数で子Componentへ渡せばOKです。&lt;/p&gt;
+
+&lt;p&gt;ちなみにFluxContainer.js内で&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;されている&lt;a href=&quot;https://github.com/facebook/flux/blob/master/src/container/FluxContainerSubscriptions.js&quot; target=&quot;_blank&quot;&gt;FluxContainerSubscriptions.js&lt;/a&gt;に「①Storeの変更を監視する」ロジックがまとまっていて参考になりました。&lt;/p&gt;
+
+&lt;h4 id=&quot;viewのまとめ&quot;&gt;Viewのまとめ&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fluxの「View」には2つの登場人物がいる&lt;/li&gt;
+  &lt;li&gt;状態を持たないViews
+    &lt;ul&gt;
+      &lt;li&gt;原則&lt;code class=&quot;highlighter-rouge&quot;&gt;state&lt;/code&gt;を持たないReactComponent&lt;/li&gt;
+      &lt;li&gt;Functinal Componentで実装することが推奨されている&lt;/li&gt;
+      &lt;li&gt;表示に関する状態を持つ場合はClass Componentで実装する&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Storeとのパイプラインとなり状態を受け取るController-Views
+    &lt;ul&gt;
+      &lt;li&gt;要件①「Storeの変更を監視する」&lt;/li&gt;
+      &lt;li&gt;要件②「StoreからStateを取得し、Viewsに流し込むStateを形成する」&lt;/li&gt;
+      &lt;li&gt;Flux UtilsではController-Viewsを「Container」と呼ぶ&lt;/li&gt;
+      &lt;li&gt;FluxContainer.jsを利用してController-Viewsを実装できる
+        &lt;ul&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;getStores&lt;/code&gt;で監視するStoreを決める&lt;/li&gt;
+          &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;calculateState&lt;/code&gt;で流し込むStateを形成する&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;私がfluxを採用する理由&quot;&gt;私がFluxを採用する理由&lt;/h3&gt;
+
+&lt;p&gt;Fluxを利用することで得られた一番のメリットは「チーム開発において破綻しにくいこと」でした。&lt;/p&gt;
+
+&lt;p&gt;複数人で開発しているとアプリケーションの成長スピードが早く、コード量はどんどん増えていきます。時期が過ぎれば「特定の機能を一新する」なんて場面も出てきたりします。そのような場面でも影響範囲が最小限に抑えられ、ベースの設計が破綻することなく対応し続けられたと感じています。&lt;/p&gt;
+
+&lt;p&gt;Fluxは現代のWebアプリケーションでよくある&lt;strong&gt;複雑なUIとデータ構造を持つアプリケーション&lt;/strong&gt;を想定して作られています。それ故、アプリケーションが肥大化しても各Moduleの責務が分離されていて、互いに疎結合で、一部の修正が他に影響せず、堅牢なアプリケーションを維持することが(比較的)しやすくなるわけですね。&lt;/p&gt;
+
+&lt;p&gt;また、誰が実装しても大きなバラツキが生じにくかったという点でも、破綻しにくさが感じられました。「状態をどこで管理するべきか」「ビジネスロジックをどこに書くべきか」といったような実装の差(もしくは迷い)は、MVWで実装してたときに比べ少なかったように感じます。&lt;br /&gt;
+MVWのほうがドメイン層やアプリケーション層の柔軟さ・解釈の広さ等があるからかもしれません。&lt;/p&gt;
+
+&lt;p&gt;まとめると、Fluxの破綻しにくさとは、①明確に責務が分離された設計思想であること、②どこに何を実装するかという迷いや個人差が少なくなること、にあると感じています。もちろんFluxのメリット・デメリットの体感には個人差がありますが、これが私がFluxを採用する理由です(MVWも好きですし、もちろん時と場合によってそちらを採用することもあります)。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;FluxはWebアプリケーションの設計方法の選択肢として今後も利用されていくのだと思います。でもFluxは完璧ではありません。&lt;br /&gt;
+Fluxの問題点や苦手分野については様々なところで議論されている通りで、基本的な用法では対応しきれない場面も出てくると思います。非同期処理、複雑なドメイン層の表現、アニメーション…、他にも課題はいろいろです(体感的には山盛りです)。が、それらに立ち向かうためにも、まずは基礎を100％理解していることが必要だと思います。&lt;/p&gt;
+
+&lt;p&gt;そんなわけで今回はFlux再入門の話でした。気になる箇所や間違っている箇所がありましたら&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">Reactの良さを活かしやすいFluxは、Webアプリケーションの設計手法としてずいぶん馴染みのあるものになったように感じます。私もFluxを取り入れた開発を2年近く経験し、知見も溜まり、使い慣れたような気持ちでいました。</summary></entry><entry><title type="html">DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</title><link href="https://aloerina01.github.io/blog/2018-08-01-1" rel="alternate" type="text/html" title="DartでWebフロントの開発はできる？ エコシステムから見るDartの現状" /><published>2018-08-01T00:00:00+00:00</published><updated>2018-08-01T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-08-01-1">&lt;p&gt;JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、&lt;strong&gt;iOS、Android、Webの3大Clientで使える言語&lt;/strong&gt;を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。&lt;/p&gt;
 
 &lt;p&gt;ただ、言語がよければすぐに使えるというわけではなく、使いやすさや開発環境も大切な要素の1つです。&lt;br /&gt;
 昨今のWebフロントエンドはできることが増え、それに伴いエコシステムもとても進歩していて、複雑で大規模な開発でもスムーズに行えるようになってきている印象です(1番最初の環境構築が大変とよく言われますが、その大変さも徐々に緩和されてきていると思います)。&lt;/p&gt;
@@ -1379,296 +1791,4 @@ ndenv &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;v9.9.0
 &lt;h5 id=&quot;ディレクトリ別にnodeバージョンを指定する&quot;&gt;ディレクトリ別にNodeバージョンを指定する&lt;/h5&gt;
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/project_a
 ndenv &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;v9.9.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">What is anyenvとは**envと名のつくバージョン管理ツールのWrapperです。**envとは例えばNodeのバージョン管理をするndenvがあげられます。anyenvでできるのは以下のようなことです。</summary></entry><entry><title type="html">Babelの設定を見直すための逆引きガイド</title><link href="https://aloerina01.github.io/blog/2018-03-19-1" rel="alternate" type="text/html" title="Babelの設定を見直すための逆引きガイド" /><published>2018-03-19T00:00:00+00:00</published><updated>2018-03-19T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-03-19-1">&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#babelって結局なんなんだ&quot; id=&quot;markdown-toc-babelって結局なんなんだ&quot;&gt;Babelって結局なんなんだ&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#定義&quot; id=&quot;markdown-toc-定義&quot;&gt;定義&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#構成要素&quot; id=&quot;markdown-toc-構成要素&quot;&gt;構成要素&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#babel-core&quot; id=&quot;markdown-toc-babel-core&quot;&gt;babel-core&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#babel-polyfill&quot; id=&quot;markdown-toc-babel-polyfill&quot;&gt;babel-polyfill&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#plugins&quot; id=&quot;markdown-toc-plugins&quot;&gt;Plugins&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#最新の記法でjsを書くにはどうしたらいいんだ&quot; id=&quot;markdown-toc-最新の記法でjsを書くにはどうしたらいいんだ&quot;&gt;最新の記法でJSを書くにはどうしたらいいんだ&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#最低限の設定方法&quot; id=&quot;markdown-toc-最低限の設定方法&quot;&gt;最低限の設定方法&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#1-installする&quot; id=&quot;markdown-toc-1-installする&quot;&gt;1. Installする&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#2-babelrcに設定を書く&quot; id=&quot;markdown-toc-2-babelrcに設定を書く&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;に設定を書く&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#3-polyfillをrequireする&quot; id=&quot;markdown-toc-3-polyfillをrequireする&quot;&gt;3. polyfillをrequireする&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#4-babeるbabelでコンパイルする&quot; id=&quot;markdown-toc-4-babeるbabelでコンパイルする&quot;&gt;4. Babeる(Babelでコンパイルする)&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#webpackと組み合わせた実践例&quot; id=&quot;markdown-toc-webpackと組み合わせた実践例&quot;&gt;Webpackと組み合わせた実践例&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#キホンのキ&quot; id=&quot;markdown-toc-キホンのキ&quot;&gt;キホンのキ&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#polyfillの機能を制限なく使いたいでも無駄なものは入れたくない&quot; id=&quot;markdown-toc-polyfillの機能を制限なく使いたいでも無駄なものは入れたくない&quot;&gt;polyfillの機能を制限なく使いたい、でも無駄なものは入れたくない&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot; id=&quot;markdown-toc-二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot;&gt;「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#グローバルを汚染せずにpolyfillを使いたい複数ファイルでpolyfillを使いたい&quot; id=&quot;markdown-toc-グローバルを汚染せずにpolyfillを使いたい複数ファイルでpolyfillを使いたい&quot;&gt;グローバルを汚染せずにpolyfillを使いたい、複数ファイルでpolyfillを使いたい&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#早見表&quot; id=&quot;markdown-toc-早見表&quot;&gt;早見表&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#細かい機能を上手く使いこなしたい&quot; id=&quot;markdown-toc-細かい機能を上手く使いこなしたい&quot;&gt;細かい機能を上手く使いこなしたい&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#設定はショートハンドで書けるよ&quot; id=&quot;markdown-toc-設定はショートハンドで書けるよ&quot;&gt;設定はショートハンドで書けるよ&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#babel-preset-esxxxx-はいくつを使えばいいんだ&quot; id=&quot;markdown-toc-babel-preset-esxxxx-はいくつを使えばいいんだ&quot;&gt;babel-preset-esXXXX はいくつを使えばいいんだ&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#es2015のソースをそのままminifyできるってよ&quot; id=&quot;markdown-toc-es2015のソースをそのままminifyできるってよ&quot;&gt;ES2015+のソースをそのままminifyできるってよ&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;babelって結局なんなんだ&quot;&gt;Babelって結局なんなんだ&lt;/h3&gt;
-
-&lt;h4 id=&quot;定義&quot;&gt;定義&lt;/h4&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Babel is a JavaScript compiler.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;と、公式にでっかく書いてありますね。&lt;/p&gt;
-
-&lt;p&gt;さらにドキュメントを読み進めていくと、&lt;/p&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;Now, out of the box Babel doesn’t do anything. It basically acts like const babel = code =&amp;gt; code;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;と書いてあります。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;babel&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;基本は受け取ったコードをそのまま吐き出すだけ、どう変換させるかは設定次第ということですね。つまり&lt;strong&gt;設定に応じてJavaScriptをコンパイルしてくれるもの&lt;/strong&gt;というのがBabelの定義のようです。  (正確にはトランスパイルだろと言いたいところですが、この記事では公式にならってコンパイルと表現します)&lt;/p&gt;
-
-&lt;h4 id=&quot;構成要素&quot;&gt;構成要素&lt;/h4&gt;
-&lt;p&gt;ドキュメントを見る限りBabelは大きく3要素から成ります。&lt;/p&gt;
-
-&lt;h5 id=&quot;babel-core&quot;&gt;babel-core&lt;/h5&gt;
-&lt;p&gt;&lt;strong&gt;コンパイル処理を行うBabelの本体&lt;/strong&gt;です。&lt;/p&gt;
-
-&lt;h5 id=&quot;babel-polyfill&quot;&gt;babel-polyfill&lt;/h5&gt;
-&lt;p&gt;Babelが用意してくれているpolyfill集で、&lt;a href=&quot;https://github.com/zloirock/core-js&quot;&gt;core-js&lt;/a&gt; と &lt;a href=&quot;https://github.com/facebook/regenerator/blob/master/packages/regenerator-runtime/runtime.js&quot;&gt;regenerator runtime&lt;/a&gt; を内包しています。これら2つはそれぞれ独立した(Bebelとは関係ない外部の)poryfill集です。&lt;br /&gt;
-要は&lt;strong&gt;世の中のイケてるporyfillをまとめて提供してくれるものがbabel-polyfillだ&lt;/strong&gt;という認識でいいと思います。&lt;/p&gt;
-
-&lt;h5 id=&quot;plugins&quot;&gt;Plugins&lt;/h5&gt;
-&lt;p&gt;「設定に応じてJavaScriptをコンパイルしてくれるもの」の「設定に応じて」の部分を担当するのがpluginです。&lt;strong&gt;「どうコンパイルするか」を定義している&lt;/strong&gt;もので、よく見かける&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-es2015&lt;/code&gt;などがこれに該当します。&lt;/p&gt;
-
-&lt;p&gt;※ 正確には、複数のpluginを特定の用途に合わせてセットにしたものが「babel-preset-xxxx」です。よくつかうplugin集をpresetとして提供してくれているわけです。&lt;/p&gt;
-
-&lt;h3 id=&quot;最新の記法でjsを書くにはどうしたらいいんだ&quot;&gt;最新の記法でJSを書くにはどうしたらいいんだ&lt;/h3&gt;
-&lt;p&gt;Babelのドキュメントを読んだ結果感じたことはこれでした。結局どうすりゃいいんだと。&lt;/p&gt;
-
-&lt;p&gt;ここでおさらいしておきます。&lt;br /&gt;
-最新の記法でJSを書く際には、ES2015〜で登場した&lt;strong&gt;新しい文法&lt;/strong&gt;と&lt;strong&gt;新しい関数&lt;/strong&gt;を使うことになります。前者はアロー関数やクラス記法などで、後者は&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Object.assign&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Array.prototype.find&lt;/code&gt;などです。&lt;/p&gt;
-
-&lt;p&gt;「最新の記法でJSを書く」＝「この2つを含むソースをBabelでコンパイルする」 ということになりますね。それには以下の2つのことが必要です。&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;などのplugin・presetを使って新しい文法をコンパイルできるようにする&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;などのpolyfillを入れて新しい関数が動くようにする&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;最低限の設定方法&quot;&gt;最低限の設定方法&lt;/h4&gt;
-&lt;p&gt;ここまでの内容をCLIで実行するための最低限の手順は以下のようになります。&lt;/p&gt;
-
-&lt;h5 id=&quot;1-installする&quot;&gt;1. Installする&lt;/h5&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; babel-cli babel-preset-env 
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; babel-polyfill
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;2-babelrcに設定を書く&quot;&gt;2. &lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;に設定を書く&lt;/h5&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;3-polyfillをrequireする&quot;&gt;3. polyfillをrequireする&lt;/h5&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// input.js&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 以下実装&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;4-babeるbabelでコンパイルする&quot;&gt;4. Babeる(Babelでコンパイルする)&lt;/h5&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npx babel ./input.js &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; ./output.js
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;これが基本の使い方です。これを応用して、JSXをコンパイルさせたかったら&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-react&lt;/code&gt;を利用したり、bundleさせたかったらWebpackなどのツールと組み合わせたり…といったカスタマイズをしていく感じになると思います。&lt;/p&gt;
-
-&lt;h3 id=&quot;webpackと組み合わせた実践例&quot;&gt;Webpackと組み合わせた実践例&lt;/h3&gt;
-
-&lt;p&gt;ここからは「ES02015+の記法で書いたJSをWebpackでbundleする」というよくあるパターンの実践例です。&lt;/p&gt;
-
-&lt;h4 id=&quot;キホンのキ&quot;&gt;キホンのキ&lt;/h4&gt;
-&lt;p&gt;まず基礎ですが、WebpackでBabelを使うには&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-loader&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-core&lt;/code&gt;を読み込みますよね。&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-loader&lt;/code&gt;はWebpackに「受け取ったコードをBabeってね」と指示を出すもので、指示に基づいて実際にBabeるのが&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-core&lt;/code&gt;、という感じです。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Install&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; babel-loader babel-core
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;webpack.config.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;rules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-      &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\.&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;js$/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-      &lt;span class=&quot;na&quot;&gt;exclude&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/node_modules/&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-      &lt;span class=&quot;na&quot;&gt;loader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;babel-loader&quot;&lt;/span&gt; 
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;pluginの適用は上記の「最低限の設定」と同様に&lt;code class=&quot;highlighter-rouge&quot;&gt;.babelrc&lt;/code&gt;に書きます。polyfillの適用の仕方は3通りあるので、やりたいことベースで整理します。&lt;/p&gt;
-
-&lt;h4 id=&quot;polyfillの機能を制限なく使いたいでも無駄なものは入れたくない&quot;&gt;polyfillの機能を制限なく使いたい、でも無駄なものは入れたくない&lt;/h4&gt;
-&lt;p&gt;polyfillの対象となる機能には3つのタイプがあります。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;globals&lt;/strong&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise&lt;/code&gt;など新しいグローバルオブジェクト&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;native methods&lt;/strong&gt;&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Object.assign&lt;/code&gt;などの既存のグローバルオブジェクトに追加されたメソッド&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;instance methods&lt;/strong&gt; &lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;Array.prototype.find&lt;/code&gt;などのインスタンスが持つメソッド&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これらすべてを使うには&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;をbundleに含める&lt;/strong&gt;ことが必要です。それには&lt;strong&gt;entry pointとなるファイルの1行目&lt;/strong&gt;で&lt;strong&gt;1度だけ&lt;/strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;を読み込みます。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// CommonJS&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// ES6&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;「1度だけ」というのがとても重要で、&lt;strong&gt;複数回読み込むとpolyfillがぶっ壊れます&lt;/strong&gt;。あるHTMLで2つのjsファイルを読み込んでいて、それぞれで&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;を読み込んでいる場合もぶっ壊れます。とにかく2回読み込まれたらマズイのです。&lt;/p&gt;
-
-&lt;p&gt;この&lt;strong&gt;二重読み込み制約&lt;/strong&gt;にさえ気をつけていれば、この方法ですべてのpolyfillを利用することができます。加えて、&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;と組み合わせて利用する場合は、&lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#usebuiltins&quot;&gt;useBuiltIns&lt;/a&gt;オプションを設定することで&lt;strong&gt;全部入りの&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;を、必要なpolyfill(該当する&lt;code class=&quot;highlighter-rouge&quot;&gt;core-js&lt;/code&gt;のモジュール)のみに変換してくれます&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrc&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;useBuiltIns&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;app.js (entry point)&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// Babeる前&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'babel-polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Babeった後 使っているものだけimportするように変換される&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'core-js/modules/es7.string.pad-start'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'core-js/modules/es7.string.pad-end'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;⭕：全polyfillを利用できる、必要な分だけ入れられる&lt;br /&gt;
-❌：二重読み込み制約のリスクがある、グローバルが汚染される&lt;/p&gt;
-
-&lt;h4 id=&quot;二重読み込み制約のリスクを背負わずにpolyfillを使いたい&quot;&gt;「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい&lt;/h4&gt;
-&lt;p&gt;WebpackとBabelを組み合わせる場合、二重読み込み制約のリスクを回避する方法があります。それはソース内でbabel-polyfillを読み込むのではなく、bundle時に&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-polyfill&lt;/code&gt;を結合する方法です。以下のように設定します。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;webpack.config.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;babel-polyfill&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;./app.js&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;ただし、この方法は上述の&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションが効かなくなるので注意です。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;⭕：二重読み込みのリスクがない、全polyfillを利用できる&lt;br /&gt;
-❌：&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションが効かない、グローバルが汚染される&lt;/p&gt;
-
-&lt;h4 id=&quot;グローバルを汚染せずにpolyfillを使いたい複数ファイルでpolyfillを使いたい&quot;&gt;グローバルを汚染せずにpolyfillを使いたい、複数ファイルでpolyfillを使いたい&lt;/h4&gt;
-&lt;p&gt;ライブラリを実装する場合などでグローバルを汚染せずにES2015+の関数を利用したいときは、&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transform-runtime&lt;/code&gt;&lt;/strong&gt;pluginを使います。また、ひとつのアプリケーションで複数のJSファイルを読み込む場合など、polyfill読込が重複してしまうのを避けたいときにも&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;transform-runtime&lt;/code&gt;&lt;/strong&gt;pluginが使えます。&lt;/p&gt;
-
-&lt;p&gt;これは&lt;strong&gt;ES2015+の関数を、&lt;code class=&quot;highlighter-rouge&quot;&gt;core-js&lt;/code&gt;のエイリアスである&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-runtime&lt;/code&gt;モジュールで書き換える&lt;/strong&gt;ものです。本来polyfillとは「そのままでは動かないコードを補うためのコード」を埋め込むものなので、対象コードそのものを書き換えてしまう&lt;code class=&quot;highlighter-rouge&quot;&gt;trunsform-runtime&lt;/code&gt;は正確にはpolyfillとは呼べないですが、おかげで上述の利点を得られるわけです。&lt;/p&gt;
-
-&lt;p&gt;そして、ここまでで勘の良い方はお気づきかもですが、&lt;strong&gt;instance methodsを利用できない&lt;/strong&gt;という制約がつきます。&lt;/p&gt;
-
-&lt;p&gt;設定するには、変換処理を行う&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-plugin-transform-runtime&lt;/code&gt;と、&lt;code class=&quot;highlighter-rouge&quot;&gt;core-js&lt;/code&gt;のエイリアスである&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-runtime&lt;/code&gt;を npm install します。後者はソースに含まれることになるので&lt;code class=&quot;highlighter-rouge&quot;&gt;--save&lt;/code&gt;オプションで。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Install&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; babel-plugin-transform-runtime
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; babel-runtime
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrc&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;plugins&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;transform-runtime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;まとめ&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;⭕：グローバルを汚染しない、使うものだけ置き換えられる&lt;br /&gt;
-❌：インスタンスメソッドは使えない&lt;/p&gt;
-
-&lt;p&gt;参考：&lt;a href=&quot;https://babeljs.io/docs/plugins/transform-runtime&quot;&gt;Runtime transform · Babel&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;早見表&quot;&gt;早見表&lt;/h4&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt; &lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;メリット&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;デメリット&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;require babel-polyfill&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;全polyfillを利用できる&lt;br /&gt; 必要な分だけ入れられる&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;二重読み込みのリスクがある&lt;br /&gt; グローバルが汚染される&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;webpackで結合&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;二重読み込みのリスクがない&lt;br /&gt; 全polyfillを利用できる&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;useBuiltInsが効かない&lt;br /&gt; グローバルが汚染される&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;runtime transform&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;グローバルを汚染しない&lt;br /&gt; 必要な分だけ変換される&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;インスタンスメソッドのpolyfillは利用できない&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h3 id=&quot;細かい機能を上手く使いこなしたい&quot;&gt;細かい機能を上手く使いこなしたい&lt;/h3&gt;
-
-&lt;h4 id=&quot;設定はショートハンドで書けるよ&quot;&gt;設定はショートハンドで書けるよ&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-hoge&lt;/code&gt;を npm install しているのに、設定ファイルには&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;presets&quot;: [&quot;hoge&quot;]&lt;/code&gt;って書くから分かりにくいな…と思ってました。これは&lt;strong&gt;presetとpluginは&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-&lt;/code&gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;babel-plugin-&lt;/code&gt;の部分を省略&lt;/strong&gt;して書くことができる故でした。&lt;br /&gt;
-なので&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;presets&quot;: [&quot;babel-preset-hoge&quot;]&lt;/code&gt;と書いてもOK。ちなみにパッケージスコープの場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;presets&quot;: [&quot;@org/hoge&quot;]&lt;/code&gt;という感じ。&lt;/p&gt;
-
-&lt;h4 id=&quot;babel-preset-esxxxx-はいくつを使えばいいんだ&quot;&gt;babel-preset-esXXXX はいくつを使えばいいんだ&lt;/h4&gt;
-&lt;p&gt;過去に書いたbabelrcを見てみたら&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-es2015&lt;/code&gt;を入れていることがほとんどだったのですが、ES2016、ES2017と仕様が増えている現在では&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-env&lt;/code&gt;を入れておくのがベターのようです。&lt;/p&gt;
-
-&lt;p&gt;これは何のオプションもなしで利用すると&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-latest&lt;/code&gt;と同じように機能し、設定次第で&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-es2015&lt;/code&gt;と同様の動きをさせることもできます。&lt;/p&gt;
-
-&lt;p&gt;また、上述した&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;のような便利なオプションを使うことができる利点があります。個人的にありがたいと思っているのが&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#targets&quot;&gt;targets&lt;/a&gt;&lt;/strong&gt;オプションです。ブラウザやNodeのバージョンを指定できるオプションで、指定されたバージョンに必要なpolyfillのみを入れてくれるようになります。&lt;/p&gt;
-
-&lt;p&gt;参考： &lt;a href=&quot;https://babeljs.io/docs/plugins/preset-env/#options&quot;&gt;Env preset # Options&lt;/a&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;es2015のソースをそのままminifyできるってよ&quot;&gt;ES2015+のソースをそのままminifyできるってよ&lt;/h4&gt;
-&lt;p&gt;これはBabelの公式ブログ読んでて見つけて得た程度の知識なのですが、「古いブラウザで動かす必要がないならそのまま圧縮すれば？」ということで&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/blog/2016/08/30/babili&quot;&gt;Babili(babel-minify)&lt;/a&gt;&lt;/strong&gt;というものがあるそうです。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Install&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; babel-core babel-loader babel-preset-babili
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrc&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;babili&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;uglify-esでサポートされていない構文であっても圧縮可能なので、その点は利がありそうです。ただ執筆時点(2018/03/19)ではBeta版ということもあって、個人的にはまだ使うことはなさそうです。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;今までなんとなくの理解だった部分が整理されたおかげで、今後新しいプロジェクトを立ち上げるときに迷わなくて済みそうです。よかった。&lt;/p&gt;
-
-&lt;p&gt;それと公式ドキュメントがけっこう説明不足感が強くて、しかも日本語の資料もそんなに見当たらなくて整理に苦労したので、同じ苦労を誰かがせずに済むといいなと思います。
-間違っているところを見つけた方は&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">What is anyenvとは**envと名のつくバージョン管理ツールのWrapperです。**envとは例えばNodeのバージョン管理をするndenvがあげられます。anyenvでできるのは以下のようなことです。</summary></entry></feed>
