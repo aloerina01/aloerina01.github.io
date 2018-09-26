@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="/css/prism.css">
 
   <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
   <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
@@ -64,6 +64,7 @@
   <link rel="canonical" href="https://aloerina01.github.io/blog/2018-04-05-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
+  <script src="/dist/prism.js" defer></script>
   <script src="/dist/drift.js" defer></script>
 </head>
 
@@ -181,7 +182,7 @@
 <p>Jekyllのルールに則ったディレクトリにコンテンツ(ファイル)を配置すると、Jekyllはそのファイルを静的ページ(HTML)に変換してくれます。そして静的ページ1つ1つに対してURLが付与されます。<br />
 例えば記事のように蓄積されていくコンテンツの場合、<code class="highlighter-rouge">_posts</code>以下にコンテンツファイルを配置することで記事ごとのHTMLを生成してくれます。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+<pre><code class="language-plain">.
 ├── _config.yml
 |
 (省略)
@@ -189,7 +190,7 @@
 ├── _posts
 |   ├── 2018-04-01.md
 |   └── 2018-04-02-how-to-use.md
-</code></pre></div></div>
+</code></pre>
 
 <h4 id="url生成のルールとファイル命名ルール">URL生成のルールとファイル命名ルール</h4>
 
@@ -216,10 +217,10 @@
 
 <p><strong>2018-04-01.md</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-title: Jekyllの使い方
-permalink: /article/how-to-use
----
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Jekyllの使い方</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/article/how-to-use</span>
+<span class="nn">---</span>
 </code></pre></div></div>
 
 <p>こうすることでファイル名の日付を無視して<code class="highlighter-rouge">/article/how-to-use</code>というURLで記事を生成してくれます。</p>
@@ -228,18 +229,18 @@ permalink: /article/how-to-use
 
 <p><strong>_posts/2018-04-01.md のFrontMatterに<code class="highlighter-rouge">writer</code>という項目を定義</strong></p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
-title: Jekyllの使い方
-permalink: /article/how-to-use
-writer: aloerina  
----
+<div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
+<span class="na">title</span><span class="pi">:</span> <span class="s">Jekyllの使い方</span>
+<span class="na">permalink</span><span class="pi">:</span> <span class="s">/article/how-to-use</span>
+<span class="na">writer</span><span class="pi">:</span> <span class="s">aloerina</span>  
+<span class="nn">---</span>
 </code></pre></div></div>
 
 <p><strong>_layouts/post.html テンプレートから<code class="highlighter-rouge">page.writer</code>という変数で値を利用</strong></p>
 
-<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;h1&gt;</span>{{ page.title }}<span class="nt">&lt;/h1&gt;</span>
-<span class="c">&lt;!-- 省略 --&gt;</span>
-<span class="nt">&lt;p&gt;</span>{{ page.writer }}<span class="nt">&lt;/p&gt;</span>
+<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;h1&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>&lt;/h1&gt;
+&lt;!-- 省略 --&gt;
+&lt;p&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">writer</span><span class="w"> </span><span class="p">}}</span>&lt;/p&gt;
 </code></pre></div></div>
 
 <h3 id="すべてのpostsに一定のルールでurlを付与する">すべてのpostsに一定のルールでURLを付与する</h3>
@@ -247,7 +248,7 @@ writer: aloerina
 
 <h4 id="_configymlの設定例">_config.ymlの設定例</h4>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">defaults</span><span class="pi">:</span>
   <span class="pi">-</span> <span class="na">scope</span><span class="pi">:</span>
       <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">"</span>
       <span class="na">type</span><span class="pi">:</span> <span class="s2">"</span><span class="s">posts"</span>
@@ -334,9 +335,9 @@ writer: aloerina
 
 <p>実は<code class="highlighter-rouge">_config.yml</code>には内部的に以下のような設定を持っています。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>collections:
-  posts:
-    output: true
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">collections</span><span class="pi">:</span>
+  <span class="na">posts</span><span class="pi">:</span>
+    <span class="na">output</span><span class="pi">:</span> <span class="no">true</span>
 </code></pre></div></div>
 
 <p>これは「<code class="highlighter-rouge">posts</code>というタイプを用意して、これをJekyllの変換対象とする」ということを表現しています。そしてこのtype名に<code class="highlighter-rouge">_</code>をつなげた_postsディレクトリ以下にあるファイルが、<code class="highlighter-rouge">posts</code>タイプのファイルとなります。</p>
@@ -602,7 +603,7 @@ writer: aloerina
       
       <li><a href="/blog/2018-05-30-1">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</a></li>
       
-      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      <li><a href="/blog/2018-08-01-1">DartでWebフロントの開発はできる？ エコシステムから見るDartの現状</a></li>
       
       <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
       
@@ -755,9 +756,6 @@ writer: aloerina
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
-  // Syntax highlighting
-  hljs.initHighlightingOnLoad();
-
   // Header
   var CLASS_MENU_SHOW = 'show';
   var navigationMenu = document.getElementById('js-navigation-menu');
@@ -767,19 +765,6 @@ window.addEventListener('DOMContentLoaded', function() {
     navigationMenu.classList.toggle(CLASS_MENU_SHOW);
   });
 });
-
-
-//   var menuToggle = $('#js-mobile-menu').unbind();
-//   $('#js-navigation-menu').removeClass("show");
-//   menuToggle.on('click', function(e) {
-//     e.preventDefault();
-//     $('#js-navigation-menu').slideToggle(function(){
-//       if($('#js-navigation-menu').is(':hidden')) {
-//         $('#js-navigation-menu').removeAttr('style');
-//       }
-//     });
-//   });
-// });
 </script>
 
 

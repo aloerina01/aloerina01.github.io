@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-09-26T03:56:36+00:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-09-26T08:03:27+00:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">React+Fluxアプリケーションを正しく設計するための覚書</title><link href="https://aloerina01.github.io/blog/2018-09-14-1" rel="alternate" type="text/html" title="React+Fluxアプリケーションを正しく設計するための覚書" /><published>2018-09-14T00:00:00+00:00</published><updated>2018-09-14T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-09-14-1">&lt;p&gt;Reactの良さを活かしやすいFluxは、Webアプリケーションの設計手法としてずいぶん馴染みのあるものになったように感じます。私もFluxを取り入れた開発を2年近く経験し、知見も溜まり、使い慣れたような気持ちでいました。&lt;/p&gt;
 
 &lt;p&gt;が、使い始めた頃はもちろん、今でも何となく分かったつもりでいる部分があったり、複雑な実装が必要な場面で悩むことがあったりします。「Fluxはダメだ！うまく実現できない！」と投げ出したくなるときもありますが、そんなときこそ基礎へ立ち返る機会。&lt;br /&gt;
@@ -479,7 +479,7 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 
 &lt;p&gt;&lt;strong&gt;依存するパッケージ&lt;/strong&gt;と&lt;strong&gt;そのバージョン情報&lt;/strong&gt;などを記しておくファイルです。&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;のような役割をします。npmと使い方が似ているので、とっつきやすくてありがたいですね。&lt;/p&gt;
 
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sample&lt;/span&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sample&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1.0.0&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sample project&lt;/span&gt;
 &lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Aloerina&lt;/span&gt;
@@ -867,8 +867,8 @@ brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;dart &lt;span class=&
 
 &lt;p&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code&quot;&gt;Dartプラグイン&lt;/a&gt;、&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=franzsilva.fs-flutter-snippets&quot;&gt;Flutterプラグイン&lt;/a&gt;をインストールしたものの、VSCodeのコマンドパレットから&lt;code class=&quot;highlighter-rouge&quot;&gt;Flutter: New Project&lt;/code&gt;をしようとしたらFlutter SDKがないと怒られました。設定にFlutterの所在を追記することで解決。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&quot;dart.flutterSdkPath&quot;: &quot;/Users/aloerina/flutter&quot;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;&quot;dart.flutterSdkPath&quot;: &quot;/Users/aloerina/flutter&quot;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;ちなみにNew ProjectでつくられたディレクトリにはHelloWorld的なコードが最初から入っていました。&lt;/p&gt;
 
@@ -932,7 +932,7 @@ USBデバッグを許可した実機を接続するか、Android Studioのエミ
 
 &lt;p&gt;画面の情報すべてをWidgetで表現するため、Layoutに関わる&lt;a href=&quot;https://docs.flutter.io/flutter/widgets/Padding-class.html&quot;&gt;Padding&lt;/a&gt;や&lt;a href=&quot;https://docs.flutter.io/flutter/widgets/Align-class.html&quot;&gt;Alignment&lt;/a&gt;などもWidgetとして組み込まなければなりません。たとえばカードリスト画面を作る場合、以下のようにWidgetを入れ子にする必要があります。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Scaffold Widget (画面全体を構成する) 
+&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;Scaffold Widget (画面全体を構成する) 
   &amp;gt; ListView Widget (Scaffoldの中にListViewを配置する)
     &amp;gt; Padding Widget (ListView内の要素にPaddingをつける)
       &amp;gt; Card Widget (Paddingのとられた空間にカードを配置する)
@@ -940,7 +940,7 @@ USBデバッグを許可した実機を接続するか、Android Studioのエミ
           &amp;gt; Padding Widget (縦積みする要素にPaddingをつける)
             &amp;gt; Text Widget (タイトルなどの文字列を表示する)
               &amp;gt; TextAlign Widget (文字列のAlignmentを指定する)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;表示要素を表す&lt;code class=&quot;highlighter-rouge&quot;&gt;ListView&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Card&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Text&lt;/code&gt;と並列関係で&lt;code class=&quot;highlighter-rouge&quot;&gt;Padding&lt;/code&gt;などが存在するわけです。ものによってもっと簡単に記述できる仕組みもあるのですが、HTMLで要素を構成してCSSで装飾する手法に慣れている人にはかなり抵抗があるのではないでしょうか…。&lt;/p&gt;
 
 &lt;p&gt;ただ、アプリのビルドなど詳しく知らない部分を棚上げしたまま開発できる点はよかったです。とりあえず動くものを作ってみてリリースするときに改めてキャッチアップする、とすると開発意欲を落とさず完成にこぎつけそうです。&lt;/p&gt;
@@ -1098,27 +1098,27 @@ curl &lt;span class=&quot;nt&quot;&gt;-XPOST&lt;/span&gt; &lt;span class=&quot;s
 
 &lt;h4 id=&quot;1-install-する&quot;&gt;1. install する&lt;/h4&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npm install -g @compositor/x0
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; @compositor/x0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;公式ではグローバルに入れて使うことを促していますが、私は作業ディレクトリにdevDependencyでインストールしています。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ mkdir sample-x0
-$ cd sample-x0
-$ npm init
-$ npm install -D @compositor/x0
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;sample-x0
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;sample-x0
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm init
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @compositor/x0
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h4 id=&quot;2-componentを実装する&quot;&gt;2. componentを実装する&lt;/h4&gt;
 
 &lt;p&gt;今回はこのようなディレクトリ構成にします。&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sample-x0
+&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;sample-x0
   ├ package.json
   └ components
       ├ HelloWorld.js
       ├ ...
       └ ...(その他コンポーネント)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;strong&gt;HelloWorld.js&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
@@ -1131,11 +1131,11 @@ $ npm install -D @compositor/x0
 &lt;p&gt;ビルドしてローカルサーバにデプロイするには&lt;code class=&quot;highlighter-rouge&quot;&gt;x0 [componentを含むディレクトリ]&lt;/code&gt;というコマンドを叩きます。&lt;code class=&quot;highlighter-rouge&quot;&gt;--open (-o)&lt;/code&gt;のオプションをつけると、サーバ起動後にデフォルトブラウザを起動してくれます。&lt;/p&gt;
 
 &lt;p&gt;グローバルインストールしている場合&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ x0 components --open
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;x0 components &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;devDependencyでインストールしている場合&lt;/p&gt;
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ npx x0 components --open
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npx x0 components &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;デプロイされると&lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;以下に配置したコンポーネント名が一覧で表示され、選択するとそのコンポーネントが描画されたページへ遷移します。&lt;/p&gt;
@@ -1554,7 +1554,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 &lt;p&gt;Jekyllのルールに則ったディレクトリにコンテンツ(ファイル)を配置すると、Jekyllはそのファイルを静的ページ(HTML)に変換してくれます。そして静的ページ1つ1つに対してURLが付与されます。&lt;br /&gt;
 例えば記事のように蓄積されていくコンテンツの場合、&lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;以下にコンテンツファイルを配置することで記事ごとのHTMLを生成してくれます。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
+&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;.
 ├── _config.yml
 |
 (省略)
@@ -1562,7 +1562,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 ├── _posts
 |   ├── 2018-04-01.md
 |   └── 2018-04-02-how-to-use.md
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&quot;url生成のルールとファイル命名ルール&quot;&gt;URL生成のルールとファイル命名ルール&lt;/h4&gt;
 
@@ -1589,10 +1589,10 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 &lt;p&gt;&lt;strong&gt;2018-04-01.md&lt;/strong&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-title: Jekyllの使い方
-permalink: /article/how-to-use
----
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Jekyllの使い方&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/article/how-to-use&lt;/span&gt;
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;こうすることでファイル名の日付を無視して&lt;code class=&quot;highlighter-rouge&quot;&gt;/article/how-to-use&lt;/code&gt;というURLで記事を生成してくれます。&lt;/p&gt;
@@ -1601,18 +1601,18 @@ permalink: /article/how-to-use
 
 &lt;p&gt;&lt;strong&gt;_posts/2018-04-01.md のFrontMatterに&lt;code class=&quot;highlighter-rouge&quot;&gt;writer&lt;/code&gt;という項目を定義&lt;/strong&gt;&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;---
-title: Jekyllの使い方
-permalink: /article/how-to-use
-writer: aloerina  
----
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Jekyllの使い方&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;permalink&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;/article/how-to-use&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;aloerina&lt;/span&gt;  
+&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;_layouts/post.html テンプレートから&lt;code class=&quot;highlighter-rouge&quot;&gt;page.writer&lt;/code&gt;という変数で値を利用&lt;/strong&gt;&lt;/p&gt;
 
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h1&amp;gt;&lt;/span&gt;{{ page.title }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h1&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 省略 --&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;{{ page.writer }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;h1&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/h1&amp;gt;
+&amp;lt;!-- 省略 --&amp;gt;
+&amp;lt;p&amp;gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;writer&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&amp;lt;/p&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;すべてのpostsに一定のルールでurlを付与する&quot;&gt;すべてのpostsに一定のルールでURLを付与する&lt;/h3&gt;
@@ -1620,7 +1620,7 @@ writer: aloerina
 
 &lt;h4 id=&quot;_configymlの設定例&quot;&gt;_config.ymlの設定例&lt;/h4&gt;
 
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;defaults&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;defaults&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
   &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;scope&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;&lt;/span&gt;
       &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;posts&quot;&lt;/span&gt;
@@ -1707,9 +1707,9 @@ writer: aloerina
 
 &lt;p&gt;実は&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;には内部的に以下のような設定を持っています。&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;collections:
-  posts:
-    output: true
+&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;collections&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;posts&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;output&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;true&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;これは「&lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt;というタイプを用意して、これをJekyllの変換対象とする」ということを表現しています。そしてこのtype名に&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;をつなげた_postsディレクトリ以下にあるファイルが、&lt;code class=&quot;highlighter-rouge&quot;&gt;posts&lt;/code&gt;タイプのファイルとなります。&lt;/p&gt;

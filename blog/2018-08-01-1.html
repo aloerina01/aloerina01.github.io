@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="/css/prism.css">
 
   <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
   <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
@@ -64,6 +64,7 @@
   <link rel="canonical" href="https://aloerina01.github.io/blog/2018-08-01-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
+  <script src="/dist/prism.js" defer></script>
   <script src="/dist/drift.js" defer></script>
 </head>
 
@@ -214,7 +215,7 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 
 <p><strong>依存するパッケージ</strong>と<strong>そのバージョン情報</strong>などを記しておくファイルです。<code class="highlighter-rouge">package.json</code>のような役割をします。npmと使い方が似ているので、とっつきやすくてありがたいですね。</p>
 
-<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Sample</span>
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Sample</span>
 <span class="na">version</span><span class="pi">:</span> <span class="s">1.0.0</span>
 <span class="na">description</span><span class="pi">:</span> <span class="s">Sample project</span>
 <span class="na">author</span><span class="pi">:</span> <span class="s">Aloerina</span>
@@ -847,9 +848,6 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
-  // Syntax highlighting
-  hljs.initHighlightingOnLoad();
-
   // Header
   var CLASS_MENU_SHOW = 'show';
   var navigationMenu = document.getElementById('js-navigation-menu');
@@ -859,19 +857,6 @@ window.addEventListener('DOMContentLoaded', function() {
     navigationMenu.classList.toggle(CLASS_MENU_SHOW);
   });
 });
-
-
-//   var menuToggle = $('#js-mobile-menu').unbind();
-//   $('#js-navigation-menu').removeClass("show");
-//   menuToggle.on('click', function(e) {
-//     e.preventDefault();
-//     $('#js-navigation-menu').slideToggle(function(){
-//       if($('#js-navigation-menu').is(':hidden')) {
-//         $('#js-navigation-menu').removeAttr('style');
-//       }
-//     });
-//   });
-// });
 </script>
 
 

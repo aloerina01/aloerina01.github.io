@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="/css/prism.css">
 
   <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
   <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
@@ -64,6 +64,7 @@
   <link rel="canonical" href="https://aloerina01.github.io/blog/2016-12-27-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
+  <script src="/dist/prism.js" defer></script>
   <script src="/dist/drift.js" defer></script>
 </head>
 
@@ -156,8 +157,8 @@
 <h4 id="インチとポイント">インチとポイント</h4>
 <p>紙で文字サイズなどを表現するときには<strong>ポイント</strong>という単位を使います。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1ポイント ＝ 1/72インチ
-</code></pre></div></div>
+<pre><code class="language-plain">1ポイント ＝ 1/72インチ
+</code></pre>
 
 <p>と定められています。
 どちらも物理的に計測できる長さなので、単位の変換ができるわけです(メートルとインチの変換ができるように)。</p>
@@ -175,13 +176,13 @@
 
 <p>まとめると、</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>画面上での1px(物理ピクセル) ≠ CSS等で指定する1px(論理ピクセル)
-</code></pre></div></div>
+<pre><code class="language-plain">画面上での1px(物理ピクセル) ≠ CSS等で指定する1px(論理ピクセル)
+</code></pre>
 
 <p>ということです。これを言い換えると</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>物理解像度 ≠ 論理解像度
-</code></pre></div></div>
+<pre><code class="language-plain">物理解像度 ≠ 論理解像度
+</code></pre>
 
 <p>ということになります。</p>
 
@@ -204,8 +205,8 @@ iPhone4とiPhone5は<strong>画面のサイズが違う = 画面のインチ数�
 
 <p>Androidの世界では160dpiを基準としていて、160dpiの画面での1pxを1dipと定義します。</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>px = dip × (dpi / 160)
-</code></pre></div></div>
+<pre><code class="language-plain">px = dip × (dpi / 160)
+</code></pre>
 
 <p>つまりこうなるわけです(このへんはかなり数学っぽくて懐かしい感じです😌)。<br />
 たとえば32dipは…</p>
@@ -497,7 +498,7 @@ iPhone4とiPhone5は<strong>画面のサイズが違う = 画面のインチ数�
       
       <li><a href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a></li>
       
-      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
+      <li><a href="/blog/2018-07-01-1">WebフロントエンジニアがDart × Flutterに入門した話</a></li>
       
     </div>
   </div>
@@ -648,9 +649,6 @@ iPhone4とiPhone5は<strong>画面のサイズが違う = 画面のインチ数�
   <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
-  // Syntax highlighting
-  hljs.initHighlightingOnLoad();
-
   // Header
   var CLASS_MENU_SHOW = 'show';
   var navigationMenu = document.getElementById('js-navigation-menu');
@@ -660,19 +658,6 @@ window.addEventListener('DOMContentLoaded', function() {
     navigationMenu.classList.toggle(CLASS_MENU_SHOW);
   });
 });
-
-
-//   var menuToggle = $('#js-mobile-menu').unbind();
-//   $('#js-navigation-menu').removeClass("show");
-//   menuToggle.on('click', function(e) {
-//     e.preventDefault();
-//     $('#js-navigation-menu').slideToggle(function(){
-//       if($('#js-navigation-menu').is(':hidden')) {
-//         $('#js-navigation-menu').removeAttr('style');
-//       }
-//     });
-//   });
-// });
 </script>
 
 
