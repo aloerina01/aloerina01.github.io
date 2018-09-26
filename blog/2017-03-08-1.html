@@ -121,9 +121,8 @@
 
   <div class="page-content">
     <div class="post">
-      <div class="post-header-container has-cover" style="background-image: url(/assets/2017-03-08-1.png);"
-        >
-        <div class="scrim has-cover">
+      <div class="post-header-container " >
+        <div class="scrim ">
           <header class="post-header">
             <h1 class="title">Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ</h1>
             <!-- <p class="info">by <strong></strong></p> -->
@@ -131,7 +130,11 @@
         </div>
       </div>
       <div class="wrapper">
-        
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
         <section class="post-meta">
           <div class="post-date">2017-03-08</div>
           <div class="post-categories">
@@ -144,7 +147,7 @@
         </section>
 
         <article class="post-content">
-          <h3 id="まえおき">まえおき</h3>
+          <p><img src="/assets/2017-03-08-1.png" alt="eyecatch" /></p>
 
 <p>Vue2.xでは仮想DOMが使われるようになりました。それに伴い、<strong><code class="highlighter-rouge">Vue用のテンプレート</code>を<code class="highlighter-rouge">仮想DOMをレンダリングするための関数</code>に変換する</strong>という処理を<strong>コンパイル時に行ってくれる</strong>仕組みが組み込まれています。</p>
 
@@ -155,7 +158,6 @@
 <p>※この記事を書いている時点でのVueのバージョンは<a href="https://github.com/vuejs/vue/tree/v2.2.1">2.2.1</a>です。</p>
 
 <ul id="markdown-toc">
-  <li><a href="#まえおき" id="markdown-toc-まえおき">まえおき</a></li>
   <li><a href="#おさらい-vuejsの利用方法3パターン" id="markdown-toc-おさらい-vuejsの利用方法3パターン">おさらい Vue.jsの利用方法3パターン</a>    <ul>
       <li><a href="#1-script埋め込み" id="markdown-toc-1-script埋め込み">1. <code class="highlighter-rouge">&lt;script&gt;</code>埋め込み</a></li>
       <li><a href="#2-vue-cli" id="markdown-toc-2-vue-cli">2. vue-cli</a></li>
