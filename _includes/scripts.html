@@ -1,9 +1,6 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
 <script>
 window.addEventListener('DOMContentLoaded', function() {
-  // Syntax highlighting
-  hljs.initHighlightingOnLoad();
-
   // Header
   var CLASS_MENU_SHOW = 'show';
   var navigationMenu = document.getElementById('js-navigation-menu');
@@ -13,19 +10,6 @@ window.addEventListener('DOMContentLoaded', function() {
     navigationMenu.classList.toggle(CLASS_MENU_SHOW);
   });
 });
-
-
-//   var menuToggle = $('#js-mobile-menu').unbind();
-//   $('#js-navigation-menu').removeClass("show");
-//   menuToggle.on('click', function(e) {
-//     e.preventDefault();
-//     $('#js-navigation-menu').slideToggle(function(){
-//       if($('#js-navigation-menu').is(':hidden')) {
-//         $('#js-navigation-menu').removeAttr('style');
-//       }
-//     });
-//   });
-// });
 </script>
 
 {% if site.ga_tracking_id %}
