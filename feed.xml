@@ -1,5 +1,222 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-09-30T14:55:28+00:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">React+Fluxアプリケーションを正しく設計するための覚書</title><link href="https://aloerina01.github.io/blog/2018-09-14-1" rel="alternate" type="text/html" title="React+Fluxアプリケーションを正しく設計するための覚書" /><published>2018-09-14T00:00:00+00:00</published><updated>2018-09-14T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-09-14-1">&lt;p&gt;Reactの良さを活かしやすいFluxは、Webアプリケーションの設計手法としてずいぶん馴染みのあるものになったように感じます。私もFluxを取り入れた開発を2年近く経験し、知見も溜まり、使い慣れたような気持ちでいました。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-09-30T15:18:16+00:00</updated><id>https://aloerina01.github.io/</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">Vue.nextTickのコードリーディング</title><link href="https://aloerina01.github.io/blog/2018-09-27-1" rel="alternate" type="text/html" title="Vue.nextTickのコードリーディング" /><published>2018-09-27T00:00:00+00:00</published><updated>2018-09-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-09-27-1">&lt;h3 id=&quot;vuenexttickとは&quot;&gt;&lt;a href=&quot;https://jp.vuejs.org/v2/api/#Vue-nextTick&quot; target=&quot;_blank&quot;&gt;Vue.nextTick&lt;/a&gt;とは？&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;callbackを延期し、DOMの更新サイクル後に実行します。DOM更新を待ち受けるために、いくつかのデータを変更した直後に使用してください。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;VueはDOMを非同期に更新する&lt;/strong&gt;ため、「DOMを更新した後にその更新済みのDOMに対して何らかの処理をする」といったような場面で&lt;code class=&quot;highlighter-rouge&quot;&gt;nextTick&lt;/code&gt;が役立ちます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// single file component&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/template&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'default'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;mounted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hello'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// default この時点ではまだDOMは更新されていない&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextTick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// hello   DOM更新後にこのコードに到達する &lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;  
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;dataの値を更新し、それをDOMに反映するコードです。&lt;/p&gt;
+
+&lt;p&gt;このときVueは、dataの更新処理をある程度ため込み、同じDOMを更新する処理が複数件たまった場合はまとめて1回だけ更新します。つまり非同期的に(コードの記述順とは違った順序で)DOMが更新されるということです。&lt;/p&gt;
+
+&lt;p&gt;もう少し正確な言葉で言うと、ある&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop&quot; target=&quot;_blank&quot;&gt;イベントループ&lt;/a&gt;において同じwatcherが複数回更新される場合は、タスクキューには重複除外した1つのタスクが詰められます。そして次のイベントループでタスクを順次捌いていきます。&lt;/p&gt;
+
+&lt;p&gt;そしてこの後に、つまり&lt;strong&gt;タスクキューに入った処理が全て完了した後に&lt;/strong&gt;何か別の処理を行う方法がnextTickというわけです。&lt;/p&gt;
+
+&lt;h3 id=&quot;コードリーディングしてみる&quot;&gt;コードリーディングしてみる&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js&quot; target=&quot;_blank&quot;&gt;src/core/util/next-tick.js&lt;/a&gt; に実装されています。コード量が少なく他モジュールへの依存も薄いので、読みやすそうです。&lt;/p&gt;
+
+&lt;h5 id=&quot;nexttick関数本体&quot;&gt;nextTick関数本体&lt;/h5&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pending&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+
+&lt;span class=&quot;cm&quot;&gt;/* 中略 */&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextTick&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_resolve&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;handleError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'nextTick'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;_resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pending&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;pending&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;useMacroTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;macroTimerFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;microTimerFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* 以下省略 */&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;主要な部分だけピックアップしています。nextTick関数は引数で受け取った&lt;code class=&quot;highlighter-rouge&quot;&gt;cb&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt;に詰め、&lt;code class=&quot;highlighter-rouge&quot;&gt;macroTimerFunc&lt;/code&gt;もしくは&lt;code class=&quot;highlighter-rouge&quot;&gt;microTimerFunc&lt;/code&gt;を呼び出しています。これらがどんな関数か見てみます。&lt;/p&gt;
+
+&lt;h5 id=&quot;macrotimerfunc-と-microtimerfunc-の実装&quot;&gt;macroTimerFunc と microTimerFunc の実装&lt;/h5&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 補足: ①callbacksに詰め込んだ関数を実行する本体&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flushCallbacks&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;pending&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;copies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;copies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;copies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]()&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 補足: ②macroTimerFuncの定義&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setImmediate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'undefined'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isNative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setImmediate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;macroTimerFunc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;setImmediate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flushCallbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/* 中略 */&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;macroTimerFunc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flushCallbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// 補足: ③microTimerFuncの定義&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'undefined'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isNative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;microTimerFunc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flushCallbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;cm&quot;&gt;/* 省略 */&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;flushCallbacks&lt;/code&gt;&lt;/strong&gt;は、&lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt;の中身を取り出して実行し、&lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt;を初期化しています&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;macroTimerFunc&lt;/code&gt;&lt;/strong&gt;は、&lt;code class=&quot;highlighter-rouge&quot;&gt;setImmediate&lt;/code&gt;もしくは&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;を使ってflushCallbacksを呼び出しています&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;microTimerFunc&lt;/code&gt;&lt;/strong&gt;は、&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise.resolve()&lt;/code&gt;を使ってflushCallbacksを呼び出しています&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;ここで登場する &lt;strong&gt;macro tasks&lt;/strong&gt; と &lt;strong&gt;micro tasks&lt;/strong&gt; という考え方は&lt;a href=&quot;https://promisesaplus.com/#point-67&quot; target=&quot;_blank&quot;&gt;Promises/A+&lt;/a&gt;にも記載があり、どちらも&lt;strong&gt;現在のイベントループ内の全てのタスクの実行完了後に、タスクを追加で実行する手法&lt;/strong&gt;を指しています。&lt;br /&gt;
+nextTickはこの手法を利用して「DOMの更新後に処理をする」ことを実現しているわけですね。&lt;/p&gt;
+
+&lt;p&gt;改めて macro tasks と micro tasks の実装を確認してみます。&lt;/p&gt;
+
+&lt;h5 id=&quot;macro-tasks&quot;&gt;macro tasks&lt;/h5&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;setImmediate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// or&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h5 id=&quot;micro-tasks&quot;&gt;micro tasks&lt;/h5&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;いずれも「イベントループの後に処理を実行する」のでどちらを使ってもnextTickの目的は果たせそうですが、Vueはこれらを使い分けていて、その理由についてコード内にコメントされています。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In &amp;lt; 2.4 we used microtasks everywhere, but there are some scenarios where microtasks have too high a priority and fire in between supposedly sequential events (e.g. #4521, #6690) or even between bubbling of the same event (#6566). &lt;br /&gt;
+However, using (macro) tasks everywhere also has subtle problems when state is changed right before repaint (e.g. #6813, out-in transitions).&lt;br /&gt;
+Here we use microtask by default, but expose a way to force (macro) task when needed (e.g. in event handlers attached by v-on).&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vue2.4以前までは micro tasks のみを利用していていましたが、それだと実行タイミングが早すぎてしまうケースがあり、場面に応じて macro tasks と使い分けているということですね。&lt;br /&gt;
+言い換えると、これらは実行タイミングが違うということです。&lt;/p&gt;
+
+&lt;h3 id=&quot;実行タイミングの検証&quot;&gt;実行タイミングの検証&lt;/h3&gt;
+
+&lt;p&gt;macro tasks と micro tasks の実行タイミングはどのように違うのでしょうか？ 簡単なコードで検証してみます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// execute nextTick(macroTask)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;macroTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from macroTask (use setTimeout)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// execute nextTick(microTask)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;microTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from microTask (use Promise)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;macroTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;microTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;logIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;performance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;// console
+
+1: call from microTask (use Promise) (469.1000000020722)
+2: call from macroTask (use setTimeout) (488.5999999969499)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;macroTask と microTask をそれぞれ実行します。&lt;br /&gt;
+何度やってもPromiseを利用した microTask が先に実行されます。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;同期処理をはさんでみます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// execute nextTick(macroTask)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;macroTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from macroTask (use setTimeout)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// execute nextTick(microTask)&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;microTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from microTask (use Promise)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// execute sync function&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;syncSomething&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+
+&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;syncSomething&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;startTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;startTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from sync function'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;//console
+
+1: call from sync function (1525.500000003376)
+2: call from microTask (use Promise) (1525.8000000030734)
+3: call from macroTask (use setTimeout) (1529.900000008638)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同期処理(タスクキューにあるタスク)を実行した後に microTask » macroTask の順で実行されます。この挙動については、MDNの&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop#Run-to-completion&quot; target=&quot;_blank&quot;&gt;Run-to-completion&lt;/a&gt;と&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E8%BF%BD%E5%8A%A0&quot; target=&quot;_blank&quot;&gt;メッセージの追加&lt;/a&gt;に詳細が記載されています。&lt;/p&gt;
+
+&lt;p&gt;最後に、macro tasks と micro tasks がDOM更新処理と絡んできた場合にどのように動作するのかを検証したコードを残しておきます。&lt;/p&gt;
+
+&lt;iframe width=&quot;100%&quot; height=&quot;300&quot; src=&quot;//jsfiddle.net/aloerina/pqahdwsk/39/embedded/js,html,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest=&quot;&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+&lt;p&gt;nextTickとは直接関係ない余談ですが、DOMの更新ロジックが完了してもすぐに画面に反映されずイベントループの後で反映される、というのも見どころです。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue.nextTickとは？</summary></entry><entry><title type="html">React+Fluxアプリケーションを正しく設計するための覚書</title><link href="https://aloerina01.github.io/blog/2018-09-14-1" rel="alternate" type="text/html" title="React+Fluxアプリケーションを正しく設計するための覚書" /><published>2018-09-14T00:00:00+00:00</published><updated>2018-09-14T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-09-14-1">&lt;p&gt;Reactの良さを活かしやすいFluxは、Webアプリケーションの設計手法としてずいぶん馴染みのあるものになったように感じます。私もFluxを取り入れた開発を2年近く経験し、知見も溜まり、使い慣れたような気持ちでいました。&lt;/p&gt;
 
 &lt;p&gt;が、使い始めた頃はもちろん、今でも何となく分かったつもりでいる部分があったり、複雑な実装が必要な場面で悩むことがあったりします。「Fluxはダメだ！うまく実現できない！」と投げ出したくなるときもありますが、そんなときこそ基礎へ立ち返る機会。&lt;br /&gt;
 そんなわけでFluxに再入門し、&lt;strong&gt;Fluxとは何なのか、どう実装するのが適切なのか&lt;/strong&gt;を&lt;a href=&quot;http://facebook.github.io/flux/&quot; target=&quot;_blank&quot;&gt;公式ドキュメント&lt;/a&gt;に則って整理してみようと思います。&lt;/p&gt;
@@ -1748,47 +1965,4 @@ Vueは双方向バインディングができることから、MVVMな設計で�
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;けっこう複雑で理解するまでに苦労しましたが、わかってしまえば自在にURLを設定することができて便利でした。このブログのソースも&lt;a href=&quot;https://github.com/aloerina01/aloerina01.github.io&quot;&gt;Github&lt;/a&gt;上で公開していますので、ご参考にどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">毎回忘れるanyenvの使い方メモ</title><link href="https://aloerina01.github.io/tip/2018-03-26-1" rel="alternate" type="text/html" title="毎回忘れるanyenvの使い方メモ" /><published>2018-03-26T00:00:00+00:00</published><updated>2018-03-26T00:00:00+00:00</updated><id>https://aloerina01.github.io/tip/1</id><content type="html" xml:base="https://aloerina01.github.io/tip/2018-03-26-1">&lt;h3 id=&quot;what-is&quot;&gt;What is&lt;/h3&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/riywo/anyenv&quot;&gt;anyenv&lt;/a&gt;とは&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;と名のつくバージョン管理ツールのWrapperです。&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;とは例えばNodeのバージョン管理をするndenvがあげられます。anyenvでできるのは以下のようなことです。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;自分のPCにどの&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;が入っているかを確認する&lt;/li&gt;
-  &lt;li&gt;自分のPCに必要な&lt;code class=&quot;highlighter-rouge&quot;&gt;**env&lt;/code&gt;をインストールする&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;how-to-use&quot;&gt;How to use&lt;/h3&gt;
-
-&lt;p&gt;グローバルのNodeを8.10.0に、&lt;code class=&quot;highlighter-rouge&quot;&gt;project_a&lt;/code&gt;ディレクトリのNodeを9.9.0にする例です。&lt;/p&gt;
-
-&lt;h5 id=&quot;anyenvをつかってndenvをインストールする&quot;&gt;anyenvをつかってndenvをインストールする&lt;/h5&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;anyenv &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ndenv
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;インストールできるnodeのバージョンを確認する&quot;&gt;インストールできるNodeのバージョンを確認する&lt;/h5&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
-  Available versions:
-    v0.1.14
-    v0.1.15
-    v0.1.16
-    &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;以下略&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;必要なバージョンをインストールする&quot;&gt;必要なバージョンをインストールする&lt;/h5&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;v8.10.0
-ndenv &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;v9.9.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;インストール済みのバージョンを確認する&quot;&gt;インストール済みのバージョンを確認する&lt;/h5&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv versions
-  &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; v8.10.0
-    v9.0.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;グローバルのnodeバージョンを指定する&quot;&gt;グローバルのNodeバージョンを指定する&lt;/h5&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ndenv global v8.10.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;ディレクトリ別にnodeバージョンを指定する&quot;&gt;ディレクトリ別にNodeバージョンを指定する&lt;/h5&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cd&lt;/span&gt; ~/project_a
-ndenv &lt;span class=&quot;nb&quot;&gt;local &lt;/span&gt;v9.9.0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">What is anyenvとは**envと名のつくバージョン管理ツールのWrapperです。**envとは例えばNodeのバージョン管理をするndenvがあげられます。anyenvでできるのは以下のようなことです。</summary></entry></feed>
+&lt;p&gt;けっこう複雑で理解するまでに苦労しましたが、わかってしまえば自在にURLを設定することができて便利でした。このブログのソースも&lt;a href=&quot;https://github.com/aloerina01/aloerina01.github.io&quot;&gt;Github&lt;/a&gt;上で公開していますので、ご参考にどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>

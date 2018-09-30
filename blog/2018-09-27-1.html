@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Vue.nextTickのコードリーディング</title>
+  <meta name="description" content="Vue.nextTickがどのように実装されているのか気になったのでコードを読んでみました。思っていたよりシンプルな実装で、Vue利用時以外でも参考にできそうな実装でした。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/prism.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Vue.nextTickがどのように実装されているのか気になったのでコードを読んでみました。思っていたよりシンプルな実装で、Vue利用時以外でも参考にできそうな実装でした。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-09-27-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="Vue.nextTickのコードリーディング" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Vue.nextTickのコードリーディング">
+  <meta name="twitter:description" content="Vue.nextTickがどのように実装されているのか気になったのでコードを読んでみました。思っていたよりシンプルな実装で、Vue利用時以外でも参考にできそうな実装でした。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-09-27-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-09-27-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/dist/prism.js" defer></script>
+  <script src="/dist/drift.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/CpmOgk2omnWqTzz43"target="_blank">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-09-27-1">
+            <span itemprop="name">Vue.nextTickのコードリーディング</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">Vue.nextTickのコードリーディング</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2018-09-27</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/javascript/">JavaScript</a>,    
+            <a href="/category/vue/">Vue</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <h3 id="vuenexttickとは"><a href="https://jp.vuejs.org/v2/api/#Vue-nextTick" target="_blank">Vue.nextTick</a>とは？</h3>
+
+<blockquote>
+  <p>callbackを延期し、DOMの更新サイクル後に実行します。DOM更新を待ち受けるために、いくつかのデータを変更した直後に使用してください。</p>
+</blockquote>
+
+<p><strong>VueはDOMを非同期に更新する</strong>ため、「DOMを更新した後にその更新済みのDOMに対して何らかの処理をする」といったような場面で<code class="highlighter-rouge">nextTick</code>が役立ちます。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// single file component</span>
+
+<span class="o">&lt;</span><span class="nx">template</span><span class="o">&gt;</span>
+  <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="p">{{</span> <span class="nx">message</span> <span class="p">}}</span><span class="o">&lt;</span><span class="sr">/div</span><span class="err">&gt;
+</span><span class="o">&lt;</span><span class="sr">/template</span><span class="err">&gt;
+</span>
+<span class="o">&lt;</span><span class="nx">script</span><span class="o">&gt;</span>
+  <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+
+    <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="s1">'default'</span> <span class="p">}</span>
+    <span class="p">},</span>
+
+    <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s1">'hello'</span><span class="p">;</span>
+      <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>    <span class="c1">// default この時点ではまだDOMは更新されていない</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>  <span class="c1">// hello   DOM更新後にこのコードに到達する </span>
+      <span class="p">});</span>  
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+<span class="o">&lt;</span><span class="sr">/script</span><span class="err">&gt;
+</span></code></pre></div></div>
+<p>dataの値を更新し、それをDOMに反映するコードです。</p>
+
+<p>このときVueは、dataの更新処理をある程度ため込み、同じDOMを更新する処理が複数件たまった場合はまとめて1回だけ更新します。つまり非同期的に(コードの記述順とは違った順序で)DOMが更新されるということです。</p>
+
+<p>もう少し正確な言葉で言うと、ある<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop" target="_blank">イベントループ</a>において同じwatcherが複数回更新される場合は、タスクキューには重複除外した1つのタスクが詰められます。そして次のイベントループでタスクを順次捌いていきます。</p>
+
+<p>そしてこの後に、つまり<strong>タスクキューに入った処理が全て完了した後に</strong>何か別の処理を行う方法がnextTickというわけです。</p>
+
+<h3 id="コードリーディングしてみる">コードリーディングしてみる</h3>
+
+<p><a href="https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js" target="_blank">src/core/util/next-tick.js</a> に実装されています。コード量が少なく他モジュールへの依存も薄いので、読みやすそうです。</p>
+
+<h5 id="nexttick関数本体">nextTick関数本体</h5>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">callbacks</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="kd">let</span> <span class="nx">pending</span> <span class="o">=</span> <span class="kc">false</span>
+
+<span class="cm">/* 中略 */</span>
+
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">nextTick</span> <span class="p">(</span><span class="nx">cb</span><span class="p">?:</span> <span class="nb">Function</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">?:</span> <span class="nb">Object</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">_resolve</span>
+  <span class="nx">callbacks</span><span class="p">.</span><span class="nx">push</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">cb</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">try</span> <span class="p">{</span>
+        <span class="nx">cb</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+      <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">handleError</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="s1">'nextTick'</span><span class="p">)</span>
+      <span class="p">}</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">_resolve</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">_resolve</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
+    <span class="p">}</span>
+  <span class="p">})</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">pending</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">pending</span> <span class="o">=</span> <span class="kc">true</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">useMacroTask</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">macroTimerFunc</span><span class="p">()</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+      <span class="nx">microTimerFunc</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+  <span class="cm">/* 以下省略 */</span>
+</code></pre></div></div>
+
+<p>主要な部分だけピックアップしています。nextTick関数は引数で受け取った<code class="highlighter-rouge">cb</code>を<code class="highlighter-rouge">callbacks</code>に詰め、<code class="highlighter-rouge">macroTimerFunc</code>もしくは<code class="highlighter-rouge">microTimerFunc</code>を呼び出しています。これらがどんな関数か見てみます。</p>
+
+<h5 id="macrotimerfunc-と-microtimerfunc-の実装">macroTimerFunc と microTimerFunc の実装</h5>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 補足: ①callbacksに詰め込んだ関数を実行する本体</span>
+<span class="kd">function</span> <span class="nx">flushCallbacks</span> <span class="p">()</span> <span class="p">{</span>
+  <span class="nx">pending</span> <span class="o">=</span> <span class="kc">false</span>
+  <span class="kd">const</span> <span class="nx">copies</span> <span class="o">=</span> <span class="nx">callbacks</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="nx">callbacks</span><span class="p">.</span><span class="nx">length</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">copies</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">copies</span><span class="p">[</span><span class="nx">i</span><span class="p">]()</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 補足: ②macroTimerFuncの定義</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">setImmediate</span> <span class="o">!==</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nx">setImmediate</span><span class="p">))</span> <span class="p">{</span>
+  <span class="nx">macroTimerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setImmediate</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="cm">/* 中略 */</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+  <span class="nx">macroTimerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// 補足: ③microTimerFuncの定義</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nb">Promise</span><span class="p">))</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()</span>
+  <span class="nx">microTimerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
+    <span class="cm">/* 省略 */</span>
+  <span class="p">}</span>
+<span class="p">}</span> 
+</code></pre></div></div>
+
+<ol>
+  <li><strong><code class="highlighter-rouge">flushCallbacks</code></strong>は、<code class="highlighter-rouge">callbacks</code>の中身を取り出して実行し、<code class="highlighter-rouge">callbacks</code>を初期化しています</li>
+  <li><strong><code class="highlighter-rouge">macroTimerFunc</code></strong>は、<code class="highlighter-rouge">setImmediate</code>もしくは<code class="highlighter-rouge">setTimeout</code>を使ってflushCallbacksを呼び出しています</li>
+  <li><strong><code class="highlighter-rouge">microTimerFunc</code></strong>は、<code class="highlighter-rouge">Promise.resolve()</code>を使ってflushCallbacksを呼び出しています</li>
+</ol>
+
+<p>ここで登場する <strong>macro tasks</strong> と <strong>micro tasks</strong> という考え方は<a href="https://promisesaplus.com/#point-67" target="_blank">Promises/A+</a>にも記載があり、どちらも<strong>現在のイベントループ内の全てのタスクの実行完了後に、タスクを追加で実行する手法</strong>を指しています。<br />
+nextTickはこの手法を利用して「DOMの更新後に処理をする」ことを実現しているわけですね。</p>
+
+<p>改めて macro tasks と micro tasks の実装を確認してみます。</p>
+
+<h5 id="macro-tasks">macro tasks</h5>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">setImmediate</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{});</span>
+
+<span class="c1">// or</span>
+
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{},</span> <span class="mi">0</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h5 id="micro-tasks">micro tasks</h5>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{});</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>いずれも「イベントループの後に処理を実行する」のでどちらを使ってもnextTickの目的は果たせそうですが、Vueはこれらを使い分けていて、その理由についてコード内にコメントされています。</p>
+
+<blockquote>
+  <p>In &lt; 2.4 we used microtasks everywhere, but there are some scenarios where microtasks have too high a priority and fire in between supposedly sequential events (e.g. #4521, #6690) or even between bubbling of the same event (#6566). <br />
+However, using (macro) tasks everywhere also has subtle problems when state is changed right before repaint (e.g. #6813, out-in transitions).<br />
+Here we use microtask by default, but expose a way to force (macro) task when needed (e.g. in event handlers attached by v-on).</p>
+</blockquote>
+
+<p>Vue2.4以前までは micro tasks のみを利用していていましたが、それだと実行タイミングが早すぎてしまうケースがあり、場面に応じて macro tasks と使い分けているということですね。<br />
+言い換えると、これらは実行タイミングが違うということです。</p>
+
+<h3 id="実行タイミングの検証">実行タイミングの検証</h3>
+
+<p>macro tasks と micro tasks の実行タイミングはどのように違うのでしょうか？ 簡単なコードで検証してみます。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// execute nextTick(macroTask)</span>
+<span class="nx">macroTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s1">'call from macroTask (use setTimeout)'</span><span class="p">));</span>
+
+<span class="c1">// execute nextTick(microTask)</span>
+<span class="nx">microTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s1">'call from microTask (use Promise)'</span><span class="p">));</span>
+
+
+<span class="kd">function</span> <span class="nx">macroTask</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(</span><span class="nx">fn</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">microTask</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">fn</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">log</span><span class="p">(</span><span class="nx">_message</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">message</span> <span class="o">=</span> <span class="s2">`</span><span class="p">${</span><span class="nx">logIndex</span><span class="o">++</span><span class="p">}</span><span class="s2">: </span><span class="p">${</span><span class="nx">_message</span><span class="p">}</span><span class="s2"> (</span><span class="p">${</span><span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()}</span><span class="s2">)`</span><span class="p">;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<pre><code class="language-plain">// console
+
+1: call from microTask (use Promise) (469.1000000020722)
+2: call from macroTask (use setTimeout) (488.5999999969499)
+</code></pre>
+<p>macroTask と microTask をそれぞれ実行します。<br />
+何度やってもPromiseを利用した microTask が先に実行されます。</p>
+
+<p></p>
+
+<p>同期処理をはさんでみます。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// execute nextTick(macroTask)</span>
+<span class="nx">macroTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s1">'call from macroTask (use setTimeout)'</span><span class="p">));</span>
+
+<span class="c1">// execute nextTick(microTask)</span>
+<span class="nx">microTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s1">'call from microTask (use Promise)'</span><span class="p">));</span>
+
+<span class="c1">// execute sync function</span>
+<span class="nx">syncSomething</span><span class="p">();</span>
+
+
+<span class="kd">function</span> <span class="nx">syncSomething</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">startTime</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">startTime</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="p">{}</span>
+  <span class="nx">log</span><span class="p">(</span><span class="s1">'call from sync function'</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<pre><code class="language-plain">//console
+
+1: call from sync function (1525.500000003376)
+2: call from microTask (use Promise) (1525.8000000030734)
+3: call from macroTask (use setTimeout) (1529.900000008638)
+</code></pre>
+<p>同期処理(タスクキューにあるタスク)を実行した後に microTask » macroTask の順で実行されます。この挙動については、MDNの<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop#Run-to-completion" target="_blank">Run-to-completion</a>と<a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E8%BF%BD%E5%8A%A0" target="_blank">メッセージの追加</a>に詳細が記載されています。</p>
+
+<p>最後に、macro tasks と micro tasks がDOM更新処理と絡んできた場合にどのように動作するのかを検証したコードを残しておきます。</p>
+
+<iframe width="100%" height="300" src="//jsfiddle.net/aloerina/pqahdwsk/39/embedded/js,html,result/dark/" allowfullscreen="allowfullscreen" allowpaymentrequest="" frameborder="0"></iframe>
+
+<p>nextTickとは直接関係ない余談ですが、DOMの更新ロジックが完了してもすぐに画面に反映されずイベントループの後で反映される、というのも見どころです。</p>
+
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Vue.nextTick%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0&url=https://aloerina01.github.io/blog/2018-09-27-1&via=aloerina_&hashtags=JavaScript,Vue,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Vue.nextTick%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0&u=https://aloerina01.github.io/blog/2018-09-27-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=Vue.nextTick%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0&url=https://aloerina01.github.io/blog/2018-09-27-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-09-27-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Vue.nextTick%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-09-27-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-08-03-1">throttleとdebounce</a></li>
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2017-11-08-1">トラブルシューティングメモを晒してみる  webpack動的module編</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/skills/">Skills</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <p class="present-title">aloerinaのサポーターになる</p>
+    <p class="present-description">気に入った記事がありましたらお小遣いをあげて支援してみませんか？ aloerinaの生計を支えるサポーターになることができます！</p>
+    <div class="present-qr">
+        <a href="kyash://qr/u/7297457164651391829" target="_blank" class="qr-execute-button">Kyashでサポートする</a>
+        <img src="/assets/kyash_qr.png">
+        <span><a href="https://kyash.co/" target="_blank">またはKyashで id: <b>aloerina</b> に送金する</a></span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // Header
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+  });
+});
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2018-09-27-1',
+    'title': 'Vue.nextTickのコードリーディング'
+  });
+</script>
+
+
+</body>
+
+</html>
