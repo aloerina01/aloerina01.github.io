@@ -1,7 +1,8 @@
-# This config is used for Development only.
+# This config is used for Indexing by Algolia only.
 # 
 # Difference from original:
-#   1. /_draft/ will be generated, too. 
+#   1. This config has some parameters for algolia.
+#   2. old posts will NOT be generated(indexed). 
 
 # External gems
 # See http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html for making `jekyll archives` work.
@@ -25,6 +26,8 @@ exclude:
   - "package-lock.json"
   - "webpack.config.js"
   - "README.md"
+  - "_config.dev.yml"
+  - "_config.algolia.yml"
   
 lsi: true
 
@@ -68,11 +71,6 @@ collections:
   posts:
     output: true
     permalink: /:path
-  drafts:
-    output: true
-    permalink: /draft/:year-:month-:day-:title
-  old:
-    output: true
 
 # Front Matter default
 defaults:
@@ -96,24 +94,16 @@ defaults:
       posttype: tip
       posttype_url: /tips
       posttype_name: "Tips"
-  - scope:
-      path: "_drafts"  # draftsはtypeではない https://github.com/jekyll/jekyll/issues/4080
-    values:
-      layout: post
-      posttype: draft
-      posttype_url: /drafts
-      posttype_name: "drafts"
-  - scope:
-      path: ""
-      type: "old"
-    values:
-      permalink: /:categories/:year/:month/:day/:title:output_ext
 
 # Disqus comments
 disqus_shortname: # https-aloerina01-github-io
 
 # Google analytics
 ga_tracking_id: "UA-39630080-4"
+
+algolia:
+  application_id: UMH0IQYKJ1
+  index_name: mf_code
 
 # Category descriptions (for archive pages)
 descriptions:
