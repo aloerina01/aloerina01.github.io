@@ -40,34 +40,12 @@ pre code.hljs {
 }
 
 .page-divider {
-	$divider-color: $light-gray;
   display: block;
-  width: 50%;
+  width: 40%;
   margin-left: auto;
-  margin-right: auto;
-  border-top: 1px solid $divider-color;
-  .one {
-    position: relative;
-    top: -9px;
-    display: block;
-    background: $divider-color;
-    width: 18px;
-    height: 18px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-  }
-  .two {
-    position: relative;
-    top: -26px;
-    display: block;
-    background: $white;
-    width: 16px;
-    height: 16px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-  }
+	margin-right: auto;
+	margin-bottom: 18px;
+	border-top: $base-border;
 }
 
 .site-header-container, .post-header-container {
@@ -180,8 +158,8 @@ pre code.hljs {
     display: block;
     text-align: right;
     width: 100%;
-    padding: 0.25em 0;
-    @include media ($tablet) {
+		padding: 0.25em 0;
+		@include media ($tablet) {
       background: transparent;
       display: inline;
       text-decoration: none;
@@ -189,7 +167,7 @@ pre code.hljs {
     }
   }
   li.nav-link {
-  	a {
+		a {
 	    display: inline-block;
 	    @include media ($tablet) {
 	      padding-right: 1.5em;
@@ -199,6 +177,15 @@ pre code.hljs {
 	  	@include media ($tablet) {
     		padding-right: 1em;
     	}
+    }
+  }
+  ul li.nav-search-box {
+		display: none;
+		@include media ($tablet) {
+      background: transparent;
+      display: inline-block;
+      text-decoration: none;
+			margin: 0 24px 0 0;
     }
   }
 }

@@ -31,6 +31,16 @@ exclude:
   
 lsi: true
 
+# algoria settings
+algolia:
+  application_id: UMH0IQYKJ1
+  index_name: mf_code
+  files_to_exclude:
+    - archives
+    - blogs
+    - tips
+    - category/**/*
+
 # Site settings
 title: "mille-feuille code"
 subtitle: "コードのかけらを一枚ずつ積み重ねて。"
@@ -100,10 +110,6 @@ disqus_shortname: # https-aloerina01-github-io
 
 # Google analytics
 ga_tracking_id: "UA-39630080-4"
-
-algolia:
-  application_id: UMH0IQYKJ1
-  index_name: mf_code
 
 # Category descriptions (for archive pages)
 descriptions:

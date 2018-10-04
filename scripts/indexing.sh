@@ -19,5 +19,5 @@ if [ -z "$diffs" ]; then
   echo "${text_color_green}Success${text_color_reset} No diff in /_posts/" && exit 0
 else
   echo "$diffs"
-  echo "${text_color_green}Success${text_color_reset} Start indexing." && ALGOLIA_API_KEY=$2 bundle exec jekyll algolia
+  echo "${text_color_green}Success${text_color_reset} Start indexing." && ALGOLIA_API_KEY=$2 bundle exec jekyll algolia --config ./_config.algolia.yml
 fi
