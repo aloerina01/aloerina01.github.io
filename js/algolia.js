@@ -2,7 +2,7 @@ const client = algoliasearch('UMH0IQYKJ1', '849f7d868e2a37fc2349cb192bbf6182');
 const index = client.initIndex('mf_code');
 //initialize autocomplete on search input (ID selector must match)
 autocomplete('#aa-search-input',
-  { hint: false, debug: true }, 
+  { hint: false }, 
   {
     source: autocomplete.sources.hits(index, { hitsPerPage: 4 }),
     //value to be displayed in input control after user's suggestion selection
