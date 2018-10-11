@@ -370,8 +370,7 @@ pre code.hljs {
     float: left; }
     .navigation .logo img {
       max-height: 2.5em;
-      margin-top: 0.3em;
-      padding-right: 1em; }
+      margin-top: 0.3em; }
     .navigation .logo span {
       font-size: 1.25em; }
     @media screen and (min-width: 768px) {
@@ -381,7 +380,7 @@ pre code.hljs {
           margin-top: 0.75em; } }
   .navigation nav {
     float: none;
-    padding: 1.25em 0; }
+    padding: 1em 0; }
     @media screen and (min-width: 768px) {
       .navigation nav {
         float: right;
@@ -1095,7 +1094,7 @@ pre code.hljs {
 ul li.nav-search-box .aa-input-container {
   display: inline-block;
   position: relative;
-  margin: 4px 0 0 0; }
+  margin: 0; }
 ul li.nav-search-box .aa-input-search {
   width: 200px;
   border: 1px solid #CFD8DC;
