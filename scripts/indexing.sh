@@ -7,20 +7,20 @@ text_color_reset="\033[0m"
 ci_token=$1
 algolia_token=$2
 
-function success () {
+success () {
   echo "${text_color_green}Success${text_color_reset} $1"
 }
 
-function err () {
+err () {
   echo "${text_color_red}Failed${text_color_reset} $1"
 }
 
-function validate () {
+validate () {
   [[ -z "$1" ]] && err "CircleCI API token is NOT found." && exit 1
   [[ -z "$2" ]] && err "Algolia API key is NOT found." && exit 1
 }
 
-function fetch_revisions () {
+fetch_revisions () {
   api_path="https://circleci.com/api/v1.1/project/github/aloerina01/aloerina01.github.io?circle-token=$ci_token&limit=1&filter=completed"
   cuerrent_result="offset=0"
   latest_result="offset=2" # build と indexing で2回分のCI結果が積まれるため
@@ -30,12 +30,12 @@ function fetch_revisions () {
   echo "$latest_revision...$current_revision" 
 }
 
-function check_diff () {
+check_diff () {
   revisions=$(cat -)
   echo $(git diff --name-only $revisions | grep -E "^.*_posts.*$")
 }
 
-function publish_algolia () {
+publish_algolia () {
   diff=$(cat -)
   echo "diff: $diff"
   if [[ -z "$diff" ]]; then
@@ -46,5 +46,5 @@ function publish_algolia () {
 }
 
 # main
-validate $ci_token $algolia_token
+validate "$ci_token" "$algolia_token"
 fetch_revisions | check_diff | publish_algolia
