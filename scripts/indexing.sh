@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # ubuntu は /bin/sh が dash ... 
 
+set -x
+
 text_color_red="\e[37;41;1m"
 text_color_green="\e[37;42;1m"
 text_color_reset="\e[m"
@@ -9,11 +11,11 @@ ci_token=$1
 algolia_token=$2
 
 success () {
-  echo "${text_color_green}Success${text_color_reset} $1"
+  printf "${text_color_green}Success${text_color_reset} $1"
 }
 
 err () {
-  echo "${text_color_red}Failed${text_color_reset} $1"
+  printf "${text_color_red}Failed${text_color_reset} $1"
 }
 
 validate () {
@@ -38,7 +40,6 @@ check_diff () {
 
 publish_algolia () {
   diff=$(cat -)
-  echo "diff: $diff"
   if [ -z "$diff" ]; then
     success "No diff in /_posts/" && exit 0
   else
