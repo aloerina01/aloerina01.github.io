@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # ubuntu は /bin/sh が dash ... 
 
-set -x
-
 text_color_red="\e[37;41;1m"
 text_color_green="\e[37;42;1m"
 text_color_reset="\e[m"
