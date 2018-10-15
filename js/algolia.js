@@ -11,7 +11,6 @@ autocomplete('#aa-search-input',
     templates: {
         //'suggestion' templating function used to render a single suggestion
         suggestion: function(suggestion) {
-          console.log(suggestion);
           if (!suggestion._highlightResult.title) {
             // return '<p class="suggestion-no-results">no results found</p>';
             return;
