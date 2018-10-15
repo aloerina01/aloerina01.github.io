@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build_jekyll:
+  build:
     working_directory: ~/workspace
     docker:
       - image: circleci/ruby:2.5.0
@@ -56,8 +56,7 @@ workflows:
   version: 2
   build_and_indexing:
     jobs:
-      - build_js
-      - build_jekyll
+      - build
       - indexing:
           requires:
-            - build_jekyll
+            - build
