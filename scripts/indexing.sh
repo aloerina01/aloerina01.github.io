@@ -36,7 +36,7 @@ check_force_publish () {
   if [[ -n "$is_force" ]]; then 
     message "Forced indexing." && return 0
   else
-    message "Not execute forced indexing." return 1
+    message "Not execute forced indexing." && return 1
   fi
 }
 
@@ -67,5 +67,5 @@ publish_algolia () {
 
 # main
 validate "$ci_token" "$algolia_token" "$github_token"
-check_force_publish && publish_algolia
+check_force_publish && publish_algolia | exit
 fetch_revisions | check_diff && publish_algolia

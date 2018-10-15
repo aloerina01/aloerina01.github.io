@@ -36,10 +36,16 @@ algolia:
   application_id: UMH0IQYKJ1
   index_name: mf_code
   files_to_exclude:
-    - archives
-    - blogs
-    - tips
-    - category/**/*
+    - _pages/*.html
+  settings:                                                                      
+    searchableAttributes:                                                        
+      - title                                                                    
+      - outline                                                                  
+    customRanking:                                                               
+      - desc(custom_ranking.heading)                                             
+      - asc(custom_ranking.position)                                             
+      - desc(date)                                                               
+                     
 
 # Site settings
 title: "mille-feuille code"
