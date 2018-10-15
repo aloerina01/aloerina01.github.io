@@ -19,8 +19,8 @@ err () {
 }
 
 validate () {
-  [ -z "$1" ] && err "CircleCI API token is NOT found." && exit 1
-  [ -z "$2" ] && err "Algolia API key is NOT found." && exit 1
+  [[ -z "$1" ]] && err "CircleCI API token is NOT found." && exit 1
+  [[ -z "$2" ]] && err "Algolia API key is NOT found." && exit 1
 }
 
 fetch_revisions () {
@@ -29,7 +29,7 @@ fetch_revisions () {
   latest_result="offset=2" # build と indexing で2回分のCI結果が積まれるため
   current_revision=$(curl "$api_path&$cuerrent_result" | jq -r .[0].vcs_revision)
   latest_revision=$(curl "$api_path&$latest_result" | jq -r .[0].vcs_revision)
-  [ -z "$current_revision" -o -z "$latest_revision" ] && err "vcs_revision is empty." && exit 1
+  [[ -z "$current_revision" || -z "$latest_revision" ]] && err "vcs_revision is empty." && exit 1
   echo "$latest_revision...$current_revision" 
 }
 
@@ -40,7 +40,7 @@ check_diff () {
 
 publish_algolia () {
   diff=$(cat -)
-  if [ -z "$diff" ]; then
+  if [[ -z "$diff" ]]; then
     success "No diff in /_posts/" && exit 0
   else
     success "Start indexing." && ALGOLIA_API_KEY=$algolia_token bundle exec jekyll algolia --config ./_config.algolia.yml
