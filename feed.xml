@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-10-15T04:37:20+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-10-15T06:38:37+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">algoliaを使ってJekyll製ブログに全文検索をつけた話</title><link href="https://aloerina01.github.io/blog/2018-10-11-1" rel="alternate" type="text/html" title="algoliaを使ってJekyll製ブログに全文検索をつけた話" /><published>2018-10-11T00:00:00+00:00</published><updated>2018-10-11T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-10-11-1">&lt;h3 id=&quot;algoliaとは&quot;&gt;&lt;a href=&quot;https://www.algolia.com/&quot; target=&quot;_blank&quot;&gt;algolia&lt;/a&gt;とは&lt;/h3&gt;
 
 &lt;blockquote&gt;
@@ -7,7 +7,7 @@
 
 &lt;p&gt;algoliaとは&lt;strong&gt;全文検索エンジンサービス&lt;/strong&gt;です。「algoliaサーバにブログやドキュメントなどのコンテンツデータをアップすると、そのデータを全文検索するAPIを利用できる」といった感じのものです。&lt;/p&gt;
 
-&lt;p&gt;例を挙げると、Vue, React, Webpack, babel などの公式ドキュメントにある検索機能がalgolia製です。あれはalgoliaの機能のひとつのDocSearchによって実現されています。&lt;/p&gt;
+&lt;p&gt;例を挙げると、Vue, React, Webpack, babel などの公式ドキュメントにある検索機能が、algoliaのDocSearchという機能によって実現されています。&lt;/p&gt;
 
 &lt;p&gt;今回は、このalgoliaを使ってブログに全文検索を実装した方法をまとめてみます。&lt;/p&gt;
 
@@ -114,7 +114,7 @@
 
 &lt;h3 id=&quot;3-autocompletejsを使い検索窓を実装する&quot;&gt;3. &lt;strong&gt;autocomplete.js&lt;/strong&gt;を使い検索窓を実装する&lt;/h3&gt;
 
-&lt;p&gt;algoliaを使ってインクリメンタルサーチを実現できるライブラリが&lt;a href=&quot;https://www.algolia.com/doc/tutorials/search-ui/autocomplete/auto-complete/&quot; target=&quot;_blank&quot;&gt;autocomplete.js&lt;/a&gt;です。これはJekyllとは関係ないもので様々な環境に適用することができます。公式ドキュメントも手厚く、バックエンドはphp, ruby, javascript, python, C# に対応しており、フロントエンドはvanillaなJavaScript, Angular, jQuery 用のサンプルコードが用意されています。&lt;br /&gt;
+&lt;p&gt;algoliaを使ってインクリメンタルサーチを実現できるライブラリが&lt;a href=&quot;https://www.algolia.com/doc/tutorials/search-ui/autocomplete/auto-complete/&quot; target=&quot;_blank&quot;&gt;autocomplete.js&lt;/a&gt;です。これはJekyllとは関係ないもので様々な環境に適用することができます。公式ドキュメントも手厚く、バックエンドはphp, ruby, JavaScript, python, C# に対応しており、フロントエンドはvanillaなJavaScript, Angular, jQuery 用のサンプルコードが用意されています。&lt;br /&gt;
 このブログではvanillaJSでの利用方法にのっとりJSとCSSを読み込み、任意の箇所にDOMを追加しています。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;HTML&lt;/strong&gt;&lt;/p&gt;
