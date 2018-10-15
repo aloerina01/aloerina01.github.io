@@ -68,4 +68,4 @@ publish_algolia () {
 # main
 validate "$ci_token" "$algolia_token" "$github_token"
 check_force_publish && publish_algolia | exit
-fetch_revisions | check_diff && publish_algolia
+fetch_revisions | check_diff && publish_algolia || exit 0
