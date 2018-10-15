@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build_jekyll:
     working_directory: ~/workspace
     docker:
       - image: circleci/ruby:2.5.0
@@ -19,6 +19,22 @@ jobs:
       - run: git config --global user.name "aloerina01"
       - run: git config --global user.email "4443321+aloerina01@users.noreply.github.com"
       - run: bundle exec rake deploy --trace
+  build_js:
+    working_directory: ~/workspace
+    docker:
+      - image: circleci/node:8.9.3
+    steps:
+      - checkout
+      - run: sudo npm install -g npm@latest
+      - restore_cache:
+          keys:
+            - dependency-cache-{{ checksum "package.json" }}
+            - dependency-cache-
+      - run: npm run webpack:prod
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
   indexing:
     working_directory: ~/workspace
     docker:
@@ -40,7 +56,8 @@ workflows:
   version: 2
   build_and_indexing:
     jobs:
-      - build
+      - build_js
+      - build_jekyll
       - indexing:
           requires:
-            - build
+            - build_jekyll
