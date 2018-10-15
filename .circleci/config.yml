@@ -51,7 +51,7 @@ jobs:
           key: bundle-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run: chmod +x ./scripts/indexing.sh && ./scripts/indexing.sh $CI_API_TOKEN $ALGOLIA_ADMIN_API_KEY
+      - run: chmod +x ./scripts/indexing.sh && ./scripts/indexing.sh $CI_API_TOKEN $ALGOLIA_ADMIN_API_KEY $GITHUB_TOKEN
 workflows:
   version: 2
   build_and_indexing:

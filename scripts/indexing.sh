@@ -1,24 +1,43 @@
 #!/usr/bin/env bash
 # ubuntu は /bin/sh が dash ... 
 
+text_bold="\e[34;47;1m"
 text_color_red="\e[37;41;1m"
 text_color_green="\e[37;42;1m"
 text_color_reset="\e[m"
 
 ci_token=$1
 algolia_token=$2
+github_token=$3
 
 success () {
-  printf "${text_color_green}Success${text_color_reset} $1"
+  printf "${text_color_green}Success${text_color_reset} $1\n"
 }
 
 err () {
-  printf "${text_color_red}Failed${text_color_reset} $1"
+  printf "${text_color_red}Failed${text_color_reset} $1\n"
+}
+
+message () {
+  printf "${text_bold}Log${text_color_reset} $1\n"
 }
 
 validate () {
   [[ -z "$1" ]] && err "CircleCI API token is NOT found." && exit 1
   [[ -z "$2" ]] && err "Algolia API key is NOT found." && exit 1
+  [[ -z "$3" ]] && err "GitHub API token is NOT found." && exit 1
+}
+
+check_force_publish () {
+  [[ -z "$CIRCLE_SHA1" ]] && message "'CIRCLE_SHA1' is empty." && return 1
+  
+  api_path="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/$CIRCLE_SHA1?token=$github_token"
+  is_force=$(curl "$api_path" | jq -r .commit.message | grep -E "^.*\[indexing\].*$")
+  if [[ -n "$is_force" ]]; then 
+    message "Forced indexing." && return 0
+  else
+    message "Not execute forced indexing." return 1
+  fi
 }
 
 fetch_revisions () {
@@ -33,18 +52,20 @@ fetch_revisions () {
 
 check_diff () {
   revisions=$(cat -)
-  echo $(git diff --name-only $revisions | grep -E "^.*_posts.*$")
-}
-
-publish_algolia () {
-  diff=$(cat -)
+  message "revisions: $revisions"
+  diff=$(git diff --name-only $revisions | grep -E "^.*_posts.*$")
   if [[ -z "$diff" ]]; then
-    success "No diff in /_posts/" && exit 0
+    success "No diff in /_posts/" && return 1
   else
-    success "Start indexing." && ALGOLIA_API_KEY=$algolia_token bundle exec jekyll algolia --config ./_config.algolia.yml
+    message "Posts are modified." && return 0
   fi
 }
 
+publish_algolia () {
+  success "Start indexing." && ALGOLIA_API_KEY=$algolia_token bundle exec jekyll algolia --config ./_config.algolia.yml
+}
+
 # main
-validate "$ci_token" "$algolia_token"
-fetch_revisions | check_diff | publish_algolia
+validate "$ci_token" "$algolia_token" "$github_token"
+check_force_publish && publish_algolia
+fetch_revisions | check_diff && publish_algolia
