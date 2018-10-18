@@ -112,7 +112,7 @@ DEPENDENCIES
   classifier-reborn
   grit (~> 2.5.0)!
   jekyll (~> 3.8.3)
-  jekyll-algolia
+  jekyll-algolia (~> 1.0)
   jekyll-archives
   jekyll-feed
   jekyll-paginate
