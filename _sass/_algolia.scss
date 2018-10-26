@@ -38,20 +38,23 @@ ul li.nav-search-box {
   }
   .aa-dropdown-menu {
     background-color: #fff;
-    box-shadow: 1px 1px 10px #dfdfdf;
+    box-shadow: 1px 1px 5px #aaa;
     min-width: 300px;
     margin-top: 10px;
     box-sizing: border-box;
     width: 460px;
   }
   .aa-suggestion {
-    padding: 12px;
     cursor: pointer;
     p {
       margin: 0;
     }
     a {
       color: $base-font-color;
+      display: block;
+      width: 100%;
+      height: 100%;
+      padding: 12px;
       &:hover {
         color: $base-font-color;
       }
