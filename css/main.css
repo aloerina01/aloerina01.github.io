@@ -548,6 +548,13 @@ pre code.hljs {
       padding: 0 0.5rem;
       line-height: 1.3;
       font-size: 92%; }
+    .page-content .post .post-content .revision {
+      border-radius: 10px;
+      background-color: #eaf7ff;
+      padding: 12px 20px;
+      margin: 42px 0 48px; }
+      .page-content .post .post-content .revision .date {
+        font-weight: 600; }
     .page-content .post .post-content .highlight code {
       padding: 0.8rem 1.0rem; }
     .page-content .post .post-content h3 {
