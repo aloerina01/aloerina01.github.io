@@ -303,14 +303,23 @@ pre code.hljs {
 				font-style: italic;
 				font-size: 90%;
 			}
-		      	code {
+		  code {
 				padding: 0 0.5rem;
 				line-height: 1.3;
 				font-size: 92%;
-		      	}
+			}
+			.revision {
+				border-radius:10px;
+				background-color:#eaf7ff;
+				padding:12px 20px;
+				margin:42px 0 48px;
+				.date {
+					font-weight:600;
+				}
+			}
 			.highlight code {
 				padding: 0.8rem 1.0rem;
-		      	}
+		  }
 			h3 {
 				margin-top: 72px;
 				border-bottom: 1px solid $blue-gray-100;
