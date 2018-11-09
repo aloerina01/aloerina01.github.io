@@ -324,7 +324,7 @@ Babel7.xでは、Babelに関連するパッケージの命名規則が変更さ�
 
 <p>「1度だけ」というのがとても重要で、<strong>複数回読み込むとpolyfillがぶっ壊れます</strong>。あるHTMLで2つのjsファイルを読み込んでいて、それぞれで<code class="highlighter-rouge">babel-polyfill</code>を読み込んでいる場合もぶっ壊れます。とにかく2回読み込まれたらマズイのです。</p>
 
-<p>この<strong>二重読み込み制約</strong>にさえ気をつけていれば、この方法ですべてのpolyfillを利用することができます。加えて、<code class="highlighter-rouge">babel-preset-env</code>と組み合わせて利用する場合は、<a href="https://babeljs.io/docs/plugins/preset-env/#usebuiltins">useBuiltIns</a>オプションを設定することで<strong>全部入りの<code class="highlighter-rouge">babel-polyfill</code>を、必要なpolyfill(該当する<code class="highlighter-rouge">core-js</code>のモジュール)のみに変換してくれます</strong>。</p>
+<p>この<strong>二重読み込み制約</strong>にさえ気をつけていれば、この方法ですべてのpolyfillを利用することができます。加えて、<code class="highlighter-rouge">babel-preset-env</code>と組み合わせて利用する場合は、<a href="https://babeljs.io/docs/en/6.26.3/babel-preset-env#usebuiltins">useBuiltIns</a>オプションを設定することで<strong>全部入りの<code class="highlighter-rouge">babel-polyfill</code>を、必要なpolyfill(該当する<code class="highlighter-rouge">core-js</code>のモジュール)のみに変換してくれます</strong>。</p>
 
 <p><strong>.babelrc</strong></p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
