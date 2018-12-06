@@ -1,5 +1,210 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-12-05T11:37:45+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">React16.6の新機能 React.memo のコードリーディング</title><link href="https://aloerina01.github.io/blog/2018-10-25-1" rel="alternate" type="text/html" title="React16.6の新機能 React.memo のコードリーディング" /><published>2018-10-25T00:00:00+00:00</published><updated>2018-10-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-10-25-1">&lt;p&gt;先日「&lt;a href=&quot;https://reactjs.org/blog/2018/10/23/react-v-16-6.html&quot; target=&quot;_blank&quot;&gt;React v16.6.0: lazy, memo and contextType&lt;/a&gt;」にていくつかの新機能が発表されました。この中の&lt;strong&gt;React.memo&lt;/strong&gt;が個人的に嬉しい機能だったので、軽く調べてみました。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-12-06T04:30:36+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み</title><link href="https://aloerina01.github.io/blog/2018-11-29-1" rel="alternate" type="text/html" title="Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み" /><published>2018-11-29T00:00:00+00:00</published><updated>2018-11-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-11-29-1">&lt;p&gt;ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です)。今回はBabel7.xでの&lt;strong&gt;用途別polyfillの設定方法&lt;/strong&gt;と、キモとなる&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは&lt;strong&gt;7.1.0&lt;/strong&gt;です)。&lt;/p&gt;
+
+&lt;p&gt;なお、6.xまでの設定方法は「&lt;a href=&quot;/blog/2018-03-19-1&quot; target=&quot;_blank&quot;&gt;Babelの設定を見直すための逆引きガイド&lt;/a&gt;」にまとめてあります(polyfillのことだけでなく、Babelとは何か、どのように利用するのか、といったことも併せてまとめてありますので良ければご参考にどうぞ)。&lt;/p&gt;
+
+&lt;h3 id=&quot;用途別polyfillの入れ方&quot;&gt;用途別polyfillの入れ方&lt;/h3&gt;
+
+&lt;p&gt;polyfillの入れ方には大きく3種類あります。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;用途&lt;/th&gt;
+      &lt;th&gt;方法&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;必要なpolyfillだけ入れる&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプション &lt;strong&gt;usage&lt;/strong&gt; を使う&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;全てのpolyfillを入れる&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-polyfill&quot; target=&quot;_blank&quot;&gt;@babel/polyfill&lt;/a&gt;をimport/requireする&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;グローバル汚染せずにpolyfillを適用する&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-runtime&quot; target=&quot;_blank&quot;&gt;@babel/runtime&lt;/a&gt;と&lt;br /&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-transform-runtime&quot; target=&quot;_blank&quot;&gt;@babel/plugin-transform-runtime&lt;/a&gt;を使う&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;大幅に変更されたのが&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションの挙動です。6.xではまずbabel-polyfillを入れた上で「それをどのようにcore-jsに置き換えるか」をuseBuiltInsオプションで指定する形でした。
+対して7.xでは&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションに応じて@babel/polyfillを入れたり入れなかったりします。&lt;/p&gt;
+
+&lt;p&gt;ではそれぞれの方法の詳細を見ていきます。&lt;/p&gt;
+
+&lt;h4 id=&quot;1-必要なpolyfillだけを入れる方法&quot;&gt;1. 必要なpolyfillだけを入れる方法&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-preset-env&quot; target=&quot;_blank&quot;&gt;@babel/preset-env&lt;/a&gt;の&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションを&lt;code class=&quot;highlighter-rouge&quot;&gt;usage&lt;/code&gt;とする&lt;/strong&gt;と、@babel/polyfillをソース内でimportせずとも必要なpolyfillだけを自動で選別して入れてくれます。ただし、&lt;strong&gt;@babel/polyfillをnpm installしておく&lt;/strong&gt;必要はあります。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;@babel/polyfill, @babel/preset-envをインストールする&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/preset-env
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; @babel/polyfill
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrcを記述する&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;useBuiltIns&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;usage&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;この方法はメリットが大きいですが、公式ドキュメントに&lt;strong&gt;experimental&lt;/strong&gt;と記されている点を忘れてはいけません。&lt;br /&gt;
+試しにpolyfillが必要な実装例を&lt;a href=&quot;https://github.com/aloerina01/til/tree/master/daily/20181128&quot; target=&quot;_blank&quot;&gt;いくつか試してみた&lt;/a&gt;ところ、polyfillが入らないケースがありました。分かりやすかった例をピックアップしてみます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;letObj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;constObj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'includes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// array.includes と string.includes のpolyfillが入る&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;letObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'includes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// polyfillが入らない&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;constObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'includes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// polyfillが入らない&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// --------&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'includes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;s1&quot;&gt;'str'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()];&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// string.includes のpolyfillが入らない&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;静的解析してimportするpolyfillを特定している感じでしょうか。&lt;br /&gt;
+スコープが不明確だと中身を特定しきれないので、使われる可能性のあるpolyfillを入れていますね。また、関数は実行しないと結果を判断できないようです。この感じだと、個人的にはproduction利用はまだちょっと怖い…と思ってしまいます。&lt;/p&gt;
+
+&lt;p&gt;ちなみに「importされているか怪しいpolyfillを個別に手動でimportする」案も考えたのですが、手動で入れたものとの重複判定はしてくれないようでしたので、この案もダメそうですね😳&lt;/p&gt;
+
+&lt;h4 id=&quot;2-全てのpolyfillを入れる方法&quot;&gt;2. 全てのpolyfillを入れる方法&lt;/h4&gt;
+
+&lt;p&gt;Babel6.xまでと同じように&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-polyfill&quot; target=&quot;_blank&quot;&gt;@babel/polyfill&lt;/a&gt;をimport/requireする&lt;/strong&gt;方法です。合わせて&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションに&lt;code class=&quot;highlighter-rouge&quot;&gt;entry&lt;/code&gt;か&lt;code class=&quot;highlighter-rouge&quot;&gt;false(default)&lt;/code&gt;を指定することができます。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;@babel/polyfill, @babel/preset-envをインストールする&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/preset-env
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; @babel/polyfill
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;エントリーポイントでpolyfillを読み込む&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// index.js&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@babel/polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// polyfillが必要な実装&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrcを記述する&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;useBuiltIns&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;entry&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;任意&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;に&lt;code class=&quot;highlighter-rouge&quot;&gt;entry&lt;/code&gt;を指定すると、@babel/polyfillのimportを&lt;strong&gt;生のcore-jsのimportに置換してくれます&lt;/strong&gt;。また、今まで通り同じpolyfillを複数回importするのはNGなのでその点もお忘れなく。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-グローバル汚染せずにpolyfillを適用する方法&quot;&gt;3. グローバル汚染せずにpolyfillを適用する方法&lt;/h4&gt;
+
+&lt;p&gt;Babel6.xまででは&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-plugin-transform-runtime&lt;/code&gt;を使っていましたが、7.xからは2つのmoduleを使います。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-runtime&quot; target=&quot;_blank&quot;&gt;@babel/runtime&lt;/a&gt; … ソースにバンドルされるpolyfill本体&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-transform-runtime&quot; target=&quot;_blank&quot;&gt;@babel/plugin-transform-runtime&lt;/a&gt; … polyfillが必要な箇所を@babel/runtimeに置き換えてくれるもの&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;@babel/runtime, @babel/plugin-transform-runtimeをインストールする&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; @babel/runtime
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/plugin-transform-runtime
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrcを記述する&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;plugins&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/plugin-transform-runtime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;利用の際は、Babel6.xまでと同様に&lt;strong&gt;インスタンスメソッドは使えない&lt;/strong&gt;ということに注意する必要があります。&lt;/p&gt;
+
+&lt;h3 id=&quot;usebuiltinsのコードリーディング&quot;&gt;useBuiltInsのコードリーディング&lt;/h3&gt;
+
+&lt;p&gt;ここからは余談です。&lt;br /&gt;
+useBuiltInsオプションがどのように実装されているか気になったので、軽くコードリーディングしてみました。そのときのメモをまとめておきます。&lt;/p&gt;
+
+&lt;h5 id=&quot;-babel-preset-envsrcindexjsl285&quot;&gt;&lt;a href=&quot;https://github.com/babel/babel/blob/59e9c6322baf6cbd1952c40ce5dd0b2ea7802712/packages/babel-preset-env/src/index.js#L285&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/index.js#L285&lt;/a&gt;&lt;/h5&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;の値に応じて利用するプラグインを分岐しています。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;entry設定時 &lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-entry-plugin.js&quot; target=&quot;_blank&quot;&gt;babel/use-built-ins-entry-plugin.js&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;usage設定時 &lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-plugin.js&quot; target=&quot;_blank&quot;&gt;babel/use-built-ins-plugin.js&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらのプラグインは、どちらも以下のようなPluginオブジェクトを返す関数を実装しています。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Plugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Plugin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;visitor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// polyfill の import を解決するための処理群&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// メイン処理前に実行すること&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// pluginの識別子のようなもの&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Plugin.visitorが大きく差が出る部分ですね。&lt;/p&gt;
+
+&lt;h5 id=&quot;-babel-preset-envsrcuse-built-ins-entry-pluginjsl31&quot;&gt;&lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-entry-plugin.js#L31&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/use-built-ins-entry-plugin.js#L31&lt;/a&gt;&lt;/h5&gt;
+
+&lt;p&gt;Plugin.visitorに渡される&lt;code class=&quot;highlighter-rouge&quot;&gt;isPolyfillImport&lt;/code&gt;オブジェクトを見ると、&lt;code class=&quot;highlighter-rouge&quot;&gt;ImportDeclaration&lt;/code&gt;関数に「@babel/polyfillがimportされてるならフラグをたてて、それを必要なmoduleのimportにreplaceしていく」といった実装があります。&lt;/p&gt;
+
+&lt;h5 id=&quot;-babel-preset-envsrcuse-built-ins-pluginjsl68&quot;&gt;&lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-plugin.js#L68&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/use-built-ins-plugin.js#L68&lt;/a&gt;&lt;/h5&gt;
+
+&lt;p&gt;Plugin.visitorに渡される&lt;code class=&quot;highlighter-rouge&quot;&gt;addAndRemovePolyfillImports&lt;/code&gt;オブジェクトを見ると、「@babel/polyfillがimportされていないことを確認する&lt;code class=&quot;highlighter-rouge&quot;&gt;ImportDeclaration&lt;/code&gt;関数」と、「個々のpolyfillのimportするための関数」が存在します。後者については、ソースを解析して実装方法に応じて呼び出す関数を使い分けている感じですかね。&lt;/p&gt;
+
+&lt;p&gt;個々のpolyfillをimportするための関数は、最終的にutilsの&lt;code class=&quot;highlighter-rouge&quot;&gt;createImport&lt;/code&gt;関数を呼び出し、その中で更に&lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-helper-module-imports/src/index.js&quot; targe=&quot;_blank&quot;&gt;@babel/helper-module-imports&lt;/a&gt;に処理を委譲しています。この@babel/helper-module-importsがpolyfillを個別にimportする本体ですね。&lt;/p&gt;
+
+&lt;h5 id=&quot;-babelhelper-module-imports&quot;&gt;&lt;a href=&quot;https://github.com/babel/babel/tree/master/packages/babel-helper-module-imports&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; @babel/helper-module-imports&lt;/a&gt;&lt;/h5&gt;
+
+&lt;p&gt;src以下には3つのファイルがあります。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;index.js&lt;/strong&gt;&lt;br /&gt;
+外部から呼び出されるpublicな関数。処理の実態は以下の2つに委譲。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;import-injector.js&lt;/strong&gt;&lt;br /&gt;
+polyfillの注入を担うclass。1つのpolyfillにつき1インスタンスを生成し、polyfillの性質(クラスメソッドなのか、インスタンスメソッドなのか、等)に応じた方法で注入する処理を呼び出す。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;import-bulder.js&lt;/strong&gt;&lt;br /&gt;
+上述の「注入する処理」の本体。慎ましいBuilderパターンで実装されている。&lt;/p&gt;
+
+&lt;p&gt;以上、ざっくりとしたコードリーディングでした。@babel/coreのほうまではちゃんと読んでないので誤りがあるかもしれませんが、なんとなく&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;による挙動の違いを想定できたので良しとします。&lt;/p&gt;
+
+&lt;h3 id=&quot;あとがき&quot;&gt;あとがき&lt;/h3&gt;
+
+&lt;p&gt;今回の記事はBabel7.1.0のドキュメントとソースを参考にしています。今後また仕様が変わることもあると思うので、記事内に古い情報や誤りを見つけた際は&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡いただければと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です)。今回はBabel7.xでの用途別polyfillの設定方法と、キモとなるuseBuiltInsオプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは7.1.0です)。</summary></entry><entry><title type="html">React16.6の新機能 React.memo のコードリーディング</title><link href="https://aloerina01.github.io/blog/2018-10-25-1" rel="alternate" type="text/html" title="React16.6の新機能 React.memo のコードリーディング" /><published>2018-10-25T00:00:00+00:00</published><updated>2018-10-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-10-25-1">&lt;p&gt;先日「&lt;a href=&quot;https://reactjs.org/blog/2018/10/23/react-v-16-6.html&quot; target=&quot;_blank&quot;&gt;React v16.6.0: lazy, memo and contextType&lt;/a&gt;」にていくつかの新機能が発表されました。この中の&lt;strong&gt;React.memo&lt;/strong&gt;が個人的に嬉しい機能だったので、軽く調べてみました。&lt;/p&gt;
 
 &lt;h3 id=&quot;reactmemoとは何か&quot;&gt;React.memoとは何か&lt;/h3&gt;
 
@@ -1844,188 +2049,4 @@ This is my Github Pages repository, therefore I never merge to [fork元リポジ
 
 &lt;p&gt;Helpページを熟読せずにSupportに連絡してしまったせいでやり取りが2往復になってしまって迷惑をかけてしまいましたが、素早くそして快く対応してくれたGithubに感謝です。&lt;/p&gt;
 
-&lt;p&gt;以上。&lt;/p&gt;</content><author><name></name></author><summary type="html">Forkして作ったリポジトリだけれどFork元にMergeしたりせず普通のリポジトリとして扱いたい、という稀なケースの対応を経験したので知見をメモします。</summary></entry><entry><title type="html">メンテナンスしやすいVueComponentを設計するために気をつけていること</title><link href="https://aloerina01.github.io/blog/2018-05-01-1" rel="alternate" type="text/html" title="メンテナンスしやすいVueComponentを設計するために気をつけていること" /><published>2018-05-01T00:00:00+00:00</published><updated>2018-05-01T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-01-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
-&lt;p&gt;VueをつかってWebアプリケーションを実装するとき、Componentをどう切るかって誰でも一度は悩みますよね(悩みますよね？)。とりあえず思いつくままに切ってみたり、繰り返し使いそうなもので切ってみたり、CSSのスコープで切ってみたり…。いろいろな切り口があると思います。&lt;/p&gt;
-
-&lt;p&gt;この「いろいろな切り口」でコンポーネントを切ることができる点が、コンポーネント設計を難しくしている所以だと考えています。&lt;/p&gt;
-
-&lt;p&gt;そこで今回は、&lt;strong&gt;どのような切り口・観点でコンポーネントを切ればよいのか&lt;/strong&gt;、&lt;strong&gt;そのときに気をつけるべきことは何か&lt;/strong&gt;、といったComponentの設計方法についてまとめてみます。&lt;br /&gt;
-すべての実用ケースを想定できているわけではないと思いますが、大小いくつかのWebアプリを開発する際に利用してみて今のところいい感じに運用できている方法です(というか自然と収束して出来上がった考え方という感じです)。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#はじめに&quot; id=&quot;markdown-toc-はじめに&quot;&gt;はじめに&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#基本の考え方は責務の分離&quot; id=&quot;markdown-toc-基本の考え方は責務の分離&quot;&gt;基本の考え方は「責務の分離」&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#container-の責務&quot; id=&quot;markdown-toc-container-の責務&quot;&gt;Container の責務&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-画面の構成を表現すること&quot; id=&quot;markdown-toc-1-画面の構成を表現すること&quot;&gt;1. 画面の構成を表現すること&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-他画面との関係性を表現すること&quot; id=&quot;markdown-toc-2-他画面との関係性を表現すること&quot;&gt;2. 他画面との関係性を表現すること&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#viewmodel-component-の責務&quot; id=&quot;markdown-toc-viewmodel-component-の責務&quot;&gt;ViewModel Component の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#view-component-の責務&quot; id=&quot;markdown-toc-view-component-の責務&quot;&gt;View Component の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#design-component-の責務&quot; id=&quot;markdown-toc-design-component-の責務&quot;&gt;Design Component の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#factory-component-の責務&quot; id=&quot;markdown-toc-factory-component-の責務&quot;&gt;Factory Component の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#higher-order-component-の責務&quot; id=&quot;markdown-toc-higher-order-component-の責務&quot;&gt;Higher-Order Component の責務&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;基本の考え方は責務の分離&quot;&gt;基本の考え方は「責務の分離」&lt;/h3&gt;
-
-&lt;p&gt;コンポーネントを切るときに心がけていることは&lt;strong&gt;責務を分けるためにコンポーネントを切る&lt;/strong&gt;ということです。責務を分けるということは、「変更理由」「影響範囲」「役割」を明確にするということに繋がります。&lt;/p&gt;
-
-&lt;p&gt;ではVueのコンポーネントには具体的にどんな責務を持ち得るのか。リストアップしてみます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;「&lt;strong&gt;Container&lt;/strong&gt;」の責務&lt;/li&gt;
-  &lt;li&gt;「Component」の責務
-    &lt;ul&gt;
-      &lt;li&gt;MVVMにおける「&lt;strong&gt;ViewModel&lt;/strong&gt;」の責務&lt;/li&gt;
-      &lt;li&gt;Templateが肥大化したときに分割されつくられる「&lt;strong&gt;View&lt;/strong&gt;」の責務&lt;/li&gt;
-      &lt;li&gt;「&lt;strong&gt;汎用UIパーツ&lt;/strong&gt;」としての責務&lt;/li&gt;
-      &lt;li&gt;「&lt;strong&gt;動的コンポーネント(Factory)&lt;/strong&gt;」としての責務&lt;/li&gt;
-      &lt;li&gt;「&lt;strong&gt;Higher-Order Component&lt;/strong&gt;」の責務&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;現時点で私が必要だと感じているのは、これら、Containerの責務と5つのComponentの責務です。&lt;br /&gt;
-少し用語の補足をすると、1つの画面を表現するコンポーネントのことをこの記事ではReactにならって「&lt;strong&gt;Container&lt;/strong&gt;」と呼びます(Vueの世界だと「View」や「Page」と呼ばれたりしていますが、曖昧なのでReactにならいます)。例えばブログを作る場合、「TopページContainer」「記事ページContainer」「カテゴリページContainer」などが考えられます。そしてContainer内に配置される(Containerの子コンポーネントとなる)コンポーネントのことを「&lt;strong&gt;Component&lt;/strong&gt;」と表記します。&lt;/p&gt;
-
-&lt;p&gt;では、これらの責務がどんなものなのか考えていきます。&lt;/p&gt;
-
-&lt;h3 id=&quot;container-の責務&quot;&gt;Container の責務&lt;/h3&gt;
-
-&lt;p&gt;Containerの責務とはざっくり言うと&lt;strong&gt;①画面の構成を表現すること&lt;/strong&gt;、&lt;strong&gt;②他画面との関係性を表現すること&lt;/strong&gt;、の2つです。掘り下げると以下のような機能・役割が考えられます。&lt;/p&gt;
-
-&lt;h4 id=&quot;1-画面の構成を表現すること&quot;&gt;1. 画面の構成を表現すること&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;画面内に配置するComponentを定義する&lt;br /&gt;
-(Templateを見れば画面内にどんなComponentが並ぶのかが分かる)&lt;/li&gt;
-  &lt;li&gt;画面全体で必要なModelやStateを管理する&lt;br /&gt;
-(&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;を見ればどんなデータを扱うのかが分かる)&lt;/li&gt;
-  &lt;li&gt;画面内で共通の処理を定義する&lt;br /&gt;
-(&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;を見れば共通のロジックが分かる)&lt;/li&gt;
-  &lt;li&gt;Component間のイベントバスになる&lt;br /&gt;
-(子ComponentAのイベントをトリガーに子ComponentBの状態を変える、等)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;2-他画面との関係性を表現すること&quot;&gt;2. 他画面との関係性を表現すること&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;画面同士でデータや状態のやりとりを行う&lt;/li&gt;
-  &lt;li&gt;ルーティング処理を定義する&lt;/li&gt;
-  &lt;li&gt;vue-routerがurlと紐付けるコンポーネントとなる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Containerは1画面に1つと基準が明確なので、コンポーネントを切るときにはあまり困らないです。が、機能を実装する際に「これは本当にContainerが持つべきもものか」を意識していないと、&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;はどんどん肥大化してしまいます。言い換えれば「とりあえずContainerに実装しておけば動く」という機能が多いということです。&lt;br /&gt;
-なので画面に機能を足すときには、後述する各Componentに機能を移譲できないか？ を常に検討するようにし、Containerの責務を必要最低限を保つようにしています。&lt;/p&gt;
-
-&lt;h3 id=&quot;viewmodel-component-の責務&quot;&gt;ViewModel Component の責務&lt;/h3&gt;
-&lt;p&gt;ここからはContainer内に配置するComponentについてのパターンです。&lt;br /&gt;
-Vueは双方向バインディングができることから、MVVMな設計で利用されることがよくあります。&lt;a href=&quot;/blog/2017-08-29-1&quot;&gt;Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと&lt;/a&gt;の記事にも書きましたが、Vueのコンポーネントは&lt;strong&gt;MVVMのV(View)とVM(ViewModel)の機能を併せ持っています&lt;/strong&gt;。簡単に言えば単一コンポーネントの&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;template&amp;gt;&lt;/code&gt;の部分がViewで、&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt;の部分がViewModelという感じです。&lt;/p&gt;
-
-&lt;p&gt;つまりComponentは、標準で&lt;strong&gt;ViewModel(とView)の責務を持っている&lt;/strong&gt;ということです。&lt;br /&gt;
-ここでViewModelの役割を見直してみます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;PresentationロジックとStateを持つ&lt;/li&gt;
-  &lt;li&gt;Modelに依存する&lt;/li&gt;
-  &lt;li&gt;Modelを監視する&lt;/li&gt;
-  &lt;li&gt;Viewと双方向データバインディングする&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といったことが挙げられます。これをVueの言葉で言い換えると&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;にコンポーネントを操作するロジックを持つ&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;にコンポーネントのStateを定義する&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;にコンポーネントに必要なModelを定義し、リアクティブに更新する&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Templateに&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;で定義した値を反映する、また&lt;code class=&quot;highlighter-rouge&quot;&gt;v-model&lt;/code&gt;等でTemplateの変更を検知する&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;となります。これらが過不足なく実装されていると、ViewModelとしての責務を持つComponentだと言えそうです。&lt;/p&gt;
-
-&lt;p&gt;では過不足なくとはどういう状態か。&lt;br /&gt;
-これはViewModelの設計の粒度に依るので正解はないと思いますが、ViewModel Component各々が1機能ずつ責務を担っていて、その粒度が揃っていればいいと思います。&lt;/p&gt;
-
-&lt;p&gt;これができているか確認するのは案外簡単で、ViewModel Componentの名前をリストアップしてみたときに、「&lt;strong&gt;名前から責務が分かるか&lt;/strong&gt;」「&lt;strong&gt;その粒度が同程度に見えるか&lt;/strong&gt;」で判断できます。責務は1つなのでそれが適切に名前に反映されていれば合格で、もし反映できないなら責務を持ちすぎていている可能性があります。&lt;br /&gt;
-(Componentを細かく切りすぎてしまって責務のないComponentができているケースもたまにありますが、個人的に多い例は責務を持ちすぎているパターンです……)&lt;/p&gt;
-
-&lt;p&gt;Vueのコンポーネントは、Vueの仕様的に見てもそれ単体で動作するように実装できる仕様であり、MVVM的に見てもViewModelはそれ単体で1つの機能を実現するものです。そのためVueのコンポーネントは、&lt;strong&gt;基本的にはそれ単体で動くViewModel Componentとして切るのが良い&lt;/strong&gt;と思います。&lt;/p&gt;
-
-&lt;p&gt;ただそれだけだと対応できないパターンがいくつかあるので、そのために以下に別パターンのComponentの切り方を用意しています。&lt;/p&gt;
-
-&lt;h3 id=&quot;view-component-の責務&quot;&gt;View Component の責務&lt;/h3&gt;
-&lt;p&gt;コンポーネントのTemplateを書いていると、ループ対象を別コンポーネントとして抜き出したい場合や、Templateがでかすぎるので分割したい場合などがあると思います。こういった例で使えるのがView Componentです。&lt;/p&gt;
-
-&lt;p&gt;View ComponentはReactのように&lt;strong&gt;ステートレスなコンポーネントで、親コンポーネントから受け取る&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;のみで動作させます&lt;/strong&gt;。そのため、基本的には&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;data&lt;/code&gt;は定義しません。&lt;/p&gt;
-
-&lt;p&gt;親から受け取ったものをTemplateにはめ込んで表示し、親から受け取った関数をたたく。それだけの責務を持つこのComponentは、&lt;strong&gt;独自のViewのみを持ちViewModelを持たないComponent&lt;/strong&gt;だと言えます。&lt;/p&gt;
-
-&lt;p&gt;このView Componentを実装するときに意識していることは、このコンポーネントが「親の一部である」ということです。親のTemplateを分割しただけのものであるということを意識し、ロジックを実装したり過剰に機能を持たせたりしないように注意しています。それができない場合は、コンポーネントの切り方が間違っている可能性を疑います。&lt;br /&gt;
-例外はあるかもしれませんが、多くの場合は切り方を変えることで解決します。&lt;/p&gt;
-
-&lt;h3 id=&quot;design-component-の責務&quot;&gt;Design Component の責務&lt;/h3&gt;
-
-&lt;p&gt;これはView Componentの亜種で、実装の仕方はView Componentと同様です。つまりステートレスで&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;を受け取って動作します。&lt;/p&gt;
-
-&lt;p&gt;ただ目的が違い、View Componentが親のTemplate分割を目的に作られるのに対し、こちらは&lt;strong&gt;UIパーツのデザイン共通化を目的に作られます&lt;/strong&gt;。アプリ内でLabel付きButtonのUIを統一したい、ダイアログのUIを統一したい、といった場合に作られます。&lt;/p&gt;
-
-&lt;p&gt;そのため、粒度の小さいパーツはTemplateと&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;をHTML標準のタグと同じ状態にしておくと、使うときに楽だったり後々置き換えが効いたりして便利です。&lt;/p&gt;
-
-&lt;h3 id=&quot;factory-component-の責務&quot;&gt;Factory Component の責務&lt;/h3&gt;
-
-&lt;p&gt;今までのコンポーネントとは性質が少し違い、&lt;strong&gt;表示するComponentを動的に切り替える機能を持つComponentがFactory Component&lt;/strong&gt;です。  具体的には以下のような役割を持ちます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;でtypeを受け取る&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://jp.vuejs.org/v2/api/#is&quot;&gt;v-bind:is&lt;/a&gt;を使ってtypeに応じたComponentをレンダリングする&lt;/li&gt;
-  &lt;li&gt;描画するComponentたちの&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;を抽象化する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;漠然としていてピンとこないかもしれないのでサンプルコードを載せます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;lt;template&amp;gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;component&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:is=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;componentName&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;:componentData=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;componentData&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;&amp;lt;script&amp;gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;componentData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;components&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;componentA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;componentB&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;componentName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'A'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'component-a'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'B'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'component-b'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;で受け取ったtypeに応じて、描画するComponentを&lt;code class=&quot;highlighter-rouge&quot;&gt;v-bind:is&lt;/code&gt;で切り替えています。switch文を使っていますが、type名がそのままComponent名となるようにしてもいいですし、Factory Methodっぽくしてもいいと思います。&lt;/p&gt;
-
-&lt;p&gt;また、どのComponentにも&lt;code class=&quot;highlighter-rouge&quot;&gt;componentData&lt;/code&gt;を渡しています。この部分が&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;の抽象化です。抽象化しているので、Factory Componentを呼び出している側はどのComponentが描画されるのかを気にする必要がなくなりますね。&lt;/p&gt;
-
-&lt;h3 id=&quot;higher-order-component-の責務&quot;&gt;Higher-Order Component の責務&lt;/h3&gt;
-
-&lt;p&gt;Componentを引数にとり新たなComponentを返す関数、言い換えると&lt;strong&gt;Componentを様々な方法で再利用できる仕組みがHigher-Order Component&lt;/strong&gt;です。Reactにも同じ概念がありますね。実装方法の差はあれど、責務は似ています。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Factoryとなり、表示するComponentを動的に切り替える&lt;/li&gt;
-  &lt;li&gt;ComponentをWrapし、Decoratorパターンのように機能を追加する&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;props&lt;/code&gt;をproxyし、加工する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;このようなことができます(他にもいろいろできます)。&lt;br /&gt;
-これはやろうとすればかなりトリッキーなこともできる仕組みで、また(抽象レイヤーであるために)責務が曖昧になりやすいので、個人的にはなるべく使わないようにしています。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;Containerとしての責務と、Componentとしての責務5パターンをまとめました。&lt;br /&gt;
-これら以外にも様々な切り口があると思いますが、現時点で自分の中で有用だと思うものを整理してみました。ディスカッションのたたき台にでもなればと思いますので、ご感想・ご意見がありましたらぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;まで。&lt;/p&gt;</content><author><name></name></author><summary type="html">はじめに VueをつかってWebアプリケーションを実装するとき、Componentをどう切るかって誰でも一度は悩みますよね(悩みますよね？)。とりあえず思いつくままに切ってみたり、繰り返し使いそうなもので切ってみたり、CSSのスコープで切ってみたり…。いろいろな切り口があると思います。</summary></entry></feed>
+&lt;p&gt;以上。&lt;/p&gt;</content><author><name></name></author><summary type="html">Forkして作ったリポジトリだけれどFork元にMergeしたりせず普通のリポジトリとして扱いたい、という稀なケースの対応を経験したので知見をメモします。</summary></entry></feed>

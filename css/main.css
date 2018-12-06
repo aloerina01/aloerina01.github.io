@@ -537,7 +537,7 @@ pre code.hljs {
     padding: 1em 0; }
     .page-content .post .post-content p {
       line-height: 2;
-      margin-bottom: 20px; }
+      margin-bottom: 1.2rem; }
     .page-content .post .post-content blockquote {
       margin-left: 12px;
       padding-left: 16px;
@@ -560,9 +560,9 @@ pre code.hljs {
     .page-content .post .post-content h3 {
       margin-top: 72px;
       border-bottom: 1px solid #CFD8DC; }
-    .page-content .post .post-content h4 {
-      margin-top: 40px; }
-    .page-content .post .post-content h3 + h4 {
+    .page-content .post .post-content h4, .page-content .post .post-content h5 {
+      margin: 2rem 0 0.5rem 0; }
+    .page-content .post .post-content h3 + h4, .page-content .post .post-content h3 + h5, .page-content .post .post-content h4 + h5 {
       margin-top: 0; }
     .page-content .post .post-content .footnotes {
       font-size: 80%;
