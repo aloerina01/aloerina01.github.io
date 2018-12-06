@@ -343,7 +343,7 @@ useBuiltInsオプションがどのように実装されているか気になっ
 
 <p>Plugin.visitorに渡される<code class="highlighter-rouge">addAndRemovePolyfillImports</code>オブジェクトを見ると、「@babel/polyfillがimportされていないことを確認する<code class="highlighter-rouge">ImportDeclaration</code>関数」と、「個々のpolyfillのimportするための関数」が存在します。後者については、ソースを解析して実装方法に応じて呼び出す関数を使い分けている感じですかね。</p>
 
-<p>個々のpolyfillをimportするための関数は、最終的にutilsの<code class="highlighter-rouge">createImport</code>関数を呼び出し、その中で更に<a href="https://github.com/babel/babel/blob/master/packages/babel-helper-module-imports/src/index.js" targe="_blank">@babel/helper-module-imports</a>に処理を委譲しています。この@babel/helper-module-importsがpolyfillを個別にimportする本体ですね。</p>
+<p>個々のpolyfillをimportするための関数は、最終的にutilsの<code class="highlighter-rouge">createImport</code>関数を呼び出し、その中で更に<a href="https://github.com/babel/babel/blob/master/packages/babel-helper-module-imports/src/index.js" target="_blank">@babel/helper-module-imports</a>に処理を委譲しています。この@babel/helper-module-importsがpolyfillを個別にimportする本体ですね。</p>
 
 <h5 id="-babelhelper-module-imports"><a href="https://github.com/babel/babel/tree/master/packages/babel-helper-module-imports" target="_blank"><i class="fas fa-check"></i> @babel/helper-module-imports</a></h5>
 
