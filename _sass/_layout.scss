@@ -294,7 +294,7 @@ pre code.hljs {
 			padding: 1em 0;
 			p {
 				line-height: 2;
-				margin-bottom: 20px;
+				margin-bottom: 1.2rem;
 			}
 			blockquote {
 				margin-left: 12px;
@@ -324,10 +324,16 @@ pre code.hljs {
 				margin-top: 72px;
 				border-bottom: 1px solid $blue-gray-100;
 			}
-			h4 {
-				margin-top: 40px;
+			// h4 {
+			// 	margin-top: 40px;
+			// }
+			// h3 + h4 {
+			// 	margin-top: 0;
+			// }
+			h4, h5 {
+				margin: 2rem 0 0.5rem 0;
 			}
-			h3 + h4 {
+			h3 + h4, h3 + h5, h4 + h5 {
 				margin-top: 0;
 			}
 			.footnotes {
