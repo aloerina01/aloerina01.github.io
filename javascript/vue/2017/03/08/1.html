@@ -163,7 +163,7 @@
 
 <p><img src="/assets/2017-03-08-1.png" alt="eyecatch" /></p>
 
-<p>Vue2.xでは仮想DOMが使われるようになりました。それに伴い、<strong><code class="highlighter-rouge">Vue用のテンプレート</code>を<code class="highlighter-rouge">仮想DOMをレンダリングするための関数</code>に変換する</strong>という処理を<strong>コンパイル時に行ってくれる</strong>仕組みが組み込まれています。</p>
+<p>Vue2.xでは仮想DOMが使われるようになりました。それに伴い、<strong>Vue用のテンプレート</strong>を<strong>仮想DOMをレンダリングするための関数に変換する</strong>という処理を<strong>コンパイル時に行ってくれる</strong>仕組みが組み込まれています。</p>
 
 <p>そして、お手軽にVueを試したい人、プロダクトにVueを使いたい人、コンポーネント志向でアトミックに実装したい人など、様々な用途に応じたテンプレートの書き方(＆コンパイルの方法)を用意してくれています。</p>
 
@@ -173,15 +173,15 @@
 
 <ul id="markdown-toc">
   <li><a href="#おさらい-vuejsの利用方法3パターン" id="markdown-toc-おさらい-vuejsの利用方法3パターン">おさらい Vue.jsの利用方法3パターン</a>    <ul>
-      <li><a href="#1-script埋め込み" id="markdown-toc-1-script埋め込み">1. <code class="highlighter-rouge">&lt;script&gt;</code>埋め込み</a></li>
-      <li><a href="#2-vue-cli" id="markdown-toc-2-vue-cli">2. vue-cli</a></li>
-      <li><a href="#3-npmモジュール" id="markdown-toc-3-npmモジュール">3. npmモジュール</a></li>
+      <li><a href="#1-vueをscriptタグで埋め込む方法" id="markdown-toc-1-vueをscriptタグで埋め込む方法">1. Vueを<code class="highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</a></li>
+      <li><a href="#2-vue-cliを使ってvueとソースをバンドルする環境を用意する方法" id="markdown-toc-2-vue-cliを使ってvueとソースをバンドルする環境を用意する方法">2. Vue CLIを使ってVueとソースをバンドルする環境を用意する方法</a></li>
+      <li><a href="#3-手動でvueとソースをバンドルする環境を用意する方法" id="markdown-toc-3-手動でvueとソースをバンドルする環境を用意する方法">3. 手動でVueとソースをバンドルする環境を用意する方法</a></li>
     </ul>
   </li>
   <li><a href="#vueテンプレートの実装方法" id="markdown-toc-vueテンプレートの実装方法">Vueテンプレートの実装方法</a>    <ul>
-      <li><a href="#1-templateオプションを使う" id="markdown-toc-1-templateオプションを使う">1. templateオプションを使う</a></li>
-      <li><a href="#2-render関数を使う" id="markdown-toc-2-render関数を使う">2. render関数を使う</a></li>
-      <li><a href="#3-単一ファイルコンポーネントのtemplatetemplateを使う" id="markdown-toc-3-単一ファイルコンポーネントのtemplatetemplateを使う">3. 単一ファイルコンポーネントの<code class="highlighter-rouge">&lt;template&gt;&lt;/template&gt;</code>を使う</a></li>
+      <li><a href="#1-単一ファイルコンポーネントのtemplatetemplateを使う" id="markdown-toc-1-単一ファイルコンポーネントのtemplatetemplateを使う">1. 単一ファイルコンポーネントの<code class="highlighter-rouge">&lt;template&gt;&lt;/template&gt;</code>を使う</a></li>
+      <li><a href="#2-templateオプションを使う" id="markdown-toc-2-templateオプションを使う">2. templateオプションを使う</a></li>
+      <li><a href="#3-render関数を使う" id="markdown-toc-3-render関数を使う">3. render関数を使う</a></li>
     </ul>
   </li>
   <li><a href="#プリコンパイルとjitコンパイル" id="markdown-toc-プリコンパイルとjitコンパイル">プリコンパイルとJITコンパイル</a>    <ul>
@@ -207,23 +207,28 @@
 <p>まずVueの利用方法の確認から。</p>
 
 <ol>
-  <li><code class="highlighter-rouge">&lt;script&gt;</code>埋め込み</li>
-  <li>vue-cli</li>
-  <li>npmモジュール(webpack,  browserify, rollup等の利用)</li>
+  <li>Vueを<code class="highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</li>
+  <li>Vue CLIを使ってVueとソースをバンドルする環境を用意する方法</li>
+  <li>手動でVueとソースをバンドルする環境を用意する方法</li>
 </ol>
 
 <p>の3つがありますという単純なお話なので、知ってる場合は読み飛ばしてください。</p>
 
-<h4 id="1-script埋め込み">1. <code class="highlighter-rouge">&lt;script&gt;</code>埋め込み</h4>
+<h4 id="1-vueをscriptタグで埋め込む方法">1. Vueを<code class="highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</h4>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/vue"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
 <p>これでグローバルに<code class="highlighter-rouge">Vue</code>が用意されます。よくあるHTMLにscript直読込させる方法です。プロダクト開発には向かないですが、軽くVueを試すのには十分ですね。</p>
 
-<h4 id="2-vue-cli">2. vue-cli</h4>
+<h4 id="2-vue-cliを使ってvueとソースをバンドルする環境を用意する方法">2. Vue CLIを使ってVueとソースをバンドルする環境を用意する方法</h4>
 
-<p>Vueを使ったSPAをつくる環境を用意してくれるcliです。ビルド用のスクリプトやエントリーポイントになるHTMLなどが一括で生成されます。Reactで言うcreate-react-appのようなもの…というとかえって分かりにくい？</p>
+<div class="revision">
+<p class="date">2018/12/10 追記</p>
+この記事はVue CLI <b>2.x</b> に基づいています。現在既に<a href="https://cli.vuejs.org/" target="_blank">3.x</a>がリリースされているため、ご参考にされる際はご注意ください。
+</div>
+
+<p>vue-cliとは、Vueを使ったApplicationをつくる環境をセットアップしてくれるツールです。ビルド用のスクリプトやエントリーポイントになるHTMLなどが一括で生成されます。Reactで言うcreate-react-appのようなものです。</p>
 
 <p>以下のコマンドを叩きます。</p>
 
@@ -234,49 +239,29 @@
 <span class="nv">$ </span>npm run dev                          <span class="c"># ビルド</span>
 </code></pre></div></div>
 
-<p>公式に「Node.js ベースのツールについて精通していない場合、初心者が vue-cli で始めることは推奨しません」と明記された手法です。たしかにビルド周りの前提知識なしに使うのは難しそうですし、前提知識ある人の多くは自前でビルド環境用意しそうなもので、非推奨であり不人気な気がします😳</p>
+<h4 id="3-手動でvueとソースをバンドルする環境を用意する方法">3. 手動でVueとソースをバンドルする環境を用意する方法</h4>
 
-<h4 id="3-npmモジュール">3. npmモジュール</h4>
+<p>Webpackによるバンドル等、諸々の環境セットアップを手動でする場合の方法です。ここでは、Webpack/Browserify/rollupの3種類のバンドラでのセットアップ方法を紹介します。</p>
 
-<p>SPAをつくろうと思ったらやっぱりこの方法に行き着きますよね。行き着きました。</p>
+<p>インストールするものは<strong>Vue本体</strong>と、<strong>Vueのソースをバンドラが解釈できるようにするためのツール</strong>です。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-S</span> vue
-<span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> vue-loader         <span class="c"># webpackでビルドする場合</span>
-<span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> vueify             <span class="c"># browserifyでビルドする場合</span>
+<span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> vue-loader         <span class="c"># Webpackでビルドする場合</span>
+<span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> vueify             <span class="c"># Browserifyでビルドする場合</span>
 <span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> rollup-plugin-vue  <span class="c"># rollupでビルドする場合</span>
 </code></pre></div></div>
 
-<p>ユーザー各々のビルド環境にvueを組み込めるよう、<code class="highlighter-rouge">webpack</code>、<code class="highlighter-rouge">browserify</code>、<code class="highlighter-rouge">rollup</code>とモジュールバンドラごとにvueのコンパイラが用意されています。</p>
+<p></p>
 
-<p>以降、実用例が多いと勝手に思っている<strong>webpackを使い自前でビルド環境を用意する</strong>前提で、テンプレートの実装方法とコンパイル方法について話を進めていきます。</p>
+<p>以降は<strong>Webpackを使い自前でビルド環境を用意する</strong>前提で、テンプレートの実装方法とコンパイル方法について説明します。</p>
 
 <h3 id="vueテンプレートの実装方法">Vueテンプレートの実装方法</h3>
 
 <p>ここから本題。<br />
 Vueのテンプレートの実装方法は大きく3種類あります。</p>
 
-<h4 id="1-templateオプションを使う">1. templateオプションを使う</h4>
-
-<p>Vue1.xからあった記法で、コンポーネントオブジェクト内に<code class="highlighter-rouge">template</code>をキーに定義します。</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="err">‘</span><span class="nx">hello</span><span class="o">-</span><span class="nx">world</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">template</span><span class="p">:</span> <span class="err">‘</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">!</span> <span class="o">&lt;</span><span class="sr">/p&gt;’  /</span><span class="o">/</span> <span class="nx">x</span><span class="o">-</span><span class="nx">template</span><span class="err">等でテンプレートを分割する場合も含む</span>
-<span class="p">})</span>
-</code></pre></div></div>
-
-<h4 id="2-render関数を使う">2. render関数を使う</h4>
-
-<p>Reactライクな書き方…と言っていいんですかね、微妙なとこですね。個人的には可読性が低くてあまり実用的とは思えない方法です。</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="err">‘</span><span class="nx">hello</span><span class="o">-</span><span class="nx">world</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">createElement</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="s1">'p'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">})</span>
-</code></pre></div></div>
-
-<h4 id="3-単一ファイルコンポーネントのtemplatetemplateを使う">3. 単一ファイルコンポーネントの<code class="highlighter-rouge">&lt;template&gt;&lt;/template&gt;</code>を使う</h4>
-<p><code class="highlighter-rouge">.vue</code>の拡張子で表現される単一ファイルコンポーネント。テンプレートとスタイルとスクリプトをひとまとめのコンポーネントとしてカプセル化したものです。<br />
+<h4 id="1-単一ファイルコンポーネントのtemplatetemplateを使う">1. 単一ファイルコンポーネントの<code class="highlighter-rouge">&lt;template&gt;&lt;/template&gt;</code>を使う</h4>
+<p><code class="highlighter-rouge">.vue</code>の拡張子をつけると単一ファイルコンポーネントとなります。テンプレートとスタイルとスクリプトをひとまとめのコンポーネントとしてカプセル化する手法です。<br />
 参考： <a href="https://jp.vuejs.org/v2/guide/single-file-components.html#ad">単一ファイルコンポーネント - Vue.js</a></p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
@@ -287,6 +272,28 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
     <span class="c1">// 省略</span>
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
+
+<h4 id="2-templateオプションを使う">2. templateオプションを使う</h4>
+
+<p>Vue1.xからあった記法で、コンポーネントオブジェクト内に<code class="highlighter-rouge">template</code>をキーに定義します。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="err">‘</span><span class="nx">hello</span><span class="o">-</span><span class="nx">world</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">‘</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">!</span> <span class="o">&lt;</span><span class="sr">/p&gt;’  /</span><span class="o">/</span> <span class="nx">x</span><span class="o">-</span><span class="nx">template</span><span class="err">等でテンプレートを分割する場合も含む</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h4 id="3-render関数を使う">3. render関数を使う</h4>
+
+<p><code class="highlighter-rouge">render</code>という名前の関数を実装する方法で、仮想DOMをreturnさせます。Reactライクな書き方…と言っていいんですかね、微妙ですかね。</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="err">‘</span><span class="nx">hello</span><span class="o">-</span><span class="nx">world</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">render</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">createElement</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="s1">'p'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p></p>
 
 <p>この3つの書き方には、「render関数に変換する(コンパイルする)タイミング」の違いがあります。</p>
 
@@ -300,32 +307,34 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
   </thead>
   <tbody>
     <tr>
-      <td style="text-align: left"><strong>1.templateオプション</strong></td>
+      <td style="text-align: left"><strong>1.単一ファイルコンポーネント</strong></td>
+      <td style="text-align: center">必要</td>
+      <td style="text-align: center">プリコンパイル時</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>2.templateオプション</strong></td>
       <td style="text-align: center">必要</td>
       <td style="text-align: center">JITコンパイル時</td>
     </tr>
     <tr>
-      <td style="text-align: left"><strong>2.render関数</strong></td>
+      <td style="text-align: left"><strong>3.render関数</strong></td>
       <td style="text-align: center">不要</td>
       <td style="text-align: center">-</td>
-    </tr>
-    <tr>
-      <td style="text-align: left"><strong>3.単一ファイルコンポーネント</strong></td>
-      <td style="text-align: center">必要</td>
-      <td style="text-align: center">プリコンパイル時</td>
     </tr>
   </tbody>
 </table>
 
-<p>②はそもそもrender関数を利用しているので変換の必要がないのですが、上述のとおり実用性が低いので無視。となると、実用手段は①と③でしょうか。つまりテンプレートの実装方法は、単一ファイルコンポーネントを使うかどうかとどのタイミングでコンパイルするかの2つのポイントから選ぶということになりそうです。</p>
+<p>③はそもそもrender関数を利用しているので変換の必要がないのですが、実際に利用する場面はそこまで多くないかもしれません。Vue2.xが浸透した今では②もあまり使われなくなっているかもしれませんね。</p>
+
+<p>まとめると、テンプレートの実装方法は3種類あり、手法によってコンパイルのタイミングにも差が生じるということです。実装しやすさで選ぶか、コンパイルのタイミングで選ぶか、状況によりけりだと思います。</p>
 
 <h3 id="プリコンパイルとjitコンパイル">プリコンパイルとJITコンパイル</h3>
 
-<p>コンパイルのタイミングには、Webpackなどで事前にされる<strong>プリコンパイル</strong>と、実行時にコンパイルする<strong>JustInTimeコンパイル</strong>の2種類があります。上述のとおり、テンプレートの実装方法によりどのタイミングでコンパイル(render関数への変換)を行うかが異なります。</p>
+<p>コンパイルのタイミングには、バンドル時などに事前にされる<strong>プリコンパイル</strong>と、実行時される<strong>JustInTimeコンパイル</strong>の2種類があります。上述のとおり、テンプレートの実装方法によりどのタイミングでコンパイル(render関数への変換)を行うかが異なります。</p>
 
 <h4 id="単一ファイルコンポーネントをつかっている場合">単一ファイルコンポーネントをつかっている場合</h4>
 
-<p><strong>Webpack等によりプリコンパイルされる時</strong>にrender関数への変換がなされます。そのためbundleされたファイルにはrender関数に変換済みの自前ロジックとvue本体(vue.js)が含まれることになります。  
+<p><strong>Webpack等によりプリコンパイルされる時</strong>にrender関数への変換がなされます。そのためbundleされたファイルにはrender関数に変換済みのロジックとvue本体(vue.js)が含まれることになります。  
 実行時にコンパイルする必要がないので高速で、vue本体にも余計なものが含まれないので軽量です。</p>
 
 <h4 id="templateオプションをつかっている場合">templateオプションをつかっている場合</h4>
@@ -337,7 +346,7 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
   <p>これは十分高速ですが、アプリケーションのパフォーマンスが重要な場合は避けるのが最善です。</p>
 </blockquote>
 
-<p>また、bundleされたファイルには<code class="highlighter-rouge">vue本体 + コンパイラ</code>というコンパイラを内包するvue.jsが含まれることになります(そりゃそうですね、実行時にコンパイルしてもらうんですから)。そのためvue.jsの容量がやや大きくなります。</p>
+<p>また、bundleされたファイルには<code class="highlighter-rouge">vue本体 + コンパイラ</code>というコンパイラを内包するvue.jsが含まれることになります。そのためvue.jsの容量がやや大きくなります。</p>
 
 <h4 id="比較">比較</h4>
 
@@ -359,6 +368,11 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
       <td style="text-align: left"><strong>templateオプション</strong></td>
       <td style="text-align: center">JITコンパイル時</td>
       <td style="text-align: center">vueロジック本体 + コンパイラ<br />(<strong>完全ビルド</strong> されたVue.js)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>render関数</strong></td>
+      <td style="text-align: center">変換不要</td>
+      <td style="text-align: center">vueロジック本体<br />(<strong>ランタイム限定ビルド</strong> されたVue.js)</td>
     </tr>
   </tbody>
 </table>
@@ -422,6 +436,11 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
       <td style="text-align: center">templateオプション</td>
       <td style="text-align: center">JITコンパイル時</td>
       <td style="text-align: center">完全</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">render関数</td>
+      <td style="text-align: center">変換不要</td>
+      <td style="text-align: center">ランタイム限定</td>
     </tr>
   </tbody>
 </table>
@@ -673,7 +692,7 @@ templateオプションは使いつつプリコンパイルも使う。できる
       
       <li><a href="/blog/2017-03-08-1">Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ</a></li>
       
-      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      <li><a href="/blog/2018-08-01-1">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</a></li>
       
     </div>
   </div>
