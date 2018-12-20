@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-12-19T10:41:27+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-12-20T11:22:11+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み</title><link href="https://aloerina01.github.io/blog/2018-11-29-1" rel="alternate" type="text/html" title="Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み" /><published>2018-11-29T00:00:00+00:00</published><updated>2018-11-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-11-29-1">&lt;p&gt;ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です)。今回はBabel7.xでの&lt;strong&gt;用途別polyfillの設定方法&lt;/strong&gt;と、キモとなる&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは&lt;strong&gt;7.1.0&lt;/strong&gt;です)。&lt;/p&gt;
 
 &lt;p&gt;なお、6.xまでの設定方法は「&lt;a href=&quot;/blog/2018-03-19-1&quot; target=&quot;_blank&quot;&gt;Babelの設定を見直すための逆引きガイド&lt;/a&gt;」にまとめてあります(polyfillのことだけでなく、Babelとは何か、どのように利用するのか、といったことも併せてまとめてありますので良ければご参考にどうぞ)。&lt;/p&gt;
@@ -1026,7 +1026,7 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
 
 &lt;p&gt;ここまでで「どのようにViewを変更するか」の話が出ていないことからも分かるように、Viewとロジックは完全に切り離されることになります。アプリケーションの状態を変更するレイヤーでは「どのように状態を変えるか」にのみ専念すれば良く、変更後の状態に応じてViewをどのように変えるかはView側が気にかければ良いというわけです。&lt;/p&gt;
 
-&lt;div style=&quot;border-radius:10px;background-color:#f7f7f7;padding:12px 20px;margin:42px 0 48px;&quot;&gt;
+&lt;div class=&quot;note&quot;&gt;
 
 ただし、実際にはStoreがViewの状態を保持しなければならない場面も出てくると思います。つまりSoteには「アプリケーションの状態を保持するStore」と「Viewの状態を保持するStore」という2種類が存在するということになります。  
 とはいえこれは公式ドキュメント外のお話。また別の機会に考えをまとめてみようと思います。
@@ -1245,9 +1245,9 @@ Fluxの問題点や苦手分野については様々なところで議論され�
 
 &lt;p&gt;&lt;a href=&quot;https://www.dartlang.org/tools/sdk&quot; target=&quot;_blank&quot;&gt;Dart SDK&lt;/a&gt; はDartの開発に必要なライブラリ群とCLIツールです。執筆時点では安定版の&lt;code class=&quot;highlighter-rouge&quot;&gt;1.24.3&lt;/code&gt;と、プレリリース版の&lt;code class=&quot;highlighter-rouge&quot;&gt;2.0.0-dev.69.2&lt;/code&gt;が存在します。&lt;/p&gt;
 
-&lt;div style=&quot;border-radius:10px;background-color:#eaf7ff;padding:12px 20px;margin:42px 0 48px;&quot;&gt;
+&lt;div class=&quot;revision&quot;&gt;
 
-&lt;p style=&quot;font-weight:600&quot;&gt;2018/08/08 追記&lt;/p&gt;
+&lt;p class=&quot;date&quot;&gt;2018/08/08 追記&lt;/p&gt;
 
 Dart2.0.0が正式にリリースされ安定版となりました。記事内でDart1.xへの言及がところどころありますが、これからDartを使い始める場合はDart2.xを利用するのが良いと思います。
 

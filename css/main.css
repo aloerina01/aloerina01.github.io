@@ -555,6 +555,11 @@ pre code.hljs {
       margin: 42px 0 48px; }
       .page-content .post .post-content .revision .date {
         font-weight: 600; }
+    .page-content .post .post-content .note {
+      border-radius: 10px;
+      background-color: #f0f0f0;
+      padding: 12px 20px;
+      margin: 42px 0 48px; }
     .page-content .post .post-content .highlight code {
       padding: 0.8rem 1.0rem; }
     .page-content .post .post-content h3 {
