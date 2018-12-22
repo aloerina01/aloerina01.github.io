@@ -29,13 +29,13 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 ### development branch
 jekyllベースの構成ファイル(markdownによる記事、_config.yml等)を持つ。記事、Template、デザインなどの追加修正等を行う場合は、必ずこのブランチで(もしくはここからトピックブランチを切り)行う。
 
-`git push`するとCircleCIがrake taskを実行し、publishされる。
+`git push`するとCircleCIがrake taskを実行し、静的ページがGenerateされる。
 
 
 
 ### master branch
 
-publishされたものがmasterブランチにpushされ、それがGithub Pagesとして公開される。
+Generateされたものがmasterブランチにpushされ、それがGithub Pagesとして公開される。
 
 
 ~~See: [Using Jekyll plugins on GitHub Pages](http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html)~~

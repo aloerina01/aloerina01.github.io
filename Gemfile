@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'jekyll', '~> 3.6'
+gem 'jekyll', '~> 3.8.3'
 gem 'jekyll-archives'
 gem 'jekyll-sitemap'
 gem 'jekyll-paginate'
@@ -10,5 +10,5 @@ gem 'grit', '~> 2.5.0', git: 'https://github.com/gitlabhq/grit.git', ref: '42297
 gem 'rake-jekyll'
 
 group :jekyll_plugins do
-  gem 'jekyll-algolia'
+  gem 'jekyll-algolia', '~> 1.0'
 end

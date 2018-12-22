@@ -40,34 +40,12 @@ pre code.hljs {
 }
 
 .page-divider {
-	$divider-color: $light-gray;
   display: block;
-  width: 50%;
+  width: 40%;
   margin-left: auto;
-  margin-right: auto;
-  border-top: 1px solid $divider-color;
-  .one {
-    position: relative;
-    top: -9px;
-    display: block;
-    background: $divider-color;
-    width: 18px;
-    height: 18px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-  }
-  .two {
-    position: relative;
-    top: -26px;
-    display: block;
-    background: $white;
-    width: 16px;
-    height: 16px;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-  }
+	margin-right: auto;
+	margin-bottom: 18px;
+	border-top: $base-border;
 }
 
 .site-header-container, .post-header-container {
@@ -139,7 +117,6 @@ pre code.hljs {
 		img {
 			max-height: 2.5em;
 			margin-top: 0.3em;
-			padding-right: 1em;
 		}
 		span {
 			font-size: 1.25em;
@@ -153,7 +130,7 @@ pre code.hljs {
 	}
   nav {
     float: none;
-    padding: 1.25em 0;
+    padding: 1em 0;
     @include media ($tablet) {
       float: right;
       line-height: 1.5em;
@@ -180,8 +157,8 @@ pre code.hljs {
     display: block;
     text-align: right;
     width: 100%;
-    padding: 0.25em 0;
-    @include media ($tablet) {
+		padding: 0.25em 0;
+		@include media ($tablet) {
       background: transparent;
       display: inline;
       text-decoration: none;
@@ -189,7 +166,7 @@ pre code.hljs {
     }
   }
   li.nav-link {
-  	a {
+		a {
 	    display: inline-block;
 	    @include media ($tablet) {
 	      padding-right: 1.5em;
@@ -199,6 +176,15 @@ pre code.hljs {
 	  	@include media ($tablet) {
     		padding-right: 1em;
     	}
+    }
+  }
+  ul li.nav-search-box {
+		display: none;
+		@include media ($tablet) {
+      background: transparent;
+      display: inline-block;
+      text-decoration: none;
+			margin: 0 24px 0 0;
     }
   }
 }
@@ -308,7 +294,7 @@ pre code.hljs {
 			padding: 1em 0;
 			p {
 				line-height: 2;
-				margin-bottom: 20px;
+				margin-bottom: 1.2rem;
 			}
 			blockquote {
 				margin-left: 12px;
@@ -317,22 +303,43 @@ pre code.hljs {
 				font-style: italic;
 				font-size: 90%;
 			}
-		      	code {
+		  code {
 				padding: 0 0.5rem;
 				line-height: 1.3;
 				font-size: 92%;
-		      	}
+			}
+			.revision {
+				border-radius:10px;
+				background-color:#eaf7ff;
+				padding:12px 20px;
+				margin:42px 0 48px;
+				.date {
+					font-weight:600;
+				}
+			}
+			.note {
+				border-radius:10px;
+				background-color:#f0f0f0;
+				padding:12px 20px;
+				margin:42px 0 48px;
+			}
 			.highlight code {
 				padding: 0.8rem 1.0rem;
-		      	}
+		  }
 			h3 {
 				margin-top: 72px;
 				border-bottom: 1px solid $blue-gray-100;
 			}
-			h4 {
-				margin-top: 40px;
+			// h4 {
+			// 	margin-top: 40px;
+			// }
+			// h3 + h4 {
+			// 	margin-top: 0;
+			// }
+			h4, h5 {
+				margin: 2rem 0 0.5rem 0;
 			}
-			h3 + h4 {
+			h3 + h4, h3 + h5, h4 + h5 {
 				margin-top: 0;
 			}
 			.footnotes {

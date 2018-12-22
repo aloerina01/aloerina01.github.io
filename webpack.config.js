@@ -4,14 +4,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const MODE = process.env.NODE_ENV;
 
-const isProduction = () => {
-  return MODE === 'production';
-}
+const isProduction = () => MODE === 'production';
 
-module.exports = {
+const config = {
   mode: MODE,
   entry: {
     drift: './js/drift.js',
+    algolia: './js/algolia.js',
+    prism: './js/prism.js',
   },
   output: {
     filename: '[name].js',
@@ -30,5 +30,6 @@ module.exports = {
     new WebpackBar(),
     isProduction ? new UglifyJsPlugin() : null,
   ],
-  devtool: 'inline-source-map',
 }
+config.devtool = isProduction() ? undefined : 'inline-source-map';
+module.exports = config;

@@ -21,6 +21,7 @@ exclude:
   - "webpack.config.js"
   - "README.md"
   - "_config.dev.yml"
+  - "_config.algolia.yml"
   
 lsi: true
 
@@ -100,10 +101,6 @@ disqus_shortname: # https-aloerina01-github-io
 
 # Google analytics
 ga_tracking_id: "UA-39630080-4"
-
-algolia:
-  application_id: UMH0IQYKJ1
-  index_name: mf_code
 
 # Category descriptions (for archive pages)
 descriptions:
