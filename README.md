@@ -13,6 +13,7 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 
 * [Github Pages](https://pages.github.com/) - Hosting service
 * [jekyll](https://jekyllrb.com/) - Static web site generator
+* [Algolia](https://www.algolia.com/) - Indexing & Search engine
 
 
 ## Setup
