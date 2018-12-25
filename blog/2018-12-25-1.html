@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</title>
+  <meta name="description" content="VueComponentのリファクタリングや構造化をしようと思ったとき、選択肢の一つとしてmixinが考えられますよね。しかし振り返るとうまく実装できていないケースがちらほらありました。なぜそうなってしまったかと、それを踏まえての適切なmixinの使い方または代替案についてまとめてみました。mixin実装時のご参...">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="VueComponentのリファクタリングや構造化をしようと思ったとき、選択肢の一つとしてmixinが考えられますよね。しかし振り返るとうまく実装できていないケースがちらほらありました。なぜそうなってしまったかと、それを踏まえての適切なmixinの使い方または代替案についてまとめてみました。mixin実装時のご参..." />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-12-25-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案">
+  <meta name="twitter:description" content="VueComponentのリファクタリングや構造化をしようと思ったとき、選択肢の一つとしてmixinが考えられますよね。しかし振り返るとうまく実装できていないケースがちらほらありました。なぜそうなってしまったかと、それを踏まえての適切なmixinの使い方または代替案についてまとめてみました。mixin実装時のご参...">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-12-25-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-12-25-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/dist/prism.js" defer></script>
+  <script src="/dist/drift.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-12-25-1">
+            <span itemprop="name">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2018-12-25</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/vue/">Vue</a>,    
+            <a href="/category/javascript/">JavaScript</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>VueComponent間で<strong>再利用可能な部品</strong>を実装するための機能が<strong><a href="https://jp.vuejs.org/v2/guide/mixins.html" target="_blank">mixin</a></strong>です。mixinを使った共通化の例はよく見かけますし、私もしばしばやってきました。ただ、どうも自分の実装方法だと後々不便になったり見通しが悪かったりと、使い勝手の悪いものになってしまうことが多かったです。</p>
+
+<p>そこで今回は自分の過去の実装例を見返しながら、なぜ失敗したのか、mixinをどうを使うべきかについて、現時点の考えをまとめてみます。</p>
+
+<div class="note">
+<p>この記事で紹介する失敗例は、<b>私が携わったプロダクト開発において</b>デメリットの方が大きかった実装例です。</p>
+
+便宜上「アンチパターン」「失敗例」といった表現をしていますが、あくまで<b>個人的にやりたくないパターン</b>程度の意味合いです。
+</div>
+
+<ul id="markdown-toc">
+  <li><a href="#失敗例1-template-methodパターン意識したmixin" id="markdown-toc-失敗例1-template-methodパターン意識したmixin">失敗例1. Template Methodパターン意識したmixin</a>    <ul>
+      <li><a href="#-暗黙的挙動の危うさ" id="markdown-toc--暗黙的挙動の危うさ"><i class="fas fa-exclamation-triangle"></i> 暗黙的挙動の危うさ</a></li>
+      <li><a href="#-overrideではなくmergeしているだけ" id="markdown-toc--overrideではなくmergeしているだけ"><i class="fas fa-exclamation-triangle"></i> OverrideではなくMergeしているだけ</a></li>
+      <li><a href="#-classの継承とmixinは本質的に違う" id="markdown-toc--classの継承とmixinは本質的に違う"><i class="fas fa-exclamation-triangle"></i> Classの継承とmixinは本質的に違う</a></li>
+    </ul>
+  </li>
+  <li><a href="#失敗例2-decoratorパターンを意識したmixin" id="markdown-toc-失敗例2-decoratorパターンを意識したmixin">失敗例2. Decoratorパターンを意識したmixin</a>    <ul>
+      <li><a href="#-名前競合にまつわる問題" id="markdown-toc--名前競合にまつわる問題"><i class="fas fa-exclamation-triangle"></i> 名前競合にまつわる問題</a></li>
+      <li><a href="#-実はcomponentに依存している" id="markdown-toc--実はcomponentに依存している"><i class="fas fa-exclamation-triangle"></i> 実はComponentに依存している</a></li>
+      <li><a href="#-componentのソースが読みにくくなる" id="markdown-toc--componentのソースが読みにくくなる"><i class="fas fa-exclamation-triangle"></i> Componentのソースが読みにくくなる</a></li>
+    </ul>
+  </li>
+  <li><a href="#vuecomponentにおける共通化の進め方" id="markdown-toc-vuecomponentにおける共通化の進め方">VueComponentにおける共通化の進め方</a></li>
+  <li><a href="#宣言部分は共通化しないつまりmixinを使わない" id="markdown-toc-宣言部分は共通化しないつまりmixinを使わない">宣言部分は共通化しない、つまりmixinを使わない</a></li>
+  <li><a href="#viewmodelの観点から共通化できる箇所を見つける" id="markdown-toc-viewmodelの観点から共通化できる箇所を見つける">ViewModelの観点から共通化できる箇所を見つける</a></li>
+  <li><a href="#mixinを使わずに共通化する" id="markdown-toc-mixinを使わずに共通化する">mixinを使わずに共通化する</a>    <ul>
+      <li><a href="#utilhelperserviceクラスなどを使って共通化する" id="markdown-toc-utilhelperserviceクラスなどを使って共通化する">Util、Helper、Serviceクラスなどを使って共通化する</a></li>
+      <li><a href="#vuexのgetterなどmodel側で共通化したい処理を持つ" id="markdown-toc-vuexのgetterなどmodel側で共通化したい処理を持つ">Vuexのgetterなど、Model側で共通化したい処理を持つ</a></li>
+      <li><a href="#slotを使って高階関数的に実装する" id="markdown-toc-slotを使って高階関数的に実装する">slotを使って高階関数的に実装する</a></li>
+    </ul>
+  </li>
+  <li><a href="#まとめ" id="markdown-toc-まとめ">まとめ</a></li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="失敗例1-template-methodパターン意識したmixin">失敗例1. Template Methodパターン意識したmixin</h3>
+
+<p>Componentが必ず実装しなければならないmethodsを定義したmixinを用意し、それを読み込んだComponentで必要に応じてmethodsをOverride方法です(既に失敗しそうな匂いがしますね…)。</p>
+
+<p>以下のサンプルコードは、とある1画面を表現する MainPageContainer.vue と、どの画面にも必要な共通処理を抜き出した pageContainerMixin.js です。</p>
+
+<p><strong>pageContainerMixin.js</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getTitle</span><span class="p">();</span>
+  <span class="p">},</span>
+  <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">sendPageview</span><span class="p">();</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">getTitle</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'You must override this function.'</span><span class="p">);</span>
+    <span class="p">},</span>
+    <span class="nx">sendPageview</span><span class="p">()</span> <span class="p">{</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">ga</span><span class="p">(</span><span class="s1">'send'</span><span class="p">,</span> <span class="s1">'pageview'</span><span class="p">);</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p><strong>MainPageContainer.vue</strong></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span><span class="c">&lt;!-- 省略 --&gt;</span><span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="k">import</span> <span class="nx">pageContainerMixin</span> <span class="k">from</span> <span class="s1">'./pageContainerMixin'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">mixins</span><span class="p">:</span> <span class="p">[</span> <span class="nx">pageContainerMixin</span> <span class="p">],</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="cm">/** @Override */</span>
+    <span class="nx">getTitle</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s1">'メインページ'</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>mixinの中にはOverrideして使われることを想定した<code class="highlighter-rouge">getTitle</code>関数が実装されていますね。<strong>Overrideされなかった場合に例外を投げて</strong>教えてくれます。</p>
+
+<p>またmixinの中で、ライフサイクルメソッドから<code class="highlighter-rouge">sendPageview</code>関数などを呼び出すことで、Componentに必要な処理が暗黙的に実行される仕組みを実現しました。</p>
+
+<h4 id="-暗黙的挙動の危うさ"><i class="fas fa-exclamation-triangle"></i> 暗黙的挙動の危うさ</h4>
+
+<p><strong>Containerに必須の処理をmixinに閉じ込め暗黙的に実行させた</strong>ことで、チームメンバーが簡単に新規Containerを実装できるようになったと当初は満足していました。</p>
+
+<p>しかしアプリケーションが大きくなりContainer毎の独自の仕様が必要になったとき、またはメンバーが新規参入してきたとき、暗黙的に実行される処理の中身やそのOverride方法を読み解く必要性が出てきました。言い換えれば「挙動が読み解きにくく、バグを生みやすい箇所」に化けた、ということになります。</p>
+
+<p>Vueなどのように知識が一般化されたフレームワークの暗黙的挙動ならまだしも、こういった<strong>「独自の暗黙的挙動」は負担になりやすい</strong>ので注意が必要です(もちろんメリットもあるので、天秤にかけて判断する必要があります)。</p>
+
+<h4 id="-overrideではなくmergeしているだけ"><i class="fas fa-exclamation-triangle"></i> OverrideではなくMergeしているだけ</h4>
+
+<p>また、この仕組みはOverrideを前提としていますが、mixinがやっていることはオブジェクトのMergeです(Overrideではなく！)。擬似的にOverrideに見せていますが、これにはいろいろな罠が潜んでいます。</p>
+
+<p><strong>Overrideする要素の型を束縛できない</strong></p>
+
+<ul>
+  <li>mixinでは<code class="highlighter-rouge">string</code>を返す関数が、Override後は<code class="highlighter-rouge">Promise</code>を返す関数になっている、なんて実装もできてしまう</li>
+  <li>このような問題をコンパイラやIDEでチェックできない</li>
+  <li>mixin側の関数を変更しても、そのOverride箇所を機械的に見つけられない</li>
+  <li>型を束縛しないならmixinで定義する必要がない(関数名を定義しているだけで、引数も戻り値もなんでもアリになってしまう)</li>
+</ul>
+
+<p><strong>マージストラテジが変更される可能性がある</strong></p>
+
+<ul>
+  <li>マージストラテジが変更されるとOverrideされなくなる可能性がある</li>
+  <li>マージストラテジ変更により影響の出る箇所をコンパイラで見つけられない</li>
+  <li>マージストラテジが違う箇所を理解している必要がある(createdはOverrideされない等)</li>
+</ul>
+
+<h4 id="-classの継承とmixinは本質的に違う"><i class="fas fa-exclamation-triangle"></i> Classの継承とmixinは本質的に違う</h4>
+
+<p>Template MethodパターンはClassの親子関係を利用したものですが、そもそも抽象Classを定義したりClass継承したりすることは「共通化」や「再利用」が目的ではありませんね。<strong>Class継承の目的は「基底と派生」</strong>にあります。そのため、規定と派生におけるデザインパターンであるTemplate Methodパターンをmixinに当てはめようとすること自体が誤りであると考えられます。</p>
+
+<p>そんなわけで、mixinを擬似的に継承したりOverrideしたりする実装方法は、今ではやらないようにしています。</p>
+
+<h3 id="失敗例2-decoratorパターンを意識したmixin">失敗例2. Decoratorパターンを意識したmixin</h3>
+
+<p>継承(のような)関係でmixinを使うことに危機感を覚えて以後は、もっとシンプルに<strong>依存関係の少ない単発の機能を付与する</strong>mixinを、以下の2つのルールに基づいて実装していきました。</p>
+
+<ul>
+  <li>JavaなどのInterfaceにあるように「〇〇able」という命名をする</li>
+  <li>他のモジュールに依存しない(importしない)</li>
+</ul>
+
+<p>以下は、PC版Twitterのフォロワー一覧画面のように、ユーザープロフィールがカード型の一覧で並ぶ画面のサンプルコードです。画面内で使われるカードComponentの ProfileCard.vue と、もっと読むボタン等などでよく見る「開閉させる機能」を提供する expandable.js というmixinの実装です。</p>
+
+<p><strong>expandable.js</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">isExpanded</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">toggleExpand</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">isExpanded</span> <span class="o">=</span> <span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">isExpanded</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p><strong>ProfileCard.vue</strong></p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+  <span class="nt">&lt;div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">v-show=</span><span class="s">"!isExpanded"</span><span class="nt">&gt;</span><span class="c">&lt;!-- プロフィールの概要 --&gt;</span><span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">v-show=</span><span class="s">"isExpanded"</span><span class="nt">&gt;</span><span class="c">&lt;!-- プロフィールの詳細 --&gt;</span><span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;button</span> <span class="err">@</span><span class="na">click=</span><span class="s">"toggleExpand"</span><span class="nt">&gt;</span>{{ buttonLabel }}<span class="nt">&lt;/button&gt;</span> 
+  <span class="nt">&lt;div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="k">import</span> <span class="nx">expandable</span> <span class="k">from</span> <span class="s1">'./expandable'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">mixins</span><span class="p">:</span> <span class="p">[</span> <span class="nx">expandable</span> <span class="p">],</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">buttonLabel</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">isExpanded</span> <span class="p">?</span> <span class="s1">'折りたたむ'</span> <span class="p">:</span> <span class="s1">'もっと見る'</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>expandableは何にも依存せず、シンプルに「開閉ステータス」と「開閉させる関数」だけを持っています。名前からもその機能が提供されることが予測できますね。Component側も、(正確にはDecoratorパターンとは違いますが)mixinで柔軟かつ簡潔に機能を付け外しできていることがわかります。</p>
+
+<h4 id="-名前競合にまつわる問題"><i class="fas fa-exclamation-triangle"></i> 名前競合にまつわる問題</h4>
+
+<p>mixinを使う以上当たり前の話で、この手法に限った問題ではないのですが、名前の競合が起きる点には注意しなければなりません。mixin一つ一つをシンプルに実装しているだけに、dataやmethodsの命名もシンプルになりがちで競合が起きやすくなっているからです。</p>
+
+<p>それを回避しようとすると、わざとらしく被らない命名になったりします。失敗例1ではあえて同じ命名にしてOverrideしていましたが、今度は名前が被らないように必死ですね…。</p>
+
+<p>結果的に、せっかく<strong>mixinでコードを分離しているのに関心は分離されず</strong>、常にmixinのことを念頭においてComponentを実装することになります。</p>
+
+<h4 id="-実はcomponentに依存している"><i class="fas fa-exclamation-triangle"></i> 実はComponentに依存している</h4>
+
+<p>こちらもmixinを使う以上当たり前の話ですが、mixinの中で使われる<code class="highlighter-rouge">this</code>はComponentに依存します。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// share機能を実現する sharable.js</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="c1">// Component側でshareTextとshareUrlが定義されることを期待した実装の例</span>
+    <span class="nx">shareUrl</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="s2">`https://example.com/share?text=</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">shareText</span><span class="p">}</span><span class="s2">&amp;url=</span><span class="p">${</span><span class="k">this</span><span class="p">.</span><span class="nx">shareUrl</span><span class="p">}</span><span class="s2">`</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">share</span><span class="p">()</span> <span class="p">{</span>
+      <span class="c1">// 省略</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>ちょっと雑な例ですが、外部サービスのintentを利用したshare機能を実現するmixinの実装例です。shareする文言やURLをComponent側で定義してもらう想定で実装しています。この例はかなり極端ですが、mixinがComponentに依存する可能性がある(危険なコードが生まれる仕組みがある)ことがわかります。</p>
+
+<h4 id="-componentのソースが読みにくくなる"><i class="fas fa-exclamation-triangle"></i> Componentのソースが読みにくくなる</h4>
+
+<p>これは問題と言うには大げさかもしれませんし、やはり当たり前な話なのですが、mixinを使うと<strong>見えないところで</strong>Componentの<code class="highlighter-rouge">this</code>にプロパティが増えていくことになります。<br />
+単一ファイルコンポーネントのソースを読んでいて「この<code class="highlighter-rouge">this.〇〇</code>はどこに実装されているの？」と思ったことありませんか？ mixinが増えるとこの状況が増えるわけですね。</p>
+
+<p>mixin以外に、Vuexの<code class="highlighter-rouge">mapState</code>等でも<code class="highlighter-rouge">this</code>にプロパティを生やしていくので、<strong>VueComponentは見えないところでプロパティが増えがち</strong>です。となるとmixinは少ないほうがソースの読みやすさを保てそうですよね。</p>
+
+<p>まとめると、失敗例2のほうはmixinの使い方を根本的に間違えていたわけではなさそうですが、mixinが持つデメリットや懸念点に多く直面した例でした。このあたりから、mixinの利用は最低限にしようと感じるようになります😌</p>
+
+<h3 id="vuecomponentにおける共通化の進め方">VueComponentにおける共通化の進め方</h3>
+
+<p>ここまでで何となく「mixinは使わないほうが良さそう」という感覚を持てるようになりましたが、単純にmixinを排除するだけでは本来の目的は果たせません。mixinの目的である「共通化」について代替案を見つける必要があります。</p>
+
+<ul>
+  <li>前提として、mixinは極力使わない</li>
+  <li>共通化できそうな箇所を把握する</li>
+  <li>場面に応じて適切な共通化の手段を選択する</li>
+</ul>
+
+<p>という方針で考えてみます。</p>
+
+<h3 id="宣言部分は共通化しないつまりmixinを使わない">宣言部分は共通化しない、つまりmixinを使わない</h3>
+
+<p>失敗例2でも触れたように、VueComponentは見えないところで(単一ファイルコンポーネント内に明記されることなく)<code class="highlighter-rouge">this</code>にプロパティが増えがちです。これを減らすためには、単純に<code class="highlighter-rouge">this</code>のプロパティの宣言を共通化せず、単一ファイルコンポーネント内に明記すれば良いです。具体的には</p>
+
+<ol>
+  <li>data, props などの「値」をmixinで共通化しない</li>
+  <li>ライフサイクルメソッドをmixinで共通化しない</li>
+  <li>computed, methods などの「関数」の宣言部分をmixinで共通化しない</li>
+  <li>「関数」の共通化が必要な場合は、その内部処理を単純な関数として(mixinを使わず)共通化する</li>
+</ol>
+
+<p>といったことをルール付けると良さそうです。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// 上記のルールを守った単一ファイルコンポーネントの実装例
+
+<span class="nt">&lt;template&gt;</span><span class="c">&lt;!-- 省略 --&gt;</span><span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">sharedCreateFunc</span><span class="p">,</span> <span class="nx">sharedCalcFunc</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./shared'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+      <span class="na">value</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>                        <span class="c1">// ルール① 値の宣言をmixinに書かない</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nx">created</span><span class="p">()</span> <span class="p">{</span>                             <span class="c1">// ルール② ライフサイクルメソッドをmixinに書かない</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">initialize</span><span class="p">();</span>
+  <span class="p">},</span>
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">initialize</span><span class="p">()</span> <span class="p">{</span>                        <span class="c1">// ルール③ initializeという関数の宣言をmixinに書かない</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">sharedCreateFunc</span><span class="p">();</span>    <span class="c1">// ルール④ 関数内部の処理を、mixinを使わずに共通化する</span>
+      <span class="c1">// do something</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">calculateValue</span><span class="p">()</span> <span class="p">{</span>                    <span class="c1">// ルール③ calculateValueという関数の宣言をmixinに書かない</span>
+      <span class="k">return</span> <span class="nx">sharedCalcFunc</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">value</span><span class="p">);</span>  <span class="c1">// ルール④ 関数内部の処理を、mixinを使わずに共通化する</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>こうすることで<code class="highlighter-rouge">this</code>に紐づくプロパティの実装が明記され、単一ファイルコンポーネント内の可読性が上がりました。小さなアプリケーションであれば無理に共通化までしなくても十分かもしれません。<strong>実装が分かれているということは、影響範囲が分かれている</strong>ということですので、これだけでもメリットは得られますね。</p>
+
+<h3 id="viewmodelの観点から共通化できる箇所を見つける">ViewModelの観点から共通化できる箇所を見つける</h3>
+
+<p>Vueアプリケーションの設計モデルのひとつであるMVVMでは、<strong>VueComponentをViewModelとして捉えます</strong>。詳細は「<a href="/blog/2017-08-29-1" target="_blank">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</a>」の記事でまとめていますが、ViewModelが持つロジックをざっくり抜き出すとこんな感じです。</p>
+
+<ol>
+  <li>Viewのイベントハンドリング</li>
+  <li>View用のデータ成形</li>
+  <li>ローカルStateの管理</li>
+  <li>Modelの監視(VuexのStoreとのつなぎ込み等)</li>
+</ol>
+
+<p>これらのロジックのうち、<strong>①Viewのイベントハンドリング、②View用のデータ成形はViewの状態に大きく依存します</strong>。そのため同じようなViewに結びつくViewModel同士では、ロジックを共通化できる可能性があります。例えば表示を切り替えて利用する「Grid Component」と「List Compornent」では、clickイベントのハンドリングロジックやsortロジックが共通化できる可能性があります。</p>
+
+<p>同じ理屈で、<strong>④Modelの監視については、同じModelに依存するViewModel同士で共通化できる</strong>可能性を秘めていますね。</p>
+
+<p>ただし<strong>③ローカルStateの管理については共通化しないほうが良いケースのほうが多そう</strong>です。ローカルStateは「Viewに状態をもたせる機能」であり、ViewModelの責務と強く結びつきます。責務を分離するためにViewModel(Component)を分けていると考えれば、責務に密接するローカルStateも共通化せず分けて扱うほうが良いと言えます。逆に言えば、ローカルStateを共通化できるComponentは、Componentの切り方を見直す余地があるということになります。</p>
+
+<p>これにならうと、前述のexpandable.jsの例では、それぞれのComponent毎に<code class="highlighter-rouge">isExpanded(開閉ステータス)</code>を実装すべきということですね。そうすることで「このComponentでは最初の1件だけ初期値を開いた状態にする」「このComponentでは1度開いたら閉じない」といったような個別の仕様変更にも対応でき、まさしく責務の分離(影響範囲の分離)が生きてきます。</p>
+
+<p>まとめると</p>
+
+<ul>
+  <li>「Viewのイベントハンドリング」は近しいViewを持つViewModel同士で共通化可能</li>
+  <li>「View用のデータ成形」は近しいViewを持つViewModel同士で共通化可能</li>
+  <li>「ローカルStateの管理」は共通化しないほうが良さそう</li>
+  <li>「Modelの監視」は同じModelに依存するViewModel同士で共通化可能</li>
+</ul>
+
+<p>といった具合に共通化できそうな箇所が見えてきました。</p>
+
+<h3 id="mixinを使わずに共通化する">mixinを使わずに共通化する</h3>
+
+<p>今回は、mixinを除いた3パターンの共通化の方法を考えてみます(これら以外にも有用な案があればぜひ<a href="https://twitter.com/aloerina_" target="_blank">@aloerina_</a>までご連絡ください！)。</p>
+
+<ul>
+  <li>Util、Helper、Serviceクラスなどを使って共通化する</li>
+  <li>Vuexのgetterなど、Model側で共通化したい処理を持つ</li>
+  <li>slotを使って高階関数的に実装する</li>
+</ul>
+
+<h4 id="utilhelperserviceクラスなどを使って共通化する">Util、Helper、Serviceクラスなどを使って共通化する</h4>
+
+<p>先述の「関数の内部処理を共通化する」例のように、共通化したい部分をVanillaJSで実装した関数群として提供する方法です。この関数群はMVVMとは別のレイヤーで考えることが多く、役割に応じてUtil、Helper、Serviceなどと呼ばれたりします(Serviceはビジネスロジックのまとまりなのでドメインレイヤーだと言われたりもしますが、今回は曖昧に使います)。</p>
+
+<p>いずれの方法にしても大事なことは<strong>VueComponentに依存する情報は引数で受け取る</strong>ということです。</p>
+
+<p>Viewのイベントハンドリングのロジックでは「Viewの状態」や「ユーザの入力値」を扱うことになるでしょうし、View用の表示データの成形では「ViewModelがModelから受け取った値」などを扱うでしょう。それらを利用したロジックを共通化するには、それらを引数で受け取ることが必要なわけですね。</p>
+
+<p>これらは特に「Viewのイベントハンドリング」「View用のデータ成形」の共通化で使うことが多いです。</p>
+
+<h4 id="vuexのgetterなどmodel側で共通化したい処理を持つ">Vuexのgetterなど、Model側で共通化したい処理を持つ</h4>
+
+<p>Modelの値を加工する処理等Modelに依存する処理は、Model側に定義しておくのもひとつの手です。元来的なMVVMでは<strong>Viewのための値の加工はViewModelですべき</strong>とされていますが、Vuexでは「<strong>ViewModel毎に何度も同じ加工ロジックを実装するくらいなら、Model側に寄せてしまえば？</strong>」という思想で<code class="highlighter-rouge">getter</code>が用意されています。ですのでVueアプリケーションではこれに則ってModel側で共通化することもひとつの手段と言えるでしょう。</p>
+
+<h4 id="slotを使って高階関数的に実装する">slotを使って高階関数的に実装する</h4>
+
+<p>どうしてもローカルStateの管理にまつわる部分を共通化したいケース、またはTempplateをセットで共通化したいケースなどでは、slotを使った高階Componentを定義する方法が使えます。Reactで言えばHOCに相当しますね。VueでReactのようにHOCをすると結局オブジェクトのマージが発生してしまってmixinと大差ないので、slotを使ってComponentの中にComponentを配置することで、高階関数的な挙動を実現します。</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>長くなってしまいました。まとめます。</p>
+
+<ul>
+  <li>mixinは極力使わない</li>
+  <li>宣言部分は共通化しない、内部的な処理は共通化しても良い</li>
+  <li>Util、Helper、Serviceクラスなどを使って共通化する
+    <ul>
+      <li>Viewのイベントハンドリングで使える</li>
+      <li>View用の表示データの成形でも使える</li>
+    </ul>
+  </li>
+  <li>Vuexのgetterのように、Model側で共通化する
+    <ul>
+      <li>Modelの監視などで使える</li>
+    </ul>
+  </li>
+  <li>slotを使って高階関数的に共通化する
+    <ul>
+      <li>どうしてもローカルStateを共通化したいときに使える</li>
+      <li>Templateも含めて共通化したいときに使える</li>
+    </ul>
+  </li>
+  <li>どの方法でも代用できない場合はmixinを使う</li>
+</ul>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>この記事は <a href="https://qiita.com/advent-calendar/2018/vuejs-2" target="_blank">Vue.js #2 Advent Calendar 2018</a> 25日目の記事として書かせていただきました。Advent CalendarからもVueへの関心や利用実績の高さが伺えるように、きっと来年もVueは盛り上がっていくのだと思います。その中で生まれる一人ひとりの経験がこうして共有されていることは、Vueユーザの一人としてとてもありがたく、楽しくもあります。<br />
+今後もVueコミュニティが知見と活気で盛り上がりますよう、クリスマスに願いを込めたところで締めさせていただきます。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E4%BF%BA%E3%81%8C%E3%82%84%E3%82%89%E3%81%8B%E3%81%97%E3%81%9FVue+mixin%E3%81%AE%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6mixin%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%A8%E4%BB%A3%E6%9B%BF%E6%A1%88&url=https://aloerina01.github.io/blog/2018-12-25-1&via=aloerina_&hashtags=Vue,JavaScript,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E4%BF%BA%E3%81%8C%E3%82%84%E3%82%89%E3%81%8B%E3%81%97%E3%81%9FVue+mixin%E3%81%AE%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6mixin%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%A8%E4%BB%A3%E6%9B%BF%E6%A1%88&u=https://aloerina01.github.io/blog/2018-12-25-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E4%BF%BA%E3%81%8C%E3%82%84%E3%82%89%E3%81%8B%E3%81%97%E3%81%9FVue+mixin%E3%81%AE%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6mixin%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%A8%E4%BB%A3%E6%9B%BF%E6%A1%88&url=https://aloerina01.github.io/blog/2018-12-25-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-12-25-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E4%BF%BA%E3%81%8C%E3%82%84%E3%82%89%E3%81%8B%E3%81%97%E3%81%9FVue+mixin%E3%81%AE%E3%82%A2%E3%83%B3%E3%83%81%E3%83%91%E3%82%BF%E3%83%BC%E3%83%B3%E3%81%8B%E3%82%89%E5%AD%A6%E3%81%B6mixin%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%E3%81%A8%E4%BB%A3%E6%9B%BF%E6%A1%88%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-12-25-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2018-09-27-1">Vue.nextTickのコードリーディング</a></li>
+      
+      <li><a href="/blog/2018-09-14-1">React+Fluxで正しく設計するためのFlux見直しガイド</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/skills/">Skills</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <p class="present-title">aloerinaのサポーターになる</p>
+    <p class="present-description">気に入った記事がありましたらお小遣いをあげて支援してみませんか？ aloerinaの生計を支えるサポーターになることができます！</p>
+    <div class="present-qr">
+        <a href="kyash://qr/u/7297457164651391829" target="_blank" class="qr-execute-button">Kyashでサポートする</a>
+        <img src="/assets/kyash_qr.png">
+        <span><a href="https://kyash.co/" target="_blank">またはKyashで id: <b>aloerina</b> に送金する</a></span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.30.0/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.31.0/autocomplete.min.js"></script>
+<script src="/dist/algolia.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // Header
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+  });
+});
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2018-12-25-1',
+    'title': '俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案'
+  });
+</script>
+
+
+</body>
+
+</html>
