@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>シェルスクリプト入門者のためのチェックリスト</title>
+  <meta name="description" content="google公式のShell Style Guideの紹介と、その中で特に自分が気をつけていることをリストアップしました。ビルドやデプロイのスクリプトを用意するときなどにこれを基に自己レビューしています。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2018">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="google公式のShell Style Guideの紹介と、その中で特に自分が気をつけていることをリストアップしました。ビルドやデプロイのスクリプトを用意するときなどにこれを基に自己レビューしています。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-12-27-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="シェルスクリプト入門者のためのチェックリスト" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="シェルスクリプト入門者のためのチェックリスト">
+  <meta name="twitter:description" content="google公式のShell Style Guideの紹介と、その中で特に自分が気をつけていることをリストアップしました。ビルドやデプロイのスクリプトを用意するときなどにこれを基に自己レビューしています。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-12-27-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-12-27-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/dist/prism.js" defer></script>
+  <script src="/dist/drift.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-12-27-1">
+            <span itemprop="name">シェルスクリプト入門者のためのチェックリスト</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">シェルスクリプト入門者のためのチェックリスト</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2018-12-27</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/shell/">shell</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>シェルスクリプトはWebアプリケーションの開発において必須スキルというわけではないのかもしれませんが、ビルドやデプロイのスクリプトを書くときに結構役立ったりします。ただ、たまにしか書かないこともありなかなか入門レベルから上達せず、適切なスクリプトが書けているか不安になることがあります。</p>
+
+<p>そんなときに頼りにしているのがGoogle製の<strong><a href="https://google.github.io/styleguide/shell.xml" target="_blank">Shell Style Guide</a></strong>(以下「ガイド」)です。とりあえず最低限のお作法としてこれに従いつつ、要所要所をアレンジして使っています。</p>
+
+<p>今回は中でも特に気をつけている部分をピックアップしてチェック表代わりにしてみようと思います。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#どのshellを使うか" id="markdown-toc-どのshellを使うか">どのshellを使うか</a></li>
+  <li><a href="#いつshellを使うか" id="markdown-toc-いつshellを使うか">いつshellを使うか</a></li>
+  <li><a href="#拡張子" id="markdown-toc-拡張子">拡張子</a></li>
+  <li><a href="#エラーメッセージ" id="markdown-toc-エラーメッセージ">エラーメッセージ</a></li>
+  <li><a href="#フォーマット" id="markdown-toc-フォーマット">フォーマット</a></li>
+  <li><a href="#変数展開" id="markdown-toc-変数展開">変数展開</a></li>
+  <li><a href="#コマンド置換" id="markdown-toc-コマンド置換">コマンド置換</a></li>
+  <li><a href="#test--" id="markdown-toc-test--">test, [, [[</a></li>
+  <li><a href="#empty-check" id="markdown-toc-empty-check">empty check</a></li>
+  <li><a href="#ファイル名のワイルドカード" id="markdown-toc-ファイル名のワイルドカード">ファイル名のワイルドカード</a></li>
+  <li><a href="#whileとパイプライン" id="markdown-toc-whileとパイプライン">whileとパイプライン</a></li>
+  <li><a href="#命名規則" id="markdown-toc-命名規則">命名規則</a></li>
+  <li><a href="#関数" id="markdown-toc-関数">関数</a></li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="どのshellを使うか">どのshellを使うか</h3>
+
+<p><strong>原則bashを使う。shebangは<code class="highlighter-rouge"><span class="c">#!/bin/bash</span></code>とする</strong></p>
+
+<p>特段な理由がなければbashを利用するようにします。日頃使っているコマンドの中には、実はPOSIX準拠ではなくbash等で拡張されたものも存在します。そういったことを意識せずに済むようにbashでの実行を前提としています。</p>
+
+<p>私の場合、用意したスクリプトを手元で実行することもあればCIから実行することもあります。よく使うCiecleCIは、仮想環境のOSがubuntuなのでデフォルトのshellがdashです。shebangを<code class="highlighter-rouge"><span class="c">#!/bin/sh</span></code>としていると、手元で動いたスクリプトがCI上では動かない…なんてことになり兼ねないので、bashでの実行を原則としています。</p>
+
+<h3 id="いつshellを使うか">いつshellを使うか</h3>
+
+<p><strong>小さなツール・ユーティリティとして使う</strong></p>
+
+<h3 id="拡張子">拡張子</h3>
+
+<ul>
+  <li><strong>直接実行可能なものは拡張子をつけない</strong></li>
+  <li><strong>ライブラリとしてのスクリプトは拡張子必須</strong></li>
+</ul>
+
+<p>直接実行する場面では「どの言語で書かれているか」を意識する必要がないためです。逆にライブラリとして利用する場面では、実装言語を意識する必要がありますよね。「直接実行可能か」をひと目で判断しやすくするためにも拡張子の有無に気を配るようにしています。</p>
+
+<h3 id="エラーメッセージ">エラーメッセージ</h3>
+
+<p><strong>全てのエラーメッセージはSTDERR(標準エラー出力)へ書き出す</strong></p>
+
+<p>通常の状態とエラー状態を識別しやすくするためですね。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>err<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">echo</span> <span class="s2">"[</span><span class="k">$(</span><span class="nb">date</span> +<span class="s1">'%Y-%m-%dT%H:%M:%S%z'</span><span class="k">)</span><span class="s2">]: </span><span class="nv">$@</span><span class="s2">"</span> <span class="o">&gt;</span>&amp;2
+<span class="o">}</span>
+
+<span class="k">if</span> <span class="o">!</span> do_something<span class="p">;</span> <span class="k">then
+  </span>err <span class="s2">"Unable to do_something"</span>
+  <span class="nb">exit</span> <span class="s2">"</span><span class="k">${</span><span class="nv">E_DID_NOTHING</span><span class="k">}</span><span class="s2">"</span>
+<span class="k">fi</span>
+</code></pre></div></div>
+<p>リダイレクト<code class="highlighter-rouge">&gt;</code>とファイルディスクリプタ<code class="highlighter-rouge">&amp;2</code>を使ってSTDERRに出力するサンプルコードです。</p>
+
+<h3 id="フォーマット">フォーマット</h3>
+
+<ul>
+  <li><strong>インデントはスペース2つ</strong></li>
+  <li><strong>1行は80文字まで</strong></li>
+  <li><strong>パイプラインが3つ以上続くときは改行する</strong></li>
+  <li><strong>ループ文やif文では、同じ行に<code class="highlighter-rouge">; do</code>や<code class="highlighter-rouge">; then</code>を書く</strong></li>
+  <li><strong>case文では、改行して<code class="highlighter-rouge">;;</code>を書く</strong></li>
+</ul>
+
+<p>特にこだわりはないのでガイドに従います。</p>
+
+<h3 id="変数展開">変数展開</h3>
+
+<p><strong><code class="highlighter-rouge">"$var"</code>より<code class="highlighter-rouge">${var}</code>を使う</strong></p>
+
+<p>ガイドには「既存の実装に揃えることを優先すること」とも記載されていますが、既存の実装がないのでこのルールに従っています。</p>
+
+<h3 id="コマンド置換">コマンド置換</h3>
+
+<p><strong><code class="highlighter-rouge">`command`</code>より<code class="highlighter-rouge">$(command)</code>を使う</strong></p>
+
+<p><code class="highlighter-rouge">$(command)</code>は入れ子にできる利点があります。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is preferred:</span>
+<span class="nv">var</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">command</span> <span class="s2">"</span><span class="k">$(</span>command1<span class="k">)</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+
+<span class="c"># This is not:</span>
+<span class="nv">var</span><span class="o">=</span><span class="s2">"</span><span class="sb">`</span><span class="nb">command</span> <span class="se">\`</span>command1<span class="se">\`</span><span class="sb">`</span><span class="s2">"</span>
+</code></pre></div></div>
+
+<h3 id="test--">test, [, [[</h3>
+
+<p><strong><code class="highlighter-rouge">[[ ... ]]</code>を利用する</strong></p>
+
+<p><code class="highlighter-rouge">[[ ... ]]</code>はPOSIX準拠ではないので注意が必要ですが、testコマンド等に比べて機能が拡張されています。とくに変数展開に関する問題が減るので、原則利用するようにしています。</p>
+
+<h3 id="empty-check">empty check</h3>
+
+<p><strong>極力<code class="highlighter-rouge">-z</code>, <code class="highlighter-rouge">-n</code>を利用する</strong></p>
+
+<p>空文字列のチェックなどのempty checkをするときは<code class="highlighter-rouge">-z</code>(zero)や<code class="highlighter-rouge">-n</code>(non-zero)を利用します。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="k">${</span><span class="nv">my_var</span><span class="k">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+  </span>do_something
+<span class="k">fi</span>
+</code></pre></div></div>
+
+<h3 id="ファイル名のワイルドカード">ファイル名のワイルドカード</h3>
+
+<p><strong>ワイルドカードを利用するときは<code class="highlighter-rouge">*</code>ではなく<code class="highlighter-rouge">./*</code>とする</strong></p>
+
+<p>ワイルドカードを利用するときはpathを明示します。ミスを防ぐことと可読性を高めることが目的だと思います。</p>
+
+<h3 id="whileとパイプライン">whileとパイプライン</h3>
+
+<p><strong>パイプでwhileにつなぐ代わりに、forループまたはプロセス置換を使う</strong></p>
+
+<p>whileを使うと暗黙的にsubshell(子プロセス)が生成されます。その結果、子プロセスから親プロセスの変数にアクセスできなかったり、何か問題が起きたときに追跡しにくくなったりします。</p>
+
+<p>以下のコードは、subshellから親の変数にアクセスできない例です。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">last_line</span><span class="o">=</span><span class="s1">'NULL'</span>
+your_command | <span class="k">while </span><span class="nb">read </span>line<span class="p">;</span> <span class="k">do
+  </span><span class="nv">last_line</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">line</span><span class="k">}</span><span class="s2">"</span> <span class="c"># 親で定義したlast_lineへアクセスできない</span>
+<span class="k">done
+
+</span><span class="nb">echo</span> <span class="s2">"</span><span class="k">${</span><span class="nv">last_line</span><span class="k">}</span><span class="s2">"</span>   <span class="c"># そのため親のlast_lineは更新されておらず、'NULL'が出力される</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>forループでの代替例です。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">total</span><span class="o">=</span>0
+<span class="c"># Only do this if there are no spaces in return values.</span>
+<span class="k">for </span>value <span class="k">in</span> <span class="k">$(</span>your_command<span class="k">)</span><span class="p">;</span> <span class="k">do
+  </span>total+<span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">value</span><span class="k">}</span><span class="s2">"</span>
+<span class="k">done</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>次にプロセス置換の例です。プロセス置換もsubshellを使いますが、whileと違い明示的であるため幾分か良いです。ちなみにプロセス置換はPOSIX準拠ではありませんのでご注意を。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">total</span><span class="o">=</span>0
+<span class="nv">last_file</span><span class="o">=</span>
+<span class="k">while </span><span class="nb">read </span>count filename<span class="p">;</span> <span class="k">do
+  </span>total+<span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">count</span><span class="k">}</span><span class="s2">"</span>
+  <span class="nv">last_file</span><span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">filename</span><span class="k">}</span><span class="s2">"</span>
+<span class="k">done</span> &lt; &lt;<span class="o">(</span>your_command | <span class="nb">uniq</span> <span class="nt">-c</span><span class="o">)</span>
+</code></pre></div></div>
+
+<h3 id="命名規則">命名規則</h3>
+
+<ul>
+  <li><strong>変数やファイル名はスネークケース</strong></li>
+  <li><strong>定数や環境変数は大文字のスネークケース</strong></li>
+  <li><strong>定数や環境変数はファイル冒頭で定義し、<code class="highlighter-rouge">readonly</code>または<code class="highlighter-rouge">declare</code>する</strong></li>
+  <li><strong>関数内で使う変数は<code class="highlighter-rouge">local</code>をつける</strong></li>
+</ul>
+
+<p>定数や環境変数などのグローバル変数はファイルの冒頭で定義します。グローバル変数は広い範囲で利用され得るためバリデーションを実装し、定数の場合はreadonlyとします。</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">zip_version</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dpkg <span class="nt">--status</span> zip | <span class="nb">grep </span>Version: | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 2<span class="k">)</span><span class="s2">"</span>
+<span class="k">if</span> <span class="o">[[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="k">${</span><span class="nv">zip_version</span><span class="k">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
+  </span>error_message
+<span class="k">else
+  </span><span class="nb">readonly </span>zip_version
+<span class="k">fi</span>
+
+</code></pre></div></div>
+
+<h3 id="関数">関数</h3>
+
+<ul>
+  <li><strong>スネークケースで書く</strong></li>
+  <li><strong>パッケージの関数は<code class="highlighter-rouge">::</code>で区切る</strong></li>
+</ul>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Single function</span>
+my_func<span class="o">()</span> <span class="o">{</span>
+  ...
+<span class="o">}</span>
+
+<span class="c"># Part of a package</span>
+mypackage::my_func<span class="o">()</span> <span class="o">{</span>
+  ...
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>関数はグローバル変数の下に定義し、呼び出し箇所と宣言箇所を混ぜないようにします。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>以上になります。<br />
+間違っている箇所やもっといい案がありましたらお気軽に<a href="https://twitter.com/aloerina_" target="_blank">@aloerina_</a>までご連絡ください。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%85%A5%E9%96%80%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88&url=https://aloerina01.github.io/blog/2018-12-27-1&via=aloerina_&hashtags=shell,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%85%A5%E9%96%80%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88&u=https://aloerina01.github.io/blog/2018-12-27-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%85%A5%E9%96%80%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88&url=https://aloerina01.github.io/blog/2018-12-27-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-12-27-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%82%B7%E3%82%A7%E3%83%AB%E3%82%B9%E3%82%AF%E3%83%AA%E3%83%97%E3%83%88%E5%85%A5%E9%96%80%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E3%83%81%E3%82%A7%E3%83%83%E3%82%AF%E3%83%AA%E3%82%B9%E3%83%88%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-12-27-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2018-08-01-1">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</a></li>
+      
+      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/skills/">Skills</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <p class="present-title">aloerinaのサポーターになる</p>
+    <p class="present-description">気に入った記事がありましたらお小遣いをあげて支援してみませんか？ aloerinaの生計を支えるサポーターになることができます！</p>
+    <div class="present-qr">
+        <a href="kyash://qr/u/7297457164651391829" target="_blank" class="qr-execute-button">Kyashでサポートする</a>
+        <img src="/assets/kyash_qr.png">
+        <span><a href="https://kyash.co/" target="_blank">またはKyashで id: <b>aloerina</b> に送金する</a></span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.30.0/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.31.0/autocomplete.min.js"></script>
+<script src="/dist/algolia.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', function() {
+  // Header
+  var CLASS_MENU_SHOW = 'show';
+  var navigationMenu = document.getElementById('js-navigation-menu');
+  var menuIcon = document.getElementById('js-mobile-menu-icon');
+  menuIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+  });
+});
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2018-12-27-1',
+    'title': 'シェルスクリプト入門者のためのチェックリスト'
+  });
+</script>
+
+
+</body>
+
+</html>

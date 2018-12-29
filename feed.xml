@@ -1,5 +1,204 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-12-27T10:43:33+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</title><link href="https://aloerina01.github.io/blog/2018-12-25-1" rel="alternate" type="text/html" title="俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案" /><published>2018-12-25T00:00:00+00:00</published><updated>2018-12-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-12-25-1">&lt;p&gt;VueComponent間で&lt;strong&gt;再利用可能な部品&lt;/strong&gt;を実装するための機能が&lt;strong&gt;&lt;a href=&quot;https://jp.vuejs.org/v2/guide/mixins.html&quot; target=&quot;_blank&quot;&gt;mixin&lt;/a&gt;&lt;/strong&gt;です。mixinを使った共通化の例はよく見かけますし、私もしばしばやってきました。ただ、どうも自分の実装方法だと後々不便になったり見通しが悪かったりと、使い勝手の悪いものになってしまうことが多かったです。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2018-12-29T09:49:12+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">シェルスクリプト入門者のためのチェックリスト</title><link href="https://aloerina01.github.io/blog/2018-12-27-1" rel="alternate" type="text/html" title="シェルスクリプト入門者のためのチェックリスト" /><published>2018-12-27T00:00:00+00:00</published><updated>2018-12-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-12-27-1">&lt;p&gt;シェルスクリプトはWebアプリケーションの開発において必須スキルというわけではないのかもしれませんが、ビルドやデプロイのスクリプトを書くときに結構役立ったりします。ただ、たまにしか書かないこともありなかなか入門レベルから上達せず、適切なスクリプトが書けているか不安になることがあります。&lt;/p&gt;
+
+&lt;p&gt;そんなときに頼りにしているのがGoogle製の&lt;strong&gt;&lt;a href=&quot;https://google.github.io/styleguide/shell.xml&quot; target=&quot;_blank&quot;&gt;Shell Style Guide&lt;/a&gt;&lt;/strong&gt;(以下「ガイド」)です。とりあえず最低限のお作法としてこれに従いつつ、要所要所をアレンジして使っています。&lt;/p&gt;
+
+&lt;p&gt;今回は中でも特に気をつけている部分をピックアップしてチェック表代わりにしてみようと思います。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#どのshellを使うか&quot; id=&quot;markdown-toc-どのshellを使うか&quot;&gt;どのshellを使うか&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#いつshellを使うか&quot; id=&quot;markdown-toc-いつshellを使うか&quot;&gt;いつshellを使うか&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#拡張子&quot; id=&quot;markdown-toc-拡張子&quot;&gt;拡張子&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#エラーメッセージ&quot; id=&quot;markdown-toc-エラーメッセージ&quot;&gt;エラーメッセージ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#フォーマット&quot; id=&quot;markdown-toc-フォーマット&quot;&gt;フォーマット&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#変数展開&quot; id=&quot;markdown-toc-変数展開&quot;&gt;変数展開&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#コマンド置換&quot; id=&quot;markdown-toc-コマンド置換&quot;&gt;コマンド置換&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#test--&quot; id=&quot;markdown-toc-test--&quot;&gt;test, [, [[&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#empty-check&quot; id=&quot;markdown-toc-empty-check&quot;&gt;empty check&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ファイル名のワイルドカード&quot; id=&quot;markdown-toc-ファイル名のワイルドカード&quot;&gt;ファイル名のワイルドカード&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#whileとパイプライン&quot; id=&quot;markdown-toc-whileとパイプライン&quot;&gt;whileとパイプライン&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#命名規則&quot; id=&quot;markdown-toc-命名規則&quot;&gt;命名規則&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#関数&quot; id=&quot;markdown-toc-関数&quot;&gt;関数&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;どのshellを使うか&quot;&gt;どのshellを使うか&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;原則bashを使う。shebangは&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;&lt;/code&gt;とする&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;特段な理由がなければbashを利用するようにします。日頃使っているコマンドの中には、実はPOSIX準拠ではなくbash等で拡張されたものも存在します。そういったことを意識せずに済むようにbashでの実行を前提としています。&lt;/p&gt;
+
+&lt;p&gt;私の場合、用意したスクリプトを手元で実行することもあればCIから実行することもあります。よく使うCiecleCIは、仮想環境のOSがubuntuなのでデフォルトのshellがdashです。shebangを&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;&lt;/code&gt;としていると、手元で動いたスクリプトがCI上では動かない…なんてことになり兼ねないので、bashでの実行を原則としています。&lt;/p&gt;
+
+&lt;h3 id=&quot;いつshellを使うか&quot;&gt;いつshellを使うか&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;小さなツール・ユーティリティとして使う&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;拡張子&quot;&gt;拡張子&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;直接実行可能なものは拡張子をつけない&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ライブラリとしてのスクリプトは拡張子必須&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;直接実行する場面では「どの言語で書かれているか」を意識する必要がないためです。逆にライブラリとして利用する場面では、実装言語を意識する必要がありますよね。「直接実行可能か」をひと目で判断しやすくするためにも拡張子の有無に気を配るようにしています。&lt;/p&gt;
+
+&lt;h3 id=&quot;エラーメッセージ&quot;&gt;エラーメッセージ&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;全てのエラーメッセージはSTDERR(標準エラー出力)へ書き出す&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;通常の状態とエラー状態を識別しやすくするためですね。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;err&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +&lt;span class=&quot;s1&quot;&gt;'%Y-%m-%dT%H:%M:%S%z'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;2
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; do_something&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;err &lt;span class=&quot;s2&quot;&gt;&quot;Unable to do_something&quot;&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;E_DID_NOTHING&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;リダイレクト&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;とファイルディスクリプタ&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;2&lt;/code&gt;を使ってSTDERRに出力するサンプルコードです。&lt;/p&gt;
+
+&lt;h3 id=&quot;フォーマット&quot;&gt;フォーマット&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;インデントはスペース2つ&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;1行は80文字まで&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;パイプラインが3つ以上続くときは改行する&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;ループ文やif文では、同じ行に&lt;code class=&quot;highlighter-rouge&quot;&gt;; do&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;; then&lt;/code&gt;を書く&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;case文では、改行して&lt;code class=&quot;highlighter-rouge&quot;&gt;;;&lt;/code&gt;を書く&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;特にこだわりはないのでガイドに従います。&lt;/p&gt;
+
+&lt;h3 id=&quot;変数展開&quot;&gt;変数展開&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;$var&quot;&lt;/code&gt;より&lt;code class=&quot;highlighter-rouge&quot;&gt;${var}&lt;/code&gt;を使う&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;ガイドには「既存の実装に揃えることを優先すること」とも記載されていますが、既存の実装がないのでこのルールに従っています。&lt;/p&gt;
+
+&lt;h3 id=&quot;コマンド置換&quot;&gt;コマンド置換&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`command`&lt;/code&gt;より&lt;code class=&quot;highlighter-rouge&quot;&gt;$(command)&lt;/code&gt;を使う&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$(command)&lt;/code&gt;は入れ子にできる利点があります。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# This is preferred:&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;command1&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# This is not:&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\`&lt;/span&gt;command1&lt;span class=&quot;se&quot;&gt;\`&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;test--&quot;&gt;test, [, [[&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[[ ... ]]&lt;/code&gt;を利用する&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[[ ... ]]&lt;/code&gt;はPOSIX準拠ではないので注意が必要ですが、testコマンド等に比べて機能が拡張されています。とくに変数展開に関する問題が減るので、原則利用するようにしています。&lt;/p&gt;
+
+&lt;h3 id=&quot;empty-check&quot;&gt;empty check&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;極力&lt;code class=&quot;highlighter-rouge&quot;&gt;-z&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt;を利用する&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;空文字列のチェックなどのempty checkをするときは&lt;code class=&quot;highlighter-rouge&quot;&gt;-z&lt;/code&gt;(zero)や&lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt;(non-zero)を利用します。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my_var&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;do_something
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;ファイル名のワイルドカード&quot;&gt;ファイル名のワイルドカード&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;ワイルドカードを利用するときは&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;ではなく&lt;code class=&quot;highlighter-rouge&quot;&gt;./*&lt;/code&gt;とする&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;ワイルドカードを利用するときはpathを明示します。ミスを防ぐことと可読性を高めることが目的だと思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;whileとパイプライン&quot;&gt;whileとパイプライン&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;パイプでwhileにつなぐ代わりに、forループまたはプロセス置換を使う&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;whileを使うと暗黙的にsubshell(子プロセス)が生成されます。その結果、子プロセスから親プロセスの変数にアクセスできなかったり、何か問題が起きたときに追跡しにくくなったりします。&lt;/p&gt;
+
+&lt;p&gt;以下のコードは、subshellから親の変数にアクセスできない例です。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;last_line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'NULL'&lt;/span&gt;
+your_command | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;line&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;last_line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 親で定義したlast_lineへアクセスできない&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done
+
+&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;last_line&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# そのため親のlast_lineは更新されておらず、'NULL'が出力される&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;forループでの代替例です。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+&lt;span class=&quot;c&quot;&gt;# Only do this if there are no spaces in return values.&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;value &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;your_command&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+  &lt;/span&gt;total+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;次にプロセス置換の例です。プロセス置換もsubshellを使いますが、whileと違い明示的であるため幾分か良いです。ちなみにプロセス置換はPOSIX準拠ではありませんのでご注意を。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
+&lt;span class=&quot;nv&quot;&gt;last_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;count filename&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
+  &lt;/span&gt;total+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;last_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &amp;lt; &amp;lt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;your_command | &lt;span class=&quot;nb&quot;&gt;uniq&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;命名規則&quot;&gt;命名規則&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;変数やファイル名はスネークケース&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;定数や環境変数は大文字のスネークケース&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;定数や環境変数はファイル冒頭で定義し、&lt;code class=&quot;highlighter-rouge&quot;&gt;readonly&lt;/code&gt;または&lt;code class=&quot;highlighter-rouge&quot;&gt;declare&lt;/code&gt;する&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;関数内で使う変数は&lt;code class=&quot;highlighter-rouge&quot;&gt;local&lt;/code&gt;をつける&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;定数や環境変数などのグローバル変数はファイルの冒頭で定義します。グローバル変数は広い範囲で利用され得るためバリデーションを実装し、定数の場合はreadonlyとします。&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;zip_version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;dpkg &lt;span class=&quot;nt&quot;&gt;--status&lt;/span&gt; zip | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;Version: | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 2&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;zip_version&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
+  &lt;/span&gt;error_message
+&lt;span class=&quot;k&quot;&gt;else
+  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;readonly &lt;/span&gt;zip_version
+&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;関数&quot;&gt;関数&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;スネークケースで書く&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;パッケージの関数は&lt;code class=&quot;highlighter-rouge&quot;&gt;::&lt;/code&gt;で区切る&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Single function&lt;/span&gt;
+my_func&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  ...
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# Part of a package&lt;/span&gt;
+mypackage::my_func&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
+  ...
+&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;関数はグローバル変数の下に定義し、呼び出し箇所と宣言箇所を混ぜないようにします。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;以上になります。&lt;br /&gt;
+間違っている箇所やもっといい案がありましたらお気軽に&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">シェルスクリプトはWebアプリケーションの開発において必須スキルというわけではないのかもしれませんが、ビルドやデプロイのスクリプトを書くときに結構役立ったりします。ただ、たまにしか書かないこともありなかなか入門レベルから上達せず、適切なスクリプトが書けているか不安になることがあります。</summary></entry><entry><title type="html">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</title><link href="https://aloerina01.github.io/blog/2018-12-25-1" rel="alternate" type="text/html" title="俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案" /><published>2018-12-25T00:00:00+00:00</published><updated>2018-12-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-12-25-1">&lt;p&gt;VueComponent間で&lt;strong&gt;再利用可能な部品&lt;/strong&gt;を実装するための機能が&lt;strong&gt;&lt;a href=&quot;https://jp.vuejs.org/v2/guide/mixins.html&quot; target=&quot;_blank&quot;&gt;mixin&lt;/a&gt;&lt;/strong&gt;です。mixinを使った共通化の例はよく見かけますし、私もしばしばやってきました。ただ、どうも自分の実装方法だと後々不便になったり見通しが悪かったりと、使い勝手の悪いものになってしまうことが多かったです。&lt;/p&gt;
 
 &lt;p&gt;そこで今回は自分の過去の実装例を見返しながら、なぜ失敗したのか、mixinをどうを使うべきかについて、現時点の考えをまとめてみます。&lt;/p&gt;
 
@@ -2219,151 +2418,4 @@ curl &lt;span class=&quot;nt&quot;&gt;-XPOST&lt;/span&gt; &lt;span class=&quot;s
 
 &lt;p&gt;Merge漏れ事故の対策は他にもいろいろ案がある中、諸々の事情により一旦の場しのぎとして作った程度でしたが、そこそこ活躍しているようで作った甲斐がありました。shellを書く機会があまりないので、作ること自体も楽しめました。&lt;/p&gt;
 
-&lt;p&gt;現場からの報告は以上です。引き続きよろしくお願いします。&lt;/p&gt;</content><author><name></name></author><summary type="html">git-flowで運用していると、releaseブランチとhotfixブランチなど複数のブランチからリリースが行われるケースがあります。その場合リリースされたものを次のreleaseブランチにきちんと反映しないと、ソースが巻き戻ってしまう事故に繋がります。</summary></entry><entry><title type="html">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</title><link href="https://aloerina01.github.io/blog/2018-05-30-1" rel="alternate" type="text/html" title="コマンド一つでReactの開発環境が100％整うライブラリx0の紹介" /><published>2018-05-30T00:00:00+00:00</published><updated>2018-05-30T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-05-30-1">&lt;h3 id=&quot;はじめに&quot;&gt;はじめに&lt;/h3&gt;
-
-&lt;p&gt;いきなりですが、Reactの開発環境を用意するのって大変だと思うのです。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;React&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ReactDOM&lt;/code&gt;をnpm installする&lt;/li&gt;
-  &lt;li&gt;ES6+で書くためにpolyfillを入れる&lt;/li&gt;
-  &lt;li&gt;ES6+で書くためにBabelの設定をする&lt;/li&gt;
-  &lt;li&gt;JSXを書くためにBabelの設定をする&lt;/li&gt;
-  &lt;li&gt;ビルドするためにWebpackの設定をする&lt;/li&gt;
-  &lt;li&gt;bundleしたJSを読み込むindexページのHTMLを作成する&lt;/li&gt;
-  &lt;li&gt;作ったものを確認するためにローカルサーバの設定(実装)をする&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;他にもサーバサイドのことまで含めると更にやることが増えます。知っていれば大した作業ではないのかもしれませんが、セットアップってたまにしかやらないのでやり方を忘れがち、そしてハマりがちです。ちょっとReact触ってみよう、ちょっとコンポーネント試作してみよう、という意欲を消滅させるには十分すぎる障害だと思います。&lt;/p&gt;
-
-&lt;p&gt;先日、この問題をコマンド一つで解決してくれる &lt;strong&gt;&lt;a href=&quot;https://compositor.io/x0/&quot;&gt;x0&lt;/a&gt;&lt;/strong&gt; というライブラリを触ってみたので、使い方と使用感をまとめました。&lt;/p&gt;
-
-&lt;h3 id=&quot;whats-this&quot;&gt;What’s this&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-05-30-hellox0.gif&quot; alt=&quot;x0demo&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;small&gt;&lt;a href=&quot;https://compositor.io/x0/&quot;&gt;@compositor/x0&lt;/a&gt; より&lt;/small&gt;&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Zero-config React development environment and static site generator&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;設定なしで使えるReact開発環境＆静的サイトジェネレーター&lt;/strong&gt;とのことです。上述したnpm install・ビルドスクリプトの用意・ローカルサーバの用意などをまとめてやってくれます。これでReactのコンポーネントを書くことのみに専念できますね。&lt;/p&gt;
-
-&lt;h3 id=&quot;how-to-use&quot;&gt;How to use&lt;/h3&gt;
-
-&lt;h4 id=&quot;1-install-する&quot;&gt;1. install する&lt;/h4&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-g&lt;/span&gt; @compositor/x0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;公式ではグローバルに入れて使うことを促していますが、私は作業ディレクトリにdevDependencyでインストールしています。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;sample-x0
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;sample-x0
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm init
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @compositor/x0
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;2-componentを実装する&quot;&gt;2. componentを実装する&lt;/h4&gt;
-
-&lt;p&gt;今回はこのようなディレクトリ構成にします。&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;sample-x0
-  ├ package.json
-  └ components
-      ├ HelloWorld.js
-      ├ ...
-      └ ...(その他コンポーネント)
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;strong&gt;HelloWorld.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;World&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!!&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h1&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;3-ビルドデプロイする&quot;&gt;3. ビルド＆デプロイする&lt;/h4&gt;
-
-&lt;p&gt;ビルドしてローカルサーバにデプロイするには&lt;code class=&quot;highlighter-rouge&quot;&gt;x0 [componentを含むディレクトリ]&lt;/code&gt;というコマンドを叩きます。&lt;code class=&quot;highlighter-rouge&quot;&gt;--open (-o)&lt;/code&gt;のオプションをつけると、サーバ起動後にデフォルトブラウザを起動してくれます。&lt;/p&gt;
-
-&lt;p&gt;グローバルインストールしている場合&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;x0 components &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;devDependencyでインストールしている場合&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npx x0 components &lt;span class=&quot;nt&quot;&gt;--open&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;デプロイされると&lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;以下に配置したコンポーネント名が一覧で表示され、選択するとそのコンポーネントが描画されたページへ遷移します。&lt;/p&gt;
-
-&lt;h4 id=&quot;4-エントリーポイントをつくる&quot;&gt;4. エントリーポイントをつくる&lt;/h4&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;以下に配置されたコンポーネントはそれぞれ単体で画面に表示されますが、それらを組み合わせた画面をつくることもできます。&lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;以下にいくつかのコンポーネントとエントリーポイントとなる&lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt;を実装します。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;Title.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;h1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/h1&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;Contents.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contents&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;contents&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;map&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;li&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/li&amp;gt;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;}&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ul&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;main.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'react'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Title&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./Title'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Contents&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./Contents'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Title&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Fruits Basket&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Contents&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;contents&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'apple'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'orange'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'peach'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt; &lt;span class=&quot;sr&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;これで&lt;code class=&quot;highlighter-rouge&quot;&gt;localhost:8080/main&lt;/code&gt;に2つのコンポーネントが表示されます。&lt;/p&gt;
-
-&lt;h3 id=&quot;feeling&quot;&gt;Feeling&lt;/h3&gt;
-
-&lt;p&gt;使用感はけっこう良かったです。実際に利用した場面を挙げておきます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;最新バージョンのReactを試す&lt;/li&gt;
-  &lt;li&gt;複雑なロジックを持つコンポーネントを試作する&lt;/li&gt;
-  &lt;li&gt;コンポーネントのPlayBookをつくる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;最新バージョンのReactを軽く触ろうと思ったとき、本当にシンプルに&lt;strong&gt;コンポーネントのロジックのみを実装して動作確認までできた&lt;/strong&gt;ので、お手軽さは100点でした。&lt;/p&gt;
-
-&lt;p&gt;また、指定したディレクトリ以下のコンポーネントを一覧表示してくれるので、簡易版のコンポーネントPlayBookとしても利用できました。&lt;/p&gt;
-
-&lt;p&gt;その他にも、まだ触っていませんが役立ちそうな機能がいくつかありました。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;webpackの設定を時前で用意してbundleできる
-    &lt;ul&gt;
-      &lt;li&gt;CLIのオプション&lt;code class=&quot;highlighter-rouge&quot;&gt;--webpack&lt;/code&gt;で&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.js&lt;/code&gt;のpathを指定できるので、productionビルド時は自前のビルドスクリプトを通す、等できそう&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;画面に表示するHTMLを自前で用意して差し替えられる
-    &lt;ul&gt;
-      &lt;li&gt;PlayBookのIndexページをリッチにできそう&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/mdx-js/mdx&quot;&gt;MDX&lt;/a&gt;を使える(使ったことはない)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;気になる点は&lt;strong&gt;公式のドキュメントが薄い&lt;/strong&gt;点です。かなりのことを自動でやってくれているので、その内部がどうなっているのか、どこをカスタマイズできるのか、についてもう少し簡単に把握できるとより使いやすいと思います。&lt;/p&gt;
-
-&lt;p&gt;もう1点気になるのは&lt;strong&gt;依存ライブラリがかなり多い点&lt;/strong&gt;です。これも自動でいろいろしてくれる代償ですが、babelのPluginだけでも相当数依存していました。&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-preset-stage-0&lt;/code&gt;まで使うのは個人的にはやり過ぎと感じました。&lt;/p&gt;
-
-&lt;h3 id=&quot;create-react-appとの使い分け&quot;&gt;create-react-appとの使い分け&lt;/h3&gt;
-
-&lt;p&gt;最後にcreate-react-appとの使い分けについてですが、&lt;strong&gt;ローカルで実行する環境の用意&lt;/strong&gt;や&lt;strong&gt;ちょっとしたものの開発&lt;/strong&gt;が目的ならx0で十分という印象です。&lt;/p&gt;
-
-&lt;p&gt;逆に&lt;strong&gt;production用のプロジェクトの簡易セットアップ&lt;/strong&gt;にはcreate-react-appを使うほうが後々カスタマイズしやすいかなと思います(実績の面でも良いかなと)。&lt;br /&gt;
-create-react-appの使い方については&lt;a href=&quot;/blog/2017-02-28-1&quot;&gt;Reactを秒速で使い始められるcreate-react-appの使い方と使い心地&lt;/a&gt;にまとめてありますので併せてどうぞ。&lt;/p&gt;
-
-&lt;p&gt;ちなみに、大規模なアプリケーションであったりビルドの仕方やテストなど細かいところまで調整したいときはライブラリに頼らず全部自前で用意しています。適材適所使い分けて幸せな開発ライフを送っていきたいですね。&lt;/p&gt;</content><author><name></name></author><summary type="html">はじめに</summary></entry></feed>
+&lt;p&gt;現場からの報告は以上です。引き続きよろしくお願いします。&lt;/p&gt;</content><author><name></name></author><summary type="html">git-flowで運用していると、releaseブランチとhotfixブランチなど複数のブランチからリリースが行われるケースがあります。その場合リリースされたものを次のreleaseブランチにきちんと反映しないと、ソースが巻き戻ってしまう事故に繋がります。</summary></entry></feed>
