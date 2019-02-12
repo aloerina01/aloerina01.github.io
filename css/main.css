@@ -1027,23 +1027,9 @@ pre code.hljs {
 
 .present {
   position: relative;
-  background: url("/assets/present_image.jpg") left top;
+  background: url("/assets/donate-coffee.jpg") 50% 45%;
   overflow: hidden;
   z-index: 0; }
-  .present::before {
-    content: '';
-    position: absolute;
-    background: inherit;
-    -webkit-filter: blur(6px);
-    -moz-filter: blur(6px);
-    -o-filter: blur(6px);
-    -ms-filter: blur(6px);
-    filter: blur(6px);
-    top: -5px;
-    left: -5px;
-    right: -5px;
-    bottom: -5px;
-    z-index: -1; }
   .present::after {
     content: '';
     position: absolute;
@@ -1072,12 +1058,11 @@ pre code.hljs {
     font-weight: 500; }
   .present-description {
     font-size: 0.9em; }
-  .present-qr {
+  .present-kyash {
     margin: 1.5em auto 1em; }
-    .present-qr .qr-execute-button {
+    .present-kyash .qr-execute-button {
       display: block;
-      margin: 0 auto 0.3em auto;
-      padding: 12px 20px;
+      margin: 0 auto;
       max-width: 14em;
       background: #FF4081;
       background: -webkit-linear-gradient(to right, #ff6884, #FF4081);
@@ -1086,19 +1071,34 @@ pre code.hljs {
       font-weight: 800;
       border-radius: 28px;
       box-shadow: 0 1px 14px #333; }
-    .present-qr img {
+      .present-kyash .qr-execute-button .button-body {
+        padding: 12px 0 10px 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center; }
+      .present-kyash .qr-execute-button .icon {
+        background-image: url("/assets/512_white_12.png") no-repeat 0 0;
+        width: 18px;
+        height: 18px;
+        display: inline-block; }
+      .present-kyash .qr-execute-button .label {
+        display: inline-block;
+        font-size: 0.9em;
+        padding-left: 4px; }
+    .present-kyash .qr-image {
       display: none;
       margin: 0 auto 0.3em auto;
       height: 100px;
       width: 100px; }
-    .present-qr span {
+    .present-kyash span {
       font-size: 0.8em; }
-    .present-qr a, .present-qr a:hover, .present-qr a:focus {
+    .present-kyash a, .present-kyash a:hover, .present-kyash a:focus {
       color: #fff; }
     @media screen and (min-width: 480px) {
-      .present-qr img {
+      .present-kyash .qr-image {
         display: block; }
-      .present-qr .qr-execute-button {
+      .present-kyash .qr-execute-button {
         display: none; } }
   .present-notes {
     font-size: 0.7em; }
