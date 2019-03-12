@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</title>
+  <meta name="description" content="モブプロを知らない人、モブプロを始めてみようと思っている人、モブプロをチームに広めたいと思っている人に向けて、モブプロの魅力や始め方、よくある疑問点などについてまとめました。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2019">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="モブプロを知らない人、モブプロを始めてみようと思っている人、モブプロをチームに広めたいと思っている人に向けて、モブプロの魅力や始め方、よくある疑問点などについてまとめました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2019-03-12-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる">
+  <meta name="twitter:description" content="モブプロを知らない人、モブプロを始めてみようと思っている人、モブプロをチームに広めたいと思っている人に向けて、モブプロの魅力や始め方、よくある疑問点などについてまとめました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2019-03-12-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2019-03-12-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  <script src="/dist/prism.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2019-03-12-1">
+            <span itemprop="name">「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2019-03-12</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/mobprogramming/">MobProgramming</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>私のチームは週の数時間をモブプログラミングに割り当てています。楽しみながら開発でき、しかも開発フローにまつわる悩みが解消されてとても良い感じです。</p>
+
+<p>ただ、始めから上手くできたわけではなくて悩みもいろいろありました。その解決の糸口となったのが「<a href="https://www.amazon.co.jp/dp/4822289648" target="_blank">モブプログラミング・ベストプラクティス</a>」でした。</p>
+
+<p>そこで今回はこの本の内容と感想、そして体験談をまとめつつ、モブプロを始めてみようと思う人・始めてみたばかりの人にモブプロの魅力を伝えてみようと思います！ レッツモビング！</p>
+
+<ul id="markdown-toc">
+  <li><a href="#モブまたはモブプログラミングとは" id="markdown-toc-モブまたはモブプログラミングとは">モブまたはモブプログラミングとは？</a></li>
+  <li><a href="#なぜモブプロをするの" id="markdown-toc-なぜモブプロをするの">なぜモブプロをするの？</a>    <ul>
+      <li><a href="#リソース効率とフロー効率の違い" id="markdown-toc-リソース効率とフロー効率の違い">リソース効率とフロー効率の違い</a></li>
+      <li><a href="#フロー効率を良くしていくためのモブとは" id="markdown-toc-フロー効率を良くしていくためのモブとは">フロー効率を良くしていくためのモブとは</a></li>
+    </ul>
+  </li>
+  <li><a href="#モブプロの始め方" id="markdown-toc-モブプロの始め方">モブプロの始め方</a>    <ul>
+      <li><a href="#モブプロの準備" id="markdown-toc-モブプロの準備">モブプロの準備</a></li>
+      <li><a href="#モブプロの登場人物と役割" id="markdown-toc-モブプロの登場人物と役割">モブプロの登場人物と役割</a></li>
+      <li><a href="#モブプロの進行" id="markdown-toc-モブプロの進行">モブプロの進行</a></li>
+    </ul>
+  </li>
+  <li><a href="#モブプロの心がけ" id="markdown-toc-モブプロの心がけ">モブプロの心がけ</a></li>
+  <li><a href="#モブプロの成果の測り方" id="markdown-toc-モブプロの成果の測り方">モブプロの成果の測り方</a></li>
+  <li><a href="#よくある悩み" id="markdown-toc-よくある悩み">よくある悩み</a>    <ul>
+      <li><a href="#エキスパートがいる場合にうまく進行するには" id="markdown-toc-エキスパートがいる場合にうまく進行するには">エキスパートがいる場合にうまく進行するには？</a></li>
+      <li><a href="#新人や知識のない人がいる場合にうまく進行するには" id="markdown-toc-新人や知識のない人がいる場合にうまく進行するには">新人や知識のない人がいる場合にうまく進行するには？</a></li>
+      <li><a href="#手探りで進めていく案件の場合にうまく進行するには" id="markdown-toc-手探りで進めていく案件の場合にうまく進行するには">手探りで進めていく案件の場合にうまく進行するには？</a></li>
+    </ul>
+  </li>
+  <li><a href="#アンチパターン" id="markdown-toc-アンチパターン">アンチパターン</a>    <ul>
+      <li><a href="#その他のモブのアンチパターン" id="markdown-toc-その他のモブのアンチパターン">「その他のモブ」のアンチパターン</a></li>
+      <li><a href="#タイピストのアンチパターン" id="markdown-toc-タイピストのアンチパターン">「タイピスト」のアンチパターン</a></li>
+    </ul>
+  </li>
+  <li><a href="#ハッピーモビング" id="markdown-toc-ハッピーモビング">ハッピーモビング</a></li>
+</ul>
+
+<h3 id="モブまたはモブプログラミングとは">モブまたはモブプログラミングとは？</h3>
+<p>本の中の言葉を借りるなら「チームで一緒に働く」ことがモブです。チームで一緒にひとつの開発をすれば、それはモブプログラミングです。</p>
+
+<p>……こう考えて取り組むようにしたら、肩の荷がおりた感覚があったことを覚えています。チームメンバーにモブプロをしようと提案した手前うまくモブプロしていかねばと気を張っていましたが、やり方・進め方も含めてチームで一緒に決めていこうと気持ちを持ち直した記憶があります。</p>
+
+<h3 id="なぜモブプロをするの">なぜモブプロをするの？</h3>
+<p>モブプロの良さは<strong>フロー効率の良さ</strong>にあります。なので一緒にモブプロをしてもらうメンバーには、フロー効率とは何なのかを理解してもらい、フロー効率を良くしていこうという共通認識を持ってもらうと良さそうです。</p>
+
+<h4 id="リソース効率とフロー効率の違い">リソース効率とフロー効率の違い</h4>
+<p><strong>リソース効率とは「リソースの空きがいかに少ないか」</strong>です。チームメンバー全員が休みなく働いている状態、つまり稼働率100％の状態だと、リソース効率が良いといえます。</p>
+
+<p>対して<strong>フロー効率とは「着手からリリースまでの時間(リードタイム)がいかに短いか」</strong>です。フローとは「流れていること」を指しているので、どの期間を切り取っても常にアウトプットがなされている状態だと、つまり案件が短い期間でリリースを繰り返せている状態だと、フロー効率が良いといえます。</p>
+
+<p>リソース効率を追求した考え方では「どれくらい多くの機能を詰め込めるか」と考え、フロー効率を追求した考え方では「どれくらい細かく刻めるか」と考える傾向があります。後者は変化に強く、アジャイルな考え方にも通じるわけですね。</p>
+
+<h4 id="フロー効率を良くしていくためのモブとは">フロー効率を良くしていくためのモブとは</h4>
+<p>モブはフロー効率が良い手法です。それがわかる側面として</p>
+
+<ul>
+  <li>全員で課題に取り組むのでスペシャリストは生まれず、ゼネラリストが生まれる。結果的にキーパーソンへの依存度が下がり、一人が欠けたときの影響が下が少ない</li>
+  <li>全員で課題に取り組むので、スキルや考え方や知見を共有し合う機会が多く、各々のスキルアップが早い</li>
+  <li>集団で取り組むことで判断がより良くなり、品質の大きな欠陥が減る。ちなみに優秀な一人より3人の集団のほうが良い決断ができることが科学的に検証済み</li>
+</ul>
+
+<p>といったことが挙げられます。</p>
+
+<p>つまり複数人でひとつの案件や課題に取り組むモブプロは、長期に渡って保守・改善していくプロダクト開発などのフロー効率を良くしていきたい現場でのGood Practice(のひとつ)というわけです。</p>
+
+<h3 id="モブプロの始め方">モブプロの始め方</h3>
+<h4 id="モブプロの準備">モブプロの準備</h4>
+
+<p>モブプロを始めるにはいくつか準備が必要です。なんせ複数人が同時に、そして快適に仕事する必要があるので、それなりの準備をしておかないとですね。</p>
+
+<ul>
+  <li>参加者が窮屈に感じず、平等にモニターが見える空間、会議室</li>
+  <li>モブの進行や決めごと、TODOなどを書き出せるホワイトボード</li>
+  <li>モブ用マシン(タイピストの交代でのロスを少なくするのが目的なので、なくてもOK)</li>
+  <li>参加者全員にとって馴染みのあるエディタ</li>
+  <li>モブタイマー(できればサブディスプレイなどを用意して常に見える状態にしておく)
+    <ul>
+      <li>Agility の Mobbing &amp; Retrospective Timer</li>
+      <li>Pluralsight の Mob Timer 等</li>
+    </ul>
+  </li>
+  <li>本には書いてなかったけど、おやつ</li>
+</ul>
+
+<h4 id="モブプロの登場人物と役割">モブプロの登場人物と役割</h4>
+<ul>
+  <li><strong>タイピスト</strong>(ドライバー)
+    <ul>
+      <li>キーボードを触る唯一の人</li>
+      <li>10分などのサイクルで交代し、原則全員がタイピストになるように回す</li>
+      <li>その他のモブがしてくれと頼んだことを<strong>理解する</strong></li>
+      <li>指示が理解できないときはわかるまで<strong>質問する</strong></li>
+      <li>頼まれたことをコードとして<strong>実装する</strong></li>
+      <li>その他のモブを信頼し、自分ではしないような実装も<strong>躊躇せず試す</strong></li>
+    </ul>
+  </li>
+  <li><strong>その他のモブ</strong>(ナビゲーター)
+    <ul>
+      <li>キーボードを触らない人。2〜5人くらいがおすすめ</li>
+      <li>問題解決につながる次の論理的ステップを見つけるために<strong>協力する</strong></li>
+      <li>理解できるまで<strong>質問する</strong></li>
+      <li>モブ全体の理解の水準を上げるために<strong>貢献する</strong></li>
+      <li>眼の前の問題に<strong>集中する</strong></li>
+      <li>他のメンバーの意見に<strong>傾聴する</strong></li>
+      <li>システムの中に改善すべき部分を<strong>探す</strong></li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="モブプロの進行">モブプロの進行</h4>
+<p>トライアルに向いている2時間半のモブプロの例を挙げます。</p>
+
+<ol>
+  <li>準備(30分)
+    <ul>
+      <li>モブプロの意義の説明</li>
+      <li>モブプロの役割分担の説明</li>
+      <li>モブで解決する問題の概要の説明</li>
+      <li>タイピストの順番決め(ランダムでも可)</li>
+      <li>おやつの配布</li>
+    </ul>
+  </li>
+  <li>モビングインターバル(1.5時間程度)
+    <ul>
+      <li>10分〜20分毎にタイピストを交代していく</li>
+      <li>途中で休憩をはさんでもOK</li>
+    </ul>
+  </li>
+  <li>ふりかえり(20分)
+    <ul>
+      <li>事実をもとに成果を振り返る</li>
+      <li>肯定的意見、否定的意見を集める</li>
+      <li>軌道修正するべきことを決める(次回試す)</li>
+      <li>必要に応じて、今後も継続していくか決める(どちらでも可なら継続しましょう！)</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="モブプロの心がけ">モブプロの心がけ</h3>
+
+<ul>
+  <li>自分がしないような他のメンバーのアプローチを受け入れましょう！ それをコードにし検証することにも意義があります</li>
+  <li>対立的にならないようにしましょう！ モブは「わたしたち」で行うもの。主語は「わたし」や「あなた」ではなく、常に「わたしたち」を意識しましょう</li>
+  <li>人ではなくコードを批判しましょう！ 負債に対しても、それを実装した人ではなく実装せざるを得なかった状況と向き合いましょう</li>
+</ul>
+
+<h3 id="モブプロの成果の測り方">モブプロの成果の測り方</h3>
+
+<p>モブプロの成果がひと目で判断できる基準はなくて、計測が難しいのが実情です。ただ、明確にやってはいけないのは「短期間のアウトプット量で成果を測ること」です。先述の通り、フロー効率の考え方は「いかにリードタイムを短くリリースを繰り返せるか」であり、「1度のリリースにいかに詰め込めるか」ではないからですね。</p>
+
+<p>とはいえ、何かしらの方法で効果測定する必要がありますよね。ですので、いくつか影響のある指標を挙げてみます。</p>
+
+<ul>
+  <li>リードタイム</li>
+  <li>マージコンフリクトの解消にかかる時間</li>
+  <li>本番システムに入り込むバグの量</li>
+  <li>経験の浅いメンバーの学習度</li>
+  <li>レビュー時間、レビューの待ち時間</li>
+</ul>
+
+<p>これらを総合的に見て、成果の有無を判断するのがオススメです。</p>
+
+<h3 id="よくある悩み">よくある悩み</h3>
+
+<h4 id="エキスパートがいる場合にうまく進行するには">エキスパートがいる場合にうまく進行するには？</h4>
+
+<p>エキスパート(ベテランエンジニア)がいること自体は問題ではないですが、以下のような副作用に注意する必要があります。</p>
+
+<ul>
+  <li>エキスパートがタイピストのとき、エキスパートが一人で作業を進めてその他のモブが眺める(従う)だけになってしまう</li>
+  <li>エキスパートがその他のモブのとき、エキスパートのみが発言する状況になってしまう</li>
+  <li>上記のような状態が続き、エキスパートでない人が発言しにくく感じてしまう</li>
+  <li>エキスパートがその他のモブに教えるばっかりの状態になってしまい、それをエキスパートがストレスに感じてしまう</li>
+</ul>
+
+<p>こうならないためのひとつの方法として、「エキスパートにモブプロのファシリテーターになってもらう」というのがあります。エキスパートは例外的に常にその他のモブになってもらい、メンバーに質問や発言を促したり、メンバーが理解できていない箇所をフォローして回ったり、といった役割を担ってもらう方法です。</p>
+
+<p>モブプロは短期的に開発物を仕上げる手法ではないので、「モブプロがうまく進行しエキスパートの暗黙知がチームに浸透すること」をエキスパートの目標にしてもらうよう事前に説得しておくことも大切です。</p>
+
+<h4 id="新人や知識のない人がいる場合にうまく進行するには">新人や知識のない人がいる場合にうまく進行するには？</h4>
+
+<p>モブプロには、ドメイン知識の有無はあまり関係ありません。新人さんも巻き込んで一緒にモブプロをしましょう！</p>
+
+<p>オススメの進め方は、<strong>ドメイン知識が少ない人にタイピストになってもらう</strong>方法です。
+タイピストの役割に「理解する」と「質問する」があったように、分からないことがあったときに手を止め、質問し、自分の(そして場の)理解を深めるよう導くことでチームに貢献することができます。</p>
+
+<p>そして、タイピストやその他のモブが質問しやすい環境を保つことが、各メンバーの責務となります。</p>
+
+<h4 id="手探りで進めていく案件の場合にうまく進行するには">手探りで進めていく案件の場合にうまく進行するには？</h4>
+
+<p>誰も試したことがなく、どこから手を付けてよいかわからない状況になり得る課題に取り組む場合、「個々で調べる時間」「個々で考える時間」が必要なケースがあります。その場合は<strong>時間を区切ってモブを中断しその場で各々が作業</strong>するのもOKです。本の中では「タイムボックス付きの探究」と呼んでいました。定めた時間が経過したら成果を共有しあい、モブプロを再開しましょう。</p>
+
+<h3 id="アンチパターン">アンチパターン</h3>
+
+<h4 id="その他のモブのアンチパターン">「その他のモブ」のアンチパターン</h4>
+
+<p><strong><em>まだコードで表現されていないことを議論すること。同様に、タイピストがまだコードで表現されていないことについて質問すること。</em></strong></p>
+
+<p>コードで表現されていない状態では「検証」ができないのと、その他のモブ全員が同水準で状況理解できない可能性があります。なのでまずタイピストへコードで表現することを依頼し、それを見ながら議論するようにしましょう。そうすることで議論が理論的なものから実践的なものに変わっていきます。</p>
+
+<p>もしコードで表現したいアイデアが複数出てしまい、タイピストにどれを依頼するか迷ったときは、<strong>一番単純なもの(はやく検証できるもの)を採用する</strong>と良さそうです。そうすることで「コードを見ながら議論する」というモブプロの土俵に上がれます。</p>
+
+<h4 id="タイピストのアンチパターン">「タイピスト」のアンチパターン</h4>
+
+<p><strong><em>こっそり自分のコードを書き込むこと。または勝手に自分の意志で進めること。</em></strong></p>
+
+<p>キーボードに触れる人は、誰よりも自由に自分の考えを<strong>暗黙的に</strong>コードに反映できます。それをやってしまうと、上のアンチパターン同様にその他のモブ全員が同水準で状況理解できなくなります。</p>
+
+<p>もしタイピストがアイデアを持っている場合は、自分がその他のモブの番になるのを待つか、その場でタイピストを交代する等し。その他のモブに回ってからアイデアを出すようにすると良さそうです。</p>
+
+<h3 id="ハッピーモビング">ハッピーモビング</h3>
+
+<p>「モブプログラミング・ベストプラクティス」にはモブプロの初心者・中級者が従うべきプロセスがまとめてあります。プロセスに従ったほうがスムーズに進むケースが多いと思われますが、ルールを守ることが絶対ではない、とも書かれていました。</p>
+
+<p>振り返りを通じてチーム全員でモブプロを改善しながら、チームに合ったモブライフを送っていきたいですね！ ハッピーモビング！</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%80%8C%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%BB%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%80%8D%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%81%AE%E9%AD%85%E5%8A%9B%E3%81%A8%E5%A7%8B%E3%82%81%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B&url=https://aloerina01.github.io/blog/2019-03-12-1&via=aloerina_&hashtags=MobProgramming,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%80%8C%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%BB%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%80%8D%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%81%AE%E9%AD%85%E5%8A%9B%E3%81%A8%E5%A7%8B%E3%82%81%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B&u=https://aloerina01.github.io/blog/2019-03-12-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E3%80%8C%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%BB%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%80%8D%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%81%AE%E9%AD%85%E5%8A%9B%E3%81%A8%E5%A7%8B%E3%82%81%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B&url=https://aloerina01.github.io/blog/2019-03-12-1"
+              onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
+              <i class="fab fa-google-plus-g fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2019-03-12-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%80%8C%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%9F%E3%83%B3%E3%82%B0%E3%83%BB%E3%83%99%E3%82%B9%E3%83%88%E3%83%97%E3%83%A9%E3%82%AF%E3%83%86%E3%82%A3%E3%82%B9%E3%80%8D%E8%AA%AD%E3%82%93%E3%81%A0%E3%81%AE%E3%81%A7%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%81%AE%E9%AD%85%E5%8A%9B%E3%81%A8%E5%A7%8B%E3%82%81%E6%96%B9%E3%82%92%E3%81%BE%E3%81%A8%E3%82%81%E3%82%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2019-03-12-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>おすすめ記事</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
+      
+      <li><a href="/blog/2017-08-29-1">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</a></li>
+      
+      <li><a href="/blog/2018-05-01-1">メンテナンスしやすいVueComponentを設計するために気をつけていること</a></li>
+      
+    </div>
+  </div>
+</section>
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発をしています。フロントエンド寄りです。白いごはんとおかずが好きです。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/skills/">Skills</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+        
+        
+        <a href="/category/mobprogramming/">MobProgramming</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents present">
+  <div class="sub-contents-wrapper present-wrapper">
+    <h3>BUY ME A COFFEE</h3>
+    <p class="present-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
+    <div class="present-kyash">
+        <a class="qr-execute-button" href="kyash://qr/u/7297457164651391829" target="_blank">
+          <p class="button-body">
+            <img class="icon" src="/assets/coin_icon.png"></i>
+            <span class="label">120円ごちそうする</span>
+          </p>
+        </a>
+        <img class="qr-image" src="/assets/kyash_qr.png">
+        <span>または<a href="https://kyash.co/" target="_blank">Kyash</a>で id: <b>aloerina</b> に送金する</span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published at <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Header
+    var CLASS_MENU_SHOW = 'show';
+    var navigationMenu = document.getElementById('js-navigation-menu');
+    var menuIcon = document.getElementById('js-mobile-menu-icon');
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+    });
+  });
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.30.0/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.31.0/autocomplete.min.js"></script>
+<script src="/dist/algolia.js" async></script>
+<script src="https://embed.small.chat/TAFB1N6F4GFTRAULS0.js" async></script>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-39630080-4', 'auto');
+  ga('send', 'pageview', {
+    'page': '/blog/2019-03-12-1',
+    'title': '「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる'
+  });
+</script>
+
+
+</body>
+
+</html>
