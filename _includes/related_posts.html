@@ -5,7 +5,7 @@
       <hr>
     </div>
     <div class="sub-contents-main">
-      {% for post in site.related_posts limit:3 %}
+      {% for post in site.related_posts limit:5 %}
       <li><a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a></li>
       {% endfor %}
     </div>
