@@ -1078,9 +1078,9 @@ pre code.hljs {
         align-items: center;
         justify-content: center; }
       .present-kyash .qr-execute-button .icon {
-        background-image: url("/assets/512_white_12.png") no-repeat 0 0;
-        width: 18px;
-        height: 18px;
+        width: 28px;
+        height: 28px;
+        padding-bottom: 2px;
         display: inline-block; }
       .present-kyash .qr-execute-button .label {
         display: inline-block;
@@ -1095,11 +1095,6 @@ pre code.hljs {
       font-size: 0.8em; }
     .present-kyash a, .present-kyash a:hover, .present-kyash a:focus {
       color: #fff; }
-    @media screen and (min-width: 480px) {
-      .present-kyash .qr-image {
-        display: block; }
-      .present-kyash .qr-execute-button {
-        display: none; } }
   .present-notes {
     font-size: 0.7em; }
 
