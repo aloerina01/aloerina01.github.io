@@ -1,5 +1,39 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-03-20T11:52:08+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</title><link href="https://aloerina01.github.io/blog/2019-03-12-1" rel="alternate" type="text/html" title="「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる" /><published>2019-03-12T00:00:00+00:00</published><updated>2019-03-12T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-03-12-1">&lt;p&gt;私のチームは週の数時間をモブプログラミングに割り当てています。楽しみながら開発でき、しかも開発フローにまつわる悩みが解消されてとても良い感じです。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-03-22T03:58:19+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">小さなアウトプットを100日続けてみた感想</title><link href="https://aloerina01.github.io/blog/2019-03-22-1" rel="alternate" type="text/html" title="小さなアウトプットを100日続けてみた感想" /><published>2019-03-22T00:00:00+00:00</published><updated>2019-03-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-03-22-1">&lt;h3 id=&quot;やったこと&quot;&gt;やったこと&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1日ひとつだけ強くなる&lt;/strong&gt;のコンセプトのもと、&lt;a href=&quot;https://github.com/aloerina01/til&quot; target=&quot;_blank&quot;&gt;aloerina01/til (Today I Learned)&lt;/a&gt; というリポジトリをつくり、その日学んだことを1つコミットするソロ活動。&lt;/p&gt;
+
+&lt;h3 id=&quot;モチベーション&quot;&gt;モチベーション&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;インプットに対してアウトプットが圧倒的に少ない状況を改善したい&lt;/li&gt;
+  &lt;li&gt;アウトプット量を継続的に増やし、その状態に体を慣れさせたい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;感想&quot;&gt;感想&lt;/h3&gt;
+
+&lt;h4 id=&quot;継続できそうなことを探すことから&quot;&gt;継続できそうなことを探すことから&lt;/h4&gt;
+&lt;p&gt;飽き性な自分がどうやったらアウトプットを継続できるかと考えた結果、「できるだけ毎日違うジャンルのアウトプットをできる運用にする」ことを最優先事項としました。加えて「気になったことを調べる、考える」ことは無意識にほぼ毎日やっていたので、これを活かしたい気持ちがありました。&lt;/p&gt;
+
+&lt;p&gt;これらをかけ合わせた実践手段が、&lt;strong&gt;TIL(Today I Learned)&lt;/strong&gt; です。&lt;br /&gt;
+細かいことは決めず、「何か読んだり考えたりしたらそのログをIssueに残す」「ブログに書くほどじゃないネタを雑にIssueにまとめる」「ちょっとした実装を日付毎のディレクトリにCommitする」といったことをラフにやっていこう、という感覚でスタートしました。かなりハードルを低くして始めたことが継続につながったように感じます。&lt;/p&gt;
+
+&lt;h4 id=&quot;目的は果たせた&quot;&gt;目的は果たせた？&lt;/h4&gt;
+
+&lt;p&gt;言語化によるアウトプットはかなり習慣付いたので、目的は果たせた感覚です。また、なんとなくモヤモヤっと考えたことの多くがTILに書き残されるようになったことで、&lt;strong&gt;過去の自分と向き合える、過去の自分に相談できる&lt;/strong&gt;、という副次的な効果もありました。実は目的達成したことよりも、この副次的効果が一番価値のある成果だと感じています。&lt;/p&gt;
+
+&lt;p&gt;次はコードでアウトプットするところを目指したいですが、プライベートで毎日コードを書き続けるモチベーションは今のところないので、しばらくはTILを続けていこうと思います。&lt;/p&gt;
+
+&lt;h4 id=&quot;新たな課題の発見&quot;&gt;新たな課題の発見&lt;/h4&gt;
+
+&lt;p&gt;言語化は習慣付いたのですが、TILの内容は&lt;strong&gt;他人には読ませられないレベル&lt;/strong&gt;です。話し言葉をそのまま文字起こした程度の文章で、&lt;strong&gt;アウトプット速度は早い&lt;/strong&gt;のですが、日本語がハチャメチャだったりまとまりが無かったりしています。&lt;br /&gt;
+対してブログを書くときは、慎重に言葉を選び、何度も論理構造を組み換え、推敲して、&lt;strong&gt;人に読んでもらえるレベル(？)&lt;/strong&gt;の文章を&lt;strong&gt;時間をかけて&lt;/strong&gt;つくっています。&lt;/p&gt;
+
+&lt;p&gt;つまり、間をとった&lt;strong&gt;ギリギリ人に見せられるレベルの文章を短時間で&lt;/strong&gt;書くことができないんですね。言い換えると、人に見せてフィードバックをもらえるレベルのアウトプットを短時間でできない、ということです。今はまだ対策を練っていないのですが、近い将来この課題もやっつけていこうと思います。&lt;/p&gt;
+
+&lt;h4 id=&quot;1日ひとつだけ強くなる&quot;&gt;1日ひとつだけ強くなる&lt;/h4&gt;
+
+&lt;p&gt;これはとあるプロゲーマーの方の言葉ですが、TILの日本語訳にピッタリな言葉だと思います。とはいえやっぱり1人で続けるのは結構大変なので、「自分もTILやってみるよ！」という方は&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください！励みになります！&lt;/p&gt;</content><author><name></name></author><summary type="html">やったこと</summary></entry><entry><title type="html">「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</title><link href="https://aloerina01.github.io/blog/2019-03-12-1" rel="alternate" type="text/html" title="「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる" /><published>2019-03-12T00:00:00+00:00</published><updated>2019-03-12T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-03-12-1">&lt;p&gt;私のチームは週の数時間をモブプログラミングに割り当てています。楽しみながら開発でき、しかも開発フローにまつわる悩みが解消されてとても良い感じです。&lt;/p&gt;
 
 &lt;p&gt;ただ、始めから上手くできたわけではなくて悩みもいろいろありました。その解決の糸口となったのが「&lt;a href=&quot;https://www.amazon.co.jp/dp/4822289648&quot; target=&quot;_blank&quot;&gt;モブプログラミング・ベストプラクティス&lt;/a&gt;」でした。&lt;/p&gt;
 
@@ -2298,234 +2332,4 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
   &lt;li&gt;Dartの1.xと2.xを比較する &lt;a href=&quot;https://webdev.dartlang.org/dart-2&quot; target=&quot;_blank&quot;&gt;Dart 2 Migration Guide for Web Apps&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Get Startedする &lt;a href=&quot;https://webdev.dartlang.org/guides/get-started&quot; target=&quot;_blank&quot;&gt;Get Started&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;pubのパッケージ管理を理解する &lt;a href=&quot;https://www.dartlang.org/tools/pub&quot; target=&quot;_blank&quot;&gt;Pub Package Manager&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、iOS、Android、Webの3大Clientで使える言語を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。</summary></entry><entry><title type="html">WebフロントエンジニアがDart × Flutterに入門した話</title><link href="https://aloerina01.github.io/blog/2018-07-01-1" rel="alternate" type="text/html" title="WebフロントエンジニアがDart × Flutterに入門した話" /><published>2018-07-01T00:00:00+00:00</published><updated>2018-07-01T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-07-01-1">&lt;p&gt;Flutterとは、Dartという言語でモバイルアプリを開発するためのSDKです。iOSアプリとAndroidアプリを同じコードベースで実装できるとのことで、普段はWebアプリを開発している私にもとっつきやすそうなので入門してみました。&lt;/p&gt;
-
-&lt;p&gt;一通り入門が済んだので、どうやって入門したか、入門してみてどうだったか、Webエンジニアの視点でFlutter・Dartに期待することなどをまとめました。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#基礎知識&quot; id=&quot;markdown-toc-基礎知識&quot;&gt;基礎知識&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#dartとは&quot; id=&quot;markdown-toc-dartとは&quot;&gt;Dartとは&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#flutterとは&quot; id=&quot;markdown-toc-flutterとは&quot;&gt;Flutterとは&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#入門の仕方&quot; id=&quot;markdown-toc-入門の仕方&quot;&gt;入門の仕方&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#概要&quot; id=&quot;markdown-toc-概要&quot;&gt;概要&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#ハンズオン&quot; id=&quot;markdown-toc-ハンズオン&quot;&gt;ハンズオン&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#dart-sdkのインストール&quot; id=&quot;markdown-toc-dart-sdkのインストール&quot;&gt;Dart SDKのインストール&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#flutterのインストール&quot; id=&quot;markdown-toc-flutterのインストール&quot;&gt;Flutterのインストール&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#vscodeプラグインのインストール&quot; id=&quot;markdown-toc-vscodeプラグインのインストール&quot;&gt;VSCodeプラグインのインストール&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#android端末検証端末の接続そしてdeploy&quot; id=&quot;markdown-toc-android端末検証端末の接続そしてdeploy&quot;&gt;Android端末(検証端末)の接続、そしてDeploy&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#入門してみてどうだったか&quot; id=&quot;markdown-toc-入門してみてどうだったか&quot;&gt;入門してみてどうだったか&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#dart言語について&quot; id=&quot;markdown-toc-dart言語について&quot;&gt;Dart言語について&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#開発環境について&quot; id=&quot;markdown-toc-開発環境について&quot;&gt;開発環境について&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#flutterについて&quot; id=&quot;markdown-toc-flutterについて&quot;&gt;Flutterについて&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おすすめの読み物&quot; id=&quot;markdown-toc-おすすめの読み物&quot;&gt;おすすめの読み物&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;基礎知識&quot;&gt;基礎知識&lt;/h3&gt;
-
-&lt;h4 id=&quot;dartとは&quot;&gt;&lt;a href=&quot;https://www.dartlang.org/&quot;&gt;Dart&lt;/a&gt;とは&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Googleが開発している言語&lt;/li&gt;
-  &lt;li&gt;JavaやJavaScriptに似たシンタックス&lt;/li&gt;
-  &lt;li&gt;型を付けても付けなくても書ける&lt;/li&gt;
-  &lt;li&gt;DartVM上で動く&lt;/li&gt;
-  &lt;li&gt;JavaScriptにコンパイルできる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Dartの文法については&lt;a href=&quot;https://www.dartlang.org/guides/language/language-tour&quot;&gt;Language Tour&lt;/a&gt;をさらっと眺めるだけでも結構把握できると思います。普段JavaやJavaScriptを使っている人ならすぐに書けそうなワクワク感を味わえるかも(私がそうでした)。&lt;/p&gt;
-
-&lt;h4 id=&quot;flutterとは&quot;&gt;&lt;a href=&quot;https://flutter.io/&quot;&gt;Flutter&lt;/a&gt;とは&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;iOSとAndroidアプリを開発するためのSDK&lt;/li&gt;
-  &lt;li&gt;マテリアルデザインに則ったUIパーツを標準提供&lt;/li&gt;
-  &lt;li&gt;hot reloadでサクサクアプリ開発できる&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;React Nativeと比較してみて感じたことは&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;FlutterにはOSのガイドラインに則ったWidgetが&lt;strong&gt;公式に&lt;/strong&gt;用意されている&lt;/li&gt;
-  &lt;li&gt;Widgetでの画面構築はHTML＆CSSに慣れきった人にはツライ(詳細後述します)&lt;/li&gt;
-  &lt;li&gt;どちらも設計が&lt;strong&gt;ステートレスView＆単一データフロー&lt;/strong&gt;になるという点は似ている&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;こんな感じです。どんなWidgetがあるかを把握し使いこなせれば高速に開発できる反面、慣れるまで(暗記するまで)がけっこうしんどい…という所感です。&lt;/p&gt;
-
-&lt;h3 id=&quot;入門の仕方&quot;&gt;入門の仕方&lt;/h3&gt;
-
-&lt;h4 id=&quot;概要&quot;&gt;概要&lt;/h4&gt;
-&lt;p&gt;公式ドキュメントが丁寧に作られているので、それに沿っていくだけで開発環境の準備ができます。私は&lt;strong&gt;Mac × Visual Studio Code&lt;/strong&gt;で開発したかったので、ざっくり以下のことをしました。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;Dart SDK&lt;/strong&gt;のインストール(参考：&lt;a href=&quot;https://www.dartlang.org/tools/sdk&quot;&gt;Install Dart&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Flutter&lt;/strong&gt;のインストール(参考：&lt;a href=&quot;https://flutter.io/get-started/install/&quot;&gt;Get Started: Install - Flutter&lt;/a&gt;)&lt;/li&gt;
-  &lt;li&gt;開発したいアプリのOSに応じて&lt;strong&gt;Xcode, Android Studio&lt;/strong&gt;のインストール&lt;/li&gt;
-  &lt;li&gt;VSCode用の&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code&quot;&gt;Dartプラグイン&lt;/a&gt;、&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=franzsilva.fs-flutter-snippets&quot;&gt;Flutterプラグイン&lt;/a&gt;のインストール&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Flutterの公式ドキュメントにはエディタの設定の方法まで書いてあり、VSCode以外にもAndroid Studioでの設定方法が載っています。Androidアプリ開発者、Webアプリ開発者の両方にスムーズに使ってもらうことを想定しているのでしょうか(ありがたいですね)。&lt;/p&gt;
-
-&lt;h4 id=&quot;ハンズオン&quot;&gt;ハンズオン&lt;/h4&gt;
-
-&lt;h5 id=&quot;dart-sdkのインストール&quot;&gt;Dart SDKのインストール&lt;/h5&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;brew tap dart-lang/dart
-brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;dart &lt;span class=&quot;nt&quot;&gt;--with-content-shell&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--with-dartium&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;flutterのインストール&quot;&gt;Flutterのインストール&lt;/h5&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://flutter.io/get-started/install/&quot;&gt;Get Started: Install - Flutter&lt;/a&gt;からzipを落とし展開しPATHを通します。そのあとは&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;flutter doctor
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;このコマンドを叩くと、Flutterの開発に必要なものが揃っているかどうか、揃えるために次に何をすればいいのかを教えてくれます。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Doctor summary &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;to see all details, run flutter doctor &lt;span class=&quot;nt&quot;&gt;-v&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;:
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;- &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;x] &lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; Flutter &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Channel beta, v0.4.4, on Mac OS X 10.12.6 16G1212, locale ja-JP&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;✗] Android toolchain - develop &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;Android devices
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;✗ Unable to locate Android SDK.&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;Install Android Studio from: https://developer.android.com/studio/index.html&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;On first launch it will assist you &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;installing the Android SDK components.&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;or visit https://flutter.io/setup/#android-setup &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;detailed instructions&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;If Android SDK has been installed to a custom location, &lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$ANDROID_HOME&lt;/span&gt; to that location.&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;[!]&lt;/span&gt; iOS toolchain - develop &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;iOS devices
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;✗ Xcode installation is incomplete&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; a full installation is necessary &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;iOS development.&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;Download at: https://developer.apple.com/xcode/download/&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;Or &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;Xcode via the App Store.&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;Once installed, run:&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;sudo &lt;/span&gt;xcode-select &lt;span class=&quot;nt&quot;&gt;--switch&lt;/span&gt; /Applications/Xcode.app/Contents/Developer&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;✗ libimobiledevice and ideviceinstaller are not installed. To &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;, run:&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;--HEAD&lt;/span&gt; libimobiledevice&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ideviceinstaller&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;✗ ios-deploy not installed. To &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;:&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;ios-deploy&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;✗ CocoaPods not installed.&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;**&lt;/span&gt;CocoaPods is used to retrieve the iOS platform side&lt;span class=&quot;s1&quot;&gt;'s plugin code that responds to your plugin usage on the Dart side.**
-**Without resolving iOS dependencies with CocoaPods, plugins will not work on iOS.**
-**For more info, see https://flutter.io/platform-plugins**
-**To install:**
-**brew install cocoapods**
-**pod setup**
-[✗] Android Studio (not installed)
-[!] VS Code (version 1.23.1)
-[!] Connected devices
-    ! No devices available
-
-! Doctor found issues in 5 categories.
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;(Android Studioがインストールされてないよ！等、教えてくれていますね)&lt;/p&gt;
-
-&lt;p&gt;このコマンドが大変ありがたく、その後もつまずいたらとりあえず&lt;code class=&quot;highlighter-rouge&quot;&gt;flutter doctor&lt;/code&gt;を叩くと何かしら前に進みました。開発環境の構築でハマるのは入門あるあるだと思うので、Flutterの心遣いに感謝するばかりです。&lt;/p&gt;
-
-&lt;h5 id=&quot;vscodeプラグインのインストール&quot;&gt;VSCodeプラグインのインストール&lt;/h5&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code&quot;&gt;Dartプラグイン&lt;/a&gt;、&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=franzsilva.fs-flutter-snippets&quot;&gt;Flutterプラグイン&lt;/a&gt;をインストールしたものの、VSCodeのコマンドパレットから&lt;code class=&quot;highlighter-rouge&quot;&gt;Flutter: New Project&lt;/code&gt;をしようとしたらFlutter SDKがないと怒られました。設定にFlutterの所在を追記することで解決。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;&quot;dart.flutterSdkPath&quot;: &quot;/Users/aloerina/flutter&quot;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ちなみにNew ProjectでつくられたディレクトリにはHelloWorld的なコードが最初から入っていました。&lt;/p&gt;
-
-&lt;h5 id=&quot;android端末検証端末の接続そしてdeploy&quot;&gt;Android端末(検証端末)の接続、そしてDeploy&lt;/h5&gt;
-
-&lt;p&gt;今回はAndroidアプリで検証をします。&lt;br /&gt;
-USBデバッグを許可した実機を接続するか、Android Studioのエミュレータを起動するかが必要なので後者を選択しました。Android Studioの公式の&lt;a href=&quot;https://developer.android.com/studio/run/managing-avds&quot;&gt;仮想端末の作成と管理&lt;/a&gt;に書いてある通りにやるとスムーズでした。&lt;/p&gt;
-
-&lt;p&gt;エミュレータを起動したらVSCodeのステータスバー(右下)に起動したエミュレータ名が書いてあればOKです。書いてない場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;flutter emulators&lt;/code&gt;を叩いて表示に従えばOKです。&lt;/p&gt;
-
-&lt;p&gt;検証端末の準備ができたらflutterを起動します。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;flutter run
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;これでDeployが済んでエミュレータにアプリが表示されます🎉&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;🔥  To hot reload your app on the fly, press “r”. To restart the app entirely, press “R”.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;hot reloadの準備できてるよ！といって待機してくれていますね。これで開発環境の構築は完了です。ここからはチュートリアルを試したり写経したりして楽しみました。&lt;/p&gt;
-
-&lt;h3 id=&quot;入門してみてどうだったか&quot;&gt;入門してみてどうだったか&lt;/h3&gt;
-
-&lt;h4 id=&quot;dart言語について&quot;&gt;Dart言語について&lt;/h4&gt;
-
-&lt;p&gt;新しい言語を書いているとは思えないくらい、学習コストほぼゼロで読み書きできることに感動します。hot reloadと相まって新しいことを試してすぐに画面に反映されるスピード感・ワクワク感はたまりません。&lt;/p&gt;
-
-&lt;p&gt;すぐ書ける楽しみだけでなく、JavaScriptのような手軽さや、静的型付けやジェネリクスなどを取り揃えた安心感などにも好感でした。公式の&lt;a href=&quot;https://www.dartlang.org/guides/language/language-tour#important-concepts&quot;&gt;Important Concepts&lt;/a&gt;にこれらに関係するDartのコンセプトがまとまっていたので、ざっくり意訳してみます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;変数に代入できる値はすべて(数値、関数、null、など何でも)&lt;em&gt;Object&lt;/em&gt;であり、すべての&lt;em&gt;Object&lt;/em&gt;は&lt;em&gt;Class&lt;/em&gt;のインスタンスです。すべての&lt;em&gt;Object&lt;/em&gt;は&lt;code class=&quot;highlighter-rouge&quot;&gt;Object&lt;/code&gt;クラスを継承します。&lt;/li&gt;
-  &lt;li&gt;Dartは強く型付けされていますが、Dartは型を推測できるため型定義は必須ではありません。型が不明であることを明示的に宣言したいときは、特殊な型である&lt;code class=&quot;highlighter-rouge&quot;&gt;dynamic&lt;/code&gt;を使用することができます。&lt;/li&gt;
-  &lt;li&gt;Dartは&lt;code class=&quot;highlighter-rouge&quot;&gt;List&amp;lt;int&amp;gt;&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;List&amp;lt;dynamic&amp;gt;&lt;/code&gt;などのジェネリクスに対応しています。&lt;/li&gt;
-  &lt;li&gt;Dartは&lt;code class=&quot;highlighter-rouge&quot;&gt;main()&lt;/code&gt;などのトップレベル関数、staticメソッドやインスタンスメソッド、ローカル関数などを定義できます。&lt;/li&gt;
-  &lt;li&gt;Javaと違い&lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;private&lt;/code&gt;などのスコープ定義はありません。代わりに変数名を&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;から始めることでprivateと認識します。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;変数のスコープを&lt;code class=&quot;highlighter-rouge&quot;&gt;_&lt;/code&gt;で判別する点は好みではないのですが(命名は書く側の好きにさせて欲しい)、それ以外はいいと思いました。Interfaceとジェネリクスがあると手堅く設計できますし、DIなども可能になりますよね。&lt;code class=&quot;highlighter-rouge&quot;&gt;async/await&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;Stream&lt;/code&gt;などで&lt;a href=&quot;https://www.dartlang.org/guides/language/language-tour#asynchrony-support&quot;&gt;非同期処理&lt;/a&gt;を自然に書けるのもステキです。&lt;/p&gt;
-
-&lt;p&gt;言語機能を更に深掘りするには&lt;a href=&quot;https://www.dartlang.org/guides/language/effective-dart&quot;&gt;Effective Dart&lt;/a&gt;がおすすめです。Dartはとにかく公式ドキュメントの充実っぷりがすごいですね。&lt;/p&gt;
-
-&lt;p&gt;魅力的な言語だと思うので今後も継続的に発展していってほしいと思います。いずれAltJSのひとつとなる日が来たりするのでしょうか。&lt;/p&gt;
-
-&lt;h4 id=&quot;開発環境について&quot;&gt;開発環境について&lt;/h4&gt;
-
-&lt;p&gt;べた褒め続きで少々気まずさもありますが、私が開発環境に必要だと思う&lt;strong&gt;セットアップ・メンテの手軽さ&lt;/strong&gt;と&lt;strong&gt;開発速度&lt;/strong&gt;が保たれていてよかったです。特に上述した&lt;code class=&quot;highlighter-rouge&quot;&gt;flutter doctor&lt;/code&gt;コマンドには幾度となく助けられました。問題にぶち当たってもググらず解決できるってすごいですよね。&lt;/p&gt;
-
-&lt;p&gt;hot reloadは普段Webフロントを開発している自分には必須の機能でした。アプリはビルドやら何やらに時間のかかるイメージだったので(あくまでイメージです)、アプリ開発への敷居が下がったように感じました。&lt;/p&gt;
-
-&lt;p&gt;また、些細なことかもしれませんがVSCodeのプラグインが&lt;strong&gt;閉じカッコの位置をコメントアウトのように表示してくれる&lt;/strong&gt;のが便利でした(コメントアウト「のように」表示しているだけで実際にコメントが追記されるわけではありません)。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-07-01-1-editor.png&quot; alt=&quot;editor sample&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;この機能に初めて出会って感動したのですが、これって一般的なんでしょうか？&lt;/p&gt;
-
-&lt;h4 id=&quot;flutterについて&quot;&gt;Flutterについて&lt;/h4&gt;
-
-&lt;p&gt;OS推奨のUIがWidgetとして網羅されているため誰でも一定レベルのデザインのアプリを作れるのはすごいと思いますが、いかんせんWidgetの使い方にクセがありました。&lt;/p&gt;
-
-&lt;p&gt;画面の情報すべてをWidgetで表現するため、Layoutに関わる&lt;a href=&quot;https://docs.flutter.io/flutter/widgets/Padding-class.html&quot;&gt;Padding&lt;/a&gt;や&lt;a href=&quot;https://docs.flutter.io/flutter/widgets/Align-class.html&quot;&gt;Alignment&lt;/a&gt;などもWidgetとして組み込まなければなりません。たとえばカードリスト画面を作る場合、以下のようにWidgetを入れ子にする必要があります。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;Scaffold Widget (画面全体を構成する) 
-  &amp;gt; ListView Widget (Scaffoldの中にListViewを配置する)
-    &amp;gt; Padding Widget (ListView内の要素にPaddingをつける)
-      &amp;gt; Card Widget (Paddingのとられた空間にカードを配置する)
-        &amp;gt; Column Widget (カード内に復数の要素を縦積みする)
-          &amp;gt; Padding Widget (縦積みする要素にPaddingをつける)
-            &amp;gt; Text Widget (タイトルなどの文字列を表示する)
-              &amp;gt; TextAlign Widget (文字列のAlignmentを指定する)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;表示要素を表す&lt;code class=&quot;highlighter-rouge&quot;&gt;ListView&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Card&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;Text&lt;/code&gt;と並列関係で&lt;code class=&quot;highlighter-rouge&quot;&gt;Padding&lt;/code&gt;などが存在するわけです。ものによってもっと簡単に記述できる仕組みもあるのですが、HTMLで要素を構成してCSSで装飾する手法に慣れている人にはかなり抵抗があるのではないでしょうか…。&lt;/p&gt;
-
-&lt;p&gt;ただ、アプリのビルドなど詳しく知らない部分を棚上げしたまま開発できる点はよかったです。とりあえず動くものを作ってみてリリースするときに改めてキャッチアップする、とすると開発意欲を落とさず完成にこぎつけそうです。&lt;/p&gt;
-
-&lt;h3 id=&quot;おすすめの読み物&quot;&gt;おすすめの読み物&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;DartとFlutterの魅力を知るには &lt;a href=&quot;https://adwd.github.io/dart-flutter-slide/#/&quot;&gt;DART/FLUTTER 入門 + 最強の勤怠アプリを作った話&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Flutterで何が作れるかを把握するには &lt;a href=&quot;https://flutter.io/showcase/&quot;&gt;Showcase - Flutter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;とりあえずFlutterで動くサンプルを作るなら &lt;a href=&quot;https://codelabs.developers.google.com/codelabs/flutter/index.html?index=..%2F..%2Findex#0&quot;&gt;Building Beautiful UIs with Flutter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Firebaseと組み合せる方法を理解するには &lt;a href=&quot;https://codelabs.developers.google.com/codelabs/flutter-firebase/index.html?index=..%2F..%2Findex#0&quot;&gt;Firebase for Flutter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Widgetでレイアウトする方法を理解するには &lt;a href=&quot;https://flutter.io/tutorials/layout/&quot;&gt;Building Layouts in Flutter&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Stateの概念を理解するなら &lt;a href=&quot;https://flutter.io/tutorials/interactive/&quot;&gt;Adding Interactivity to Your Flutter App&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Flutterで作られたアプリのコードリーディングには &lt;a href=&quot;https://github.com/konifar/droidkaigi2018-flutter&quot;&gt;konifar/droidkaigi2018-flutter&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;本文中で紹介した以外にも、これらを読みながら実装をしていくとかなり理解が捗りました。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;Webアプリとネイティブアプリそれぞれのメリット・デメリットや向き不向きを把握していると、なにか作ろうと思ったときに引出しが多くなっていいんじゃないかなと思います。その第一歩としてDartとFlutterは有用だと思いました。Webエンジニアが取り組みやすいネイティブアプリ開発のプラットフォームであるFlutter、JSに似たシンタックスで書きやすいDart。これから更に理解を深めていこうと思います。&lt;br /&gt;
-DartやFlutterについて語りたい場合は是非&lt;a href=&quot;https://twitter.com/aloerina_&quot;&gt;@aloerina_&lt;/a&gt;までどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html">Flutterとは、Dartという言語でモバイルアプリを開発するためのSDKです。iOSアプリとAndroidアプリを同じコードベースで実装できるとのことで、普段はWebアプリを開発している私にもとっつきやすそうなので入門してみました。</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、iOS、Android、Webの3大Clientで使える言語を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。</summary></entry></feed>

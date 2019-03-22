@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>キャッシュとサーバからデータ取得する鮮やかなPromise.raceの使い方</title>
-  <meta name="description" content="キャッシュからデータを取得、なければサーバにリクエストを投げて取得。そして取得したものを加工して返す。なんてことをPromise.race()を使って簡単にやれると気持ちいいです。">
+  <title>小さなアウトプットを100日続けてみた感想</title>
+  <meta name="description" content="飽き性の私が100日経った今でも継続できている小さなアウトプットの紹介と、それによりどれくらい効果が出たかをやんわりとまとめました。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2019">
@@ -38,10 +38,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="キャッシュからデータを取得、なければサーバにリクエストを投げて取得。そして取得したものを加工して返す。なんてことをPromise.race()を使って簡単にやれると気持ちいいです。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2016-10-05-1" />
+  <meta property="og:description" content="飽き性の私が100日経った今でも継続できている小さなアウトプットの紹介と、それによりどれくらい効果が出たかをやんわりとまとめました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2019-03-22-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="キャッシュとサーバからデータ取得する鮮やかなPromise.raceの使い方" />
+  <meta property="og:title" content="小さなアウトプットを100日続けてみた感想" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -52,17 +52,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="キャッシュとサーバからデータ取得する鮮やかなPromise.raceの使い方">
-  <meta name="twitter:description" content="キャッシュからデータを取得、なければサーバにリクエストを投げて取得。そして取得したものを加工して返す。なんてことをPromise.race()を使って簡単にやれると気持ちいいです。">
+  <meta name="twitter:title" content="小さなアウトプットを100日続けてみた感想">
+  <meta name="twitter:description" content="飽き性の私が100日経った今でも継続できている小さなアウトプットの紹介と、それによりどれくらい効果が出たかをやんわりとまとめました。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2016-10-05-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2019-03-22-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2016-10-05-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2019-03-22-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   <script src="/dist/prism.js" defer></script>
@@ -117,8 +117,8 @@
           <meta itemprop="position" content="2" />
         </li>
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2016-10-05-1">
-            <span itemprop="name">キャッシュとサーバからデータ取得する鮮やかなPromise.raceの使い方</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2019-03-22-1">
+            <span itemprop="name">小さなアウトプットを100日続けてみた感想</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -132,7 +132,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">キャッシュとサーバからデータ取得する鮮やかなPromise.raceの使い方</h1>
+            <h1 class="title">小さなアウトプットを100日続けてみた感想</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -144,52 +144,51 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2016-10-05</div>
+          <div class="post-date">2019-03-22</div>
           <div class="post-categories">
             
             <i class="fas fa-fw fa-tag"></i>
              
-            <a href="/category/javascript/">JavaScript</a>   
+            <a href="/category/exp/">EXP</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <p>コンテンツ一覧を表示するページなど、表示するアイテムの件数が多い場合は、サーバへの問い合わせを毎回せずキャッシュを使う場面がよくあります。
-加えて、ユーザおすすめのコンテンツを最上部に表示したり、既読のコンテンツを隠したり、端末の向きに合わせて表示方法を変えたりと、取得したデータをクライアント側で加工したい場面なんかもあったりします(もちろん全部サーバ側でやることも可能です）。</p>
+          <h3 id="やったこと">やったこと</h3>
 
-<p>そんなことをスマートにこなせる<a href="https://www.promisejs.org/api/#Promise_race">Promise.race()</a>の使い方をメモしますよ😌💡</p>
+<p><strong>1日ひとつだけ強くなる</strong>のコンセプトのもと、<a href="https://github.com/aloerina01/til" target="_blank">aloerina01/til (Today I Learned)</a> というリポジトリをつくり、その日学んだことを1つコミットするソロ活動。</p>
 
-<h3 id="実装する仕様">実装する仕様</h3>
+<h3 id="モチベーション">モチベーション</h3>
 
-<p>ユーザが選択したカテゴリーのコンテンツを取得して表示するとします。サーバから取得したコンテンツリストの中にユーザのお気に入りのタグのものがあれば「お気に入りフラグ」を立てます（サーバ取得時のみ行う）。表示するときは、localStorageにキャッシュされた既読コンテンツと照らし合わせて、既読のものは表示しないようにします。</p>
+<ul>
+  <li>インプットに対してアウトプットが圧倒的に少ない状況を改善したい</li>
+  <li>アウトプット量を継続的に増やし、その状態に体を慣れさせたい</li>
+</ul>
 
-<p>処理の流れはこんな感じ。</p>
+<h3 id="感想">感想</h3>
 
-<ol>
-  <li>データが既にキャッシュされていたらそこから取得する</li>
-  <li>キャッシュがなければサーバから取得する</li>
-  <li>とってきたものを加工する<br />
-　→サーバから取得した場合はお気に入りチェック＆既読チェック<br />
-　→キャッシュから取得した場合は既読チェックのみ</li>
-  <li>サーバから取得した場合はキャッシュする</li>
-  <li>後続処理をできるようにPromiseをreturnする</li>
-</ol>
+<h4 id="継続できそうなことを探すことから">継続できそうなことを探すことから</h4>
+<p>飽き性な自分がどうやったらアウトプットを継続できるかと考えた結果、「できるだけ毎日違うジャンルのアウトプットをできる運用にする」ことを最優先事項としました。加えて「気になったことを調べる、考える」ことは無意識にほぼ毎日やっていたので、これを活かしたい気持ちがありました。</p>
 
-<h3 id="実装のポイント">実装のポイント</h3>
-<script src="https://gist.github.com/aloerina01/13fa540af3b6d750f69811c2d6507e81.js"></script>
+<p>これらをかけ合わせた実践手段が、<strong>TIL(Today I Learned)</strong> です。<br />
+細かいことは決めず、「何か読んだり考えたりしたらそのログをIssueに残す」「ブログに書くほどじゃないネタを雑にIssueにまとめる」「ちょっとした実装を日付毎のディレクトリにCommitする」といったことをラフにやっていこう、という感覚でスタートしました。かなりハードルを低くして始めたことが継続につながったように感じます。</p>
 
-<p>出てきましたね、Promise.race()👆<br />
-こいつは、Iteratableの引数をとって、それらを並行処理し最も早く結果が返ったものを採用します。この例だと<code class="highlighter-rouge">_getFromCache</code>と<code class="highlighter-rouge">_getFromServer</code>の2つのPromiseのうち、先に<code class="highlighter-rouge">resolve</code>または<code class="highlighter-rouge">reject</code>を返したものが採用されるというわけです😉</p>
+<h4 id="目的は果たせた">目的は果たせた？</h4>
 
-<p><code class="highlighter-rouge">_getFromCache</code>と<code class="highlighter-rouge">_getFromServer</code>の(A)〜(D)に実装していきます。</p>
+<p>言語化によるアウトプットはかなり習慣付いたので、目的は果たせた感覚です。また、なんとなくモヤモヤっと考えたことの多くがTILに書き残されるようになったことで、<strong>過去の自分と向き合える、過去の自分に相談できる</strong>、という副次的な効果もありました。実は目的達成したことよりも、この副次的効果が一番価値のある成果だと感じています。</p>
 
-<p>(A) キャッシュからコンテンツリストを取得する処理<br />
-(B) 既読のもを表示しないようにする処理<br />
-(C) サーバからコンテンツリストを取得する処理<br />
-(D) お気に入りフラグ付けと既読のものを表示しないようにする処理</p>
+<p>次はコードでアウトプットするところを目指したいですが、プライベートで毎日コードを書き続けるモチベーションは今のところないので、しばらくはTILを続けていこうと思います。</p>
 
-<h3 id="おわりに">おわりに</h3>
-<p>こういうのは実践で使ってみないと覚えないし、良さも悪さも実感できないもんですね。何だかんだ初めて使ったメソッドだったので備忘録も兼ねて、でした。</p>
+<h4 id="新たな課題の発見">新たな課題の発見</h4>
+
+<p>言語化は習慣付いたのですが、TILの内容は<strong>他人には読ませられないレベル</strong>です。話し言葉をそのまま文字起こした程度の文章で、<strong>アウトプット速度は早い</strong>のですが、日本語がハチャメチャだったりまとまりが無かったりしています。<br />
+対してブログを書くときは、慎重に言葉を選び、何度も論理構造を組み換え、推敲して、<strong>人に読んでもらえるレベル(？)</strong>の文章を<strong>時間をかけて</strong>つくっています。</p>
+
+<p>つまり、間をとった<strong>ギリギリ人に見せられるレベルの文章を短時間で</strong>書くことができないんですね。言い換えると、人に見せてフィードバックをもらえるレベルのアウトプットを短時間でできない、ということです。今はまだ対策を練っていないのですが、近い将来この課題もやっつけていこうと思います。</p>
+
+<h4 id="1日ひとつだけ強くなる">1日ひとつだけ強くなる</h4>
+
+<p>これはとあるプロゲーマーの方の言葉ですが、TILの日本語訳にピッタリな言葉だと思います。とはいえやっぱり1人で続けるのは結構大変なので、「自分もTILやってみるよ！」という方は<a href="https://twitter.com/aloerina_" target="_blank">@aloerina_</a>までご一報ください！励みになります！</p>
 
         </article>
 
@@ -204,7 +203,7 @@
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8B%E3%82%89%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E9%AE%AE%E3%82%84%E3%81%8B%E3%81%AAPromise.race%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9&url=https://aloerina01.github.io/blog/2016-10-05-1&via=aloerina_&hashtags=JavaScript,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E5%B0%8F%E3%81%95%E3%81%AA%E3%82%A2%E3%82%A6%E3%83%88%E3%83%97%E3%83%83%E3%83%88%E3%82%92100%E6%97%A5%E7%B6%9A%E3%81%91%E3%81%A6%E3%81%BF%E3%81%9F%E6%84%9F%E6%83%B3&url=https://aloerina01.github.io/blog/2019-03-22-1&via=aloerina_&hashtags=EXP,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <i class="fab fa-twitter fa-inverse"></i>
             </a>
@@ -220,7 +219,7 @@
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8B%E3%82%89%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E9%AE%AE%E3%82%84%E3%81%8B%E3%81%AAPromise.race%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9&u=https://aloerina01.github.io/blog/2016-10-05-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E5%B0%8F%E3%81%95%E3%81%AA%E3%82%A2%E3%82%A6%E3%83%88%E3%83%97%E3%83%83%E3%83%88%E3%82%92100%E6%97%A5%E7%B6%9A%E3%81%91%E3%81%A6%E3%81%BF%E3%81%9F%E6%84%9F%E6%83%B3&u=https://aloerina01.github.io/blog/2019-03-22-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <i class="fab fa-facebook-f fa-inverse"></i>
             </a>
@@ -256,7 +255,7 @@
             
             
             
-            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8B%E3%82%89%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E9%AE%AE%E3%82%84%E3%81%8B%E3%81%AAPromise.race%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9&url=https://aloerina01.github.io/blog/2016-10-05-1"
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E5%B0%8F%E3%81%95%E3%81%AA%E3%82%A2%E3%82%A6%E3%83%88%E3%83%97%E3%83%83%E3%83%88%E3%82%92100%E6%97%A5%E7%B6%9A%E3%81%91%E3%81%A6%E3%81%BF%E3%81%9F%E6%84%9F%E6%83%B3&url=https://aloerina01.github.io/blog/2019-03-22-1"
               onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
               <i class="fab fa-google-plus-g fa-inverse"></i>
             </a>
@@ -375,7 +374,7 @@
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2016-10-05-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2019-03-22-1" target="_blank">
               <i class="fab fa-get-pocket fa-inverse"></i>
             </a>
             
@@ -390,7 +389,7 @@
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%82%AD%E3%83%A3%E3%83%83%E3%82%B7%E3%83%A5%E3%81%A8%E3%82%B5%E3%83%BC%E3%83%90%E3%81%8B%E3%82%89%E3%83%87%E3%83%BC%E3%82%BF%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E9%AE%AE%E3%82%84%E3%81%8B%E3%81%AAPromise.race%E3%81%AE%E4%BD%BF%E3%81%84%E6%96%B9%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2016-10-05-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E5%B0%8F%E3%81%95%E3%81%AA%E3%82%A2%E3%82%A6%E3%83%88%E3%83%97%E3%83%83%E3%83%88%E3%82%92100%E6%97%A5%E7%B6%9A%E3%81%91%E3%81%A6%E3%81%BF%E3%81%9F%E6%84%9F%E6%83%B3%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2019-03-22-1">
               <img src="/assets/thirdparty/linebutton.png" />
             </a>
             
@@ -413,15 +412,15 @@
     </div>
     <div class="sub-contents-main">
       
+      <li><a href="/blog/2019-03-12-1">「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</a></li>
+      
+      <li><a href="/blog/2018-12-27-1">シェルスクリプト入門者のためのチェックリスト</a></li>
+      
       <li><a href="/blog/2018-12-25-1">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</a></li>
       
-      <li><a href="/blog/2017-03-14-1">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</a></li>
+      <li><a href="/blog/2018-11-29-1">Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み</a></li>
       
-      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
-      
-      <li><a href="/blog/2018-05-01-1">メンテナンスしやすいVueComponentを設計するために気をつけていること</a></li>
-      
-      <li><a href="/blog/2016-10-13-1">CORS (Cross-Origin Resource Sharing) ってなに？</a></li>
+      <li><a href="/blog/2018-10-25-1">React16.6の新機能 React.memo のコードリーディング</a></li>
       
     </div>
   </div>
@@ -614,8 +613,8 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-39630080-4', 'auto');
   ga('send', 'pageview', {
-    'page': '/blog/2016-10-05-1',
-    'title': 'キャッシュとサーバからデータ取得する鮮やかなPromise.raceの使い方'
+    'page': '/blog/2019-03-22-1',
+    'title': '小さなアウトプットを100日続けてみた感想'
   });
 </script>
 
