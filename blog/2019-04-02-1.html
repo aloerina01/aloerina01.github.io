@@ -171,7 +171,7 @@
 <p>ちなみに、ここで言うFluxの定義については「<a href="/blog/2018-09-14-1" target="_blank">React+Fluxで正しく設計するためのFlux見直しガイド</a>」にてまとめています。</p>
 
 <h3 id="propsのバケツリレーと単一containerとは">propsのバケツリレーと単一Containerとは？</h3>
-<p>Reactのアプリケーションでは、「<strong>ComponentTreeのRootでアプリケーション全体のStateを受け取り、それを何階層もの子Componentにprops経由で受け渡していく</strong>」という設計を、ここでは<strong>単一Container</strong>と<strong>propsのバケツリレー</strong>と呼んでいます。</p>
+<p>Reactアプリケーションでしばしばある「<strong>ComponentTreeのRootでアプリケーション全体のStateを受け取り、それを何階層もの子Componentにprops経由で受け渡していく</strong>」という設計を、ここでは<strong>単一Container</strong>と<strong>propsのバケツリレー</strong>と呼んでいます。</p>
 
 <p>これらの手法をなんとなくお作法だと思いこんでいましたが、本当にそうなのでしょうか？ もっと良い設計があるのではないか、というのがディスカッションの種でした。</p>
 
@@ -210,8 +210,8 @@ ReduはStateをひとつのオブジェクトとして扱うので、もしか�
 <p>ここまでの内容から思いつくことを箇条書きしてみます。</p>
 
 <ul>
-  <li>単一Containerや、TopからBottomへの壮大なpropsバケツリレーは必須ではない</li>
-  <li>ただ、小さなアプリケーションであればそれらを使って実装しても問題ない</li>
+  <li>単一Containerや、壮大なpropsバケツリレーは必須ではない</li>
+  <li>ただ、アプリケーションの性質によってはそれらを使って実装しても問題ない</li>
   <li>「典型的」であることは、構造を理解しやすい利点もある</li>
   <li>単一Containerには「Storeアクセスを1箇所にまとめる」利点もある</li>
   <li>単一Containerを使わなくても「Container Component」と「Presentation Component」を分離した設計は実現できる</li>

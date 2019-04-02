@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-04-02T04:26:36+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-04-02T06:10:30+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">React+Fluxアプリケーションにpropsバケツリレーは必要か</title><link href="https://aloerina01.github.io/blog/2019-04-02-1" rel="alternate" type="text/html" title="React+Fluxアプリケーションにpropsバケツリレーは必要か" /><published>2019-04-02T00:00:00+00:00</published><updated>2019-04-02T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-04-02-1">&lt;p&gt;React+Fluxアプリケーションのメンテをしている中で「&lt;strong&gt;propsのバケツリレーを減らすためにContainerを増やしてもよいか？&lt;/strong&gt;」というディスカッションになったので、考察をまとめてみます。&lt;/p&gt;
 
 &lt;h3 id=&quot;いまの設計の確認&quot;&gt;いまの設計の確認&lt;/h3&gt;
@@ -14,7 +14,7 @@
 &lt;p&gt;ちなみに、ここで言うFluxの定義については「&lt;a href=&quot;/blog/2018-09-14-1&quot; target=&quot;_blank&quot;&gt;React+Fluxで正しく設計するためのFlux見直しガイド&lt;/a&gt;」にてまとめています。&lt;/p&gt;
 
 &lt;h3 id=&quot;propsのバケツリレーと単一containerとは&quot;&gt;propsのバケツリレーと単一Containerとは？&lt;/h3&gt;
-&lt;p&gt;Reactのアプリケーションでは、「&lt;strong&gt;ComponentTreeのRootでアプリケーション全体のStateを受け取り、それを何階層もの子Componentにprops経由で受け渡していく&lt;/strong&gt;」という設計を、ここでは&lt;strong&gt;単一Container&lt;/strong&gt;と&lt;strong&gt;propsのバケツリレー&lt;/strong&gt;と呼んでいます。&lt;/p&gt;
+&lt;p&gt;Reactアプリケーションでしばしばある「&lt;strong&gt;ComponentTreeのRootでアプリケーション全体のStateを受け取り、それを何階層もの子Componentにprops経由で受け渡していく&lt;/strong&gt;」という設計を、ここでは&lt;strong&gt;単一Container&lt;/strong&gt;と&lt;strong&gt;propsのバケツリレー&lt;/strong&gt;と呼んでいます。&lt;/p&gt;
 
 &lt;p&gt;これらの手法をなんとなくお作法だと思いこんでいましたが、本当にそうなのでしょうか？ もっと良い設計があるのではないか、というのがディスカッションの種でした。&lt;/p&gt;
 
@@ -53,8 +53,8 @@ ReduはStateをひとつのオブジェクトとして扱うので、もしか�
 &lt;p&gt;ここまでの内容から思いつくことを箇条書きしてみます。&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;単一Containerや、TopからBottomへの壮大なpropsバケツリレーは必須ではない&lt;/li&gt;
-  &lt;li&gt;ただ、小さなアプリケーションであればそれらを使って実装しても問題ない&lt;/li&gt;
+  &lt;li&gt;単一Containerや、壮大なpropsバケツリレーは必須ではない&lt;/li&gt;
+  &lt;li&gt;ただ、アプリケーションの性質によってはそれらを使って実装しても問題ない&lt;/li&gt;
   &lt;li&gt;「典型的」であることは、構造を理解しやすい利点もある&lt;/li&gt;
   &lt;li&gt;単一Containerには「Storeアクセスを1箇所にまとめる」利点もある&lt;/li&gt;
   &lt;li&gt;単一Containerを使わなくても「Container Component」と「Presentation Component」を分離した設計は実現できる&lt;/li&gt;
