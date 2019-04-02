@@ -1,5 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-04-01T10:49:45+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">小さなアウトプットを100日続けてみた感想</title><link href="https://aloerina01.github.io/blog/2019-03-22-1" rel="alternate" type="text/html" title="小さなアウトプットを100日続けてみた感想" /><published>2019-03-22T00:00:00+00:00</published><updated>2019-03-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-03-22-1">&lt;h3 id=&quot;やったこと&quot;&gt;やったこと&lt;/h3&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-04-02T04:26:36+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">React+Fluxアプリケーションにpropsバケツリレーは必要か</title><link href="https://aloerina01.github.io/blog/2019-04-02-1" rel="alternate" type="text/html" title="React+Fluxアプリケーションにpropsバケツリレーは必要か" /><published>2019-04-02T00:00:00+00:00</published><updated>2019-04-02T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-04-02-1">&lt;p&gt;React+Fluxアプリケーションのメンテをしている中で「&lt;strong&gt;propsのバケツリレーを減らすためにContainerを増やしてもよいか？&lt;/strong&gt;」というディスカッションになったので、考察をまとめてみます。&lt;/p&gt;
+
+&lt;h3 id=&quot;いまの設計の確認&quot;&gt;いまの設計の確認&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;FluxUtilsフレームワークを利用している&lt;/li&gt;
+  &lt;li&gt;複数のStoreを持つ&lt;/li&gt;
+  &lt;li&gt;ComponentTreeのRootをContainerとし、StoreのStateを受け取る&lt;/li&gt;
+  &lt;li&gt;Tree状に配置された各Componentにはprops経由で状態を受け渡す&lt;/li&gt;
+  &lt;li&gt;各Componentはローカルステートを持つことができる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ちなみに、ここで言うFluxの定義については「&lt;a href=&quot;/blog/2018-09-14-1&quot; target=&quot;_blank&quot;&gt;React+Fluxで正しく設計するためのFlux見直しガイド&lt;/a&gt;」にてまとめています。&lt;/p&gt;
+
+&lt;h3 id=&quot;propsのバケツリレーと単一containerとは&quot;&gt;propsのバケツリレーと単一Containerとは？&lt;/h3&gt;
+&lt;p&gt;Reactのアプリケーションでは、「&lt;strong&gt;ComponentTreeのRootでアプリケーション全体のStateを受け取り、それを何階層もの子Componentにprops経由で受け渡していく&lt;/strong&gt;」という設計を、ここでは&lt;strong&gt;単一Container&lt;/strong&gt;と&lt;strong&gt;propsのバケツリレー&lt;/strong&gt;と呼んでいます。&lt;/p&gt;
+
+&lt;p&gt;これらの手法をなんとなくお作法だと思いこんでいましたが、本当にそうなのでしょうか？ もっと良い設計があるのではないか、というのがディスカッションの種でした。&lt;/p&gt;
+
+&lt;h3 id=&quot;propsのバケツリレーの生い立ちを想像してみる&quot;&gt;propsのバケツリレーの生い立ちを想像してみる&lt;/h3&gt;
+
+&lt;p&gt;ざっくり言うと、ReactはComoponentを「propsを受け取り、それに応じた描画を返すもの」と定義しています。そしてComponentをTree状に並べることで画面を構成する仕組みです。&lt;br /&gt;
+これらをつなげると「Treeの上から下へ何階層もpropsを受け渡していく」ということになりそうです。連鎖的に「Treeの一番上でStoreからStateを受け取って」が枕詞になり、次第にReactの典型的な形となっていったのかもしれません。&lt;/p&gt;
+
+&lt;h3 id=&quot;公式ドキュメントの見解&quot;&gt;公式ドキュメントの見解&lt;/h3&gt;
+
+&lt;h5 id=&quot;react&quot;&gt;React&lt;/h5&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;In a typical React application, data is passed top-down (parent to child) via props&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;propsによる状態の受け渡しを「典型的」とは言っているものの、推奨している記述は見つかりませんでした。&lt;/p&gt;
+
+&lt;h5 id=&quot;flux&quot;&gt;Flux&lt;/h5&gt;
+
+&lt;p&gt;単一Containerとすることを推奨する記述はみつからず、むしろ「Containers」と複数形で表現されていました。&lt;/p&gt;
+
+&lt;h5 id=&quot;redux&quot;&gt;Redux&lt;/h5&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Most of the components we’ll write will be presentational, but we’ll need to generate a few container components to connect them to the Redux store. This and the design brief below do not imply container components must be near the top of the component tree.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;「いくつかのContainerをつくる」「TreeのRoot近くにContainerを置く義務はない」との記述がありました。&lt;/p&gt;
+
+&lt;p&gt;まとめると、執筆時点の公式ドキュメントを見る限り、どれをとってもpropsのバケツリレーや単一Containerを推奨する記述はありませんでした。&lt;br /&gt;
+ReduはStateをひとつのオブジェクトとして扱うので、もしかしたらそれを受け取るContainerもひとつなのではと思いましたが、そんなことありませんでした。&lt;/p&gt;
+
+&lt;h3 id=&quot;私の見解-最適解を探すこと&quot;&gt;私の見解 最適解を探すこと&lt;/h3&gt;
+
+&lt;p&gt;ここまでの内容から思いつくことを箇条書きしてみます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;単一Containerや、TopからBottomへの壮大なpropsバケツリレーは必須ではない&lt;/li&gt;
+  &lt;li&gt;ただ、小さなアプリケーションであればそれらを使って実装しても問題ない&lt;/li&gt;
+  &lt;li&gt;「典型的」であることは、構造を理解しやすい利点もある&lt;/li&gt;
+  &lt;li&gt;単一Containerには「Storeアクセスを1箇所にまとめる」利点もある&lt;/li&gt;
+  &lt;li&gt;単一Containerを使わなくても「Container Component」と「Presentation Component」を分離した設計は実現できる&lt;/li&gt;
+  &lt;li&gt;単一Containerを使わなければ、個々のComponent毎でデータ取得から描画までの一連の処理を完結させられる&lt;/li&gt;
+  &lt;li&gt;既にある設計を覆す場合は、どうやって新しい設計に置き換えていくかのマイルストーンとセットで考えたい&lt;/li&gt;
+  &lt;li&gt;一部分だけ別の設計にすると混乱の元なので、全部変更しないか全部変えるかの二択で考えたい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;一言で言えば、単一Containerやpropsバケツリレーにもメリットはあるので、&lt;strong&gt;良し悪しではなくあらゆる手法の中でどれが最適かを考えていきたい&lt;/strong&gt;ということに尽きますね。&lt;/p&gt;
+
+&lt;h3 id=&quot;その他の見解-テスタビリティから考える&quot;&gt;その他の見解 テスタビリティから考える&lt;/h3&gt;
+
+&lt;p&gt;ディスカッションの中で出た面白い着眼点に「&lt;strong&gt;どちらがテストを書きやすいか&lt;/strong&gt;」というものがありました。&lt;/p&gt;
+
+&lt;p&gt;単一Containerであれば、上述の通りStoreにアクセスするロジックを1箇所にまとめられます。その結果、RootComponentは&lt;strong&gt;Storeアクセスに関するテスト&lt;/strong&gt;を、それ以外のComponentは&lt;strong&gt;UIに関するテスト&lt;/strong&gt;を書くことに専念できそうです。&lt;/p&gt;
+
+&lt;p&gt;逆に各ComponentをContainerとしStoreアクセスから描画までの一連の処理をComponentに閉じ込めれば、Component間の依存度が下がり、独立したComponentとして&lt;strong&gt;各々が必要な機能のテスト&lt;/strong&gt;を書けそうです。&lt;/p&gt;
+
+&lt;p&gt;どちらがテストを書きやすいかは一概には言えず、アプリケーションの性質に依存しそうです。たとえばキュレーションサイトのような情報を表示することに特化したアプリケーションであれば、前者のほうがマッチするかもしれません。管理画面のようにユーザの入力とStoreの状態を結びつけることが多いアプリケーションであれば、後者のほうがメリットが大きくなりそうですね。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;アプリケーションの性質によってComponentの役割の与え方が代わり、それによりどういった設計やテストが必要かなどが変わってくる&lt;/strong&gt;ということですね。&lt;/p&gt;
+
+&lt;p&gt;まとめとしてタイトルの「propsバケツリレーは必要か」に回答するなら、「必要か否かの二元論ではなく、&lt;strong&gt;アプリケーションの性質次第では役立つ場面もある&lt;/strong&gt;」ということでしょう。曖昧な結論になってしまいましたが、単一Containerやpropsバケツリレーという手法の良し悪しだけに着目するのではなく、アプリケーションの性質を踏まえて考えると見え方が変わってくるというお話でした。&lt;/p&gt;
+
+&lt;p&gt;現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">React+Fluxアプリケーションのメンテをしている中で「propsのバケツリレーを減らすためにContainerを増やしてもよいか？」というディスカッションになったので、考察をまとめてみます。</summary></entry><entry><title type="html">小さなアウトプットを100日続けてみた感想</title><link href="https://aloerina01.github.io/blog/2019-03-22-1" rel="alternate" type="text/html" title="小さなアウトプットを100日続けてみた感想" /><published>2019-03-22T00:00:00+00:00</published><updated>2019-03-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-03-22-1">&lt;h3 id=&quot;やったこと&quot;&gt;やったこと&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;1日ひとつだけ強くなる&lt;/strong&gt;のコンセプトのもと、&lt;a href=&quot;https://github.com/aloerina01/til&quot; target=&quot;_blank&quot;&gt;aloerina01/til (Today I Learned)&lt;/a&gt; というリポジトリをつくり、その日学んだことを1つコミットするソロ活動。&lt;/p&gt;
 
@@ -2011,325 +2091,4 @@ MVWのほうがドメイン層やアプリケーション層の柔軟さ・解�
 &lt;p&gt;FluxはWebアプリケーションの設計方法の選択肢として今後も利用されていくのだと思います。でもFluxは完璧ではありません。&lt;br /&gt;
 Fluxの問題点や苦手分野については様々なところで議論されている通りで、基本的な用法では対応しきれない場面も出てくると思います。非同期処理、複雑なドメイン層の表現、アニメーション…、他にも課題はいろいろです(体感的には山盛りです)。が、それらに立ち向かうためにも、まずは基礎を100％理解していることが必要だと思います。&lt;/p&gt;
 
-&lt;p&gt;そんなわけで今回はFlux再入門の話でした。気になる箇所や間違っている箇所がありましたら&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">Reactの良さを活かしやすいFluxは、Webアプリケーションの設計手法としてずいぶん馴染みのあるものになったように感じます。私もFluxを取り入れた開発を2年近く経験し、知見も溜まり、使い慣れたような気持ちでいました。</summary></entry><entry><title type="html">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</title><link href="https://aloerina01.github.io/blog/2018-08-01-1" rel="alternate" type="text/html" title="Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来" /><published>2018-08-01T00:00:00+00:00</published><updated>2018-08-01T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-08-01-1">&lt;p&gt;JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、&lt;strong&gt;iOS、Android、Webの3大Clientで使える言語&lt;/strong&gt;を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。&lt;/p&gt;
-
-&lt;p&gt;ただ、言語がよければすぐに使えるというわけではなく、使いやすさや開発環境も大切な要素の1つです。&lt;br /&gt;
-昨今のWebフロントエンドはできることが増え、それに伴いエコシステムもとても進歩していて、複雑で大規模な開発でもスムーズに行えるようになってきている印象です(1番最初の環境構築が大変とよく言われますが、その大変さも徐々に緩和されてきていると思います)。&lt;/p&gt;
-
-&lt;p&gt;そこで、&lt;strong&gt;DartでのWebフロントエンド開発がどの程度現実的なのか&lt;/strong&gt;を「エコシステム」という観点でまとめてみました。各々のツールの簡単な使い方も併記しています。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#1-dart-sdk&quot; id=&quot;markdown-toc-1-dart-sdk&quot;&gt;1. Dart SDK&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#2-パッケージ管理ツール-pub&quot; id=&quot;markdown-toc-2-パッケージ管理ツール-pub&quot;&gt;2. パッケージ管理ツール pub&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#pubspecyaml&quot; id=&quot;markdown-toc-pubspecyaml&quot;&gt;pubspec.yaml&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#den&quot; id=&quot;markdown-toc-den&quot;&gt;den&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#pubの基本コマンド&quot; id=&quot;markdown-toc-pubの基本コマンド&quot;&gt;pubの基本コマンド&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#pub-get&quot; id=&quot;markdown-toc-pub-get&quot;&gt;pub get&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#pub-global-activate-&quot; id=&quot;markdown-toc-pub-global-activate-&quot;&gt;pub global activate &lt;package&gt;&lt;/package&gt;&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#pub-run&quot; id=&quot;markdown-toc-pub-run&quot;&gt;pub run&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#pub-upgrade&quot; id=&quot;markdown-toc-pub-upgrade&quot;&gt;pub upgrade&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#npmとの比較表&quot; id=&quot;markdown-toc-npmとの比較表&quot;&gt;npmとの比較表&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#pub用語&quot; id=&quot;markdown-toc-pub用語&quot;&gt;pub用語&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#application-package--library-package&quot; id=&quot;markdown-toc-application-package--library-package&quot;&gt;Application package / Library package&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#entrypoint&quot; id=&quot;markdown-toc-entrypoint&quot;&gt;Entrypoint&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#3-projectの雛形構築ツール-stagehand&quot; id=&quot;markdown-toc-3-projectの雛形構築ツール-stagehand&quot;&gt;3. projectの雛形構築ツール stagehand&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#4-コンパイラとビルド環境&quot; id=&quot;markdown-toc-4-コンパイラとビルド環境&quot;&gt;4. コンパイラとビルド環境&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#2つのコンパイラ-dart2js-と-ddc&quot; id=&quot;markdown-toc-2つのコンパイラ-dart2js-と-ddc&quot;&gt;2つのコンパイラ dart2js と DDC&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#dart1xでのビルド環境&quot; id=&quot;markdown-toc-dart1xでのビルド環境&quot;&gt;Dart1.xでのビルド環境&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#dart2xでのビルド環境&quot; id=&quot;markdown-toc-dart2xでのビルド環境&quot;&gt;Dart2.xでのビルド環境&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#build_runner-を使ったビルドのカスタマイズ&quot; id=&quot;markdown-toc-build_runner-を使ったビルドのカスタマイズ&quot;&gt;build_runner を使ったビルドのカスタマイズ&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#sassのビルド&quot; id=&quot;markdown-toc-sassのビルド&quot;&gt;sassのビルド&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#5-感想&quot; id=&quot;markdown-toc-5-感想&quot;&gt;5. 感想&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#6-おまけ-公式ドキュメントの読み方&quot; id=&quot;markdown-toc-6-おまけ-公式ドキュメントの読み方&quot;&gt;6. おまけ 公式ドキュメントの読み方&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;1-dart-sdk&quot;&gt;1. Dart SDK&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.dartlang.org/tools/sdk&quot; target=&quot;_blank&quot;&gt;Dart SDK&lt;/a&gt; はDartの開発に必要なライブラリ群とCLIツールです。執筆時点では安定版の&lt;code class=&quot;highlighter-rouge&quot;&gt;1.24.3&lt;/code&gt;と、プレリリース版の&lt;code class=&quot;highlighter-rouge&quot;&gt;2.0.0-dev.69.2&lt;/code&gt;が存在します。&lt;/p&gt;
-
-&lt;div class=&quot;revision&quot;&gt;
-
-&lt;p class=&quot;date&quot;&gt;2018/08/08 追記&lt;/p&gt;
-
-Dart2.0.0が正式にリリースされ安定版となりました。記事内でDart1.xへの言及がところどころありますが、これからDartを使い始める場合はDart2.xを利用するのが良いと思います。
-
-&lt;/div&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew tap dart-lang/dart
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;dart         &lt;span class=&quot;c&quot;&gt;# 安定版をインストールする場合&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;brew sintall dart &lt;span class=&quot;nt&quot;&gt;--devel&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# プレリリース版をインストールする場合&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;なお、Web開発のためにDartをインストールする場合は、インストール時に&lt;code class=&quot;highlighter-rouge&quot;&gt;--with-dartium --with-content-shell&lt;/code&gt;オプションをつけるよう推奨されることがありますが、これらは&lt;strong&gt;Dart1.xでのみ利用する&lt;/strong&gt;ものです。&lt;strong&gt;Dartium&lt;/strong&gt;はDartVMを内蔵するブラウザで、&lt;strong&gt;content shell&lt;/strong&gt;は同じくDartVMを内蔵するテスト用のヘッドレスブラウザですが、Dart2.xでは開発環境が大幅に変わりこれらが不要となったためです(開発環境の詳細は後述します)。&lt;/p&gt;
-
-&lt;h3 id=&quot;2-パッケージ管理ツール-pub&quot;&gt;2. パッケージ管理ツール pub&lt;/h3&gt;
-
-&lt;p&gt;DartSDKをインストールすると併せて&lt;strong&gt;&lt;a href=&quot;https://www.dartlang.org/tools/pub&quot; target=&quot;_blank&quot;&gt;pub&lt;/a&gt;というパッケージ管理ツール&lt;/strong&gt;がインストールされます。パッケージの依存関係とバージョン情報を載せたファイルを用意してコマンドで一発インストール、というnpmでもお馴染みのものです。&lt;/p&gt;
-
-&lt;h4 id=&quot;pubspecyaml&quot;&gt;pubspec.yaml&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;依存するパッケージ&lt;/strong&gt;と&lt;strong&gt;そのバージョン情報&lt;/strong&gt;などを記しておくファイルです。&lt;code class=&quot;highlighter-rouge&quot;&gt;package.json&lt;/code&gt;のような役割をします。npmと使い方が似ているので、とっつきやすくてありがたいですね。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sample&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1.0.0&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Sample project&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Aloerina&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;environment&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;sdk&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;=2.0.0-dev.68.0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;lt;3.0.0'&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;bootstrap_sass&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^4.1.2&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;dev_dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;build_web_compilers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^0.4.0&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;gt;=0.6.0&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&amp;lt;0.12.0'&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;強いて言うなら、依存パッケージを追加するときにエディタで直接修正する必要があるのは少し面倒だと思いました。&lt;a href=&quot;https://pub.dartlang.org/&quot; target=&quot;_blank&quot;&gt;Dart Packages&lt;/a&gt;でインストールしたいパッケージを調べ&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt;への記述方法を確認しコピペする…というのはやはり手間です。&lt;/p&gt;
-
-&lt;h4 id=&quot;den&quot;&gt;den&lt;/h4&gt;
-&lt;p&gt;そこで助かるツールが&lt;strong&gt;&lt;a href=&quot;https://github.com/seaneagan/den&quot; target=&quot;_blank&quot;&gt;den&lt;/a&gt;&lt;/strong&gt;です。&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt;の初期化や依存関係の追記をしてくれるCLIツールです。&lt;code class=&quot;highlighter-rouge&quot;&gt;npm init&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -S &amp;lt;package名&amp;gt;&lt;/code&gt;に相当するツールですね。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pub global activate den   &lt;span class=&quot;c&quot;&gt;# denのインストール&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;den spec                  &lt;span class=&quot;c&quot;&gt;# pubspec.yamlの生成&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;den &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &amp;lt;package名&amp;gt;   &lt;span class=&quot;c&quot;&gt;# 依存関係の追加&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;pubの基本コマンド&quot;&gt;pubの基本コマンド&lt;/h4&gt;
-
-&lt;h5 id=&quot;pub-get&quot;&gt;pub get&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.yaml&lt;/code&gt;に書かれている依存ライブラリを一括インストールしローカルにキャッシュします。同時に、初回であれば&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.lock&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;.packages&lt;/code&gt;が作成されます。前者は名前の通りバージョンのロックファイルで、後者はローカルのどのディレクトリにキャッシュしたかを記すファイルです。ローカルキャッシュから再インストールする場合は&lt;code class=&quot;highlighter-rouge&quot;&gt;--offline&lt;/code&gt;オプションを使います。&lt;/p&gt;
-
-&lt;h5 id=&quot;pub-global-activate-&quot;&gt;pub global activate &lt;package&gt;&lt;/package&gt;&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -g&lt;/code&gt;と同じです。パッケージをグローバルにインストールします。&lt;/p&gt;
-
-&lt;h5 id=&quot;pub-run&quot;&gt;pub run&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub get&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;pub global&lt;/code&gt;でインストールしたexecutable(CLIから実行可能な)packageを実行します。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pub run &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;package名]
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pub global run &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;package名]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h5 id=&quot;pub-upgrade&quot;&gt;pub upgrade&lt;/h5&gt;
-
-&lt;p&gt;依存パッケージのバージョンを最新にあげ、&lt;code class=&quot;highlighter-rouge&quot;&gt;pubspec.lock&lt;/code&gt;の内容を更新します。&lt;/p&gt;
-
-&lt;h4 id=&quot;npmとの比較表&quot;&gt;npmとの比較表&lt;/h4&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;npm&lt;/th&gt;
-      &lt;th&gt;pub (den)&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;npm init&lt;/td&gt;
-      &lt;td&gt;den spec&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;npm install&lt;/td&gt;
-      &lt;td&gt;pub get&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;npm run [npm_script名]&lt;/td&gt;
-      &lt;td&gt;pub run [package名]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;npm install -g [package名]&lt;/td&gt;
-      &lt;td&gt;pub global activate [package名]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;npm install -S [package名]&lt;/td&gt;
-      &lt;td&gt;den install [package名]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;npm install -D [package名]&lt;/td&gt;
-      &lt;td&gt;den install –dev [package名]&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;npm upgrade&lt;/td&gt;
-      &lt;td&gt;pub upgrade&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;npm ls&lt;/td&gt;
-      &lt;td&gt;pub deps&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&quot;pub用語&quot;&gt;pub用語&lt;/h4&gt;
-
-&lt;p&gt;npmと同じ感覚でドキュメントを読み進めていくと齟齬が出る(出た)用語をピックアップしておきます。詳細は&lt;a href=&quot;https://www.dartlang.org/tools/pub/glossary&quot; target=&quot;_blank&quot;&gt;公式の用語集&lt;/a&gt;からどうぞ。&lt;/p&gt;
-
-&lt;h5 id=&quot;application-package--library-package&quot;&gt;Application package / Library package&lt;/h5&gt;
-
-&lt;p&gt;Application packageとLibrary packageは対義語です。Application packageとはコマンドラインやブラウザから直接呼び出させるpackageを指し、Library packageはApplication packageからライブラリとして利用されるpackageです。&lt;/p&gt;
-
-&lt;h5 id=&quot;entrypoint&quot;&gt;Entrypoint&lt;/h5&gt;
-
-&lt;p&gt;意味合い的にはJavaScriptを実装するときと同じなのですが、Dartにおいては一般的に&lt;code class=&quot;highlighter-rouge&quot;&gt;main()&lt;/code&gt;が実装されている&lt;code class=&quot;highlighter-rouge&quot;&gt;.dart&lt;/code&gt;ファイルがエントリーポイントとなります。&lt;/p&gt;
-
-&lt;h3 id=&quot;3-projectの雛形構築ツール-stagehand&quot;&gt;3. projectの雛形構築ツール stagehand&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://github.com/dart-lang/stagehand&quot; target=&quot;_blank&quot;&gt;stagehand&lt;/a&gt;&lt;/strong&gt;というツールを利用してDartのプロジェクトの雛形を作ることができます。Reactでいうcreate-react-appやVueでいうvue-cliのようなものです。グローバルにインストールして雛形を作りたいディレクトリで実行します。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pub global activate stagehand
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;mkdir &lt;/span&gt;first_project
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;first_project
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;stagehand &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;template名]
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Templateは現時点で6種類ありますが、Webアプリ開発用は&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;必要最低限のみ用意された&lt;strong&gt;&lt;a href=&quot;https://github.com/dart-lang/stagehand/tree/master/templates/web-simple&quot; target=&quot;_blank&quot;&gt;web-simple&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;AndularDartを組み込むための&lt;strong&gt;&lt;a href=&quot;https://github.com/dart-lang/stagehand/tree/master/templates/web-angular&quot; target=&quot;_blank&quot;&gt;web-angular&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;の2つです。web-simpleでプロジェクトを作ってみたところ、HelloWorld的なHTML/CSS/Dartファイルとpubspec.yamlなどが用意されました。雛形が用意されたあとは依存するpackageをインストールしてローカルサーバを立ち上げればブラウザで確認できます。このあたりも&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt;からの&lt;code class=&quot;highlighter-rouge&quot;&gt;npm start&lt;/code&gt;と同じ流れなので理解しやすいしお手軽でした。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pub get       &lt;span class=&quot;c&quot;&gt;# 依存packageのインストール&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;webdev serve  &lt;span class=&quot;c&quot;&gt;# ローカルサーバの起動&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;サーバの起動に使っているwebdevについては後述します。&lt;/p&gt;
-
-&lt;h3 id=&quot;4-コンパイラとビルド環境&quot;&gt;4. コンパイラとビルド環境&lt;/h3&gt;
-
-&lt;p&gt;Dartで作られたWebアプリを実行するには、&lt;strong&gt;DartVMが搭載されたブラウザで直接実行する&lt;/strong&gt;か、&lt;strong&gt;JavaScriptにコンパイルしてから標準ブラウザで実行する&lt;/strong&gt;か、の2つの方法があります。開発やテストといった過程では前者でも十分ですが、リリースするには後者の方法をとる必要があるため、用途に応じてコンパイラや実行環境を使い分ける必要があります。&lt;/p&gt;
-
-&lt;p&gt;Dartのコンパイラにはどんなものがあるのかと、それぞれのDartバージョンでどのようにそれらを使えばよいかをまとめておきます。&lt;/p&gt;
-
-&lt;h4 id=&quot;2つのコンパイラ-dart2js-と-ddc&quot;&gt;2つのコンパイラ dart2js と DDC&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://webdev.dartlang.org/tools/dart2js&quot; target=&quot;_blank&quot;&gt;Dart-to-JavaScript Compiler(dart2js)&lt;/a&gt;&lt;/strong&gt;はDart1.xから存在するコンパイラです。&lt;strong&gt;コードの最適化&lt;/strong&gt;をしたり&lt;strong&gt;minify&lt;/strong&gt;などのオプションがあったりと本番用のコンパイルができるだけでなく、問題のある箇所をワーニング表示したりと開発用に利用することもできます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://webdev.dartlang.org/tools/dartdevc&quot; target=&quot;_blank&quot;&gt;Dart Development Compiler(DDC)&lt;/a&gt;&lt;/strong&gt;はDart2.xで登場したコンパイラです。その名の通り開発用に特化しており、&lt;strong&gt;差分ビルド&lt;/strong&gt;や&lt;strong&gt;ホットリロード&lt;/strong&gt;に対応しています。&lt;/p&gt;
-
-&lt;h4 id=&quot;dart1xでのビルド環境&quot;&gt;Dart1.xでのビルド環境&lt;/h4&gt;
-
-&lt;p&gt;dart1.xでは、開発時はDartVMを搭載した&lt;strong&gt;Dartium&lt;/strong&gt;や&lt;strong&gt;content shell&lt;/strong&gt;を利用し、リリース時にはdart2jsでコンパイルしてjsを生成します。それぞれpubコマンドを利用して行えます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub serve&lt;/code&gt; … ローカルサーバを起動します。Dariumで確認することができます。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub build&lt;/code&gt; … dart2jsを実行します。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;dart2xでのビルド環境&quot;&gt;Dart2.xでのビルド環境&lt;/h4&gt;
-
-&lt;p&gt;Dart2.xではDartVMを一切使わずに開発できます。そのためDartiumもcontent shellも必要なくなります。&lt;br /&gt;
-またDart2.xではbuildやserveのコマンドを、pubの代わりに&lt;strong&gt;&lt;a href=&quot;https://webdev.dartlang.org/tools/webdev&quot; target=&quot;_blank&quot;&gt;webdev&lt;/a&gt;&lt;/strong&gt;というCLIツールを使って行います。webdevはpubからインストールして使います。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pub global activate webdev
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;コマンド名はpubでビルドするときと同じなのでDart1.xから2.xへマイグレーションした場合も気楽そうです。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev serve&lt;/code&gt; … DDCを実行しローカルサーバを起動します。標準ブラウザで確認することができます。&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev build&lt;/code&gt; … dart2jsを実行します。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;まとめ&quot;&gt;まとめ&lt;/h4&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt; &lt;/th&gt;
-      &lt;th&gt;for release&lt;/th&gt;
-      &lt;th&gt;for development&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Dart1.x&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub build&lt;/code&gt;&lt;br /&gt; dart2jsでjsを生成&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;pub serve&lt;/code&gt;&lt;br /&gt; Dartium, content shell などのDartVM上で直接実行&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Dart2.x&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev build&lt;/code&gt;&lt;br /&gt; dart2jsでjsを生成&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev serve&lt;/code&gt;&lt;br /&gt; DDCでコンパイルしたものを標準ブラウザで実行&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;h4 id=&quot;build_runner-を使ったビルドのカスタマイズ&quot;&gt;build_runner を使ったビルドのカスタマイズ&lt;/h4&gt;
-
-&lt;p&gt;webdevを使えば特別な設定なくすぐにビルドを行えますが、&lt;strong&gt;&lt;a href=&quot;https://webdev.dartlang.org/tools/build_runner&quot; target=&quot;_blank&quot;&gt;build_runner&lt;/a&gt;&lt;/strong&gt;を使ってビルドをカスタマイズすることも可能です。簡単に言うとタスクランナーのようなものです。&lt;/p&gt;
-
-&lt;p&gt;まずはインストール方法から。pubspec.yamlにdependencyを追記して&lt;code class=&quot;highlighter-rouge&quot;&gt;pub get&lt;/code&gt;します。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;dev_dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;build_runner&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^0.9.0&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;build_web_compilers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^0.4.0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;次にコンフィグファイルを用意します。build_runnnerはデフォルトで&lt;code class=&quot;highlighter-rouge&quot;&gt;build.yaml&lt;/code&gt;という名前のファイルを読み込んで実行しますが、&lt;code class=&quot;highlighter-rouge&quot;&gt;build.hoge.yaml&lt;/code&gt;と命名すればオプションをつけて指定することができます。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pub run build_runner build                &lt;span class=&quot;c&quot;&gt;# build.yamlを読み込む&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pub run build_runner build &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; hoge  &lt;span class=&quot;c&quot;&gt;# build.hoge.yamlを読み込む&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;webpackの設定ファイルを本番用と開発用で分ける時に&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.prod.js&lt;/code&gt;/&lt;code class=&quot;highlighter-rouge&quot;&gt;webpack.config.dev.js&lt;/code&gt;とするケースがありますが、同じような感覚で使えそうです。&lt;/p&gt;
-
-&lt;p&gt;あとはコンフィグファイルの中身次第でビルドをカスタマイズできますが、詳しい&lt;a href=&quot;https://github.com/dart-lang/build/tree/master/docs&quot; target=&quot;_blank&quot;&gt;設定の仕方&lt;/a&gt;については情報が多いのでいずれ別記事にて。&lt;/p&gt;
-
-&lt;h4 id=&quot;sassのビルド&quot;&gt;sassのビルド&lt;/h4&gt;
-
-&lt;p&gt;DDCを使えばホットリロードに対応できると書きましたが、sassも同様にあるべきです。これは公式のツールでは(原時点では)対応できないのでライブラリを利用します。&lt;strong&gt;&lt;a href=&quot;https://pub.dartlang.org/packages/sass_builder&quot; target=&quot;_blank&quot;&gt;sass_builder&lt;/a&gt;&lt;/strong&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;pub get&lt;/code&gt;して、build_runnerで実行するよう設定します。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;pubspec.yaml&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;dev_dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;sass_builder&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;^2.0.0&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;strong&gt;build.yaml&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;targets&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;s&quot;&gt;$default&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;builders&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;sass_builder&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-        &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-          &lt;span class=&quot;na&quot;&gt;outputStyle&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;compressed&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;これで&lt;code class=&quot;highlighter-rouge&quot;&gt;webdev serve&lt;/code&gt;をすればsassのビルドも実行されます。&lt;/p&gt;
-
-&lt;p&gt;別の方法として、sassは今まで通りnode-sassなどを使うというのもアリだと思います。それなら既存のビルド環境を引き継いで使えますし、無理に全部Dartに寄せなくてもいいかもしれませんね。&lt;/p&gt;
-
-&lt;h3 id=&quot;5-感想&quot;&gt;5. 感想&lt;/h3&gt;
-
-&lt;p&gt;一通り触りながら簡単な実装をしてみた感想は「&lt;strong&gt;それなりに揃っている&lt;/strong&gt;」でした。npmなどと比較してみても必要なものは最低限あるし、簡単に利用するための仕組みも用意されています。本気でWebクライアント開発言語になろうとしていることを感じられました。&lt;/p&gt;
-
-&lt;p&gt;また、DartはWebだけでなくネイティブアプリの開発も視野に入れていて、こちらも入門しやすい仕組みが用意されていました。&lt;a href=&quot;/blog/2018-07-01-1&quot;&gt;WebフロントエンジニアがDart × Flutterに入門した話&lt;/a&gt;に詳細をまとめてありますので、よければ併せてどうぞ。&lt;/p&gt;
-
-&lt;p&gt;一方で「productionレベルで利用できるか」については即答できなさそうです。productionで利用するには信頼のおけるライブラリや大規模アプリに向くフレームワークなども必要でしょうし、dart2jsの最適化の品質についても検証の余地があると思います。そういったことも今後検証してみようと思いますので、一緒にDart × Webフロントエンドを盛り上げていきたい！という方はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご感想・ご意見をお願いします。&lt;/p&gt;
-
-&lt;h3 id=&quot;6-おまけ-公式ドキュメントの読み方&quot;&gt;6. おまけ 公式ドキュメントの読み方&lt;/h3&gt;
-
-&lt;p&gt;Dartはドキュメントが豊富なのがいいところですが、体系的に理解するには何から読めばいいのか…と少し悩みました。ので、最後に私が読んだドキュメントをまとめて締めくくります。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Web開発用のツールの一覧を眺める &lt;a href=&quot;https://webdev.dartlang.org/tools&quot; target=&quot;_blank&quot;&gt;Dart Tools for the Web&lt;/a&gt;
-    &lt;ul&gt;
-      &lt;li&gt;jsへのコンパイルの基本を知る &lt;a href=&quot;https://webdev.dartlang.org/tools/dart2js&quot; target=&quot;_blank&quot;&gt;dart2js&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;最新の開発用コンパイラをdart2jsと比較する &lt;a href=&quot;https://webdev.dartlang.org/tools/dartdevc&quot; target=&quot;_blank&quot;&gt;dartdevc&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;ビルドツールを知る &lt;a href=&quot;https://webdev.dartlang.org/tools/webdev&quot; target=&quot;_blank&quot;&gt;webdev&lt;/a&gt;, &lt;a href=&quot;https://webdev.dartlang.org/tools/build_runner&quot; target=&quot;_blank&quot;&gt;build_runner&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;Dartの1.xと2.xを比較する &lt;a href=&quot;https://webdev.dartlang.org/dart-2&quot; target=&quot;_blank&quot;&gt;Dart 2 Migration Guide for Web Apps&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Get Startedする &lt;a href=&quot;https://webdev.dartlang.org/guides/get-started&quot; target=&quot;_blank&quot;&gt;Get Started&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;pubのパッケージ管理を理解する &lt;a href=&quot;https://www.dartlang.org/tools/pub&quot; target=&quot;_blank&quot;&gt;Pub Package Manager&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">JSに似て読み書きしやすいシンタックスに加え、型推論やジェネリクスなど魅力的な機能を備えたDart。JavaScriptに変換する仕組みがある点や、iOS、Android、Webの3大Clientで使える言語を目指して設計されている点を踏まえると、DartでのWebフロントエンド開発も夢ではないように感じます。</summary></entry></feed>
+&lt;p&gt;そんなわけで今回はFlux再入門の話でした。気になる箇所や間違っている箇所がありましたら&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">Reactの良さを活かしやすいFluxは、Webアプリケーションの設計手法としてずいぶん馴染みのあるものになったように感じます。私もFluxを取り入れた開発を2年近く経験し、知見も溜まり、使い慣れたような気持ちでいました。</summary></entry></feed>
