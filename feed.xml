@@ -1,5 +1,140 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-04-26T10:16:21+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">テックリードになる前後にやっていたこと</title><link href="https://aloerina01.github.io/blog/2019-04-15-1" rel="alternate" type="text/html" title="テックリードになる前後にやっていたこと" /><published>2019-04-15T00:00:00+00:00</published><updated>2019-04-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-04-15-1">&lt;p&gt;主業務で関わっているプロダクトにおいて、2018年中頃あたりからフロントエンドのテックリードを担当していました。今はチームマネジメントに重きを置きつつ、次のテックリードにバトン渡しをしている段階です。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-05-07T04:18:21+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">新任マネージャーがコーチングをガッツリやってみた話</title><link href="https://aloerina01.github.io/blog/2019-05-07-1" rel="alternate" type="text/html" title="新任マネージャーがコーチングをガッツリやってみた話" /><published>2019-05-07T00:00:00+00:00</published><updated>2019-05-07T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-05-07-1">&lt;p&gt;ここ最近、マネジメントの一貫として「1ヶ月間コーチング」に取り組んでいます。クライアント(コーチング相手になってくれる方)と1ヶ月間じっくりコミュニケーションをとって、目標の見直しから実現まで様々な段階に付き添わせてもらいました。&lt;/p&gt;
+
+&lt;p&gt;ある程度自分の中でやり方が見えてきたので、経験談とそれを通して得た考え方について現時点のスナップショットを残しておこうと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-04-25-1-coaching.jpg&quot; alt=&quot;グラレコ&quot; /&gt;
+&lt;small&gt;今回の概要をグラレコ形式でまとめてみました。&lt;/small&gt;&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#前提&quot; id=&quot;markdown-toc-前提&quot;&gt;前提&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#コーチングとは&quot; id=&quot;markdown-toc-コーチングとは&quot;&gt;コーチングとは&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#コーチングに必要な人間関係&quot; id=&quot;markdown-toc-コーチングに必要な人間関係&quot;&gt;コーチングに必要な人間関係&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#コーチングで使った4つの会話&quot; id=&quot;markdown-toc-コーチングで使った4つの会話&quot;&gt;コーチングで使った4つの会話&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#承認する&quot; id=&quot;markdown-toc-承認する&quot;&gt;承認する&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#質問する&quot; id=&quot;markdown-toc-質問する&quot;&gt;質問する&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#整理する&quot; id=&quot;markdown-toc-整理する&quot;&gt;整理する&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#リクエストする&quot; id=&quot;markdown-toc-リクエストする&quot;&gt;リクエストする&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#やる気の芽の育て方&quot; id=&quot;markdown-toc-やる気の芽の育て方&quot;&gt;やる気の芽の育て方&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-ゴール目標が明確になる&quot; id=&quot;markdown-toc-1-ゴール目標が明確になる&quot;&gt;1. ゴール・目標が明確になる&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-ゴールまでのプロセスが明確になる&quot; id=&quot;markdown-toc-2-ゴールまでのプロセスが明確になる&quot;&gt;2. ゴールまでのプロセスが明確になる&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-自分が描いたゴールプロセスに自信を持つ&quot; id=&quot;markdown-toc-3-自分が描いたゴールプロセスに自信を持つ&quot;&gt;3. 自分が描いたゴール・プロセスに自信を持つ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#4-ゴールプロセスを必要に応じて見直せる&quot; id=&quot;markdown-toc-4-ゴールプロセスを必要に応じて見直せる&quot;&gt;4. ゴール・プロセスを必要に応じて見直せる&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#5-自分のペースでプロセスを継続する&quot; id=&quot;markdown-toc-5-自分のペースでプロセスを継続する&quot;&gt;5. 自分のペースでプロセスを継続する&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;前提&quot;&gt;前提&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1対1でやる&lt;/li&gt;
+  &lt;li&gt;内容はクライアントのキャリアや仕事に関係すること&lt;/li&gt;
+  &lt;li&gt;コミュニケーションはオンライン・オフライン両方で柔軟にとる&lt;/li&gt;
+  &lt;li&gt;コミュニケーションのタイミングは必要に応じて随時&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;私がやってきたコーチングはこんな感じでした。&lt;/p&gt;
+
+&lt;h3 id=&quot;コーチングとは&quot;&gt;コーチングとは&lt;/h3&gt;
+
+&lt;p&gt;コーチングとは&lt;strong&gt;クライアントの「やりたい」気持ちを実現に導くこと&lt;/strong&gt;だと理解しています。言い換えれば「やる気を出させる」ことなどはコーチングの領域には含まれず、あくまでクライアントの自主的な行動や気持ちに対してアプローチするのがコーチングであるということです。&lt;/p&gt;
+
+&lt;p&gt;そして、コーチングは現実に導くために直接的に手助けするわけではなく、&lt;strong&gt;クライアント自身の気付きによって前進するよう、会話を通して間接的に手助けする&lt;/strong&gt;ものだと考えています。&lt;/p&gt;
+
+&lt;h3 id=&quot;コーチングに必要な人間関係&quot;&gt;コーチングに必要な人間関係&lt;/h3&gt;
+
+&lt;p&gt;コーチングだけでなくマネジメントなどにも言えることだと思いますが、&lt;strong&gt;信頼関係が必須&lt;/strong&gt;だと痛感しました。クライアントに信頼されることはもちろん、コーチがクライアントを信じ切ることも大切なことだと思います。&lt;/p&gt;
+
+&lt;p&gt;自己開示し合えるだけの関係性が必要ですし、人が気持ちを揺さぶられたり行動を起こしたりするには「誰に言われたか」も大事な要素だったりします。なので、場合によってはコーチングを始める前に関係づくりの期間をとることも必要だと感じました。&lt;/p&gt;
+
+&lt;h3 id=&quot;コーチングで使った4つの会話&quot;&gt;コーチングで使った4つの会話&lt;/h3&gt;
+
+&lt;p&gt;コーチングする上で大切なことは「聞く」スキルだと言われたりします。ですが相手が一方的にたくさん話してくれるなんてことはそうそうないので、こちらから「話す」ことも必要になってきます。なので今回は「聞く」でも「話す」でもなく、互いに話し聞く「会話」に焦点を当てて、コーチングで実際に行った4つの会話をまとめます。&lt;/p&gt;
+
+&lt;h4 id=&quot;承認する&quot;&gt;承認する&lt;/h4&gt;
+
+&lt;p&gt;ここで言う「承認」とは &lt;strong&gt;Approve ではなく Acknowledge を指します&lt;/strong&gt;。単に成果を認めるだけはなく、まずクライアントの存在そのものを認め、感謝し、クライアントに現れている変化や違いや成長に気付き、それを言語化して伝えます。&lt;/p&gt;
+
+&lt;p&gt;クライアントのやろうとしていることを理解し認める意志を伝えることは、信頼関係を築くために必要なことですし、コーチングをする上で必要な心構えでもあると感じています。&lt;/p&gt;
+
+&lt;h4 id=&quot;質問する&quot;&gt;質問する&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;「答えはクライアント自身が持っている」前提に立ち、質問を通して気付きを得てもらいます&lt;/strong&gt;。答えのない問いに耽っていると、どうしても思考が行き詰まったり、どう考えるべきかわからなくなる場面があります。そんな場面に出くわしたクライアントに&lt;strong&gt;新しい視点を与える&lt;/strong&gt;よう質問することが必要です。&lt;strong&gt;リフレーミング&lt;/strong&gt;と言ったりもしますね。&lt;br /&gt;
+具体的には、&lt;strong&gt;Why や How&lt;/strong&gt; を尋ねる質問が中心になります。&lt;/p&gt;
+
+&lt;h4 id=&quot;整理する&quot;&gt;整理する&lt;/h4&gt;
+
+&lt;p&gt;クライアントが悩み続けてしまったり思考が堂々巡りしてしまったりと、思考が拡散してしまったときに現状を整理して伝えます。考えを深掘りする方法のひとつに「なぜ？を繰り返し問う」方法がありますが、一人でこれをしていると思考が行き詰まりがちです。クライアントがなぜなぜの袋小路に入ってしまったときに、&lt;strong&gt;整理して伝えたり図示して見せたりすることで、それまで考えていたことを客観的に見返す手助けとなります&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;また、クライアントの考えを正しく理解できているか確認するため、発言内容を整理して「〜という理解であっていますか？」と尋ねることもあります。&lt;/p&gt;
+
+&lt;h4 id=&quot;リクエストする&quot;&gt;リクエストする&lt;/h4&gt;
+
+&lt;p&gt;会話で必要なものを用意してもらうよう依頼したり、考え方のフレームワークを提案したりします。&lt;br /&gt;
+クライアントは自分の目的のために必要なアクションを&lt;strong&gt;自分自身で見つけてくれるはず&lt;/strong&gt;ですので、「次回までにこれをしてきて」といったような直接的なリクエストはあまりしません。やり方がわからないクライアントに対して「必要ならこういう考え方を試してみて」と提案する等、&lt;strong&gt;アイデアを貸す&lt;/strong&gt;ような感覚でリクエストをします。リクエストは最後の手段だと認識しています。&lt;/p&gt;
+
+&lt;h3 id=&quot;やる気の芽の育て方&quot;&gt;やる気の芽の育て方&lt;/h3&gt;
+&lt;p&gt;コーチングの有無に限らず、私たちが何かを成し遂げたいと思ったとき、それを達成するまでに辿る段階があります。人によっては飛ばしたり細分化したりするとは思いますが、大まかには以下の5つのステップで考えました。&lt;/p&gt;
+
+&lt;h4 id=&quot;1-ゴール目標が明確になる&quot;&gt;1. ゴール・目標が明確になる&lt;/h4&gt;
+
+&lt;p&gt;「どうなりたいか」という到達目標であったり、「どうありたいか、どう過ごしていたいか」という継続目標であったり、種類は様々ですが、目標を明確にすることが最初の一歩目です。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;いいエンジニアになりたい&lt;/li&gt;
+  &lt;li&gt;南国で暮らしていきたい&lt;/li&gt;
+  &lt;li&gt;每日1つ何かしらのアウトプットをしていきたい&lt;/li&gt;
+  &lt;li&gt;このままじゃ自分のキャリアが不安なので何か始めたい&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらは過去に私が立てた目標ですが、このようにどんな目標でも良いと思います。漠然な内容でも、定性的なことでも、遠い将来の夢の通過点であっても、何であれ&lt;strong&gt;そこにやる気の種&lt;/strong&gt;があればまずはOKです。やる気を持つこと自体が素敵で素晴らしいことのはずです。&lt;/p&gt;
+
+&lt;p&gt;そして&lt;strong&gt;やる気の種を一緒に育てていくのがコーチング&lt;/strong&gt;です。どんな種でも自信を持ってもらいましょう。そのために「承認」し、必要に応じて不安や曖昧さを解消するために「質問」し「整理」します。&lt;/p&gt;
+
+&lt;h4 id=&quot;2-ゴールまでのプロセスが明確になる&quot;&gt;2. ゴールまでのプロセスが明確になる&lt;/h4&gt;
+
+&lt;p&gt;ゴールや目標を達成するために必要なプロセス・マイルストーン・TODOを明確にします。正確である必要はないので、大まかに&lt;strong&gt;いつまでにどうなっていればよいか&lt;/strong&gt;を定めます。ポイントは3つです。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;近い将来のことは具体的に、遠い将来のことはざっくりと&lt;/strong&gt;決める&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;定量的な達成基準&lt;/strong&gt;を設ける&lt;/li&gt;
+  &lt;li&gt;必ずやれると&lt;strong&gt;コミットできる内容&lt;/strong&gt;にする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;プロセスは定期的に見直していくものなので、近い将来のTODOが具体的であれば十分です。ただし、実現できない可能性のあるTODO(運や環境に左右されること、ハードルが高すぎること)は控えます。&lt;br /&gt;
+例えば私の場合は「1ヶ月に10冊本を読む」よりは「1日30分本を読む」のほうが適切でした。私の読書スピードは本の難易度に依存するため、冊数を基準にすると達成できない可能性があったので、1日に読書に充てる時間を基準にしました。&lt;/p&gt;
+
+&lt;p&gt;このステップでのコーチングは、「質問」がメインになります。ゴール(または途中の地点)に到達する姿がイメージできるくらいまで「質問」を繰り返してプロセスを明確にしていきます。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-自分が描いたゴールプロセスに自信を持つ&quot;&gt;3. 自分が描いたゴール・プロセスに自信を持つ&lt;/h4&gt;
+
+&lt;p&gt;自分ひとりで考えて、目標やプロセスを決めて、黙々と努力する……。そうしているうちに「このやり方であっているのか」「これを続けていて意味があるのか」と不安が湧き出てしまうことは、努力する人には至極自然なことなのだと思います。&lt;/p&gt;
+
+&lt;p&gt;この不安を乗り越えられるよう描いたゴールやプロセスに自信を持っていきたいですよね。そのためには、日々の努力を「承認」することも大事ですが、なぜそのプロセスを設定したのかを思い返すように「質問」することも役立ちます。最終的には、自信の根拠はクライアント自身のやる気にたどり着くものなのだと思います。&lt;/p&gt;
+
+&lt;h4 id=&quot;4-ゴールプロセスを必要に応じて見直せる&quot;&gt;4. ゴール・プロセスを必要に応じて見直せる&lt;/h4&gt;
+
+&lt;p&gt;経験を積めば考え方や視点は変化していきます。また時間の経過により環境が変わったりもします。ですので、自分の目標やプロセスに疑問を感じたら都度見直すことが必要です。&lt;/p&gt;
+
+&lt;p&gt;見直しの段階でのコーチングは、やはり「質問」や「整理」が中心なります。ただし、ここでのコーチングの目標は「クライアントが見直しに成功すること」ではなく、「&lt;strong&gt;クライアントがいつでも一人で目標の見直しをできるようになること&lt;/strong&gt;」です。どんなときに、どのように、どのくらい見直しすべきかの感覚がクライアントに浸透するように、考える場面を多く与えます。&lt;/p&gt;
+
+&lt;h4 id=&quot;5-自分のペースでプロセスを継続する&quot;&gt;5. 自分のペースでプロセスを継続する&lt;/h4&gt;
+
+&lt;p&gt;目標に対して常に100％のモチベーションやエネルギーを維持するのって、実はけっこう大変ですよね。ですので、&lt;strong&gt;やる気に応じて、どれだけがんばるかをコントロールしながら継続できれば十分&lt;/strong&gt;だと思います。&lt;/p&gt;
+
+&lt;p&gt;目標次第では「やる気の上下に関わらず無理してでも100％がんばる」というコントロールが必要かもしれませんし、「やる気がないときはプロセスの達成基準の50％を維持する」でも良いと思います。何であれ、クライアント自身がこのコントロールをできるようになることがコーチングの目標になります。&lt;/p&gt;
+
+&lt;p&gt;ここでの会話は「承認」も良いですが、&lt;strong&gt;クライアントが自身のモチベーション・エネルギー源がどこにあるのかを自覚する&lt;/strong&gt;よう「質問」することも役立ちます。また成果や経過を共有できるコミュニティを探すよう「リクエスト」することもあるかもしれません。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;これらの5つのステップを行ったり来たりしながら目標達成を目指すのが、私の考える「やる気の芽の育て方」です。コーチングの行為は、4つの会話を使ってクライアントと一緒にやる気の芽を育てることですが、最終目標はクライアントが一人で育てられるようになることだということを忘れず、クライアントの自発心を刺激し続ける意識で取り組みました。&lt;/p&gt;
+
+&lt;p&gt;今後も引き続きコーチングを続けて考え方や方法をアップデートしていこうと思います。コーチングについて経験豊富な先輩方、アドバイス等あれば是非&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">ここ最近、マネジメントの一貫として「1ヶ月間コーチング」に取り組んでいます。クライアント(コーチング相手になってくれる方)と1ヶ月間じっくりコミュニケーションをとって、目標の見直しから実現まで様々な段階に付き添わせてもらいました。</summary></entry><entry><title type="html">テックリードになる前後にやっていたこと</title><link href="https://aloerina01.github.io/blog/2019-04-15-1" rel="alternate" type="text/html" title="テックリードになる前後にやっていたこと" /><published>2019-04-15T00:00:00+00:00</published><updated>2019-04-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-04-15-1">&lt;p&gt;主業務で関わっているプロダクトにおいて、2018年中頃あたりからフロントエンドのテックリードを担当していました。今はチームマネジメントに重きを置きつつ、次のテックリードにバトン渡しをしている段階です。&lt;/p&gt;
 
 &lt;p&gt;テックリードになる前後でどんなことを考えていたのか、どんなことをしていたのかをふと振り返ってみたのでメモを残します。&lt;/p&gt;
 
@@ -1568,221 +1703,4 @@ Stateが不要な場面ではFunctional Componentを使いたいので、このU
 
 &lt;p&gt;また、DocSearchの印象が強く「インクリメンタルな検索Widgetまでセットになったもの」を求めていたので、autocomplete.jsを見つけるまではいろいろな情報に振り回されました。jekyll-algoliaの公式ドキュメントではUIの実装に&lt;a href=&quot;https://community.algolia.com/instantsearch.js/&quot; target=&quot;_blank&quot;&gt;InstantSearch.js&lt;/a&gt;を使うよう案内していて、情報迷路にハマりました…(ちなみにInstantSearch.jsは、簡単な検索窓だけでなく、検索結果によって画面全体が更新されるなどのリッチなコンテンツを実装するためのライブラリのようでした)。&lt;/p&gt;
 
-&lt;p&gt;とは言え、algoliaもautocomplete.jsも理解してしまえば不自由なく使える便利なものでした。日本語の情報が少なかったので、この記事が少しでも役に立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">algoliaとは</summary></entry><entry><title type="html">Vue.nextTickのコードリーディング</title><link href="https://aloerina01.github.io/blog/2018-09-27-1" rel="alternate" type="text/html" title="Vue.nextTickのコードリーディング" /><published>2018-09-27T00:00:00+00:00</published><updated>2018-09-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-09-27-1">&lt;h3 id=&quot;vuenexttickとは&quot;&gt;&lt;a href=&quot;https://jp.vuejs.org/v2/api/#Vue-nextTick&quot; target=&quot;_blank&quot;&gt;Vue.nextTick&lt;/a&gt;とは？&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;callbackを延期し、DOMの更新サイクル後に実行します。DOM更新を待ち受けるために、いくつかのデータを変更した直後に使用してください。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;VueはDOMを非同期に更新する&lt;/strong&gt;ため、「DOMを更新した後にその更新済みのDOMに対して何らかの処理をする」といったような場面で&lt;code class=&quot;highlighter-rouge&quot;&gt;nextTick&lt;/code&gt;が役立ちます。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// single file component&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;template&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/template&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;script&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'default'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;mounted&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'hello'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// default この時点ではまだDOMは更新されていない&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;nextTick&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$el&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;textContent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// hello   DOM更新後にこのコードに到達する &lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;  
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/script&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&amp;gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;dataの値を更新し、それをDOMに反映するコードです。&lt;/p&gt;
-
-&lt;p&gt;このときVueは、dataの更新処理をある程度ため込み、同じDOMを更新する処理が複数件たまった場合はまとめて1回だけ更新します。つまり非同期的に(コードの記述順とは違った順序で)DOMが更新されるということです。&lt;/p&gt;
-
-&lt;p&gt;もう少し正確な言葉で言うと、ある&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop&quot; target=&quot;_blank&quot;&gt;イベントループ&lt;/a&gt;において同じwatcherが複数回更新される場合は、タスクキューには重複除外した1つのタスクが詰められます。そして次のイベントループでタスクを順次捌いていきます。&lt;/p&gt;
-
-&lt;p&gt;そしてこの後に、つまり&lt;strong&gt;タスクキューに入った処理が全て完了した後に&lt;/strong&gt;何か別の処理を行う方法がnextTickというわけです。&lt;/p&gt;
-
-&lt;h3 id=&quot;コードリーディングしてみる&quot;&gt;コードリーディングしてみる&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/vuejs/vue/blob/dev/src/core/util/next-tick.js&quot; target=&quot;_blank&quot;&gt;src/core/util/next-tick.js&lt;/a&gt; に実装されています。コード量が少なく他モジュールへの依存も薄いので、読みやすそうです。ちなみに執筆時点で最新の&lt;a href=&quot;https://github.com/vuejs/vue/releases/tag/v2.5.17&quot; target=&quot;_blank&quot;&gt;v2.5.17&lt;/a&gt;を参考にしています。&lt;/p&gt;
-
-&lt;h5 id=&quot;nexttick関数本体&quot;&gt;nextTick関数本体&lt;/h5&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pending&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-
-&lt;span class=&quot;cm&quot;&gt;/* 中略 */&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextTick&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;_resolve&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;cb&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;handleError&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;e&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'nextTick'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;_resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ctx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pending&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;pending&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;useMacroTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;macroTimerFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;microTimerFunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;cm&quot;&gt;/* 以下省略 */&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;主要な部分だけピックアップしています。nextTick関数は引数で受け取った&lt;code class=&quot;highlighter-rouge&quot;&gt;cb&lt;/code&gt;を&lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt;に詰め、&lt;code class=&quot;highlighter-rouge&quot;&gt;macroTimerFunc&lt;/code&gt;もしくは&lt;code class=&quot;highlighter-rouge&quot;&gt;microTimerFunc&lt;/code&gt;を呼び出しています。これらがどんな関数か見てみます。&lt;/p&gt;
-
-&lt;h5 id=&quot;macrotimerfunc-と-microtimerfunc-の実装&quot;&gt;macroTimerFunc と microTimerFunc の実装&lt;/h5&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 補足: ①callbacksに詰め込んだ関数を実行する本体&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;flushCallbacks&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;pending&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;copies&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;slice&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;callbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;copies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;copies&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]()&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 補足: ②macroTimerFuncの定義&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;setImmediate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'undefined'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isNative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setImmediate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;macroTimerFunc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;setImmediate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flushCallbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;cm&quot;&gt;/* 中略 */&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;macroTimerFunc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flushCallbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 補足: ③microTimerFuncの定義&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'undefined'&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;isNative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;microTimerFunc&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;p&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;flushCallbacks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;cm&quot;&gt;/* 省略 */&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; 
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;flushCallbacks&lt;/code&gt;&lt;/strong&gt;は、&lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt;の中身を取り出して実行し、&lt;code class=&quot;highlighter-rouge&quot;&gt;callbacks&lt;/code&gt;を初期化しています&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;macroTimerFunc&lt;/code&gt;&lt;/strong&gt;は、&lt;code class=&quot;highlighter-rouge&quot;&gt;setImmediate&lt;/code&gt;もしくは&lt;code class=&quot;highlighter-rouge&quot;&gt;setTimeout&lt;/code&gt;を使ってflushCallbacksを呼び出しています&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;microTimerFunc&lt;/code&gt;&lt;/strong&gt;は、&lt;code class=&quot;highlighter-rouge&quot;&gt;Promise.resolve()&lt;/code&gt;を使ってflushCallbacksを呼び出しています&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;ここで登場する &lt;strong&gt;macro tasks&lt;/strong&gt; と &lt;strong&gt;micro tasks&lt;/strong&gt; という考え方は&lt;a href=&quot;https://promisesaplus.com/#point-67&quot; target=&quot;_blank&quot;&gt;Promises/A+&lt;/a&gt;にも記載があり、どちらも&lt;strong&gt;現在のイベントループ内の全てのタスクの実行完了後に、タスクを追加で実行する手法&lt;/strong&gt;を指しています。&lt;br /&gt;
-nextTickはこの手法を利用して「DOMの更新後に処理をする」ことを実現しているわけですね。&lt;/p&gt;
-
-&lt;p&gt;改めて macro tasks と micro tasks の実装を確認してみます。&lt;/p&gt;
-
-&lt;h5 id=&quot;macro-tasks&quot;&gt;macro tasks&lt;/h5&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;setImmediate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// or&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;h5 id=&quot;micro-tasks&quot;&gt;micro tasks&lt;/h5&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;いずれも「イベントループの後に処理を実行する」のでどちらを使ってもnextTickの目的は果たせそうですが、Vueはこれらを使い分けていて、その理由についてコード内にコメントされています。&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;In &amp;lt; 2.4 we used microtasks everywhere, but there are some scenarios where microtasks have too high a priority and fire in between supposedly sequential events (e.g. #4521, #6690) or even between bubbling of the same event (#6566). &lt;br /&gt;
-However, using (macro) tasks everywhere also has subtle problems when state is changed right before repaint (e.g. #6813, out-in transitions).&lt;br /&gt;
-Here we use microtask by default, but expose a way to force (macro) task when needed (e.g. in event handlers attached by v-on).&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Vue2.4以前までは micro tasks のみを利用していていましたが、それだと実行タイミングが早すぎてしまうケースがあり、場面に応じて macro tasks と使い分けているということですね。&lt;br /&gt;
-言い換えると、これらは実行タイミングが違うということです。&lt;/p&gt;
-
-&lt;h3 id=&quot;実行タイミングの検証&quot;&gt;実行タイミングの検証&lt;/h3&gt;
-
-&lt;p&gt;macro tasks と micro tasks の実行タイミングはどのように違うのでしょうか？ 簡単なコードで検証してみます。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// execute nextTick(macroTask)&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;macroTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from macroTask (use setTimeout)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// execute nextTick(microTask)&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;microTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from microTask (use Promise)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;macroTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;microTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;logIndex&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt; (&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;performance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;)`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;// console
-
-1: call from microTask (use Promise) (469.1000000020722)
-2: call from macroTask (use setTimeout) (488.5999999969499)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;macroTask と microTask をそれぞれ実行します。&lt;br /&gt;
-何度やってもPromiseを利用した microTask が先に実行されます。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;同期処理をはさんでみます。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// execute nextTick(macroTask)&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;macroTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from macroTask (use setTimeout)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// execute nextTick(microTask)&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;microTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from microTask (use Promise)'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// execute sync function&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;syncSomething&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-
-
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;syncSomething&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;startTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;now&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;startTime&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{}&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'call from sync function'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;pre&gt;&lt;code class=&quot;language-plain&quot;&gt;//console
-
-1: call from sync function (1525.500000003376)
-2: call from microTask (use Promise) (1525.8000000030734)
-3: call from macroTask (use setTimeout) (1529.900000008638)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;同期処理(タスクキューにあるタスク)を実行した後に microTask » macroTask の順で実行されます。この挙動については、MDNの&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop#Run-to-completion&quot; target=&quot;_blank&quot;&gt;Run-to-completion&lt;/a&gt;と&lt;a href=&quot;https://developer.mozilla.org/ja/docs/Web/JavaScript/EventLoop#%E3%83%A1%E3%83%83%E3%82%BB%E3%83%BC%E3%82%B8%E3%81%AE%E8%BF%BD%E5%8A%A0&quot; target=&quot;_blank&quot;&gt;メッセージの追加&lt;/a&gt;に詳細が記載されています。&lt;/p&gt;
-
-&lt;p&gt;最後に、macro tasks と micro tasks がDOM更新処理と絡んできた場合にどのように動作するのかを検証したコードを残しておきます。&lt;/p&gt;
-
-&lt;iframe width=&quot;100%&quot; height=&quot;300&quot; src=&quot;//jsfiddle.net/aloerina/pqahdwsk/39/embedded/js,html,result/dark/&quot; allowfullscreen=&quot;allowfullscreen&quot; allowpaymentrequest=&quot;&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
-
-&lt;p&gt;nextTickとは直接関係ない余談ですが、DOMの更新ロジックが完了してもすぐに画面に反映されずイベントループの後で反映される、というのも見どころです。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue.nextTickとは？</summary></entry></feed>
+&lt;p&gt;とは言え、algoliaもautocomplete.jsも理解してしまえば不自由なく使える便利なものでした。日本語の情報が少なかったので、この記事が少しでも役に立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">algoliaとは</summary></entry></feed>
