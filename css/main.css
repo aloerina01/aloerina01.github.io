@@ -308,7 +308,7 @@ pre code.hljs {
   text-align: center; }
   .site-header-container.has-cover, .post-header-container.has-cover {
     color: #fff;
-    background-position: 50% 50%;
+    background-position: center bottom;
     background-size: cover; }
     .site-header-container.has-cover .title, .post-header-container.has-cover .title {
       font-size: 2.985984em; }
