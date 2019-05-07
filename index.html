@@ -4,9 +4,7 @@ layout: default
 <div class="home">
 
 <div class="site-header-container {% if site.cover %}has-cover{% endif %}" {% if site.cover %}style="
-    background-image: url({{ site.cover | prepend: site.baseurl }});
-    background-image: -webkit-linear-gradient(to left, rgba(238, 205, 163, 0.6) , rgba(239, 98, 159, 0.6)), url({{ site.cover | prepend: site.baseurl }});
-    background-image: linear-gradient(to left, rgba(238, 205, 163, 0.6) , rgba(239, 98, 159, 0.6)), url({{ site.cover | prepend: site.baseurl }});"{% endif %}>
+    background-image: url({{ site.cover | prepend: site.baseurl }});"{% endif %}>
   <div class="scrim {% if site.cover %}has-cover{% endif %}">
     <header class="site-header">
       <h1 class="title">{{ site.title }}</h1>

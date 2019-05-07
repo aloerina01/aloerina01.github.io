@@ -53,7 +53,7 @@ pre code.hljs {
 	text-align: center;
 	&.has-cover {
 		color: $white;
-		background-position: 50% 50%;
+		background-position: center bottom;
 		background-size: cover;
 		.title {
 			font-size: modular-scale(6);
