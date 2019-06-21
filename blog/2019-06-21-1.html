@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>そろそろYarnを使ってもいいんじゃない？</title>
-  <meta name="description" content="npmでそんなに不自由していなかったし、npm scripts よく使うし、yarn に乗り換える必要ってあるのかなー。今までnpmで運用してたのに急に乗り換えることなんてできるのかなー。そんな思いを胸に秘めている人にYarnの良さと導入の簡単さを伝えるために書きました。ええ、自分自身のことです😌">
+  <title>Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法</title>
+  <meta name="description" content="Babel7.4.0から @babel/preset-env と @babel/plugin-transform-runtime が core-js@3 に対応しました。また @babel/polyfill が非推奨になり、これらの変更によってpolyfillの設定方法が少し変わったので、その内容をメモしました。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2019">
@@ -38,10 +38,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="npmでそんなに不自由していなかったし、npm scripts よく使うし、yarn に乗り換える必要ってあるのかなー。今までnpmで運用してたのに急に乗り換えることなんてできるのかなー。そんな思いを胸に秘めている人にYarnの良さと導入の簡単さを伝えるために書きました。ええ、自分自身のことです😌" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-02-13-1" />
+  <meta property="og:description" content="Babel7.4.0から @babel/preset-env と @babel/plugin-transform-runtime が core-js@3 に対応しました。また @babel/polyfill が非推奨になり、これらの変更によってpolyfillの設定方法が少し変わったので、その内容をメモしました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2019-06-21-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="そろそろYarnを使ってもいいんじゃない？" />
+  <meta property="og:title" content="Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -52,17 +52,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="そろそろYarnを使ってもいいんじゃない？">
-  <meta name="twitter:description" content="npmでそんなに不自由していなかったし、npm scripts よく使うし、yarn に乗り換える必要ってあるのかなー。今までnpmで運用してたのに急に乗り換えることなんてできるのかなー。そんな思いを胸に秘めている人にYarnの良さと導入の簡単さを伝えるために書きました。ええ、自分自身のことです😌">
+  <meta name="twitter:title" content="Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法">
+  <meta name="twitter:description" content="Babel7.4.0から @babel/preset-env と @babel/plugin-transform-runtime が core-js@3 に対応しました。また @babel/polyfill が非推奨になり、これらの変更によってpolyfillの設定方法が少し変わったので、その内容をメモしました。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-02-13-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2019-06-21-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-02-13-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2019-06-21-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   <script src="/dist/prism.js" defer></script>
@@ -117,8 +117,8 @@
           <meta itemprop="position" content="2" />
         </li>
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2017-02-13-1">
-            <span itemprop="name">そろそろYarnを使ってもいいんじゃない？</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2019-06-21-1">
+            <span itemprop="name">Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -132,7 +132,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">そろそろYarnを使ってもいいんじゃない？</h1>
+            <h1 class="title">Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -144,97 +144,174 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2017-02-13</div>
+          <div class="post-date">2019-06-21</div>
           <div class="post-categories">
             
             <i class="fas fa-fw fa-tag"></i>
              
-            <a href="/category/yarn/">Yarn</a>,    
-            <a href="/category/environment/">Environment</a>   
+            <a href="/category/javascript/">JavaScript</a>,    
+            <a href="/category/babel/">Babel</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <h3 id="yarnのいいところは">Yarnのいいところは？</h3>
+          <p>Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉<br />
+これらに伴いpolyfill周りの設定方法が変わったので、その内容をメモしておこうと思います。</p>
 
-<p>ウルトラでメガでスーパーなパッケージ管理ができるのが<a href="https://yarnpkg.com/en/">Yarn</a>だそうです。<br />
-が、今回は実際に使ってみて感じたメリットについて書きます。</p>
-
-<h4 id="packagejsonを使えるnpm互換">package.jsonを使える(npm互換)</h4>
-
-<p>「今までずっとnpmでやってきたプロジェクトだし、わざわざyarnに乗り換えるの面倒臭いよね…」と目をそむけてきましたが、<strong>全然面倒臭くありませんでした</strong>。yarnをグローバルインストールしてしまえば、あとはnpmと同様に<code class="highlighter-rouge">package.json</code>を元にパッケージ管理ができます。<strong>導入まで1ステップというお手軽さ</strong>でした。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> yarn
-</code></pre></div></div>
-<p>yarnのインストールはnpmから。なんか変な話ですね。</p>
-
-<h4 id="node_modulesの容量が減った">node_modulesの容量が減った</h4>
-
-<p>モジュール管理方法が、<strong>npmは階層化されているのに対し、yarnはフラット</strong>です。読み込んだモジュールが更にモジュールを読み込んでいて…とネストしていくものを全部フラットでインストールするため重複がありません。その分軽くなります。</p>
-
-<h4 id="ダウンロードが速い">ダウンロードが速い</h4>
-
-<p>過去に1度ダウンロードしたものをローカルにキャッシュしておいてくれるので、<code class="highlighter-rouge">npm install</code>をし直すような場面で特に高速化の威力を発揮します。ローカルキャッシュということはオフラインにも対応しているということですね(まだオフラインの恩恵を受けたことはありませんが)。</p>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn
-<span class="c"># もしくは</span>
-<span class="nv">$ </span>yarn <span class="nb">install</span>
-</code></pre></div></div>
-
-<h4 id="バージョン固定がしやすい">バージョン固定がしやすい</h4>
-
-<p>Yarnでは読み込むモジュールのバージョンを<strong>お手軽に固定することができます</strong>(一応npmでもできるんですよ、<code class="highlighter-rouge">npm shrinkwrap</code>という機能を使うと)。これにより「誰のどの環境にも同じモジュールがある」状態を維持できます。</p>
-
-<h4 id="ロゴがかわいい">ロゴがかわいい</h4>
-
-<p>ﾆｬｰﾝ。ﾔｰﾝ。</p>
-
-<h3 id="yarnの導入をしよう">Yarnの導入をしよう</h3>
-
-<h4 id="インストール">インストール</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> yarn
-</code></pre></div></div>
-
-<h4 id="プロジェクトの準備">プロジェクトの準備</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn init
-</code></pre></div></div>
-
-<h4 id="モジュールの追加削除">モジュールの追加＆削除</h4>
-
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn add <span class="o">[</span>package]            <span class="c"># npm install --save に相当</span>
-<span class="nv">$ </span>yarn add <span class="nt">--dev</span> <span class="o">[</span>package]      <span class="c"># npm install --save-dev に相当</span>
-<span class="nv">$ </span>yarn add <span class="o">[</span>package]@[version]
-
-<span class="nv">$ </span>yarn remove <span class="o">[</span>package]
-</code></pre></div></div>
-
-<p>その他コマンドの<a href="https://yarnpkg.com/en/docs/migrating-from-npm#toc-cli-commands-comparison">npm / yarn比較</a>は公式に一覧化されています。</p>
-
-<h3 id="yarnのパッケージインストールの仕組み">Yarnのパッケージインストールの仕組み</h3>
-
-<p>何か問題が起きたときに、内部の動きを知っていると意外と役立ったりしますよね。ということで軽く触れておきます。</p>
-
-<h4 id="1-モジュール間の依存解決">1. モジュール間の依存解決</h4>
-<p>モジュール間の依存関係を再帰的に解決する。</p>
-
-<h4 id="2-fetch--cache">2. Fetch &amp; Cache</h4>
-<p>ダウンロード対象の各パッケージがグローバルキャッシュ(<code class="highlighter-rouge">~/.yarn-cache</code>)に存在しているかを確認し、もしなければtarballを取得しキャッシュする。</p>
-
-<h4 id="3-対象プロジェクトのnode_modulesへコピー">3. 対象プロジェクトのnode_modulesへコピー</h4>
-<p>グローバルキャッシュから対象のモジュールをnode_modules以下へコピーする。</p>
-
-<h3 id="まとめ">まとめ</h3>
-
-<ul>
-  <li>package.jsonを使えるのでnpm互換</li>
-  <li>モジュールのダウンロードが速い</li>
-  <li>モジュールの容量削減</li>
-  <li>バージョン固定</li>
+<ul id="markdown-toc">
+  <li><a href="#babel-と-core-js-の関係のおさらい" id="markdown-toc-babel-と-core-js-の関係のおさらい">Babel と core-js の関係のおさらい</a></li>
+  <li><a href="#これからのpolyfill設定方法" id="markdown-toc-これからのpolyfill設定方法">これからのpolyfill設定方法</a>    <ul>
+      <li><a href="#1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法" id="markdown-toc-1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法">1. preset-env と useBuiltIns:usage で必要なpolyfillだけ読み込む方法</a></li>
+      <li><a href="#2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法" id="markdown-toc-2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法">2. preset-env と useBuiltIns:entry で全polyfillを読み込む方法</a></li>
+      <li><a href="#3-transform-runtime-を使う方法" id="markdown-toc-3-transform-runtime-を使う方法">3. transform-runtime を使う方法</a></li>
+    </ul>
+  </li>
+  <li><a href="#proposal-の使い方" id="markdown-toc-proposal-の使い方">Proposal の使い方</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
 </ul>
 
-<p>大きなデメリットもなく手間もなく、あっという間にnpmからyarnへと移行しちゃいました。皆様もぜひ。</p>
+<h3 id="babel-と-core-js-の関係のおさらい">Babel と core-js の関係のおさらい</h3>
+
+<p>Babelが提供する @babel/polyfill や @babel/preset-env などのモジュールを利用すると</p>
+
+<ul>
+  <li>built-ins objects(Promise, WeakMap等)</li>
+  <li>static methods(Object.assign, Array.from等)</li>
+  <li>instance methods(Array.prototype.includes等)</li>
+</ul>
+
+<p>といった新しい機能を使った実装が可能になりますよね。これらのBabelモジュールは <strong>core-js</strong> が提供するpolyfillを内部的に読み込んでいます。特に <strong>@babel/polyfill は core-js と regenerator-runtime を束ねて提供するpolyfill集</strong>です。</p>
+
+<p>Babel7.4.0からはこの @babel/polyfill が非推奨になり、代わりに<strong>core-jsのバージョンを指定して直接読み込む</strong>方法が提案されています。</p>
+
+<h3 id="これからのpolyfill設定方法">これからのpolyfill設定方法</h3>
+<h4 id="1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法">1. preset-env と useBuiltIns:usage で必要なpolyfillだけ読み込む方法</h4>
+
+<p>@babel/preset-env は(指定した実行環境にあわせた)必要な構文変換や、polyfillの読み込みをしてくれるものです。そしてこのpresetのオプションの<code class="highlighter-rouge">useBuiltins</code>で「<strong>どのようにpolyfillを読み込むか</strong>」を指定できます。</p>
+
+<p><code class="highlighter-rouge">useBuiltIns: usage</code>とし、必要なpolyfillだけを読み込む設定例から見ていきます。</p>
+
+<p><strong>@babel/prest-env をinstallする</strong></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-D</span> @babel/preset-env
+</code></pre></div></div>
+
+<p></p>
+
+<p><strong>.babelrc または babel.config.js でオプションを指定する</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">presets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">"@babel/preset-env"</span><span class="p">,</span> <span class="p">{</span>
+       <span class="na">useBuiltIns</span><span class="p">:</span> <span class="s2">"usage"</span><span class="p">,</span>
+       <span class="na">corejs</span><span class="p">:</span> <span class="mi">3</span> <span class="c1">// or 2</span>
+    <span class="p">}]</span>
+  <span class="p">]</span>
+</code></pre></div></div>
+<p></p>
+
+<p><strong>指定したバージョンの core-js をinstallする</strong></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-S</span> core-js@3  <span class="c"># or core-js@2</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p><code class="highlighter-rouge">useBuiltIns: usage</code>とすると、コード内からpolyfillが必要な箇所を勝手に判断し、必要なcore-jsを勝手にimportしてくれます。このとき、<strong>core-js のバージョンも併せてオプションで指定し、それに応じた core-js をnpm installしておく必要がある</strong>わけですね。</p>
+
+<p>ちなみに執筆時点の公式ドキュメントでは<code class="highlighter-rouge">useBuiltIns: usage</code>はまだ<strong>experimental</strong>となっているのですが、core-js@3 では多くの問題が解消されていてもはやexperimentalではないだろう…<a href="https://github.com/babel/website/pull/1987/files#r265777607" target="_blank">とのこと</a>です。</p>
+
+<h4 id="2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法">2. preset-env と useBuiltIns:entry で全polyfillを読み込む方法</h4>
+
+<p>上記と同様に @babel/preset-env を使う方法ですが、オプションの内容が変わります。<code class="highlighter-rouge">useBuiltIns: entry</code>とし、index.js などのjsファイルの先頭にてpolyfillをimportすることで、全部のpolyfillを読み込む方法です。</p>
+
+<p><strong>@babel/prest-env をinstallする</strong></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-D</span> @babel/preset-env
+</code></pre></div></div>
+
+<p></p>
+
+<p><strong>.babelrc または babel.config.js でオプションを指定する</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">presets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">"@babel/preset-env"</span><span class="p">,</span> <span class="p">{</span>
+       <span class="na">useBuiltIns</span><span class="p">:</span> <span class="s2">"entry"</span><span class="p">,</span>
+       <span class="na">corejs</span><span class="p">:</span> <span class="mi">3</span> <span class="c1">// or 2</span>
+    <span class="p">}]</span>
+  <span class="p">]</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p><strong>指定したバージョンの core-js と regenerator-runtime をinstallする</strong></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-S</span> core-js@3  <span class="c"># or core-js@2</span>
+npm <span class="nb">install</span> <span class="nt">-S</span> regenerator-runtime
+</code></pre></div></div>
+
+<p></p>
+
+<p><strong>jsファイルの先頭で core-js と regenerator-runtime をimportする</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="s2">"core-js/stable"</span><span class="p">;</span>
+<span class="k">import</span> <span class="s2">"regenerator-runtime/runtime"</span><span class="p">;</span>
+
+<span class="c1">// import "@babel/polyfill" 今まではこう指定していましたね</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>@babel/polyfill をimportしていた頃と同じ注意になりますが、core-js や regenerator-runtime 複数回importすると問題が起きる可能性があるので、bundleされるjsの冒頭で1度だけimportするように注意する必要があります。</p>
+
+<h4 id="3-transform-runtime-を使う方法">3. transform-runtime を使う方法</h4>
+
+<p>@babel/plugin-transform-runtime を使ってpolyfillを入れると、<strong>globalが汚染されないメリット</strong>が得られる反面、<strong>instance methodsが使えないというデメリット</strong>がありました。が、core-js@3に対応したことにより<strong>instance methodsが利用できるようになります</strong>🎉</p>
+
+<p>設定の際は、bundleに組み込まれる <strong>@babel/runtime</strong> と、ビルド時にpolyfill変換などを担う <strong>@babel/plugin-transform-runtime</strong> を用意します。</p>
+
+<p><strong>@babel/runtime と @babel/plugin-transform-runtime をinstallする</strong></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-S</span> @babel/runtime
+npm <span class="nb">install</span> <span class="nt">-D</span> @babel/plugin-transform-runtime
+</code></pre></div></div>
+
+<p></p>
+
+<p><strong>.babelrc または babel.config.js でオプションを指定する</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nx">presets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">"@babel/plugin-transform-runtime"</span><span class="p">,</span> <span class="p">{</span> <span class="na">corejs</span><span class="p">:</span> <span class="mi">3</span> <span class="p">}]</span>
+  <span class="p">]</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p><strong>指定したバージョンの core-js をinstallする</strong></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-S</span> core-js@3
+</code></pre></div></div>
+
+<h3 id="proposal-の使い方">Proposal の使い方</h3>
+
+<p>@babel/preset-env または @babel/plugin-transform-runtime どちらを利用する場合であっても、core-js@3 ではProposalの機能も利用できるようになりました。設定方法はオプションの内容を変更するだけです。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// before</span>
+<span class="p">{</span> <span class="nl">corejs</span><span class="p">:</span> <span class="mi">3</span> <span class="p">}</span>
+
+<span class="c1">// after</span>
+<span class="p">{</span> 
+  <span class="nl">corejs</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nl">version</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nx">proposals</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>公式ドキュメントには「ECMAScriptの提案は本質的に不安定であり、core-js@4 では変わる可能性があります」との注意書きがありますので、ご承知おきを。</p>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+  <li><a href="https://github.com/babel/website/pull/1987" target="_blank">https://github.com/babel/website/pull/1987</a></li>
+  <li><a href="https://babeljs.io/docs/en/next/babel-polyfill.html" target="_blank">https://babeljs.io/docs/en/next/babel-polyfill.html</a></li>
+  <li><a href="https://babeljs.io/docs/en/babel-plugin-transform-runtime" target="_blank">https://babeljs.io/docs/en/babel-plugin-transform-runtime</a></li>
+  <li><a href="https://babeljs.io/docs/en/babel-preset-env" target="_blank">https://babeljs.io/docs/en/babel-preset-env</a></li>
+  <li><a href="https://babeljs.io/blog/2019/03/19/7.4.0" target="_blank">https://babeljs.io/blog/2019/03/19/7.4.0</a></li>
+  <li><a href="https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md" target="_blank">https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md</a></li>
+</ul>
+
 
         </article>
 
@@ -249,7 +326,7 @@
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%81%9D%E3%82%8D%E3%81%9D%E3%82%8DYarn%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%EF%BC%9F&url=https://aloerina01.github.io/blog/2017-02-13-1&via=aloerina_&hashtags=Yarn,Environment,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Babel7.4%E3%81%A7%E9%9D%9E%E6%8E%A8%E5%A5%A8%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9Fbabel%2Fpolyfill%E3%81%AE%E4%BB%A3%E6%9B%BF%E6%89%8B%E6%AE%B5%E3%81%A8%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95&url=https://aloerina01.github.io/blog/2019-06-21-1&via=aloerina_&hashtags=JavaScript,Babel,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <i class="fab fa-twitter fa-inverse"></i>
             </a>
@@ -265,7 +342,7 @@
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%81%9D%E3%82%8D%E3%81%9D%E3%82%8DYarn%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%EF%BC%9F&u=https://aloerina01.github.io/blog/2017-02-13-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Babel7.4%E3%81%A7%E9%9D%9E%E6%8E%A8%E5%A5%A8%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9Fbabel%2Fpolyfill%E3%81%AE%E4%BB%A3%E6%9B%BF%E6%89%8B%E6%AE%B5%E3%81%A8%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95&u=https://aloerina01.github.io/blog/2019-06-21-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <i class="fab fa-facebook-f fa-inverse"></i>
             </a>
@@ -301,7 +378,7 @@
             
             
             
-            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E3%81%9D%E3%82%8D%E3%81%9D%E3%82%8DYarn%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%EF%BC%9F&url=https://aloerina01.github.io/blog/2017-02-13-1"
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=Babel7.4%E3%81%A7%E9%9D%9E%E6%8E%A8%E5%A5%A8%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9Fbabel%2Fpolyfill%E3%81%AE%E4%BB%A3%E6%9B%BF%E6%89%8B%E6%AE%B5%E3%81%A8%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95&url=https://aloerina01.github.io/blog/2019-06-21-1"
               onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
               <i class="fab fa-google-plus-g fa-inverse"></i>
             </a>
@@ -420,7 +497,7 @@
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2017-02-13-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2019-06-21-1" target="_blank">
               <i class="fab fa-get-pocket fa-inverse"></i>
             </a>
             
@@ -435,7 +512,7 @@
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%81%9D%E3%82%8D%E3%81%9D%E3%82%8DYarn%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%82%82%E3%81%84%E3%81%84%E3%82%93%E3%81%98%E3%82%83%E3%81%AA%E3%81%84%EF%BC%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2017-02-13-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Babel7.4%E3%81%A7%E9%9D%9E%E6%8E%A8%E5%A5%A8%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%9Fbabel%2Fpolyfill%E3%81%AE%E4%BB%A3%E6%9B%BF%E6%89%8B%E6%AE%B5%E3%81%A8%E8%A8%AD%E5%AE%9A%E6%96%B9%E6%B3%95%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2019-06-21-1">
               <img src="/assets/thirdparty/linebutton.png" />
             </a>
             
@@ -458,15 +535,15 @@
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2018-08-01-1">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</a></li>
-      
       <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
       
-      <li><a href="/blog/2019-06-21-1">Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法</a></li>
+      <li><a href="/blog/2018-11-29-1">Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み</a></li>
       
-      <li><a href="/blog/2017-03-08-1">Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ</a></li>
+      <li><a href="/blog/2018-08-01-1">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</a></li>
       
-      <li><a href="/blog/2017-02-28-1">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a></li>
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2018-05-30-1">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</a></li>
       
     </div>
   </div>
@@ -667,8 +744,8 @@
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-39630080-4', 'auto');
   ga('send', 'pageview', {
-    'page': '/blog/2017-02-13-1',
-    'title': 'そろそろYarnを使ってもいいんじゃない？'
+    'page': '/blog/2019-06-21-1',
+    'title': 'Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法'
   });
 </script>
 

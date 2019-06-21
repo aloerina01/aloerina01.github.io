@@ -1,5 +1,160 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-05-22T10:17:54+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">コーチング入門 「4つの会話」でやる気の芽を育てよう</title><link href="https://aloerina01.github.io/blog/2019-05-07-1" rel="alternate" type="text/html" title="コーチング入門 「4つの会話」でやる気の芽を育てよう" /><published>2019-05-07T00:00:00+00:00</published><updated>2019-05-07T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-05-07-1">&lt;p&gt;ここ最近、マネジメントの一貫として「1ヶ月間コーチング」に取り組んでいます。クライアント(コーチング相手になってくれる方)と1ヶ月間じっくりコミュニケーションをとって、目標の見直しから実現まで様々な段階に付き添わせてもらいました。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-06-21T03:56:51+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法</title><link href="https://aloerina01.github.io/blog/2019-06-21-1" rel="alternate" type="text/html" title="Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法" /><published>2019-06-21T00:00:00+00:00</published><updated>2019-06-21T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-06-21-1">&lt;p&gt;Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉&lt;br /&gt;
+これらに伴いpolyfill周りの設定方法が変わったので、その内容をメモしておこうと思います。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#babel-と-core-js-の関係のおさらい&quot; id=&quot;markdown-toc-babel-と-core-js-の関係のおさらい&quot;&gt;Babel と core-js の関係のおさらい&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#これからのpolyfill設定方法&quot; id=&quot;markdown-toc-これからのpolyfill設定方法&quot;&gt;これからのpolyfill設定方法&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法&quot; id=&quot;markdown-toc-1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法&quot;&gt;1. preset-env と useBuiltIns:usage で必要なpolyfillだけ読み込む方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法&quot; id=&quot;markdown-toc-2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法&quot;&gt;2. preset-env と useBuiltIns:entry で全polyfillを読み込む方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-transform-runtime-を使う方法&quot; id=&quot;markdown-toc-3-transform-runtime-を使う方法&quot;&gt;3. transform-runtime を使う方法&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#proposal-の使い方&quot; id=&quot;markdown-toc-proposal-の使い方&quot;&gt;Proposal の使い方&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;babel-と-core-js-の関係のおさらい&quot;&gt;Babel と core-js の関係のおさらい&lt;/h3&gt;
+
+&lt;p&gt;Babelが提供する @babel/polyfill や @babel/preset-env などのモジュールを利用すると&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;built-ins objects(Promise, WeakMap等)&lt;/li&gt;
+  &lt;li&gt;static methods(Object.assign, Array.from等)&lt;/li&gt;
+  &lt;li&gt;instance methods(Array.prototype.includes等)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった新しい機能を使った実装が可能になりますよね。これらのBabelモジュールは &lt;strong&gt;core-js&lt;/strong&gt; が提供するpolyfillを内部的に読み込んでいます。特に &lt;strong&gt;@babel/polyfill は core-js と regenerator-runtime を束ねて提供するpolyfill集&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;p&gt;Babel7.4.0からはこの @babel/polyfill が非推奨になり、代わりに&lt;strong&gt;core-jsのバージョンを指定して直接読み込む&lt;/strong&gt;方法が提案されています。&lt;/p&gt;
+
+&lt;h3 id=&quot;これからのpolyfill設定方法&quot;&gt;これからのpolyfill設定方法&lt;/h3&gt;
+&lt;h4 id=&quot;1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法&quot;&gt;1. preset-env と useBuiltIns:usage で必要なpolyfillだけ読み込む方法&lt;/h4&gt;
+
+&lt;p&gt;@babel/preset-env は(指定した実行環境にあわせた)必要な構文変換や、polyfillの読み込みをしてくれるものです。そしてこのpresetのオプションの&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltins&lt;/code&gt;で「&lt;strong&gt;どのようにpolyfillを読み込むか&lt;/strong&gt;」を指定できます。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns: usage&lt;/code&gt;とし、必要なpolyfillだけを読み込む設定例から見ていきます。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;@babel/prest-env をinstallする&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/preset-env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrc または babel.config.js でオプションを指定する&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nx&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;na&quot;&gt;useBuiltIns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;usage&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;na&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// or 2&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;指定したバージョンの core-js をinstallする&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; core-js@3  &lt;span class=&quot;c&quot;&gt;# or core-js@2&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns: usage&lt;/code&gt;とすると、コード内からpolyfillが必要な箇所を勝手に判断し、必要なcore-jsを勝手にimportしてくれます。このとき、&lt;strong&gt;core-js のバージョンも併せてオプションで指定し、それに応じた core-js をnpm installしておく必要がある&lt;/strong&gt;わけですね。&lt;/p&gt;
+
+&lt;p&gt;ちなみに執筆時点の公式ドキュメントでは&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns: usage&lt;/code&gt;はまだ&lt;strong&gt;experimental&lt;/strong&gt;となっているのですが、core-js@3 では多くの問題が解消されていてもはやexperimentalではないだろう…&lt;a href=&quot;https://github.com/babel/website/pull/1987/files#r265777607&quot; target=&quot;_blank&quot;&gt;とのこと&lt;/a&gt;です。&lt;/p&gt;
+
+&lt;h4 id=&quot;2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法&quot;&gt;2. preset-env と useBuiltIns:entry で全polyfillを読み込む方法&lt;/h4&gt;
+
+&lt;p&gt;上記と同様に @babel/preset-env を使う方法ですが、オプションの内容が変わります。&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns: entry&lt;/code&gt;とし、index.js などのjsファイルの先頭にてpolyfillをimportすることで、全部のpolyfillを読み込む方法です。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;@babel/prest-env をinstallする&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/preset-env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrc または babel.config.js でオプションを指定する&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nx&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+       &lt;span class=&quot;na&quot;&gt;useBuiltIns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;entry&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+       &lt;span class=&quot;na&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// or 2&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;指定したバージョンの core-js と regenerator-runtime をinstallする&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; core-js@3  &lt;span class=&quot;c&quot;&gt;# or core-js@2&lt;/span&gt;
+npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; regenerator-runtime
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;jsファイルの先頭で core-js と regenerator-runtime をimportする&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;core-js/stable&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;regenerator-runtime/runtime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// import &quot;@babel/polyfill&quot; 今まではこう指定していましたね&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;@babel/polyfill をimportしていた頃と同じ注意になりますが、core-js や regenerator-runtime 複数回importすると問題が起きる可能性があるので、bundleされるjsの冒頭で1度だけimportするように注意する必要があります。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-transform-runtime-を使う方法&quot;&gt;3. transform-runtime を使う方法&lt;/h4&gt;
+
+&lt;p&gt;@babel/plugin-transform-runtime を使ってpolyfillを入れると、&lt;strong&gt;globalが汚染されないメリット&lt;/strong&gt;が得られる反面、&lt;strong&gt;instance methodsが使えないというデメリット&lt;/strong&gt;がありました。が、core-js@3に対応したことにより&lt;strong&gt;instance methodsが利用できるようになります&lt;/strong&gt;🎉&lt;/p&gt;
+
+&lt;p&gt;設定の際は、bundleに組み込まれる &lt;strong&gt;@babel/runtime&lt;/strong&gt; と、ビルド時にpolyfill変換などを担う &lt;strong&gt;@babel/plugin-transform-runtime&lt;/strong&gt; を用意します。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;@babel/runtime と @babel/plugin-transform-runtime をinstallする&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; @babel/runtime
+npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/plugin-transform-runtime
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.babelrc または babel.config.js でオプションを指定する&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nx&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/plugin-transform-runtime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;指定したバージョンの core-js をinstallする&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; core-js@3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;proposal-の使い方&quot;&gt;Proposal の使い方&lt;/h3&gt;
+
+&lt;p&gt;@babel/preset-env または @babel/plugin-transform-runtime どちらを利用する場合であっても、core-js@3 ではProposalの機能も利用できるようになりました。設定方法はオプションの内容を変更するだけです。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// before&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// after&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
+  &lt;span class=&quot;nl&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;proposals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;公式ドキュメントには「ECMAScriptの提案は本質的に不安定であり、core-js@4 では変わる可能性があります」との注意書きがありますので、ご承知おきを。&lt;/p&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/babel/website/pull/1987&quot; target=&quot;_blank&quot;&gt;https://github.com/babel/website/pull/1987&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/next/babel-polyfill.html&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/docs/en/next/babel-polyfill.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-transform-runtime&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/docs/en/babel-plugin-transform-runtime&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-preset-env&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/docs/en/babel-preset-env&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/blog/2019/03/19/7.4.0&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/blog/2019/03/19/7.4.0&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md&quot; target=&quot;_blank&quot;&gt;https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉 これらに伴いpolyfill周りの設定方法が変わったので、その内容をメモしておこうと思います。</summary></entry><entry><title type="html">コーチング入門 「4つの会話」でやる気の芽を育てよう</title><link href="https://aloerina01.github.io/blog/2019-05-07-1" rel="alternate" type="text/html" title="コーチング入門 「4つの会話」でやる気の芽を育てよう" /><published>2019-05-07T00:00:00+00:00</published><updated>2019-05-07T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-05-07-1">&lt;p&gt;ここ最近、マネジメントの一貫として「1ヶ月間コーチング」に取り組んでいます。クライアント(コーチング相手になってくれる方)と1ヶ月間じっくりコミュニケーションをとって、目標の見直しから実現まで様々な段階に付き添わせてもらいました。&lt;/p&gt;
 
 &lt;p&gt;ある程度自分の中でやり方が見えてきたので、経験談とそれを通して得た考え方について現時点のスナップショットを残しておこうと思います。&lt;/p&gt;
 
@@ -1135,6 +1290,29 @@ mypackage::my_func&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class
 
 &lt;p&gt;なお、6.xまでの設定方法は「&lt;a href=&quot;/blog/2018-03-19-1&quot; target=&quot;_blank&quot;&gt;Babelの設定を見直すための逆引きガイド&lt;/a&gt;」にまとめてあります。polyfillのことだけでなく、Babelとは何か、どのように利用するのか、といったことも併せてまとめてありますので良ければご参考にどうぞ。&lt;/p&gt;
 
+&lt;div class=&quot;revision&quot;&gt;
+&lt;p class=&quot;date&quot;&gt;2019/06/21 追記&lt;/p&gt;
+
+Babel7.4.0から @babel/polyfill が非推奨となっています。変更点や新しい設定方法は「&lt;a href=&quot;/blog/2019-06-21-1&quot;&gt;Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法&lt;/a&gt;」の記事をご確認ください。
+&lt;/div&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#用途別polyfillの入れ方&quot; id=&quot;markdown-toc-用途別polyfillの入れ方&quot;&gt;用途別polyfillの入れ方&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-必要なpolyfillだけを入れる方法&quot; id=&quot;markdown-toc-1-必要なpolyfillだけを入れる方法&quot;&gt;1. 必要なpolyfillだけを入れる方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-全てのpolyfillを入れる方法&quot; id=&quot;markdown-toc-2-全てのpolyfillを入れる方法&quot;&gt;2. 全てのpolyfillを入れる方法&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-グローバル汚染せずにpolyfillを適用する方法&quot; id=&quot;markdown-toc-3-グローバル汚染せずにpolyfillを適用する方法&quot;&gt;3. グローバル汚染せずにpolyfillを適用する方法&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#usebuiltinsのコードリーディング&quot; id=&quot;markdown-toc-usebuiltinsのコードリーディング&quot;&gt;useBuiltInsのコードリーディング&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#-babel-preset-envsrcindexjsl285&quot; id=&quot;markdown-toc--babel-preset-envsrcindexjsl285&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/index.js#L285&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#-babel-preset-envsrcuse-built-ins-entry-pluginjsl31&quot; id=&quot;markdown-toc--babel-preset-envsrcuse-built-ins-entry-pluginjsl31&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/use-built-ins-entry-plugin.js#L31&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#-babel-preset-envsrcuse-built-ins-pluginjsl68&quot; id=&quot;markdown-toc--babel-preset-envsrcuse-built-ins-pluginjsl68&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/use-built-ins-plugin.js#L68&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#-babelhelper-module-imports&quot; id=&quot;markdown-toc--babelhelper-module-imports&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; @babel/helper-module-imports&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#あとがき&quot; id=&quot;markdown-toc-あとがき&quot;&gt;あとがき&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id=&quot;用途別polyfillの入れ方&quot;&gt;用途別polyfillの入れ方&lt;/h3&gt;
 
 &lt;p&gt;polyfillの入れ方には大きく3種類あります。&lt;/p&gt;
@@ -1494,213 +1672,4 @@ polyfillの注入を担うclass。1つのpolyfillにつき1インスタンスを
 &lt;/ul&gt;
 
 &lt;p&gt;という感じでした。&lt;br /&gt;
-Stateが不要な場面ではFunctional Componentを使いたいので、このUpdateは嬉しい限りです。&lt;/p&gt;</content><author><name></name></author><summary type="html">先日「React v16.6.0: lazy, memo and contextType」にていくつかの新機能が発表されました。この中のReact.memoが個人的に嬉しい機能だったので、軽く調べてみました。</summary></entry><entry><title type="html">algoliaを使ってJekyll製ブログに全文検索をつけた話</title><link href="https://aloerina01.github.io/blog/2018-10-11-1" rel="alternate" type="text/html" title="algoliaを使ってJekyll製ブログに全文検索をつけた話" /><published>2018-10-11T00:00:00+00:00</published><updated>2018-10-11T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-10-11-1">&lt;h3 id=&quot;algoliaとは&quot;&gt;&lt;a href=&quot;https://www.algolia.com/&quot; target=&quot;_blank&quot;&gt;algolia&lt;/a&gt;とは&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Products to accelerate search and discovery experiences across any device and platform.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;algoliaとは&lt;strong&gt;全文検索エンジンサービス&lt;/strong&gt;です。「algoliaサーバにブログやドキュメントなどのコンテンツデータをアップすると、そのデータを全文検索するAPIを利用できる」といった感じのものです。&lt;/p&gt;
-
-&lt;p&gt;例を挙げると、Vue, React, Webpack, babel などの公式ドキュメントにある検索機能が、algoliaのDocSearchという機能によって実現されています。&lt;/p&gt;
-
-&lt;p&gt;今回は、このalgoliaを使ってブログに全文検索を実装した方法をまとめてみます。&lt;/p&gt;
-
-&lt;h3 id=&quot;手順&quot;&gt;手順&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.algolia.com/&quot; target=&quot;_blank&quot;&gt;algolia&lt;/a&gt;&lt;/strong&gt;のフリーアカウントを取得する&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://community.algolia.com/jekyll-algolia/&quot; target=&quot;_blank&quot;&gt;jekyll-algolia&lt;/a&gt;&lt;/strong&gt;を使い、ブログコンテンツをalgoliaサーバにアップする&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;&lt;a href=&quot;https://www.algolia.com/doc/tutorials/search-ui/autocomplete/auto-complete/&quot; target=&quot;_blank&quot;&gt;autocomplete.js&lt;/a&gt;&lt;/strong&gt;を使い検索窓を実装する&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;1-algoliaのフリーアカウントを取得する&quot;&gt;1. algoliaのフリーアカウントを取得する&lt;/h3&gt;
-
-&lt;p&gt;サービスを利用するために&lt;a href=&quot;https://www.algolia.com/users/sign_up&quot; target=&quot;_blank&quot;&gt;フリーアカウントを作成&lt;/a&gt;します。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-10-11-1-dashboard.png&quot; alt=&quot;dashboard&quot; style=&quot;border:1px solid #ddd&quot; /&gt;
-ダッシュボード画面のサンプル&lt;/p&gt;
-
-&lt;p&gt;アカウントを作成するとコンテンツをアップロードでき、そのデータに対してAPI経由で全文検索できるようになります。algoliaが提供している機能は基本的にここまでで、検索窓や検索結果の表示などのUIは別途用意する必要があります。&lt;/p&gt;
-
-&lt;p&gt;ただ「ドキュメント」に全文検索を導入する場合は、検索窓などのWidgetがセットになった&lt;a href=&quot;https://community.algolia.com/docsearch/&quot; target=&quot;_blank&quot;&gt;DocSearch&lt;/a&gt;という機能を使うことができます。&lt;br /&gt;
-ちなみにこれを利用するには審査が必要です。私は当初「algolia = DocSearch」だと思い込んでいたのでDocSearchの登録申請を出しましたが、審査で「これはドキュメントじゃなくてブログよね？」とツッコミいただき、通常のalgoliaアカウントを作成するよう助言いただきました…。&lt;/p&gt;
-
-&lt;h3 id=&quot;2-jekyll-algoliaを使いブログコンテンツをalgoliaにアップする&quot;&gt;2. &lt;strong&gt;jekyll-algolia&lt;/strong&gt;を使い、ブログコンテンツをalgoliaにアップする&lt;/h3&gt;
-
-&lt;p&gt;algoliaにコンテンツをアップする方法はいろいろあります。その中のひとつが&lt;a href=&quot;https://community.algolia.com/jekyll-algolia/&quot; target=&quot;_blank&quot;&gt;jekyll-algolia&lt;/a&gt;です。&lt;/p&gt;
-
-&lt;p&gt;おさらいすると、Jekyllは「markdown等で書かれたコンテンツデータから静的サイトを生成する」ものです。対してjekyll-algoliaは「&lt;strong&gt;markdown等で書かれたコンテンツデータから静的サイトを生成し、生成したコンテンツをalgoliaにアップする&lt;/strong&gt;」ものです。要はアップロードを手助けしてくれるプラグインですね。&lt;/p&gt;
-
-&lt;p&gt;このjekyll-algoliaを導入していきます。&lt;/p&gt;
-
-&lt;h4 id=&quot;environment&quot;&gt;Environment&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Jekyll &amp;gt;= 3.6.0&lt;/li&gt;
-  &lt;li&gt;Ruby &amp;gt;= 2.3.0&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;installation&quot;&gt;Installation&lt;/h4&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;にプラグインを追加し、インストールします。&lt;/p&gt;
-
-&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;source&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'https://rubygems.org'&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'jekyll'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'~&amp;gt; 3.6'&lt;/span&gt;
-
-&lt;span class=&quot;n&quot;&gt;group&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;:jekyll_plugins&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do&lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;gem&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'jekyll-algolia'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;bundle &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;configuration&quot;&gt;Configuration&lt;/h4&gt;
-
-&lt;p&gt;algoliaアカウントを作成後、ダッシュボードの「API Keys」にて&lt;strong&gt;Application ID&lt;/strong&gt;を確認し、&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;に設定を既述します。&lt;/p&gt;
-
-&lt;div class=&quot;language-yaml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
-&lt;span class=&quot;na&quot;&gt;algolia&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;application_id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;your_application_id&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;index_name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mf_code&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# indexingする対象の名前をここで決めます。&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;私はブログを生成するための設定とAlgoliaにアップするための設定を一部変えたかったので、&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.algolia.yml&lt;/code&gt;と別ファイルにしました。&lt;/p&gt;
-
-&lt;h4 id=&quot;usage&quot;&gt;Usage&lt;/h4&gt;
-
-&lt;p&gt;ダッシュボードの「API Keys」から&lt;strong&gt;Admin API Keys&lt;/strong&gt;を確認し、実行時に渡します。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ ALGOLIA_API_KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'your_admin_api_key'&lt;/span&gt; bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll algolia
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;読み込む設定ファイルを変更するには&lt;code class=&quot;highlighter-rouge&quot;&gt;--config&lt;/code&gt;オプションを使います。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ ALGOLIA_API_KEY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'your_admin_api_key'&lt;/span&gt; bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll algolia &lt;span class=&quot;nt&quot;&gt;--config&lt;/span&gt; ./_config.algolia.yml
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2018-10-11-1-usage.gif&quot; alt=&quot;execute demo&quot; /&gt;
-&lt;small&gt;&lt;a href=&quot;https://community.algolia.com/jekyll-algolia/getting-started.html&quot; target=&quot;_blank&quot;&gt;Getting started&lt;/a&gt;より&lt;/small&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;advanced&quot;&gt;Advanced&lt;/h4&gt;
-
-&lt;p&gt;毎回手動で実行するのは面倒なので、CIで実行するようにします。&lt;br /&gt;
-ただalgoliaのフリーアカウントでは1ヶ月のアップロード回数に限度があるので、むやみにアップロードするのは避けたいところ。記事コンテンツが修正された時だけアップロードするようにしてみます。具体的には「&lt;strong&gt;前回のCI実行時のリビジョンと比較し&lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;以下に差分がある場合&lt;/strong&gt;」にアップロードします。&lt;/p&gt;
-
-&lt;p&gt;そのために必要なことは以下のとおりです。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;CIの環境変数にAdmin API Keyを登録する&lt;/li&gt;
-  &lt;li&gt;jekyll-algoliaを実行するスクリプトを実装する
-    &lt;ul&gt;
-      &lt;li&gt;CIの過去の実行結果を取得し、そのトリガーとなったCommit Idを取得する&lt;/li&gt;
-      &lt;li&gt;現在のCI実行のトリガーとなったCommit Idを取得する&lt;/li&gt;
-      &lt;li&gt;それらのCommit Idのdiffを取得し、&lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;以下の差分の有無を確認する&lt;/li&gt;
-      &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;以下に差分がある場合はjekyll-algoliaを実行する&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;スクリプトは&lt;a href=&quot;https://github.com/aloerina01/aloerina01.github.io/blob/development/scripts/indexing.sh&quot; target=&quot;_blank&quot;&gt;indexing.sh - aloerina01.github.io&lt;/a&gt;に実装していますので、よければ参考にどうぞ(shell力の低い実装ですが…)。&lt;/p&gt;
-
-&lt;h3 id=&quot;3-autocompletejsを使い検索窓を実装する&quot;&gt;3. &lt;strong&gt;autocomplete.js&lt;/strong&gt;を使い検索窓を実装する&lt;/h3&gt;
-
-&lt;p&gt;algoliaを使ってインクリメンタルサーチを実現できるライブラリが&lt;a href=&quot;https://www.algolia.com/doc/tutorials/search-ui/autocomplete/auto-complete/&quot; target=&quot;_blank&quot;&gt;autocomplete.js&lt;/a&gt;です。これはJekyllとは関係ないもので様々な環境に適用することができます。公式ドキュメントも手厚く、バックエンドはphp, ruby, JavaScript, python, C# に対応しており、フロントエンドはvanillaなJavaScript, Angular, jQuery 用のサンプルコードが用意されています。&lt;br /&gt;
-このブログではvanillaJSでの利用方法にのっとりJSとCSSを読み込み、任意の箇所にDOMを追加しています。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;HTML&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aa-input-container&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aa-input-container&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;input&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;search&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aa-search-input&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aa-input-search&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;placeholder=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Search for players or teams...&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;search&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;autocomplete=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;off&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;svg&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;aa-input-icon&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;viewBox=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;654 -372 1664 1664&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
-        &lt;span class=&quot;nt&quot;&gt;&amp;lt;path&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;d=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;/&amp;gt;&lt;/span&gt;
-    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/svg&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;&amp;lt;!-- 中略 --&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.min.js&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;JavaScript&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;algoliasearch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'YourApplicationID'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'YourSearchOnlyAPIKey'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;initIndex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'YourIndex'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;//initialize autocomplete on search input (ID selector must match)&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;autocomplete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;s1&quot;&gt;'#aa-search-input'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;hint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;source&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;autocomplete&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;sources&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;hits&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;hitsPerPage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//value to be displayed in input control after user's suggestion selection&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;displayKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'name'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;c1&quot;&gt;//hash of templates used when rendering dataset&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;templates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;c1&quot;&gt;//'suggestion' templating function used to render a single suggestion&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;suggestion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;suggestion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;`&amp;lt;span&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;suggestion&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;_highlightResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;lt;/span&amp;gt;`&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;suggestion._highlightResult&lt;/code&gt;に検索結果が入ってきます。プロパティの&lt;code class=&quot;highlighter-rouge&quot;&gt;title&lt;/code&gt;は自分がアップロードしたコンテンツが持つプロパティで、algoliaダッシュボードで確認できます。何をヒットさせるか、どんな優先度でヒットさせるか等をダッシュボードから変更することができます。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.aa-input-container&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;inline-block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;relative&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.aa-input-search&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;300px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;28px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;box-sizing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;border-box&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;-webkit-appearance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;-moz-appearance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;appearance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.aa-input-search&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;::-webkit-search-decoration&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.aa-input-search&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;::-webkit-search-cancel-button&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.aa-input-search&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;::-webkit-search-results-button&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.aa-input-search&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;::-webkit-search-results-decoration&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;none&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.aa-input-icon&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;16px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;16px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;position&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;absolute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;50%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;right&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;16px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;-webkit-transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;translateY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-50%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-          &lt;span class=&quot;nl&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;translateY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;-50%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;py&quot;&gt;fill&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#e4e4e4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.aa-dropdown-menu&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#fff&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;border&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;min-width&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;300px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;10px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;box-sizing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;border-box&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.aa-suggestion&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;padding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;12px&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;cursor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;pointer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.aa-suggestion&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.aa-suggestion&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;border-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;1px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;228&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;.aa-suggestion&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:hover&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.aa-suggestion.aa-cursor&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rgba&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;241&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;241&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;241&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0.35&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; 
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;インクリメンタルサーチWidgetのシンプルなCSSです。実際にはこのCSSをカスタマイズして利用しています。&lt;/p&gt;
-
-&lt;h3 id=&quot;感想&quot;&gt;感想&lt;/h3&gt;
-
-&lt;p&gt;algoliaはドキュメントがけっこうしっかり書かれている印象でした。機能が豊富なこととドキュメントがしっかりしてることで、かえって自分に最適な情報を探すのに苦労しましたが、見つけてしまえばアップロードまではすぐできました。&lt;/p&gt;
-
-&lt;p&gt;また、DocSearchの印象が強く「インクリメンタルな検索Widgetまでセットになったもの」を求めていたので、autocomplete.jsを見つけるまではいろいろな情報に振り回されました。jekyll-algoliaの公式ドキュメントではUIの実装に&lt;a href=&quot;https://community.algolia.com/instantsearch.js/&quot; target=&quot;_blank&quot;&gt;InstantSearch.js&lt;/a&gt;を使うよう案内していて、情報迷路にハマりました…(ちなみにInstantSearch.jsは、簡単な検索窓だけでなく、検索結果によって画面全体が更新されるなどのリッチなコンテンツを実装するためのライブラリのようでした)。&lt;/p&gt;
-
-&lt;p&gt;とは言え、algoliaもautocomplete.jsも理解してしまえば不自由なく使える便利なものでした。日本語の情報が少なかったので、この記事が少しでも役に立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">algoliaとは</summary></entry></feed>
+Stateが不要な場面ではFunctional Componentを使いたいので、このUpdateは嬉しい限りです。&lt;/p&gt;</content><author><name></name></author><summary type="html">先日「React v16.6.0: lazy, memo and contextType」にていくつかの新機能が発表されました。この中のReact.memoが個人的に嬉しい機能だったので、軽く調べてみました。</summary></entry></feed>
