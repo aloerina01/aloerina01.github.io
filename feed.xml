@@ -1,5 +1,87 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-06-21T03:56:51+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法</title><link href="https://aloerina01.github.io/blog/2019-06-21-1" rel="alternate" type="text/html" title="Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法" /><published>2019-06-21T00:00:00+00:00</published><updated>2019-06-21T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-06-21-1">&lt;p&gt;Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-07-25T10:40:42+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">みんなのモブプロの疑問に答えてみた</title><link href="https://aloerina01.github.io/blog/2019-07-25-1" rel="alternate" type="text/html" title="みんなのモブプロの疑問に答えてみた" /><published>2019-07-25T00:00:00+00:00</published><updated>2019-07-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-07-25-1">&lt;p&gt;先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。&lt;/p&gt;
+
+&lt;p&gt;ところで、このイベントでは参加者から質問を集める機会があったのですが、どれも身近に感じる質問だったので、自分の思考整理のために私の目線で答えて見ようと思います。私の現場の実例共有も兼ねて。&lt;/p&gt;
+
+&lt;h3 id=&quot;有識者が参加していない場合コードレビューをどうしていますか&quot;&gt;有識者が参加していない場合、コードレビューをどうしていますか？&lt;/h3&gt;
+
+&lt;p&gt;参加者に合わせてモブプロのゴールを調整しています。&lt;br /&gt;
+私のチームのモブプロでは有識者が参加しているケースが多いので、「GitHub上でのコードレビューなく即Mergeできる状態」を目指すことが多いです。とはいえ欠席が重なり有識者がいない場合もあるので、その際は「参加者の中では合意の取れた状態」を目指し、あとで有識者にレビューしてもらったりしています。急ぎでない場合は別の案件に取り組む、できる部分だけやる、といった選択をとることもあります。&lt;/p&gt;
+
+&lt;h3 id=&quot;暴走しがちな人がいる場合にどう対処しますか&quot;&gt;暴走しがちな人がいる場合にどう対処しますか？&lt;/h3&gt;
+
+&lt;p&gt;私のチームでは、ナビゲーターの一人だけが発言しまくるといった暴走よりも、ドライバーが一人でコードを書き進めちゃう暴走のほうが起きがちです。私もやりがちなのですが、コードを書いているうちに脳内で先読みが捗ってしまうんですよね。そして場を置き去りにしてひとりで書き進めちゃうんですよね…。&lt;/p&gt;
+
+&lt;p&gt;このとき「ちょっと待って」「声に出してから書いてみて」とブレーキをかけるのもナビゲーターの役目だと思っています。ナビゲーターの一人だけが発言している場合に「〇〇さんはどう思う？」と別の人に話を振ることも然り。モブの進め方を改善できるのはモブの参加者自身だと思うのです。&lt;/p&gt;
+
+&lt;h3 id=&quot;モブプロを定着させるために特別な取り組みをしましたか&quot;&gt;モブプロを定着させるために特別な取り組みをしましたか？&lt;/h3&gt;
+
+&lt;p&gt;私がチームにモブを導入したときは、&lt;strong&gt;みんなでひとつの仕事をすることを「モブ」と呼び&lt;/strong&gt;、モブは身近なものであるという認識を浸透させることを意識しました。具体的には&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;もともと開催していたコードレビュー会を「モブレビュー」と呼ぶようにした&lt;/li&gt;
+  &lt;li&gt;Slackにモブに関する情報共有のChannelを立てて情報発信した&lt;/li&gt;
+  &lt;li&gt;モブプロの時間を確保しトライアルした&lt;/li&gt;
+  &lt;li&gt;チームメンバーが議論している場に顔出し「モブしてるね！」と声掛けて回った&lt;/li&gt;
+  &lt;li&gt;実装に関する相談を受けたときに「モブでやっつけてみる？」と提案した&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった感じです。今では自然と複数人で集まって問題解決する場面が増えてきたので、チームにモブという選択肢が浸透してきたように感じます。&lt;/p&gt;
+
+&lt;p&gt;きちんとドライバーとナビゲーターを決めインターバルを回すモブプロの形式にはなっていないこともありますが、&lt;strong&gt;モブの目的に適っていれば形式にはこだわらないようにしています&lt;/strong&gt;。これもモブ定着の工夫のひとつかもしれません。&lt;/p&gt;
+
+&lt;h3 id=&quot;モブプロの目的をどう設定していますか&quot;&gt;モブプロの目的をどう設定していますか？&lt;/h3&gt;
+
+&lt;p&gt;端的にいうと「&lt;strong&gt;フロー効率をよくすること&lt;/strong&gt;」を目的にしていて、説明するときはフロー効率の改善によって得られる作用に焦点を当てて話したりしています。モブの目的にについては『&lt;a href=&quot;https://aloerina01.github.io/blog/2019-03-12-1#%E3%81%AA%E3%81%9C%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%92%E3%81%99%E3%82%8B%E3%81%AE&quot;&gt;「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる&lt;/a&gt;』もあわせてどうぞ。&lt;/p&gt;
+
+&lt;h3 id=&quot;非エンジニアにモブプロのメリットをどう説明しますか&quot;&gt;非エンジニアにモブプロのメリットをどう説明しますか？&lt;/h3&gt;
+
+&lt;p&gt;幸運にも開発プロセスについて裁量を与えてもらえる環境なので、「モブプロをやることを許可してもらうための説得」といった難易度の高い説明を経験したことがありません。&lt;/p&gt;
+
+&lt;p&gt;ですがプランナーなどの非エンジニアにモブプロの手法を紹介したときは、エンジニアに伝えるときと同様にリソース効率とフロー効率の違いをとっかかりとし、レビュー待ち時間などによりリードタイムがかかった体験談などを交え、モブプロという手段を選択する理由を伝えました。また、&lt;strong&gt;実際にモブプロに参加してもらったり&lt;/strong&gt;様子を撮影して見せることでその場の雰囲気を知ってもらい、「自分たちも試してみようか」と感じてもらうことを目指して説明しました。&lt;/p&gt;
+
+&lt;p&gt;ちなみに、ここでも「モブプロ」ではなく「モブ」という言葉を意識的に使うようにしています。モブプロの方法論には言及せず、モブの身近さを実感してもらうことでメリットを想像しやすい状態をつくることを意識しています。&lt;/p&gt;
+
+&lt;h3 id=&quot;どうしてもモブプロをしたくない人がいる場合どうしますか&quot;&gt;どうしてもモブプロをしたくない人がいる場合どうしますか？&lt;/h3&gt;
+
+&lt;p&gt;モブプロあるいはモブは&lt;strong&gt;手段のひとつ&lt;/strong&gt;です。ですので、やりたくない人がいるのであれば強制する必要はないと思っています。&lt;/p&gt;
+
+&lt;p&gt;ただ、モブプロをしたくないと感じる背景を知ることができれば、そこに何かしらの&lt;strong&gt;改善のヒント&lt;/strong&gt;があるように感じます。&lt;br /&gt;
+やったことないけれどやりたくないと主張する人がいる場合は、モブ以前に「何か案が出たらとりあえず試してみる」というマインドをチームに浸透させることが必要かもしれません。&lt;br /&gt;
+逆に過去にモブプロを経験した上でやりたくないと主張する人がいる場合は、モブのメリットを実感できなかったのかもしれません。どんな点がまずかったのかを聞き、今の自分たちのモブが同じ状態ではないかを見つめ直し、問題ないようであればその旨を伝えてみると良いかもしれません。&lt;/p&gt;
+
+&lt;p&gt;いずれにせよ、やりたくないと言う人がいるということは改善のきっかけを得るチャンスなのだと思っています。&lt;/p&gt;
+
+&lt;h3 id=&quot;モブプロに合う内容合わない内容はありますか&quot;&gt;モブプロに合う内容・合わない内容はありますか？&lt;/h3&gt;
+
+&lt;p&gt;設計やリファクタリングなど、&lt;strong&gt;人によって結果や過程に差が出やすいものは向いている&lt;/strong&gt;と感じます。また、暗黙のテクニックがあるような難解なデバッグや、環境による差が起きやすい環境構築なども向いていると思います。&lt;br /&gt;
+一方、修正方法が誰の目からも明らかな不具合修正や、誰がやっても過程・結果が変わらない単純作業などは向かないと思っています。&lt;/p&gt;
+
+&lt;h3 id=&quot;モブプロに最適な人数は何人ですか&quot;&gt;モブプロに最適な人数は何人ですか？&lt;/h3&gt;
+
+&lt;p&gt;小規模で全員が「ちゃんと」参加できる目安は4〜6人くらいかな、というのが体感です。『モブプログラミング・ベストプラクティス』には3〜4人がちょうど良いと書かれていましたし、私の現場では9人くらいでうまくできたと感じるケースもありましたので、あくまで目安です。ただ始めたばかりの頃は少なすぎても多すぎても難しく、4〜6人が安定しやすかった印象です。&lt;/p&gt;
+
+&lt;h3 id=&quot;ドライバーは何分交代でやっていますか&quot;&gt;ドライバーは何分交代でやっていますか？&lt;/h3&gt;
+
+&lt;p&gt;その時々によりますが、15分〜30分交代が多いです。&lt;br /&gt;
+何分のインターバルにしても、最後の1分は&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ドライバーがgit commitする&lt;/li&gt;
+  &lt;li&gt;次のドライバーがgit pullする&lt;/li&gt;
+  &lt;li&gt;次のドライバーが書き始められるよう準備する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;にあてています。&lt;/p&gt;
+
+&lt;h3 id=&quot;人前でコードを書くのは緊張しませんか&quot;&gt;人前でコードを書くのは緊張しませんか？&lt;/h3&gt;
+
+&lt;p&gt;私も人前でコードを書くときは緊張しがちですが、モブプロではあまり緊張しません。&lt;br /&gt;
+私の場合「考えている過程」や「未完成なコード」を見られることで能力が低いと感じ取られてしまわないか……という不安があり緊張してしまう傾向にあります。ですがドライバーは&lt;strong&gt;ナビゲーターの言うとおりに書く&lt;/strong&gt;ことがほとんどなので、みんなの意見を反映するタイピスト(兼 質問して議論を掘り下げるファシリテーター)のような感覚で臨んでいます。ちょっとした気持ちの違いですが、これでけっこう緊張をほぐせています。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;振り返ってみると、どの疑問も自分が一度はぶち当たったことのあるものでした。今でも悩んでいる課題もありますが、上述したように「&lt;strong&gt;みんなでひとつの仕事をすればモブである&lt;/strong&gt;」と考えるようになってだいぶ肩の荷が下りました。もちろん方法論に沿ったほうがうまくいくことが多いとは思いますが、そこにこだわって悩むのではなく、&lt;strong&gt;方法に悩んだらそれすらモブで決めちゃおう&lt;/strong&gt;くらいの気持ちでいてもいいのかなと思います。せっかくなので楽しんでモブしだいですしね！ ハッピーモビング！&lt;/p&gt;</content><author><name></name></author><summary type="html">先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。</summary></entry><entry><title type="html">Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法</title><link href="https://aloerina01.github.io/blog/2019-06-21-1" rel="alternate" type="text/html" title="Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法" /><published>2019-06-21T00:00:00+00:00</published><updated>2019-06-21T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-06-21-1">&lt;p&gt;Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉&lt;br /&gt;
 これらに伴いpolyfill周りの設定方法が変わったので、その内容をメモしておこうと思います。&lt;/p&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
@@ -1514,162 +1596,4 @@ polyfillの注入を担うclass。1つのpolyfillにつき1インスタンスを
 
 &lt;h3 id=&quot;あとがき&quot;&gt;あとがき&lt;/h3&gt;
 
-&lt;p&gt;今回の記事はBabel7.1.0のドキュメントとソースを参考にしています。今後また仕様が変わることもあると思うので、記事内に古い情報や誤りを見つけた際は&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡いただければと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です。今回はBabel7.xでの用途別polyfillの設定方法と、キモとなるuseBuiltInsオプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは7.1.0です)。</summary></entry><entry><title type="html">React16.6の新機能 React.memo のコードリーディング</title><link href="https://aloerina01.github.io/blog/2018-10-25-1" rel="alternate" type="text/html" title="React16.6の新機能 React.memo のコードリーディング" /><published>2018-10-25T00:00:00+00:00</published><updated>2018-10-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-10-25-1">&lt;p&gt;先日「&lt;a href=&quot;https://reactjs.org/blog/2018/10/23/react-v-16-6.html&quot; target=&quot;_blank&quot;&gt;React v16.6.0: lazy, memo and contextType&lt;/a&gt;」にていくつかの新機能が発表されました。この中の&lt;strong&gt;React.memo&lt;/strong&gt;が個人的に嬉しい機能だったので、軽く調べてみました。&lt;/p&gt;
-
-&lt;h3 id=&quot;reactmemoとは何か&quot;&gt;React.memoとは何か&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Class components can bail out from rendering when their input props are the same using PureComponent or shouldComponentUpdate.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;ReactではComponentの再レンダリング回数を最小限にしパフォーマンスを上げる方法として、&lt;code class=&quot;highlighter-rouge&quot;&gt;shouldComponentUpdate&lt;/code&gt;やPure Componentがあります。ですがFunctional Componentを使う場合はこの仕組みを利用できませんでした。これを可能にしてくれるのがReact.memoです。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MyFunctionalComponent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;div&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Hello&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/div&amp;gt;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;;
-&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MemoComponent&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;memo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;MyFunctionalComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;MemoComponentはpropsが変化したときのみ再レンダリングされます。&lt;/p&gt;
-
-&lt;h3 id=&quot;ソースから読み解くreactmemoの挙動&quot;&gt;ソースから読み解くReact.memoの挙動&lt;/h3&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/facebook/react/blob/master/packages/react/src/memo.js&quot; target=&quot;_blank&quot;&gt;memo.js&lt;/a&gt;の主要部分を見てみます。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;memo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Props&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;React$ElementType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;?:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;oldProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Props&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;kr&quot;&gt;boolean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__DEV__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isValidElementType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;warningWithoutStack&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;s1&quot;&gt;'memo: The first argument must be a component. Instead '&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
-          &lt;span class=&quot;s1&quot;&gt;'received: %s'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'null'&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;typeof&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;$typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;REACT_MEMO_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;compare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;memo関数は2つの引数&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;compare&lt;/code&gt;を受取っています。&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;はComponent&lt;/strong&gt;で、&lt;strong&gt;compoareは&lt;code class=&quot;highlighter-rouge&quot;&gt;shouldComponentUpdate&lt;/code&gt;に相当するもの&lt;/strong&gt;のように見えます。返り値のオブジェクトは、2つの引数と&lt;code class=&quot;highlighter-rouge&quot;&gt;$$typeof: REACT_MEMO_TYPE&lt;/code&gt;というプロパティを持つ新しいオブジェクトです。&lt;/p&gt;
-
-&lt;p&gt;つまりReact.memoがしていることは「受取ったComponentに&lt;code class=&quot;highlighter-rouge&quot;&gt;REACT_MEMO_TYPE&lt;/code&gt;という印をつけている」感じですね。意外にシンプルです。さて、これがどのように利用されるのでしょうか。&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/react-reconciler/src/ReactFiber.js&quot; target=&quot;_blank&quot;&gt;ReactFiber.js&lt;/a&gt;のソースを見てみます。&lt;code class=&quot;highlighter-rouge&quot;&gt;type&lt;/code&gt;をもとにFiberインスタンスを生成する&lt;code class=&quot;highlighter-rouge&quot;&gt;createFiberFromTypeAndProps&lt;/code&gt;関数から追っていきます。&lt;/p&gt;
-
-&lt;h5 id=&quot;react_memo_typeの利用箇所---reactfiberjsl473&quot;&gt;REACT_MEMO_TYPEの利用箇所 - &lt;a href=&quot;https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/react-reconciler/src/ReactFiber.js#L473&quot; target=&quot;_blank&quot;&gt;ReactFiber.js#L473&lt;/a&gt;&lt;/h5&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createFiberFromTypeAndProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// React$ElementType&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;pendingProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;owner&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fiber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TypeOfMode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;expirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fiber&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 略&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$$typeof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;REACT_MEMO_TYPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;fiberTag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MemoComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;// 略&lt;/span&gt;
-
-  &lt;span class=&quot;nx&quot;&gt;fiber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createFiber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fiberTag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;pendingProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$$typeof: REACT_MEMO_TYPE&lt;/code&gt;が付与されたオブジェクトは&lt;code class=&quot;highlighter-rouge&quot;&gt;MemoComponent&lt;/code&gt;としてFiberインスタンスが生成されます。&lt;/p&gt;
-
-&lt;h5 id=&quot;componentライフサイクル実行前---reactfiberbeginworkjsl1693&quot;&gt;Componentライフサイクル実行前 - &lt;a href=&quot;https://github.com/facebook/react/blob/cbbc2b6c4d0d8519145560bd8183ecde55168b12/packages/react-reconciler/src/ReactFiberBeginWork.js#L1693&quot; target=&quot;_blank&quot;&gt;ReactFiberBeginWork.js#L1693&lt;/a&gt;&lt;/h5&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;beginWork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fiber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fiber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;renderExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fiber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 略&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tag&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;MemoComponet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;unresolvedProps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;pendingProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resolvedProps&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resolveDefaultProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;unresolvedProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;updateMemoComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;resolvedProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;updateExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-        &lt;span class=&quot;nx&quot;&gt;renderExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Componentの種類に応じたUpdate処理を呼び出しています。&lt;/p&gt;
-
-&lt;h5 id=&quot;memocomponentのupdate---reactfiberbeginworkjsl235&quot;&gt;MemoComponentのupdate - &lt;a href=&quot;https://github.com/facebook/react/blob/cbbc2b6c4d0d8519145560bd8183ecde55168b12/packages/react-reconciler/src/ReactFiberBeginWork.js#L235&quot; target=&quot;_blank&quot;&gt;ReactFiberBeginWork.js#L235&lt;/a&gt;&lt;/h5&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;updateMemoComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fiber&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fiber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;nextProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;updateExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;renderExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Fiber&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;c1&quot;&gt;// 略&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;// compareがないMemoComponentはシンプルにpropsをshallowEqualで比較してupdateしている&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isSimpleFunctionComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;  
-    &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;tag&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;SimpleMemoComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;updateSimpleMemoComponent&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;nextProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;updateExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;renderExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;// 略&lt;/span&gt;
-
-  &lt;span class=&quot;c1&quot;&gt;// compareがある場合はそれを使い、ない場合はshallowEqualを使い比較してupdateしている&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;shallowEqual&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compare&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prevProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;nextProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bailoutOnAlreadyFinishedWork&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;current&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;renderExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newChild&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createWorkInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;currentChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;nextProps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;renderExpirationTime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;newChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;newChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;workInProgress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;child&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;newChild&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;compareがある場合はcompareを使ってpropsを比較し、ない場合はshallowEqualでpropsを比較しupdateしています。&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;ざっと見た感じ、&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;React.memo(Component)&lt;/code&gt; … 引数のComponentをPure Component化する&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;React.memo(Component, compare)&lt;/code&gt; … 引数のComponentに&lt;code class=&quot;highlighter-rouge&quot;&gt;shouldComponentUpdate&lt;/code&gt;の挙動をを付与する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;という感じでした。&lt;br /&gt;
-Stateが不要な場面ではFunctional Componentを使いたいので、このUpdateは嬉しい限りです。&lt;/p&gt;</content><author><name></name></author><summary type="html">先日「React v16.6.0: lazy, memo and contextType」にていくつかの新機能が発表されました。この中のReact.memoが個人的に嬉しい機能だったので、軽く調べてみました。</summary></entry></feed>
+&lt;p&gt;今回の記事はBabel7.1.0のドキュメントとソースを参考にしています。今後また仕様が変わることもあると思うので、記事内に古い情報や誤りを見つけた際は&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡いただければと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です。今回はBabel7.xでの用途別polyfillの設定方法と、キモとなるuseBuiltInsオプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは7.1.0です)。</summary></entry></feed>

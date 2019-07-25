@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Node.js + Express を試してみた</title>
-  <meta name="description" content="巷でよく見かけるExpressだけど「何者？」って感じだったので公式のGetting Startedを軽く触ってみたので、その覚書き。せっかくなので普段使わないEJSテンプレートなんかも軽く使ってみた。">
+  <title>みんなのモブプロの疑問に答えてみた</title>
+  <meta name="description" content="先日開催されたモブプロMeetupにて、参加者のモブプロへの疑問・質問が集められました。私のチームの事例紹介も兼ねてそれらに回答してみました。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2019">
@@ -38,10 +38,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="巷でよく見かけるExpressだけど「何者？」って感じだったので公式のGetting Startedを軽く触ってみたので、その覚書き。せっかくなので普段使わないEJSテンプレートなんかも軽く使ってみた。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-01-01-1" />
+  <meta property="og:description" content="先日開催されたモブプロMeetupにて、参加者のモブプロへの疑問・質問が集められました。私のチームの事例紹介も兼ねてそれらに回答してみました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2019-07-25-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="Node.js + Express を試してみた" />
+  <meta property="og:title" content="みんなのモブプロの疑問に答えてみた" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -52,17 +52,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Node.js + Express を試してみた">
-  <meta name="twitter:description" content="巷でよく見かけるExpressだけど「何者？」って感じだったので公式のGetting Startedを軽く触ってみたので、その覚書き。せっかくなので普段使わないEJSテンプレートなんかも軽く使ってみた。">
+  <meta name="twitter:title" content="みんなのモブプロの疑問に答えてみた">
+  <meta name="twitter:description" content="先日開催されたモブプロMeetupにて、参加者のモブプロへの疑問・質問が集められました。私のチームの事例紹介も兼ねてそれらに回答してみました。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-01-01-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2019-07-25-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-01-01-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2019-07-25-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   <script src="/dist/prism.js" defer></script>
@@ -117,8 +117,8 @@
           <meta itemprop="position" content="2" />
         </li>
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2017-01-01-1">
-            <span itemprop="name">Node.js + Express を試してみた</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2019-07-25-1">
+            <span itemprop="name">みんなのモブプロの疑問に答えてみた</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -132,7 +132,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">Node.js + Express を試してみた</h1>
+            <h1 class="title">みんなのモブプロの疑問に答えてみた</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -144,65 +144,100 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2017-01-01</div>
+          <div class="post-date">2019-07-25</div>
           <div class="post-categories">
             
             <i class="fas fa-fw fa-tag"></i>
              
-            <a href="/category/javascript/">JavaScript</a>   
+            <a href="/category/mobprogramming/">MobProgramming</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <h3 id="express-ってなに"><a href="http://expressjs.com/">Express</a> ってなに</h3>
-<p>一言で言うとNode上で動くWebアプリケーションをつくるための軽量フレームワーク。
-HTTP通信まわりをいい感じにやってくれるので、<code class="highlighter-rouge">Routing</code>とか<code class="highlighter-rouge">RestAPI</code>とかを簡単に用意できるみたいです。</p>
+          <p>先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。</p>
 
-<p>フロントもバックも全部JavaScriptで書けるというのがメリットなのだと思いました(個人的にはJavaが好きなので何とも)。</p>
+<p>ところで、このイベントでは参加者から質問を集める機会があったのですが、どれも身近に感じる質問だったので、自分の思考整理のために私の目線で答えて見ようと思います。私の現場の実例共有も兼ねて。</p>
 
-<p>普段JavaなりRailsなり(JavaScript意外の言語)で用意してたサーバサイドのコントローラをJavaScriptで書けるので、そしてNode上で動かせるので、お手軽感はあった気がします(Javaで書いてローカルのTomcatを起動して動作確認するのに比べたらだいぶ楽ちんだった)。</p>
+<h3 id="有識者が参加していない場合コードレビューをどうしていますか">有識者が参加していない場合、コードレビューをどうしていますか？</h3>
 
-<h3 id="つくったもの">つくったもの</h3>
-<p><img src="https://cdn.rawgit.com/aloerina01/short-code/sample-express/demo.gif" alt="つくったもののdemo" /></p>
+<p>参加者に合わせてモブプロのゴールを調整しています。<br />
+私のチームのモブプロでは有識者が参加しているケースが多いので、「GitHub上でのコードレビューなく即Mergeできる状態」を目指すことが多いです。とはいえ欠席が重なり有識者がいない場合もあるので、その際は「参加者の中では合意の取れた状態」を目指し、あとで有識者にレビューしてもらったりしています。急ぎでない場合は別の案件に取り組む、できる部分だけやる、といった選択をとることもあります。</p>
 
-<p>記事取得のリンクを叩くとqiitaの記事取得APIを叩いて表示する、というだけです。</p>
+<h3 id="暴走しがちな人がいる場合にどう対処しますか">暴走しがちな人がいる場合にどう対処しますか？</h3>
 
-<h3 id="実装">実装</h3>
+<p>私のチームでは、ナビゲーターの一人だけが発言しまくるといった暴走よりも、ドライバーが一人でコードを書き進めちゃう暴走のほうが起きがちです。私もやりがちなのですが、コードを書いているうちに脳内で先読みが捗ってしまうんですよね。そして場を置き去りにしてひとりで書き進めちゃうんですよね…。</p>
 
-<h4 id="routing">Routing</h4>
+<p>このとき「ちょっと待って」「声に出してから書いてみて」とブレーキをかけるのもナビゲーターの役目だと思っています。ナビゲーターの一人だけが発言している場合に「〇〇さんはどう思う？」と別の人に話を振ることも然り。モブの進め方を改善できるのはモブの参加者自身だと思うのです。</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/routes/index.html'</span><span class="p">);</span>
-<span class="p">});</span>
+<h3 id="モブプロを定着させるために特別な取り組みをしましたか">モブプロを定着させるために特別な取り組みをしましたか？</h3>
 
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'/get'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">request</span>
-        <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="s1">'http://qiita.com/api/v2/items?page=1&amp;per_page=20'</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">apiErr</span><span class="p">,</span> <span class="nx">apiRes</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/routes/itemlist'</span><span class="p">,</span> <span class="p">{</span> <span class="na">items</span><span class="p">:</span> <span class="nx">apiRes</span><span class="p">.</span><span class="nx">body</span> <span class="p">});</span>
-        <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div></div>
+<p>私がチームにモブを導入したときは、<strong>みんなでひとつの仕事をすることを「モブ」と呼び</strong>、モブは身近なものであるという認識を浸透させることを意識しました。具体的には</p>
 
-<p>エントリーポイントとなるこの<code class="highlighter-rouge">app.js</code>をNode上で実行すると、<code class="highlighter-rouge">localhost:3000</code>で待ち受けてくれるようになります。</p>
+<ul>
+  <li>もともと開催していたコードレビュー会を「モブレビュー」と呼ぶようにした</li>
+  <li>Slackにモブに関する情報共有のChannelを立てて情報発信した</li>
+  <li>モブプロの時間を確保しトライアルした</li>
+  <li>チームメンバーが議論している場に顔出し「モブしてるね！」と声掛けて回った</li>
+  <li>実装に関する相談を受けたときに「モブでやっつけてみる？」と提案した</li>
+</ul>
 
-<p><code class="highlighter-rouge">app.js</code>内では、<code class="highlighter-rouge">/</code>と<code class="highlighter-rouge">/get</code>のPathに対してRoutingしています。基本的に<code class="highlighter-rouge">app.METHOD(PATH, HANDLER)</code>でHTTPリクエストのRoutingができちゃうので感覚的です。</p>
+<p>といった感じです。今では自然と複数人で集まって問題解決する場面が増えてきたので、チームにモブという選択肢が浸透してきたように感じます。</p>
 
-<h4 id="template-rendering">Template Rendering</h4>
-<p>ExpressはいくつかのTemplateエンジンに対応しているとのことで、今回は使ったことのない <a href="http://www.embeddedjs.com/">EJS - JavaScript Templates</a> を試してみました。</p>
+<p>きちんとドライバーとナビゲーターを決めインターバルを回すモブプロの形式にはなっていないこともありますが、<strong>モブの目的に適っていれば形式にはこだわらないようにしています</strong>。これもモブ定着の工夫のひとつかもしれません。</p>
 
-<p>基本の考え方は<code class="highlighter-rouge">&lt;% %&gt;</code>で囲んだ部分でJavaScriptが使えるということなので、そんなに難しく考えなくてもよさそう。
-Quiteの記事取得APIのResponseのJSONをループで回すようにしました。</p>
+<h3 id="モブプロの目的をどう設定していますか">モブプロの目的をどう設定していますか？</h3>
 
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;
-    &lt;% items.forEach(function(item) { %&gt;
-    &lt;li&gt;&lt;a href="&lt;%= item.url %&gt;" target="_blank"&gt;&lt;%= item.title %&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;% }); %&gt;
-&lt;/ul&gt;
-</code></pre></div></div>
+<p>端的にいうと「<strong>フロー効率をよくすること</strong>」を目的にしていて、説明するときはフロー効率の改善によって得られる作用に焦点を当てて話したりしています。モブの目的にについては『<a href="https://aloerina01.github.io/blog/2019-03-12-1#%E3%81%AA%E3%81%9C%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%92%E3%81%99%E3%82%8B%E3%81%AE">「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</a>』もあわせてどうぞ。</p>
 
-<h3 id="おわり">おわり</h3>
-<p>ソースは <a href="https://github.com/aloerina01/short-code/tree/sample-express">GitHub - aloerina01/short-code at sample-express</a> にあげています。</p>
+<h3 id="非エンジニアにモブプロのメリットをどう説明しますか">非エンジニアにモブプロのメリットをどう説明しますか？</h3>
+
+<p>幸運にも開発プロセスについて裁量を与えてもらえる環境なので、「モブプロをやることを許可してもらうための説得」といった難易度の高い説明を経験したことがありません。</p>
+
+<p>ですがプランナーなどの非エンジニアにモブプロの手法を紹介したときは、エンジニアに伝えるときと同様にリソース効率とフロー効率の違いをとっかかりとし、レビュー待ち時間などによりリードタイムがかかった体験談などを交え、モブプロという手段を選択する理由を伝えました。また、<strong>実際にモブプロに参加してもらったり</strong>様子を撮影して見せることでその場の雰囲気を知ってもらい、「自分たちも試してみようか」と感じてもらうことを目指して説明しました。</p>
+
+<p>ちなみに、ここでも「モブプロ」ではなく「モブ」という言葉を意識的に使うようにしています。モブプロの方法論には言及せず、モブの身近さを実感してもらうことでメリットを想像しやすい状態をつくることを意識しています。</p>
+
+<h3 id="どうしてもモブプロをしたくない人がいる場合どうしますか">どうしてもモブプロをしたくない人がいる場合どうしますか？</h3>
+
+<p>モブプロあるいはモブは<strong>手段のひとつ</strong>です。ですので、やりたくない人がいるのであれば強制する必要はないと思っています。</p>
+
+<p>ただ、モブプロをしたくないと感じる背景を知ることができれば、そこに何かしらの<strong>改善のヒント</strong>があるように感じます。<br />
+やったことないけれどやりたくないと主張する人がいる場合は、モブ以前に「何か案が出たらとりあえず試してみる」というマインドをチームに浸透させることが必要かもしれません。<br />
+逆に過去にモブプロを経験した上でやりたくないと主張する人がいる場合は、モブのメリットを実感できなかったのかもしれません。どんな点がまずかったのかを聞き、今の自分たちのモブが同じ状態ではないかを見つめ直し、問題ないようであればその旨を伝えてみると良いかもしれません。</p>
+
+<p>いずれにせよ、やりたくないと言う人がいるということは改善のきっかけを得るチャンスなのだと思っています。</p>
+
+<h3 id="モブプロに合う内容合わない内容はありますか">モブプロに合う内容・合わない内容はありますか？</h3>
+
+<p>設計やリファクタリングなど、<strong>人によって結果や過程に差が出やすいものは向いている</strong>と感じます。また、暗黙のテクニックがあるような難解なデバッグや、環境による差が起きやすい環境構築なども向いていると思います。<br />
+一方、修正方法が誰の目からも明らかな不具合修正や、誰がやっても過程・結果が変わらない単純作業などは向かないと思っています。</p>
+
+<h3 id="モブプロに最適な人数は何人ですか">モブプロに最適な人数は何人ですか？</h3>
+
+<p>小規模で全員が「ちゃんと」参加できる目安は4〜6人くらいかな、というのが体感です。『モブプログラミング・ベストプラクティス』には3〜4人がちょうど良いと書かれていましたし、私の現場では9人くらいでうまくできたと感じるケースもありましたので、あくまで目安です。ただ始めたばかりの頃は少なすぎても多すぎても難しく、4〜6人が安定しやすかった印象です。</p>
+
+<h3 id="ドライバーは何分交代でやっていますか">ドライバーは何分交代でやっていますか？</h3>
+
+<p>その時々によりますが、15分〜30分交代が多いです。<br />
+何分のインターバルにしても、最後の1分は</p>
+
+<ul>
+  <li>ドライバーがgit commitする</li>
+  <li>次のドライバーがgit pullする</li>
+  <li>次のドライバーが書き始められるよう準備する</li>
+</ul>
+
+<p>にあてています。</p>
+
+<h3 id="人前でコードを書くのは緊張しませんか">人前でコードを書くのは緊張しませんか？</h3>
+
+<p>私も人前でコードを書くときは緊張しがちですが、モブプロではあまり緊張しません。<br />
+私の場合「考えている過程」や「未完成なコード」を見られることで能力が低いと感じ取られてしまわないか……という不安があり緊張してしまう傾向にあります。ですがドライバーは<strong>ナビゲーターの言うとおりに書く</strong>ことがほとんどなので、みんなの意見を反映するタイピスト(兼 質問して議論を掘り下げるファシリテーター)のような感覚で臨んでいます。ちょっとした気持ちの違いですが、これでけっこう緊張をほぐせています。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>振り返ってみると、どの疑問も自分が一度はぶち当たったことのあるものでした。今でも悩んでいる課題もありますが、上述したように「<strong>みんなでひとつの仕事をすればモブである</strong>」と考えるようになってだいぶ肩の荷が下りました。もちろん方法論に沿ったほうがうまくいくことが多いとは思いますが、そこにこだわって悩むのではなく、<strong>方法に悩んだらそれすらモブで決めちゃおう</strong>くらいの気持ちでいてもいいのかなと思います。せっかくなので楽しんでモブしだいですしね！ ハッピーモビング！</p>
+
 
         </article>
 
@@ -217,7 +252,7 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Node.js+%2B+Express+%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/blog/2017-01-01-1&via=aloerina_&hashtags=JavaScript,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AE%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%81%AE%E7%96%91%E5%95%8F%E3%81%AB%E7%AD%94%E3%81%88%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/blog/2019-07-25-1&via=aloerina_&hashtags=MobProgramming,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <i class="fab fa-twitter fa-inverse"></i>
             </a>
@@ -233,7 +268,7 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Node.js+%2B+Express+%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&u=https://aloerina01.github.io/blog/2017-01-01-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AE%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%81%AE%E7%96%91%E5%95%8F%E3%81%AB%E7%AD%94%E3%81%88%E3%81%A6%E3%81%BF%E3%81%9F&u=https://aloerina01.github.io/blog/2019-07-25-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <i class="fab fa-facebook-f fa-inverse"></i>
             </a>
@@ -269,7 +304,7 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
             
             
             
-            <a class="share-button share-button-google" href="//plus.google.com/share?title=Node.js+%2B+Express+%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/blog/2017-01-01-1"
+            <a class="share-button share-button-google" href="//plus.google.com/share?title=%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AE%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%81%AE%E7%96%91%E5%95%8F%E3%81%AB%E7%AD%94%E3%81%88%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/blog/2019-07-25-1"
               onclick="window.open(this.href, 'google-plus-share', 'width=550,height=255');return false;">
               <i class="fab fa-google-plus-g fa-inverse"></i>
             </a>
@@ -388,7 +423,7 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2017-01-01-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2019-07-25-1" target="_blank">
               <i class="fab fa-get-pocket fa-inverse"></i>
             </a>
             
@@ -403,7 +438,7 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Node.js+%2B+Express+%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2017-01-01-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%81%BF%E3%82%93%E3%81%AA%E3%81%AE%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%81%AE%E7%96%91%E5%95%8F%E3%81%AB%E7%AD%94%E3%81%88%E3%81%A6%E3%81%BF%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2019-07-25-1">
               <img src="/assets/thirdparty/linebutton.png" />
             </a>
             
@@ -426,15 +461,15 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2016-10-03-1">スクロールインしたイベントをキャッチする</a></li>
+      <li><a href="/blog/2017-02-22-1">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</a></li>
       
-      <li><a href="/blog/2017-03-08-1">Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ</a></li>
+      <li><a href="/blog/2019-03-12-1">「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</a></li>
       
-      <li><a href="/blog/2019-05-07-1">コーチング入門 「4つの会話」でやる気の芽を育てよう</a></li>
+      <li><a href="/blog/2016-10-14-1">外部スクリプトを動的読込して同期的に処理をする方法</a></li>
       
-      <li><a href="/blog/2018-10-11-1">algoliaを使ってJekyll製ブログに全文検索をつけた話</a></li>
+      <li><a href="/blog/2016-10-07-1">npm + gulp + webpack でつくるES6/sass開発環境</a></li>
       
-      <li><a href="/blog/2017-11-08-1">トラブルシューティングメモを晒してみる  webpack動的module編</a></li>
+      <li><a href="/blog/2018-05-01-1">メンテナンスしやすいVueComponentを設計するために気をつけていること</a></li>
       
     </div>
   </div>
@@ -635,8 +670,8 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-39630080-4', 'auto');
   ga('send', 'pageview', {
-    'page': '/blog/2017-01-01-1',
-    'title': 'Node.js + Express を試してみた'
+    'page': '/blog/2019-07-25-1',
+    'title': 'みんなのモブプロの疑問に答えてみた'
   });
 </script>
 
