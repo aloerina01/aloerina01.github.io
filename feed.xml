@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-07-25T10:40:42+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-07-26T01:46:59+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">みんなのモブプロの疑問に答えてみた</title><link href="https://aloerina01.github.io/blog/2019-07-25-1" rel="alternate" type="text/html" title="みんなのモブプロの疑問に答えてみた" /><published>2019-07-25T00:00:00+00:00</published><updated>2019-07-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-07-25-1">&lt;p&gt;先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。&lt;/p&gt;
 
 &lt;p&gt;ところで、このイベントでは参加者から質問を集める機会があったのですが、どれも身近に感じる質問だったので、自分の思考整理のために私の目線で答えて見ようと思います。私の現場の実例共有も兼ねて。&lt;/p&gt;
@@ -44,17 +44,17 @@
 
 &lt;h3 id=&quot;どうしてもモブプロをしたくない人がいる場合どうしますか&quot;&gt;どうしてもモブプロをしたくない人がいる場合どうしますか？&lt;/h3&gt;
 
-&lt;p&gt;モブプロあるいはモブは&lt;strong&gt;手段のひとつ&lt;/strong&gt;です。ですので、やりたくない人がいるのであれば強制する必要はないと思っています。&lt;/p&gt;
+&lt;p&gt;モブプロあるいはモブは&lt;strong&gt;手段のひとつ&lt;/strong&gt;です。ですので、やりたくない人がいるのであれば強制する必要はないはずです。&lt;/p&gt;
 
 &lt;p&gt;ただ、モブプロをしたくないと感じる背景を知ることができれば、そこに何かしらの&lt;strong&gt;改善のヒント&lt;/strong&gt;があるように感じます。&lt;br /&gt;
 やったことないけれどやりたくないと主張する人がいる場合は、モブ以前に「何か案が出たらとりあえず試してみる」というマインドをチームに浸透させることが必要かもしれません。&lt;br /&gt;
 逆に過去にモブプロを経験した上でやりたくないと主張する人がいる場合は、モブのメリットを実感できなかったのかもしれません。どんな点がまずかったのかを聞き、今の自分たちのモブが同じ状態ではないかを見つめ直し、問題ないようであればその旨を伝えてみると良いかもしれません。&lt;/p&gt;
 
-&lt;p&gt;いずれにせよ、やりたくないと言う人がいるということは改善のきっかけを得るチャンスなのだと思っています。&lt;/p&gt;
+&lt;p&gt;いずれにせよ、やりたくない人がいるということは改善のきっかけを得るチャンスです！&lt;/p&gt;
 
 &lt;h3 id=&quot;モブプロに合う内容合わない内容はありますか&quot;&gt;モブプロに合う内容・合わない内容はありますか？&lt;/h3&gt;
 
-&lt;p&gt;設計やリファクタリングなど、&lt;strong&gt;人によって結果や過程に差が出やすいものは向いている&lt;/strong&gt;と感じます。また、暗黙のテクニックがあるような難解なデバッグや、環境による差が起きやすい環境構築なども向いていると思います。&lt;br /&gt;
+&lt;p&gt;設計やリファクタリングなど、&lt;strong&gt;人によって結果や過程に差が出やすいものは向いている&lt;/strong&gt;と感じます。また、暗黙のテクニックがあるような難解なデバッグや、環境による差が起きやすい環境構築なども実践してみて好感でした。&lt;br /&gt;
 一方、修正方法が誰の目からも明らかな不具合修正や、誰がやっても過程・結果が変わらない単純作業などは向かないと思っています。&lt;/p&gt;
 
 &lt;h3 id=&quot;モブプロに最適な人数は何人ですか&quot;&gt;モブプロに最適な人数は何人ですか？&lt;/h3&gt;
