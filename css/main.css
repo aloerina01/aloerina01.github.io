@@ -1025,13 +1025,13 @@ pre code.hljs {
       justify-content: space-between;
       text-align: start; } }
 
-.present {
+.donation {
   position: relative;
   background: url("/assets/donate-coffee.jpg") 50% 45%;
   background-size: cover;
   overflow: hidden;
   z-index: 0; }
-  .present::after {
+  .donation::after {
     content: '';
     position: absolute;
     top: 0;
@@ -1040,64 +1040,69 @@ pre code.hljs {
     bottom: 0;
     z-index: -1;
     background-color: rgba(0, 0, 0, 0.4); }
-  .present-wrapper {
+  .donation-wrapper {
     max-width: 42em;
     margin-left: auto;
     margin-right: auto;
     padding: 1.8em 1em 1em 1em;
     text-align: center;
     color: #fff; }
-    .present-wrapper::after {
+    .donation-wrapper::after {
       clear: both;
       content: "";
       display: table; }
     @media screen and (min-width: 768px) {
-      .present-wrapper {
+      .donation-wrapper {
         padding: 28px 1em 20px 1em; } }
-  .present-title {
+  .donation-title {
     font-size: 1.44em;
     font-weight: 500; }
-  .present-description {
+  .donation-description {
     font-size: 0.9em; }
-  .present-kyash {
+  .donation-button-area {
     margin: 1.5em auto 1em; }
-    .present-kyash .qr-execute-button {
-      display: block;
-      margin: 0 auto;
-      max-width: 14em;
-      background: #FF4081;
-      background: -webkit-linear-gradient(to right, #ff6884, #FF4081);
-      background: linear-gradient(to right, #ff6884, #FF4081);
-      color: white;
-      font-weight: 800;
-      border-radius: 28px;
-      box-shadow: 0 1px 14px #333; }
-      .present-kyash .qr-execute-button .button-body {
-        padding: 12px 0 10px 0;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center; }
-      .present-kyash .qr-execute-button .icon {
-        width: 28px;
-        height: 28px;
-        padding-bottom: 2px;
-        display: inline-block; }
-      .present-kyash .qr-execute-button .label {
-        display: inline-block;
-        font-size: 0.9em;
-        padding-left: 4px; }
-    .present-kyash .qr-image {
-      display: none;
-      margin: 0 auto 0.3em auto;
-      height: 100px;
-      width: 100px; }
-    .present-kyash span {
+    .donation-button-area span {
       font-size: 0.8em; }
-    .present-kyash a, .present-kyash a:hover, .present-kyash a:focus {
-      color: #fff; }
-  .present-notes {
-    font-size: 0.7em; }
+  .donation a, .donation a:hover, .donation a:focus {
+    color: #fff; }
+
+.post-donation-panel {
+  text-align: center; }
+.post-donation-description {
+  font-weight: 600;
+  font-size: 80%; }
+.post-donation a, .post-donation a:hover, .post-donation a:focus {
+  color: #fff; }
+
+a.donation-button {
+  display: block;
+  margin: 0 auto;
+  max-width: 14em;
+  background: #FF4081;
+  background: -webkit-linear-gradient(to right, #ff6884, #FF4081);
+  background: linear-gradient(to right, #ff6884, #FF4081);
+  color: #fff;
+  font-weight: 800;
+  border-radius: 28px;
+  box-shadow: 0 1px 14px #333; }
+  a.donation-button:hover, a.donation-button:focus {
+    color: #fff; }
+  a.donation-button .button-body {
+    padding: 12px 0 10px 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+  a.donation-button .icon {
+    width: 28px;
+    height: 28px;
+    padding-bottom: 2px;
+    margin: 0;
+    display: inline-block; }
+  a.donation-button .label {
+    display: inline-block;
+    font-size: 0.9em;
+    padding-left: 4px; }
 
 ul li.nav-search-box .aa-input-container {
   display: inline-block;
