@@ -4,7 +4,7 @@
   text-align: center;
   transition: all 0.4s ease;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px #bbb;
+  box-shadow: 1px 1px 5px #bbb;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
   &:hover {
     opacity: .7;
@@ -17,9 +17,6 @@
   }
   &.share-button-facebook {
     background-color: $color-facebook;
-  }
-  &.share-button-google {
-    background-color: $color-google;
   }
   &.share-button-pocket {
     background-color: $color-pocket;
@@ -42,7 +39,7 @@
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  box-shadow: 1px 1px 10px #bbb;
+  box-shadow: 1px 1px 5px #bbb;
   padding: 5px;
   transition: opacity 0.4s ease;
   background-color: $color-hatebu;
