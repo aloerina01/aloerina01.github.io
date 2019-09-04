@@ -606,7 +606,7 @@ pre code.hljs {
     @media screen and (min-width: 480px) {
       .page-content .post .share {
         float: right;
-        margin: 0 0 1rem 0; } }
+        margin: 0 0 2rem 0; } }
   .page-content .post .disqus {
     float: left;
     display: block;
@@ -1066,13 +1066,27 @@ pre code.hljs {
   .donation a, .donation a:hover, .donation a:focus {
     color: #fff; }
 
-.post-donation-panel {
-  text-align: center; }
-.post-donation-description {
-  font-weight: 600;
-  font-size: 80%; }
-.post-donation a, .post-donation a:hover, .post-donation a:focus {
-  color: #fff; }
+.post-donation {
+  clear: both;
+  margin: 0 auto 4rem auto; }
+  .post-donation-panel {
+    text-align: center;
+    padding: 20px 20px 26px 20px;
+    background: #f8f8f8; }
+  .post-donation-description {
+    font-weight: 600;
+    font-size: 80%; }
+    .post-donation-description.for-mobile {
+      display: block; }
+    .post-donation-description.for-pc {
+      display: none; }
+    @media screen and (min-width: 768px) {
+      .post-donation-description.for-mobile {
+        display: none; }
+      .post-donation-description.for-pc {
+        display: block; } }
+  .post-donation a, .post-donation a:hover, .post-donation a:focus {
+    color: #fff; }
 
 a.donation-button {
   display: block;
@@ -1084,7 +1098,7 @@ a.donation-button {
   color: #fff;
   font-weight: 800;
   border-radius: 28px;
-  box-shadow: 0 1px 14px #333; }
+  box-shadow: 0 1px 5px #333; }
   a.donation-button:hover, a.donation-button:focus {
     color: #fff; }
   a.donation-button .button-body {
