@@ -65,6 +65,21 @@
   <link rel="canonical" href="https://aloerina01.github.io/blog/2017-03-14-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-39630080-4', 'auto');
+    ga('require', 'linkid');
+    ga('send', 'pageview', {
+      'page': '/blog/2017-03-14-1',
+      'title': 'ES6 Proxy をつかって堅牢なオブジェクトをつくるTips'
+    });
+  </script>
+  
+
   <script src="/dist/prism.js" defer></script>
 </head>
 
@@ -569,7 +584,7 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
     <p class="post-donation-description for-mobile">
       <span>この記事が気に入ったら<br />aloerinaをサポートしてみませんか？</span>
     </p>
-    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank">
+    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
       <p class="button-body">
         <img class="icon" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></i>
         <span class="label">サポートする</span>
@@ -750,7 +765,7 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
     <h3>BUY ME A COFFEE</h3>
     <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
     <div class="donation-button-area">
-        <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank">
+        <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
           <p class="button-body">
             <img class="icon" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></i>
             <span class="label">ごちそうする</span>
@@ -793,21 +808,6 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.31.0/autocomplete.min.js"></script>
 <script src="/dist/algolia.js" async></script>
 <script src="https://embed.small.chat/TAFB1N6F4GFTRAULS0.js" async></script>
-
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-39630080-4', 'auto');
-  ga('send', 'pageview', {
-    'page': '/blog/2017-03-14-1',
-    'title': 'ES6 Proxy をつかって堅牢なオブジェクトをつくるTips'
-  });
-</script>
-
 
 </body>
 
