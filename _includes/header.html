@@ -21,7 +21,7 @@
         </li>
         {% for navigation in site.data.navigations %} {% if navigation.title and navigation.url %}
         <li class="nav-link">
-          <a href="{{ navigation.url | prepend: site.baseurl }}"{% if navigation.isAnotherTab %}target="_blank"{% endif %}>{{ navigation.title }}</a>
+          <a href="{{ navigation.url | prepend: site.baseurl }}"{% if navigation.isAnotherTab %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ navigation.title }}</a>
           {% endif %} {% endfor %}
       </ul>
     </nav>
