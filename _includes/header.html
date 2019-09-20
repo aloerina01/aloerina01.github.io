@@ -33,18 +33,22 @@
           </a>
           <meta itemprop="position" content="1" />
         </li>
+        {% if page.posttype_name %}
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
           <a itemprop="item" href="{{ page.posttype_url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
             <span itemprop="name">{{ page.posttype_name }}</span>
           </a>
           <meta itemprop="position" content="2" />
         </li>
+        {% endif %}
+        {% if page.posttype_name and page.title %}
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
           <a itemprop="item" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
             <span itemprop="name">{{ page.title }}</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
+        {% endif %}
         </ol>
     </div>
   </div>
