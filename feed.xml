@@ -1,5 +1,138 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-09-30T10:20:21+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">みんなのモブプロの疑問に答えてみた</title><link href="https://aloerina01.github.io/blog/2019-07-25-1" rel="alternate" type="text/html" title="みんなのモブプロの疑問に答えてみた" /><published>2019-07-25T00:00:00+00:00</published><updated>2019-07-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-07-25-1">&lt;p&gt;先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-09-30T16:22:33+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">VuexのStore設計のTips - 薄いGetter</title><link href="https://aloerina01.github.io/blog/2019-09-25-1" rel="alternate" type="text/html" title="VuexのStore設計のTips - 薄いGetter" /><published>2019-09-25T00:00:00+00:00</published><updated>2019-09-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-09-25-1">&lt;p&gt;Vue + Vuexで中〜大規模なアプリケーションの開発をするとき、どんな設計にするか未だによく悩みます。試してみては捨ててを繰り返していて、そろそろ自分の中でベターなパターンを固めたいと思いつつも固まらず、気づけば数年経ちました。&lt;/p&gt;
+
+&lt;p&gt;そういった前提を踏まえつつではありますが、&lt;strong&gt;現時点&lt;/strong&gt;で設計時に意識していることをTips的に少しずつまとめてみようと思います。今回はVuexのGetterに関するお話です。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#getterの役割を見直す&quot; id=&quot;markdown-toc-getterの役割を見直す&quot;&gt;Getterの役割を見直す&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#副作用のないクエリとして実装する&quot; id=&quot;markdown-toc-副作用のないクエリとして実装する&quot;&gt;副作用のないクエリとして実装する&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#プロパティアクセスとメソッドアクセスを区別して命名する&quot; id=&quot;markdown-toc-プロパティアクセスとメソッドアクセスを区別して命名する&quot;&gt;プロパティアクセスとメソッドアクセスを区別して命名する&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#プリミティブでシンプルなクエリとして実装する&quot; id=&quot;markdown-toc-プリミティブでシンプルなクエリとして実装する&quot;&gt;プリミティブでシンプルなクエリとして実装する&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#表示用の加工処理はcomponentに実装する&quot; id=&quot;markdown-toc-表示用の加工処理はcomponentに実装する&quot;&gt;表示用の加工処理はComponentに実装する&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#例外1-加工された値の賞味期限が長い場合&quot; id=&quot;markdown-toc-例外1-加工された値の賞味期限が長い場合&quot;&gt;例外1. 加工された値の賞味期限が長い場合&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#例外2-加工処理が複数componentで繰り返される場合&quot; id=&quot;markdown-toc-例外2-加工処理が複数componentで繰り返される場合&quot;&gt;例外2. 加工処理が複数Componentで繰り返される場合&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;getterの役割を見直す&quot;&gt;Getterの役割を見直す&lt;/h3&gt;
+
+&lt;p&gt;VuexはFluxアーキテクチャを参考にしており、他のFlux系フレームワークと同様にStoreではStateを保持し、Stateが更新されるとそれをViewに通知します。&lt;br /&gt;
+このときVuexのStoreは&lt;strong&gt;Getterを通じてStateの一部を切り出して&lt;/strong&gt;Viewに渡すことができます。よくあるFlux系Storeは&lt;code class=&quot;highlighter-rouge&quot;&gt;getState&lt;/code&gt;関数などでStateオブジェクトを丸々渡すケースが多いので対照的ですよね。&lt;/p&gt;
+
+&lt;p&gt;この性質に着目すると、VuexのStoreは外部に対して&lt;strong&gt;読み込み系のGetter&lt;/strong&gt;と&lt;strong&gt;書き込み系のAction(とMutation)&lt;/strong&gt;の仕組みを備えていると考えられます。&lt;/p&gt;
+
+&lt;h3 id=&quot;副作用のないクエリとして実装する&quot;&gt;副作用のないクエリとして実装する&lt;/h3&gt;
+
+&lt;p&gt;書き込み系と読み込み系の分離といえば、CQS (Command-Query Separation) や CQRS (Command and Query Responsibility Segregation) などの設計パターンが思い当たります。ここではよりシンプルなCQSを参考に考えます。&lt;/p&gt;
+
+&lt;p&gt;CQSの基本的な考え方は、オブジェクトが持つメソッドを大きく2つのカテゴリに分類するというものです。1つは副作用が起き得る書き込み系の処理の&lt;strong&gt;Command&lt;/strong&gt;、もう一つは副作用のない読み込み系の処理の&lt;strong&gt;Query&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;p&gt;Getterもこれにならって副作用が起きないように実装します。&lt;br /&gt;
+これだけ見ると当たり前なのですが、「〇〇を表示したときにイベントをemitする」「〇〇を表示したときにフラグを立てる」といった実装をするとき、〇〇を返すGetterの中でemitしたりフラグを立てたりするのもNGなので要注意です。代わりに副作用の起きる処理はMutationやActionに寄せます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// NG&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;articles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isShown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;articles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// OK&lt;/span&gt;
+&lt;span class=&quot;nl&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;articles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;articles&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;mutations&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;shown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;isShown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;プロパティアクセスとメソッドアクセスを区別して命名する&quot;&gt;プロパティアクセスとメソッドアクセスを区別して命名する&lt;/h3&gt;
+
+&lt;p&gt;これは完全に好みの話なので蛇足ですが、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;プロパティアクセスのGetterは返すデータを表す名詞で命名する&lt;/li&gt;
+  &lt;li&gt;メソッドアクセスのGetterは&lt;code class=&quot;highlighter-rouge&quot;&gt;find{名詞}&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;find{名詞}By{条件}&lt;/code&gt;と命名し、引数に条件をとる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;というマイルールで実装しています。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// プロパティアクセスの場合は名詞で命名する&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;books&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;books&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// メソッドアクセスの場合は動詞(find)で命名する&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;findBook&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;books&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+
+  &lt;span class=&quot;c1&quot;&gt;// 条件別にGetterを用意する場合は 動詞 + by条件 と命名する&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;findBooksByAuthor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;books&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;author&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;author&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;findBookByISBN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ISBN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;books&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;each&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ISBN&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ISBN&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ちなみに過去に&lt;code class=&quot;highlighter-rouge&quot;&gt;getHoge&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;filterHoge&lt;/code&gt;など動詞を使い分けていたこともあったのですが、開発者によって使い分けルールが曖昧だったので最近はすべて&lt;code class=&quot;highlighter-rouge&quot;&gt;find&lt;/code&gt;に統一しています。&lt;/p&gt;
+
+&lt;h3 id=&quot;プリミティブでシンプルなクエリとして実装する&quot;&gt;プリミティブでシンプルなクエリとして実装する&lt;/h3&gt;
+
+&lt;p&gt;Getterで取り出した値をどう使うかは使う側に依存するので、値を加工したりせずState(の一部)をそのまま返すだけのシンプルなGetterを実装するように意識します。&lt;br /&gt;
+これを守るためにも上述の命名ルールが役立っていて、データをまるごと返す場合はデータ名を使った名詞で命名し、データの集合から一部を検索して返す場合はfindで命名すると限定することで、自然とシンプルでプリミティブな役割を持つクエリとして実装することができます。&lt;/p&gt;
+
+&lt;p&gt;では、データを加工して渡したい場合はどうするのが良いでしょうか？&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;firstName&lt;/code&gt;と&lt;code class=&quot;highlighter-rouge&quot;&gt;lastName&lt;/code&gt;を組み合わせて一つの&lt;code class=&quot;highlighter-rouge&quot;&gt;fullName&lt;/code&gt;文字列として扱う例のように、Stateの値は書き換えないまま一時的に加工された値を生成する場面はよくあると思います。この加工処理をどこで担うのが良いでしょうか？&lt;/p&gt;
+
+&lt;h3 id=&quot;表示用の加工処理はcomponentに実装する&quot;&gt;表示用の加工処理はComponentに実装する&lt;/h3&gt;
+
+&lt;p&gt;Stateを加工したり組み合わせたりして表示に適した値に変換する処理は、原則Component側で担うようにしています。StoreからGetterで取得した値をComputedなどで変換して表示する……という実装方法です。&lt;br /&gt;
+データモデルやアプリケーションの状態といったコアな情報のみをStoreで持ち、Viewの状態をComponentで持つようにすることで、&lt;strong&gt;Viewの仕様変更に耐えやすくする&lt;/strong&gt;狙いです。&lt;/p&gt;
+
+&lt;p&gt;ちなみにFluxではViewの状態もStoreに持たせる傾向にありますが、Vue + VuexアプリケーションをMVVMと捉えるならVueComponentはVMに相当し、表示のための加工とその結果の保持を担うべき場所とみなすことができます。捉え方によって解釈も変わってきそうですが、私は&lt;strong&gt;StoreのGetterをViewに依存させないこと(Viewの仕様に引きずられないこと)&lt;/strong&gt;を重視したいので、MVVM寄りの捉え方をすることが多いです。&lt;/p&gt;
+
+&lt;p&gt;とはいえこれはあくまで原則。&lt;br /&gt;
+例外的な場面での対処法も考慮しておく必要があります。&lt;/p&gt;
+
+&lt;h4 id=&quot;例外1-加工された値の賞味期限が長い場合&quot;&gt;例外1. 加工された値の賞味期限が長い場合&lt;/h4&gt;
+
+&lt;p&gt;1つ目の例外は、加工された値の賞味期限がComponentのライフサイクルより長い場合です。複数のComponentで使われる場合もこれに該当します。&lt;/p&gt;
+
+&lt;p&gt;Componentが破棄された後も値を保持し続けなければいけない場合は、当然ですがStoreで保持しなければなりません。Storeで保持する以外にもClosureで実装したりSingletonで実装したりと値の保持方法はありますが、状態を持つ仕組みが複数存在すると複雑さが増すので注意が必要です。&lt;/p&gt;
+
+&lt;h4 id=&quot;例外2-加工処理が複数componentで繰り返される場合&quot;&gt;例外2. 加工処理が複数Componentで繰り返される場合&lt;/h4&gt;
+
+&lt;p&gt;そこそこの規模・複雑さのアプリケーションを開発していると、「Module分けされたAとBのStoreからStateを取ってきて組み合わせに応じた表示をする」なんて場面が出てくるかもしれません。また「複雑な条件分岐を経てどのように加工されるかが決まる」といった場面もあり得るでしょう。&lt;br /&gt;
+このように加工処理が複雑で、なおかつ複数のComponentで必要な場合は、加工処理を関数として外出しする選択肢がとれます。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// 外出しした加工処理の実装&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stateA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;stateB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 引数をもとに加工された値を生成して返す&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// component側&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;convert&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'./convert'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;displayValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// 外出しされた加工処理を利用する&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stateA&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stateB&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;例えば「Listを表示する画面にて、ユーザーがソート方法を切り替えるとインタラクティブにItemの並び順が変わる」といったような場面では、数種類のsort関数を外出ししておくことができそうですよね。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+&lt;p&gt;設計に関することは日々うにゃうにゃ考えているものの、当たり前の内容であったり状況次第で何とでも解釈できる内容であったりして、書き残すことにあまり意味を感じていませんでした。が、いざ設計しようと思ったときに考慮すべき観点や選択肢としてパッと浮かんでくるものは、やはり言語化して腹落ちしたものなんですよね。&lt;/p&gt;
+
+&lt;p&gt;また、言語化することでフィードバックをもらえたり議論のきっかけになったりする良さもあると思うので、1ヶ月後には意見が変わっているかもしれませんがこうして書き残す試みを今後もしていこうと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue + Vuexで中〜大規模なアプリケーションの開発をするとき、どんな設計にするか未だによく悩みます。試してみては捨ててを繰り返していて、そろそろ自分の中でベターなパターンを固めたいと思いつつも固まらず、気づけば数年経ちました。</summary></entry><entry><title type="html">みんなのモブプロの疑問に答えてみた</title><link href="https://aloerina01.github.io/blog/2019-07-25-1" rel="alternate" type="text/html" title="みんなのモブプロの疑問に答えてみた" /><published>2019-07-25T00:00:00+00:00</published><updated>2019-07-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-07-25-1">&lt;p&gt;先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。&lt;/p&gt;
 
 &lt;p&gt;ところで、このイベントでは参加者から質問を集める機会があったのですが、どれも身近に感じる質問だったので、自分の思考整理のために私の目線で答えて見ようと思います。現場の実例共有も兼ねて。&lt;/p&gt;
 
@@ -1368,232 +1501,4 @@ mypackage::my_func&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 
 &lt;p&gt;この記事は &lt;a href=&quot;https://qiita.com/advent-calendar/2018/vuejs-2&quot; target=&quot;_blank&quot;&gt;Vue.js #2 Advent Calendar 2018&lt;/a&gt; 25日目の記事として書かせていただきました。Advent CalendarからもVueへの関心や利用実績の高さが伺えるように、きっと来年もVueは盛り上がっていくのだと思います。その中で生まれる一人ひとりの経験がこうして共有されていることは、Vueユーザの一人としてとてもありがたく、楽しくもあります。&lt;br /&gt;
-今後もVueコミュニティが知見と活気で盛り上がりますよう、クリスマスに願いを込めたところで締めさせていただきます。&lt;/p&gt;</content><author><name></name></author><summary type="html">VueComponent間で再利用可能な部品を実装するための機能がmixinです。mixinを使った共通化の例はよく見かけますし、私もしばしばやってきました。ただ、どうも自分の実装方法だと後々不便になったり見通しが悪かったりと、使い勝手の悪いものになってしまうことが多かったです。</summary></entry><entry><title type="html">Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み</title><link href="https://aloerina01.github.io/blog/2018-11-29-1" rel="alternate" type="text/html" title="Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み" /><published>2018-11-29T00:00:00+00:00</published><updated>2018-11-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-11-29-1">&lt;p&gt;ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です。今回はBabel7.xでの&lt;strong&gt;用途別polyfillの設定方法&lt;/strong&gt;と、キモとなる&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは&lt;strong&gt;7.1.0&lt;/strong&gt;です)。&lt;/p&gt;
-
-&lt;p&gt;なお、6.xまでの設定方法は「&lt;a href=&quot;/blog/2018-03-19-1&quot; target=&quot;_blank&quot;&gt;Babelの設定を見直すための逆引きガイド&lt;/a&gt;」にまとめてあります。polyfillのことだけでなく、Babelとは何か、どのように利用するのか、といったことも併せてまとめてありますので良ければご参考にどうぞ。&lt;/p&gt;
-
-&lt;div class=&quot;revision&quot;&gt;
-&lt;p class=&quot;date&quot;&gt;2019/06/21 追記&lt;/p&gt;
-
-Babel7.4.0から @babel/polyfill が非推奨となっています。変更点や新しい設定方法は「&lt;a href=&quot;/blog/2019-06-21-1&quot;&gt;Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法&lt;/a&gt;」の記事をご確認ください。
-&lt;/div&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#用途別polyfillの入れ方&quot; id=&quot;markdown-toc-用途別polyfillの入れ方&quot;&gt;用途別polyfillの入れ方&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-必要なpolyfillだけを入れる方法&quot; id=&quot;markdown-toc-1-必要なpolyfillだけを入れる方法&quot;&gt;1. 必要なpolyfillだけを入れる方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-全てのpolyfillを入れる方法&quot; id=&quot;markdown-toc-2-全てのpolyfillを入れる方法&quot;&gt;2. 全てのpolyfillを入れる方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#3-グローバル汚染せずにpolyfillを適用する方法&quot; id=&quot;markdown-toc-3-グローバル汚染せずにpolyfillを適用する方法&quot;&gt;3. グローバル汚染せずにpolyfillを適用する方法&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#usebuiltinsのコードリーディング&quot; id=&quot;markdown-toc-usebuiltinsのコードリーディング&quot;&gt;useBuiltInsのコードリーディング&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#-babel-preset-envsrcindexjsl285&quot; id=&quot;markdown-toc--babel-preset-envsrcindexjsl285&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/index.js#L285&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#-babel-preset-envsrcuse-built-ins-entry-pluginjsl31&quot; id=&quot;markdown-toc--babel-preset-envsrcuse-built-ins-entry-pluginjsl31&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/use-built-ins-entry-plugin.js#L31&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#-babel-preset-envsrcuse-built-ins-pluginjsl68&quot; id=&quot;markdown-toc--babel-preset-envsrcuse-built-ins-pluginjsl68&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/use-built-ins-plugin.js#L68&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#-babelhelper-module-imports&quot; id=&quot;markdown-toc--babelhelper-module-imports&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; @babel/helper-module-imports&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#あとがき&quot; id=&quot;markdown-toc-あとがき&quot;&gt;あとがき&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;用途別polyfillの入れ方&quot;&gt;用途別polyfillの入れ方&lt;/h3&gt;
-
-&lt;p&gt;polyfillの入れ方には大きく3種類あります。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;用途&lt;/th&gt;
-      &lt;th&gt;方法&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;必要なpolyfillだけ入れる&lt;/td&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプション &lt;strong&gt;usage&lt;/strong&gt; を使う&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;全てのpolyfillを入れる&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-polyfill&quot; target=&quot;_blank&quot;&gt;@babel/polyfill&lt;/a&gt;をimport/requireする&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;グローバル汚染せずにpolyfillを適用する&lt;/td&gt;
-      &lt;td&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-runtime&quot; target=&quot;_blank&quot;&gt;@babel/runtime&lt;/a&gt;と&lt;br /&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-transform-runtime&quot; target=&quot;_blank&quot;&gt;@babel/plugin-transform-runtime&lt;/a&gt;を使う&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;大幅に変更されたのが&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションの挙動です。6.xではまずbabel-polyfillを入れた上で「それをどのようにcore-jsに置き換えるか」をuseBuiltInsオプションで指定する形でした。
-対して7.xでは&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションに応じて@babel/polyfillを入れたり入れなかったりします。&lt;/p&gt;
-
-&lt;p&gt;ではそれぞれの方法の詳細を見ていきます。&lt;/p&gt;
-
-&lt;h4 id=&quot;1-必要なpolyfillだけを入れる方法&quot;&gt;1. 必要なpolyfillだけを入れる方法&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-preset-env&quot; target=&quot;_blank&quot;&gt;@babel/preset-env&lt;/a&gt;の&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションを&lt;code class=&quot;highlighter-rouge&quot;&gt;usage&lt;/code&gt;とする&lt;/strong&gt;と、@babel/polyfillをソース内でimportせずとも必要なpolyfillだけを自動で選別して入れてくれます。ただし、&lt;strong&gt;@babel/polyfillをnpm installしておく&lt;/strong&gt;必要はあります。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;@babel/polyfill, @babel/preset-envをインストールする&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/preset-env
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; @babel/polyfill
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrcを記述する&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;useBuiltIns&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;usage&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;この方法はメリットが大きいですが、公式ドキュメントに&lt;strong&gt;experimental&lt;/strong&gt;と記されている点を忘れてはいけません。&lt;br /&gt;
-試しにpolyfillが必要な実装例を&lt;a href=&quot;https://github.com/aloerina01/til/tree/master/daily/20181128&quot; target=&quot;_blank&quot;&gt;いくつか試してみた&lt;/a&gt;ところ、polyfillが入らないケースがありました。分かりやすかった例をピックアップしてみます。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;letObj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;constObj&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;obj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'includes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// array.includes と string.includes のpolyfillが入る&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;letObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'includes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// polyfillが入らない&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;constObj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'includes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// polyfillが入らない&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// --------&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'includes'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;s1&quot;&gt;'str'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()];&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// string.includes のpolyfillが入らない&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;静的解析してimportするpolyfillを特定している感じでしょうか。&lt;br /&gt;
-スコープが不明確だと中身を特定しきれないので、使われる可能性のあるpolyfillを入れていますね。また、関数は実行しないと結果を判断できないようです。この感じだと、個人的にはproduction利用はまだちょっと怖い…と思ってしまいます。&lt;/p&gt;
-
-&lt;p&gt;ちなみに「importされているか怪しいpolyfillを個別に手動でimportする」案も考えたのですが、手動で入れたものとの重複判定はしてくれないようでしたので、この案もダメそうですね😳&lt;/p&gt;
-
-&lt;h4 id=&quot;2-全てのpolyfillを入れる方法&quot;&gt;2. 全てのpolyfillを入れる方法&lt;/h4&gt;
-
-&lt;p&gt;Babel6.xまでと同じように&lt;strong&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-polyfill&quot; target=&quot;_blank&quot;&gt;@babel/polyfill&lt;/a&gt;をimport/requireする&lt;/strong&gt;方法です。合わせて&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;オプションに&lt;code class=&quot;highlighter-rouge&quot;&gt;entry&lt;/code&gt;か&lt;code class=&quot;highlighter-rouge&quot;&gt;false(default)&lt;/code&gt;を指定することができます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;@babel/polyfill, @babel/preset-envをインストールする&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/preset-env
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; @babel/polyfill
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;エントリーポイントでpolyfillを読み込む&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// index.js&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'@babel/polyfill'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// polyfillが必要な実装&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrcを記述する&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;presets&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/preset-env&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-        &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;useBuiltIns&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;entry&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;  &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;//&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;任意&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;に&lt;code class=&quot;highlighter-rouge&quot;&gt;entry&lt;/code&gt;を指定すると、@babel/polyfillのimportを&lt;strong&gt;生のcore-jsのimportに置換してくれます&lt;/strong&gt;。また、今まで通り同じpolyfillを複数回importするのはNGなのでその点もお忘れなく。&lt;/p&gt;
-
-&lt;h4 id=&quot;3-グローバル汚染せずにpolyfillを適用する方法&quot;&gt;3. グローバル汚染せずにpolyfillを適用する方法&lt;/h4&gt;
-
-&lt;p&gt;Babel6.xまででは&lt;code class=&quot;highlighter-rouge&quot;&gt;babel-plugin-transform-runtime&lt;/code&gt;を使っていましたが、7.xからは2つのmoduleを使います。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-runtime&quot; target=&quot;_blank&quot;&gt;@babel/runtime&lt;/a&gt; … ソースにバンドルされるpolyfill本体&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-transform-runtime&quot; target=&quot;_blank&quot;&gt;@babel/plugin-transform-runtime&lt;/a&gt; … polyfillが必要な箇所を@babel/runtimeに置き換えてくれるもの&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;@babel/runtime, @babel/plugin-transform-runtimeをインストールする&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; @babel/runtime
-&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/plugin-transform-runtime
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrcを記述する&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;s2&quot;&gt;&quot;plugins&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;@babel/plugin-transform-runtime&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;利用の際は、Babel6.xまでと同様に&lt;strong&gt;インスタンスメソッドは使えない&lt;/strong&gt;ということに注意する必要があります。&lt;/p&gt;
-
-&lt;h3 id=&quot;usebuiltinsのコードリーディング&quot;&gt;useBuiltInsのコードリーディング&lt;/h3&gt;
-
-&lt;p&gt;ここからは余談です。&lt;br /&gt;
-useBuiltInsオプションがどのように実装されているか気になったので、軽くコードリーディングしてみました。そのときのメモをまとめておきます。&lt;/p&gt;
-
-&lt;h5 id=&quot;-babel-preset-envsrcindexjsl285&quot;&gt;&lt;a href=&quot;https://github.com/babel/babel/blob/59e9c6322baf6cbd1952c40ce5dd0b2ea7802712/packages/babel-preset-env/src/index.js#L285&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/index.js#L285&lt;/a&gt;&lt;/h5&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;の値に応じて利用するプラグインを分岐しています。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;entry設定時 &lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-entry-plugin.js&quot; target=&quot;_blank&quot;&gt;babel/use-built-ins-entry-plugin.js&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;usage設定時 &lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-plugin.js&quot; target=&quot;_blank&quot;&gt;babel/use-built-ins-plugin.js&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これらのプラグインは、どちらも以下のようなPluginオブジェクトを返す関数を実装しています。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;types&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}):&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Plugin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;type&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Plugin&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;visitor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// polyfill の import を解決するための処理群&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;pre&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// メイン処理前に実行すること&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;string&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// pluginの識別子のようなもの&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;Plugin.visitorが大きく差が出る部分ですね。&lt;/p&gt;
-
-&lt;h5 id=&quot;-babel-preset-envsrcuse-built-ins-entry-pluginjsl31&quot;&gt;&lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-entry-plugin.js#L31&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/use-built-ins-entry-plugin.js#L31&lt;/a&gt;&lt;/h5&gt;
-
-&lt;p&gt;Plugin.visitorに渡される&lt;code class=&quot;highlighter-rouge&quot;&gt;isPolyfillImport&lt;/code&gt;オブジェクトを見ると、&lt;code class=&quot;highlighter-rouge&quot;&gt;ImportDeclaration&lt;/code&gt;関数に「@babel/polyfillがimportされてるならフラグをたてて、それを必要なmoduleのimportにreplaceしていく」といった実装があります。&lt;/p&gt;
-
-&lt;h5 id=&quot;-babel-preset-envsrcuse-built-ins-pluginjsl68&quot;&gt;&lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-plugin.js#L68&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; babel-preset-env/src/use-built-ins-plugin.js#L68&lt;/a&gt;&lt;/h5&gt;
-
-&lt;p&gt;Plugin.visitorに渡される&lt;code class=&quot;highlighter-rouge&quot;&gt;addAndRemovePolyfillImports&lt;/code&gt;オブジェクトを見ると、「@babel/polyfillがimportされていないことを確認する&lt;code class=&quot;highlighter-rouge&quot;&gt;ImportDeclaration&lt;/code&gt;関数」と、「個々のpolyfillのimportするための関数」が存在します。後者については、ソースを解析して実装方法に応じて呼び出す関数を使い分けている感じですかね。&lt;/p&gt;
-
-&lt;p&gt;個々のpolyfillをimportするための関数は、最終的にutilsの&lt;code class=&quot;highlighter-rouge&quot;&gt;createImport&lt;/code&gt;関数を呼び出し、その中で更に&lt;a href=&quot;https://github.com/babel/babel/blob/master/packages/babel-helper-module-imports/src/index.js&quot; target=&quot;_blank&quot;&gt;@babel/helper-module-imports&lt;/a&gt;に処理を委譲しています。この@babel/helper-module-importsがpolyfillを個別にimportする本体ですね。&lt;/p&gt;
-
-&lt;h5 id=&quot;-babelhelper-module-imports&quot;&gt;&lt;a href=&quot;https://github.com/babel/babel/tree/master/packages/babel-helper-module-imports&quot; target=&quot;_blank&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; @babel/helper-module-imports&lt;/a&gt;&lt;/h5&gt;
-
-&lt;p&gt;src以下には3つのファイルがあります。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;index.js&lt;/strong&gt;&lt;br /&gt;
-外部から呼び出されるpublicな関数。処理の実態は以下の2つに委譲。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;import-injector.js&lt;/strong&gt;&lt;br /&gt;
-polyfillの注入を担うclass。1つのpolyfillにつき1インスタンスを生成し、polyfillの性質(クラスメソッドなのか、インスタンスメソッドなのか、等)に応じた方法で注入する処理を呼び出す。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;import-bulder.js&lt;/strong&gt;&lt;br /&gt;
-上述の「注入する処理」の本体。慎ましいBuilderパターンで実装されている。&lt;/p&gt;
-
-&lt;p&gt;以上、ざっくりとしたコードリーディングでした。@babel/coreのほうまではちゃんと読んでないので誤りがあるかもしれませんが、なんとなく&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns&lt;/code&gt;による挙動の違いを想定できたので良しとします。&lt;/p&gt;
-
-&lt;h3 id=&quot;あとがき&quot;&gt;あとがき&lt;/h3&gt;
-
-&lt;p&gt;今回の記事はBabel7.1.0のドキュメントとソースを参考にしています。今後また仕様が変わることもあると思うので、記事内に古い情報や誤りを見つけた際は&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡いただければと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です。今回はBabel7.xでの用途別polyfillの設定方法と、キモとなるuseBuiltInsオプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは7.1.0です)。</summary></entry></feed>
+今後もVueコミュニティが知見と活気で盛り上がりますよう、クリスマスに願いを込めたところで締めさせていただきます。&lt;/p&gt;</content><author><name></name></author><summary type="html">VueComponent間で再利用可能な部品を実装するための機能がmixinです。mixinを使った共通化の例はよく見かけますし、私もしばしばやってきました。ただ、どうも自分の実装方法だと後々不便になったり見通しが悪かったりと、使い勝手の悪いものになってしまうことが多かったです。</summary></entry></feed>

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>VuexのStore設計のTips - 薄いGetter</title>
+  <meta name="description" content="「良い設計」の価値基準は状況によって変わってきますが、考えるキッカケや議論のとっかかりを残すために、現時点で設計時に意識していることをTips的にまとめてみます。第1弾はGetterの設計論です。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2019">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="「良い設計」の価値基準は状況によって変わってきますが、考えるキッカケや議論のとっかかりを残すために、現時点で設計時に意識していることをTips的にまとめてみます。第1弾はGetterの設計論です。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2019-09-25-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="VuexのStore設計のTips - 薄いGetter" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="VuexのStore設計のTips - 薄いGetter">
+  <meta name="twitter:description" content="「良い設計」の価値基準は状況によって変わってきますが、考えるキッカケや議論のとっかかりを残すために、現時点で設計時に意識していることをTips的にまとめてみます。第1弾はGetterの設計論です。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2019-09-25-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2019-09-25-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-39630080-4', 'auto');
+    ga('require', 'linkid');
+    ga('send', 'pageview', {
+      'page': '/blog/2019-09-25-1',
+      'title': 'VuexのStore設計のTips - 薄いGetter'
+    });
+  </script>
+  
+
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4850874764930854",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+
+  <script src="/dist/prism.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2019-09-25-1">
+            <span itemprop="name">VuexのStore設計のTips - 薄いGetter</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">VuexのStore設計のTips - 薄いGetter</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2019-09-25</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/vue/">Vue</a>,    
+            <a href="/category/vuex/">Vuex</a>,    
+            <a href="/category/javascript/">JavaScript</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>Vue + Vuexで中〜大規模なアプリケーションの開発をするとき、どんな設計にするか未だによく悩みます。試してみては捨ててを繰り返していて、そろそろ自分の中でベターなパターンを固めたいと思いつつも固まらず、気づけば数年経ちました。</p>
+
+<p>そういった前提を踏まえつつではありますが、<strong>現時点</strong>で設計時に意識していることをTips的に少しずつまとめてみようと思います。今回はVuexのGetterに関するお話です。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#getterの役割を見直す" id="markdown-toc-getterの役割を見直す">Getterの役割を見直す</a></li>
+  <li><a href="#副作用のないクエリとして実装する" id="markdown-toc-副作用のないクエリとして実装する">副作用のないクエリとして実装する</a></li>
+  <li><a href="#プロパティアクセスとメソッドアクセスを区別して命名する" id="markdown-toc-プロパティアクセスとメソッドアクセスを区別して命名する">プロパティアクセスとメソッドアクセスを区別して命名する</a></li>
+  <li><a href="#プリミティブでシンプルなクエリとして実装する" id="markdown-toc-プリミティブでシンプルなクエリとして実装する">プリミティブでシンプルなクエリとして実装する</a></li>
+  <li><a href="#表示用の加工処理はcomponentに実装する" id="markdown-toc-表示用の加工処理はcomponentに実装する">表示用の加工処理はComponentに実装する</a>    <ul>
+      <li><a href="#例外1-加工された値の賞味期限が長い場合" id="markdown-toc-例外1-加工された値の賞味期限が長い場合">例外1. 加工された値の賞味期限が長い場合</a></li>
+      <li><a href="#例外2-加工処理が複数componentで繰り返される場合" id="markdown-toc-例外2-加工処理が複数componentで繰り返される場合">例外2. 加工処理が複数Componentで繰り返される場合</a></li>
+    </ul>
+  </li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="getterの役割を見直す">Getterの役割を見直す</h3>
+
+<p>VuexはFluxアーキテクチャを参考にしており、他のFlux系フレームワークと同様にStoreではStateを保持し、Stateが更新されるとそれをViewに通知します。<br />
+このときVuexのStoreは<strong>Getterを通じてStateの一部を切り出して</strong>Viewに渡すことができます。よくあるFlux系Storeは<code class="highlighter-rouge">getState</code>関数などでStateオブジェクトを丸々渡すケースが多いので対照的ですよね。</p>
+
+<p>この性質に着目すると、VuexのStoreは外部に対して<strong>読み込み系のGetter</strong>と<strong>書き込み系のAction(とMutation)</strong>の仕組みを備えていると考えられます。</p>
+
+<h3 id="副作用のないクエリとして実装する">副作用のないクエリとして実装する</h3>
+
+<p>書き込み系と読み込み系の分離といえば、CQS (Command-Query Separation) や CQRS (Command and Query Responsibility Segregation) などの設計パターンが思い当たります。ここではよりシンプルなCQSを参考に考えます。</p>
+
+<p>CQSの基本的な考え方は、オブジェクトが持つメソッドを大きく2つのカテゴリに分類するというものです。1つは副作用が起き得る書き込み系の処理の<strong>Command</strong>、もう一つは副作用のない読み込み系の処理の<strong>Query</strong>です。</p>
+
+<p>Getterもこれにならって副作用が起きないように実装します。<br />
+これだけ見ると当たり前なのですが、「〇〇を表示したときにイベントをemitする」「〇〇を表示したときにフラグを立てる」といった実装をするとき、〇〇を返すGetterの中でemitしたりフラグを立てたりするのもNGなので要注意です。代わりに副作用の起きる処理はMutationやActionに寄せます。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// NG</span>
+<span class="nx">getters</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nl">articles</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">state</span><span class="p">.</span><span class="nx">isShown</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="k">return</span> <span class="nx">state</span><span class="p">.</span><span class="nx">articles</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1">// OK</span>
+<span class="nl">getters</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nl">articles</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">articles</span>
+<span class="p">},</span>
+<span class="nx">mutations</span><span class="p">:</span> <span class="p">{</span>
+  <span class="nx">shown</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">state</span><span class="p">.</span><span class="nx">isShown</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<h3 id="プロパティアクセスとメソッドアクセスを区別して命名する">プロパティアクセスとメソッドアクセスを区別して命名する</h3>
+
+<p>これは完全に好みの話なので蛇足ですが、</p>
+
+<ul>
+  <li>プロパティアクセスのGetterは返すデータを表す名詞で命名する</li>
+  <li>メソッドアクセスのGetterは<code class="highlighter-rouge">find{名詞}</code>や<code class="highlighter-rouge">find{名詞}By{条件}</code>と命名し、引数に条件をとる</li>
+</ul>
+
+<p>というマイルールで実装しています。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">getters</span><span class="p">:</span> <span class="p">{</span>
+  <span class="c1">// プロパティアクセスの場合は名詞で命名する</span>
+  <span class="nl">books</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">books</span><span class="p">,</span>
+
+  <span class="c1">// メソッドアクセスの場合は動詞(find)で命名する</span>
+  <span class="nx">findBook</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">id</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">books</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">each</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span><span class="p">),</span>
+
+  <span class="c1">// 条件別にGetterを用意する場合は 動詞 + by条件 と命名する</span>
+  <span class="nx">findBooksByAuthor</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">author</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">books</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">each</span><span class="p">.</span><span class="nx">author</span> <span class="o">===</span> <span class="nx">author</span><span class="p">),</span>
+  <span class="nx">findBookByISBN</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">ISBN</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">books</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">each</span><span class="p">.</span><span class="nx">ISBN</span> <span class="o">===</span> <span class="nx">ISBN</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>ちなみに過去に<code class="highlighter-rouge">getHoge</code>, <code class="highlighter-rouge">filterHoge</code>など動詞を使い分けていたこともあったのですが、開発者によって使い分けルールが曖昧だったので最近はすべて<code class="highlighter-rouge">find</code>に統一しています。</p>
+
+<h3 id="プリミティブでシンプルなクエリとして実装する">プリミティブでシンプルなクエリとして実装する</h3>
+
+<p>Getterで取り出した値をどう使うかは使う側に依存するので、値を加工したりせずState(の一部)をそのまま返すだけのシンプルなGetterを実装するように意識します。<br />
+これを守るためにも上述の命名ルールが役立っていて、データをまるごと返す場合はデータ名を使った名詞で命名し、データの集合から一部を検索して返す場合はfindで命名すると限定することで、自然とシンプルでプリミティブな役割を持つクエリとして実装することができます。</p>
+
+<p>では、データを加工して渡したい場合はどうするのが良いでしょうか？<br />
+<code class="highlighter-rouge">firstName</code>と<code class="highlighter-rouge">lastName</code>を組み合わせて一つの<code class="highlighter-rouge">fullName</code>文字列として扱う例のように、Stateの値は書き換えないまま一時的に加工された値を生成する場面はよくあると思います。この加工処理をどこで担うのが良いでしょうか？</p>
+
+<h3 id="表示用の加工処理はcomponentに実装する">表示用の加工処理はComponentに実装する</h3>
+
+<p>Stateを加工したり組み合わせたりして表示に適した値に変換する処理は、原則Component側で担うようにしています。StoreからGetterで取得した値をComputedなどで変換して表示する……という実装方法です。<br />
+データモデルやアプリケーションの状態といったコアな情報のみをStoreで持ち、Viewの状態をComponentで持つようにすることで、<strong>Viewの仕様変更に耐えやすくする</strong>狙いです。</p>
+
+<p>ちなみにFluxではViewの状態もStoreに持たせる傾向にありますが、Vue + VuexアプリケーションをMVVMと捉えるならVueComponentはVMに相当し、表示のための加工とその結果の保持を担うべき場所とみなすことができます。捉え方によって解釈も変わってきそうですが、私は<strong>StoreのGetterをViewに依存させないこと(Viewの仕様に引きずられないこと)</strong>を重視したいので、MVVM寄りの捉え方をすることが多いです。</p>
+
+<p>とはいえこれはあくまで原則。<br />
+例外的な場面での対処法も考慮しておく必要があります。</p>
+
+<h4 id="例外1-加工された値の賞味期限が長い場合">例外1. 加工された値の賞味期限が長い場合</h4>
+
+<p>1つ目の例外は、加工された値の賞味期限がComponentのライフサイクルより長い場合です。複数のComponentで使われる場合もこれに該当します。</p>
+
+<p>Componentが破棄された後も値を保持し続けなければいけない場合は、当然ですがStoreで保持しなければなりません。Storeで保持する以外にもClosureで実装したりSingletonで実装したりと値の保持方法はありますが、状態を持つ仕組みが複数存在すると複雑さが増すので注意が必要です。</p>
+
+<h4 id="例外2-加工処理が複数componentで繰り返される場合">例外2. 加工処理が複数Componentで繰り返される場合</h4>
+
+<p>そこそこの規模・複雑さのアプリケーションを開発していると、「Module分けされたAとBのStoreからStateを取ってきて組み合わせに応じた表示をする」なんて場面が出てくるかもしれません。また「複雑な条件分岐を経てどのように加工されるかが決まる」といった場面もあり得るでしょう。<br />
+このように加工処理が複雑で、なおかつ複数のComponentで必要な場合は、加工処理を関数として外出しする選択肢がとれます。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 外出しした加工処理の実装</span>
+<span class="k">export</span> <span class="kd">function</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">stateA</span><span class="p">,</span> <span class="nx">stateB</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// 引数をもとに加工された値を生成して返す</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// component側</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">convert</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./convert'</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">displayValue</span><span class="p">()</span> <span class="p">{</span>
+      <span class="kd">const</span> <span class="nx">getters</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">$store</span><span class="p">.</span><span class="nx">getters</span><span class="p">;</span>
+      <span class="c1">// 外出しされた加工処理を利用する</span>
+      <span class="k">return</span> <span class="nx">convert</span><span class="p">(</span><span class="nx">getters</span><span class="p">.</span><span class="nx">stateA</span><span class="p">,</span> <span class="nx">getters</span><span class="p">.</span><span class="nx">stateB</span><span class="p">);</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>例えば「Listを表示する画面にて、ユーザーがソート方法を切り替えるとインタラクティブにItemの並び順が変わる」といったような場面では、数種類のsort関数を外出ししておくことができそうですよね。</p>
+
+<h3 id="おわりに">おわりに</h3>
+<p>設計に関することは日々うにゃうにゃ考えているものの、当たり前の内容であったり状況次第で何とでも解釈できる内容であったりして、書き残すことにあまり意味を感じていませんでした。が、いざ設計しようと思ったときに考慮すべき観点や選択肢としてパッと浮かんでくるものは、やはり言語化して腹落ちしたものなんですよね。</p>
+
+<p>また、言語化することでフィードバックをもらえたり議論のきっかけになったりする良さもあると思うので、1ヶ月後には意見が変わっているかもしれませんがこうして書き残す試みを今後もしていこうと思います。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Vuex%E3%81%AEStore%E8%A8%AD%E8%A8%88%E3%81%AETips+-+%E8%96%84%E3%81%84Getter&url=https://aloerina01.github.io/blog/2019-09-25-1&via=aloerina_&hashtags=Vue,Vuex,JavaScript,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Vuex%E3%81%AEStore%E8%A8%AD%E8%A8%88%E3%81%AETips+-+%E8%96%84%E3%81%84Getter&u=https://aloerina01.github.io/blog/2019-09-25-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2019-09-25-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Vuex%E3%81%AEStore%E8%A8%AD%E8%A8%88%E3%81%AETips+-+%E8%96%84%E3%81%84Getter%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2019-09-25-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+        <div class="post-donation">
+  <div class="post-donation-panel">
+    <p class="post-donation-description for-pc">
+      <span>この記事が気に入ったらaloerinaをサポートしてみませんか？<br />コーヒー1杯からお気軽にサポートできます。</span>
+    </p>
+    <p class="post-donation-description for-mobile">
+      <span>この記事が気に入ったら<br />aloerinaをサポートしてみませんか？</span>
+    </p>
+    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
+      <p class="button-body">
+        <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+        <span class="label">サポートする</span>
+      </p>
+    </a>
+  </div>
+</div>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>あわせて読みたい</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2018-09-14-1">React+Fluxで正しく設計するためのFlux見直しガイド</a></li>
+      
+      <li><a href="/blog/2018-12-25-1">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</a></li>
+      
+      <li><a href="/blog/2018-09-27-1">Vue.nextTickのコードリーディング</a></li>
+      
+      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="" loading="lazy">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発、エンジニアリングマネジメント、スクラムマスターなどをしています。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" rel="noopener noreferrer" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" rel="noopener noreferrer" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/vuex/">Vuex</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/exp/">EXP</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+        
+        
+        <a href="/category/mobprogramming/">MobProgramming</a>
+      
+        
+        
+        <a href="/category/management/">Management</a>
+      
+        
+        
+        <a href="/category/coaching/">Coaching</a>
+      
+        
+        
+        <a href="/category/grareco/">GraReco</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents donation">
+  <div class="sub-contents-wrapper donation-wrapper">
+    <h3>BUY ME A COFFEE</h3>
+    <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
+    <div class="donation-button-area">
+        <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
+          <p class="button-body">
+            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+            <span class="label">ごちそうする</span>
+          </p>
+        </a>
+        <span>または<a href="https://kyash.co/" target="_blank" rel="noopener noreferrer">Kyash</a>で id: <b>aloerina</b> に送金する</span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published on <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Header
+    var CLASS_MENU_SHOW = 'show';
+    var navigationMenu = document.getElementById('js-navigation-menu');
+    var menuIcon = document.getElementById('js-mobile-menu-icon');
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+    });
+  });
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.30.0/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.31.0/autocomplete.min.js"></script>
+<script src="/dist/algolia.js" async></script>
+<script src="https://embed.small.chat/TAFB1N6F4GFTRAULS0.js" async></script>
+
+</body>
+
+</html>
