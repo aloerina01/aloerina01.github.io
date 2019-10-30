@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-10-29T14:47:39+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-10-30T06:48:01+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">チームが上手く失敗するためにマネージャーの私にできること</title><link href="https://aloerina01.github.io/blog/2019-10-24-1" rel="alternate" type="text/html" title="チームが上手く失敗するためにマネージャーの私にできること" /><published>2019-10-24T00:00:00+00:00</published><updated>2019-10-24T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-10-24-1">&lt;p&gt;私は現在、フロントエンドエンジニア5人のチームのマネージャーと、職種混合8人チームのスクラムマスターを担当しています。どちらの役割においても、&lt;strong&gt;チームがより自律的で効果的になること&lt;/strong&gt;を意識して関わっています。&lt;/p&gt;
 
 &lt;p&gt;ところで、&lt;strong&gt;心配性な&lt;/strong&gt;私はチームが将来出くわすであろう失敗やトラブルを予測して先回りで対策しようとする傾向にありました。&lt;/p&gt;
@@ -37,11 +37,28 @@
 
 &lt;p&gt;しかしいざ取り組んでみたら、&lt;strong&gt;どこまで挑戦してもらって、どこを未然に防ぐか&lt;/strong&gt;のバランスを常にとり続ける難しさが待っていました。特に秀でたところのない私にとって「バランス感覚が良いこと」は生存戦略のつもりだったのですが、このバランス取りはすごく難しくて、今でも悩み続けています。&lt;/p&gt;
 
+&lt;h3 id=&quot;パターンは頼もしくて脆い&quot;&gt;パターンは頼もしくて、脆い&lt;/h3&gt;
+
+&lt;p&gt;チームが実績解除に挑むのと時を同じくして、私は「チームにとって最適な実績解除をどうやって経験してもらうか」の課題に挑戦し続けることになります。どれほどの難易度の経験をどのタイミングでしてもらうのが良いか、その経験のチャンスはどこに転がっているか…と日々悩み臨んでいるのですが、当然のように毎回失敗をします。&lt;/p&gt;
+
+&lt;p&gt;失敗しては別のアプローチをしてまた失敗して…を延々繰り返していれば選択肢も増えるし、うまくいった選択肢はパターンとして自分の中に定着したりもします。&lt;strong&gt;パターンを覚えて強くなったと錯覚した&lt;/strong&gt;日もありました。&lt;br /&gt;
+少し考えれば気づけたことですが、全く同じ人間はいないので同じパターンが通用することなんてないわけです。パターンを覚えたからといってレベルアップしたわけではないのです。&lt;/p&gt;
+
+&lt;p&gt;大事なのは、パターンの使い回しではなく応用です。応用に必要なものは&lt;strong&gt;具体策より方針&lt;/strong&gt;です。つまり、上手くいったアプローチをパターンとして蓄積させる過程では、個別具体的な部分を削ぎ落とし抽象化させていくことも必要なのでした。なんとか言語化までできたパターンの例を挙げてみます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;問題が起き得ることに気づいても何もせず、あえて問題を起こさせる。&lt;strong&gt;一度経験してしまえば次回は防げるであろう事例&lt;/strong&gt;で使う&lt;/li&gt;
+  &lt;li&gt;特定の問題に目を向けるよう、または集中するよう促す。&lt;strong&gt;解決策を試行錯誤する過程で実績解除できるであろう事例&lt;/strong&gt;で使う&lt;/li&gt;
+  &lt;li&gt;自分が取り組む問題に協力してもらえないか聞く。&lt;strong&gt;マネージャーが実績解除する姿を追体験させたい事例&lt;/strong&gt;で使う&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;いざ言葉にしてみるとパターンと呼ぶには見すぼらしい感じがしますね。それでもこれらを呼吸するように引き出せる状態になれば、一人ひとりの反応を見ることに集中できるようになり、コミュニケーションを洗練させられる気がします。そうなることを目指して、今しばらくはこの脆いパターンを蓄積させていこうと思う次第です。&lt;/p&gt;
+
 &lt;h3 id=&quot;本音&quot;&gt;本音&lt;/h3&gt;
 
 &lt;p&gt;自分の失敗をふりかえることを通じて失敗の必要性を実感し、チームが実績解除して前進していくことを意識するようになった話でした。&lt;/p&gt;
 
-&lt;p&gt;これが今自分にできることだと信じていますが、正直なところ全然自信はなくて、チームが前進しているかどうかも不安です。もっと別の視点や要素があるよ！という方はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;まで一言アドバイスよろしくお願いします。&lt;/p&gt;</content><author><name></name></author><summary type="html">私は現在、フロントエンドエンジニア5人のチームのマネージャーと、職種混合8人チームのスクラムマスターを担当しています。どちらの役割においても、チームがより自律的で効果的になることを意識して関わっています。</summary></entry><entry><title type="html">VuexのStore設計のTips - 薄いGetter</title><link href="https://aloerina01.github.io/blog/2019-09-25-1" rel="alternate" type="text/html" title="VuexのStore設計のTips - 薄いGetter" /><published>2019-09-25T00:00:00+00:00</published><updated>2019-09-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-09-25-1">&lt;p&gt;Vue + Vuexで中〜大規模なアプリケーションの開発をするとき、どんな設計にするか未だによく悩みます。試してみては捨ててを繰り返していて、そろそろ自分の中でベターなパターンを固めたいと思いつつも固まらず、気づけば数年経ちました。&lt;/p&gt;
+&lt;p&gt;これが今自分にできることだと信じていますが、正直なところ全然自信はなくて、チームが前進しているかどうかも不安です。もっと別の視点や要素があるよ！という方はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;まで一言アドバイスをよろしくお願いします。&lt;/p&gt;</content><author><name></name></author><summary type="html">私は現在、フロントエンドエンジニア5人のチームのマネージャーと、職種混合8人チームのスクラムマスターを担当しています。どちらの役割においても、チームがより自律的で効果的になることを意識して関わっています。</summary></entry><entry><title type="html">VuexのStore設計のTips - 薄いGetter</title><link href="https://aloerina01.github.io/blog/2019-09-25-1" rel="alternate" type="text/html" title="VuexのStore設計のTips - 薄いGetter" /><published>2019-09-25T00:00:00+00:00</published><updated>2019-09-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-09-25-1">&lt;p&gt;Vue + Vuexで中〜大規模なアプリケーションの開発をするとき、どんな設計にするか未だによく悩みます。試してみては捨ててを繰り返していて、そろそろ自分の中でベターなパターンを固めたいと思いつつも固まらず、気づけば数年経ちました。&lt;/p&gt;
 
 &lt;p&gt;そういった前提を踏まえつつではありますが、&lt;strong&gt;現時点&lt;/strong&gt;で設計時に意識していることをTips的に少しずつまとめてみようと思います。今回はVuexのGetterに関するお話です。&lt;/p&gt;
 
