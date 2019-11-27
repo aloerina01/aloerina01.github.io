@@ -1,5 +1,55 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-11-27T08:12:25+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">チームが上手く失敗するためにマネージャーの私にできること</title><link href="https://aloerina01.github.io/blog/2019-10-24-1" rel="alternate" type="text/html" title="チームが上手く失敗するためにマネージャーの私にできること" /><published>2019-10-24T00:00:00+00:00</published><updated>2019-10-24T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-10-24-1">&lt;p&gt;私は現在、フロントエンドエンジニア5人のチームのマネージャーと、職種混合8人チームのスクラムマスターを担当しています。どちらの役割においても、&lt;strong&gt;チームがより自律的で効果的になること&lt;/strong&gt;を意識して関わっています。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-11-27T09:21:46+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">「チームがうまく失敗から学ぶために私にできること」の補足と裏話</title><link href="https://aloerina01.github.io/blog/2019-11-27-1" rel="alternate" type="text/html" title="「チームがうまく失敗から学ぶために私にできること」の補足と裏話" /><published>2019-11-27T00:00:00+00:00</published><updated>2019-11-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-11-27-1">&lt;p&gt;2019年11月25日、&lt;a href=&quot;https://line.connpass.com/event/154447/&quot; target=&quot;_blank&quot;&gt;LINE Developer Meetup #58&lt;/a&gt; にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。&lt;/p&gt;
+
+&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;8b3ee51403284b37956b96592f1be8c9&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;慣れない登壇で上手く伝えきれたか不安なので、言い訳がましく補足をしていこうと思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;補足&quot;&gt;補足&lt;/h3&gt;
+
+&lt;p&gt;今回の話は、&lt;strong&gt;チームにより安全かつ効果的に失敗から学んでもらいたい・もらえる環境をつくっていきたい&lt;/strong&gt;という私の個人的な思いの元、それを実現していくためにどんなことを考えているかを言語化したものでした。&lt;/p&gt;
+
+&lt;p&gt;ですのでチームメンバーと合意をとって取り組んだことというよりは、私がどういう思いを持っていて、どういう&lt;strong&gt;思考プロセス&lt;/strong&gt;を経てどういう行動を起こしているか、というやや自分語り的な内容となっています。&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
+
+&lt;p&gt;発表の中で失敗の分析方法について触れていますが、これは&lt;strong&gt;私が日常的もしくは定期的にしている&lt;/strong&gt;方法になります。チームが出来上がったばかりの頃は特に丁寧にやっていたため付箋やホワイトボードの写真が残っていましたが、今ではノートの端切れに殴り書いたりと雑に(短時間で素早く)やっています。&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
+
+&lt;p&gt;失敗と向き合うために心に留めていることとして「失敗は実績解除だ」と締めくくっていますが、「実績解除」という言葉は人によっては馴染みのないものだったかもしれません。発表の仕方を工夫すべきだったなとまさしく失敗から学んだ点でもあります。&lt;br /&gt;
+ここで伝えたかったことは「学ぶための貴重な機会である&lt;strong&gt;尊い失敗体験&lt;/strong&gt;をネガティブな言葉で表現したくない」ということでした。&lt;/p&gt;
+
+&lt;h3 id=&quot;裏話&quot;&gt;裏話&lt;/h3&gt;
+
+&lt;p&gt;登壇が苦手なので日頃の発信はブログで行っているのですが、せっかく登壇の機会をもらえたので&lt;strong&gt;文字だけでは伝えにくいことを言葉と図で伝える&lt;/strong&gt;ことにこだわりたいと思って臨みました。その効果が如何ほどだったかは測れていないので、聞いていただいた方からのフィードバックを楽しみにしています。&lt;/p&gt;
+
+&lt;p&gt;ちなみに私が登壇資料をつくるときは&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;伝えたいことを箇条書きでリストアップする(ここでほぼ内容を固めます)&lt;/li&gt;
+  &lt;li&gt;声に出して何度も話しながら流れを組み上げる&lt;/li&gt;
+  &lt;li&gt;話しながら思い浮かぶ図を手書きで書き起こす(ここでスライドのおおよその枚数が見えてきます)&lt;/li&gt;
+  &lt;li&gt;Keynoteでスライドをつくる&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;という流れになることが多いです。&lt;/p&gt;
+
+&lt;h3 id=&quot;グラレコ&quot;&gt;グラレコ&lt;/h3&gt;
+
+&lt;p&gt;最近Meetupの参加メモをiPadで手書きで取るようにしているので、おまけとして公開しておきます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-11-27-1-grareco_1.jpg&quot; alt=&quot;grareco_1&quot; loading=&quot;lazy&quot; /&gt;
+「LINEリサーチ開発におけるScrumのこれまでとこれから」 by 門谷さん&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-11-27-1-grareco_2.jpg&quot; alt=&quot;grareco_2&quot; loading=&quot;lazy&quot; /&gt;
+「仲間の多様な価値観を尊重しつつ、チームとして成果を出すための戦略」 by 米原さん&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;グラレコ(っぽいもの)を手早くそれっぽくつくるコツは「背景色をつけて白文字にすること」と「矩形で情報を束ねること」だと勝手に思っていますが、もっといい方法あれば是非アドバイスいただけると嬉しいです！&lt;/p&gt;</content><author><name></name></author><summary type="html">2019年11月25日、LINE Developer Meetup #58 にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。</summary></entry><entry><title type="html">チームが上手く失敗するためにマネージャーの私にできること</title><link href="https://aloerina01.github.io/blog/2019-10-24-1" rel="alternate" type="text/html" title="チームが上手く失敗するためにマネージャーの私にできること" /><published>2019-10-24T00:00:00+00:00</published><updated>2019-10-24T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-10-24-1">&lt;p&gt;私は現在、フロントエンドエンジニア5人のチームのマネージャーと、職種混合8人チームのスクラムマスターを担当しています。どちらの役割においても、&lt;strong&gt;チームがより自律的で効果的になること&lt;/strong&gt;を意識して関わっています。&lt;/p&gt;
 
 &lt;p&gt;ところで、&lt;strong&gt;心配性な&lt;/strong&gt;私はチームが将来出くわすであろう失敗やトラブルを予測して先回りで対策しようとする傾向にありました。&lt;/p&gt;
 
@@ -995,203 +1045,4 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
 
 &lt;p&gt;「モブプログラミング・ベストプラクティス」にはモブプロの初心者・中級者が従うべきプロセスがまとめてあります。プロセスに従ったほうがスムーズに進むケースが多いと思われますが、ルールを守ることが絶対ではない、とも書かれていました。&lt;/p&gt;
 
-&lt;p&gt;振り返りを通じてチーム全員でモブプロを改善しながら、チームに合ったモブライフを送っていきたいですね！ ハッピーモビング！&lt;/p&gt;</content><author><name></name></author><summary type="html">私のチームは週の数時間をモブプログラミングに割り当てています。楽しみながら開発でき、しかも開発フローにまつわる悩みが解消されてとても良い感じです。</summary></entry><entry><title type="html">シェルスクリプト入門者のためのチェックリスト</title><link href="https://aloerina01.github.io/blog/2018-12-27-1" rel="alternate" type="text/html" title="シェルスクリプト入門者のためのチェックリスト" /><published>2018-12-27T00:00:00+00:00</published><updated>2018-12-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2018-12-27-1">&lt;p&gt;シェルスクリプトはWebアプリケーションの開発において必須スキルというわけではないのかもしれませんが、ビルドやデプロイのスクリプトを書くときに結構役立ったりします。ただ、たまにしか書かないこともありなかなか入門レベルから上達せず、適切なスクリプトが書けているか不安になることがあります。&lt;/p&gt;
-
-&lt;p&gt;そんなときに頼りにしているのがGoogle製の&lt;strong&gt;&lt;a href=&quot;https://google.github.io/styleguide/shell.xml&quot; target=&quot;_blank&quot;&gt;Shell Style Guide&lt;/a&gt;&lt;/strong&gt;(以下「ガイド」)です。とりあえず最低限のお作法としてこれに従いつつ、要所要所をアレンジして使っています。&lt;/p&gt;
-
-&lt;p&gt;今回は中でも特に気をつけている部分をピックアップしてチェック表代わりにしてみようと思います。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#どのshellを使うか&quot; id=&quot;markdown-toc-どのshellを使うか&quot;&gt;どのshellを使うか&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#いつshellを使うか&quot; id=&quot;markdown-toc-いつshellを使うか&quot;&gt;いつshellを使うか&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#拡張子&quot; id=&quot;markdown-toc-拡張子&quot;&gt;拡張子&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#エラーメッセージ&quot; id=&quot;markdown-toc-エラーメッセージ&quot;&gt;エラーメッセージ&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#フォーマット&quot; id=&quot;markdown-toc-フォーマット&quot;&gt;フォーマット&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#変数展開&quot; id=&quot;markdown-toc-変数展開&quot;&gt;変数展開&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#コマンド置換&quot; id=&quot;markdown-toc-コマンド置換&quot;&gt;コマンド置換&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#test--&quot; id=&quot;markdown-toc-test--&quot;&gt;test, [, [[&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#empty-check&quot; id=&quot;markdown-toc-empty-check&quot;&gt;empty check&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ファイル名のワイルドカード&quot; id=&quot;markdown-toc-ファイル名のワイルドカード&quot;&gt;ファイル名のワイルドカード&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#whileとパイプライン&quot; id=&quot;markdown-toc-whileとパイプライン&quot;&gt;whileとパイプライン&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#命名規則&quot; id=&quot;markdown-toc-命名規則&quot;&gt;命名規則&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#関数&quot; id=&quot;markdown-toc-関数&quot;&gt;関数&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;どのshellを使うか&quot;&gt;どのshellを使うか&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;原則bashを使う。shebangは&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/bash&lt;/span&gt;&lt;/code&gt;とする&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;特段な理由がなければbashを利用するようにします。日頃使っているコマンドの中には、実はPOSIX準拠ではなくbash等で拡張されたものも存在します。そういったことを意識せずに済むようにbashでの実行を前提としています。&lt;/p&gt;
-
-&lt;p&gt;私の場合、用意したスクリプトを手元で実行することもあればCIから実行することもあります。よく使うCiecleCIは、仮想環境のOSがubuntuなのでデフォルトのshellがdashです。shebangを&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;&lt;/code&gt;としていると、手元で動いたスクリプトがCI上では動かない…なんてことになり兼ねないので、bashでの実行を原則としています。&lt;/p&gt;
-
-&lt;h3 id=&quot;いつshellを使うか&quot;&gt;いつshellを使うか&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;小さなツール・ユーティリティとして使う&lt;/strong&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;拡張子&quot;&gt;拡張子&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;直接実行可能なものは拡張子をつけない&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;ライブラリとしてのスクリプトは拡張子必須&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;直接実行する場面では「どの言語で書かれているか」を意識する必要がないためです。逆にライブラリとして利用する場面では、実装言語を意識する必要がありますよね。「直接実行可能か」をひと目で判断しやすくするためにも拡張子の有無に気を配るようにしています。&lt;/p&gt;
-
-&lt;h3 id=&quot;エラーメッセージ&quot;&gt;エラーメッセージ&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;全てのエラーメッセージはSTDERR(標準エラー出力)へ書き出す&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;通常の状態とエラー状態を識別しやすくするためですね。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;err&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;[&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;date&lt;/span&gt; +&lt;span class=&quot;s1&quot;&gt;'%Y-%m-%dT%H:%M:%S%z'&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;]: &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$@&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&amp;amp;2
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt; do_something&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
-  &lt;/span&gt;err &lt;span class=&quot;s2&quot;&gt;&quot;Unable to do_something&quot;&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;exit&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;E_DID_NOTHING&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;リダイレクト&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;とファイルディスクリプタ&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;2&lt;/code&gt;を使ってSTDERRに出力するサンプルコードです。&lt;/p&gt;
-
-&lt;h3 id=&quot;フォーマット&quot;&gt;フォーマット&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;インデントはスペース2つ&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;1行は80文字まで&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;パイプラインが3つ以上続くときは改行する&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;ループ文やif文では、同じ行に&lt;code class=&quot;highlighter-rouge&quot;&gt;; do&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;; then&lt;/code&gt;を書く&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;case文では、改行して&lt;code class=&quot;highlighter-rouge&quot;&gt;;;&lt;/code&gt;を書く&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;特にこだわりはないのでガイドに従います。&lt;/p&gt;
-
-&lt;h3 id=&quot;変数展開&quot;&gt;変数展開&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;$var&quot;&lt;/code&gt;より&lt;code class=&quot;highlighter-rouge&quot;&gt;${var}&lt;/code&gt;を使う&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;ガイドには「既存の実装に揃えることを優先すること」とも記載されていますが、既存の実装がないのでこのルールに従っています。&lt;/p&gt;
-
-&lt;h3 id=&quot;コマンド置換&quot;&gt;コマンド置換&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;`command`&lt;/code&gt;より&lt;code class=&quot;highlighter-rouge&quot;&gt;$(command)&lt;/code&gt;を使う&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$(command)&lt;/code&gt;は入れ子にできる利点があります。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# This is preferred:&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;command1&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# This is not:&lt;/span&gt;
-&lt;span class=&quot;nv&quot;&gt;var&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt; &lt;span class=&quot;se&quot;&gt;\`&lt;/span&gt;command1&lt;span class=&quot;se&quot;&gt;\`&lt;/span&gt;&lt;span class=&quot;sb&quot;&gt;`&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;test--&quot;&gt;test, [, [[&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[[ ... ]]&lt;/code&gt;を利用する&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[[ ... ]]&lt;/code&gt;はPOSIX準拠ではないので注意が必要ですが、testコマンド等に比べて機能が拡張されています。とくに変数展開に関する問題が減るので、原則利用するようにしています。&lt;/p&gt;
-
-&lt;h3 id=&quot;empty-check&quot;&gt;empty check&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;極力&lt;code class=&quot;highlighter-rouge&quot;&gt;-z&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt;を利用する&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;空文字列のチェックなどのempty checkをするときは&lt;code class=&quot;highlighter-rouge&quot;&gt;-z&lt;/code&gt;(zero)や&lt;code class=&quot;highlighter-rouge&quot;&gt;-n&lt;/code&gt;(non-zero)を利用します。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-n&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;my_var&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
-  &lt;/span&gt;do_something
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;ファイル名のワイルドカード&quot;&gt;ファイル名のワイルドカード&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;ワイルドカードを利用するときは&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;ではなく&lt;code class=&quot;highlighter-rouge&quot;&gt;./*&lt;/code&gt;とする&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;ワイルドカードを利用するときはpathを明示します。ミスを防ぐことと可読性を高めることが目的だと思います。&lt;/p&gt;
-
-&lt;h3 id=&quot;whileとパイプライン&quot;&gt;whileとパイプライン&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;パイプでwhileにつなぐ代わりに、forループまたはプロセス置換を使う&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;whileを使うと暗黙的にsubshell(子プロセス)が生成されます。その結果、子プロセスから親プロセスの変数にアクセスできなかったり、何か問題が起きたときに追跡しにくくなったりします。&lt;/p&gt;
-
-&lt;p&gt;以下のコードは、subshellから親の変数にアクセスできない例です。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;last_line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'NULL'&lt;/span&gt;
-your_command | &lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;line&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
-  &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;last_line&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;line&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# 親で定義したlast_lineへアクセスできない&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;done
-
-&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;last_line&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;   &lt;span class=&quot;c&quot;&gt;# そのため親のlast_lineは更新されておらず、'NULL'が出力される&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;forループでの代替例です。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
-&lt;span class=&quot;c&quot;&gt;# Only do this if there are no spaces in return values.&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;value &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;your_command&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
-  &lt;/span&gt;total+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;次にプロセス置換の例です。プロセス置換もsubshellを使いますが、whileと違い明示的であるため幾分か良いです。ちなみにプロセス置換はPOSIX準拠ではありませんのでご注意を。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;total&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0
-&lt;span class=&quot;nv&quot;&gt;last_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;while &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;read &lt;/span&gt;count filename&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;do
-  &lt;/span&gt;total+&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-  &lt;span class=&quot;nv&quot;&gt;last_file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;filename&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;done&lt;/span&gt; &amp;lt; &amp;lt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;your_command | &lt;span class=&quot;nb&quot;&gt;uniq&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;命名規則&quot;&gt;命名規則&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;変数やファイル名はスネークケース&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;定数や環境変数は大文字のスネークケース&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;定数や環境変数はファイル冒頭で定義し、&lt;code class=&quot;highlighter-rouge&quot;&gt;readonly&lt;/code&gt;または&lt;code class=&quot;highlighter-rouge&quot;&gt;declare&lt;/code&gt;する&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;関数内で使う変数は&lt;code class=&quot;highlighter-rouge&quot;&gt;local&lt;/code&gt;をつける&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;定数や環境変数などのグローバル変数はファイルの冒頭で定義します。グローバル変数は広い範囲で利用され得るためバリデーションを実装し、定数の場合はreadonlyとします。&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;zip_version&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;$(&lt;/span&gt;dpkg &lt;span class=&quot;nt&quot;&gt;--status&lt;/span&gt; zip | &lt;span class=&quot;nb&quot;&gt;grep &lt;/span&gt;Version: | &lt;span class=&quot;nb&quot;&gt;cut&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-f&lt;/span&gt; 2&lt;span class=&quot;k&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[[&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-z&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;zip_version&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;then
-  &lt;/span&gt;error_message
-&lt;span class=&quot;k&quot;&gt;else
-  &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;readonly &lt;/span&gt;zip_version
-&lt;span class=&quot;k&quot;&gt;fi&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;関数&quot;&gt;関数&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;スネークケースで書く&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;パッケージの関数は&lt;code class=&quot;highlighter-rouge&quot;&gt;::&lt;/code&gt;で区切る&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Single function&lt;/span&gt;
-my_func&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  ...
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c&quot;&gt;# Part of a package&lt;/span&gt;
-mypackage::my_func&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  ...
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;関数はグローバル変数の下に定義し、呼び出し箇所と宣言箇所を混ぜないようにします。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;以上になります。&lt;br /&gt;
-間違っている箇所やもっといい案がありましたらお気軽に&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">シェルスクリプトはWebアプリケーションの開発において必須スキルというわけではないのかもしれませんが、ビルドやデプロイのスクリプトを書くときに結構役立ったりします。ただ、たまにしか書かないこともありなかなか入門レベルから上達せず、適切なスクリプトが書けているか不安になることがあります。</summary></entry></feed>
+&lt;p&gt;振り返りを通じてチーム全員でモブプロを改善しながら、チームに合ったモブライフを送っていきたいですね！ ハッピーモビング！&lt;/p&gt;</content><author><name></name></author><summary type="html">私のチームは週の数時間をモブプログラミングに割り当てています。楽しみながら開発でき、しかも開発フローにまつわる悩みが解消されてとても良い感じです。</summary></entry></feed>
