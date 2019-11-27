@@ -222,7 +222,7 @@
 <span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>  <span class="c1">// objをラップしたproxyを生成する</span>
 
 <span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Margherita'</span><span class="p">;</span>  <span class="c1">// nameは上書き禁止です</span>
-<span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Aloerina</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Aloerina</span>
 </code></pre></div></div>
 
 <h4 id="handlerの種類">Handlerの種類</h4>
@@ -307,7 +307,7 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 <span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">({},</span> <span class="nx">handler</span><span class="p">);</span>
 
 <span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Margherita'</span><span class="p">;</span>  <span class="c1">// Before set</span>
-<span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Margherita</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Margherita</span>
 </code></pre></div></div>
 
 <h4 id="can-i-use">Can I Use</h4>
