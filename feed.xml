@@ -1,5 +1,85 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-11-29T07:25:27+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">「チームがうまく失敗し学ぶために私にできること」の補足と裏話</title><link href="https://aloerina01.github.io/blog/2019-11-27-1" rel="alternate" type="text/html" title="「チームがうまく失敗し学ぶために私にできること」の補足と裏話" /><published>2019-11-27T00:00:00+00:00</published><updated>2019-11-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-11-27-1">&lt;p&gt;2019年11月25日、&lt;a href=&quot;https://line.connpass.com/event/154447/&quot; target=&quot;_blank&quot;&gt;LINE Developer Meetup #58&lt;/a&gt; にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2019-12-10T03:18:54+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">ゲームをみんなでやったら自然とモブプロに入門できた話</title><link href="https://aloerina01.github.io/blog/2019-12-10-1" rel="alternate" type="text/html" title="ゲームをみんなでやったら自然とモブプロに入門できた話" /><published>2019-12-10T00:00:00+00:00</published><updated>2019-12-10T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-12-10-1">&lt;p&gt;とあるゲーム好きなチームメンバーからの一声をきっかけに、&lt;strong&gt;Factorio&lt;/strong&gt;というPCゲームをみんなでやる「モブFactorio」なる会を開催しました。命名こそ「モブ」と言っていますが、ゲーム好き4人が集まってわいわいゲームしようという軽い気持ちでの開催でした。&lt;br /&gt;
+が、これが想像以上にモブの良さを実感でき、ちょうど良いモブ入門の場となったので様子をレポートします。&lt;/p&gt;
+
+&lt;h3 id=&quot;factorioとは&quot;&gt;&lt;a href=&quot;https://store.steampowered.com/app/427520/Factorio/?l=japanese&quot; target=&quot;_blank&quot;&gt;Factorio&lt;/a&gt;とは&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Factorioは無限に広がる2D世界に自動化された工場を建設し、次第に複雑になる様々なアイテムを製造するゲームです&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;何もないだだっ広い世界で石炭を掘ったり資材を集めるところから始まり、徐々に蒸気機関やベルトコンベアなどの科学の力を使いながら効率的な工場を作っていく……というようなゲームでした(初プレイした私の目線での概要なので、間違っていたらそっと教えてください)。&lt;/p&gt;
+
+&lt;h3 id=&quot;第1回目の様子---ゲームを楽しむと自然にモブになる&quot;&gt;第1回目の様子 - ゲームを楽しむと自然にモブになる&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2019-12-10-1-mob.jpg&quot; alt=&quot;モブ風景&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;業務後にふらっと集まり、出前をとって準備完了です。&lt;br /&gt;
+参加者は「Factorioに興味はあるものの買おうとまでは思っていない」状態だったので、ハマっている人のPCを借りて皆で交代しながらやる方針に。ゲームを持っている人の家に集まって遊ぶ構図に近いですね。結果的に操作するプレイヤー1人(ドライバー)と周りでとやかく言う3人(ナビゲーター)という体制ができあがり、自然とモブのかたちが出来上がりました。&lt;/p&gt;
+
+&lt;p&gt;モブらしくやることを意識したわけではなかったのですが、他にも自然とモブの良い部分やプラクティスが実践されていたので紹介します。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ドライバーはある程度の時間で交代していた&lt;/li&gt;
+  &lt;li&gt;ドライバーは操作方法や意図がわからないときに&lt;strong&gt;都度手を止めて質問していた&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;ドライバーは何をつくるか・どうつくるかを&lt;strong&gt;合意をとりながら&lt;/strong&gt;進めていた&lt;/li&gt;
+  &lt;li&gt;経験者は常にナビゲーターに徹していた&lt;/li&gt;
+  &lt;li&gt;経験者は「説明をする部分」と「実際に操作して学んでほしい部分」を意識してナビしていた&lt;/li&gt;
+  &lt;li&gt;知識のないナビゲーターは質問をすることで&lt;strong&gt;場の理解を深める&lt;/strong&gt;ことに貢献していた&lt;/li&gt;
+  &lt;li&gt;モブ用PCを用意していた&lt;/li&gt;
+  &lt;li&gt;ドライバー交代時に席を変えることで、スムーズに交代できていた&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;モブが終わった時点でFactorio初体験の&lt;strong&gt;メンバーの知識レベルが揃っていて&lt;/strong&gt;、次回何を作るかの方針を決めて解散する運びとなりました。みんなでゲームを楽しむために自然としていたことばかりなのですが、モブの視点で見るととても効果的な進行になっていました。実は私たちの心の中にはモブの心得が根付いているのかもしれませんね。&lt;/p&gt;
+
+&lt;h3 id=&quot;第2回目の様子---ペアプロとの比較でわかること&quot;&gt;第2回目の様子 - ペアプロとの比較でわかること&lt;/h3&gt;
+
+&lt;p&gt;参加者はすっかりFactorioが気に入り、第2回目は全員が購入・自身のPCにインストールしてきた状態での開催となりました。&lt;br /&gt;
+早くプレイしたい気持ちが高まり、今回は4人全員で協力プレイをすることに。前回のように1人のキャラクターを交代で操作するのではなく、同じ世界に4人のキャラクターが共存し同時にプレイする形式ですね。&lt;/p&gt;
+
+&lt;p&gt;経験者の人はプレイヤーとして参加しつつもほとんど手は動かさず、現場監督のように他3人のプレイの様子を伺ったり手助けをしたりしていました。結果的に「経験者とのペアプロ × 3組」という構図になりました。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;3組のペアプロによる分業の良さが見えた場面&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;「鉄を用意する人」「電柱を建てる人」といったように分業することで早く発展した&lt;/li&gt;
+  &lt;li&gt;ドライバー交代がなかったため、未経験者3人は操作方法を忘れる瞬間がなかった&lt;/li&gt;
+  &lt;li&gt;コツを掴んだ未経験者はひとり立ちしどんどん作業を進めていけた&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;モブプロとの比較になった場面&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;互いの作業が知らず知らずのうちに進んでいて、変化に追いつけない場面があった
+    &lt;ul&gt;
+      &lt;li&gt;「それは作り途中のラインなので、あちらのラインを使ってください」&lt;/li&gt;
+      &lt;li&gt;「あれ、ここにあった掘削機ってどこにいったんですか？」&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;全員の合意なく作られたもの・消費された資源などがあった&lt;/li&gt;
+  &lt;li&gt;コツを掴んだ人とそうでない人で作業進捗に大きな差が出た&lt;/li&gt;
+  &lt;li&gt;人によりこだわりポイントが違い、作り方の方針に差が出た
+    &lt;ul&gt;
+      &lt;li&gt;「電柱は垂直に並べたかったんだけどな…」&lt;/li&gt;
+      &lt;li&gt;「その生産ラインは右に伸ばしていきたかったんだけどな…」&lt;/li&gt;
+      &lt;li&gt;「機械に頼らず手で掘ることで愛情が宿るんだ…！！」&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;第2回目は分業した甲斐あって「作ったものの総量」という点では前回以上に成果がありました。しかし全員で合意のとれているものや全員が仕組みを理解しているものはあまり多くありませんでした。また参加者のプレイヤーとしての成熟度に差が出始めました。&lt;/p&gt;
+
+&lt;p&gt;これは単なるゲーム会なので、成果の有無に関わらず全員が楽しめたので第2回目も大成功と言えます。ただ、ちょっとだけ業務的な視点で見てみると、&lt;strong&gt;合意・レビュー・情報共有の不足&lt;/strong&gt;が確かにあり、これを埋めようと思うとそれなりの時間を使うことになるでしょう。これはまさしくモブをすることで得られるメリットの裏返しで、モブの良さを逆説的に実感できる会となりました。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;あくまでゲーム会なので楽しむことが最優先で、実際の業務とは意識や行動が違う部分もあったと思いますが、それでもモブの良さを体感するという観点でも価値のある場になったと感じています。&lt;/p&gt;
+
+&lt;p&gt;モブに興味がある方や始めてみたいと感じている方は、モブについてもう少し体系的に紹介している&lt;a href=&quot;/blog/2019-03-12-1&quot;&gt;「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる&lt;/a&gt;の記事も併せてご参考いただければと思います。ハッピーモビング！&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
+
+&lt;p&gt;ちなみに記事内写真のマスクに使ったイラストはLINE絵文字の&lt;a href=&quot;https://store.line.me/emojishop/product/5cbbbe67040ab16170b524d4/ja&quot; target=&quot;_blank&quot;&gt;ちゃんくろ絵文字&lt;/a&gt;です。我が家のねこがモデルです、よければご購入ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">とあるゲーム好きなチームメンバーからの一声をきっかけに、FactorioというPCゲームをみんなでやる「モブFactorio」なる会を開催しました。命名こそ「モブ」と言っていますが、ゲーム好き4人が集まってわいわいゲームしようという軽い気持ちでの開催でした。 が、これが想像以上にモブの良さを実感でき、ちょうど良いモブ入門の場となったので様子をレポートします。</summary></entry><entry><title type="html">「チームがうまく失敗し学ぶために私にできること」の補足と裏話</title><link href="https://aloerina01.github.io/blog/2019-11-27-1" rel="alternate" type="text/html" title="「チームがうまく失敗し学ぶために私にできること」の補足と裏話" /><published>2019-11-27T00:00:00+00:00</published><updated>2019-11-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-11-27-1">&lt;p&gt;2019年11月25日、&lt;a href=&quot;https://line.connpass.com/event/154447/&quot; target=&quot;_blank&quot;&gt;LINE Developer Meetup #58&lt;/a&gt; にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。&lt;/p&gt;
 
 &lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;8b3ee51403284b37956b96592f1be8c9&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
 
@@ -833,216 +913,4 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
 
 &lt;h4 id=&quot;1日ひとつだけ強くなる&quot;&gt;1日ひとつだけ強くなる&lt;/h4&gt;
 
-&lt;p&gt;これはとあるプロゲーマーの方の言葉ですが、TILの日本語訳にピッタリな言葉だと思います。とはいえやっぱり1人で続けるのは結構大変なので、「自分もTILやってみるよ！」という方は&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください！励みになります！&lt;/p&gt;</content><author><name></name></author><summary type="html">やったこと</summary></entry><entry><title type="html">「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる</title><link href="https://aloerina01.github.io/blog/2019-03-12-1" rel="alternate" type="text/html" title="「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる" /><published>2019-03-12T00:00:00+00:00</published><updated>2019-03-12T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-03-12-1">&lt;p&gt;私のチームは週の数時間をモブプログラミングに割り当てています。楽しみながら開発でき、しかも開発フローにまつわる悩みが解消されてとても良い感じです。&lt;/p&gt;
-
-&lt;p&gt;ただ、始めから上手くできたわけではなくて悩みもいろいろありました。その解決の糸口となったのが「&lt;a href=&quot;https://www.amazon.co.jp/dp/4822289648&quot; target=&quot;_blank&quot;&gt;モブプログラミング・ベストプラクティス&lt;/a&gt;」でした。&lt;/p&gt;
-
-&lt;p&gt;そこで今回はこの本の内容と感想、そして体験談をまとめつつ、モブプロを始めてみようと思う人・始めてみたばかりの人にモブプロの魅力を伝えてみようと思います！ レッツモビング！&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#モブまたはモブプログラミングとは&quot; id=&quot;markdown-toc-モブまたはモブプログラミングとは&quot;&gt;モブまたはモブプログラミングとは？&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#なぜモブプロをするの&quot; id=&quot;markdown-toc-なぜモブプロをするの&quot;&gt;なぜモブプロをするの？&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#リソース効率とフロー効率の違い&quot; id=&quot;markdown-toc-リソース効率とフロー効率の違い&quot;&gt;リソース効率とフロー効率の違い&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#フロー効率を良くしていくためのモブとは&quot; id=&quot;markdown-toc-フロー効率を良くしていくためのモブとは&quot;&gt;フロー効率を良くしていくためのモブとは&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#モブプロの始め方&quot; id=&quot;markdown-toc-モブプロの始め方&quot;&gt;モブプロの始め方&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#モブプロの準備&quot; id=&quot;markdown-toc-モブプロの準備&quot;&gt;モブプロの準備&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#モブプロの登場人物と役割&quot; id=&quot;markdown-toc-モブプロの登場人物と役割&quot;&gt;モブプロの登場人物と役割&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#モブプロの進行&quot; id=&quot;markdown-toc-モブプロの進行&quot;&gt;モブプロの進行&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#モブプロの心がけ&quot; id=&quot;markdown-toc-モブプロの心がけ&quot;&gt;モブプロの心がけ&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#モブプロの成果の測り方&quot; id=&quot;markdown-toc-モブプロの成果の測り方&quot;&gt;モブプロの成果の測り方&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#よくある悩み&quot; id=&quot;markdown-toc-よくある悩み&quot;&gt;よくある悩み&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#エキスパートがいる場合にうまく進行するには&quot; id=&quot;markdown-toc-エキスパートがいる場合にうまく進行するには&quot;&gt;エキスパートがいる場合にうまく進行するには？&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#新人や知識のない人がいる場合にうまく進行するには&quot; id=&quot;markdown-toc-新人や知識のない人がいる場合にうまく進行するには&quot;&gt;新人や知識のない人がいる場合にうまく進行するには？&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#手探りで進めていく案件の場合にうまく進行するには&quot; id=&quot;markdown-toc-手探りで進めていく案件の場合にうまく進行するには&quot;&gt;手探りで進めていく案件の場合にうまく進行するには？&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#アンチパターン&quot; id=&quot;markdown-toc-アンチパターン&quot;&gt;アンチパターン&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#その他のモブのアンチパターン&quot; id=&quot;markdown-toc-その他のモブのアンチパターン&quot;&gt;「その他のモブ」のアンチパターン&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#タイピストのアンチパターン&quot; id=&quot;markdown-toc-タイピストのアンチパターン&quot;&gt;「タイピスト」のアンチパターン&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#ハッピーモビング&quot; id=&quot;markdown-toc-ハッピーモビング&quot;&gt;ハッピーモビング&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;モブまたはモブプログラミングとは&quot;&gt;モブまたはモブプログラミングとは？&lt;/h3&gt;
-&lt;p&gt;本の中の言葉を借りるなら「チームで一緒に働く」ことがモブです。チームで一緒にひとつの開発をすれば、それはモブプログラミングです。&lt;/p&gt;
-
-&lt;p&gt;……こう考えて取り組むようにしたら、肩の荷がおりた感覚があったことを覚えています。チームメンバーにモブプロをしようと提案した手前うまくモブプロしていかねばと気を張っていましたが、やり方・進め方も含めてチームで一緒に決めていこうと気持ちを持ち直した記憶があります。&lt;/p&gt;
-
-&lt;h3 id=&quot;なぜモブプロをするの&quot;&gt;なぜモブプロをするの？&lt;/h3&gt;
-&lt;p&gt;モブプロの良さは&lt;strong&gt;フロー効率の良さ&lt;/strong&gt;にあります。なので一緒にモブプロをしてもらうメンバーには、フロー効率とは何なのかを理解してもらい、フロー効率を良くしていこうという共通認識を持ってもらうと良さそうです。&lt;/p&gt;
-
-&lt;h4 id=&quot;リソース効率とフロー効率の違い&quot;&gt;リソース効率とフロー効率の違い&lt;/h4&gt;
-&lt;p&gt;&lt;strong&gt;リソース効率とは「リソースの空きがいかに少ないか」&lt;/strong&gt;です。チームメンバー全員が休みなく働いている状態、つまり稼働率100％の状態だと、リソース効率が良いといえます。&lt;/p&gt;
-
-&lt;p&gt;対して&lt;strong&gt;フロー効率とは「着手からリリースまでの時間(リードタイム)がいかに短いか」&lt;/strong&gt;です。フローとは「流れていること」を指しているので、どの期間を切り取っても常にアウトプットがなされている状態だと、つまり案件が短い期間でリリースを繰り返せている状態だと、フロー効率が良いといえます。&lt;/p&gt;
-
-&lt;p&gt;リソース効率を追求した考え方では「どれくらい多くの機能を詰め込めるか」と考え、フロー効率を追求した考え方では「どれくらい細かく刻めるか」と考える傾向があります。後者は変化に強く、アジャイルな考え方にも通じるわけですね。&lt;/p&gt;
-
-&lt;h4 id=&quot;フロー効率を良くしていくためのモブとは&quot;&gt;フロー効率を良くしていくためのモブとは&lt;/h4&gt;
-&lt;p&gt;モブはフロー効率が良い手法です。それがわかる側面として&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;全員で課題に取り組むのでスペシャリストは生まれず、ゼネラリストが生まれる。結果的にキーパーソンへの依存度が下がり、一人が欠けたときの影響が下が少ない&lt;/li&gt;
-  &lt;li&gt;全員で課題に取り組むので、スキルや考え方や知見を共有し合う機会が多く、各々のスキルアップが早い&lt;/li&gt;
-  &lt;li&gt;集団で取り組むことで判断がより良くなり、品質の大きな欠陥が減る。ちなみに優秀な一人より3人の集団のほうが良い決断ができることが科学的に検証済み&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といったことが挙げられます。&lt;/p&gt;
-
-&lt;p&gt;つまり複数人でひとつの案件や課題に取り組むモブプロは、長期に渡って保守・改善していくプロダクト開発などのフロー効率を良くしていきたい現場でのGood Practice(のひとつ)というわけです。&lt;/p&gt;
-
-&lt;h3 id=&quot;モブプロの始め方&quot;&gt;モブプロの始め方&lt;/h3&gt;
-&lt;h4 id=&quot;モブプロの準備&quot;&gt;モブプロの準備&lt;/h4&gt;
-
-&lt;p&gt;モブプロを始めるにはいくつか準備が必要です。なんせ複数人が同時に、そして快適に仕事する必要があるので、それなりの準備をしておかないとですね。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;参加者が窮屈に感じず、平等にモニターが見える空間、会議室&lt;/li&gt;
-  &lt;li&gt;モブの進行や決めごと、TODOなどを書き出せるホワイトボード&lt;/li&gt;
-  &lt;li&gt;モブ用マシン(タイピストの交代でのロスを少なくするのが目的なので、なくてもOK)&lt;/li&gt;
-  &lt;li&gt;参加者全員にとって馴染みのあるエディタ&lt;/li&gt;
-  &lt;li&gt;モブタイマー(できればサブディスプレイなどを用意して常に見える状態にしておく)
-    &lt;ul&gt;
-      &lt;li&gt;Agility の Mobbing &amp;amp; Retrospective Timer&lt;/li&gt;
-      &lt;li&gt;Pluralsight の Mob Timer 等&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;本には書いてなかったけど、おやつ&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;モブプロの登場人物と役割&quot;&gt;モブプロの登場人物と役割&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;タイピスト&lt;/strong&gt;(ドライバー)
-    &lt;ul&gt;
-      &lt;li&gt;キーボードを触る唯一の人&lt;/li&gt;
-      &lt;li&gt;10分などのサイクルで交代し、原則全員がタイピストになるように回す&lt;/li&gt;
-      &lt;li&gt;その他のモブがしてくれと頼んだことを&lt;strong&gt;理解する&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;指示が理解できないときはわかるまで&lt;strong&gt;質問する&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;頼まれたことをコードとして&lt;strong&gt;実装する&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;その他のモブを信頼し、自分ではしないような実装も&lt;strong&gt;躊躇せず試す&lt;/strong&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;その他のモブ&lt;/strong&gt;(ナビゲーター)
-    &lt;ul&gt;
-      &lt;li&gt;キーボードを触らない人。2〜5人くらいがおすすめ&lt;/li&gt;
-      &lt;li&gt;問題解決につながる次の論理的ステップを見つけるために&lt;strong&gt;協力する&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;理解できるまで&lt;strong&gt;質問する&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;モブ全体の理解の水準を上げるために&lt;strong&gt;貢献する&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;眼の前の問題に&lt;strong&gt;集中する&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;他のメンバーの意見に&lt;strong&gt;傾聴する&lt;/strong&gt;&lt;/li&gt;
-      &lt;li&gt;システムの中に改善すべき部分を&lt;strong&gt;探す&lt;/strong&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;モブプロの進行&quot;&gt;モブプロの進行&lt;/h4&gt;
-&lt;p&gt;トライアルに向いている2時間半のモブプロの例を挙げます。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;準備(30分)
-    &lt;ul&gt;
-      &lt;li&gt;モブプロの意義の説明&lt;/li&gt;
-      &lt;li&gt;モブプロの役割分担の説明&lt;/li&gt;
-      &lt;li&gt;モブで解決する問題の概要の説明&lt;/li&gt;
-      &lt;li&gt;タイピストの順番決め(ランダムでも可)&lt;/li&gt;
-      &lt;li&gt;おやつの配布&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;モビングインターバル(1.5時間程度)
-    &lt;ul&gt;
-      &lt;li&gt;10分〜20分毎にタイピストを交代していく&lt;/li&gt;
-      &lt;li&gt;途中で休憩をはさんでもOK&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;ふりかえり(20分)
-    &lt;ul&gt;
-      &lt;li&gt;事実をもとに成果を振り返る&lt;/li&gt;
-      &lt;li&gt;肯定的意見、否定的意見を集める&lt;/li&gt;
-      &lt;li&gt;軌道修正するべきことを決める(次回試す)&lt;/li&gt;
-      &lt;li&gt;必要に応じて、今後も継続していくか決める(どちらでも可なら継続しましょう！)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h3 id=&quot;モブプロの心がけ&quot;&gt;モブプロの心がけ&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;自分がしないような他のメンバーのアプローチを受け入れましょう！ それをコードにし検証することにも意義があります&lt;/li&gt;
-  &lt;li&gt;対立的にならないようにしましょう！ モブは「わたしたち」で行うもの。主語は「わたし」や「あなた」ではなく、常に「わたしたち」を意識しましょう&lt;/li&gt;
-  &lt;li&gt;人ではなくコードを批判しましょう！ 負債に対しても、それを実装した人ではなく実装せざるを得なかった状況と向き合いましょう&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;モブプロの成果の測り方&quot;&gt;モブプロの成果の測り方&lt;/h3&gt;
-
-&lt;p&gt;モブプロの成果がひと目で判断できる基準はなくて、計測が難しいのが実情です。ただ、明確にやってはいけないのは「短期間のアウトプット量で成果を測ること」です。先述の通り、フロー効率の考え方は「いかにリードタイムを短くリリースを繰り返せるか」であり、「1度のリリースにいかに詰め込めるか」ではないからですね。&lt;/p&gt;
-
-&lt;p&gt;とはいえ、何かしらの方法で効果測定する必要がありますよね。ですので、いくつか影響のある指標を挙げてみます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;リードタイム&lt;/li&gt;
-  &lt;li&gt;マージコンフリクトの解消にかかる時間&lt;/li&gt;
-  &lt;li&gt;本番システムに入り込むバグの量&lt;/li&gt;
-  &lt;li&gt;経験の浅いメンバーの学習度&lt;/li&gt;
-  &lt;li&gt;レビュー時間、レビューの待ち時間&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これらを総合的に見て、成果の有無を判断するのがオススメです。&lt;/p&gt;
-
-&lt;h3 id=&quot;よくある悩み&quot;&gt;よくある悩み&lt;/h3&gt;
-
-&lt;h4 id=&quot;エキスパートがいる場合にうまく進行するには&quot;&gt;エキスパートがいる場合にうまく進行するには？&lt;/h4&gt;
-
-&lt;p&gt;エキスパート(ベテランエンジニア)がいること自体は問題ではないですが、以下のような副作用に注意する必要があります。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;エキスパートがタイピストのとき、エキスパートが一人で作業を進めてその他のモブが眺める(従う)だけになってしまう&lt;/li&gt;
-  &lt;li&gt;エキスパートがその他のモブのとき、エキスパートのみが発言する状況になってしまう&lt;/li&gt;
-  &lt;li&gt;上記のような状態が続き、エキスパートでない人が発言しにくく感じてしまう&lt;/li&gt;
-  &lt;li&gt;エキスパートがその他のモブに教えるばっかりの状態になってしまい、それをエキスパートがストレスに感じてしまう&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;こうならないためのひとつの方法として、「エキスパートにモブプロのファシリテーターになってもらう」というのがあります。エキスパートは例外的に常にその他のモブになってもらい、メンバーに質問や発言を促したり、メンバーが理解できていない箇所をフォローして回ったり、といった役割を担ってもらう方法です。&lt;/p&gt;
-
-&lt;p&gt;モブプロは短期的に開発物を仕上げる手法ではないので、「モブプロがうまく進行しエキスパートの暗黙知がチームに浸透すること」をエキスパートの目標にしてもらうよう事前に説得しておくことも大切です。&lt;/p&gt;
-
-&lt;h4 id=&quot;新人や知識のない人がいる場合にうまく進行するには&quot;&gt;新人や知識のない人がいる場合にうまく進行するには？&lt;/h4&gt;
-
-&lt;p&gt;モブプロには、ドメイン知識の有無はあまり関係ありません。新人さんも巻き込んで一緒にモブプロをしましょう！&lt;/p&gt;
-
-&lt;p&gt;オススメの進め方は、&lt;strong&gt;ドメイン知識が少ない人にタイピストになってもらう&lt;/strong&gt;方法です。
-タイピストの役割に「理解する」と「質問する」があったように、分からないことがあったときに手を止め、質問し、自分の(そして場の)理解を深めるよう導くことでチームに貢献することができます。&lt;/p&gt;
-
-&lt;p&gt;そして、タイピストやその他のモブが質問しやすい環境を保つことが、各メンバーの責務となります。&lt;/p&gt;
-
-&lt;h4 id=&quot;手探りで進めていく案件の場合にうまく進行するには&quot;&gt;手探りで進めていく案件の場合にうまく進行するには？&lt;/h4&gt;
-
-&lt;p&gt;誰も試したことがなく、どこから手を付けてよいかわからない状況になり得る課題に取り組む場合、「個々で調べる時間」「個々で考える時間」が必要なケースがあります。その場合は&lt;strong&gt;時間を区切ってモブを中断しその場で各々が作業&lt;/strong&gt;するのもOKです。本の中では「タイムボックス付きの探究」と呼んでいました。定めた時間が経過したら成果を共有しあい、モブプロを再開しましょう。&lt;/p&gt;
-
-&lt;h3 id=&quot;アンチパターン&quot;&gt;アンチパターン&lt;/h3&gt;
-
-&lt;h4 id=&quot;その他のモブのアンチパターン&quot;&gt;「その他のモブ」のアンチパターン&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;まだコードで表現されていないことを議論すること。同様に、タイピストがまだコードで表現されていないことについて質問すること。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;コードで表現されていない状態では「検証」ができないのと、その他のモブ全員が同水準で状況理解できない可能性があります。なのでまずタイピストへコードで表現することを依頼し、それを見ながら議論するようにしましょう。そうすることで議論が理論的なものから実践的なものに変わっていきます。&lt;/p&gt;
-
-&lt;p&gt;もしコードで表現したいアイデアが複数出てしまい、タイピストにどれを依頼するか迷ったときは、&lt;strong&gt;一番単純なもの(はやく検証できるもの)を採用する&lt;/strong&gt;と良さそうです。そうすることで「コードを見ながら議論する」というモブプロの土俵に上がれます。&lt;/p&gt;
-
-&lt;h4 id=&quot;タイピストのアンチパターン&quot;&gt;「タイピスト」のアンチパターン&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;&lt;em&gt;こっそり自分のコードを書き込むこと。または勝手に自分の意志で進めること。&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;キーボードに触れる人は、誰よりも自由に自分の考えを&lt;strong&gt;暗黙的に&lt;/strong&gt;コードに反映できます。それをやってしまうと、上のアンチパターン同様にその他のモブ全員が同水準で状況理解できなくなります。&lt;/p&gt;
-
-&lt;p&gt;もしタイピストがアイデアを持っている場合は、自分がその他のモブの番になるのを待つか、その場でタイピストを交代する等し。その他のモブに回ってからアイデアを出すようにすると良さそうです。&lt;/p&gt;
-
-&lt;h3 id=&quot;ハッピーモビング&quot;&gt;ハッピーモビング&lt;/h3&gt;
-
-&lt;p&gt;「モブプログラミング・ベストプラクティス」にはモブプロの初心者・中級者が従うべきプロセスがまとめてあります。プロセスに従ったほうがスムーズに進むケースが多いと思われますが、ルールを守ることが絶対ではない、とも書かれていました。&lt;/p&gt;
-
-&lt;p&gt;振り返りを通じてチーム全員でモブプロを改善しながら、チームに合ったモブライフを送っていきたいですね！ ハッピーモビング！&lt;/p&gt;</content><author><name></name></author><summary type="html">私のチームは週の数時間をモブプログラミングに割り当てています。楽しみながら開発でき、しかも開発フローにまつわる悩みが解消されてとても良い感じです。</summary></entry></feed>
+&lt;p&gt;これはとあるプロゲーマーの方の言葉ですが、TILの日本語訳にピッタリな言葉だと思います。とはいえやっぱり1人で続けるのは結構大変なので、「自分もTILやってみるよ！」という方は&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください！励みになります！&lt;/p&gt;</content><author><name></name></author><summary type="html">やったこと</summary></entry></feed>
