@@ -18,6 +18,7 @@ jobs:
         ruby-version: '2.6.5'
     - name: Install gsl
       run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
+    - name: Bundle install
       run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
     - name: Run a multi-line script
       run: |
