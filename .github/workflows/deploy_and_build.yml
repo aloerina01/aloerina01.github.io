@@ -1,4 +1,4 @@
-name: DEPLOY_AND_BUILD
+name: BUILD_AND_DEPLOY
 
 on: 
   push:
@@ -13,8 +13,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6.5'
+    - name: Install gsl
+      run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
+      run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
     - name: Run a multi-line script
       run: |
         echo Add other actions to build,
