@@ -1,12 +1,12 @@
-<p style="text-align:center;margin:0 auto 16px;">
+<p align="center">
   <a href="https://aloerina01.github.io/" rel="nofollow">
     <img width="150" src="https://aloerina01.github.io/assets/logo.png" alt="mf-code">
   </a>
 </p>
-<p align="center" style="font-size:30px;">mille-feuille code</p>
+<p align="center"><h2>mille-feuille code</h2></p>
 
 <p align="center">
-![build status](https://github.com/aloerina01/aloerina01.github.io/workflows/DEPLOY/badge.svg?branch=development)
+  <img src="https://github.com/aloerina01/aloerina01.github.io/workflows/DEPLOY/badge.svg?branch=development" alt="build status">
 </p>
 
 ## What's this
