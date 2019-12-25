@@ -1,4 +1,4 @@
-name: BUILD_AND_DEPLOY
+name: DEPLOY
 
 on: 
   push:
@@ -7,10 +7,9 @@ on:
       - gh-actions/*
 
 jobs:
-  build:
-    name: Build
+  deploy:
+    name: Build and Deploy
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v1
     - uses: actions/setup-ruby@v1
@@ -18,7 +17,24 @@ jobs:
       run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
     - name: Bundle install
       run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
-    - name: Run a multi-line script
+    - name: execute raketsk (build, commit and push master branch)
       run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+        git config --global user.name "aloerina01"
+        git config --global user.email "4443321+aloerina01@users.noreply.github.com"
+
+  indexing:
+    name: Indexing into Algolia
+    needs: deploy
+    runs-on: ubuntu-latest
+    if: <secrets.AlgoliaAdminAPIToken>
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-ruby@v1
+      - name: Install gsl
+        run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
+      - name: Bundle install
+        run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
+      - name: Indexing
+        run: echo hoge
+      
+      
