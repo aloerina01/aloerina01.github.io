@@ -30,21 +30,18 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 3. `npm start`
 
 
-## Constitution
+## Branch rules
 
 ### development branch
 jekyllベースの構成ファイル(markdownによる記事、_config.yml等)を持つ。記事、Template、デザインなどの追加修正等を行う場合は、必ずこのブランチで(もしくはここからトピックブランチを切り)行う。
 
-`pushをトリガーに`CIがrake taskを実行し、静的ページがGenerateされる。
+`push`をトリガーにCIがrake taskを実行すると、静的ページがGenerateされ masterにpushされる。
 
 
 
 ### master branch
 
 Generateされたものがmasterブランチにpushされ、それがGithub Pagesとして公開される。
-
-
-~~See: [Using Jekyll plugins on GitHub Pages](http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html)~~
 
 
 ## How work LSI(潜在意味解析)
