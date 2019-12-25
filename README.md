@@ -3,7 +3,7 @@
     <img width="150" src="https://aloerina01.github.io/assets/logo.png" alt="mf-code">
   </a>
 </p>
-<p align="center"><h2>mille-feuille code</h2></p>
+<h1 align="center">mille-feuille code</h1>
 
 <p align="center">
   <img src="https://github.com/aloerina01/aloerina01.github.io/workflows/DEPLOY/badge.svg?branch=development" alt="build status">
