@@ -35,16 +35,16 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 ### development branch
 jekyllベースの構成ファイル(markdownによる記事、_config.yml等)を持つ。記事、Template、デザインなどの追加修正等を行う場合は、必ずこのブランチで(もしくはここからトピックブランチを切り)行う。
 
-`push`をトリガーにCIがrake taskを実行すると、静的ページがGenerateされ masterにpushされる。
+`push`をトリガーにCIがrake taskを実行すると、静的ページがGenerateされ master にpushされる。
 
 
 
 ### master branch
 
-Generateされたものがmasterブランチにpushされ、それがGithub Pagesとして公開される。
+Github Pagesとして公開される原本。原則CIからのPushのみ。
 
 
-## How work LSI(潜在意味解析)
+## How to work LSI(潜在意味解析)
 
 * To generate related posts list, use `lsi` option in jekyll config.
 * [Classifier Reborn](https://jekyll.github.io/classifier-reborn/) allows you to execute LSI.
