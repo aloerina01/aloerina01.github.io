@@ -21,6 +21,8 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
     - name: Install gsl
       run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
+    - name: test
+      run: dpkg -L gsl-bin
     - name: Bundle install
       if: steps.cache-primes.outputs.cache-hit != 'true'
       run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
