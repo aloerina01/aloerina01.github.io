@@ -1,7 +1,13 @@
-# aloerina01.github.io
+<p style="text-align:center;margin:0 auto 16px;">
+  <a href="https://aloerina01.github.io/" rel="nofollow">
+    <img width="150" src="https://aloerina01.github.io/assets/logo.png" alt="mf-code">
+  </a>
+</p>
+<p align="center" style="font-size:30px;">mille-feuille code</p>
 
-[![CircleCI](https://circleci.com/gh/aloerina01/aloerina01.github.io/tree/development.svg?style=svg)](https://circleci.com/gh/aloerina01/aloerina01.github.io/tree/development)
-
+<p align="center">
+![build status](https://github.com/aloerina01/aloerina01.github.io/workflows/DEPLOY/badge.svg?branch=development)
+</p>
 
 ## What's this
 [mille-feuille code](https://aloerina01.github.io/)
@@ -29,7 +35,7 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 ### development branch
 jekyllベースの構成ファイル(markdownによる記事、_config.yml等)を持つ。記事、Template、デザインなどの追加修正等を行う場合は、必ずこのブランチで(もしくはここからトピックブランチを切り)行う。
 
-`git push`するとCircleCIがrake taskを実行し、静的ページがGenerateされる。
+`pushをトリガーに`CIがrake taskを実行し、静的ページがGenerateされる。
 
 
 
@@ -40,6 +46,15 @@ Generateされたものがmasterブランチにpushされ、それがGithub Page
 
 ~~See: [Using Jekyll plugins on GitHub Pages](http://ixti.net/software/2013/01/28/using-jekyll-plugins-on-github-pages.html)~~
 
+
+## How work LSI(潜在意味解析)
+
+* To generate related posts list, use `lsi` option in jekyll config.
+* [Classifier Reborn](https://jekyll.github.io/classifier-reborn/) allows you to execute LSI.
+* Optionally, to speed up LSI classification by at least 10x consider installing following libraries.
+  * [GSL - GNU Scientific Library](https://www.gnu.org/software/gsl/)
+  * [Ruby/GSL Gem(rb-gsl)](https://rubygems.org/gems/gsl)
+  * 💡Check GSL dependencies at [Debian packages](https://packages.debian.org/search?searchon=sourcenames&keywords=gsl)
 
 ## Copyright
 
