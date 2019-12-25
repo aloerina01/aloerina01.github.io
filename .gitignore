@@ -3,6 +3,7 @@ _site
 .jekyll
 .jekyll-metadata
 .bundle
+vendor/bundle
 .sass-cache
 node_modules
 demo
