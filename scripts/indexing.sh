@@ -28,7 +28,7 @@ validate () {
 }
 
 check_force_publish () {
-  [[ -z "$trigger_sha" ]] && message "trigger_sha' is empty." && return 1
+  [[ -z "$trigger_sha" ]] && message "'trigger_sha' is empty." && return 1
   
   api_path="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/$trigger_sha?token=$github_token"
   is_force=$(curl "$api_path" | jq -r .commit.message | grep -E "^.*\[indexing\].*$")
@@ -40,15 +40,15 @@ check_force_publish () {
 }
 
 fetch_revisions () {
-  api_path="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/gh-actions/20191224/check-runs?status=completed&token=$github_token"
+  api_path="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/$trigger_sha/check-runs?status=completed&token=$github_token"
   latest_sha=$(curl -H "Accept: application/vnd.github.antiope-preview+json" "$api_path" | jq -r .check_runs[0].head_sha)
-  [[ -z "$trigger_sha" || -z "$latest_sha" ]] && err "revisions could not be found." && exit 1
+  [[ -z "$trigger_sha" || -z "$latest_sha" ]] && err "Revisions could not be found." && exit 1
   echo "$trigger_sha...$latest_sha" 
 }
 
 check_diff () {
   revisions=$(cat -)
-  message "revisions: $revisions"
+  message "Revisions: $revisions"
   diff=$(git diff --name-only $revisions | grep -E "^.*_posts.*$")
   if [[ -z "$diff" ]]; then
     success "No diff in /_posts/" && return 1
