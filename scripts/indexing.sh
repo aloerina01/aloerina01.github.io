@@ -40,7 +40,7 @@ check_force_publish () {
 }
 
 fetch_revisions () {
-  api_path="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/gh-actions/20191224/check-runs?status=completed&token=$github_token&check_name=Indexing+into+Algolia"
+  api_path="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/gh-actions/20191224/check-runs?status=completed&token=$github_token&check_name=Indexing+into+Algolia&filter=all"
   latest_sha=$(curl -H "Accept: application/vnd.github.antiope-preview+json" "$api_path" | jq -r .check_runs[0].head_sha)
   [[ -z "$trigger_sha" || -z "$latest_sha" ]] && err "Revisions could not be found." && exit 1
   echo "$trigger_sha...$latest_sha" 
