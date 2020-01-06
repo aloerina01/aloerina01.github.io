@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 # ubuntu は /bin/sh が dash ...
 
-set -e
-
 text_bold="\e[34;47;1m"
 text_color_red="\e[37;41;1m"
 text_color_green="\e[37;42;1m"
@@ -65,6 +63,7 @@ publish_algolia () {
 }
 
 # main
+set -e
 validate "$algolia_token" "$github_token"
 check_force_publish && publish_algolia | exit 0
 fetch_revisions | check_diff && publish_algolia || exit 0
