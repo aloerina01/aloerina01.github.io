@@ -40,19 +40,13 @@ check_force_publish () {
   fi
 }
 
-fetch_revisions () {
-  latest_sha=$(curl "$github_status_api" | jq 'map(select( .["state"] == "success")) | .[0].url' | sed -E 's/^.*statuses\/(.*)"$/\1/')
-  message "Latest sha: $latest_sha"
-  [[ -z "$trigger_sha" || -z "$latest_sha" || "$latest_sha" = "null" ]] && err "Revisions could not be found." && exit 1
-  echo "$trigger_sha...$latest_sha" 
-}
-
 check_diff () {
-  revisions=$(cat -)
-  message "Revisions: $revisions"
-  diff=$(git diff --name-only $revisions | grep -E "^.*_posts.*$")
+  latest_sha=$(curl "$github_status_api" | jq 'map(select( .["state"] == "success")) | .[0].url' | sed -E 's/^.*statuses\/(.*)"$/\1/')
+  message "Revisions: $trigger_sha...$latest_sha"
+  [[ -z "$trigger_sha" || -z "$latest_sha" || "$latest_sha" = "null" ]] && err "Revisions could not be found." && exit 1
+  diff=$(git diff --name-only $trigger_sha...$latest_sha | grep -E "^.*_posts.*$")
   if [[ -z "$diff" ]]; then
-    success "No diff in /_posts/" && return 1
+    success "No diff in /_posts/" && exit 0
   else
     message "Posts are modified." && return 0
   fi
@@ -63,7 +57,6 @@ publish_algolia () {
 }
 
 # main
-set -e
 validate "$algolia_token" "$github_token"
 check_force_publish && publish_algolia | exit 0
-fetch_revisions | check_diff && publish_algolia || exit 0
+check_diff && publish_algolia
