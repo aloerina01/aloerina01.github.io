@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - development
+      - fix/build-script-20200107
 
 jobs:
   deploy:
@@ -20,12 +21,12 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
     - name: Install gsl
       run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
-    - name: test
-      run: dpkg -L gsl-bin
     - name: Bundle install
       if: steps.cache-primes.outputs.cache-hit != 'true'
       run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
     - name: Execute Rake task (build, commit and push master branch)
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name "aloerina01"
         git config --global user.email "4443321+aloerina01@users.noreply.github.com"
