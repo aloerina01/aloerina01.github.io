@@ -9,7 +9,7 @@ text_color_reset="\e[m"
 algolia_token=$1
 github_token=$2
 trigger_sha=$GITHUB_SHA # GitHub Actions default env
-github_status_api="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/gh-actions/20191224/statuses"
+github_status_api="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/development/statuses"
 
 success () {
   printf "${text_color_green}Success${text_color_reset} $1\n"
@@ -53,7 +53,7 @@ check_diff () {
 }
 
 publish_algolia () {
-  success "Start indexing." # && ALGOLIA_API_KEY=$algolia_token bundle exec jekyll algolia --config ./_config.algolia.yml
+  success "Start indexing." && ALGOLIA_API_KEY=$algolia_token bundle exec jekyll algolia --config ./_config.algolia.yml
 }
 
 # main

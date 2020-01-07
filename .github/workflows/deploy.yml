@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - development
-      - gh-actions/*
 
 jobs:
   deploy:
@@ -30,6 +29,7 @@ jobs:
       run: |
         git config --global user.name "aloerina01"
         git config --global user.email "4443321+aloerina01@users.noreply.github.com"
+        bundle exec rake deploy --trace
 
   indexing:
     name: Indexing into Algolia
