@@ -10,7 +10,7 @@
   <meta name="description" content="開発をしていると壁にぶち当たるとこがよくありますが、そんなときに自分がどんな対処をしているのかを晒してみようと思います。作業のプロセスを見せる・見てもらう機会ってなかなかないので、何かのきっかけになればと思います😉">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -204,7 +204,7 @@
 <p><code class="highlighter-rouge">modulePath</code>が文字列としてちゃんと認識できていないのかと思ったけどそうでもなかった。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 検証1</span>
-<span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span> <span class="o">+</span> <span class="s1">''</span><span class="p">);</span>  <span class="c1">// 同様のエラー</span>
+<span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span> <span class="o">+</span> <span class="dl">''</span><span class="p">);</span>  <span class="c1">// 同様のエラー</span>
 
 <span class="c1">// 検証2</span>
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// string</span>
@@ -237,7 +237,7 @@
 <p>リクエストに式が含まれている場合、コンテキストが作成されるため、コンパイル時に正確なモジュールが認識されません。</p>
 
 <p>Example:</p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="s2">"./template/"</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="s2">".ejs"</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">require</span><span class="p">(</span><span class="dl">"</span><span class="s2">./template/</span><span class="dl">"</span> <span class="o">+</span> <span class="nx">name</span> <span class="o">+</span> <span class="dl">"</span><span class="s2">.ejs</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div>
 
 <blockquote>
@@ -260,9 +260,9 @@ Regular expression: /^.*\.ejs$/
 
 <p>Example:</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-    <span class="s2">"./table.ejs"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="s2">"./table-row.ejs"</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span>
-    <span class="s2">"./directory/folder.ejs"</span><span class="p">:</span> <span class="mi">44</span>
+    <span class="dl">"</span><span class="s2">./table.ejs</span><span class="dl">"</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">./table-row.ejs</span><span class="dl">"</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">./directory/folder.ejs</span><span class="dl">"</span><span class="p">:</span> <span class="mi">44</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -303,18 +303,18 @@ Examples: someFn(require) require.bind(null)</p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="c1">// 省略</span>
   <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
-    <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="s1">'.vue'</span><span class="p">,</span> <span class="s1">'.js'</span> <span class="p">],</span>
+    <span class="na">extensions</span><span class="p">:</span> <span class="p">[</span><span class="dl">'</span><span class="s1">.vue</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">.js</span><span class="dl">'</span> <span class="p">],</span>
     <span class="c1">// root: [ path.resolve('./js') ], // webpack 1</span>
     <span class="na">modules</span><span class="p">:</span> <span class="p">[</span>
-      <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/js'</span><span class="p">),</span> <span class="c1">// webpack 2</span>
-      <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="s1">'/node_modules'</span><span class="p">)</span>
+      <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/js</span><span class="dl">'</span><span class="p">),</span> <span class="c1">// webpack 2</span>
+      <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/node_modules</span><span class="dl">'</span><span class="p">)</span>
     <span class="p">]</span>
   <span class="p">}</span>
 </code></pre></div></div>
 
 <p><code class="highlighter-rouge">path.resolve</code>で指定したディレクトリをルートとした相対パスで書けるようにしていた(つもりだった)が、実際はカレントディレクトリからのパスが必要だった。</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../'</span> <span class="o">+</span> <span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// 動いた</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// 動いた</span>
 </code></pre></div></div>
 
 <h4 id="更になんか見つける">更になんか見つける</h4>
@@ -333,11 +333,11 @@ Examples: someFn(require) require.bind(null)</p>
   <span class="nl">exprContextCritical</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">exprContextRecursive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">exprContextRegExp</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nx">exprContextRequest</span><span class="p">:</span> <span class="s2">"."</span><span class="p">,</span>
+  <span class="nx">exprContextRequest</span><span class="p">:</span> <span class="dl">"</span><span class="s2">.</span><span class="dl">"</span><span class="p">,</span>
   <span class="nx">unknownContextCritical</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">unknownContextRecursive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">unknownContextRegExp</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
-  <span class="nx">unknownContextRequest</span><span class="p">:</span> <span class="s2">"."</span><span class="p">,</span>          <span class="c1">// ←エラーの文言で見覚えあるぞ！！！</span>
+  <span class="nx">unknownContextRequest</span><span class="p">:</span> <span class="dl">"</span><span class="s2">.</span><span class="dl">"</span><span class="p">,</span>          <span class="c1">// ←エラーの文言で見覚えあるぞ！！！</span>
   <span class="nx">wrappedContextCritical</span><span class="p">:</span> <span class="kc">false</span>
   <span class="nx">wrappedContextRecursive</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
   <span class="nx">wrappedContextRegExp</span><span class="p">:</span> <span class="o">/</span><span class="p">.</span><span class="o">*</span><span class="sr">/</span><span class="err">,

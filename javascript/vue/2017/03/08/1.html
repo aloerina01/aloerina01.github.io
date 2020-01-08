@@ -10,7 +10,7 @@
   <meta name="description" content="Vue2.xから仮想DOMが使われるようになり、1.x系と同様にtemplateを書くと動かないケースが出てきたりします。コンパイルをすることで[template]→[仮想DOMをrenderする関数]に変換してくれるものの、コンパイルの仕様も複雑で一筋縄ではいかないことも…。そんな悩みと今日でおさらばしましょう💡">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -302,7 +302,7 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="err">‘</span><span class="nx">hello</span><span class="o">-</span><span class="nx">world</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">render</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">createElement</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="s1">'p'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">p</span><span class="dl">'</span><span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
   <span class="p">}</span>
 <span class="p">})</span>
 </code></pre></div></div>
@@ -403,7 +403,7 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
     <span class="na">alias</span><span class="p">:</span> <span class="p">{</span>
-      <span class="s1">'vue$'</span><span class="p">:</span> <span class="s1">'vue/dist/vue.esm.js'</span>
+      <span class="dl">'</span><span class="s1">vue$</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">vue/dist/vue.esm.js</span><span class="dl">'</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -412,19 +412,19 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
 <h4 id="browserifyの場合はpackagejsonに追記">browserifyの場合は<code class="highlighter-rouge">package.json</code>に追記</h4>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"browser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"vue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vue/dist/vue.common.js"</span><span class="w">
+  </span><span class="nl">"browser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"vue"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vue/dist/vue.common.js"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <h4 id="rollupjsの場合はrollupconfigjsに追記">rollup.jsの場合は<code class="highlighter-rouge">rollup.config.js</code>に追記</h4>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">alias</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'rollup-plugin-alias'</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">alias</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">rollup-plugin-alias</span><span class="dl">'</span><span class="p">)</span>
 <span class="nx">rollup</span><span class="p">({</span>
   <span class="na">plugins</span><span class="p">:</span> <span class="p">[</span>
     <span class="nx">alias</span><span class="p">({</span>
-      <span class="s1">'vue'</span><span class="p">:</span> <span class="s1">'vue/dist/vue.esm.js'</span>
+      <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">vue/dist/vue.esm.js</span><span class="dl">'</span>
     <span class="p">})</span>
   <span class="p">]</span>
 <span class="p">})</span>

@@ -10,7 +10,7 @@
   <meta name="description" content="Babelの設定ファイル更新してますか？ polyfillの使い分け理解していますか？ pluginの使い方覚えていますか？ ……私はサッパリでした。そんな私が自在に設定できるようになるまでに覚えたことを用途別にまとめましたので、一緒に設定見直してみませんか😊">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -287,13 +287,13 @@ Babel7.xでは、Babelに関連するパッケージの命名規則が変更さ�
 
 <h5 id="2-babelrcに設定を書く">2. <code class="highlighter-rouge">.babelrc</code>に設定を書く</h5>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-  <span class="s2">"presets"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"env"</span><span class="p">]</span>
+  <span class="dl">"</span><span class="s2">presets</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">env</span><span class="dl">"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
 <h5 id="3-polyfillをrequireする">3. polyfillをrequireする</h5>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// input.js</span>
-<span class="nx">require</span><span class="p">(</span><span class="s1">'babel-polyfill'</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">babel-polyfill</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="c1">// 以下実装</span>
 </code></pre></div></div>
@@ -321,7 +321,7 @@ Babel7.xでは、Babelに関連するパッケージの命名規則が変更さ�
     <span class="p">{</span> 
       <span class="na">test</span><span class="p">:</span> <span class="sr">/</span><span class="se">\.</span><span class="sr">js$/</span><span class="p">,</span> 
       <span class="na">exclude</span><span class="p">:</span> <span class="sr">/node_modules/</span><span class="p">,</span> 
-      <span class="na">loader</span><span class="p">:</span> <span class="s2">"babel-loader"</span> 
+      <span class="na">loader</span><span class="p">:</span> <span class="dl">"</span><span class="s2">babel-loader</span><span class="dl">"</span> 
     <span class="p">}</span>
   <span class="p">]</span>
 <span class="p">}</span>
@@ -351,10 +351,10 @@ Babel7.xではpolyfillの適用方法が変わっています。「<a href="/blo
 <p>これらすべてを使うには<strong><code class="highlighter-rouge">babel-polyfill</code>をbundleに含める</strong>ことが必要です。それには<strong>entry pointとなるファイルの1行目</strong>で<strong>1度だけ</strong><code class="highlighter-rouge">babel-polyfill</code>を読み込みます。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// CommonJS</span>
-<span class="nx">require</span><span class="p">(</span><span class="s1">'babel-polyfill'</span><span class="p">);</span>
+<span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">babel-polyfill</span><span class="dl">'</span><span class="p">);</span>
 
 <span class="c1">// ES6</span>
-<span class="k">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">babel-polyfill</span><span class="dl">'</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>「1度だけ」というのがとても重要で、<strong>複数回読み込むとpolyfillがぶっ壊れます</strong>。あるHTMLで2つのjsファイルを読み込んでいて、それぞれで<code class="highlighter-rouge">babel-polyfill</code>を読み込んでいる場合もぶっ壊れます。とにかく2回読み込まれたらマズイのです。</p>
@@ -363,19 +363,19 @@ Babel7.xではpolyfillの適用方法が変わっています。「<a href="/blo
 
 <p><strong>.babelrc</strong></p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">[</span><span class="s2">"env"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s2">"useBuiltIns"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}]</span><span class="w">
+  </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="s2">"env"</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nl">"useBuiltIns"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="p">}]</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
 <p><strong>app.js (entry point)</strong></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// Babeる前</span>
-<span class="k">import</span> <span class="s1">'babel-polyfill'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">babel-polyfill</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="c1">// Babeった後 使っているものだけimportするように変換される</span>
-<span class="k">import</span> <span class="s1">'core-js/modules/es7.string.pad-start'</span><span class="p">;</span>
-<span class="k">import</span> <span class="s1">'core-js/modules/es7.string.pad-end'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">core-js/modules/es7.string.pad-start</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">core-js/modules/es7.string.pad-end</span><span class="dl">'</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p><strong>まとめ</strong></p>
@@ -388,7 +388,7 @@ Babel7.xではpolyfillの適用方法が変わっています。「<a href="/blo
 
 <p><strong>webpack.config.js</strong></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">entry</span><span class="p">:</span> <span class="p">[</span><span class="s2">"babel-polyfill"</span><span class="p">,</span> <span class="s2">"./app.js"</span><span class="p">]</span>
+  <span class="na">entry</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">babel-polyfill</span><span class="dl">"</span><span class="p">,</span> <span class="dl">"</span><span class="s2">./app.js</span><span class="dl">"</span><span class="p">]</span>
 <span class="p">};</span>
 </code></pre></div></div>
 
@@ -415,7 +415,7 @@ Babel7.xではpolyfillの適用方法が変わっています。「<a href="/blo
 
 <p><strong>.babelrc</strong></p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"transform-runtime"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"transform-runtime"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -479,7 +479,7 @@ Babel7.xではpolyfillの適用方法が変わっています。「<a href="/blo
 
 <p><strong>.babelrc</strong></p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"babili"</span><span class="p">]</span><span class="w">
+  </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"babili"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 

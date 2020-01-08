@@ -10,7 +10,7 @@
   <meta name="description" content="Fluxを正しく設計するために公式ドキュメントと FluxUtils のソースを読み直したので知見をまとめてみました。「なんとなく理解している」から「ちゃんと理解している」にステップアップするためのFlux再入門話でもあります。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -315,8 +315,8 @@
 <p>また、Actionには<code class="highlighter-rouge">type</code>プロパティ以外に、ユースケースを実行するために必要な値を持たせることもできます。以下のコードはTODOアプリの「TODOを追加する」Actionの実装例です。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">todoAction</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">type</span><span class="p">:</span> <span class="s1">'ADD_TODO'</span><span class="p">,</span>  <span class="c1">// ActionType</span>
-  <span class="na">text</span><span class="p">:</span> <span class="s1">'hoge'</span>       <span class="c1">// 新しく追加するTODOの文字列</span>
+  <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ADD_TODO</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// ActionType</span>
+  <span class="na">text</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hoge</span><span class="dl">'</span>       <span class="c1">// 新しく追加するTODOの文字列</span>
 <span class="p">}</span>
 
 <span class="nx">dispatcher</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">todoAction</span><span class="p">);</span>  <span class="c1">// actionをdispatcherにわたす</span>
@@ -328,8 +328,8 @@
 
 <p>実際のコードでは、Actionを生成しDispatcherに送るまでの一連の処理を行うヘルパーメソッドを実装するケースが多く、このヘルパーメソッドを<strong>ActionCreator</strong>と呼びます。</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ActionTypes</span> <span class="k">from</span> <span class="s1">'./ActionTypes'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">dispatcher</span> <span class="k">from</span> <span class="s1">'./Dispatcher'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ActionTypes</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./ActionTypes</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">dispatcher</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./Dispatcher</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">addTodo</span> <span class="o">=</span> <span class="p">(</span><span class="nx">text</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">action</span> <span class="o">=</span> <span class="p">{</span>
@@ -360,7 +360,7 @@
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
   <span class="nl">type</span><span class="p">:</span> <span class="nx">ActionType</span><span class="p">.</span><span class="nx">ADD_TODO</span><span class="p">,</span>
   <span class="nx">payload</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nl">text</span><span class="p">:</span> <span class="s1">'hoge'</span>
+    <span class="nl">text</span><span class="p">:</span> <span class="dl">'</span><span class="s1">hoge</span><span class="dl">'</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -386,8 +386,8 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
   <li>Storeが変更されたら、イベントを発火し変更をViewに伝える</li>
 </ul>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ActionTypes</span> <span class="k">from</span> <span class="s1">'./ActionTypes'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">dispatcher</span> <span class="k">from</span> <span class="s1">'./Dispatcher'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ActionTypes</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./ActionTypes</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">dispatcher</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./Dispatcher</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">TodoStore</span> <span class="p">{</span>
   <span class="kd">constructor</span><span class="p">()</span> <span class="p">{</span>
@@ -487,7 +487,7 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
 <p>ReactComponentで表現すると、<strong>Stateを持たず、Propsを受け取るだけのComponent</strong>です。<strong><a href="https://reactjs.org/docs/components-and-props.html#functional-and-class-components" target="_blank">Functional Component</a></strong>を使って実装します。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">TodoComponet</span><span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"checkbox"</span> <span class="nx">checked</span><span class="o">=</span><span class="s2">"{props.isDone}"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span>
+  <span class="k">return</span> <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">checkbox</span><span class="dl">"</span> <span class="nx">checked</span><span class="o">=</span><span class="dl">"</span><span class="s2">{props.isDone}</span><span class="dl">"</span><span class="o">&gt;</span><span class="p">{</span><span class="nx">props</span><span class="p">.</span><span class="nx">text</span><span class="p">}</span>
 <span class="p">}</span> 
 </code></pre></div></div>
 
@@ -520,17 +520,17 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
 
 <p>Flux UtilsではController-Viewsを<strong>Container</strong>と呼んでいて、ReactComponentをベースにContainerを生成する<a href="https://github.com/facebook/flux/blob/master/src/container/FluxContainer.js" target="_blank">FluxContanier.js</a>が用意されています。</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">TodoStore</span> <span class="k">from</span> <span class="s1">'./TodoStore'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">HogeStore</span> <span class="k">from</span> <span class="s1">'./HogeStore'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">TodoStore</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./TodoStore</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">HogeStore</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./HogeStore</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">class</span> <span class="nx">RootComponent</span> <span class="kd">extends</span> <span class="nx">React</span><span class="p">.</span><span class="nx">Component</span> <span class="p">{</span>
   <span class="c1">// 1. 変更を監視するStoreを列挙する</span>
-  <span class="kr">static</span> <span class="nx">getStores</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="nx">getStores</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">[</span> <span class="nx">TodoStore</span><span class="p">,</span> <span class="nx">HogeStore</span> <span class="p">];</span>
   <span class="p">}</span>
 
   <span class="c1">// 2. Viewsに流し込むStateを生成する</span>
-  <span class="kr">static</span> <span class="nx">calculateState</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="nx">calculateState</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
       <span class="na">todoState</span><span class="p">:</span> <span class="nx">TodoStore</span><span class="p">.</span><span class="nx">getState</span><span class="p">(),</span>
       <span class="na">hogeState</span><span class="p">:</span> <span class="nx">HogeStore</span><span class="p">.</span><span class="nx">getState</span><span class="p">()</span>

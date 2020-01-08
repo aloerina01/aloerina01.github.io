@@ -10,7 +10,7 @@
   <meta name="description" content="今更すぎるけれど、ちゃんと使い分けることって大切だと思うんです。それぞれの関数の意味と役割を知り、正しく使い分けられるようになる機会は、今です。「あれ、どれ使えばいいんだっけ…」と忘れてしまった今。Just now😌💡">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -221,17 +221,17 @@
 「HTMLエスケープは基本的にはサーバサイドでするもの」という認識が漠然とあります。が、SPAの登場などもあってクライアントサイドでレンダリングする場面もチラホラあるので、その場合は自前でエスケープ関数を作る必要があります。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">escapeHtml</span><span class="p">(</span><span class="nx">target</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">!==</span> <span class="s1">'string'</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">target</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">string</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">return</span> <span class="nx">target</span><span class="p">;</span>
   <span class="p">}</span>
   <span class="k">return</span> <span class="nx">target</span><span class="p">.</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/</span><span class="se">[</span><span class="sr">&amp;'`"&lt;&gt;</span><span class="se">]</span><span class="sr">/g</span><span class="p">,</span> <span class="p">(</span><span class="nx">match</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">{</span>
-      <span class="s1">'&amp;'</span><span class="p">:</span> <span class="s1">'&amp;amp;'</span><span class="p">,</span>
-      <span class="s2">"'"</span><span class="p">:</span> <span class="s1">'&amp;#x27;'</span><span class="p">,</span>
-      <span class="s1">'`'</span><span class="p">:</span> <span class="s1">'&amp;#x60;'</span><span class="p">,</span>
-      <span class="s1">'"'</span><span class="p">:</span> <span class="s1">'&amp;quot;'</span><span class="p">,</span>
-      <span class="s1">'&lt;'</span><span class="p">:</span> <span class="s1">'&amp;lt;'</span><span class="p">,</span>
-      <span class="s1">'&gt;'</span><span class="p">:</span> <span class="s1">'&amp;gt;'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">&amp;</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&amp;amp;</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">'</span><span class="dl">"</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&amp;#x27;</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">`</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&amp;#x60;</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">"</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&amp;quot;</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">&lt;</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&amp;lt;</span><span class="dl">'</span><span class="p">,</span>
+      <span class="dl">'</span><span class="s1">&gt;</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">&amp;gt;</span><span class="dl">'</span><span class="p">,</span>
     <span class="p">}[</span><span class="nx">match</span><span class="p">]</span>
   <span class="p">});</span>
 <span class="p">}</span>

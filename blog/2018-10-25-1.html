@@ -10,7 +10,7 @@
   <meta name="description" content="v16.6で追加された React.memo が役立つ嬉しい機能のようだったので、どんなものか、どう実装されているかを軽くコードリーディングしました。そのときのメモです。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -205,15 +205,15 @@
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">memo</span><span class="o">&lt;</span><span class="nx">Props</span><span class="o">&gt;</span><span class="p">(</span>
   <span class="nx">type</span><span class="p">:</span> <span class="nx">React$ElementType</span><span class="p">,</span>
-  <span class="nx">compare</span><span class="p">?:</span> <span class="p">(</span><span class="nx">oldProps</span><span class="p">:</span> <span class="nx">Props</span><span class="p">,</span> <span class="nx">newProps</span><span class="p">:</span> <span class="nx">Props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="kr">boolean</span><span class="p">,</span>
+  <span class="nx">compare</span><span class="p">?:</span> <span class="p">(</span><span class="nx">oldProps</span><span class="p">:</span> <span class="nx">Props</span><span class="p">,</span> <span class="nx">newProps</span><span class="p">:</span> <span class="nx">Props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">boolean</span><span class="p">,</span>
 <span class="p">)</span> <span class="p">{</span>
   <span class="k">if</span> <span class="p">(</span><span class="nx">__DEV__</span><span class="p">)</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isValidElementType</span><span class="p">(</span><span class="nx">type</span><span class="p">))</span> <span class="p">{</span>
       <span class="nx">warningWithoutStack</span><span class="p">(</span>
         <span class="kc">false</span><span class="p">,</span>
-        <span class="s1">'memo: The first argument must be a component. Instead '</span> <span class="o">+</span>
-          <span class="s1">'received: %s'</span><span class="p">,</span>
-        <span class="nx">type</span> <span class="o">===</span> <span class="kc">null</span> <span class="p">?</span> <span class="s1">'null'</span> <span class="p">:</span> <span class="k">typeof</span> <span class="nx">type</span><span class="p">,</span>
+        <span class="dl">'</span><span class="s1">memo: The first argument must be a component. Instead </span><span class="dl">'</span> <span class="o">+</span>
+          <span class="dl">'</span><span class="s1">received: %s</span><span class="dl">'</span><span class="p">,</span>
+        <span class="nx">type</span> <span class="o">===</span> <span class="kc">null</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">null</span><span class="dl">'</span> <span class="p">:</span> <span class="k">typeof</span> <span class="nx">type</span><span class="p">,</span>
       <span class="p">);</span>
     <span class="p">}</span>
   <span class="p">}</span>

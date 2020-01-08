@@ -10,7 +10,7 @@
   <meta name="description" content="Vue.nextTickがどのように実装されているのか気になったのでコードを読んでみました。思っていたよりシンプルな実装で、Vue利用時以外でも参考にできそうな実装でした。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -202,11 +202,11 @@
   <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
 
     <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="s1">'default'</span> <span class="p">}</span>
+      <span class="k">return</span> <span class="p">{</span> <span class="na">message</span><span class="p">:</span> <span class="dl">'</span><span class="s1">default</span><span class="dl">'</span> <span class="p">}</span>
     <span class="p">},</span>
 
     <span class="nx">mounted</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="s1">'hello'</span><span class="p">;</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">message</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span><span class="p">;</span>
       <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>    <span class="c1">// default この時点ではまだDOMは更新されていない</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">nextTick</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">$el</span><span class="p">.</span><span class="nx">textContent</span><span class="p">);</span>  <span class="c1">// hello   DOM更新後にこのコードに到達する </span>
@@ -242,7 +242,7 @@
       <span class="k">try</span> <span class="p">{</span>
         <span class="nx">cb</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
       <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nx">handleError</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="s1">'nextTick'</span><span class="p">)</span>
+        <span class="nx">handleError</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span> <span class="nx">ctx</span><span class="p">,</span> <span class="dl">'</span><span class="s1">nextTick</span><span class="dl">'</span><span class="p">)</span>
       <span class="p">}</span>
     <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">_resolve</span><span class="p">)</span> <span class="p">{</span>
       <span class="nx">_resolve</span><span class="p">(</span><span class="nx">ctx</span><span class="p">)</span>
@@ -274,7 +274,7 @@
 <span class="p">}</span>
 
 <span class="c1">// 補足: ②macroTimerFuncの定義</span>
-<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">setImmediate</span> <span class="o">!==</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nx">setImmediate</span><span class="p">))</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">setImmediate</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nx">setImmediate</span><span class="p">))</span> <span class="p">{</span>
   <span class="nx">macroTimerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">setImmediate</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
   <span class="p">}</span>
@@ -286,7 +286,7 @@
 <span class="p">}</span>
 
 <span class="c1">// 補足: ③microTimerFuncの定義</span>
-<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="s1">'undefined'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nb">Promise</span><span class="p">))</span> <span class="p">{</span>
+<span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nb">Promise</span> <span class="o">!==</span> <span class="dl">'</span><span class="s1">undefined</span><span class="dl">'</span> <span class="o">&amp;&amp;</span> <span class="nx">isNative</span><span class="p">(</span><span class="nb">Promise</span><span class="p">))</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">p</span> <span class="o">=</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">()</span>
   <span class="nx">microTimerFunc</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">p</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">flushCallbacks</span><span class="p">)</span>
@@ -340,10 +340,10 @@ Here we use microtask by default, but expose a way to force (macro) task when ne
 <p>macro tasks と micro tasks の実行タイミングはどのように違うのでしょうか？ 簡単なコードで検証してみます。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// execute nextTick(macroTask)</span>
-<span class="nx">macroTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s1">'call from macroTask (use setTimeout)'</span><span class="p">));</span>
+<span class="nx">macroTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">call from macroTask (use setTimeout)</span><span class="dl">'</span><span class="p">));</span>
 
 <span class="c1">// execute nextTick(microTask)</span>
-<span class="nx">microTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s1">'call from microTask (use Promise)'</span><span class="p">));</span>
+<span class="nx">microTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">call from microTask (use Promise)</span><span class="dl">'</span><span class="p">));</span>
 
 
 <span class="kd">function</span> <span class="nx">macroTask</span><span class="p">(</span><span class="nx">fn</span><span class="p">)</span> <span class="p">{</span>
@@ -373,10 +373,10 @@ Here we use microtask by default, but expose a way to force (macro) task when ne
 <p>同期処理をはさんでみます。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// execute nextTick(macroTask)</span>
-<span class="nx">macroTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s1">'call from macroTask (use setTimeout)'</span><span class="p">));</span>
+<span class="nx">macroTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">call from macroTask (use setTimeout)</span><span class="dl">'</span><span class="p">));</span>
 
 <span class="c1">// execute nextTick(microTask)</span>
-<span class="nx">microTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="s1">'call from microTask (use Promise)'</span><span class="p">));</span>
+<span class="nx">microTask</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">call from microTask (use Promise)</span><span class="dl">'</span><span class="p">));</span>
 
 <span class="c1">// execute sync function</span>
 <span class="nx">syncSomething</span><span class="p">();</span>
@@ -385,7 +385,7 @@ Here we use microtask by default, but expose a way to force (macro) task when ne
 <span class="kd">function</span> <span class="nx">syncSomething</span><span class="p">()</span> <span class="p">{</span>
   <span class="kd">const</span> <span class="nx">startTime</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">();</span>
   <span class="k">while</span> <span class="p">(</span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">startTime</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">)</span> <span class="p">{}</span>
-  <span class="nx">log</span><span class="p">(</span><span class="s1">'call from sync function'</span><span class="p">);</span>
+  <span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">call from sync function</span><span class="dl">'</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
 

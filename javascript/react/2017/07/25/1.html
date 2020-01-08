@@ -10,7 +10,7 @@
   <meta name="description" content="Webでもアプリのようなスムーズなインタラクションを実現したいですよね。そこでよく使われる手法のひとつにlazyloadが挙げられます💡 フロントエンドエンジニアにとってlazyloadとは何なのか、徹底的に調べて試してみましたので、その記録をここに残します😇">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -276,10 +276,10 @@
  
   <span class="nx">componentDidMount</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">this</span><span class="p">.</span><span class="nx">triggerHeight</span> <span class="o">=</span> <span class="mi">300</span><span class="p">;</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">'scroll'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">();</span> <span class="p">},</span> <span class="p">{</span> <span class="na">passive</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">();</span> <span class="p">},</span> <span class="p">{</span> <span class="na">passive</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
   <span class="p">}</span>
   <span class="nx">componentWillUnmount</span><span class="p">()</span> <span class="p">{</span>
-    <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="s1">'scroll'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">();</span> <span class="p">},</span> <span class="p">{</span> <span class="na">passive</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">();</span> <span class="p">},</span> <span class="p">{</span> <span class="na">passive</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
   <span class="p">}</span>
   <span class="nx">onScroll</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">if</span> <span class="p">(</span><span class="nb">window</span><span class="p">.</span><span class="nx">pageYOffset</span> <span class="o">&gt;</span> <span class="k">this</span><span class="p">.</span><span class="nx">triggerHeight</span><span class="p">)</span> <span class="p">{</span>
@@ -302,7 +302,7 @@
     <span class="k">return</span> <span class="p">(</span>
       <span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">each</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">(</span>
-          <span class="o">&lt;</span><span class="nx">LazyloadComponent</span> <span class="nx">height</span><span class="o">=</span><span class="s2">"200"</span> <span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">LazyloadComponent</span> <span class="nx">height</span><span class="o">=</span><span class="dl">"</span><span class="s2">200</span><span class="dl">"</span> <span class="o">&gt;</span>
             <span class="o">&lt;</span><span class="nx">Content</span> <span class="nx">item</span><span class="o">=</span><span class="p">{</span><span class="nx">each</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
 </span>          <span class="o">&lt;</span><span class="sr">/LazyloadComponent</span><span class="err">&gt;
 </span>        <span class="p">);</span>
@@ -336,7 +336,7 @@
       <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">onScroll</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onScroll</span><span class="p">}</span> <span class="o">&gt;</span>
       <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">items</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">each</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
         <span class="k">return</span> <span class="p">(</span>
-          <span class="o">&lt;</span><span class="nx">LazyloadComponent</span> <span class="nx">height</span><span class="o">=</span><span class="s2">"200"</span> <span class="nx">scroll</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">}</span> <span class="o">&gt;</span>
+          <span class="o">&lt;</span><span class="nx">LazyloadComponent</span> <span class="nx">height</span><span class="o">=</span><span class="dl">"</span><span class="s2">200</span><span class="dl">"</span> <span class="nx">scroll</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">scrollTop</span><span class="p">}</span> <span class="o">&gt;</span>
             <span class="o">&lt;</span><span class="nx">Content</span> <span class="nx">item</span><span class="o">=</span><span class="p">{</span><span class="nx">each</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
 </span>          <span class="o">&lt;</span><span class="sr">/LazyloadComponent</span><span class="err">&gt;
 </span>      <span class="p">);})}</span>

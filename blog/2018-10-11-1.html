@@ -10,7 +10,7 @@
   <meta name="description" content="Vueなどの公式ドキュメントにあるようなインクリメンタルな検索窓をブログに設置したく、algoliaを使ってみました。日本語の情報が少ないようだったのでご参考にどうぞ。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -319,16 +319,16 @@
 <p></p>
 
 <p><strong>JavaScript</strong></p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">algoliasearch</span><span class="p">(</span><span class="s1">'YourApplicationID'</span><span class="p">,</span> <span class="s1">'YourSearchOnlyAPIKey'</span><span class="p">);</span>
-<span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">initIndex</span><span class="p">(</span><span class="s1">'YourIndex'</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">client</span> <span class="o">=</span> <span class="nx">algoliasearch</span><span class="p">(</span><span class="dl">'</span><span class="s1">YourApplicationID</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">YourSearchOnlyAPIKey</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">index</span> <span class="o">=</span> <span class="nx">client</span><span class="p">.</span><span class="nx">initIndex</span><span class="p">(</span><span class="dl">'</span><span class="s1">YourIndex</span><span class="dl">'</span><span class="p">);</span>
 <span class="c1">//initialize autocomplete on search input (ID selector must match)</span>
 <span class="nx">autocomplete</span><span class="p">(</span>
-  <span class="s1">'#aa-search-input'</span><span class="p">,</span>
+  <span class="dl">'</span><span class="s1">#aa-search-input</span><span class="dl">'</span><span class="p">,</span>
   <span class="p">{</span> <span class="na">hint</span><span class="p">:</span> <span class="kc">false</span> <span class="p">},</span>
   <span class="p">{</span>
     <span class="na">source</span><span class="p">:</span> <span class="nx">autocomplete</span><span class="p">.</span><span class="nx">sources</span><span class="p">.</span><span class="nx">hits</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="p">{</span><span class="na">hitsPerPage</span><span class="p">:</span> <span class="mi">5</span><span class="p">}),</span>
     <span class="c1">//value to be displayed in input control after user's suggestion selection</span>
-    <span class="na">displayKey</span><span class="p">:</span> <span class="s1">'name'</span><span class="p">,</span>
+    <span class="na">displayKey</span><span class="p">:</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span><span class="p">,</span>
     <span class="c1">//hash of templates used when rendering dataset</span>
     <span class="na">templates</span><span class="p">:</span> <span class="p">{</span>
       <span class="c1">//'suggestion' templating function used to render a single suggestion</span>

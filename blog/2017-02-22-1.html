@@ -10,7 +10,7 @@
   <meta name="description" content="リリース環境と開発環境でAPIのオリジンを切り替えたい…ログのレベルを替えたい…。そういった環境変数に纏わる問題をクライアントサイドで解決したい場面ってありますよね。そんな場面で使える「ビルド時に環境毎の設定ファイルを読み込む方法」を実装したのでメモっておきます。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -224,9 +224,9 @@
 
 <p>ポイントは、後に指定する<strong>NODE_ENV = 設定ファイル名</strong>となっていることです(今回は<code class="highlighter-rouge">environment/</code>以外でrequireしないで欲しいという意味を込めて<code class="highlighter-rouge">_</code>の接頭辞をつけました)。</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">env</span> <span class="k">from</span> <span class="s1">'../environment/index'</span><span class="p">;</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">env</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../environment/index</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="kd">const</span> <span class="nx">FETCH_API</span> <span class="o">=</span> <span class="nx">env</span><span class="p">.</span><span class="nx">API_ORIGIN</span> <span class="o">+</span> <span class="s1">'user/articles'</span><span class="p">;</span>
+<span class="kd">const</span> <span class="nx">FETCH_API</span> <span class="o">=</span> <span class="nx">env</span><span class="p">.</span><span class="nx">API_ORIGIN</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">user/articles</span><span class="dl">'</span><span class="p">;</span>
 </code></pre></div></div>
 
 <p>このように、<code class="highlighter-rouge">environment/index.js</code>を呼び出せばどこでも環境ごとの設定値を参照できるようになりました。</p>
@@ -237,7 +237,7 @@
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">plugins</span><span class="p">:</span> <span class="p">[</span>
 <span class="err">　　</span><span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">DefinePlugin</span><span class="p">({</span>
-<span class="err">　　　　</span><span class="s1">'process.env.NODE_ENV'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="p">)</span>
+<span class="err">　　　　</span><span class="dl">'</span><span class="s1">process.env.NODE_ENV</span><span class="dl">'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="p">)</span>
 <span class="err">　　</span><span class="p">})</span>
 <span class="p">]</span>
 </code></pre></div></div>

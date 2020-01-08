@@ -10,7 +10,7 @@
   <meta name="description" content="Babel6.xと比較するとpolyfillの導入の仕方が大幅に変わっています。以前と似たような名前のプラグインやオプションであっても挙動が違ったりするので、おさらいしてみました。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -259,11 +259,11 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
 
 <p><strong>.babelrcを記述する</strong></p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">[</span><span class="w">
       </span><span class="s2">"@babel/preset-env"</span><span class="p">,</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"useBuiltIns"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usage"</span><span class="w">
+        </span><span class="nl">"useBuiltIns"</span><span class="p">:</span><span class="w"> </span><span class="s2">"usage"</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -279,14 +279,14 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
 <span class="kd">let</span> <span class="nx">letObj</span> <span class="o">=</span> <span class="p">{};</span>
 <span class="kd">const</span> <span class="nx">constObj</span> <span class="o">=</span> <span class="p">{};</span>
 
-<span class="nx">obj</span><span class="p">[</span><span class="s1">'includes'</span><span class="p">];</span>      <span class="c1">// array.includes と string.includes のpolyfillが入る</span>
-<span class="nx">letObj</span><span class="p">[</span><span class="s1">'includes'</span><span class="p">];</span>   <span class="c1">// polyfillが入らない</span>
-<span class="nx">constObj</span><span class="p">[</span><span class="s1">'includes'</span><span class="p">];</span> <span class="c1">// polyfillが入らない</span>
+<span class="nx">obj</span><span class="p">[</span><span class="dl">'</span><span class="s1">includes</span><span class="dl">'</span><span class="p">];</span>      <span class="c1">// array.includes と string.includes のpolyfillが入る</span>
+<span class="nx">letObj</span><span class="p">[</span><span class="dl">'</span><span class="s1">includes</span><span class="dl">'</span><span class="p">];</span>   <span class="c1">// polyfillが入らない</span>
+<span class="nx">constObj</span><span class="p">[</span><span class="dl">'</span><span class="s1">includes</span><span class="dl">'</span><span class="p">];</span> <span class="c1">// polyfillが入らない</span>
 
 <span class="c1">// --------</span>
 
-<span class="kd">const</span> <span class="nx">getName</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="s1">'includes'</span><span class="p">;</span>
-<span class="s1">'str'</span><span class="p">[</span><span class="nx">getName</span><span class="p">()];</span>     <span class="c1">// string.includes のpolyfillが入らない</span>
+<span class="kd">const</span> <span class="nx">getName</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="dl">'</span><span class="s1">includes</span><span class="dl">'</span><span class="p">;</span>
+<span class="dl">'</span><span class="s1">str</span><span class="dl">'</span><span class="p">[</span><span class="nx">getName</span><span class="p">()];</span>     <span class="c1">// string.includes のpolyfillが入らない</span>
 </code></pre></div></div>
 
 <p>静的解析してimportするpolyfillを特定している感じでしょうか。<br />
@@ -310,7 +310,7 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// index.js</span>
 
-<span class="k">import</span> <span class="s1">'@babel/polyfill'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">@babel/polyfill</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span>  <span class="c1">// polyfillが必要な実装</span>
 </code></pre></div></div>
@@ -319,11 +319,11 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
 
 <p><strong>.babelrcを記述する</strong></p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+  </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">[</span><span class="w">
       </span><span class="s2">"@babel/preset-env"</span><span class="p">,</span><span class="w">
       </span><span class="p">{</span><span class="w">
-        </span><span class="s2">"useBuiltIns"</span><span class="p">:</span><span class="w"> </span><span class="s2">"entry"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">任意</span><span class="w">
+        </span><span class="nl">"useBuiltIns"</span><span class="p">:</span><span class="w"> </span><span class="s2">"entry"</span><span class="w">  </span><span class="err">//</span><span class="w"> </span><span class="err">任意</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">]</span><span class="w">
@@ -352,7 +352,7 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
 <p><strong>.babelrcを記述する</strong></p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-  <span class="s2">"plugins"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"@babel/plugin-transform-runtime"</span><span class="p">]</span>
+  <span class="dl">"</span><span class="s2">plugins</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">@babel/plugin-transform-runtime</span><span class="dl">"</span><span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></div>
 

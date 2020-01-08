@@ -10,7 +10,7 @@
   <meta name="description" content="VueComponentのリファクタリングや構造化をしようと思ったとき、選択肢の一つとしてmixinが考えられますよね。しかし振り返るとうまく実装できていないケースがちらほらありました。なぜそうなってしまったかと、それを踏まえての適切なmixinの使い方または代替案についてまとめてみました。mixin実装時のご参...">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -236,10 +236,10 @@
   <span class="p">},</span>
   <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
     <span class="nx">getTitle</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s1">'You must override this function.'</span><span class="p">);</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">You must override this function.</span><span class="dl">'</span><span class="p">);</span>
     <span class="p">},</span>
     <span class="nx">sendPageview</span><span class="p">()</span> <span class="p">{</span>
-      <span class="nb">window</span><span class="p">.</span><span class="nx">ga</span><span class="p">(</span><span class="s1">'send'</span><span class="p">,</span> <span class="s1">'pageview'</span><span class="p">);</span>
+      <span class="nb">window</span><span class="p">.</span><span class="nx">ga</span><span class="p">(</span><span class="dl">'</span><span class="s1">send</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">pageview</span><span class="dl">'</span><span class="p">);</span>
     <span class="p">},</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -251,14 +251,14 @@
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span><span class="c">&lt;!-- 省略 --&gt;</span><span class="nt">&lt;/template&gt;</span>
 
 <span class="nt">&lt;script&gt;</span>
-<span class="k">import</span> <span class="nx">pageContainerMixin</span> <span class="k">from</span> <span class="s1">'./pageContainerMixin'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">pageContainerMixin</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./pageContainerMixin</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="na">mixins</span><span class="p">:</span> <span class="p">[</span> <span class="nx">pageContainerMixin</span> <span class="p">],</span>
   <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
     <span class="cm">/** @Override */</span>
     <span class="nx">getTitle</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="s1">'メインページ'</span><span class="p">;</span>
+      <span class="k">return</span> <span class="dl">'</span><span class="s1">メインページ</span><span class="dl">'</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -345,13 +345,13 @@
 <span class="nt">&lt;/template&gt;</span>
 
 <span class="nt">&lt;script&gt;</span>
-<span class="k">import</span> <span class="nx">expandable</span> <span class="k">from</span> <span class="s1">'./expandable'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">expandable</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./expandable</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="na">mixins</span><span class="p">:</span> <span class="p">[</span> <span class="nx">expandable</span> <span class="p">],</span>
   <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
     <span class="nx">buttonLabel</span><span class="p">()</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">isExpanded</span> <span class="p">?</span> <span class="s1">'折りたたむ'</span> <span class="p">:</span> <span class="s1">'もっと見る'</span><span class="p">;</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">isExpanded</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">折りたたむ</span><span class="dl">'</span> <span class="p">:</span> <span class="dl">'</span><span class="s1">もっと見る</span><span class="dl">'</span><span class="p">;</span>
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
@@ -432,7 +432,7 @@
 <span class="nt">&lt;template&gt;</span><span class="c">&lt;!-- 省略 --&gt;</span><span class="nt">&lt;/template&gt;</span>
 
 <span class="nt">&lt;script&gt;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">sharedCreateFunc</span><span class="p">,</span> <span class="nx">sharedCalcFunc</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'./shared'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">sharedCreateFunc</span><span class="p">,</span> <span class="nx">sharedCalcFunc</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./shared</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
   <span class="nx">data</span><span class="p">()</span> <span class="p">{</span>

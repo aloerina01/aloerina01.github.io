@@ -10,7 +10,7 @@
   <meta name="description" content="google公式のShell Style Guideの紹介と、その中で特に自分が気をつけていることをリストアップしました。ビルドやデプロイのスクリプトを用意するときなどにこれを基に自己レビューしています。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -234,7 +234,7 @@
 <p>通常の状態とエラー状態を識別しやすくするためですね。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>err<span class="o">()</span> <span class="o">{</span>
-  <span class="nb">echo</span> <span class="s2">"[</span><span class="k">$(</span><span class="nb">date</span> +<span class="s1">'%Y-%m-%dT%H:%M:%S%z'</span><span class="k">)</span><span class="s2">]: </span><span class="nv">$@</span><span class="s2">"</span> <span class="o">&gt;</span>&amp;2
+  <span class="nb">echo</span> <span class="s2">"[</span><span class="si">$(</span><span class="nb">date</span> +<span class="s1">'%Y-%m-%dT%H:%M:%S%z'</span><span class="si">)</span><span class="s2">]: </span><span class="nv">$@</span><span class="s2">"</span> <span class="o">&gt;</span>&amp;2
 <span class="o">}</span>
 
 <span class="k">if</span> <span class="o">!</span> do_something<span class="p">;</span> <span class="k">then
@@ -269,7 +269,7 @@
 <p><code class="highlighter-rouge">$(command)</code>は入れ子にできる利点があります。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is preferred:</span>
-<span class="nv">var</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span><span class="nb">command</span> <span class="s2">"</span><span class="k">$(</span>command1<span class="k">)</span><span class="s2">"</span><span class="k">)</span><span class="s2">"</span>
+<span class="nv">var</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">command</span> <span class="s2">"</span><span class="si">$(</span>command1<span class="si">)</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span>
 
 <span class="c"># This is not:</span>
 <span class="nv">var</span><span class="o">=</span><span class="s2">"</span><span class="sb">`</span><span class="nb">command</span> <span class="se">\`</span>command1<span class="se">\`</span><span class="sb">`</span><span class="s2">"</span>
@@ -320,7 +320,7 @@ your_command | <span class="k">while </span><span class="nb">read </span>line<sp
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">total</span><span class="o">=</span>0
 <span class="c"># Only do this if there are no spaces in return values.</span>
-<span class="k">for </span>value <span class="k">in</span> <span class="k">$(</span>your_command<span class="k">)</span><span class="p">;</span> <span class="k">do
+<span class="k">for </span>value <span class="k">in</span> <span class="si">$(</span>your_command<span class="si">)</span><span class="p">;</span> <span class="k">do
   </span>total+<span class="o">=</span><span class="s2">"</span><span class="k">${</span><span class="nv">value</span><span class="k">}</span><span class="s2">"</span>
 <span class="k">done</span>
 </code></pre></div></div>
@@ -348,7 +348,7 @@ your_command | <span class="k">while </span><span class="nb">read </span>line<sp
 
 <p>定数や環境変数などのグローバル変数はファイルの冒頭で定義します。グローバル変数は広い範囲で利用され得るためバリデーションを実装し、定数の場合はreadonlyとします。</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">zip_version</span><span class="o">=</span><span class="s2">"</span><span class="k">$(</span>dpkg <span class="nt">--status</span> zip | <span class="nb">grep </span>Version: | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 2<span class="k">)</span><span class="s2">"</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">zip_version</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span>dpkg <span class="nt">--status</span> zip | <span class="nb">grep </span>Version: | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 2<span class="si">)</span><span class="s2">"</span>
 <span class="k">if</span> <span class="o">[[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="k">${</span><span class="nv">zip_version</span><span class="k">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
   </span>error_message
 <span class="k">else

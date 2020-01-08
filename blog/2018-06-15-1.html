@@ -10,7 +10,7 @@
   <meta name="description" content="チームで開発していると復数のブランチが切られますが、きちんとマージを重ねていかないとリリース事故などのトラブルに繋がり兼ねません。それを少しでも防ぐためのスクリプトを書いて運用している話を書きました。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -226,12 +226,12 @@
 git fetch
 
 <span class="c"># base_branchの最新のcommitを取得する</span>
-<span class="nv">latest_commit</span><span class="o">=</span><span class="k">$(</span>git log origin/<span class="nv">$base_branch</span> <span class="nt">-n</span> 1 | <span class="nb">head</span> <span class="nt">-1</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s/commit </span><span class="se">\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="k">)</span>
+<span class="nv">latest_commit</span><span class="o">=</span><span class="si">$(</span>git log origin/<span class="nv">$base_branch</span> <span class="nt">-n</span> 1 | <span class="nb">head</span> <span class="nt">-1</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s/commit </span><span class="se">\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="si">)</span>
 <span class="c"># target_branchがbase_branchのどのcommitから枝分かれしたのかを調べる</span>
-<span class="nv">base_commit</span><span class="o">=</span><span class="k">$(</span>git show-branch <span class="nt">--merge-base</span> origin/<span class="nv">$target_branch</span> origin/<span class="nv">$base_branch</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="k">)</span>
+<span class="nv">base_commit</span><span class="o">=</span><span class="si">$(</span>git show-branch <span class="nt">--merge-base</span> origin/<span class="nv">$target_branch</span> origin/<span class="nv">$base_branch</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="si">)</span>
 
-<span class="nb">echo</span> <span class="s2">"latest commit: </span><span class="k">$(</span>git log <span class="nv">$latest_commit</span> <span class="nt">--oneline</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="k">)</span><span class="s2">"</span>
-<span class="nb">echo</span> <span class="s2">"based  commit: </span><span class="k">$(</span>git log <span class="nv">$base_commit</span> <span class="nt">--oneline</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="k">)</span><span class="s2">"</span>
+<span class="nb">echo</span> <span class="s2">"latest commit: </span><span class="si">$(</span>git log <span class="nv">$latest_commit</span> <span class="nt">--oneline</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="si">)</span><span class="s2">"</span>
+<span class="nb">echo</span> <span class="s2">"based  commit: </span><span class="si">$(</span>git log <span class="nv">$base_commit</span> <span class="nt">--oneline</span> | <span class="nb">head</span> <span class="nt">-1</span><span class="si">)</span><span class="s2">"</span>
 
 <span class="c"># 「base_branchの最新commit」と「枝分かれしたcommit」を比較</span>
 <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$latest_commit</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"</span><span class="nv">$base_commit</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
@@ -255,7 +255,7 @@ git fetch
 <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$CI_PULL_REQUEST</span><span class="s2">"</span> <span class="o">==</span> <span class="nb">false</span> <span class="o">]</span> <span class="o">||</span> <span class="o">[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$CI_PULL_REQUEST</span><span class="s2">"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
   </span><span class="nb">echo</span> <span class="s1">'Fail to find a pull request.'</span> <span class="o">&amp;&amp;</span> <span class="nb">exit </span>0
 <span class="k">fi
-</span><span class="nv">pr_number</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="k">${</span><span class="nv">CI_PULL_REQUEST</span><span class="k">}</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s/^.*pull</span><span class="se">\/\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="k">)</span>
+</span><span class="nv">pr_number</span><span class="o">=</span><span class="si">$(</span><span class="nb">echo</span> <span class="k">${</span><span class="nv">CI_PULL_REQUEST</span><span class="k">}</span> | <span class="nb">sed</span> <span class="nt">-e</span> <span class="s2">"s/^.*pull</span><span class="se">\/\(</span><span class="s2">.*</span><span class="nv">$\</span><span class="s2">)/</span><span class="se">\1</span><span class="s2">/"</span><span class="si">)</span>
 
 <span class="c"># 結果をPull RequestにReviewとしてコメントする</span>
 curl <span class="nt">-XPOST</span> <span class="se">\</span>

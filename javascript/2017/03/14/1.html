@@ -10,7 +10,7 @@
   <meta name="description" content="ES6の仕様のひとつであるProxyを使って、堅牢なオブジェクトを作る方法を紹介します。Private変数を持つオブジェクト、Immutableなオブジェクト、Singletonなオブジェクト、Enumオブジェクトを作ってみましたのでご参考までに。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -200,7 +200,7 @@
 <p>実際のソースをみたほうがピンとくるかもしれません💡</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">obj</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">name</span><span class="p">:</span> <span class="s1">'Aloerina'</span><span class="p">,</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">Aloerina</span><span class="dl">'</span><span class="p">,</span>
   <span class="na">age</span><span class="p">:</span> <span class="mi">17</span>
 <span class="p">};</span>
 
@@ -212,7 +212,7 @@
 
 <span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">(</span><span class="nx">obj</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>  <span class="c1">// objをラップしたproxyを生成する</span>
 
-<span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Margherita'</span><span class="p">;</span>  <span class="c1">// nameは上書き禁止です</span>
+<span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Margherita</span><span class="dl">'</span><span class="p">;</span>  <span class="c1">// nameは上書き禁止です</span>
 <span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Aloerina</span>
 </code></pre></div></div>
 
@@ -290,14 +290,14 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">set</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Before set'</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">Before set</span><span class="dl">'</span><span class="p">);</span>
     <span class="nb">Reflect</span><span class="p">.</span><span class="kd">set</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">);</span>  <span class="c1">// targetオブジェクトのsetterを呼び出す</span>
   <span class="p">}</span>
 <span class="p">};</span>
 
 <span class="kd">let</span> <span class="nx">proxy</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Proxy</span><span class="p">({},</span> <span class="nx">handler</span><span class="p">);</span>
 
-<span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="s1">'Margherita'</span><span class="p">;</span>  <span class="c1">// Before set</span>
+<span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Margherita</span><span class="dl">'</span><span class="p">;</span>  <span class="c1">// Before set</span>
 <span class="nx">concole</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">proxy</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>    <span class="c1">// Margherita</span>
 </code></pre></div></div>
 
@@ -344,10 +344,10 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 <p>class構文で用意したModuleを<code class="highlighter-rouge">import</code>して<code class="highlighter-rouge">new</code>して使うと本当にクラスをインスタンス化してるように見えて、読みやすいクラスベース(風)の実装となりますよね。<br />
 しかし実際にはインスタンス化されたソレはただのオブジェクトです。やろうと思えばfunctionを外から追加することも、privateな用途で用意した変数を強引に書き換えることもできてしまいます。</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">User</span> <span class="k">from</span> <span class="s1">'./User'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">User</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./User</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">let</span> <span class="nx">user01</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">User</span><span class="p">();</span>
-<span class="nx">user01</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="s1">'Aloerina'</span><span class="p">;</span>        <span class="c1">// やめてー！ private用の変数を書き換えないでー！</span>
+<span class="nx">user01</span><span class="p">.</span><span class="nx">_name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">Aloerina</span><span class="dl">'</span><span class="p">;</span>        <span class="c1">// やめてー！ private用の変数を書き換えないでー！</span>
 </code></pre></div></div>
 
 <p>こうなってしまうと悲惨なので、<strong>Module毎の性質に応じて機能を制約し、不本意な使われ方を防ぐ</strong>ため、</p>

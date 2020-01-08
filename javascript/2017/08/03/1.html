@@ -10,7 +10,7 @@
   <meta name="description" content="scrollとかresizeのイベントって瞬間でものすごい数が飛ぶから、当然間引いたりしていますよね？ と煽られたときにも心が折れないように、今一度ここでthrottleとdebounceの使い方を覚え直そう。そして案外簡単に実装できることを知って重たいライブラリから脱却しよう。というお話。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -201,7 +201,7 @@
   <span class="kd">let</span> <span class="nx">lastExecTime</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
   <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="kd">const</span> <span class="nx">context</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-    <span class="kd">const</span> <span class="nx">args</span> <span class="o">=</span> <span class="kr">arguments</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">;</span>
     <span class="kd">let</span> <span class="nx">elapsedTime</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">lastExecTime</span><span class="p">;</span>
     <span class="kd">const</span> <span class="nx">execute</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
@@ -231,7 +231,7 @@
   <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">clearTimeout</span><span class="p">(</span><span class="nx">timerId</span><span class="p">);</span>
     <span class="kd">const</span> <span class="nx">context</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-    <span class="kd">const</span> <span class="nx">args</span> <span class="o">=</span> <span class="kr">arguments</span><span class="p">;</span>
+    <span class="kd">const</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">arguments</span><span class="p">;</span>
     <span class="nx">timerId</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="nx">fn</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nx">context</span><span class="p">,</span> <span class="nx">args</span><span class="p">);</span>
     <span class="p">},</span> <span class="nx">interval</span><span class="p">);</span>

@@ -10,7 +10,7 @@
   <meta name="description" content="ReactのComponentをテストするにはJestとEnzymeを組み合わせるととてもいい感じでした😄というよくある話と、create-react-appで用意した環境でそれらを使おうとするとハマることがあるよ💀というあまり聞かない話について書きました。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -279,9 +279,9 @@
 <span class="p">};</span>
 
 <span class="c1">// react-scripts/scripts/test.js</span>
-<span class="nx">argv</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s1">'--config'</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">createJestConfig</span><span class="p">(</span>
-  <span class="nx">relativePath</span> <span class="o">=&gt;</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">,</span> <span class="nx">relativePath</span><span class="p">),</span>
-  <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">appSrc</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">),</span> <span class="c1">// ← ここで引数rootDirを指定している</span>
+<span class="nx">argv</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">'</span><span class="s1">--config</span><span class="dl">'</span><span class="p">,</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">createJestConfig</span><span class="p">(</span>
+  <span class="nx">relativePath</span> <span class="o">=&gt;</span> <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">__dirname</span><span class="p">,</span> <span class="dl">'</span><span class="s1">..</span><span class="dl">'</span><span class="p">,</span> <span class="nx">relativePath</span><span class="p">),</span>
+  <span class="nx">path</span><span class="p">.</span><span class="nx">resolve</span><span class="p">(</span><span class="nx">paths</span><span class="p">.</span><span class="nx">appSrc</span><span class="p">,</span> <span class="dl">'</span><span class="s1">..</span><span class="dl">'</span><span class="p">),</span> <span class="c1">// ← ここで引数rootDirを指定している</span>
   <span class="kc">false</span>
 <span class="p">)));</span>
 
@@ -316,7 +316,7 @@
 <p>ここでは、「チェックボックスのOn/Offに応じてラベルの文言が切り替わるコンポーネント」のテストの実装例を挙げます。ソースを読んで雰囲気がつかめるかと思います(がいかがでしょう)。</p>
 
 <p><strong>src/components/CheckboxWithLabel.js</strong></p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">Component</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="k">export</span> <span class="k">default</span> <span class="kd">class</span> <span class="nx">CheckboxWithLabel</span> <span class="kd">extends</span> <span class="nx">Component</span> <span class="p">{</span>
 
@@ -333,7 +333,7 @@
   <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span>
       <span class="o">&lt;</span><span class="nx">label</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="s2">"checkbox"</span> <span class="nx">checked</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isChecked</span><span class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onChange</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
+        <span class="o">&lt;</span><span class="nx">input</span> <span class="nx">type</span><span class="o">=</span><span class="dl">"</span><span class="s2">checkbox</span><span class="dl">"</span> <span class="nx">checked</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isChecked</span><span class="p">}</span> <span class="nx">onChange</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">onChange</span><span class="p">}</span> <span class="sr">/</span><span class="err">&gt;
 </span>        <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isChecked</span> <span class="p">?</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">labelOn</span> <span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">props</span><span class="p">.</span><span class="nx">labelOff</span><span class="p">}</span>
       <span class="o">&lt;</span><span class="sr">/label</span><span class="err">&gt;
 </span>    <span class="p">);</span>
@@ -342,20 +342,20 @@
 </code></pre></div></div>
 
 <p><strong>src/components/test/CheckboxWithLabel.test.js</strong></p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="s1">'react'</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">shallow</span><span class="p">,</span> <span class="nx">mount</span> <span class="p">}</span> <span class="k">from</span> <span class="s1">'enzyme'</span><span class="p">;</span>
-<span class="k">import</span> <span class="nx">CheckboxWithLabel</span> <span class="k">from</span> <span class="s1">'../CheckboxWithLabel'</span><span class="p">;</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">shallow</span><span class="p">,</span> <span class="nx">mount</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">enzyme</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">CheckboxWithLabel</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../CheckboxWithLabel</span><span class="dl">'</span><span class="p">;</span>
 
-<span class="nx">describe</span><span class="p">(</span><span class="s1">'ChecboxWithLabel'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">test</span><span class="p">(</span><span class="s1">'Changes the label after click'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">ChecboxWithLabel</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">Changes the label after click</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
  <span class="err"> </span> <span class="err"> </span><span class="c1">// Componentをレンダリングする</span>
-    <span class="kd">const</span> <span class="nx">checkbox</span> <span class="o">=</span> <span class="nx">shallow</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">CheckboxWithLabel</span> <span class="nx">labelOn</span><span class="o">=</span><span class="s2">"On"</span> <span class="nx">labelOff</span><span class="o">=</span><span class="s2">"Off"</span> <span class="o">/&gt;</span><span class="p">);</span>
+    <span class="kd">const</span> <span class="nx">checkbox</span> <span class="o">=</span> <span class="nx">shallow</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">CheckboxWithLabel</span> <span class="nx">labelOn</span><span class="o">=</span><span class="dl">"</span><span class="s2">On</span><span class="dl">"</span> <span class="nx">labelOff</span><span class="o">=</span><span class="dl">"</span><span class="s2">Off</span><span class="dl">"</span> <span class="o">/&gt;</span><span class="p">);</span>
     <span class="c1">// expect(検査対象).toEqual(想定結果)</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">checkbox</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'Off'</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">checkbox</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="dl">'</span><span class="s1">Off</span><span class="dl">'</span><span class="p">);</span>
  <span class="err"> </span> <span class="err"> </span><span class="c1">// shallowでレンダリングされた要素から特定のセレクタを取得する</span>
-    <span class="nx">checkbox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">'input'</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="s1">'change'</span><span class="p">);</span>
+    <span class="nx">checkbox</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="dl">'</span><span class="s1">input</span><span class="dl">'</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="dl">'</span><span class="s1">change</span><span class="dl">'</span><span class="p">);</span>
     <span class="c1">// expect(検査対象).toEqual(想定結果)</span>
-    <span class="nx">expect</span><span class="p">(</span><span class="nx">checkbox</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="s1">'On'</span><span class="p">);</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">checkbox</span><span class="p">.</span><span class="nx">text</span><span class="p">()).</span><span class="nx">toEqual</span><span class="p">(</span><span class="dl">'</span><span class="s1">On</span><span class="dl">'</span><span class="p">);</span>
   <span class="p">});</span>
 <span class="p">});</span>
 </code></pre></div></div>
@@ -374,9 +374,9 @@
 これらを組み合わせることで、<strong>Componentのレンダリング結果をスナップショットとして残しておき、それと比較してレンダリング結果に差異がないか</strong>のテストをすることができます。</p>
 
 <p>上記のCheckboxWithLabelでその例を書いてみます。</p>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">describe</span><span class="p">(</span><span class="s1">'CheckboxWithLabel'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">test</span><span class="p">(</span><span class="s1">'Matches with the snapshot when checkbox is OFF'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">const</span> <span class="nx">dom</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">CheckboxWithLabel</span> <span class="nx">labelOn</span><span class="o">=</span><span class="s2">"On"</span> <span class="nx">labelOff</span><span class="o">=</span><span class="s2">"Off"</span> <span class="o">/&gt;</span><span class="p">);</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">CheckboxWithLabel</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">Matches with the snapshot when checkbox is OFF</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">dom</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">CheckboxWithLabel</span> <span class="nx">labelOn</span><span class="o">=</span><span class="dl">"</span><span class="s2">On</span><span class="dl">"</span> <span class="nx">labelOff</span><span class="o">=</span><span class="dl">"</span><span class="s2">Off</span><span class="dl">"</span> <span class="o">/&gt;</span><span class="p">);</span>
     <span class="nx">expect</span><span class="p">(</span><span class="nx">dom</span><span class="p">).</span><span class="nx">toMatchSnapshot</span><span class="p">();</span>
   <span class="p">});</span>
 <span class="p">});</span>
@@ -401,8 +401,8 @@
 
 <p>Jestはテスト実行前にテスト環境を構築するコードを実行することができるので、それを利用してlocalStorageモックを定義することで対処できます。一般的には、<code class="highlighter-rouge">package.json</code>に<code class="highlighter-rouge">setupFiles</code>または<code class="highlighter-rouge">setupTestFrameworkScriptFile</code>として定義したファイルがテスト前に実行されます。<br />
 (参考： <a href="http://facebook.github.io/jest/docs/configuration.html#setupfiles-array">Configuring package.json · Jest</a>)</p>
-<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s2">"jest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="s2">"setupFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"createLocalStorageMock.js"</span><span class="p">]</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"jest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"setupFiles"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"createLocalStorageMock.js"</span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
@@ -413,7 +413,7 @@
   <span class="kd">var</span> <span class="nx">storage</span> <span class="o">=</span> <span class="p">{};</span>
   <span class="k">return</span> <span class="p">{</span>
     <span class="na">setItem</span><span class="p">:</span> <span class="p">(</span><span class="nx">key</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="nx">storage</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">||</span> <span class="s1">''</span><span class="p">;</span>
+      <span class="nx">storage</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">value</span> <span class="o">||</span> <span class="dl">''</span><span class="p">;</span>
     <span class="p">},</span>
     <span class="na">getItem</span><span class="p">:</span> <span class="p">(</span><span class="nx">key</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
       <span class="k">return</span> <span class="nx">storage</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">||</span> <span class="kc">null</span><span class="p">;</span>
@@ -430,7 +430,7 @@
     <span class="p">}</span>
   <span class="p">};</span>
 <span class="p">})();</span>
-<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nb">global</span><span class="p">,</span> <span class="s1">'localStorage'</span><span class="p">,</span> <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="nx">localStorageMock</span> <span class="p">});</span>
+<span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nb">global</span><span class="p">,</span> <span class="dl">'</span><span class="s1">localStorage</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">value</span><span class="p">:</span> <span class="nx">localStorageMock</span> <span class="p">});</span>
 </code></pre></div></div>
 
 <h4 id="reacttestutils-has-been-moved-to-react-domtest-utils">🙅ReactTestUtils has been moved to react-dom/test-utils.</h4>
@@ -441,8 +441,8 @@
 
 <p>ReactTestUtilsの依存元が変わったってことだと思いReact公式を調べたところ、以下の対応をするように記載がありました。</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ReactTestUtils</span> <span class="k">from</span> <span class="s1">'react-dom/test-utils'</span><span class="p">;</span> <span class="c1">// ES6</span>
-<span class="kd">var</span> <span class="nx">ReactTestUtils</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'react-dom/test-utils'</span><span class="p">);</span> <span class="c1">// ES5 with npm</span>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">ReactTestUtils</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-dom/test-utils</span><span class="dl">'</span><span class="p">;</span> <span class="c1">// ES6</span>
+<span class="kd">var</span> <span class="nx">ReactTestUtils</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">react-dom/test-utils</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// ES5 with npm</span>
 </code></pre></div></div>
 
 <p>言われるがままにためしたものの、<code class="highlighter-rouge">Cannot find module 'react-dom/test-utils’</code>と怒られる。いかがなものですかね。</p>

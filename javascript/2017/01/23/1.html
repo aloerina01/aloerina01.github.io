@@ -10,7 +10,7 @@
   <meta name="description" content="最近ぼちぼち見かけるRxJSですが、何度か使ってみようと思ったものの毎回「関数型リアクティブプログラミング」の壁に打ちのめされて挫折していました。でもよくよく見てみたら何だかJava8のStreamっぽくないか😌💡と閃いてしまったので比較してみました。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -211,18 +211,18 @@
 <span class="kd">let</span> <span class="nx">userStream</span> <span class="o">=</span> <span class="nx">Ex</span><span class="p">.</span><span class="nx">Observable</span><span class="p">.</span><span class="nx">fromArray</span><span class="p">(</span><span class="nx">users</span><span class="p">);</span>              <span class="c1">// userリストをstreamにする</span>
 <span class="kd">let</span> <span class="nx">campaignTargets</span> <span class="o">=</span> 
 	<span class="nx">userStream</span>
-		<span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nx">e</span><span class="p">.</span><span class="nx">getJoinDate</span><span class="p">().</span><span class="nx">after</span><span class="p">(</span><span class="s1">'2017-01-01'</span><span class="p">)})</span>  <span class="c1">// フィルタリングする</span>
+		<span class="p">.</span><span class="nx">filter</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="nx">e</span><span class="p">.</span><span class="nx">getJoinDate</span><span class="p">().</span><span class="nx">after</span><span class="p">(</span><span class="dl">'</span><span class="s1">2017-01-01</span><span class="dl">'</span><span class="p">)})</span>  <span class="c1">// フィルタリングする</span>
 		<span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">e</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">cache</span><span class="p">(</span><span class="nx">e</span><span class="p">)});</span>                         <span class="c1">// cacheする</span>
 </code></pre></div></div>
 
 <p>Java</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">fetchUsers</span><span class="o">();</span>                                                <span class="c1">// userリストを取得する</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="n">User</span><span class="o">&gt;</span> <span class="n">campaignTargets</span> <span class="o">=</span> 
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">users</span> <span class="o">=</span> <span class="n">fetchUsers</span><span class="o">();</span>                                                <span class="c1">// userリストを取得する</span>
+<span class="nc">List</span><span class="o">&lt;</span><span class="nc">User</span><span class="o">&gt;</span> <span class="n">campaignTargets</span> <span class="o">=</span> 
 	<span class="n">users</span><span class="o">.</span><span class="na">stream</span><span class="o">()</span>                                                          <span class="c1">// streamにする</span>
-		<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="n">e</span><span class="o">.</span><span class="na">getJoinDate</span><span class="o">().</span><span class="na">after</span><span class="o">(</span><span class="n">DateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2017</span><span class="o">,</span> <span class="mo">01</span><span class="o">,</span> <span class="mo">01</span><span class="o">))})</span> <span class="c1">// フィルタリングする</span>
+		<span class="o">.</span><span class="na">filter</span><span class="o">(</span><span class="n">e</span> <span class="o">-&gt;</span> <span class="o">{</span><span class="n">e</span><span class="o">.</span><span class="na">getJoinDate</span><span class="o">().</span><span class="na">after</span><span class="o">(</span><span class="nc">DateTime</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="mi">2017</span><span class="o">,</span> <span class="mo">01</span><span class="o">,</span> <span class="mo">01</span><span class="o">))})</span> <span class="c1">// フィルタリングする</span>
 		<span class="o">.</span><span class="na">map</span><span class="o">(</span><span class="k">this</span><span class="o">::</span><span class="n">cache</span><span class="o">(</span><span class="n">e</span><span class="o">))</span>                                            <span class="c1">// cacheする</span>
-		<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="n">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
+		<span class="o">.</span><span class="na">collect</span><span class="o">(</span><span class="nc">Collectors</span><span class="o">.</span><span class="na">toList</span><span class="o">());</span>
 </code></pre></div></div>
 
 <p>なんというか、似てる。<br />

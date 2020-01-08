@@ -10,7 +10,7 @@
   <meta name="description" content="Vueを使ってサービスを作る際、Componentの切り方はアプリの設計に大きく影響します。読みやすく、バグりにくく、メンテナンスしやすいComponentを設計するにはどうすればよいか。MVVMと相性のいいComponent設計とはどういうものか。そんなことを考えて整理してみました。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -337,11 +337,11 @@ Vueは双方向バインディングができることから、MVVMな設計で�
   <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
     <span class="nx">componentName</span><span class="p">()</span> <span class="p">{</span>
       <span class="k">switch</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">type</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">case</span> <span class="s1">'A'</span><span class="p">:</span>
-          <span class="k">return</span> <span class="s1">'component-a'</span><span class="p">;</span>
-        <span class="k">case</span> <span class="s1">'B'</span><span class="p">:</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">A</span><span class="dl">'</span><span class="p">:</span>
+          <span class="k">return</span> <span class="dl">'</span><span class="s1">component-a</span><span class="dl">'</span><span class="p">;</span>
+        <span class="k">case</span> <span class="dl">'</span><span class="s1">B</span><span class="dl">'</span><span class="p">:</span>
         <span class="na">default</span><span class="p">:</span>
-          <span class="k">return</span> <span class="s1">'component-b'</span><span class="p">;</span>
+          <span class="k">return</span> <span class="dl">'</span><span class="s1">component-b</span><span class="dl">'</span><span class="p">;</span>
       <span class="p">}</span>
     <span class="p">}</span>
   <span class="p">}</span>

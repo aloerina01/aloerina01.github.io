@@ -10,7 +10,7 @@
   <meta name="description" content="少々荒業ですが、人生こんなことも必要です。document.write が含まれる外部スクリプトを動的読込し、かつそれが読み込まれた後で処理をするための方法です。苦戦したので覚書。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -188,10 +188,10 @@
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script&gt;</span>
 <span class="k">if</span> <span class="p">(</span><span class="nx">conditions</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">scriptElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="s1">'script'</span><span class="p">);</span>
-  <span class="nx">scriptElement</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="s1">'//cdn.hoge.com/library.js'</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">scriptElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">'</span><span class="s1">script</span><span class="dl">'</span><span class="p">);</span>
+  <span class="nx">scriptElement</span><span class="p">.</span><span class="nx">src</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">//cdn.hoge.com/library.js</span><span class="dl">'</span><span class="p">;</span>
 
-  <span class="kd">var</span> <span class="nx">headElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s1">'head'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">headElement</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="dl">'</span><span class="s1">head</span><span class="dl">'</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span>
   <span class="nx">headElement</span><span class="p">.</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">scriptElement</span><span class="p">)</span>
 <span class="p">}</span>
 <span class="nt">&lt;/script&gt;</span>

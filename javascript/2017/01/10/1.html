@@ -10,7 +10,7 @@
   <meta name="description" content="JavaScriptのモジュール間の依存解決と言えば今までBrowserifyやWebpackがメジャーどころでしたが、それらに新しいお仲間が登場したようです。ES6をベースとしていて、Tree-shakingがウリというrollup.jsとは一体どんなものなのか、簡単に調べてまとめてみました。">
   
   <meta name="author" content="aloerina">
-  <meta name="copyright" content="&copy; aloerina 2019">
+  <meta name="copyright" content="&copy; aloerina 2020">
   
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
@@ -213,7 +213,7 @@
 <h5 id="babelrc-いつものアレ">.babelrc いつものアレ</h5>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-  <span class="s2">"presets"</span><span class="p">:</span> <span class="p">[</span> <span class="s2">"es2015-rollup"</span> <span class="p">]</span>
+  <span class="dl">"</span><span class="s2">presets</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">es2015-rollup</span><span class="dl">"</span> <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -221,7 +221,7 @@
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
 	<span class="nl">scripts</span><span class="p">:</span> <span class="p">{</span>
-		<span class="s2">"build"</span> <span class="p">:</span> <span class="s2">"rollup -c"</span>  <span class="c1">// コンフィグを利用する場合は -c / --config</span>
+		<span class="dl">"</span><span class="s2">build</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">rollup -c</span><span class="dl">"</span>  <span class="c1">// コンフィグを利用する場合は -c / --config</span>
 	<span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
