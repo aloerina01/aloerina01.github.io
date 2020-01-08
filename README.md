@@ -6,7 +6,9 @@
 <h1 align="center">mille-feuille code</h1>
 
 <p align="center">
-  <img src="https://github.com/aloerina01/aloerina01.github.io/workflows/DEPLOY/badge.svg?branch=development" alt="build status">
+  <a href="https://github.com/aloerina01/aloerina01.github.io/actions">
+    <img src="https://github.com/aloerina01/aloerina01.github.io/workflows/DEPLOY/badge.svg?branch=development" alt="build status">
+  </a>
 </p>
 
 ## What's this
