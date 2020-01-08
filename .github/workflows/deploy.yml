@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - development
-      - fix/build-script-20200107
 
 jobs:
   deploy:
