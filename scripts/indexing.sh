@@ -9,7 +9,7 @@ text_color_reset="\e[m"
 algolia_token=$1
 github_token=$2
 trigger_sha=$GITHUB_SHA # GitHub Actions default env
-github_status_api="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/development/statuses"
+github_commit_api="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits"
 
 success () {
   printf "${text_color_green}Success${text_color_reset} $1\n"
@@ -31,8 +31,7 @@ validate () {
 check_force_publish () {
   [[ -z "$trigger_sha" ]] && message "'trigger_sha' is empty." && return 1
   
-  api_path="https://api.github.com/repos/aloerina01/aloerina01.github.io/commits/$trigger_sha?token=$github_token"
-  is_force=$(curl "$api_path" | jq -r .commit.message | grep -E "^.*\[indexing\].*$")
+  is_force=$(curl "$github_commit_api/$trigger_sha" | jq -r .commit.message | grep -E "^.*\[indexing\].*$")
   if [[ -n "$is_force" ]]; then 
     message "Forced indexing." && return 0
   else
@@ -41,7 +40,7 @@ check_force_publish () {
 }
 
 check_diff () {
-  latest_sha=$(curl "$github_status_api" | jq 'map(select( .["state"] == "success")) | .[0].url' | sed -E 's/^.*statuses\/(.*)"$/\1/')
+  latest_sha=$(curl "$github_commit_api?sha=development" | jq -r .[1].sha)
   message "Revisions: $trigger_sha...$latest_sha"
   [[ -z "$trigger_sha" || -z "$latest_sha" || "$latest_sha" = "null" ]] && err "Revisions could not be found." && exit 1
   diff=$(git diff --name-only $trigger_sha...$latest_sha | grep -E "^.*_posts.*$")
