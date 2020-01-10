@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>「チームがうまく失敗し学ぶために私にできること」の補足と裏話</title>
-  <meta name="description" content="2019年11月25日に LINE Developer Meetup にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。その補足とちょっとした裏話です。">
+  <title>ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた</title>
+  <meta name="description" content="CircleCIを使って静的ページのGenerateやIndexingをしていましたが、GitHub Actionsの使用感を確認するために乗り換えてみました。そのときの作業メモを公開します。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2020">
@@ -38,10 +38,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="2019年11月25日に LINE Developer Meetup にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。その補足とちょっとした裏話です。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2019-11-27-1" />
+  <meta property="og:description" content="CircleCIを使って静的ページのGenerateやIndexingをしていましたが、GitHub Actionsの使用感を確認するために乗り換えてみました。そのときの作業メモを公開します。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2020-01-09-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="「チームがうまく失敗し学ぶために私にできること」の補足と裏話" />
+  <meta property="og:title" content="ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -52,17 +52,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="「チームがうまく失敗し学ぶために私にできること」の補足と裏話">
-  <meta name="twitter:description" content="2019年11月25日に LINE Developer Meetup にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。その補足とちょっとした裏話です。">
+  <meta name="twitter:title" content="ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた">
+  <meta name="twitter:description" content="CircleCIを使って静的ページのGenerateやIndexingをしていましたが、GitHub Actionsの使用感を確認するために乗り換えてみました。そのときの作業メモを公開します。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2019-11-27-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2020-01-09-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2019-11-27-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2020-01-09-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   
@@ -74,8 +74,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/blog/2019-11-27-1',
-      'title': '「チームがうまく失敗し学ぶために私にできること」の補足と裏話'
+      'page': '/blog/2020-01-09-1',
+      'title': 'ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた'
     });
   </script>
   
@@ -145,8 +145,8 @@
         
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2019-11-27-1">
-            <span itemprop="name">「チームがうまく失敗し学ぶために私にできること」の補足と裏話</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2020-01-09-1">
+            <span itemprop="name">ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -161,7 +161,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">「チームがうまく失敗し学ぶために私にできること」の補足と裏話</h1>
+            <h1 class="title">ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -173,70 +173,89 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2019-11-27</div>
+          <div class="post-date">2020-01-09</div>
           <div class="post-categories">
             
             <i class="fas fa-fw fa-tag"></i>
              
-            <a href="/category/management/">Management</a>,    
-            <a href="/category/exp/">EXP</a>,    
-            <a href="/category/grareco/">GraReco</a>   
+            <a href="/category/environment/">Environment</a>,    
+            <a href="/category/githubactions/">GitHubActions</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <p>2019年11月25日、<a href="https://line.connpass.com/event/154447/" target="_blank">LINE Developer Meetup #58</a> にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。</p>
+          <p>このブログのCIをCircleCIからGitHub Actionsに移行しましたので、備忘のために作業時のメモを(補足を添えて)公開します。</p>
 
-<script async="" class="speakerdeck-embed" data-id="8b3ee51403284b37956b96592f1be8c9" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
+<h3 id="動機">動機</h3>
+<p>GitHub ActionsをCIとして業務利用できるかどうか体感で確認したかったためです。</p>
 
-<p>慣れない登壇で上手く伝えきれたか不安なので、言い訳がましく補足をしていこうと思います。</p>
+<h3 id="要件">要件</h3>
+<ul>
+  <li>developmentブランチへのpushをトリガーに<a href="https://github.com/aloerina01/aloerina01.github.io/blob/development/Rakefile" target="_blank">Raketask</a>を実行し、jekyllによって静的サイトを生成する</li>
+  <li>生成された静的サイトをmasterブランチへpushする</li>
+  <li>直近のビルド成功時のCommitと比較し、<code class="highlighter-rouge">/_posts/</code>以下に差分がある場合はindexを生成しAlgoliaサーバにアップする</li>
+</ul>
 
-<h3 id="補足">補足</h3>
+<h3 id="やったこと">やったこと</h3>
+<ul>
+  <li><code class="highlighter-rouge">/.github/workflows</code>ディレクトリを作成する(命名固定)</li>
+  <li>ディレクトリ以下にGithub Actionsのconfigファイルを作成する(命名は自由なので<code class="highlighter-rouge">deploy.yml</code>とする)</li>
+  <li><code class="highlighter-rouge">deploy.yml</code>にCircleCI用のconfigファイルの内容を移植する
+    <ul>
+      <li>ソースをチェックアウトするために<a href="https://github.com/actions/checkout" target="_blank">actions/checkout@v1</a>を利用する</li>
+      <li>ビルド環境にrubyのインストールするために<a href="https://github.com/actions/setup-ruby" target="_blank">actions/setup-ruby@v1</a>を利用する</li>
+      <li>dependenciesをキャッシュしておくために<a href="https://github.com/actions/cache" target="_blank">actions/cache@v1</a>を利用する</li>
+    </ul>
+  </li>
+  <li>ビルドがSuccessした直近のcommit hashを特定するスクリプトを修正する(詳細後述)
+    <ul>
+      <li>今まではCircleCIのAPIを利用していたため</li>
+    </ul>
+  </li>
+  <li>GitHub Actionsで利用するsecretを設定する</li>
+  <li><code class="highlighter-rouge">.circleci/config.yml</code>を削除する</li>
+</ul>
 
-<p>今回の話は、<strong>チームにより安全かつ効果的に失敗から学んでもらいたい・もらえる環境をつくっていきたい</strong>という私の個人的な思いの元、それを実現していくためにどんなことを考えているかを言語化したものでした。</p>
+<p>「ビルドがSuccessした直近のcommit」を特定する部分でハマりました。今まではCircleCIのAPIを使ってビルドログ一覧を取得したり条件で絞り込んだり簡単にできていたのですが…。Github ActionsにはそのようなAPIが見当たりませんでした。<br />
+Github Actionsの結果を取得する<a href="https://developer.github.com/v3/checks/runs/" target="_blank">check runs</a>や<a href="https://developer.github.com/v3/checks/suites/" target="_blank">check suites</a>、commitのステータスを取得する<a href="https://developer.github.com/v3/repos/statuses/" target="_blank">statuses</a>などのAPIはあるものの、それらからは条件に該当するcommit hashを抽出することはできず、直前のcommitと比較する方法に妥協しました。</p>
 
-<p>ですのでチームメンバーと合意をとって取り組んだことというよりは、私がどういう思いを持っていて、どういう<strong>思考プロセス</strong>を経てどういう行動を起こしているか、というやや自分語り的な内容となっています。</p>
+<p>いい方法知っている方がいましたらお助けください…！</p>
 
-<p style="text-align:center">* * *</p>
+<h3 id="使ってみた所感">使ってみた所感</h3>
+<p>ビルド速度の劣化はありませんでしたので一安心です。</p>
 
-<p>発表の中で失敗の分析方法について触れていますが、これは<strong>私が日常的もしくは定期的にしている</strong>方法になります。チームが出来上がったばかりの頃は特に丁寧にやっていたため付箋やホワイトボードの写真が残っていましたが、今ではノートの端切れに殴り書いたりと雑に(短時間で素早く)やっています。</p>
+<p><code class="highlighter-rouge">bundle install</code>や<code class="highlighter-rouge">npm install</code>したものをキャッシュする設定はCircleCI(ver2)よりも書きやすく、読みやすいと感じました。</p>
 
-<p style="text-align:center">* * *</p>
+<p><strong>.circleci/config.yml</strong></p>
 
-<p>失敗と向き合うために心に留めていることとして「失敗は実績解除だ」と締めくくっていますが、「実績解除」という言葉は人によっては馴染みのないものだったかもしれません。発表の仕方を工夫すべきだったなとまさしく失敗から学んだ点でもあります。<br />
-ここで伝えたかったことは「学ぶための貴重な機会である<strong>尊い失敗体験</strong>をネガティブな言葉で表現したくない」ということでした。</p>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="na">restore_cache</span><span class="pi">:</span>
+    <span class="na">keys</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">bundle-cache-{{ checksum "Gemfile.lock" }}</span>
+      <span class="pi">-</span> <span class="s">bundle-cache-</span>
 
-<h3 id="裏話">裏話</h3>
+<span class="pi">-</span> <span class="na">save_cache</span><span class="pi">:</span>
+    <span class="na">key</span><span class="pi">:</span> <span class="s">bundle-cache-{{ checksum "Gemfile.lock" }}</span>
+    <span class="na">paths</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">vendor/bundle</span>
+</code></pre></div></div>
 
-<p>登壇が苦手なので日頃の発信はブログで行っているのですが、せっかく登壇の機会をもらえたので<strong>文字だけでは伝えにくいことを言葉と図で伝える</strong>ことにこだわりたいと思って臨みました。その効果が如何ほどだったかは測れていないので、聞いていただいた方からのフィードバックを楽しみにしています。</p>
+<p>CircleCIでは「キャッシュする/キャッシュを復元する」記述をそれぞれ書いていました。</p>
 
-<p>ちなみに私が登壇資料をつくるときは</p>
+<p><strong>.github/workflows/deploy.yml</strong></p>
 
-<ol>
-  <li>伝えたいことを箇条書きでリストアップする(ここでほぼ内容を固めます)</li>
-  <li>声に出して何度も話しながら流れを組み上げる</li>
-  <li>話しながら思い浮かぶ図を手書きで書き起こす(ここでスライドのおおよその枚数が見えてきます)</li>
-  <li>Keynoteでスライドをつくる</li>
-</ol>
+<div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">uses</span><span class="pi">:</span> <span class="s">actions/cache@v1</span>
+<span class="na">with</span><span class="pi">:</span>
+  <span class="na">path</span><span class="pi">:</span> <span class="s">vendor/bundle</span>
+  <span class="na">key</span><span class="pi">:</span> <span class="s">${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}</span>
+</code></pre></div></div>
 
-<p>という流れになることが多いです。</p>
+<p>Github Actionsでは「何をキャッシュするのか」を記述すれば良いので分かりやすく感じました。「キャッシュがない場合は〇〇する」処理も<code class="highlighter-rouge">if: steps.&lt;step_name&gt;.outputs.cache-hit != ‘true’</code>と書けるので直感的でした。</p>
 
-<h3 id="グラレコ">グラレコ</h3>
+<p>一方で、GitHub Actionsのログを柔軟に取得するAPIがなかったり、結果Viewに「キャッシュをクリアして再ビルドする」ボタンがなかったりと、少し込み入ったことをすると困る場面が多かったです。</p>
 
-<p>最近Meetupの参加メモをiPadで手書きで取るようにしているので、おまけとして公開しておきます。</p>
+<h3 id="まとめ">まとめ</h3>
 
-<p><img src="/assets/2019-11-27-1-grareco_1.jpg" alt="grareco_1" loading="lazy" />
-「LINEリサーチ開発におけるScrumのこれまでとこれから」 by 門谷さん</p>
-
-<p></p>
-
-<p><img src="/assets/2019-11-27-1-grareco_2.jpg" alt="grareco_2" loading="lazy" />
-「仲間の多様な価値観を尊重しつつ、チームとして成果を出すための戦略」 by 米原さん</p>
-
-<p></p>
-
-<p>グラレコ(っぽいもの)を手早くそれっぽくつくるコツは「背景色をつけて白文字にすること」と「矩形で情報を束ねること」だと勝手に思っていますが、もっといい方法あれば是非アドバイスいただけると嬉しいです！</p>
-
+<p>CircleCIから移行することはできましたし、configファイルも比較的書きやすかったですが、かゆいところに手が届かない印象です。当面は使っていきますが、業務利用はまだ控えておこうと思います。今後に期待します！</p>
 
         </article>
 
@@ -251,7 +270,7 @@
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%80%8C%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%81%86%E3%81%BE%E3%81%8F%E5%A4%B1%E6%95%97%E3%81%97%E5%AD%A6%E3%81%B6%E3%81%9F%E3%82%81%E3%81%AB%E7%A7%81%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8%E3%80%8D%E3%81%AE%E8%A3%9C%E8%B6%B3%E3%81%A8%E8%A3%8F%E8%A9%B1&url=https://aloerina01.github.io/blog/2019-11-27-1&via=aloerina_&hashtags=Management,EXP,GraReco,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AECI%E3%82%92CircleCI%E3%81%8B%E3%82%89GitHub+Actions%E3%81%AB%E4%B9%97%E3%82%8A%E6%8F%9B%E3%81%88%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/blog/2020-01-09-1&via=aloerina_&hashtags=Environment,GitHubActions,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <i class="fab fa-twitter fa-inverse"></i>
             </a>
@@ -266,7 +285,7 @@
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%80%8C%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%81%86%E3%81%BE%E3%81%8F%E5%A4%B1%E6%95%97%E3%81%97%E5%AD%A6%E3%81%B6%E3%81%9F%E3%82%81%E3%81%AB%E7%A7%81%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8%E3%80%8D%E3%81%AE%E8%A3%9C%E8%B6%B3%E3%81%A8%E8%A3%8F%E8%A9%B1&u=https://aloerina01.github.io/blog/2019-11-27-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AECI%E3%82%92CircleCI%E3%81%8B%E3%82%89GitHub+Actions%E3%81%AB%E4%B9%97%E3%82%8A%E6%8F%9B%E3%81%88%E3%81%A6%E3%81%BF%E3%81%9F&u=https://aloerina01.github.io/blog/2020-01-09-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <i class="fab fa-facebook-f fa-inverse"></i>
             </a>
@@ -401,7 +420,7 @@
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2019-11-27-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2020-01-09-1" target="_blank">
               <i class="fab fa-get-pocket fa-inverse"></i>
             </a>
             
@@ -415,7 +434,7 @@
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%80%8C%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%81%86%E3%81%BE%E3%81%8F%E5%A4%B1%E6%95%97%E3%81%97%E5%AD%A6%E3%81%B6%E3%81%9F%E3%82%81%E3%81%AB%E7%A7%81%E3%81%AB%E3%81%A7%E3%81%8D%E3%82%8B%E3%81%93%E3%81%A8%E3%80%8D%E3%81%AE%E8%A3%9C%E8%B6%B3%E3%81%A8%E8%A3%8F%E8%A9%B1%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2019-11-27-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%83%96%E3%83%AD%E3%82%B0%E3%81%AECI%E3%82%92CircleCI%E3%81%8B%E3%82%89GitHub+Actions%E3%81%AB%E4%B9%97%E3%82%8A%E6%8F%9B%E3%81%88%E3%81%A6%E3%81%BF%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2020-01-09-1">
               <img src="/assets/thirdparty/linebutton.png" />
             </a>
             
@@ -455,15 +474,15 @@
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2016-10-14-1">外部スクリプトを動的読込して同期的に処理をする方法</a></li>
+      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
       
-      <li><a href="/blog/2017-02-22-1">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</a></li>
+      <li><a href="/blog/2018-09-27-1">Vue.nextTickのコードリーディング</a></li>
       
-      <li><a href="/blog/2017-01-10-1">JavaScriptの新しいモジュールバンドラ rollup.js とは</a></li>
+      <li><a href="/blog/2017-11-08-1">トラブルシューティングメモを晒してみる  webpack動的module編</a></li>
       
-      <li><a href="/blog/2016-10-13-1">CORS (Cross-Origin Resource Sharing) ってなに？</a></li>
+      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
       
-      <li><a href="/blog/2016-10-07-1">npm + gulp + webpack でつくるES6/sass開発環境</a></li>
+      <li><a href="/blog/2017-01-01-1">Node.js + Express を試してみた</a></li>
       
     </div>
   </div>

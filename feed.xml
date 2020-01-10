@@ -1,5 +1,76 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-01-09T08:24:44+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">ゲームをみんなでやったら自然とモブプロに入門できた話</title><link href="https://aloerina01.github.io/blog/2019-12-10-1" rel="alternate" type="text/html" title="ゲームをみんなでやったら自然とモブプロに入門できた話" /><published>2019-12-10T00:00:00+00:00</published><updated>2019-12-10T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-12-10-1">&lt;p&gt;とあるゲーム好きなチームメンバーからの一声をきっかけに、&lt;strong&gt;Factorio&lt;/strong&gt;というPCゲームをみんなでやる「モブFactorio」なる会を開催しました。命名こそ「モブ」と言っていますが、ゲーム好き4人が集まってわいわいゲームしようという軽い気持ちでの開催でした。&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-01-10T01:42:33+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた</title><link href="https://aloerina01.github.io/blog/2020-01-09-1" rel="alternate" type="text/html" title="ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた" /><published>2020-01-09T00:00:00+00:00</published><updated>2020-01-09T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-01-09-1">&lt;p&gt;このブログのCIをCircleCIからGitHub Actionsに移行しましたので、備忘のために作業時のメモを(補足を添えて)公開します。&lt;/p&gt;
+
+&lt;h3 id=&quot;動機&quot;&gt;動機&lt;/h3&gt;
+&lt;p&gt;GitHub ActionsをCIとして業務利用できるかどうか体感で確認したかったためです。&lt;/p&gt;
+
+&lt;h3 id=&quot;要件&quot;&gt;要件&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;developmentブランチへのpushをトリガーに&lt;a href=&quot;https://github.com/aloerina01/aloerina01.github.io/blob/development/Rakefile&quot; target=&quot;_blank&quot;&gt;Raketask&lt;/a&gt;を実行し、jekyllによって静的サイトを生成する&lt;/li&gt;
+  &lt;li&gt;生成された静的サイトをmasterブランチへpushする&lt;/li&gt;
+  &lt;li&gt;直近のビルド成功時のCommitと比較し、&lt;code class=&quot;highlighter-rouge&quot;&gt;/_posts/&lt;/code&gt;以下に差分がある場合はindexを生成しAlgoliaサーバにアップする&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;やったこと&quot;&gt;やったこと&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/.github/workflows&lt;/code&gt;ディレクトリを作成する(命名固定)&lt;/li&gt;
+  &lt;li&gt;ディレクトリ以下にGithub Actionsのconfigファイルを作成する(命名は自由なので&lt;code class=&quot;highlighter-rouge&quot;&gt;deploy.yml&lt;/code&gt;とする)&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;deploy.yml&lt;/code&gt;にCircleCI用のconfigファイルの内容を移植する
+    &lt;ul&gt;
+      &lt;li&gt;ソースをチェックアウトするために&lt;a href=&quot;https://github.com/actions/checkout&quot; target=&quot;_blank&quot;&gt;actions/checkout@v1&lt;/a&gt;を利用する&lt;/li&gt;
+      &lt;li&gt;ビルド環境にrubyのインストールするために&lt;a href=&quot;https://github.com/actions/setup-ruby&quot; target=&quot;_blank&quot;&gt;actions/setup-ruby@v1&lt;/a&gt;を利用する&lt;/li&gt;
+      &lt;li&gt;dependenciesをキャッシュしておくために&lt;a href=&quot;https://github.com/actions/cache&quot; target=&quot;_blank&quot;&gt;actions/cache@v1&lt;/a&gt;を利用する&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;ビルドがSuccessした直近のcommit hashを特定するスクリプトを修正する(詳細後述)
+    &lt;ul&gt;
+      &lt;li&gt;今まではCircleCIのAPIを利用していたため&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;GitHub Actionsで利用するsecretを設定する&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.circleci/config.yml&lt;/code&gt;を削除する&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;「ビルドがSuccessした直近のcommit」を特定する部分でハマりました。今まではCircleCIのAPIを使ってビルドログ一覧を取得したり条件で絞り込んだり簡単にできていたのですが…。Github ActionsにはそのようなAPIが見当たりませんでした。&lt;br /&gt;
+Github Actionsの結果を取得する&lt;a href=&quot;https://developer.github.com/v3/checks/runs/&quot; target=&quot;_blank&quot;&gt;check runs&lt;/a&gt;や&lt;a href=&quot;https://developer.github.com/v3/checks/suites/&quot; target=&quot;_blank&quot;&gt;check suites&lt;/a&gt;、commitのステータスを取得する&lt;a href=&quot;https://developer.github.com/v3/repos/statuses/&quot; target=&quot;_blank&quot;&gt;statuses&lt;/a&gt;などのAPIはあるものの、それらからは条件に該当するcommit hashを抽出することはできず、直前のcommitと比較する方法に妥協しました。&lt;/p&gt;
+
+&lt;p&gt;いい方法知っている方がいましたらお助けください…！&lt;/p&gt;
+
+&lt;h3 id=&quot;使ってみた所感&quot;&gt;使ってみた所感&lt;/h3&gt;
+&lt;p&gt;ビルド速度の劣化はありませんでしたので一安心です。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt;したものをキャッシュする設定はCircleCI(ver2)よりも書きやすく、読みやすいと感じました。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.circleci/config.yml&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;restore_cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle-cache-{{ checksum &quot;Gemfile.lock&quot; }}&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle-cache-&lt;/span&gt;
+
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;save_cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle-cache-{{ checksum &quot;Gemfile.lock&quot; }}&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;vendor/bundle&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;CircleCIでは「キャッシュする/キャッシュを復元する」記述をそれぞれ書いていました。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;.github/workflows/deploy.yml&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/cache@v1&lt;/span&gt;
+&lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;vendor/bundle&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Github Actionsでは「何をキャッシュするのか」を記述すれば良いので分かりやすく感じました。「キャッシュがない場合は〇〇する」処理も&lt;code class=&quot;highlighter-rouge&quot;&gt;if: steps.&amp;lt;step_name&amp;gt;.outputs.cache-hit != ‘true’&lt;/code&gt;と書けるので直感的でした。&lt;/p&gt;
+
+&lt;p&gt;一方で、GitHub Actionsのログを柔軟に取得するAPIがなかったり、結果Viewに「キャッシュをクリアして再ビルドする」ボタンがなかったりと、少し込み入ったことをすると困る場面が多かったです。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;CircleCIから移行することはできましたし、configファイルも比較的書きやすかったですが、かゆいところに手が届かない印象です。当面は使っていきますが、業務利用はまだ控えておこうと思います。今後に期待します！&lt;/p&gt;</content><author><name></name></author><summary type="html">このブログのCIをCircleCIからGitHub Actionsに移行しましたので、備忘のために作業時のメモを(補足を添えて)公開します。</summary></entry><entry><title type="html">ゲームをみんなでやったら自然とモブプロに入門できた話</title><link href="https://aloerina01.github.io/blog/2019-12-10-1" rel="alternate" type="text/html" title="ゲームをみんなでやったら自然とモブプロに入門できた話" /><published>2019-12-10T00:00:00+00:00</published><updated>2019-12-10T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-12-10-1">&lt;p&gt;とあるゲーム好きなチームメンバーからの一声をきっかけに、&lt;strong&gt;Factorio&lt;/strong&gt;というPCゲームをみんなでやる「モブFactorio」なる会を開催しました。命名こそ「モブ」と言っていますが、ゲーム好き4人が集まってわいわいゲームしようという軽い気持ちでの開催でした。&lt;br /&gt;
 が、これが想像以上にモブの良さを実感でき、ちょうど良いモブ入門の場となったので様子をレポートします。&lt;/p&gt;
 
 &lt;h3 id=&quot;factorioとは&quot;&gt;&lt;a href=&quot;https://store.steampowered.com/app/427520/Factorio/?l=japanese&quot; target=&quot;_blank&quot;&gt;Factorio&lt;/a&gt;とは&lt;/h3&gt;
@@ -879,38 +950,4 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
 
 &lt;p&gt;まとめとしてタイトルの「propsバケツリレーは必要か」に回答するなら、「必要か否かの二元論ではなく、&lt;strong&gt;アプリケーションの性質次第では役立つ場面もある&lt;/strong&gt;」ということでしょう。曖昧な結論になってしまいましたが、単一Containerやpropsバケツリレーという手法の良し悪しだけに着目するのではなく、アプリケーションの性質を踏まえて考えると見え方が変わってくるというお話でした。&lt;/p&gt;
 
-&lt;p&gt;現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">React+Fluxアプリケーションのメンテをしている中で「propsのバケツリレーを減らすためにContainerを増やしてもよいか？」というディスカッションになったので、考察をまとめてみます。</summary></entry><entry><title type="html">小さなアウトプットを100日続けてみた感想</title><link href="https://aloerina01.github.io/blog/2019-03-22-1" rel="alternate" type="text/html" title="小さなアウトプットを100日続けてみた感想" /><published>2019-03-22T00:00:00+00:00</published><updated>2019-03-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-03-22-1">&lt;h3 id=&quot;やったこと&quot;&gt;やったこと&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;1日ひとつだけ強くなる&lt;/strong&gt;のコンセプトのもと、&lt;a href=&quot;https://github.com/aloerina01/til&quot; target=&quot;_blank&quot;&gt;aloerina01/til (Today I Learned)&lt;/a&gt; というリポジトリをつくり、その日学んだことを1つコミットするソロ活動。&lt;/p&gt;
-
-&lt;h3 id=&quot;モチベーション&quot;&gt;モチベーション&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;インプットに対してアウトプットが圧倒的に少ない状況を改善したい&lt;/li&gt;
-  &lt;li&gt;アウトプット量を継続的に増やし、その状態に体を慣れさせたい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;感想&quot;&gt;感想&lt;/h3&gt;
-
-&lt;h4 id=&quot;継続できそうなことを探すことから&quot;&gt;継続できそうなことを探すことから&lt;/h4&gt;
-&lt;p&gt;飽き性な自分がどうやったらアウトプットを継続できるかと考えた結果、「できるだけ毎日違うジャンルのアウトプットをできる運用にする」ことを最優先事項としました。加えて「気になったことを調べる、考える」ことは無意識にほぼ毎日やっていたので、これを活かしたい気持ちがありました。&lt;/p&gt;
-
-&lt;p&gt;これらをかけ合わせた実践手段が、&lt;strong&gt;TIL(Today I Learned)&lt;/strong&gt; です。&lt;br /&gt;
-細かいことは決めず、「何か読んだり考えたりしたらそのログをIssueに残す」「ブログに書くほどじゃないネタを雑にIssueにまとめる」「ちょっとした実装を日付毎のディレクトリにCommitする」といったことをラフにやっていこう、という感覚でスタートしました。かなりハードルを低くして始めたことが継続につながったように感じます。&lt;/p&gt;
-
-&lt;h4 id=&quot;目的は果たせた&quot;&gt;目的は果たせた？&lt;/h4&gt;
-
-&lt;p&gt;言語化によるアウトプットはかなり習慣付いたので、目的は果たせた感覚です。また、なんとなくモヤモヤっと考えたことの多くがTILに書き残されるようになったことで、&lt;strong&gt;過去の自分と向き合える、過去の自分に相談できる&lt;/strong&gt;、という副次的な効果もありました。実は目的達成したことよりも、この副次的効果が一番価値のある成果だと感じています。&lt;/p&gt;
-
-&lt;p&gt;次はコードでアウトプットするところを目指したいですが、プライベートで毎日コードを書き続けるモチベーションは今のところないので、しばらくはTILを続けていこうと思います。&lt;/p&gt;
-
-&lt;h4 id=&quot;新たな課題の発見&quot;&gt;新たな課題の発見&lt;/h4&gt;
-
-&lt;p&gt;言語化は習慣付いたのですが、TILの内容は&lt;strong&gt;他人には読ませられないレベル&lt;/strong&gt;です。話し言葉をそのまま文字起こした程度の文章で、&lt;strong&gt;アウトプット速度は早い&lt;/strong&gt;のですが、日本語がハチャメチャだったりまとまりが無かったりしています。&lt;br /&gt;
-対してブログを書くときは、慎重に言葉を選び、何度も論理構造を組み換え、推敲して、&lt;strong&gt;人に読んでもらえるレベル(？)&lt;/strong&gt;の文章を&lt;strong&gt;時間をかけて&lt;/strong&gt;つくっています。&lt;/p&gt;
-
-&lt;p&gt;つまり、間をとった&lt;strong&gt;ギリギリ人に見せられるレベルの文章を短時間で&lt;/strong&gt;書くことができないんですね。言い換えると、人に見せてフィードバックをもらえるレベルのアウトプットを短時間でできない、ということです。今はまだ対策を練っていないのですが、近い将来この課題もやっつけていこうと思います。&lt;/p&gt;
-
-&lt;h4 id=&quot;1日ひとつだけ強くなる&quot;&gt;1日ひとつだけ強くなる&lt;/h4&gt;
-
-&lt;p&gt;これはとあるプロゲーマーの方の言葉ですが、TILの日本語訳にピッタリな言葉だと思います。とはいえやっぱり1人で続けるのは結構大変なので、「自分もTILやってみるよ！」という方は&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご一報ください！励みになります！&lt;/p&gt;</content><author><name></name></author><summary type="html">やったこと</summary></entry></feed>
+&lt;p&gt;現場からは以上です。&lt;/p&gt;</content><author><name></name></author><summary type="html">React+Fluxアプリケーションのメンテをしている中で「propsのバケツリレーを減らすためにContainerを増やしてもよいか？」というディスカッションになったので、考察をまとめてみます。</summary></entry></feed>
