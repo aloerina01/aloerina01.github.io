@@ -6,7 +6,7 @@ gem 'jekyll-paginate'
 gem 'jekyll-feed'
 gem 'gsl', '~> 2.1', '>= 2.1.0.3'
 gem 'classifier-reborn'
-gem 'grit', '~> 2.5.0', git: 'https://github.com/gitlabhq/grit.git', ref: '42297cdcee16284d2e4eff23d41377f52fc28b9d'
+# gem 'grit', '~> 2.5.0', git: 'https://github.com/gitlabhq/grit.git', ref: '42297cdcee16284d2e4eff23d41377f52fc28b9d'
 gem 'rake-jekyll'
 
 group :jekyll_plugins do
