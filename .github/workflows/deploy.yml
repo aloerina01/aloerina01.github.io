@@ -22,11 +22,9 @@ jobs:
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
     - name: Install gsl
       run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
-    - name: Bundle check
-      run: bundle check --path vendor/bundle
     - name: Bundle install
       if: steps.cache-primes.outputs.cache-hit != 'true'
-      run: bundle install --frozen --path vendor/bundle && bundle package --all
+      run: bundle check --path vendor/bundle || bundle install --clean --frozen --path vendor/bundle && bundle package --all
     - name: Execute Rake task (build, commit and push master branch)
       env:
         GH_TOKEN: ${{ secrets.GithubPersonalToken }}
