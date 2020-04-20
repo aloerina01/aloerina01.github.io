@@ -20,9 +20,11 @@ jobs:
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+    - name: Set bundle path
+      run: bundle config path vendor/bundle
     - name: Install gsl
       run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
-    - name: Bundle install
+    - name: Install bundle
       if: steps.cache-primes.outputs.cache-hit != 'true'
       run: bundle check --path vendor/bundle || bundle install --clean --deployment && bundle package --all
     - name: Execute Rake task (build, commit and push master branch)
