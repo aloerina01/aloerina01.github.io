@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>わたしのふりかえりデザインテンプレート</title>
+  <meta name="description" content="チームで行うふりかえりを私がどのように設計しているのか、テンプレートの形式で言語化してみます。ふりかえりをふりかえることが一番の目的ですが、同時に誰かの役に立てれば幸いです。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2020">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="チームで行うふりかえりを私がどのように設計しているのか、テンプレートの形式で言語化してみます。ふりかえりをふりかえることが一番の目的ですが、同時に誰かの役に立てれば幸いです。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2020-04-16-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="わたしのふりかえりデザインテンプレート" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="わたしのふりかえりデザインテンプレート">
+  <meta name="twitter:description" content="チームで行うふりかえりを私がどのように設計しているのか、テンプレートの形式で言語化してみます。ふりかえりをふりかえることが一番の目的ですが、同時に誰かの役に立てれば幸いです。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2020-04-16-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2020-04-16-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-39630080-4', 'auto');
+    ga('require', 'linkid');
+    ga('send', 'pageview', {
+      'page': '/blog/2020-04-16-1',
+      'title': 'わたしのふりかえりデザインテンプレート'
+    });
+  </script>
+  
+
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4850874764930854",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+
+  <script src="/dist/prism.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2020-04-16-1">
+            <span itemprop="name">わたしのふりかえりデザインテンプレート</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">わたしのふりかえりデザインテンプレート</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2020-04-16</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/retrospective/">Retrospective</a>,    
+            <a href="/category/facilitation/">Facilitation</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>私の関わるいくつかのチームではよく<strong>ふりかえり</strong>をします。ScrumチームがSprint毎に行う「Sprint Retrospective」であったり、フロントエンドエンジニアのチームが隔週で行う「カイゼンミーティング」であったり、呼び名や頻度や内容は様々ですが、定期的に<strong>自分たちの行動を思い返し何らかの学びを得る活動</strong>をしています。</p>
+
+<p>今回は、これらのふりかえりを私がどのように設計しているかについて、ふりかえってみようと思います。せっかくなのでテンプレートという形で書き出してみます。</p>
+
+<p>ちなみにこの記事では「過去のある期間を振り返って気づきや学びを得て、今後の行動に反映する一連の活動」を <strong><code class="highlighter-rouge">ふりかえり</code></strong> と呼び、ふりかえりの一貫として開催されるミーティングを <strong><code class="highlighter-rouge">ふりかえりミーティング</code></strong> と呼び分けることとします。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#ふりかえりの大枠をデザインする" id="markdown-toc-ふりかえりの大枠をデザインする">ふりかえりの大枠をデザインする</a>    <ul>
+      <li><a href="#ふりかえりの目的" id="markdown-toc-ふりかえりの目的">ふりかえりの目的</a></li>
+      <li><a href="#ふりかえり目的の達成基準" id="markdown-toc-ふりかえり目的の達成基準">ふりかえり目的の達成基準</a></li>
+      <li><a href="#条件制約" id="markdown-toc-条件制約">条件・制約</a></li>
+    </ul>
+  </li>
+  <li><a href="#個別のふりかえりミーティングをデザインする" id="markdown-toc-個別のふりかえりミーティングをデザインする">個別のふりかえりミーティングをデザインする</a>    <ul>
+      <li><a href="#今回のふりかえりミーティングで目指すフェーズ" id="markdown-toc-今回のふりかえりミーティングで目指すフェーズ">今回のふりかえりミーティングで目指す「フェーズ」</a></li>
+      <li><a href="#今回の参加者の属性" id="markdown-toc-今回の参加者の属性">今回の参加者の属性</a></li>
+      <li><a href="#今回のふりかえり手法" id="markdown-toc-今回のふりかえり手法">今回のふりかえり手法</a>        <ul>
+          <li><a href="#-発散フェーズで気をつけていること" id="markdown-toc--発散フェーズで気をつけていること"><i class="fas fa-check"></i> 発散フェーズで気をつけていること</a></li>
+          <li><a href="#-深堀フェーズで気をつけていること" id="markdown-toc--深堀フェーズで気をつけていること"><i class="fas fa-check"></i> 深堀フェーズで気をつけていること</a></li>
+          <li><a href="#-解決フェーズで気をつけていること" id="markdown-toc--解決フェーズで気をつけていること"><i class="fas fa-check"></i> 解決フェーズで気をつけていること</a></li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li><a href="#まとめ" id="markdown-toc-まとめ">まとめ</a></li>
+</ul>
+
+<h3 id="ふりかえりの大枠をデザインする">ふりかえりの大枠をデザインする</h3>
+<p>いきなりふりかえりミーティングについて考え出すのではなく、ふりかえりそのものの目的から考えていきます。</p>
+
+<h4 id="ふりかえりの目的">ふりかえりの目的</h4>
+
+<ul>
+  <li><strong>[誰に] [どうなってほしい]</strong></li>
+  <li><strong>[誰が] [どうなりたい]</strong></li>
+</ul>
+
+<div class="note" style="margin-top:0">
+<b>サンプル</b>
+<ul style="font-size:0.9rem">
+<li>「チームメンバーに」「開発プロセスをより良くしてほしい」</li>
+<li>「チームメンバーに」「継続的な改善を習慣づけてほしい」</li>
+<li>「マネージャーの私が」「チームメンバーが今の体制についてどう感じているか知りたい」</li>
+</ul>
+</div>
+
+<h4 id="ふりかえり目的の達成基準">ふりかえり目的の達成基準</h4>
+
+<p>どんな状態になっていれば、または何ができあがっていれば、上で設定した目的が達成されたと判断できるかを明確にします。</p>
+
+<ul>
+  <li><strong>[状態]</strong> になっている</li>
+  <li><strong>[最終成果物]</strong> が完成している</li>
+</ul>
+
+<div class="note" style="margin-top:0">
+<b>サンプル</b>
+<ul style="font-size:0.9rem">
+<li>「チームが最も優先して対処すべき課題について共通認識を持っている」</li>
+<li>「開発プロセスを改善するための具体的なTODOリストが完成している」</li>
+</ul>
+</div>
+
+<h4 id="条件制約">条件・制約</h4>
+<p>ふりかえりミーティングを設定するにあたって考慮しておいたほうがいいことを洗い出しておきます。以下の項目を基本セットとし、状況に応じて追加で洗い出します。</p>
+
+<ul>
+  <li>ふりかえりに使える <strong>[時間] × [頻度]</strong></li>
+  <li>ふりかえりの <strong>[参加人数]</strong></li>
+  <li>参加者それぞれの <strong>[所在地]</strong></li>
+  <li>ふりかえりミーティングに使える <strong>[スペース(オンライン/オフライン)]</strong></li>
+  <li>ふりかえりミーティングに使える <strong>[ツール]</strong></li>
+</ul>
+
+<h3 id="個別のふりかえりミーティングをデザインする">個別のふりかえりミーティングをデザインする</h3>
+<h4 id="今回のふりかえりミーティングで目指すフェーズ">今回のふりかえりミーティングで目指す「フェーズ」</h4>
+
+<p>ふりかえりミーティングで話し合われる内容は、大きく3つのフェーズに分類できます。ふりかえりの目的を達成するためには<strong>最終的にどのフェーズまで話し合う必要があるか</strong>、そして<strong>今回のふりかえりミーティングではどのフェーズまで進めたいか</strong>を考えます。プロジェクトを完了させるためにマイルストーンを引くようなイメージです。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>フェーズ</th>
+      <th>概要</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>発散フェーズ</td>
+      <td>まずは参加者の意見やアイデアを出し切ります</td>
+    </tr>
+    <tr>
+      <td>深堀フェーズ</td>
+      <td>意見やアイデアについてディスカッションをし、理解を深めたり、取捨選択をしたり、考えを発展させたりします</td>
+    </tr>
+    <tr>
+      <td>解決フェーズ</td>
+      <td>結論を出したりActionに落とし込んだりして、ディスカッションを収束させていきます</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>実際のミーティングの場では、これらのフェーズが明確に分かれていないこともあります。ディスカッションするうちに盛り上がって更に多くの意見が出て…といった具合に発散フェーズと深堀フェーズをいったりきたりすることってありますよね。それ自体は悪いことではありません。</p>
+
+<p>ただ、<strong>事前にどのフェーズまで到達したいかの目星をつけておくことで、ファシリテーションがしやすく</strong>なります。<br />
+例えば「どんなに議論が盛り上がったとしてもラスト15分では解決フェーズに移ろう」と心の準備をしておくことで、ラスト15分までの時間で発散と深堀をいったりきたりしても焦ることなくファシリテーションできたりします。</p>
+
+<p>余談ですが、チームができたばかりの時期にはよく「お互いにどんなことを感じたか、どんな気持ちだったかを知り合うこと」を目的としたふりかえりをするようにしています。これは発散フェーズまでのふりかえりと言えるでしょう。</p>
+
+<h4 id="今回の参加者の属性">今回の参加者の属性</h4>
+
+<p>ふりかえりミーティングの参加者が毎回同じ顔ぶれになるとは限りません。役割ごとに集まって少人数で意見を出し合うふりかえりミーティングを開催することもあるでしょうし、ステークホルダーがゲスト参加して一緒にふりかえりミーティングをすることもあるでしょう。参加者の属性や関係性を把握することで、より参加者に合った手法を選択できます。</p>
+
+<ul>
+  <li>参加者の人数
+    <ul>
+      <li>人数が多すぎて全員の意見を集めきれない可能性はないか？</li>
+      <li>人数が多すぎて参加者が発言する際に心のハードルが上がる可能性がないか？</li>
+      <li>(本来参加してほしい人数に比べて)人数が少なすぎて意見が偏る可能性がないか？</li>
+    </ul>
+  </li>
+  <li>参加者の関係性
+    <ul>
+      <li>同じ立場・役割の人は何人いるか？</li>
+      <li>初対面の人はいるか？</li>
+      <li>評価者・被評価者の関係の人はいるか？</li>
+    </ul>
+  </li>
+  <li>それぞれの参加者の参加場所
+    <ul>
+      <li>一堂に会するのか？ その場合、話しやすい座席構成にできそうか？</li>
+      <li>テレビ会議でするのか？ その場合「ひとりだけテレビ会議」など発言しにくい環境になっていないか？</li>
+    </ul>
+  </li>
+</ul>
+
+<p>実際には、これらの懸念点がまったくない状態をつくるのはけっこう難しいですよね…。私の属するチームは東京と福岡の多拠点なので、テレビ会議の懸念は特に起きがちです。<br />
+事前に払拭できずファシリテーションでカバーする場面などもあり、そのためにも事前の情報収集が大切になります。</p>
+
+<h4 id="今回のふりかえり手法">今回のふりかえり手法</h4>
+<p>目指すフェーズが決まり参加者の属性を把握したので、これらを踏まえていよいよ手法を考えます。手法については、事前に決めきるより<strong>取り得る選択肢をいくつか用意しておく</strong>ことが多いです。ミーティングの状況に応じて対応できるようにするためです。</p>
+
+<p>手法は調べるとたくさん出てきますし、アレンジすることで無限に増えるので、ここでは手法選びで気をつけていることを挙げます。</p>
+
+<h5 id="-発散フェーズで気をつけていること"><i class="fas fa-check"></i> 発散フェーズで気をつけていること</h5>
+
+<p>このフェーズで特に大事にしていることは<strong>いかに発言しやすい場を作るか</strong>と、言語化が難しい<strong>感覚や違和感をいかに表現してもらうか</strong>です。具体的には以下のようなことを考えます。</p>
+
+<ul>
+  <li>Keep/Problem/Try などの意見を集める指標は、状況に応じてアレンジする
+    <ul>
+      <li>Problem に『反省文』ばかりが集まるときは「困難だったこと」などに置き換える、など</li>
+      <li>Try に『曖昧な行動』が集まるときは「Tryを実現するためのAction」などの指標を増やす、など</li>
+    </ul>
+  </li>
+  <li>論理的な意見だけでなく、<strong>感情・感覚・違和感</strong>を出してもらうような指標を使う
+    <ul>
+      <li>「モヤッとしたこと」「みんなに聞いてみたいこと」「ぼやき」など</li>
+      <li>状況に応じて「改善案」などの主張が強く取られる言葉を「試してみたいこと」などの柔らかめの言葉に置き換える</li>
+    </ul>
+  </li>
+  <li>全員が意見を出しやすい仕掛けをする
+    <ul>
+      <li>ふりかえりミーティング中の内職が気になるときは、ペンと付箋を使うことで気持ちを切り替えてもらう</li>
+      <li>一人で考える時間とみんなで話す時間とを明確に分ける</li>
+      <li>座らずにホワイトボードの前に立って集まる</li>
+      <li>「意見を発表した後は次に意見を出してほしい人を指名する」などのルールを参加者みんなで作る</li>
+    </ul>
+  </li>
+  <li>言語化しにくい意見を集めるときは、文字や言葉以外の方法も使う
+    <ul>
+      <li>モチベーションを折れ線グラフで表現する</li>
+      <li>付箋の色やドットシールの色で感情を使い分ける</li>
+      <li>納得度合いを0~3点で判断し、点数の数だけドットシールを貼る</li>
+    </ul>
+  </li>
+  <li>全員に最低1回は意見を声に出してもらい、ふりかえりミーティングに参加するスイッチを入れてもらう</li>
+  <li>意見やアイデアを「チームの意見」と意識してもらうために、無記名にする</li>
+</ul>
+
+<h5 id="-深堀フェーズで気をつけていること"><i class="fas fa-check"></i> 深堀フェーズで気をつけていること</h5>
+
+<p>このフェーズでは、深堀りするトピックを<strong>選択し集中する</strong>ことに意識を向けます。ただし、どの意見やアイデアも等しく大切な参加者の声です。<strong>どれかを蔑ろにすることなく</strong>深堀りすることが重要であり、難しいポイントでもあります。そのために、意見の関連付けや優先順位について、合意をとることがあります。</p>
+
+<ul>
+  <li>出してもらった意見は全員が見渡せるように並べる
+    <ul>
+      <li>付箋で出してもらった場合は、大きな模造紙やホワイトボードに貼り付ける</li>
+      <li>意見を口頭で発表してもらう場合は、ホワイトボードなど見えるところにメモをとる</li>
+    </ul>
+  </li>
+  <li>出してもらった意見が多いときは関連性のある意見を近くにまとめて並べる
+    <ul>
+      <li>関係性を見出してもらい、さらに発想が広がることに期待する</li>
+      <li>関係性がバイアスになりそうなときはあえてランダムに並べることも</li>
+      <li>カテゴライズ、二次元マッピング、相関図、など情報にあったまとめ方を提案する</li>
+    </ul>
+  </li>
+  <li>出してもらった意見すべてを1回のミーティングで深堀りしようとしない
+    <ul>
+      <li>ディスカッションが盛り上がると1トピック20〜40分くらいかかりがち</li>
+      <li>ミーティングの時間と目指すフェーズを考慮しながら何トピック話せそうか目星をつける</li>
+      <li>どのトピックから話すのか優先順位を決めるために投票してもらう</li>
+      <li>投票では「話すもの・話さないもの」を決めるのではなく、「話す優先順位」を決めるだけ。投票の少ない意見を切り捨てない</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="-解決フェーズで気をつけていること"><i class="fas fa-check"></i> 解決フェーズで気をつけていること</h5>
+
+<p>解決フェーズで大事なことは<strong>実行可能性を高めること</strong>に尽きます。</p>
+
+<ul>
+  <li>Actionは具体的にする</li>
+  <li>Actionの期限を短めに設定する(短い期間で達成できるActionに分割する)</li>
+  <li>Actionが大きくなりすぎてしまったり抽象的になってしまう場合は、<strong>先行指標</strong>をつくる</li>
+  <li>Actionが出すぎてしまう場合は<strong>上限数</strong>をつくる</li>
+  <li>Actionアサイン前に、Action実行に割り当てられる<strong>時間を見積もっておく</strong></li>
+  <li>ふりかえりミーティングを定期開催している場合は、Actionの粒度を「次のミーティングまでにできること」にする(同時に開催頻度を増やし、1度のミーティング時間やActionのサイズを小さくすることも)</li>
+  <li>ふりかえりミーティングを定期開催している場合は、一度のミーティングで必ずしも「発散→深堀→解決」と一周させなくても良い</li>
+</ul>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>こうして書き出してみると、私がふりかえりをデザインするときは「発散フェーズ」を比較的強めに意識していることがわかります。思い返すと、議論がヒートアップしてしまうことよりも牽制しあって意見が出ないことのほうが多かったので、自然とそちらに意識が向いたのだと思います。</p>
+
+<p>当然ですが環境が変われば気をつけることは変わりますし、このデザイン方法がそのまま利用できない場面も出てくると思います。そうなったときにも揺るがない部分は何なのかを言語化していきたいと、ここまで書き出して気づきました。得に<strong>ふりかえりをするのに適した人間関係</strong>あたりが重要になってきそうな予感です。いずれそのあたりもブログに書けるようになれたらと思います。</p>
+
+<p>それでは、お互い良きふりかえりライフを。</p>
+
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E3%81%B5%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8A%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88&url=https://aloerina01.github.io/blog/2020-04-16-1&via=aloerina_&hashtags=Retrospective,Facilitation,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E3%81%B5%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8A%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88&u=https://aloerina01.github.io/blog/2020-04-16-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2020-04-16-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%82%8F%E3%81%9F%E3%81%97%E3%81%AE%E3%81%B5%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8A%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3%E3%83%86%E3%83%B3%E3%83%97%E3%83%AC%E3%83%BC%E3%83%88%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2020-04-16-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+        <div class="post-donation">
+  <div class="post-donation-panel">
+    <p class="post-donation-description for-pc">
+      <span>この記事が気に入ったらaloerinaをサポートしてみませんか？<br />コーヒー1杯からお気軽にサポートできます。</span>
+    </p>
+    <p class="post-donation-description for-mobile">
+      <span>この記事が気に入ったら<br />aloerinaをサポートしてみませんか？</span>
+    </p>
+    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
+      <p class="button-body">
+        <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+        <span class="label">サポートする</span>
+      </p>
+    </a>
+  </div>
+</div>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>あわせて読みたい</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2018-12-25-1">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</a></li>
+      
+      <li><a href="/blog/2018-11-29-1">Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み</a></li>
+      
+      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
+      
+      <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
+      
+      <li><a href="/blog/2018-09-14-1">React+Fluxで正しく設計するためのFlux見直しガイド</a></li>
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="" loading="lazy">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発、エンジニアリングマネジメント、スクラムマスターなどをしています。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" rel="noopener noreferrer" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" rel="noopener noreferrer" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/vuex/">Vuex</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/exp/">EXP</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+        
+        
+        <a href="/category/mobprogramming/">MobProgramming</a>
+      
+        
+        
+        <a href="/category/management/">Management</a>
+      
+        
+        
+        <a href="/category/coaching/">Coaching</a>
+      
+        
+        
+        <a href="/category/grareco/">GraReco</a>
+      
+        
+        
+        <a href="/category/githubactions/">GitHubActions</a>
+      
+        
+        
+        <a href="/category/retrospective/">Retrospective</a>
+      
+        
+        
+        <a href="/category/facilitation/">Facilitation</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents donation">
+  <div class="sub-contents-wrapper donation-wrapper">
+    <h3>BUY ME A COFFEE</h3>
+    <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
+    <div class="donation-button-area">
+        <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
+          <p class="button-body">
+            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+            <span class="label">ごちそうする</span>
+          </p>
+        </a>
+        <span>または<a href="https://kyash.co/" target="_blank" rel="noopener noreferrer">Kyash</a>で id: <b>aloerina</b> に送金する</span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published on <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Header
+    var CLASS_MENU_SHOW = 'show';
+    var navigationMenu = document.getElementById('js-navigation-menu');
+    var menuIcon = document.getElementById('js-mobile-menu-icon');
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+    });
+  });
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.30.0/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.31.0/autocomplete.min.js"></script>
+<script src="/dist/algolia.js" async></script>
+<script src="https://embed.small.chat/TAFB1N6F4GFTRAULS0.js" async></script>
+
+</body>
+
+</html>
