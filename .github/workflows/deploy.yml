@@ -49,8 +49,8 @@ jobs:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
       - name: Bundle install
-        if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: bundle check --path vendor/bundle || bundle install --frozen --path vendor/bundle && bundle package --all
+        # if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: bundle check --path vendor/bundle || bundle install --clean --deployment && bundle package --all
       - name: Indexing
         env:
           ALGOLIA_ADMIN_API_KEY: ${{ secrets.AlgoliaAdminAPIKey }}
