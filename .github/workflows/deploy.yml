@@ -42,6 +42,8 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.6'
       - name: Cache primes
         id: cache-primes
         uses: actions/cache@v1
