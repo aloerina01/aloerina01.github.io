@@ -57,5 +57,5 @@ publish_algolia () {
 
 # main
 validate "$algolia_token" "$github_token"
-check_force_publish && publish_algolia | exit 0
+check_force_publish && publish_algolia && exit 0
 check_diff && publish_algolia
