@@ -56,7 +56,6 @@ jobs:
       - name: Indexing
         env:
           ALGOLIA_ADMIN_API_KEY: ${{ secrets.AlgoliaAdminAPIKey }}
-        run: |
-          ${{ GITHUB_WORKSPACE }}/aloerina01.github.io/aloerina01.github.io/scripts/indexing.sh $ALGOLIA_ADMIN_API_KEY ${{ secrets.GITHUB_TOKEN }}
+        run: ${ GITHUB_WORKSPACE }/scripts/indexing.sh $ALGOLIA_ADMIN_API_KEY ${{ secrets.GITHUB_TOKEN }}
       
       
