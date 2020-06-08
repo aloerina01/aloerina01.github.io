@@ -5,7 +5,7 @@
     "build": "bundle exec jekyll serve",
     "pre-build": "bundle exec jekyll serve  --destination demo",
     "demo": "bundle exec jekyll serve --watch --destination demo --config ./_config.dev.yml",
-    "webpack": "NODE_ENV=development webpack",
+    "build:js": "parcel build js/*.js --no-source-maps",
     "webpack:w": "NODE_ENV=development webpack -w",
     "webpack:prod": "NODE_ENV=production webpack"
   },
@@ -20,18 +20,10 @@
   },
   "homepage": "https://aloerina01.github.io",
   "dependencies": {
-    "npm": "^6.14.2",
     "to": "^0.2.9",
     "update": "^0.7.4"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-3": "^6.24.1",
-    "uglifyjs-webpack-plugin": "^1.2.5",
-    "webpack": "^4.42.0",
-    "webpack-cli": "^3.0.3",
-    "webpackbar": "^2.6.1"
+    "parcel-bundler": "^1.12.4"
   }
 }
