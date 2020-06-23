@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-06-23T04:21:22+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-06-23T10:01:38+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">Vue+VuexのデータフローをCQSライクに設計する方法</title><link href="https://aloerina01.github.io/blog/2020-06-23-1" rel="alternate" type="text/html" title="Vue+VuexのデータフローをCQSライクに設計する方法" /><published>2020-06-23T00:00:00+00:00</published><updated>2020-06-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-23-1">&lt;p&gt;Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？&lt;/p&gt;
 
 &lt;h5 id=&quot;悩み1-vuexのmaphelperを使うとコードが読みにくくなる&quot;&gt;悩み1. VuexのmapHelperを使うとコードが読みにくくなる&lt;/h5&gt;
@@ -205,6 +205,10 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 私にとって(私にできる)フロントエンドの設計とは、「情報をどう捉えるとか」と「それをどう分離していくか」を繰り返していく作業です。捉え方や分離の仕方には流行や好みが反映されることもあります。最近の私の好みは「部分的に切り離して捨てやすいかどうか」ですが、好みが変われば設計方法も変わると思いますので、そのときはまたこうして記事を書こうと思います。&lt;/p&gt;
 
 &lt;h3 id=&quot;サンプル&quot;&gt;サンプル&lt;/h3&gt;
+
+&lt;p&gt;
+&lt;img src=&quot;/assets/2020-06-23/sample_app.jpg&quot; style=&quot;border-radius:10px;box-shadow:1px 1px 10px #e8e8e8&quot; /&gt;
+&lt;/p&gt;
 
 &lt;p&gt;今回紹介した設計を利用し、一覧ページと詳細ページを行き来する簡単な&lt;a href=&quot;https://github.com/aloerina01/vue-sample-list-detail-viewer&quot; target=&quot;_blank&quot;&gt;サンプルアプリ&lt;/a&gt;を実装しました。ご参考にどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？</summary></entry><entry><title type="html">わたしのふりかえりデザインテンプレート</title><link href="https://aloerina01.github.io/blog/2020-04-16-1" rel="alternate" type="text/html" title="わたしのふりかえりデザインテンプレート" /><published>2020-04-16T00:00:00+00:00</published><updated>2020-04-16T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-04-16-1">&lt;p&gt;私の関わるいくつかのチームではよく&lt;strong&gt;ふりかえり&lt;/strong&gt;をします。ScrumチームがSprint毎に行う「Sprint Retrospective」であったり、フロントエンドエンジニアのチームが隔週で行う「カイゼンミーティング」であったり、呼び名や頻度や内容は様々ですが、定期的に&lt;strong&gt;自分たちの行動を思い返し何らかの学びを得る活動&lt;/strong&gt;をしています。&lt;/p&gt;
 
