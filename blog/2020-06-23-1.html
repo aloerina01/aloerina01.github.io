@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Vue+VuexのデータフローをCQSライクに設計する方法</title>
+  <meta name="description" content="Vue+Vuexを採用したアプリケーションをCommand–Query Separation (コマンドクエリ分離) の考え方を参考に設計する方法を提案してみます。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2020">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Vue+Vuexを採用したアプリケーションをCommand–Query Separation (コマンドクエリ分離) の考え方を参考に設計する方法を提案してみます。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2020-06-23-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="Vue+VuexのデータフローをCQSライクに設計する方法" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/2020-06-23/cqs.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Vue+VuexのデータフローをCQSライクに設計する方法">
+  <meta name="twitter:description" content="Vue+Vuexを採用したアプリケーションをCommand–Query Separation (コマンドクエリ分離) の考え方を参考に設計する方法を提案してみます。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/2020-06-23/cqs.jpg">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2020-06-23-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2020-06-23-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-39630080-4', 'auto');
+    ga('require', 'linkid');
+    ga('send', 'pageview', {
+      'page': '/blog/2020-06-23-1',
+      'title': 'Vue+VuexのデータフローをCQSライクに設計する方法'
+    });
+  </script>
+  
+
+  
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4850874764930854",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+
+  <script src="/dist/prism.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo.png" alt="mille-feuille code"> 
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="/blogs">Blog</a>
+            
+        <li class="nav-link">
+          <a href="/tips">Tips</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2020-06-23-1">
+            <span itemprop="name">Vue+VuexのデータフローをCQSライクに設計する方法</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <div class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">Vue+VuexのデータフローをCQSライクに設計する方法</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2020-06-23</div>
+          <div class="post-categories">
+            
+            <i class="fas fa-fw fa-tag"></i>
+             
+            <a href="/category/vue/">Vue</a>,    
+            <a href="/category/vuex/">Vuex</a>,    
+            <a href="/category/javascript/">JavaScript</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？</p>
+
+<h5 id="悩み1-vuexのmaphelperを使うとコードが読みにくくなる">悩み1. VuexのmapHelperを使うとコードが読みにくくなる</h5>
+
+<p>「<code class="highlighter-rouge">created</code>内で呼ばれているこの関数はどこに定義されているんだ…？ <code class="highlighter-rouge">methods</code>？ それともStoreのアクション…？」</p>
+
+<p>「<code class="highlighter-rouge">import</code>部分を見るにこのComponentはどのStoreにも依存してなさそうだ…。と思いきや、<code class="highlighter-rouge">mapState</code>でいろんなStoreの値を読み込んでいるぞ…」</p>
+
+<h5 id="悩み2-ビジネスロジック層がない">悩み2. ビジネスロジック層がない</h5>
+
+<p>「ページ読み込み時に走るAPIアクセスはどこに実装されている？ Componentの<code class="highlighter-rouge">created</code>？ Storeのアクション？ ロジックがまとまっている層がなくて処理の入り口を見つけにくい…」</p>
+
+<p>「クリックされたら見た目を変えてAPIアクセスしてStoreを更新する実装をしたいけど、どうやって責務を分離していくといいかな…」</p>
+
+<p>「ユーザーの権限を元に表示内容を変える実装したいのだけど、複数のStoreの値を組み合わせたロジックが必要そうだ。こういう場合はComponentの<code class="highlighter-rouge">methods</code>に実装すべき…？ 将来を見越してmixinとして実装すべき…？ それとも…？」</p>
+
+<h5 id="悩み3-moduleのnamespaceが使いにくい">悩み3. Moduleのnamespaceが使いにくい</h5>
+
+<p>「VuexStoreのモジュールの<code class="highlighter-rouge">namespace</code>は分けたいけれど、そうするとFluxのように全モジュールに対してDispatchできない…」</p>
+
+<p style="text-align:center">* * *</p>
+
+<p>今回はこれらの問題を解決するデータフロー設計について提案してみます。記事の最後でこの設計を採用したサンプルプロダクトも紹介していますので、併せてご参考ください。<br />
+(この記事はVue2.x系の利用を想定しています)</p>
+
+<h3 id="cqs-ライクに考える">CQS ライクに考える</h3>
+
+<p>設計パターンのひとつである <strong>Command–Query Separation (コマンドクエリ分離)</strong> の考え方を参考に設計を考えていきます。このパターンは、アプリケーションにおける処理を</p>
+
+<ul>
+  <li><strong>Query</strong> = 参照系の処理。アプリケーションの状態を変更せず、また副作用のない処理</li>
+  <li><strong>Command</strong> = 更新系の処理。アプリケーションの状態を変更し、副作用を伴う処理</li>
+</ul>
+
+<p>の2つに分類します。この考え方とFluxのDispatcherの考え方を組み合わせてデータフローを構築します。大まかな完成図は以下のようになります。</p>
+
+<p><img src="/assets/2020-06-23/cqs.jpg" alt="overall picture" /></p>
+
+<h3 id="query-ゲッターのエイリアス-を実装する">Query (ゲッターのエイリアス) を実装する</h3>
+
+<p>まずは比較的シンプルなQueryから考えます。<br />
+Componentから<code class="highlighter-rouge">this.$store.getters</code>や<code class="highlighter-rouge">mapGetters</code>などを利用することで「副作用なくアプリケーションの状態を取得する」ことが可能なので、一応Queryとして完成していると言えます。が、悩み1にあるようにこれらの方法ではどのStoreに依存しているかが読み取りにくいため、今回は自前のQueryを実装します。</p>
+
+<p><img src="/assets/2020-06-23/query.jpg" alt="query" /></p>
+
+<p>今回は以下の4つの要件で実装してみます。一般的なVue+Vuexアプリケーションではあまり見ない設計となるので、なるべく強制力が弱く理解しやすくすることを要件に盛り込みます。</p>
+
+<ol>
+  <li>Storeの更新に応じて<strong>リアクティブに値を受け取れる</strong>仕組みとなっていること</li>
+  <li>Componentの<strong><code class="highlighter-rouge">import</code>部分を見ることで、どのStoreを利用しているかが読み取れる</strong>ようなQueryとなっていること</li>
+  <li>Storeを実装する際に、Queryの存在を意識せず従来通りに実装できること</li>
+  <li>Queryを実装する際または利用する際に、複雑なルールを覚えることを強要しない仕組みとなっていること</li>
+</ol>
+
+<p>(ちなみにこの記事ではVuexのモジュールをStoreと呼ぶこととします)</p>
+
+<p>まず要件1を満たす状態を想像しやすくするために、Queryを利用するComponentから実装してみます。</p>
+
+<p><strong>SampleComponent.vue</strong></p>
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
+<span class="nt">&lt;div&gt;</span>
+  <span class="nt">&lt;div&gt;</span>{{ todoCount }}<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+
+<span class="nt">&lt;script&gt;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">TodoStoreQuery</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/queries</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">todoCount</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">TodoStoreQuery</span><span class="p">.</span><span class="nx">todoCount</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>import部分をみると<code class="highlighter-rouge">TodoStoreQuery</code>があるので、<code class="highlighter-rouge">TodoStore</code>の値を利用しているComponentであることが読み取れます。</p>
+
+<p>ついでにQueryの利用箇所にも触れておくと、<code class="highlighter-rouge">computed</code>の中でゲッターを使うときと同じ書き口で使われていますね。このようなQueryを用意することができれば、要件4の「複雑なルールを覚えることを強要しない仕組みであること」も満たせていると言えそうです。</p>
+
+<p>ではこのQueryを実装していきます。参考に<code class="highlighter-rouge">TodoStore</code>の実装も添えておきます。</p>
+
+<p><strong>store.js</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">TodoStore</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">state</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">todos</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="p">},</span>
+  <span class="na">getters</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">todos</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">todos</span><span class="p">,</span>
+    <span class="na">todoCount</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">todos</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="nx">todo</span> <span class="o">=&gt;</span> <span class="o">!</span><span class="nx">todo</span><span class="p">.</span><span class="nx">done</span><span class="p">).</span><span class="nx">length</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">vuexStoreInstance</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Vuex</span><span class="p">.</span><span class="nx">Store</span><span class="p">({</span>
+  <span class="na">modules</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">TodoStore</span><span class="p">,</span>
+  <span class="p">},</span>
+<span class="p">});</span>
+</code></pre></div></div>
+<p></p>
+
+<p><strong>queries.js</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">TodoStore</span><span class="p">,</span> <span class="nx">vuexStoreInstance</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@/store</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="c1">// Storeの情報からqueryを生成する関数を定義する</span>
+<span class="kd">function</span> <span class="nx">createGettersAlias</span><span class="p">(</span><span class="nx">storeTemplate</span> <span class="o">=</span> <span class="p">{})</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">storeTemplate</span><span class="p">.</span><span class="nx">getters</span><span class="p">).</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">key</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">result</span><span class="p">[</span><span class="nx">key</span><span class="p">]</span> <span class="o">=</span> <span class="nx">vuexStoreInstance</span><span class="p">.</span><span class="nx">getters</span><span class="p">[</span><span class="nx">key</span><span class="p">];</span>
+    <span class="kd">const</span> <span class="nx">descriptor</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">getOwnPropertyDescriptor</span><span class="p">(</span><span class="nx">vuexStoreInstance</span><span class="p">.</span><span class="nx">getters</span><span class="p">,</span> <span class="nx">key</span><span class="p">);</span>
+    <span class="nb">Object</span><span class="p">.</span><span class="nx">defineProperty</span><span class="p">(</span><span class="nx">result</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">descriptor</span><span class="p">);</span>
+  <span class="p">});</span>
+  <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// queryを生成してexportする</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">TodoStoreQuery</span> <span class="o">=</span> <span class="nx">createGettersAlias</span><span class="p">(</span><span class="nx">TodoStore</span><span class="p">);</span>
+
+<span class="c1">// 新規storeが増える度にこの処理を追加していく</span>
+<span class="c1">// export const AnotherStoreQuery = createGettersAlias(AnotherStore);  </span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">createGettersAlias</code>関数は、VuexStoreのインスタンスから<code class="highlighter-rouge">TodoStore</code>のゲッター要素だけを抜き出して返す関数です。やっていることは<code class="highlighter-rouge">mapGetters</code>とほぼ同じです。</p>
+
+<p>Storeを追加する際は、通常通りの方法でStoreを実装することに加えて<code class="highlighter-rouge">createGettersAlias</code>を呼び出すだけでOKです。ちなみに私はStoreへアクセスする際は必ずゲッターを経由するようにしているためステートのエイリアスはつくっていませんが、このあたりは好みですね。</p>
+
+<h3 id="command-ビジネスロジックdispatch-を実装する">Command (ビジネスロジック+Dispatch) を実装する</h3>
+
+<p>次は副作用を伴う更新系処理のCommandを実装します。</p>
+
+<p><img src="/assets/2020-06-23/command.jpg" alt="command" /></p>
+
+<p>こちらも4つの要件で実装します。</p>
+
+<ol>
+  <li><strong>返り値のない関数</strong>とする</li>
+  <li>システム的な処理単位ではなく、<strong>ユースケース単位</strong>で1つ1つのCommandを実装する</li>
+  <li>処理に必要な依存関係は基本的に引数で受け取る</li>
+  <li>storeを更新するときはVuexの<code class="highlighter-rouge">dispatch</code>を経由する</li>
+</ol>
+
+<p>今回は「TODOを完了にする」ユースケースのCommandの実装を例にします。</p>
+
+<p><strong>actionTypes.js</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">ActionTypes</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="dl">'</span><span class="s1">DONE_TODO</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">doneTodo</span><span class="dl">'</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Dispatchしやすいようにアクション名を定数化しておきます。</p>
+
+<p><strong>dispatcher.js</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">vuexStoreInstance</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/store</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">dispatch</span> <span class="o">=</span> <span class="p">(</span><span class="nx">actionType</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">vuexStoreInstance</span><span class="p">.</span><span class="nx">dispatch</span><span class="p">(</span><span class="nx">actionType</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+<span class="p">};</span>
+</code></pre></div></div>
+
+<p>Commandから直接<code class="highlighter-rouge">vuexStoreInstance.dispatch</code>を呼び出しても良いのですが、今後Dispatch部分を修正する可能性を考慮して、Store層とCommand層の間にDispatcher層を噛ませておきます。</p>
+
+<p><strong>commands.js</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">dispatch</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/dispatcher</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">ActionTypes</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/actionTypes</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">doneTodo</span> <span class="o">=</span> <span class="nx">todoId</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">dispatch</span><span class="p">(</span><span class="nx">ActionTypes</span><span class="p">.</span><span class="nx">DONE_TODO</span><span class="p">,</span> <span class="p">{</span> <span class="nx">todoId</span> <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">Commands</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="nx">doneTodo</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>ここまで実装できたら、Componentから<code class="highlighter-rouge">Commands.doneTodo</code>を呼び出せば完成ですね。ちなみに<code class="highlighter-rouge">doneTodo</code>を直接<code class="highlighter-rouge">export</code>せず<code class="highlighter-rouge">Commands</code>オブジェクトで束ねているのは、grepしやすくするためです。好みなので要件には含んでいません。</p>
+
+<p>ちなみにQueryとCommandに依存したComponentの<code class="highlighter-rouge">import</code>部分は以下のようになります。</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// SampleComponent.vue
+
+<span class="nt">&lt;script&gt;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">TodoStoreQuery</span><span class="p">,</span> <span class="nx">AnotherStoreQuery</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/qieries</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">Commands</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/commands</span><span class="dl">'</span><span class="p">;</span>
+<span class="nt">&lt;/script&gt;</span>
+</code></pre></div></div>
+
+<p>Componentから見ると<strong>「どのStoreの値を利用しているか」は明確であったほうが良い</strong>ですが、<strong>「どのStoreを更新しているか」は意識する必要がありません</strong>。それがちょうど良く表現されている点も気に入っています。</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>CQSの考え方を参考にVue＋Vuexアプリケーションの設計方法を提案してみました。しかしよく見ると実はあまり特別なことはしていなくて、Vuexの使い方に一手間加えている程度です。</p>
+
+<p>別の見方をすると、今回実装したCommandとQueryは<strong>Store層にVuexを採用しなかったとしても利用できる</strong>仕組みです。そのためこの設計方法はVuexから脱却したVueアプリケーションの設計方法の提案でもあります。Vuexが悪いとは言いませんが、選択肢は多く持っておけると良いですよね。そういった意図も込めての紹介でした。</p>
+
+<p>余談ですが、「設計の紹介」と聞いてもっと斬新なもの期待させてしまっていたらすみませんでした。<br />
+私にとって(私にできる)フロントエンドの設計とは、「情報をどう捉えるとか」と「それをどう分離していくか」を繰り返していく作業です。捉え方や分離の仕方には流行や好みが反映されることもあります。最近の私の好みは「部分的に切り離して捨てやすいかどうか」ですが、好みが変われば設計方法も変わると思いますので、そのときはまたこうして記事を書こうと思います。</p>
+
+<h3 id="サンプル">サンプル</h3>
+
+<p>今回紹介した設計を利用し、一覧ページと詳細ページを行き来する簡単な<a href="https://github.com/aloerina01/vue-sample-list-detail-viewer" target="_blank">サンプルアプリ</a>を実装しました。ご参考にどうぞ。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Vue%2BVuex%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AD%E3%83%BC%E3%82%92CQS%E3%83%A9%E3%82%A4%E3%82%AF%E3%81%AB%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&url=https://aloerina01.github.io/blog/2020-06-23-1&via=aloerina_&hashtags=Vue,Vuex,JavaScript,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <i class="fab fa-twitter fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Vue%2BVuex%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AD%E3%83%BC%E3%82%92CQS%E3%83%A9%E3%82%A4%E3%82%AF%E3%81%AB%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&u=https://aloerina01.github.io/blog/2020-06-23-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <i class="fab fa-facebook-f fa-inverse"></i>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2020-06-23-1" target="_blank">
+              <i class="fab fa-get-pocket fa-inverse"></i>
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Vue%2BVuex%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%83%95%E3%83%AD%E3%83%BC%E3%82%92CQS%E3%83%A9%E3%82%A4%E3%82%AF%E3%81%AB%E8%A8%AD%E8%A8%88%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2020-06-23-1">
+              <img src="/assets/thirdparty/linebutton.png" />
+            </a>
+            
+          
+        </section>
+
+        <div class="post-donation">
+  <div class="post-donation-panel">
+    <p class="post-donation-description for-pc">
+      <span>この記事が気に入ったらaloerinaをサポートしてみませんか？<br />コーヒー1杯からお気軽にサポートできます。</span>
+    </p>
+    <p class="post-donation-description for-mobile">
+      <span>この記事が気に入ったら<br />aloerinaをサポートしてみませんか？</span>
+    </p>
+    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
+      <p class="button-body">
+        <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+        <span class="label">サポートする</span>
+      </p>
+    </a>
+  </div>
+</div>
+
+         
+
+      </div>
+    </div>
+
+  </div>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>あわせて読みたい</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2018-09-14-1">React+Fluxで正しく設計するためのFlux見直しガイド</a></li>
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2018-12-25-1">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</a></li>
+      
+      <li><a href="/blog/2019-09-25-1">VuexのStore設計のTips - 薄いGetter</a></li>
+      
+      <li><a href="/blog/2018-09-27-1">Vue.nextTickのコードリーディング</a></li>
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile.jpg" alt="" loading="lazy">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発、エンジニアリングマネジメント、スクラムマスターなどをしています。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon">
+              <i class="fab fa-twitter"></i>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" rel="noopener noreferrer" class="sns-icon sns-icon-envelope">
+              <i class="fas fa-envelope"></i>
+          </a>
+          
+          <a target="_blank" href="/feed.xml" rel="noopener noreferrer" class="sns-icon">
+              <i class="fas fa-rss"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/vuex/">Vuex</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/exp/">EXP</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+        
+        
+        <a href="/category/mobprogramming/">MobProgramming</a>
+      
+        
+        
+        <a href="/category/management/">Management</a>
+      
+        
+        
+        <a href="/category/coaching/">Coaching</a>
+      
+        
+        
+        <a href="/category/grareco/">GraReco</a>
+      
+        
+        
+        <a href="/category/githubactions/">GitHubActions</a>
+      
+        
+        
+        <a href="/category/retrospective/">Retrospective</a>
+      
+        
+        
+        <a href="/category/facilitation/">Facilitation</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents donation">
+  <div class="sub-contents-wrapper donation-wrapper">
+    <h3>BUY ME A COFFEE</h3>
+    <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
+    <div class="donation-button-area">
+        <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
+          <p class="button-body">
+            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+            <span class="label">ごちそうする</span>
+          </p>
+        </a>
+        <span>または<a href="https://kyash.co/" target="_blank" rel="noopener noreferrer">Kyash</a>で id: <b>aloerina</b> に送金する</span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published on <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Header
+    var CLASS_MENU_SHOW = 'show';
+    var navigationMenu = document.getElementById('js-navigation-menu');
+    var menuIcon = document.getElementById('js-mobile-menu-icon');
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+    });
+  });
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.30.0/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.31.0/autocomplete.min.js"></script>
+<script src="/dist/algolia.js" async></script>
+
+</body>
+
+</html>
