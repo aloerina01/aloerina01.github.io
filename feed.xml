@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-06-23T10:01:38+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-06-24T05:45:51+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">Vue+VuexのデータフローをCQSライクに設計する方法</title><link href="https://aloerina01.github.io/blog/2020-06-23-1" rel="alternate" type="text/html" title="Vue+VuexのデータフローをCQSライクに設計する方法" /><published>2020-06-23T00:00:00+00:00</published><updated>2020-06-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-23-1">&lt;p&gt;Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？&lt;/p&gt;
 
 &lt;h5 id=&quot;悩み1-vuexのmaphelperを使うとコードが読みにくくなる&quot;&gt;悩み1. VuexのmapHelperを使うとコードが読みにくくなる&lt;/h5&gt;
@@ -362,7 +362,7 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
   &lt;li&gt;Keep/Problem/Try などの意見を集める指標は、状況に応じてアレンジする
     &lt;ul&gt;
       &lt;li&gt;Problem に『反省文』ばかりが集まるときは「困難だったこと」などに置き換える、など&lt;/li&gt;
-      &lt;li&gt;Try に『曖昧な行動』が集まるときは「Tryを実現するためのAction」などの指標を増やす、など&lt;/li&gt;
+      &lt;li&gt;Try に『曖昧な行動』が集まるときは「Tryを実現するためのAction」などの指標を増やす、など&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;論理的な意見だけでなく、&lt;strong&gt;感情・感覚・違和感&lt;/strong&gt;を出してもらうような指標を使う
