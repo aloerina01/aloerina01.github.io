@@ -1,5 +1,80 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-06-24T05:45:51+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">Vue+VuexのデータフローをCQSライクに設計する方法</title><link href="https://aloerina01.github.io/blog/2020-06-23-1" rel="alternate" type="text/html" title="Vue+VuexのデータフローをCQSライクに設計する方法" /><published>2020-06-23T00:00:00+00:00</published><updated>2020-06-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-23-1">&lt;p&gt;Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-06-24T09:57:50+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">自分の本音と向き合う期待値マネジメント</title><link href="https://aloerina01.github.io/blog/2020-06-24-1" rel="alternate" type="text/html" title="自分の本音と向き合う期待値マネジメント" /><published>2020-06-24T00:00:00+00:00</published><updated>2020-06-24T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-24-1">&lt;p&gt;期待値を言語化する、期待値を伝える、期待値をすり合わせる。&lt;br /&gt;
+チームをマネジメントしたりサポートしたりすると、こういった期待値の調整をする場面はよくありますよね。&lt;/p&gt;
+
+&lt;p&gt;今回は期待される側ではなく&lt;strong&gt;期待する側&lt;/strong&gt;に注目して、「何を期待しているか」「どのように期待を伝えているか」について考えてみようと思います。私がチームマネジメントやスクラムマスターをしていてよく陥る失敗を思い返しながら、自分への注意喚起を兼ねて整理してみます。&lt;/p&gt;
+
+&lt;h3 id=&quot;何に期待するか&quot;&gt;何に期待するか&lt;/h3&gt;
+
+&lt;p&gt;私は期待の種類を4つのレイヤに分類して捉えています。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-06-24-1-layer.jpg&quot; alt=&quot;期待値の種類&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;状態への期待&quot;&gt;状態への期待&lt;/h4&gt;
+&lt;p&gt;ひとつひとつの出来事・仕事・タスクについてではなく、それらを繰り返し&lt;strong&gt;どういう状態を維持してほしいと思っているか&lt;/strong&gt;を指します。「案件の優先順位に沿ってうまく計画立てて進行している状態を維持してほしい(ときには失敗することもあるだろうが、その改善も含めて停滞せず前進し続けていればよい)」といったものです。&lt;/p&gt;
+
+&lt;h4 id=&quot;結果への期待&quot;&gt;結果への期待&lt;/h4&gt;
+&lt;p&gt;ひとつの出来事・仕事・タスクについて&lt;strong&gt;どのような結果を出してほしいか&lt;/strong&gt;を指します。「スケジュールに間に合わせてほしい(間に合わせてくれれば手段はお任せする)」といったものです。&lt;/p&gt;
+
+&lt;h4 id=&quot;手段への期待&quot;&gt;手段への期待&lt;/h4&gt;
+&lt;p&gt;ひとつの出来事・仕事・タスクについて&lt;strong&gt;どのような方法・プロセスで取り組んでほしいか&lt;/strong&gt;を指します。「毎日決まった時間に進捗を報告してほしい」といったものです。&lt;/p&gt;
+
+&lt;h4 id=&quot;行動意識への期待&quot;&gt;行動意識への期待&lt;/h4&gt;
+&lt;p&gt;ひとつの出来事・仕事・タスクについて、またはそれらを繰り返す過程で、&lt;strong&gt;どのような姿勢・意識で臨んでほしいか&lt;/strong&gt;を指します。「自主性を持って取り組んでほしい」といったものです。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;念押しですが、これらは自分の思考整理のために便宜的に分けたものです。また、この記事内では「状態への期待」「結果への期待」を&lt;strong&gt;高レイヤの期待&lt;/strong&gt; 、「手段への期待」「行動意識への期待」を&lt;strong&gt;低レイヤの期待&lt;/strong&gt;と呼び分けますが、こちらも便宜的なもので優劣や良し悪しを示唆するものではありません。&lt;/p&gt;
+
+&lt;h3 id=&quot;期待の本音と向き合う&quot;&gt;期待の本音と向き合う&lt;/h3&gt;
+
+&lt;p&gt;私がチームメンバーに何かを期待する場面はよくありました。&lt;br /&gt;
+マネージャーでなくとも、アルバイトや学校行事などで「もっと真面目に取り組んでほしい」なんて思ったことは誰しも1度くらいはあるのではないでしょうか。また上司などから「進捗を報告してほしい」と言われたことのある人も多いと思います。&lt;/p&gt;
+
+&lt;p&gt;このような人に何かを期待する場面で、私は&lt;strong&gt;期待の根源にある本音&lt;/strong&gt;を見抜けていないことがよくありました。上述の期待を例にすると&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;「もっと真面目に取り組んでほしい(行動意識への期待)」は、「ミスを減らしてほしい、減らすための改善を重ねてほしい(状態への期待)」という本音が隠れている&lt;/li&gt;
+  &lt;li&gt;「進捗を報告してほしい(手段への期待)」は、「遅れずに結果を出してほしい(結果への期待)」という本音が隠れている&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;こういった本音に気づけていない可能性があるわけです。&lt;/p&gt;
+
+&lt;p&gt;人は期待を抱くとき、&lt;strong&gt;個別具体的な体験を元にする&lt;/strong&gt;ことが多いのかもしれません。言い換えると「具体的な体験で思い通りの&lt;strong&gt;結果&lt;/strong&gt;が出ないとき」や「思い通りにいかない体験が積み重なった&lt;strong&gt;状態&lt;/strong&gt;が続いたとき」に期待とのギャップを抱き、その解決策として具体的な&lt;strong&gt;手段&lt;/strong&gt;や&lt;strong&gt;行動意識&lt;/strong&gt;で指示を出したくなるのかもしれません。　&lt;/p&gt;
+
+&lt;p&gt;つまり&lt;strong&gt;低レイヤの期待の裏に、高レイヤの期待が隠れている可能性がある&lt;/strong&gt;ということです(結果も出てるし手段も最適だけど態度が気に食わないというケースもあるとは思いますが)。&lt;/p&gt;
+
+&lt;p&gt;そのため「人に何か指示を出したい」「人に期待を伝えたい」と思ったら、一呼吸置いて自分の期待の本音と向き合ってからでも遅くはなさそうです。&lt;/p&gt;
+
+&lt;h3 id=&quot;期待を本音のままに伝える&quot;&gt;期待を本音のままに伝える&lt;/h3&gt;
+
+&lt;p&gt;上述のとおり、私は個別具体的な体験から期待とのギャップを感じ、期待値を揃えるべく「〇〇してほしい」と手段への期待を口にすることがよくありました。しかしそれでは期待の本音が伝わってないことは自明ですね。こうして冷静に文章に起こすと自明なのですが、実際のコミュニケーションの中では気付きにくいものです。&lt;/p&gt;
+
+&lt;p&gt;その要因の一つに、私がプロセスの改善・最適化が好きで最適解に人より早く気付く(正確には気付いた気になる)ことが多いということが考えられます。&lt;/p&gt;
+
+&lt;p&gt;より良いプロセスに気付いているつもりなので、&lt;strong&gt;そのプロセスを踏んでいない人に対して「こうしてほしい」と手段の期待を抱きがち&lt;/strong&gt;です。しかし期待の本音は特定のプロセスを踏むことではなく、そのプロセスの先にある何らかの結果や状態にあるはずです。この本音を自覚し本音のままに伝えられるかが、私の常日頃の課題です。&lt;/p&gt;
+
+&lt;h3 id=&quot;手段は期待せずに提案する&quot;&gt;「手段」は期待せずに提案する&lt;/h3&gt;
+
+&lt;p&gt;ここからは私の働く現環境においてのみ言える内容です。自分への注意喚起要素がより濃いです。&lt;/p&gt;
+
+&lt;p&gt;ここまでの話を整理すると、低レイヤの期待を感じたときは本音を探ると高レイヤの期待が見つかりがち、それをそのまま伝えよう、ということでした。では具体的な手段に関してはどう伝えるのが良いのでしょうか？ 私は&lt;strong&gt;「期待として伝える」のではなく「一つの選択肢として提案する」&lt;/strong&gt;ことを意識します。&lt;/p&gt;
+
+&lt;p&gt;例を上げると「スケジュールに余裕を持ってタスクを完了させてほしい(結果への期待)。進め方は任せるけど、もし相談するタイミングに迷ったら、バッファを食いつぶしたタイミングか残業が必要だと思ったタイミングを目安にしてみては(手段の提案)」といった具合です。&lt;/p&gt;
+
+&lt;p&gt;相手との関係性や言い回しによっては、提案も実質「上司からの期待/指示」と捉えられてしまうこともあるので、あくまで私の現環境で使える方法です。また、抽象度の高い期待値を伝えるより具体的な手段を期待として伝えることが必要な場面もあるはずです。このあたりのバランス感覚は期待の本音と向き合い、そしてチームメンバーと向き合い続けることで養っていくしかなさそうですね。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;期待を4つのレイヤーに分けて捉える&lt;/li&gt;
+  &lt;li&gt;期待とのギャップは個別具体的な体験から起きがちなので、低レイヤの期待に繋がりやすい&lt;/li&gt;
+  &lt;li&gt;低レイヤの期待を抱いたら期待の根源にある本音を探すと、高レイヤの期待が見えてくるかも&lt;/li&gt;
+  &lt;li&gt;期待の本音をそのままに伝える&lt;/li&gt;
+  &lt;li&gt;手段は提案として伝える&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;以上、自分への注意喚起でした。&lt;/p&gt;</content><author><name></name></author><summary type="html">期待値を言語化する、期待値を伝える、期待値をすり合わせる。 チームをマネジメントしたりサポートしたりすると、こういった期待値の調整をする場面はよくありますよね。</summary></entry><entry><title type="html">Vue+VuexのデータフローをCQSライクに設計する方法</title><link href="https://aloerina01.github.io/blog/2020-06-23-1" rel="alternate" type="text/html" title="Vue+VuexのデータフローをCQSライクに設計する方法" /><published>2020-06-23T00:00:00+00:00</published><updated>2020-06-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-23-1">&lt;p&gt;Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？&lt;/p&gt;
 
 &lt;h5 id=&quot;悩み1-vuexのmaphelperを使うとコードが読みにくくなる&quot;&gt;悩み1. VuexのmapHelperを使うとコードが読みにくくなる&lt;/h5&gt;
 
@@ -1068,139 +1143,4 @@ npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;n
   &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-preset-env&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/docs/en/babel-preset-env&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://babeljs.io/blog/2019/03/19/7.4.0&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/blog/2019/03/19/7.4.0&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md&quot; target=&quot;_blank&quot;&gt;https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉 これらに伴いpolyfill周りの設定方法が変わったので、その内容をメモしておこうと思います。</summary></entry><entry><title type="html">コーチング入門 「4つの会話」でやる気の芽を育てよう</title><link href="https://aloerina01.github.io/blog/2019-05-07-1" rel="alternate" type="text/html" title="コーチング入門 「4つの会話」でやる気の芽を育てよう" /><published>2019-05-07T00:00:00+00:00</published><updated>2019-05-07T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-05-07-1">&lt;p&gt;ここ最近、マネジメントの一貫として「1ヶ月間コーチング」に取り組んでいます。クライアント(コーチング相手になってくれる方)と1ヶ月間じっくりコミュニケーションをとって、目標の見直しから実現まで様々な段階に付き添わせてもらいました。&lt;/p&gt;
-
-&lt;p&gt;ある程度自分の中でやり方が見えてきたので、経験談とそれを通して得た考え方について現時点のスナップショットを残しておこうと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2019-04-25-1-coaching.jpg&quot; alt=&quot;グラレコ&quot; /&gt;
-&lt;small&gt;今回の概要をグラレコ形式でまとめてみました。&lt;/small&gt;&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#前提&quot; id=&quot;markdown-toc-前提&quot;&gt;前提&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#コーチングとは&quot; id=&quot;markdown-toc-コーチングとは&quot;&gt;コーチングとは&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#コーチングに必要な人間関係&quot; id=&quot;markdown-toc-コーチングに必要な人間関係&quot;&gt;コーチングに必要な人間関係&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#コーチングで使った4つの会話&quot; id=&quot;markdown-toc-コーチングで使った4つの会話&quot;&gt;コーチングで使った4つの会話&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#承認する&quot; id=&quot;markdown-toc-承認する&quot;&gt;承認する&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#質問する&quot; id=&quot;markdown-toc-質問する&quot;&gt;質問する&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#整理する&quot; id=&quot;markdown-toc-整理する&quot;&gt;整理する&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#リクエストする&quot; id=&quot;markdown-toc-リクエストする&quot;&gt;リクエストする&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#やる気の芽の育て方&quot; id=&quot;markdown-toc-やる気の芽の育て方&quot;&gt;やる気の芽の育て方&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-ゴール目標が明確になる&quot; id=&quot;markdown-toc-1-ゴール目標が明確になる&quot;&gt;1. ゴール・目標が明確になる&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-ゴールまでのプロセスが明確になる&quot; id=&quot;markdown-toc-2-ゴールまでのプロセスが明確になる&quot;&gt;2. ゴールまでのプロセスが明確になる&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#3-自分が描いたゴールプロセスに自信を持つ&quot; id=&quot;markdown-toc-3-自分が描いたゴールプロセスに自信を持つ&quot;&gt;3. 自分が描いたゴール・プロセスに自信を持つ&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#4-ゴールプロセスを必要に応じて見直せる&quot; id=&quot;markdown-toc-4-ゴールプロセスを必要に応じて見直せる&quot;&gt;4. ゴール・プロセスを必要に応じて見直せる&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#5-自分のペースでプロセスを継続する&quot; id=&quot;markdown-toc-5-自分のペースでプロセスを継続する&quot;&gt;5. 自分のペースでプロセスを継続する&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;前提&quot;&gt;前提&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;1対1でやる&lt;/li&gt;
-  &lt;li&gt;内容はクライアントのキャリアや仕事に関係すること&lt;/li&gt;
-  &lt;li&gt;コミュニケーションはオンライン・オフライン両方で柔軟にとる&lt;/li&gt;
-  &lt;li&gt;コミュニケーションのタイミングは必要に応じて随時&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;私がやってきたコーチングはこんな感じでした。&lt;/p&gt;
-
-&lt;h3 id=&quot;コーチングとは&quot;&gt;コーチングとは&lt;/h3&gt;
-
-&lt;p&gt;コーチングとは&lt;strong&gt;クライアントの「やりたい」気持ちを実現に導くこと&lt;/strong&gt;だと理解しています。言い換えれば「やる気を出させる」ことなどはコーチングの領域には含まれず、あくまでクライアントの自主的な行動や気持ちに対してアプローチするのがコーチングであるということです。&lt;/p&gt;
-
-&lt;p&gt;そして、コーチングは現実に導くために直接的に手助けするわけではなく、&lt;strong&gt;クライアント自身の気付きによって前進するよう、会話を通して間接的に手助けする&lt;/strong&gt;ものだと考えています。&lt;/p&gt;
-
-&lt;h3 id=&quot;コーチングに必要な人間関係&quot;&gt;コーチングに必要な人間関係&lt;/h3&gt;
-
-&lt;p&gt;コーチングだけでなくマネジメントなどにも言えることだと思いますが、&lt;strong&gt;信頼関係が必須&lt;/strong&gt;だと痛感しました。クライアントに信頼されることはもちろん、コーチがクライアントを信じ切ることも大切なことだと思います。&lt;/p&gt;
-
-&lt;p&gt;自己開示し合えるだけの関係性が必要ですし、人が気持ちを揺さぶられたり行動を起こしたりするには「誰に言われたか」も大事な要素だったりします。なので、場合によってはコーチングを始める前に関係づくりの期間をとることも必要だと感じました。&lt;/p&gt;
-
-&lt;h3 id=&quot;コーチングで使った4つの会話&quot;&gt;コーチングで使った4つの会話&lt;/h3&gt;
-
-&lt;p&gt;コーチングする上で大切なことは「聞く」スキルだと言われたりします。ですが相手が一方的にたくさん話してくれるなんてことはそうそうないので、こちらから「話す」ことも必要になってきます。なので今回は「聞く」でも「話す」でもなく、互いに話し聞く「会話」に焦点を当てて、コーチングで実際に行った4つの会話をまとめます。&lt;/p&gt;
-
-&lt;h4 id=&quot;承認する&quot;&gt;承認する&lt;/h4&gt;
-
-&lt;p&gt;ここで言う「承認」とは &lt;strong&gt;Approve ではなく Acknowledge を指します&lt;/strong&gt;。単に成果を認めるだけはなく、まずクライアントの存在そのものを認め、感謝し、クライアントに現れている変化や違いや成長に気付き、それを言語化して伝えます。&lt;/p&gt;
-
-&lt;p&gt;クライアントのやろうとしていることを理解し認める意志を伝えることは、信頼関係を築くために必要なことですし、コーチングをする上で必要な心構えでもあると感じています。&lt;/p&gt;
-
-&lt;h4 id=&quot;質問する&quot;&gt;質問する&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;「答えはクライアント自身が持っている」前提に立ち、質問を通して気付きを得てもらいます&lt;/strong&gt;。答えのない問いに耽っていると、どうしても思考が行き詰まったり、どう考えるべきかわからなくなる場面があります。そんな場面に出くわしたクライアントに&lt;strong&gt;新しい視点を与える&lt;/strong&gt;よう質問することが必要です。&lt;strong&gt;リフレーミング&lt;/strong&gt;と言ったりもしますね。&lt;br /&gt;
-具体的には、&lt;strong&gt;Why や How&lt;/strong&gt; を尋ねる質問が中心になります。&lt;/p&gt;
-
-&lt;h4 id=&quot;整理する&quot;&gt;整理する&lt;/h4&gt;
-
-&lt;p&gt;クライアントが悩み続けてしまったり思考が堂々巡りしてしまったりと、思考が拡散してしまったときに現状を整理して伝えます。考えを深掘りする方法のひとつに「なぜ？を繰り返し問う」方法がありますが、一人でこれをしていると思考が行き詰まりがちです。クライアントがなぜなぜの袋小路に入ってしまったときに、&lt;strong&gt;整理して伝えたり図示して見せたりすることで、それまで考えていたことを客観的に見返す手助けとなります&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;p&gt;また、クライアントの考えを正しく理解できているか確認するため、発言内容を整理して「〜という理解であっていますか？」と尋ねることもあります。&lt;/p&gt;
-
-&lt;h4 id=&quot;リクエストする&quot;&gt;リクエストする&lt;/h4&gt;
-
-&lt;p&gt;会話で必要なものを用意してもらうよう依頼したり、考え方のフレームワークを提案したりします。&lt;br /&gt;
-クライアントは自分の目的のために必要なアクションを&lt;strong&gt;自分自身で見つけてくれるはず&lt;/strong&gt;ですので、「次回までにこれをしてきて」といったような直接的なリクエストはあまりしません。やり方がわからないクライアントに対して「必要ならこういう考え方を試してみて」と提案する等、&lt;strong&gt;アイデアを貸す&lt;/strong&gt;ような感覚でリクエストをします。リクエストは最後の手段だと認識しています。&lt;/p&gt;
-
-&lt;h3 id=&quot;やる気の芽の育て方&quot;&gt;やる気の芽の育て方&lt;/h3&gt;
-&lt;p&gt;コーチングの有無に限らず、私たちが何かを成し遂げたいと思ったとき、それを達成するまでに辿る段階があります。人によっては飛ばしたり細分化したりするとは思いますが、大まかには以下の5つのステップで考えました。&lt;/p&gt;
-
-&lt;h4 id=&quot;1-ゴール目標が明確になる&quot;&gt;1. ゴール・目標が明確になる&lt;/h4&gt;
-
-&lt;p&gt;「どうなりたいか」という到達目標であったり、「どうありたいか、どう過ごしていたいか」という継続目標であったり、種類は様々ですが、目標を明確にすることが最初の一歩目です。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;いいエンジニアになりたい&lt;/li&gt;
-  &lt;li&gt;南国で暮らしていきたい&lt;/li&gt;
-  &lt;li&gt;每日1つ何かしらのアウトプットをしていきたい&lt;/li&gt;
-  &lt;li&gt;このままじゃ自分のキャリアが不安なので何か始めたい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これらは過去に私が立てた目標ですが、このようにどんな目標でも良いと思います。漠然な内容でも、定性的なことでも、遠い将来の夢の通過点であっても、何であれ&lt;strong&gt;そこにやる気の種&lt;/strong&gt;があればまずはOKです。やる気を持つこと自体が素敵で素晴らしいことのはずです。&lt;/p&gt;
-
-&lt;p&gt;そして&lt;strong&gt;やる気の種を一緒に育てていくのがコーチング&lt;/strong&gt;です。どんな種でも自信を持ってもらいましょう。そのために「承認」し、必要に応じて不安や曖昧さを解消するために「質問」し「整理」します。&lt;/p&gt;
-
-&lt;h4 id=&quot;2-ゴールまでのプロセスが明確になる&quot;&gt;2. ゴールまでのプロセスが明確になる&lt;/h4&gt;
-
-&lt;p&gt;ゴールや目標を達成するために必要なプロセス・マイルストーン・TODOを明確にします。正確である必要はないので、大まかに&lt;strong&gt;いつまでにどうなっていればよいか&lt;/strong&gt;を定めます。ポイントは3つです。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;近い将来のことは具体的に、遠い将来のことはざっくりと&lt;/strong&gt;決める&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;定量的な達成基準&lt;/strong&gt;を設ける&lt;/li&gt;
-  &lt;li&gt;必ずやれると&lt;strong&gt;コミットできる内容&lt;/strong&gt;にする&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;プロセスは定期的に見直していくものなので、近い将来のTODOが具体的であれば十分です。ただし、実現できない可能性のあるTODO(運や環境に左右されること、ハードルが高すぎること)は控えます。&lt;br /&gt;
-例えば私の場合は「1ヶ月に10冊本を読む」よりは「1日30分本を読む」のほうが適切でした。私の読書スピードは本の難易度に依存するため、冊数を基準にすると達成できない可能性があったので、1日に読書に充てる時間を基準にしました。&lt;/p&gt;
-
-&lt;p&gt;このステップでのコーチングは、「質問」がメインになります。ゴール(または途中の地点)に到達する姿がイメージできるくらいまで「質問」を繰り返してプロセスを明確にしていきます。&lt;/p&gt;
-
-&lt;h4 id=&quot;3-自分が描いたゴールプロセスに自信を持つ&quot;&gt;3. 自分が描いたゴール・プロセスに自信を持つ&lt;/h4&gt;
-
-&lt;p&gt;自分ひとりで考えて、目標やプロセスを決めて、黙々と努力する……。そうしているうちに「このやり方であっているのか」「これを続けていて意味があるのか」と不安が湧き出てしまうことは、努力する人には至極自然なことなのだと思います。&lt;/p&gt;
-
-&lt;p&gt;この不安を乗り越えられるよう描いたゴールやプロセスに自信を持っていきたいですよね。そのためには、日々の努力を「承認」することも大事ですが、なぜそのプロセスを設定したのかを思い返すように「質問」することも役立ちます。最終的には、自信の根拠はクライアント自身のやる気にたどり着くものなのだと思います。&lt;/p&gt;
-
-&lt;h4 id=&quot;4-ゴールプロセスを必要に応じて見直せる&quot;&gt;4. ゴール・プロセスを必要に応じて見直せる&lt;/h4&gt;
-
-&lt;p&gt;経験を積めば考え方や視点は変化していきます。また時間の経過により環境が変わったりもします。ですので、自分の目標やプロセスに疑問を感じたら都度見直すことが必要です。&lt;/p&gt;
-
-&lt;p&gt;見直しの段階でのコーチングは、やはり「質問」や「整理」が中心なります。ただし、ここでのコーチングの目標は「クライアントが見直しに成功すること」ではなく、「&lt;strong&gt;クライアントがいつでも一人で目標の見直しをできるようになること&lt;/strong&gt;」です。どんなときに、どのように、どのくらい見直しすべきかの感覚がクライアントに浸透するように、考える場面を多く与えます。&lt;/p&gt;
-
-&lt;h4 id=&quot;5-自分のペースでプロセスを継続する&quot;&gt;5. 自分のペースでプロセスを継続する&lt;/h4&gt;
-
-&lt;p&gt;目標に対して常に100％のモチベーションやエネルギーを維持するのって、実はけっこう大変ですよね。ですので、&lt;strong&gt;やる気に応じて、どれだけがんばるかをコントロールしながら継続できれば十分&lt;/strong&gt;だと思います。&lt;/p&gt;
-
-&lt;p&gt;目標次第では「やる気の上下に関わらず無理してでも100％がんばる」というコントロールが必要かもしれませんし、「やる気がないときはプロセスの達成基準の50％を維持する」でも良いと思います。何であれ、クライアント自身がこのコントロールをできるようになることがコーチングの目標になります。&lt;/p&gt;
-
-&lt;p&gt;ここでの会話は「承認」も良いですが、&lt;strong&gt;クライアントが自身のモチベーション・エネルギー源がどこにあるのかを自覚する&lt;/strong&gt;よう「質問」することも役立ちます。また成果や経過を共有できるコミュニティを探すよう「リクエスト」することもあるかもしれません。&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;これらの5つのステップを行ったり来たりしながら目標達成を目指すのが、私の考える「やる気の芽の育て方」です。コーチングの行為は、4つの会話を使ってクライアントと一緒にやる気の芽を育てることですが、最終目標はクライアントが一人で育てられるようになることだということを忘れず、クライアントの自発心を刺激し続ける意識で取り組みました。&lt;/p&gt;
-
-&lt;p&gt;今後も引き続きコーチングを続けて考え方や方法をアップデートしていこうと思います。コーチングについて経験豊富な先輩方、アドバイス等あれば是非&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">ここ最近、マネジメントの一貫として「1ヶ月間コーチング」に取り組んでいます。クライアント(コーチング相手になってくれる方)と1ヶ月間じっくりコミュニケーションをとって、目標の見直しから実現まで様々な段階に付き添わせてもらいました。</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉 これらに伴いpolyfill周りの設定方法が変わったので、その内容をメモしておこうと思います。</summary></entry></feed>

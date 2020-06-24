@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>npm + gulp + webpack でつくるES6/sass開発環境</title>
-  <meta name="description" content="ES6でJavaScriptを書きたい。sassに挑戦してみたい。そう思ったときにすぐに開発を始める開発環境を用意してみました。クローンしてコマンド2つで使えるので参考にしてみてください。">
+  <title>自分の本音と向き合う期待値マネジメント</title>
+  <meta name="description" content="チームをマネジメントする際に、期待値を揃える場面はよくあると思います。その「期待値」とは何なのか、どう伝えるのが良いのかについて、考えを整理してみました。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2020">
@@ -38,12 +38,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="ES6でJavaScriptを書きたい。sassに挑戦してみたい。そう思ったときにすぐに開発を始める開発環境を用意してみました。クローンしてコマンド2つで使えるので参考にしてみてください。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2016-10-07-1" />
+  <meta property="og:description" content="チームをマネジメントする際に、期待値を揃える場面はよくあると思います。その「期待値」とは何なのか、どう伝えるのが良いのかについて、考えを整理してみました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2020-06-24-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="npm + gulp + webpack でつくるES6/sass開発環境" />
+  <meta property="og:title" content="自分の本音と向き合う期待値マネジメント" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://aloerina01.github.io/assets/2016-10-07-1.jpg" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/2020-06-24-1-layer.jpg" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -52,17 +52,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="npm + gulp + webpack でつくるES6/sass開発環境">
-  <meta name="twitter:description" content="ES6でJavaScriptを書きたい。sassに挑戦してみたい。そう思ったときにすぐに開発を始める開発環境を用意してみました。クローンしてコマンド2つで使えるので参考にしてみてください。">
-  <meta name="twitter:image" content="https://aloerina01.github.io/assets/2016-10-07-1.jpg">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2016-10-07-1">
+  <meta name="twitter:title" content="自分の本音と向き合う期待値マネジメント">
+  <meta name="twitter:description" content="チームをマネジメントする際に、期待値を揃える場面はよくあると思います。その「期待値」とは何なのか、どう伝えるのが良いのかについて、考えを整理してみました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/2020-06-24-1-layer.jpg">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2020-06-24-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2016-10-07-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2020-06-24-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   
@@ -74,8 +74,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/npm/gulp/webpack/2016/10/07/1.html',
-      'title': 'npm + gulp + webpack でつくるES6/sass開発環境'
+      'page': '/blog/2020-06-24-1',
+      'title': '自分の本音と向き合う期待値マネジメント'
     });
   </script>
   
@@ -136,6 +136,20 @@
           <meta itemprop="position" content="1" />
         </li>
         
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2020-06-24-1">
+            <span itemprop="name">自分の本音と向き合う期待値マネジメント</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
         
         </ol>
     </div>
@@ -144,96 +158,108 @@
 
   <div class="page-content">
     <div class="post">
-      <div class="post-header-container has-cover" style="background-image: url(/assets/2016-10-07-1.jpg);"
-        >
-        <div class="scrim has-cover">
+      <div class="post-header-container " >
+        <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">npm + gulp + webpack でつくるES6/sass開発環境</h1>
+            <h1 class="title">自分の本音と向き合う期待値マネジメント</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
       </div>
       <div class="wrapper">
-        
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
         <section class="post-meta">
-          <div class="post-date">2016-10-07</div>
+          <div class="post-date">2020-06-24</div>
           <div class="post-categories">
             
             <i class="fas fa-fw fa-tag"></i>
              
-            <a href="/category/webpack/">Webpack</a>,    
-            <a href="/category/environment/">Environment</a>   
+            <a href="/category/management/">Management</a>,    
+            <a href="/category/coaching/">Coaching</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <p style="color:#90A4AE;font-size:14px;display:inline-block;width:100%;text-align:center;o;padding:20px 0;">
-<i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
-この記事には新しい<a href="https://aloerina01.github.io/blog/2016-10-07-1">URL</a>が設定されています
-</p>
+          <p>期待値を言語化する、期待値を伝える、期待値をすり合わせる。<br />
+チームをマネジメントしたりサポートしたりすると、こういった期待値の調整をする場面はよくありますよね。</p>
 
-<p>最近はJavaScriptをES6で書いたり、cssをsassで書いたりするのが当たり前になってきました。そうなると必然的に必要になるのがビルド。ビルドの仕組みも充実してきていて、単にトランスパイルするだけでなく、構文チェックしたり圧縮したり、<a href="http://lopan.jp/css-sprites/">CSSスプライト</a>をつくるようなことまでできたりします。</p>
+<p>今回は期待される側ではなく<strong>期待する側</strong>に注目して、「何を期待しているか」「どのように期待を伝えているか」について考えてみようと思います。私がチームマネジメントやスクラムマスターをしていてよく陥る失敗を思い返しながら、自分への注意喚起を兼ねて整理してみます。</p>
 
-<p>で、このビルド環境、新規Project立ち上げる度に用意するのが面倒くさいので、自分用の雛形をつくりました。よかったら参考にしてみてください。</p>
+<h3 id="何に期待するか">何に期待するか</h3>
 
-<h3 id="ビルドの中身">ビルドの中身</h3>
+<p>私は期待の種類を4つのレイヤに分類して捉えています。</p>
+
+<p><img src="/assets/2020-06-24-1-layer.jpg" alt="期待値の種類" /></p>
+
+<h4 id="状態への期待">状態への期待</h4>
+<p>ひとつひとつの出来事・仕事・タスクについてではなく、それらを繰り返し<strong>どういう状態を維持してほしいと思っているか</strong>を指します。「案件の優先順位に沿ってうまく計画立てて進行している状態を維持してほしい(ときには失敗することもあるだろうが、その改善も含めて停滞せず前進し続けていればよい)」といったものです。</p>
+
+<h4 id="結果への期待">結果への期待</h4>
+<p>ひとつの出来事・仕事・タスクについて<strong>どのような結果を出してほしいか</strong>を指します。「スケジュールに間に合わせてほしい(間に合わせてくれれば手段はお任せする)」といったものです。</p>
+
+<h4 id="手段への期待">手段への期待</h4>
+<p>ひとつの出来事・仕事・タスクについて<strong>どのような方法・プロセスで取り組んでほしいか</strong>を指します。「毎日決まった時間に進捗を報告してほしい」といったものです。</p>
+
+<h4 id="行動意識への期待">行動意識への期待</h4>
+<p>ひとつの出来事・仕事・タスクについて、またはそれらを繰り返す過程で、<strong>どのような姿勢・意識で臨んでほしいか</strong>を指します。「自主性を持って取り組んでほしい」といったものです。</p>
+
+<p></p>
+
+<p>念押しですが、これらは自分の思考整理のために便宜的に分けたものです。また、この記事内では「状態への期待」「結果への期待」を<strong>高レイヤの期待</strong> 、「手段への期待」「行動意識への期待」を<strong>低レイヤの期待</strong>と呼び分けますが、こちらも便宜的なもので優劣や良し悪しを示唆するものではありません。</p>
+
+<h3 id="期待の本音と向き合う">期待の本音と向き合う</h3>
+
+<p>私がチームメンバーに何かを期待する場面はよくありました。<br />
+マネージャーでなくとも、アルバイトや学校行事などで「もっと真面目に取り組んでほしい」なんて思ったことは誰しも1度くらいはあるのではないでしょうか。また上司などから「進捗を報告してほしい」と言われたことのある人も多いと思います。</p>
+
+<p>このような人に何かを期待する場面で、私は<strong>期待の根源にある本音</strong>を見抜けていないことがよくありました。上述の期待を例にすると</p>
 
 <ul>
-  <li>ES6 → ブラウザで動かせるJavaScriptにする</li>
-  <li>scssをcssにする</li>
-  <li>jsとcssはそれぞれ結合して圧縮する(.min.js/.min.cssをつくる)</li>
-  <li>変更を検知して自動ビルドする</li>
+  <li>「もっと真面目に取り組んでほしい(行動意識への期待)」は、「ミスを減らしてほしい、減らすための改善を重ねてほしい(状態への期待)」という本音が隠れている</li>
+  <li>「進捗を報告してほしい(手段への期待)」は、「遅れずに結果を出してほしい(結果への期待)」という本音が隠れている</li>
 </ul>
 
-<p>雛形なので特別なことはしません。新しく何かつくりたいと思ったときにすぐに作れるようなビルド環境を用意するだけです。デバッグ用にトランスパイルしただけのものと、リリース用に結合して圧縮したものの両方をつくれるようにします。</p>
+<p>こういった本音に気づけていない可能性があるわけです。</p>
 
-<h3 id="たったひとつのこだわり">たったひとつのこだわり</h3>
+<p>人は期待を抱くとき、<strong>個別具体的な体験を元にする</strong>ことが多いのかもしれません。言い換えると「具体的な体験で思い通りの<strong>結果</strong>が出ないとき」や「思い通りにいかない体験が積み重なった<strong>状態</strong>が続いたとき」に期待とのギャップを抱き、その解決策として具体的な<strong>手段</strong>や<strong>行動意識</strong>で指示を出したくなるのかもしれません。　</p>
 
-<p>基本的に使うツールは何でもいいのですが(依存したくないので)…ひとつだけこだわりポイントがあります。それは<strong>npmさえインストールされていれば動く</strong> ものであること。理由は2つ。</p>
+<p>つまり<strong>低レイヤの期待の裏に、高レイヤの期待が隠れている可能性がある</strong>ということです(結果も出てるし手段も最適だけど態度が気に食わないというケースもあるとは思いますが)。</p>
 
-<ol>
-  <li>npmは今後もしばらく廃れないだろうという安易な予想😉</li>
-  <li>余計なものをグローバルインストールさせないという無駄な優しさ❤</li>
-</ol>
+<p>そのため「人に何か指示を出したい」「人に期待を伝えたい」と思ったら、一呼吸置いて自分の期待の本音と向き合ってからでも遅くはなさそうです。</p>
 
-<p>仕事用PCとプライベート用PCのそれぞれに入っているツールの種類やバージョンが違ったり、共同開発者たちのPCのツールでそれらが違ったりと、PCの状態はPCの数だけ異なります。</p>
+<h3 id="期待を本音のままに伝える">期待を本音のままに伝える</h3>
 
-<p>そんな状況ではツールのバージョンによって動作が変わりかねないし、二重にインストールさせてバージョンぐちゃぐちゃとかバージョンが競合して動かなくなったとか、何かしらが起きる可能性があるのです。ハラハラ😱なのです。</p>
+<p>上述のとおり、私は個別具体的な体験から期待とのギャップを感じ、期待値を揃えるべく「〇〇してほしい」と手段への期待を口にすることがよくありました。しかしそれでは期待の本音が伝わってないことは自明ですね。こうして冷静に文章に起こすと自明なのですが、実際のコミュニケーションの中では気付きにくいものです。</p>
 
-<p>つまるところ、<strong>人のグローバルを侵すな</strong> という話です。</p>
+<p>その要因の一つに、私がプロセスの改善・最適化が好きで最適解に人より早く気付く(正確には気付いた気になる)ことが多いということが考えられます。</p>
 
-<p>というわけで、ビルドコマンドは<code class="highlighter-rouge">package.json</code>に集約して、すべてnpmコマンドで動くようにしました。</p>
+<p>より良いプロセスに気付いているつもりなので、<strong>そのプロセスを踏んでいない人に対して「こうしてほしい」と手段の期待を抱きがち</strong>です。しかし期待の本音は特定のプロセスを踏むことではなく、そのプロセスの先にある何らかの結果や状態にあるはずです。この本音を自覚し本音のままに伝えられるかが、私の常日頃の課題です。</p>
 
-<h3 id="ソース">ソース</h3>
-<p>中身を全部確認したい場合は【<a href="https://github.com/aloerina01/short-code">aloerina01/short-code  - GitHub</a>】へ。<br />
-ここではポイントとなる部分を抜粋紹介します。</p>
+<h3 id="手段は期待せずに提案する">「手段」は期待せずに提案する</h3>
 
-<h4 id="packagejson">package.json</h4>
+<p>ここからは私の働く現環境においてのみ言える内容です。自分への注意喚起要素がより濃いです。</p>
 
-<script src="https://gist.github.com/aloerina01/04e8dd2903509a0e23b0a0b0f5d32ebe.js"></script>
+<p>ここまでの話を整理すると、低レイヤの期待を感じたときは本音を探ると高レイヤの期待が見つかりがち、それをそのまま伝えよう、ということでした。では具体的な手段に関してはどう伝えるのが良いのでしょうか？ 私は<strong>「期待として伝える」のではなく「一つの選択肢として提案する」</strong>ことを意識します。</p>
 
-<p><code class="highlighter-rouge">package.json</code>の<code class="highlighter-rouge">scripts</code>部分抜粋です。gulpコマンドをnpmコマンド経由で呼び出せるようにしています。<code class="highlighter-rouge">scripts</code>のコマンドは全部<code class="highlighter-rouge">$ npm run XXX</code>というかたちで実行できます(<a href="http://qiita.com/axross/items/a2a0d148e40b66074858#%E6%84%8F%E5%91%B3%E4%BB%98%E3%81%91%E3%81%A0%E3%81%91%E3%81%8C%E3%81%95%E3%82%8C%E3%81%9Fnpm-scripts">例外</a>あり)。</p>
+<p>例を上げると「スケジュールに余裕を持ってタスクを完了させてほしい(結果への期待)。進め方は任せるけど、もし相談するタイミングに迷ったら、バッファを食いつぶしたタイミングか残業が必要だと思ったタイミングを目安にしてみては(手段の提案)」といった具合です。</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm run build
-</code></pre></div></div>
+<p>相手との関係性や言い回しによっては、提案も実質「上司からの期待/指示」と捉えられてしまうこともあるので、あくまで私の現環境で使える方法です。また、抽象度の高い期待値を伝えるより具体的な手段を期待として伝えることが必要な場面もあるはずです。このあたりのバランス感覚は期待の本音と向き合い、そしてチームメンバーと向き合い続けることで養っていくしかなさそうですね。</p>
 
-<p>npmがnode_modules以下にあるモジュールについてのパス解決をしてくれているので、gulp-cliをグローバルインストールしていなくてもgulpコマンドを実行できるのです。同様にwebpackのコマンドなんかも実行できます。</p>
+<h3 id="まとめ">まとめ</h3>
 
-<h4 id="gulpfilejs">gulpfile.js</h4>
+<ul>
+  <li>期待を4つのレイヤーに分けて捉える</li>
+  <li>期待とのギャップは個別具体的な体験から起きがちなので、低レイヤの期待に繋がりやすい</li>
+  <li>低レイヤの期待を抱いたら期待の根源にある本音を探すと、高レイヤの期待が見えてくるかも</li>
+  <li>期待の本音をそのままに伝える</li>
+  <li>手段は提案として伝える</li>
+</ul>
 
-<script src="https://gist.github.com/aloerina01/1e876b9beb99e46a2fa2458ce09432a7.js"></script>
-
-<p>そしてこれがが実際に動作するタスクの中身。<code class="highlighter-rouge">gulp-plumber</code>でエラーハンドリングをした上で、①lint、②Webpackでのトランスパイル、③distディレクトリに書き出し、をしています。</p>
-
-<p>それをwatchさせた上で、defaultコマンドに登録しています。よくある基本的なかたちです。</p>
-
-<h3 id="おわりに">おわりに</h3>
-
-<p>自分の開発環境の雛形をつくっておくと、新しいものを作りたいと思ったときにすぐに行動に移せていいですね。雛形はできるだけシンプルなものにしてあるので拡張もしやすく、クローンしてコマンド2つ叩けばすぐに開発環境が整います。よければ是非使ってみてください。</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span>
-<span class="nv">$ </span>npm run build
-</code></pre></div></div>
+<p>以上、自分への注意喚起でした。</p>
 
         </article>
 
@@ -248,7 +274,7 @@
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=npm+%2B+gulp+%2B+webpack+%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8BES6%2Fsass%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83&url=https://aloerina01.github.io/npm/gulp/webpack/2016/10/07/1.html&via=aloerina_&hashtags=Webpack,Environment,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E8%87%AA%E5%88%86%E3%81%AE%E6%9C%AC%E9%9F%B3%E3%81%A8%E5%90%91%E3%81%8D%E5%90%88%E3%81%86%E6%9C%9F%E5%BE%85%E5%80%A4%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88&url=https://aloerina01.github.io/blog/2020-06-24-1&via=aloerina_&hashtags=Management,Coaching,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <i class="fab fa-twitter fa-inverse"></i>
             </a>
@@ -263,7 +289,7 @@
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=npm+%2B+gulp+%2B+webpack+%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8BES6%2Fsass%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83&u=https://aloerina01.github.io/npm/gulp/webpack/2016/10/07/1.html"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E8%87%AA%E5%88%86%E3%81%AE%E6%9C%AC%E9%9F%B3%E3%81%A8%E5%90%91%E3%81%8D%E5%90%88%E3%81%86%E6%9C%9F%E5%BE%85%E5%80%A4%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88&u=https://aloerina01.github.io/blog/2020-06-24-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <i class="fab fa-facebook-f fa-inverse"></i>
             </a>
@@ -398,7 +424,7 @@
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/npm/gulp/webpack/2016/10/07/1.html" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2020-06-24-1" target="_blank">
               <i class="fab fa-get-pocket fa-inverse"></i>
             </a>
             
@@ -412,7 +438,7 @@
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?npm+%2B+gulp+%2B+webpack+%E3%81%A7%E3%81%A4%E3%81%8F%E3%82%8BES6%2Fsass%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fnpm%2Fgulp%2Fwebpack%2F2016%2F10%2F07%2F1.html">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E8%87%AA%E5%88%86%E3%81%AE%E6%9C%AC%E9%9F%B3%E3%81%A8%E5%90%91%E3%81%8D%E5%90%88%E3%81%86%E6%9C%9F%E5%BE%85%E5%80%A4%E3%83%9E%E3%83%8D%E3%82%B8%E3%83%A1%E3%83%B3%E3%83%88%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2020-06-24-1">
               <img src="/assets/thirdparty/linebutton.png" />
             </a>
             
@@ -452,15 +478,15 @@
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a></li>
-      
-      <li><a href="/blog/2018-08-01-1">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</a></li>
-      
-      <li><a href="/blog/2017-01-10-1">JavaScriptの新しいモジュールバンドラ rollup.js とは</a></li>
-      
-      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      <li><a href="/blog/2019-05-07-1">コーチング入門 「4つの会話」でやる気の芽を育てよう</a></li>
       
       <li><a href="/blog/2017-02-28-1">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a></li>
+      
+      <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
+      
+      <li><a href="/blog/2020-01-09-1">ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた</a></li>
+      
+      <li><a href="/blog/2017-02-13-1">そろそろYarnを使ってもいいんじゃない？</a></li>
       
     </div>
   </div>
@@ -521,7 +547,7 @@
       
         
         
-        <a class="active" href="/category/webpack/">Webpack</a>
+        <a href="/category/webpack/">Webpack</a>
       
         
         
