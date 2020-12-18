@@ -1,5 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-06-24T09:57:50+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">自分の本音と向き合う期待値マネジメント</title><link href="https://aloerina01.github.io/blog/2020-06-24-1" rel="alternate" type="text/html" title="自分の本音と向き合う期待値マネジメント" /><published>2020-06-24T00:00:00+00:00</published><updated>2020-06-24T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-24-1">&lt;p&gt;期待値を言語化する、期待値を伝える、期待値をすり合わせる。&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-12-18T08:56:16+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">自律的なチームと謙虚なリーダーシップの関係、またはLINE DevDay2020のあとがき</title><link href="https://aloerina01.github.io/blog/2020-12-18-1" rel="alternate" type="text/html" title="自律的なチームと謙虚なリーダーシップの関係、またはLINE DevDay2020のあとがき" /><published>2020-12-18T00:00:00+00:00</published><updated>2020-12-18T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-12-18-1">&lt;p&gt;先日LINE DeveloperDay 2020にて『&lt;strong&gt;一人ひとりの「変えたい」を力に、11人で変化し続ける開発チームができるまで&lt;/strong&gt;』と題して、私たちのチームの生々しい課題や取り組み、そして変化についてお話しました。&lt;/p&gt;
+
+&lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://www.youtube.com/embed/yKcEYmj4JR4&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
+&lt;p style=&quot;font-size:0.9rem;text-align:center&quot;&gt;セッション動画&lt;/p&gt;
+
+&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;ae8b0feb948743ee8b5ebc093d196c5d&quot; data-ratio=&quot;1.77162629757785&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
+
+&lt;p style=&quot;font-size:0.9rem;text-align:center&quot;&gt;日本語スライド&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;今回の登壇は、それまでに取り組んだり考えたりしてきた「マネジメント」を言語化する作業でした。そしてチームを観察し気づいた変化を言語化する作業でもありました。  &lt;br /&gt;
+今の私にできる最大限の力と時間を使って、頭の中に曖昧に散見していた思いをかき集め、言葉にはめ込み、論理で繋ぎ合わせて、40分というセッション枠に合うように削り出したものが、今回の発表内容となりました。&lt;/p&gt;
+
+&lt;p style=&quot;font-size:0.9rem;text-align:center&quot;&gt;
+&lt;img src=&quot;/assets/2020-12-18-1.jpg&quot; alt=&quot;言語化の跡&quot; loading=&quot;lazy&quot; /&gt;
+&lt;span&gt;言語化の跡&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;しかし自分の中にはまだ十分に言語化できていない部分も多く残っています。「自分の環境だから実現できた限定的な方法論」と「再現性のある技術」とをうまくふるい分けられず言及できなかった部分もあります。&lt;br /&gt;
+ここでは、あとがきと称してその部分を補完する(言い訳する)と共に、1冊の本を紹介しようと思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;謙虚なリーダーシップとの接点&quot;&gt;謙虚なリーダーシップとの接点&lt;/h3&gt;
+
+&lt;p&gt;ここ1年ほど、私は私自身のリーダーシップを改善するよりも、チームメンバーが密かに持つリーダーシップを存分に発揮できる環境(チーム)づくりに関心がありました。日々の対話の中で、一人ひとりに違った得意分野があり深く考え抜かれた意見を持っていると感じていたので、互いが得意分野でチームをリードしあう状態をつくりたかったわけです。&lt;br /&gt;
+この「リードしあう」という行動を、セッション内では&lt;strong&gt;「変えたい」と思った人がチームメンバーに思いを伝え、最初の1歩を踏み出す行動&lt;/strong&gt;と表現しました。&lt;/p&gt;
+
+&lt;p&gt;しかしこれが簡単ではないことを私は知っています。ですので&lt;strong&gt;チームメンバーの「変えたい」を受け入れ、共に変化を起こしていく行動&lt;/strong&gt;が併せて必要だとお伝えしました。チームメンバー1人の「変えたい」を引き出すためには、チームメンバー全員がそれを受け入れる姿勢を示す必要があるということです。&lt;/p&gt;
+
+&lt;p&gt;この&lt;strong&gt;2つの自律的な行動&lt;/strong&gt;をチームメンバーが自然とできるようになるために、私に何ができるかと考えながら読み漁った本の中の1冊が「&lt;a href=&quot;https://amzn.to/2LyxTcO&quot; target=&quot;_blank&quot;&gt;謙虚なリーダーシップ - 1人のリーダーに依存しない組織をつくる&lt;/a&gt;」という本でした。この本では、&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「よい関係」ができている場合には、相手に関してあるレベルの安心感、つまり、相手の反応について想像がつくために安心感を覚えることができる&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「互いに信頼し合い、いっそうよい仕事をするために、あなたについてもっとよく知りたい」と思っていることを、言葉と行動で表す&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;と述べています。&lt;br /&gt;
+先述した2つの自律的な行動をしやすくする関係性を私はセッションの中で「相互理解」と表現しましたが、本書では&lt;strong&gt;相互理解の先にある「安心感」&lt;/strong&gt;に目を向けています。&lt;/p&gt;
+
+&lt;p&gt;また、&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;たいていの場合、問題の根は「ノード」(つまり、個人)ではなく、相互作用(関係)にある&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;不測の事態や相互作用が急激に増えると、深刻な不調の兆しが多くの組織で見られるようにある&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;という記述は、私がセッション内でお伝えした「相互理解があることで課題に自律的に対処できる」ということを、視点を変えて「&lt;strong&gt;相互作用の問題が増えると組織に課題が現れる&lt;/strong&gt;」と説明しているのだと感じました。&lt;/p&gt;
+
+&lt;p&gt;そして適切な関係性を引き出すためのファシリテーションや支援スキルが、組織のあらゆるレベルで発揮される必要があると伝え、関係構築にまつわるスキルを&lt;code class=&quot;highlighter-rouge&quot;&gt;謙虚なリーダーシップの真髄&lt;/code&gt;と表現しその中身を掘り下げています。&lt;/p&gt;
+
+&lt;p&gt;このように本書は私がうまく言葉にできなかった部分、考えきれていなかった部分に言及しています。さらに人と人との関係性を深堀りし、それを変えるプロセスとして&lt;strong&gt;パーソニゼーション&lt;/strong&gt;という考え方を提示しています。その有無によりチームがどう変化したのかをいくつかの事例と共に紹介し、そしてチームに必要なふるまいである「謙虚なリーダーシップ」とはどういうものかと話を発展させていきます。&lt;/p&gt;
+
+&lt;p&gt;以降では、特に印象的な内容をピックアップして紹介します。&lt;/p&gt;
+
+&lt;h3 id=&quot;相互理解を生み出すプロセス-パーソニゼーション&quot;&gt;相互理解を生み出すプロセス =「パーソニゼーション」&lt;/h3&gt;
+
+&lt;p&gt;まずはパーソニゼーションの説明を引用します。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「パーソニゼーション」とは、仕事仲間、チームメイト、上司、部下、同僚との仕事上の関係を、双方向がつくっていくプロセスである。ただし、相手のことを、そのとき担っている役割ではなく、ひとりの人間として考えようとする姿勢が土台になる。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;セッションでお伝えした「一人ひとりの違いについての相互理解」とは、互いを&lt;code class=&quot;highlighter-rouge&quot;&gt;ひとりの人間として考えようとする姿勢&lt;/code&gt;を持ちながら双方向の関係性を築いていくことで得られるものだと言えるでしょう。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;「パーソニゼーション」は、会話の初めに、どちらかが個人的なことを尋ねる、あるいは話すときに始まる。一方が、もしくは両方が、相当な覚悟をもって会話に臨み、無視されたり拒絶されたり軽蔑されたりする危険を冒すことでもある。(中略)「パーソニゼーション」とは、本質的に、互恵的な双方向のプロセスなのである。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;私がセッション内で相互理解の始め方のひとつとして「自分から始めること」を提案したのは、&lt;code class=&quot;highlighter-rouge&quot;&gt;危険を冒すこと&lt;/code&gt;を相手に委ねるのではなく、自分が背負うことを意味していました。&lt;br /&gt;
+自己開示をする心理的ハードルについてはセッション内でも触れましたが、もう少しストレートに言えば、自分から一歩踏み込んだ会話をすることで「痛々しく思われたり寒いと思われたりして傷つくかもしれない危険性」を誰かに負ってもらおうとするなということです(自己開示がとても苦手な自分に今でも強く言い聞かせています)。&lt;/p&gt;
+
+&lt;p&gt;「自分から始める」「参加しやすい雰囲気づくりから始める」「チームの状態の見極めから始める」ことを重ねながら危険を乗り越えた先に、双方向に成り立つ関係、つまり相互理解があるのだと思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;自己開示の心理的ハードル&quot;&gt;自己開示の心理的ハードル&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;私たちは、相手に対して明らかにする個人的な、秘めたと言ってもいい感情や感想や意見を、絶え間なく、徐々に増やしていくなかで、相手との関係を深めていく。そして、私たちが明らかにしたものに対し、今度は相手がどれくらい、みずからのことを明らかにするかによって、私たちが明らかにしたものを相手がどの程度、受け容れているかを測る。明らかにすることと受け容れることの、次々と変わる程度が、最終的に、両者が心地よいと思う親密さのレベルを決める。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;率直さの程度の変化に応じて相手の反応がどう変わるかを測り、心地よさ ―両者がともに相手を信頼し、互いに本音で率直に話していることを心から信じられるレベルの心地よさ― を探しながら、「パーソニゼーション」の境界を互いに見出すことなのだ。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;これらの記述は、自己開示が極端に苦手で仕事仲間に自分のプライベートな部分や素の表情を知られることを嫌っていた私の行動を、丸裸にするものでした。そして同時に、探り探りなコミュニケーションをしているのは私だけではない、むしろ多くの人がそうなのだと再認識させてくれるものでした。&lt;/p&gt;
+
+&lt;p&gt;それに気づいてからは、自己開示の心理的ハードルが自分だけにあるものではなく、程度の差こそあれ誰にでもあり得るのだと考えるようになりました。&lt;/p&gt;
+
+&lt;h3 id=&quot;溝の言語化&quot;&gt;「溝」の言語化&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;チーム内に信頼を育むためには、「溝」を埋めることに注意を傾ける必要がある。溝とは、能力または自信がないことによって、あるいは、社会的欲求が満たされないためにパフォーマンスが下がることによって生じる、物理的・感情的な距離のことだ。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;こういった状況に陥ったことはないでしょうか、あるいは周囲で目撃したことはないでしょうか。思い当たる節がありすぎた私には、これを乗り越えたストーリーはもちろん、そこから得られる学びがとても沁みました。&lt;/p&gt;
+
+&lt;p&gt;長くなってきたので引用はこのあたりにしますが、このように、本書からは「人と人との関係性」という目に見えない曖昧なものの全体像と、それを前進させるための論理的なアプローチが詰まっていました。私が登壇を通じて成し遂げたかったことはまさにこういう話です。&lt;/p&gt;
+
+&lt;p&gt;いっそ私のセッションは聞かずにこの本を読むだけでも十分でしょうし、私のセッションを聞いてよくわからないと感じた方やもっと踏み込んだことを知りたいと思った方には、染み入る一冊となることと思います。ぜひ手にとっていただければと思います。&lt;/p&gt;
+
+&lt;p&gt;以上、あとがきに代えて。&lt;/p&gt;</content><author><name></name></author><summary type="html">先日LINE DeveloperDay 2020にて『一人ひとりの「変えたい」を力に、11人で変化し続ける開発チームができるまで』と題して、私たちのチームの生々しい課題や取り組み、そして変化についてお話しました。</summary></entry><entry><title type="html">自分の本音と向き合う期待値マネジメント</title><link href="https://aloerina01.github.io/blog/2020-06-24-1" rel="alternate" type="text/html" title="自分の本音と向き合う期待値マネジメント" /><published>2020-06-24T00:00:00+00:00</published><updated>2020-06-24T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-24-1">&lt;p&gt;期待値を言語化する、期待値を伝える、期待値をすり合わせる。&lt;br /&gt;
 チームをマネジメントしたりサポートしたりすると、こういった期待値の調整をする場面はよくありますよね。&lt;/p&gt;
 
 &lt;p&gt;今回は期待される側ではなく&lt;strong&gt;期待する側&lt;/strong&gt;に注目して、「何を期待しているか」「どのように期待を伝えているか」について考えてみようと思います。私がチームマネジメントやスクラムマスターをしていてよく陥る失敗を思い返しながら、自分への注意喚起を兼ねて整理してみます。&lt;/p&gt;
@@ -988,159 +1092,4 @@ Github Actionsの結果を取得する&lt;a href=&quot;https://developer.github.
 
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 
-&lt;p&gt;振り返ってみると、どの疑問も自分が一度はぶち当たったことのあるものでした。今でも悩んでいる課題もありますが、上述したように「&lt;strong&gt;みんなでひとつの仕事をすればモブである&lt;/strong&gt;」と考えるようになってだいぶ肩の荷が下りました。もちろん方法論に沿ったほうがうまくいくことが多いとは思いますが、そこにこだわって悩むのではなく、&lt;strong&gt;方法に悩んだらそれすらモブで決めちゃおう&lt;/strong&gt;くらいの気持ちでいてもいいのかなと思います。せっかくなので楽しんでモブしたいですしね！ ハッピーモビング！&lt;/p&gt;</content><author><name></name></author><summary type="html">先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。</summary></entry><entry><title type="html">Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法</title><link href="https://aloerina01.github.io/blog/2019-06-21-1" rel="alternate" type="text/html" title="Babel7.4で非推奨になったbabel/polyfillの代替手段と設定方法" /><published>2019-06-21T00:00:00+00:00</published><updated>2019-06-21T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-06-21-1">&lt;p&gt;Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉&lt;br /&gt;
-これらに伴いpolyfill周りの設定方法が変わったので、その内容をメモしておこうと思います。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#babel-と-core-js-の関係のおさらい&quot; id=&quot;markdown-toc-babel-と-core-js-の関係のおさらい&quot;&gt;Babel と core-js の関係のおさらい&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#これからのpolyfill設定方法&quot; id=&quot;markdown-toc-これからのpolyfill設定方法&quot;&gt;これからのpolyfill設定方法&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法&quot; id=&quot;markdown-toc-1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法&quot;&gt;1. preset-env と useBuiltIns:usage で必要なpolyfillだけ読み込む方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法&quot; id=&quot;markdown-toc-2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法&quot;&gt;2. preset-env と useBuiltIns:entry で全polyfillを読み込む方法&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#3-transform-runtime-を使う方法&quot; id=&quot;markdown-toc-3-transform-runtime-を使う方法&quot;&gt;3. transform-runtime を使う方法&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#proposal-の使い方&quot; id=&quot;markdown-toc-proposal-の使い方&quot;&gt;Proposal の使い方&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;babel-と-core-js-の関係のおさらい&quot;&gt;Babel と core-js の関係のおさらい&lt;/h3&gt;
-
-&lt;p&gt;Babelが提供する @babel/polyfill や @babel/preset-env などのモジュールを利用すると&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;built-ins objects(Promise, WeakMap等)&lt;/li&gt;
-  &lt;li&gt;static methods(Object.assign, Array.from等)&lt;/li&gt;
-  &lt;li&gt;instance methods(Array.prototype.includes等)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といった新しい機能を使った実装が可能になりますよね。これらのBabelモジュールは &lt;strong&gt;core-js&lt;/strong&gt; が提供するpolyfillを内部的に読み込んでいます。特に &lt;strong&gt;@babel/polyfill は core-js と regenerator-runtime を束ねて提供するpolyfill集&lt;/strong&gt;です。&lt;/p&gt;
-
-&lt;p&gt;Babel7.4.0からはこの @babel/polyfill が非推奨になり、代わりに&lt;strong&gt;core-jsのバージョンを指定して直接読み込む&lt;/strong&gt;方法が提案されています。&lt;/p&gt;
-
-&lt;h3 id=&quot;これからのpolyfill設定方法&quot;&gt;これからのpolyfill設定方法&lt;/h3&gt;
-&lt;h4 id=&quot;1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法&quot;&gt;1. preset-env と useBuiltIns:usage で必要なpolyfillだけ読み込む方法&lt;/h4&gt;
-
-&lt;p&gt;@babel/preset-env は(指定した実行環境にあわせた)必要な構文変換や、polyfillの読み込みをしてくれるものです。そしてこのpresetのオプションの&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltins&lt;/code&gt;で「&lt;strong&gt;どのようにpolyfillを読み込むか&lt;/strong&gt;」を指定できます。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns: usage&lt;/code&gt;とし、必要なpolyfillだけを読み込む設定例から見ていきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;@babel/prest-env をinstallする&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/preset-env
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrc または babel.config.js でオプションを指定する&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nx&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@babel/preset-env&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;na&quot;&gt;useBuiltIns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;usage&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;na&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// or 2&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;指定したバージョンの core-js をinstallする&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; core-js@3  &lt;span class=&quot;c&quot;&gt;# or core-js@2&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns: usage&lt;/code&gt;とすると、コード内からpolyfillが必要な箇所を勝手に判断し、必要なcore-jsを勝手にimportしてくれます。このとき、&lt;strong&gt;core-js のバージョンも併せてオプションで指定し、それに応じた core-js をnpm installしておく必要がある&lt;/strong&gt;わけですね。&lt;/p&gt;
-
-&lt;p&gt;ちなみに執筆時点の公式ドキュメントでは&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns: usage&lt;/code&gt;はまだ&lt;strong&gt;experimental&lt;/strong&gt;となっているのですが、core-js@3 では多くの問題が解消されていてもはやexperimentalではないだろう…&lt;a href=&quot;https://github.com/babel/website/pull/1987/files#r265777607&quot; target=&quot;_blank&quot;&gt;とのこと&lt;/a&gt;です。&lt;/p&gt;
-
-&lt;h4 id=&quot;2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法&quot;&gt;2. preset-env と useBuiltIns:entry で全polyfillを読み込む方法&lt;/h4&gt;
-
-&lt;p&gt;上記と同様に @babel/preset-env を使う方法ですが、オプションの内容が変わります。&lt;code class=&quot;highlighter-rouge&quot;&gt;useBuiltIns: entry&lt;/code&gt;とし、index.js などのjsファイルの先頭にてpolyfillをimportすることで、全部のpolyfillを読み込む方法です。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;@babel/prest-env をinstallする&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/preset-env
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrc または babel.config.js でオプションを指定する&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nx&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@babel/preset-env&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-       &lt;span class=&quot;na&quot;&gt;useBuiltIns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-       &lt;span class=&quot;na&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// or 2&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;指定したバージョンの core-js と regenerator-runtime をinstallする&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; core-js@3  &lt;span class=&quot;c&quot;&gt;# or core-js@2&lt;/span&gt;
-npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; regenerator-runtime
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;jsファイルの先頭で core-js と regenerator-runtime をimportする&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;core-js/stable&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;regenerator-runtime/runtime&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// import &quot;@babel/polyfill&quot; 今まではこう指定していましたね&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;@babel/polyfill をimportしていた頃と同じ注意になりますが、core-js や regenerator-runtime 複数回importすると問題が起きる可能性があるので、bundleされるjsの冒頭で1度だけimportするように注意する必要があります。&lt;/p&gt;
-
-&lt;h4 id=&quot;3-transform-runtime-を使う方法&quot;&gt;3. transform-runtime を使う方法&lt;/h4&gt;
-
-&lt;p&gt;@babel/plugin-transform-runtime を使ってpolyfillを入れると、&lt;strong&gt;globalが汚染されないメリット&lt;/strong&gt;が得られる反面、&lt;strong&gt;instance methodsが使えないというデメリット&lt;/strong&gt;がありました。が、core-js@3に対応したことにより&lt;strong&gt;instance methodsが利用できるようになります&lt;/strong&gt;🎉&lt;/p&gt;
-
-&lt;p&gt;設定の際は、bundleに組み込まれる &lt;strong&gt;@babel/runtime&lt;/strong&gt; と、ビルド時にpolyfill変換などを担う &lt;strong&gt;@babel/plugin-transform-runtime&lt;/strong&gt; を用意します。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;@babel/runtime と @babel/plugin-transform-runtime をinstallする&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; @babel/runtime
-npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-D&lt;/span&gt; @babel/plugin-transform-runtime
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.babelrc または babel.config.js でオプションを指定する&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &lt;span class=&quot;nx&quot;&gt;presets&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@babel/plugin-transform-runtime&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}]&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;指定したバージョンの core-js をinstallする&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; core-js@3
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;proposal-の使い方&quot;&gt;Proposal の使い方&lt;/h3&gt;
-
-&lt;p&gt;@babel/preset-env または @babel/plugin-transform-runtime どちらを利用する場合であっても、core-js@3 ではProposalの機能も利用できるようになりました。設定方法はオプションの内容を変更するだけです。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// before&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nl&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// after&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; 
-  &lt;span class=&quot;nl&quot;&gt;corejs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nl&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;proposals&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;公式ドキュメントには「ECMAScriptの提案は本質的に不安定であり、core-js@4 では変わる可能性があります」との注意書きがありますので、ご承知おきを。&lt;/p&gt;
-
-&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/babel/website/pull/1987&quot; target=&quot;_blank&quot;&gt;https://github.com/babel/website/pull/1987&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/next/babel-polyfill.html&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/docs/en/next/babel-polyfill.html&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-plugin-transform-runtime&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/docs/en/babel-plugin-transform-runtime&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/docs/en/babel-preset-env&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/docs/en/babel-preset-env&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://babeljs.io/blog/2019/03/19/7.4.0&quot; target=&quot;_blank&quot;&gt;https://babeljs.io/blog/2019/03/19/7.4.0&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md&quot; target=&quot;_blank&quot;&gt;https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Babel7.4.0 から、長いことお世話になってきた @babel/polyfill が非推奨となりました。加えて、@babel/preset-env と @babel/ransform-runtime が core-js@3 に対応したようです🎉 これらに伴いpolyfill周りの設定方法が変わったので、その内容をメモしておこうと思います。</summary></entry></feed>
+&lt;p&gt;振り返ってみると、どの疑問も自分が一度はぶち当たったことのあるものでした。今でも悩んでいる課題もありますが、上述したように「&lt;strong&gt;みんなでひとつの仕事をすればモブである&lt;/strong&gt;」と考えるようになってだいぶ肩の荷が下りました。もちろん方法論に沿ったほうがうまくいくことが多いとは思いますが、そこにこだわって悩むのではなく、&lt;strong&gt;方法に悩んだらそれすらモブで決めちゃおう&lt;/strong&gt;くらいの気持ちでいてもいいのかなと思います。せっかくなので楽しんでモブしたいですしね！ ハッピーモビング！&lt;/p&gt;</content><author><name></name></author><summary type="html">先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。</summary></entry></feed>
