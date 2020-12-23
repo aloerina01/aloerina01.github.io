@@ -1,5 +1,136 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-12-18T08:56:16+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">自律的なチームと謙虚なリーダーシップの関係、またはLINE DevDay2020のあとがき</title><link href="https://aloerina01.github.io/blog/2020-12-18-1" rel="alternate" type="text/html" title="自律的なチームと謙虚なリーダーシップの関係、またはLINE DevDay2020のあとがき" /><published>2020-12-18T00:00:00+00:00</published><updated>2020-12-18T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-12-18-1">&lt;p&gt;先日LINE DeveloperDay 2020にて『&lt;strong&gt;一人ひとりの「変えたい」を力に、11人で変化し続ける開発チームができるまで&lt;/strong&gt;』と題して、私たちのチームの生々しい課題や取り組み、そして変化についてお話しました。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-12-23T05:32:13+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">私たちのリモートコミュニケーションをデータと共にふりかえる</title><link href="https://aloerina01.github.io/blog/2020-12-23-1" rel="alternate" type="text/html" title="私たちのリモートコミュニケーションをデータと共にふりかえる" /><published>2020-12-23T00:00:00+00:00</published><updated>2020-12-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-12-23-1">&lt;p&gt;私たちのチームは11人のフロントエンドエンジニアで構成されていて、今年は皆在宅勤務をしていました。リモート環境に移行した直後からコミュニケーションの方法には悩まされ試行錯誤してきたので、ここらでふりかえってみようと思います。&lt;/p&gt;
+
+&lt;p&gt;今回のふりかえりでは、明示的に取り組んでいるコミュニケーションを紹介し(暗黙的にしているコミュニケーションは今回のふりかえりの対象外とし)、その内容について&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;会話のラリーを目的とした双方向の場か ⇔ 情報伝達などを目的とした単方向の場か&lt;/li&gt;
+  &lt;li&gt;比較的雑談が多いか ⇔ 比較的業務的な話題が多いか&lt;/li&gt;
+  &lt;li&gt;全員集まることが少ない ⇔ 全員集まることが多い&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;という3つの軸で主観的なポイント付けをしてみようと思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;weekly-sync&quot;&gt;Weekly Sync&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;30分/週&lt;/li&gt;
+  &lt;li&gt;近い将来にやる案件の共有・把握&lt;/li&gt;
+  &lt;li&gt;直近のリリース内容の確認&lt;/li&gt;
+  &lt;li&gt;チケットのステータス更新確認、Merge済みブランチの掃除等の事務ワーク&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-weeklysync.jpg&quot; alt=&quot;Weekly Sync&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;daily-sync&quot;&gt;Daily Sync&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;チームメンバーの業務が比較的区切れる17:00~17:15開催&lt;/li&gt;
+  &lt;li&gt;月、火、木の週3回
+    &lt;ul&gt;
+      &lt;li&gt;水曜はWeekly Syncがあるためスキップ、金曜は予定被りのためスキップ&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;その日やったこと、困っていることの共有&lt;/li&gt;
+  &lt;li&gt;余った時間で雑談(余りがち)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-dailysync.jpg&quot; alt=&quot;Daily Sync&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;battleground&quot;&gt;Battleground&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;1時間/週&lt;/li&gt;
+  &lt;li&gt;技術相談をする場&lt;/li&gt;
+  &lt;li&gt;Slack channelに話したいトピックを随時記入しており、それについて話す場&lt;/li&gt;
+  &lt;li&gt;最近方向性をシフトして、ふりかえりと技術相談を交互開催するよう変更&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-battleground.jpg&quot; alt=&quot;Battleground&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;happy-hour&quot;&gt;Happy Hour&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;30分/週&lt;/li&gt;
+  &lt;li&gt;完全雑談時間&lt;/li&gt;
+  &lt;li&gt;ランダムでDJ担当を決めてBGMを流す&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-happyhour.jpg&quot; alt=&quot;Happyhour&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;モブワーク&quot;&gt;モブワーク&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;2時間/週&lt;/li&gt;
+  &lt;li&gt;モブプロの時間として始めたが、今では「プログラミング」以外のことをよくする
+    &lt;ul&gt;
+      &lt;li&gt;モブレビュー、勉強会、臨時のふりかえりなど&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;モブワークバックログをTrelloを使ってカンバン化
+    &lt;ul&gt;
+      &lt;li&gt;レーンは Idea, Ready, Doing, Done&lt;/li&gt;
+      &lt;li&gt;モブワーク開始時にReadyに入っているものの中から選んで実施&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-mobwork.jpg&quot; alt=&quot;Mobwork&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;daily勉強会廃止済み&quot;&gt;Daily勉強会(廃止済み)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;30分/週3回&lt;/li&gt;
+  &lt;li&gt;TypeScript導入直後に勉強会をするためにスタート&lt;/li&gt;
+  &lt;li&gt;1ヶ月くらい継続しTSの話題が一区切りした後は日替わりでいろんなネタを持ち寄り&lt;/li&gt;
+  &lt;li&gt;更に1ヶ月くらい経過した頃ネタが尽きたので廃止&lt;/li&gt;
+  &lt;li&gt;代わりに、勉強会したいネタが生まれたら臨時開催 or モブワークで実施する方針に&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-dailystudy.jpg&quot; alt=&quot;Daily勉強会&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;いきぬき会&quot;&gt;いきぬき会&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;2週間に1回、業務後開催&lt;/li&gt;
+  &lt;li&gt;だいたい2時間程度、ながれ解散&lt;/li&gt;
+  &lt;li&gt;2週に1度プロダクトのリリースがあり、その後に開催することが多い&lt;/li&gt;
+  &lt;li&gt;雑談、ゲーム、何でもOK&lt;/li&gt;
+  &lt;li&gt;最近はボードゲームアリーナで遊ぶことが多め&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-refresh.jpg&quot; alt=&quot;いきぬき会&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;slack雑談channel&quot;&gt;Slack雑談Channel&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;各自が雑談用Channelを持っている&lt;/li&gt;
+  &lt;li&gt;社内Twitterとして運用している人もいるし、猫写真Botと化している人もいるし、放置の人もいる&lt;/li&gt;
+  &lt;li&gt;雑談用Channelは全員作っているが、運用してもしなくてもいい、人のも見ても見なくてもいい&lt;/li&gt;
+  &lt;li&gt;業務用のチームChannelもあるので、そちらで業務の話題の合間に雑談していることも多い
+    &lt;ul&gt;
+      &lt;li&gt;先日チームChannelでAmong Usの募集をしていたくらい雑&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-zatsuchannel.jpg&quot; alt=&quot;雑談Channel&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;分布で見てみるとこんな感じになりました。円の大きさは「参加率」の大小です。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-graph.jpg&quot; alt=&quot;分布&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;意図せず万遍なく分布されました。万遍ないことが良いことだとは限りませんが、今のところちょうどいい塩梅だと感じています。強いて言うなら、全員が集まる場ではなくチームメンバーのうち何人かが小さく関わる機会があればと思いますが、各自の雑談用Channel内での会話が盛んであったり、困ったときに「手が空いてる人zoomで相談にのってくれません？」といった会話が1日数回生まれていることなどから、やはりちょうどいい状態なのかもしれません。&lt;/p&gt;
+
+&lt;p&gt;他にも四半期に1回開催している「ふりかえり総集編」やスポットで開催しているエクササイズなど、細かいコミュニケーションイベントはあるので、むしろ過剰にならないようなブレーキも大切かもしれないと改めて感じました。&lt;/p&gt;
+
+&lt;p&gt;ちなみにこの分布は私の主観を反映しただけのものなので、チームメンバーにも同様にふりかえってもらって&lt;strong&gt;チームメンバー全員の「ちょうどいい塩梅」&lt;/strong&gt;を探ってみても良さそうですね。来年チャレンジしてみたいです。&lt;/p&gt;
+
+&lt;p&gt;他にも、週あたりの「コミュニケーション時間」と「開発専念時間」を比較して実態と感覚があっているか、などもふりかえってみようと思いましたが、今回は手抜きでサボります。コミュニケーション時間はスキマ時間でもできることが多そうだけれど、開発専念時間はある程度まとめて確保したい、など時間の使い方にも違いがあると思うので、単純に総時間数だけで比較する難しさに打ちのめされました。&lt;/p&gt;
+
+&lt;p&gt;以上、私たちのチームのリモートコミュニケーションのふりかえりでした。皆さんのチームのアイデアも知りたいので、よければ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までコメントいただければと思います。&lt;/p&gt;
+
+&lt;p&gt;それでは良いお年を。&lt;/p&gt;</content><author><name></name></author><summary type="html">私たちのチームは11人のフロントエンドエンジニアで構成されていて、今年は皆在宅勤務をしていました。リモート環境に移行した直後からコミュニケーションの方法には悩まされ試行錯誤してきたので、ここらでふりかえってみようと思います。</summary></entry><entry><title type="html">自律的なチームと謙虚なリーダーシップの関係、またはLINE DevDay2020のあとがき</title><link href="https://aloerina01.github.io/blog/2020-12-18-1" rel="alternate" type="text/html" title="自律的なチームと謙虚なリーダーシップの関係、またはLINE DevDay2020のあとがき" /><published>2020-12-18T00:00:00+00:00</published><updated>2020-12-18T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-12-18-1">&lt;p&gt;先日LINE DeveloperDay 2020にて『&lt;strong&gt;一人ひとりの「変えたい」を力に、11人で変化し続ける開発チームができるまで&lt;/strong&gt;』と題して、私たちのチームの生々しい課題や取り組み、そして変化についてお話しました。&lt;/p&gt;
 
 &lt;iframe width=&quot;640&quot; height=&quot;360&quot; src=&quot;https://www.youtube.com/embed/yKcEYmj4JR4&quot; frameborder=&quot;0&quot; allow=&quot;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;
 &lt;p style=&quot;font-size:0.9rem;text-align:center&quot;&gt;セッション動画&lt;/p&gt;
@@ -1010,86 +1141,4 @@ Github Actionsの結果を取得する&lt;a href=&quot;https://developer.github.
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 &lt;p&gt;設計に関することは日々うにゃうにゃ考えているものの、当たり前の内容であったり状況次第で何とでも解釈できる内容であったりして、書き残すことにあまり意味を感じていませんでした。が、いざ設計しようと思ったときに考慮すべき観点や選択肢としてパッと浮かんでくるものは、やはり言語化して腹落ちしたものなんですよね。&lt;/p&gt;
 
-&lt;p&gt;また、言語化することでフィードバックをもらえたり議論のきっかけになったりする良さもあると思うので、1ヶ月後には意見が変わっているかもしれませんがこうして書き残す試みを今後もしていこうと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue + Vuexで中〜大規模なアプリケーションの開発をするとき、どんな設計にするか未だによく悩みます。試してみては捨ててを繰り返していて、そろそろ自分の中でベターなパターンを固めたいと思いつつも固まらず、気づけば数年経ちました。</summary></entry><entry><title type="html">みんなのモブプロの疑問に答えてみた</title><link href="https://aloerina01.github.io/blog/2019-07-25-1" rel="alternate" type="text/html" title="みんなのモブプロの疑問に答えてみた" /><published>2019-07-25T00:00:00+00:00</published><updated>2019-07-25T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-07-25-1">&lt;p&gt;先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。&lt;/p&gt;
-
-&lt;p&gt;ところで、このイベントでは参加者から質問を集める機会があったのですが、どれも身近に感じる質問だったので、自分の思考整理のために私の目線で答えて見ようと思います。現場の実例共有も兼ねて。&lt;/p&gt;
-
-&lt;h3 id=&quot;有識者が参加していない場合コードレビューをどうしていますか&quot;&gt;有識者が参加していない場合、コードレビューをどうしていますか？&lt;/h3&gt;
-
-&lt;p&gt;参加者に合わせてモブプロのゴールを調整しています。&lt;br /&gt;
-私のチームのモブプロでは有識者が参加しているケースが多いので、「GitHub上でのコードレビューなく即Mergeできる状態」を目指すことが多いです。とはいえ欠席が重なり有識者がいない場合もあるので、その際は「参加者の中では合意の取れた状態」を目指し、あとで有識者にレビューしてもらったりしています。急ぎでない場合は別の案件に取り組む、できる部分だけやる、といった選択をとることもあります。&lt;/p&gt;
-
-&lt;h3 id=&quot;暴走しがちな人がいる場合にどう対処しますか&quot;&gt;暴走しがちな人がいる場合にどう対処しますか？&lt;/h3&gt;
-
-&lt;p&gt;私のチームでは、ナビゲーターの一人だけが発言しまくるといった暴走よりも、ドライバーが一人でコードを書き進めちゃう暴走のほうが起きがちです。私もやりがちなのですが、コードを書いているうちに脳内で先読みが捗ってしまうんですよね。そして場を置き去りにしてひとりで書き進めちゃうんですよね…。&lt;/p&gt;
-
-&lt;p&gt;このとき「ちょっと待って」「声に出してから書いてみて」とブレーキをかけるのもナビゲーターの役目だと思っています。ナビゲーターの一人だけが発言している場合に「〇〇さんはどう思う？」と別の人に話を振ることも然り。モブの進め方を改善できるのはモブの参加者自身だと思うのです。&lt;/p&gt;
-
-&lt;h3 id=&quot;モブプロを定着させるために特別な取り組みをしましたか&quot;&gt;モブプロを定着させるために特別な取り組みをしましたか？&lt;/h3&gt;
-
-&lt;p&gt;私がチームにモブを導入したときは、&lt;strong&gt;みんなでひとつの仕事をすることを「モブ」と呼び&lt;/strong&gt;、モブは身近なものであるという認識を浸透させることを意識しました。具体的には&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;もともと開催していたコードレビュー会を「モブレビュー」と呼ぶようにした&lt;/li&gt;
-  &lt;li&gt;Slackにモブに関する情報共有のChannelを立てて情報発信した&lt;/li&gt;
-  &lt;li&gt;モブプロの時間を確保しトライアルした&lt;/li&gt;
-  &lt;li&gt;チームメンバーが議論している場に顔出し「モブしてるね！」と声掛けて回った&lt;/li&gt;
-  &lt;li&gt;実装に関する相談を受けたときに「モブでやっつけてみる？」と提案した&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といった感じです。今では自然と複数人で集まって問題解決する場面が増えてきたので、チームにモブという選択肢が浸透してきたように感じます。&lt;/p&gt;
-
-&lt;p&gt;きちんとドライバーとナビゲーターを決めインターバルを回すモブプロの形式にはなっていないこともありますが、&lt;strong&gt;モブの目的に適っていれば形式にはこだわらないようにしています&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h3 id=&quot;モブプロの目的をどう設定していますか&quot;&gt;モブプロの目的をどう設定していますか？&lt;/h3&gt;
-
-&lt;p&gt;端的にいうと「&lt;strong&gt;フロー効率をよくすること&lt;/strong&gt;」を目的にしていて、説明するときはフロー効率の改善によって得られる作用に焦点を当てて話したりしています。モブの目的にについては『&lt;a href=&quot;https://aloerina01.github.io/blog/2019-03-12-1#%E3%81%AA%E3%81%9C%E3%83%A2%E3%83%96%E3%83%97%E3%83%AD%E3%82%92%E3%81%99%E3%82%8B%E3%81%AE&quot;&gt;「モブプログラミング・ベストプラクティス」読んだのでモブプロの魅力と始め方をまとめる&lt;/a&gt;』もあわせてどうぞ。&lt;/p&gt;
-
-&lt;h3 id=&quot;非エンジニアにモブプロのメリットをどう説明しますか&quot;&gt;非エンジニアにモブプロのメリットをどう説明しますか？&lt;/h3&gt;
-
-&lt;p&gt;幸運にも開発プロセスについて裁量を与えてもらえる環境なので、「モブプロをやることを許可してもらうための説得」といった難易度の高い説明を経験したことがありません。&lt;/p&gt;
-
-&lt;p&gt;ですがプランナーなどの非エンジニアにモブプロの手法を紹介したときは、エンジニアに伝えるときと同様にリソース効率とフロー効率の違いをとっかかりとし、レビュー待ち時間などによりリードタイムがかかった体験談などを交え、モブプロという手段を選択する理由を伝えました。また、&lt;strong&gt;実際にモブプロに参加してもらったり&lt;/strong&gt;様子を撮影して見せることでその場の雰囲気を知ってもらい、「自分たちも試してみようか」と感じてもらうことを目指して説明しました。&lt;/p&gt;
-
-&lt;p&gt;ちなみに、ここでも「モブプロ」ではなく「モブ」という言葉を意識的に使うようにしています。モブプロの方法論には言及せず、モブの身近さを実感してもらうことでメリットを想像しやすい状態をつくることを意識しています。&lt;/p&gt;
-
-&lt;h3 id=&quot;どうしてもモブプロをしたくない人がいる場合どうしますか&quot;&gt;どうしてもモブプロをしたくない人がいる場合どうしますか？&lt;/h3&gt;
-
-&lt;p&gt;モブプロあるいはモブは&lt;strong&gt;手段のひとつ&lt;/strong&gt;です。ですので、やりたくない人がいるのであれば強制する必要はないはずです。&lt;/p&gt;
-
-&lt;p&gt;ただ、モブプロをしたくないと感じる背景を知ることができれば、そこに何かしらの&lt;strong&gt;改善のヒント&lt;/strong&gt;があるように感じます。&lt;br /&gt;
-やったことないけれどやりたくないと主張する人がいる場合は、モブ以前に「何か案が出たらとりあえず試してみる」というマインドをチームに浸透させることが必要かもしれません。&lt;br /&gt;
-逆に過去にモブプロを経験した上でやりたくないと主張する人がいる場合は、モブのメリットを実感できなかったのかもしれません。どんな点がまずかったのかを聞き、今の自分たちのモブが同じ状態ではないかを見つめ直し、問題ないようであればその旨を伝えてみると良いかもしれません。&lt;/p&gt;
-
-&lt;p&gt;いずれにせよ、やりたくない人がいるということは改善のきっかけを得るチャンスです！&lt;/p&gt;
-
-&lt;h3 id=&quot;モブプロに合う内容合わない内容はありますか&quot;&gt;モブプロに合う内容・合わない内容はありますか？&lt;/h3&gt;
-
-&lt;p&gt;設計やリファクタリングなど、&lt;strong&gt;人によって結果や過程に差が出やすいものは向いている&lt;/strong&gt;と感じます。また、暗黙のテクニックがあるような難解なデバッグや、環境による差が起きやすい環境構築なども実践してみて好感でした。&lt;br /&gt;
-一方、修正方法が誰の目からも明らかな不具合修正や、誰がやっても過程・結果が変わらない単純作業などは向かないと思っています。&lt;/p&gt;
-
-&lt;h3 id=&quot;モブプロに最適な人数は何人ですか&quot;&gt;モブプロに最適な人数は何人ですか？&lt;/h3&gt;
-
-&lt;p&gt;小規模で全員が「ちゃんと」参加できる目安は4〜6人くらいかな、というのが体感です。『モブプログラミング・ベストプラクティス』には3〜4人がちょうど良いと書かれていましたし、私の現場では9人くらいでうまくできたと感じるケースもありましたので、あくまで目安です。ただ始めたばかりの頃は少なすぎても多すぎても難しく、4〜6人が安定しやすかった印象です。&lt;/p&gt;
-
-&lt;h3 id=&quot;ドライバーは何分交代でやっていますか&quot;&gt;ドライバーは何分交代でやっていますか？&lt;/h3&gt;
-
-&lt;p&gt;その時々によりますが、15分〜30分交代が多いです。&lt;br /&gt;
-何分のインターバルにしても、最後の1分は&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ドライバーがgit commitする&lt;/li&gt;
-  &lt;li&gt;次のドライバーがgit pullする&lt;/li&gt;
-  &lt;li&gt;次のドライバーが書き始められるよう準備する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;にあてています。&lt;/p&gt;
-
-&lt;h3 id=&quot;人前でコードを書くのは緊張しませんか&quot;&gt;人前でコードを書くのは緊張しませんか？&lt;/h3&gt;
-
-&lt;p&gt;私も人前でコードを書くときは緊張しがちですが、モブプロではあまり緊張しません。&lt;br /&gt;
-私の場合「考えている過程」や「未完成なコード」を見られることで能力が低いと感じ取られてしまわないか……という不安があり緊張してしまう傾向にあります。ですがドライバーは&lt;strong&gt;ナビゲーターの言うとおりに書く&lt;/strong&gt;ことがほとんどなので、みんなの意見を反映するタイピスト(兼 質問して議論を掘り下げるファシリテーター)のような感覚で臨んでいます。ちょっとした気持ちの違いですが、これでけっこう緊張をほぐせています。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;振り返ってみると、どの疑問も自分が一度はぶち当たったことのあるものでした。今でも悩んでいる課題もありますが、上述したように「&lt;strong&gt;みんなでひとつの仕事をすればモブである&lt;/strong&gt;」と考えるようになってだいぶ肩の荷が下りました。もちろん方法論に沿ったほうがうまくいくことが多いとは思いますが、そこにこだわって悩むのではなく、&lt;strong&gt;方法に悩んだらそれすらモブで決めちゃおう&lt;/strong&gt;くらいの気持ちでいてもいいのかなと思います。せっかくなので楽しんでモブしたいですしね！ ハッピーモビング！&lt;/p&gt;</content><author><name></name></author><summary type="html">先日モブプロMeetupが開催されました。モブプロに関する知見や悩みが共有されて、モブプロの楽しさや難しさを再認識できる良い時間でした。</summary></entry></feed>
+&lt;p&gt;また、言語化することでフィードバックをもらえたり議論のきっかけになったりする良さもあると思うので、1ヶ月後には意見が変わっているかもしれませんがこうして書き残す試みを今後もしていこうと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue + Vuexで中〜大規模なアプリケーションの開発をするとき、どんな設計にするか未だによく悩みます。試してみては捨ててを繰り返していて、そろそろ自分の中でベターなパターンを固めたいと思いつつも固まらず、気づけば数年経ちました。</summary></entry></feed>
