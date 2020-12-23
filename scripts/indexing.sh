@@ -41,9 +41,9 @@ check_force_publish () {
 
 check_diff () {
   latest_sha=$(curl "$github_commit_api?sha=development" | jq -r .[1].sha)
-  message "Revisions: $trigger_sha...$latest_sha"
+  message "Revisions: $latest_sha...$trigger_sha"
   [[ -z "$trigger_sha" || -z "$latest_sha" || "$latest_sha" = "null" ]] && err "Revisions could not be found." && exit 1
-  diff=$(git diff --name-only $trigger_sha...$latest_sha | grep -E "^.*_posts.*$")
+  diff=$(git diff --name-only $trigger_sha $latest_sha | grep -E "^.*_posts.*$")
   if [[ -z "$diff" ]]; then
     success "No diff in /_posts/" && exit 0
   else
