@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-12-23T05:32:13+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-12-23T05:54:57+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">私たちのリモートコミュニケーションをデータと共にふりかえる</title><link href="https://aloerina01.github.io/blog/2020-12-23-1" rel="alternate" type="text/html" title="私たちのリモートコミュニケーションをデータと共にふりかえる" /><published>2020-12-23T00:00:00+00:00</published><updated>2020-12-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-12-23-1">&lt;p&gt;私たちのチームは11人のフロントエンドエンジニアで構成されていて、今年は皆在宅勤務をしていました。リモート環境に移行した直後からコミュニケーションの方法には悩まされ試行錯誤してきたので、ここらでふりかえってみようと思います。&lt;/p&gt;
 
 &lt;p&gt;今回のふりかえりでは、明示的に取り組んでいるコミュニケーションを紹介し(暗黙的にしているコミュニケーションは今回のふりかえりの対象外とし)、その内容について&lt;/p&gt;
@@ -181,7 +181,7 @@
   &lt;p&gt;不測の事態や相互作用が急激に増えると、深刻な不調の兆しが多くの組織で見られるようにある&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;という記述は、私がセッション内でお伝えした「相互理解があることで課題に自律的に対処できる」ということを、視点を変えて「&lt;strong&gt;相互作用の問題が増えると組織に課題が現れる&lt;/strong&gt;」と説明しているのだと感じました。&lt;/p&gt;
+&lt;p&gt;という記述は、私がセッション内でお伝えした「相互理解があることで課題に自律的に対処できる」ということを、視点を変えて「&lt;strong&gt;相互作用の問題が増えると組織に課題が現れる&lt;/strong&gt;」と説明しているのだと感じました。&lt;/p&gt;
 
 &lt;p&gt;そして適切な関係性を引き出すためのファシリテーションや支援スキルが、組織のあらゆるレベルで発揮される必要があると伝え、関係構築にまつわるスキルを&lt;code class=&quot;highlighter-rouge&quot;&gt;謙虚なリーダーシップの真髄&lt;/code&gt;と表現しその中身を掘り下げています。&lt;/p&gt;
 
