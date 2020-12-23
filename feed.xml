@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-12-23T05:54:57+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2020-12-23T07:14:08+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">私たちのリモートコミュニケーションをデータと共にふりかえる</title><link href="https://aloerina01.github.io/blog/2020-12-23-1" rel="alternate" type="text/html" title="私たちのリモートコミュニケーションをデータと共にふりかえる" /><published>2020-12-23T00:00:00+00:00</published><updated>2020-12-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-12-23-1">&lt;p&gt;私たちのチームは11人のフロントエンドエンジニアで構成されていて、今年は皆在宅勤務をしていました。リモート環境に移行した直後からコミュニケーションの方法には悩まされ試行錯誤してきたので、ここらでふりかえってみようと思います。&lt;/p&gt;
 
 &lt;p&gt;今回のふりかえりでは、明示的に取り組んでいるコミュニケーションを紹介し(暗黙的にしているコミュニケーションは今回のふりかえりの対象外とし)、その内容について&lt;/p&gt;
@@ -122,7 +122,7 @@
 
 &lt;p&gt;意図せず万遍なく分布されました。万遍ないことが良いことだとは限りませんが、今のところちょうどいい塩梅だと感じています。強いて言うなら、全員が集まる場ではなくチームメンバーのうち何人かが小さく関わる機会があればと思いますが、各自の雑談用Channel内での会話が盛んであったり、困ったときに「手が空いてる人zoomで相談にのってくれません？」といった会話が1日数回生まれていることなどから、やはりちょうどいい状態なのかもしれません。&lt;/p&gt;
 
-&lt;p&gt;他にも四半期に1回開催している「ふりかえり総集編」やスポットで開催しているエクササイズなど、細かいコミュニケーションイベントはあるので、むしろ過剰にならないようなブレーキも大切かもしれないと改めて感じました。&lt;/p&gt;
+&lt;p&gt;今回は取り上げませんでしたが、四半期に1回開催している「ふりかえり総集編」やスポットで開催しているエクササイズなど細かいコミュニケーションイベントはあるので、むしろ過剰にならないようなブレーキも大切かもしれないと改めて感じました。&lt;/p&gt;
 
 &lt;p&gt;ちなみにこの分布は私の主観を反映しただけのものなので、チームメンバーにも同様にふりかえってもらって&lt;strong&gt;チームメンバー全員の「ちょうどいい塩梅」&lt;/strong&gt;を探ってみても良さそうですね。来年チャレンジしてみたいです。&lt;/p&gt;
 
