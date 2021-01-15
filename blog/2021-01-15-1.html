@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>JavaScriptの新しいモジュールバンドラ rollup.js とは</title>
-  <meta name="description" content="JavaScriptのモジュール間の依存解決と言えば今までBrowserifyやWebpackがメジャーどころでしたが、それらに新しいお仲間が登場したようです。ES6をベースとしていて、Tree-shakingがウリというrollup.jsとは一体どんなものなのか、簡単に調べてまとめてみました。">
+  <title>Daily Scrum の3つの質問を再考する</title>
+  <meta name="description" content="スクラムガイド2020年版からは記載がなくなっちゃいましたが、かつてはDaily Scrumで使える3つの質問というものがありました。私たちもこれを実践してきたのですが、今ひとつうまくいかない感覚があったので、自分たちに合う3つの質問について考えてみました。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2021">
@@ -38,10 +38,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="JavaScriptのモジュール間の依存解決と言えば今までBrowserifyやWebpackがメジャーどころでしたが、それらに新しいお仲間が登場したようです。ES6をベースとしていて、Tree-shakingがウリというrollup.jsとは一体どんなものなのか、簡単に調べてまとめてみました。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-01-10-1" />
+  <meta property="og:description" content="スクラムガイド2020年版からは記載がなくなっちゃいましたが、かつてはDaily Scrumで使える3つの質問というものがありました。私たちもこれを実践してきたのですが、今ひとつうまくいかない感覚があったので、自分たちに合う3つの質問について考えてみました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2021-01-15-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="JavaScriptの新しいモジュールバンドラ rollup.js とは" />
+  <meta property="og:title" content="Daily Scrum の3つの質問を再考する" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -52,17 +52,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JavaScriptの新しいモジュールバンドラ rollup.js とは">
-  <meta name="twitter:description" content="JavaScriptのモジュール間の依存解決と言えば今までBrowserifyやWebpackがメジャーどころでしたが、それらに新しいお仲間が登場したようです。ES6をベースとしていて、Tree-shakingがウリというrollup.jsとは一体どんなものなのか、簡単に調べてまとめてみました。">
+  <meta name="twitter:title" content="Daily Scrum の3つの質問を再考する">
+  <meta name="twitter:description" content="スクラムガイド2020年版からは記載がなくなっちゃいましたが、かつてはDaily Scrumで使える3つの質問というものがありました。私たちもこれを実践してきたのですが、今ひとつうまくいかない感覚があったので、自分たちに合う3つの質問について考えてみました。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-01-10-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2021-01-15-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-01-10-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2021-01-15-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   
@@ -74,8 +74,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/blog/2017-01-10-1',
-      'title': 'JavaScriptの新しいモジュールバンドラ rollup.js とは'
+      'page': '/blog/2021-01-15-1',
+      'title': 'Daily Scrum の3つの質問を再考する'
     });
   </script>
   
@@ -145,8 +145,8 @@
         
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2017-01-10-1">
-            <span itemprop="name">JavaScriptの新しいモジュールバンドラ rollup.js とは</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2021-01-15-1">
+            <span itemprop="name">Daily Scrum の3つの質問を再考する</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -161,7 +161,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">JavaScriptの新しいモジュールバンドラ rollup.js とは</h1>
+            <h1 class="title">Daily Scrum の3つの質問を再考する</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -173,76 +173,70 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2017-01-10</div>
+          <div class="post-date">2021-01-15</div>
           <div class="post-categories">
             
             <i class="fas fa-fw fa-tag"></i>
              
-            <a href="/category/javascript/">JavaScript</a>,    
-            <a href="/category/environment/">Environment</a>   
+            <a href="/category/scrum/">Scrum</a>,    
+            <a href="/category/retrospective/">Retrospective</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <h3 id="rollupjs-とは"><a href="http://rollupjs.org/">rollup.js</a> とは</h3>
-<p>ES6ネイティブなモジュールバンドラ。<br />
-簡単に言うと、なんでもかんでもまずES6として依存性解決をした上で、それをbabel等で任意のものに変換しようというもの。内部処理がES6を前提としている、ということです。</p>
+          <p>かつてスクラムガイドにも載っていましたが、Daily Scrum でよく使われる「3つの質問」というものがありました。大雑把に書くと以下の3つです。</p>
 
-<h3 id="es6ネイティブのいいところ">ES6ネイティブのいいところ</h3>
-<p>ES6でのモジュール機構(<code class="highlighter-rouge">import/export</code>)の仕組みは、<strong>静的である</strong>というのが一番の利点です。静的というのは、<strong>コンパイル時に諸々いい感じになる</strong>ということです。従来の(生の)JavaScriptにはコンパイルの概念がなく基本的には依存関係でも変数でも何でも実行時に決まるものですが、これがコンパイル時に決まるということです。</p>
-
-<h3 id="tree-shaking">Tree-shaking</h3>
-<p>閑話休題。rollup.jsがES6ベースであることで得られる大きなメリットの一つが、<strong>Tree-shaking</strong>だそうです(<a href="http://rollupjs.org/">公式</a>より)。つまるところ<strong>Dead Code Elimination</strong>っぽいです。  
-具体的には、内部で不要な<code class="highlighter-rouge">export</code>を削除してくれるということです。Dead Code Eliminationしてくれるという点は、コンパイルと呼ぶにふさわしいですね。</p>
-
-<h3 id="how-to-use">How to use</h3>
-
-<h4 id="インストール">インストール</h4>
-
-<h5 id="rollupjsのインストール">rollup.jsのインストール</h5>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-D</span> rollup
-</code></pre></div></div>
-
-<h5 id="関連するプラグインのインストール">関連するプラグインのインストール</h5>
-
+<div class="note">
 <ul>
-  <li><code class="highlighter-rouge">rollup-plugin-node-resolve</code>  - これないとnom-modulesが使えない</li>
-  <li><code class="highlighter-rouge">rollup-plugin-commonjs</code>  - これないとCommonJSを読み込めない</li>
-  <li><code class="highlighter-rouge">rollup-plugin-babel</code>  - 今回はbabeってES5を吐き出すところまでする</li>
-  <li><code class="highlighter-rouge">babel-preset-es2015-rollup</code>  - 同上</li>
+<li>昨日何をしたか</li>
+<li>今日何をするか</li>
+<li>障害や困っていることはあるか</li>
 </ul>
+</div>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">-D</span> rollup-plugin-node-resolve rollup-plugin-commonjs rollup-plugin-babel babel-preset-es2015-rollup
-</code></pre></div></div>
+<p>私達のチームも今までこれを実践してきましたが、作業報告・進捗報告を一方的にしているだけで、誰が聞いているのかも誰の役に立っているのかも分からないと感じることがしばしばありました。</p>
 
-<h4 id="コンフィグファイル">コンフィグファイル</h4>
+<p>その原因はいろいろあります。<br />
+例えばその一つになり得るものを挙げると、当時私たちのチームは「1つの仕事を全員で片付ける」ということができていませんでした。フロントエンドエンジニアは開発案件のフロントエンドのみを対応していて、そうすると次第にフロントエンドエンジニアとバックエンドエンジニアとで進行する案件がズレてきます。その結果他の人の仕事への関心が薄れていったり、内容を聞いても理解できず他人事となったりしていました。</p>
 
-<h5 id="rollupconfigjs">rollup.config.js</h5>
-<script src="https://gist.github.com/aloerina01/d047155a90370f4a69199301285cff6d.js"></script>
+<p>もちろんこういった一つ一つがチームの課題であって、これを改善することが根本的には必要です。だけれどもそれには時間がかかるし、組織的な都合や壁などもあります。そのすべてが解決されるまでの間ずっと Daily Scrum が役立たない時間になってしまうのは嫌ですよね。</p>
 
-<h5 id="babelrc-いつものアレ">.babelrc いつものアレ</h5>
+<p>そこで「<strong>互いの業務内容は40〜70％程度の理解でも、お互いの状況を適切に理解しあってスプリントゴールへ向けた再調整を実践する</strong>」ための3つの質問を再考してみました。</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-  <span class="dl">"</span><span class="s2">presets</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span> <span class="dl">"</span><span class="s2">es2015-rollup</span><span class="dl">"</span> <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<div class="revision">
+<ul>
+<li>昨日は何％くらいのパフォーマンスを発揮できたか</li>
+<li>その要因は何だと感じたか</li>
+<li>スプリントの計画に変更は必要そうか</li>
+</ul>
+</div>
 
-<h5 id="packagejson-こっちもいつものアレ">package.json こっちもいつものアレ</h5>
+<p>1つずつ意図を説明していきます。</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
-	<span class="nl">scripts</span><span class="p">:</span> <span class="p">{</span>
-		<span class="dl">"</span><span class="s2">build</span><span class="dl">"</span> <span class="p">:</span> <span class="dl">"</span><span class="s2">rollup -c</span><span class="dl">"</span>  <span class="c1">// コンフィグを利用する場合は -c / --config</span>
-	<span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<h3 id="1昨日は何くらいのパフォーマンスを発揮できたか">1. 昨日は何％くらいのパフォーマンスを発揮できたか</h3>
 
-<h4 id="実行">実行</h4>
+<p>簡単に言えば自己採点です。「仕事が進んだかどうか」または「やったかどうか」ではなく、どれくらいのパフォーマンスを発揮できたかを伝え合います。</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
-</code></pre></div></div>
+<p>たとえば連日100％のパフォーマンスを発揮していると伝えていたがスプリント終了時にプランニングした内容が完了しなかった場合、そのプランニングには無理があった可能性があるでしょう。<br />
+たとえばパフォーマンスが50％の日が続くメンバーがいる場合、スプリントゴールが達成されない可能性があるので何らかのリカバリーが必要だろうと気付けるかもしれません。</p>
 
-<h3 id="かんそう">かんそう</h3>
-<p>コンフィグファイルもすっきりしてて読みやすいし、Tree-shakingもイケてる考え方だし、導入のハードルも高くないし、いい感じのような気がします。とは言え、こういう噛ませ役はいずれなくなってくれることを願って、置き換えの効く最小のものを利用するという考え方が一番な気がしますね。</p>
+<p>互いの仕事内容を詳細まで正確に理解しあっていなかったとしても、この質問であれば進行度合いをざっくりと把握し合えるのではないかと思います。</p>
+
+<h3 id="2-その要因は何だと感じたか">2. その要因は何だと感じたか</h3>
+
+<p>パフォーマンスが左右される要因は人によって違いますし、状況によっても違います。ミーティングが多くて作業時間が細切れになることが影響するかもしれないし、花粉症のせいで集中が途切れるかもしれないし、明日に控えたプロポーズのことで頭がいっぱいになっているかもしれません。</p>
+
+<p>プライベートな要因すべてを赤裸々に語る必要はないですが、負荷やストレッサーを知り合うことでフォローし合える場面は確実に増えるでしょうし、互いがハイパフォーマンスを維持できる状況を理解しあうことで環境づくりに貢献し合えるはずです。この質問は Daily Scrum の回数を重ねるごとに価値を発揮することでしょう。</p>
+
+<h3 id="3-スプリントの計画に変更は必要そうか">3. スプリントの計画に変更は必要そうか</h3>
+
+<p>言い換えれば「このままのペースでスプリントゴールを達成できそうか」ということです。ただ、「達成できそうか」と聞かれると反射的・楽観的に「大丈夫」と答えたくなってしまうような気がするので、少しでも多くの可能性を考えやすくなればと思い「変更は必要そうか」という問いにしてみました。</p>
+
+<p>パフォーマンスがいかほどかとその要因が何かを明らかにした後、それらを踏まえてスプリントの計画が達成できそうかを見つめ直すことができれば、Daily Scrum の目的は果たせるのではないでしょうか。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>現時点では「再考」しただけで「実践」していません。試してみたら全然駄目かもしれませんが、近いうちに実践しレポートしてみようと思います。</p>
 
         </article>
 
@@ -257,7 +251,7 @@
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=JavaScript%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9+rollup.js+%E3%81%A8%E3%81%AF&url=https://aloerina01.github.io/blog/2017-01-10-1&via=aloerina_&hashtags=JavaScript,Environment,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Daily+Scrum+%E3%81%AE3%E3%81%A4%E3%81%AE%E8%B3%AA%E5%95%8F%E3%82%92%E5%86%8D%E8%80%83%E3%81%99%E3%82%8B&url=https://aloerina01.github.io/blog/2021-01-15-1&via=aloerina_&hashtags=Scrum,Retrospective,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <i class="fab fa-twitter fa-inverse"></i>
             </a>
@@ -272,7 +266,7 @@
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=JavaScript%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9+rollup.js+%E3%81%A8%E3%81%AF&u=https://aloerina01.github.io/blog/2017-01-10-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Daily+Scrum+%E3%81%AE3%E3%81%A4%E3%81%AE%E8%B3%AA%E5%95%8F%E3%82%92%E5%86%8D%E8%80%83%E3%81%99%E3%82%8B&u=https://aloerina01.github.io/blog/2021-01-15-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <i class="fab fa-facebook-f fa-inverse"></i>
             </a>
@@ -407,7 +401,7 @@
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2017-01-10-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2021-01-15-1" target="_blank">
               <i class="fab fa-get-pocket fa-inverse"></i>
             </a>
             
@@ -421,7 +415,7 @@
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?JavaScript%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%83%90%E3%83%B3%E3%83%89%E3%83%A9+rollup.js+%E3%81%A8%E3%81%AF%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2017-01-10-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Daily+Scrum+%E3%81%AE3%E3%81%A4%E3%81%AE%E8%B3%AA%E5%95%8F%E3%82%92%E5%86%8D%E8%80%83%E3%81%99%E3%82%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2021-01-15-1">
               <img src="/assets/thirdparty/linebutton.png" />
             </a>
             
@@ -461,15 +455,15 @@
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2016-10-07-1">npm + gulp + webpack でつくるES6/sass開発環境</a></li>
+      <li><a href="/blog/2019-04-15-1">テックリードになる前後にやっていたこと</a></li>
       
-      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      <li><a href="/blog/2018-04-13-1">経験の棚卸し 2018年4月編</a></li>
       
-      <li><a href="/blog/2017-02-28-1">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a></li>
+      <li><a href="/blog/2020-04-16-1">わたしのふりかえりデザインテンプレート</a></li>
       
-      <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
+      <li><a href="/blog/2019-12-10-1">ゲームをみんなでやったら自然とモブプロに入門できた話</a></li>
       
-      <li><a href="/blog/2018-08-01-1">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</a></li>
+      <li><a href="/blog/2017-07-25-1">lazyloadの解剖学</a></li>
       
     </div>
   </div>
