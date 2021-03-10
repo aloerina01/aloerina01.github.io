@@ -16,10 +16,10 @@
   <link rel="manifest" href="/manifest.json">
   <!-- External libraries -->
   <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
-  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
-  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
-  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/prism.css">
+  <link rel="stylesheet" async href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
+  <link rel="stylesheet" async href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
+  <link rel="stylesheet" async href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
+  <link rel="stylesheet" async href="/css/prism.css">
   
   <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
   <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
@@ -81,14 +81,6 @@
   
 
   
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  <script>
-    (adsbygoogle = window.adsbygoogle || []).push({
-      google_ad_client: "ca-pub-4850874764930854",
-      enable_page_level_ads: true
-    });
-  </script>
-  
 
   <script src="/dist/prism.js" defer></script>
 </head>
@@ -100,7 +92,7 @@
   <div class="navigation-wrapper">
     <a href="/" class="logo">
       
-      <img src="/assets/logo.png" alt="mille-feuille code"> 
+      <img src="/assets/logo.webp" alt="mille-feuille code" loading="lazy"> 
     </a>
     <a class="navigation-menu-button" id="js-mobile-menu-icon">
       <i class="fas fa-bars"></i>
@@ -117,10 +109,10 @@
         </li>
          
         <li class="nav-link">
-          <a href="/blogs">Blog</a>
+          <a href="https://note.com/aloerina"target="_blank" rel="noopener noreferrer">Poem</a>
             
         <li class="nav-link">
-          <a href="/tips">Tips</a>
+          <a href="https://suzuri.jp/aloerina"target="_blank" rel="noopener noreferrer">Shop</a>
             
         <li class="nav-link">
           <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
@@ -195,7 +187,7 @@
 </div>
 
 <ul id="markdown-toc">
-  <li><a href="#失敗例1-template-methodパターン意識したmixin" id="markdown-toc-失敗例1-template-methodパターン意識したmixin">失敗例1. Template Methodパターン意識したmixin</a>    <ul>
+  <li><a href="#失敗例1-template-methodパターンを意識したmixin" id="markdown-toc-失敗例1-template-methodパターンを意識したmixin">失敗例1. Template Methodパターンを意識したmixin</a>    <ul>
       <li><a href="#-暗黙的挙動の危うさ" id="markdown-toc--暗黙的挙動の危うさ"><i class="fas fa-exclamation-triangle"></i> 暗黙的挙動の危うさ</a></li>
       <li><a href="#-overrideではなくmergeしているだけ" id="markdown-toc--overrideではなくmergeしているだけ"><i class="fas fa-exclamation-triangle"></i> OverrideではなくMergeしているだけ</a></li>
       <li><a href="#-classの継承とmixinは本質的に違う" id="markdown-toc--classの継承とmixinは本質的に違う"><i class="fas fa-exclamation-triangle"></i> Classの継承とmixinは本質的に違う</a></li>
@@ -220,9 +212,9 @@
   <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
 </ul>
 
-<h3 id="失敗例1-template-methodパターン意識したmixin">失敗例1. Template Methodパターン意識したmixin</h3>
+<h3 id="失敗例1-template-methodパターンを意識したmixin">失敗例1. Template Methodパターンを意識したmixin</h3>
 
-<p>Componentが必ず実装しなければならないmethodsを定義したmixinを用意し、それを読み込んだComponentで必要に応じてmethodsをOverride方法です(既に失敗しそうな匂いがしますね…)。</p>
+<p>「Componentに必ず実装したいmethods群」を定義したmixinを用意し、Component側で必要に応じてmethodsをOverride方法です(既に失敗しそうな匂いがしますね…)。</p>
 
 <p>以下のサンプルコードは、とある1画面を表現する MainPageContainer.vue と、どの画面にも必要な共通処理を抜き出した pageContainerMixin.js です。</p>
 
@@ -800,17 +792,19 @@
         <div class="profile-content-description">
           <p><span>Web developer</span></p>
           <p>
-            <span>Webアプリの開発、エンジニアリングマネジメント、スクラムマスターなどをしています。</span>
+            <span>Webアプリの開発、エンジニアリングマネジメント、スクラムマスターなどをしています。趣味でドット絵グッズをつくっています。</span>
           </p>
         </div>
         <div class="profile-content-sns">
           <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon">
               <i class="fab fa-twitter"></i>
           </a>
+          <a target="_blank" href="https://www.instagram.com/pixtrium/" rel="noopener noreferrer" class="sns-icon">
+            <i class="fab fa-instagram"></i>
+        </a>
           <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" rel="noopener noreferrer" class="sns-icon sns-icon-envelope">
               <i class="fas fa-envelope"></i>
           </a>
-          
           <a target="_blank" href="/feed.xml" rel="noopener noreferrer" class="sns-icon">
               <i class="fas fa-rss"></i>
           </a>
@@ -947,7 +941,7 @@
     <div class="donation-button-area">
         <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
           <p class="button-body">
-            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" loading="lazy"></img>
             <span class="label">ごちそうする</span>
           </p>
         </a>
