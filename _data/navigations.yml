@@ -1,8 +1,10 @@
-- title: 'Blog'
-  url: '/blogs'
+- title: 'Poem'
+  url: 'https://note.com/aloerina'
+  isAnotherTab: true
 
-- title: 'Tips'
-  url: '/tips'
+- title: 'Shop'
+  url: 'https://suzuri.jp/aloerina'
+  isAnotherTab: true
 
 - title: 'Contact'
   url: 'https://goo.gl/forms/VKcqNYwtEjDUNyN92'
