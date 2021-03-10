@@ -2,7 +2,7 @@
   <div class="navigation-wrapper">
     <a href="{{ site.baseurl }}/" class="logo">
       {% if site.logo %}
-      <img src="{{ site.logo | prepend: site.baseurl }}" alt="{{ site.title }}"> {% else %}
+      <img src="{{ site.logo | prepend: site.baseurl }}" alt="{{ site.title }}" loading="lazy"> {% else %}
       <span>{{ site.title }}</span>
       {% endif %}
     </a>

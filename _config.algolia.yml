@@ -60,7 +60,7 @@ description: >
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "https://aloerina01.github.io" # the base hostname & protocol for your site
 cover: "/assets/header_image_2_min.jpg"
-logo: "/assets/logo.png"
+logo: "/assets/logo.webp"
 contact_url: "https://goo.gl/forms/CpmOgk2omnWqTzz43"
 
 # Build settings
