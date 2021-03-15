@@ -226,18 +226,21 @@ pre code.hljs {
 		// padding: 1em 0;
 		color: $blue-gray-300;
 		.post-date {
-			@include span-columns(6);
+			@include span-columns(4);
 			text-align: left;
 			font-size: 0.9em;
 		}
 		.post-categories {
-			@include span-columns(6);
+			@include span-columns(8);
+			display: inline-flex;
+			justify-content: flex-end;
+			align-items: center;
 			margin-right: 0;
 			text-align: right;
 			font-size: 0.9em;
 			color: $main-color;
-			i {
-				vertical-align: -0.12em;
+			&-icon {
+				margin: 0 4px 0 0;
 			}
 		}
 	}
@@ -245,11 +248,18 @@ pre code.hljs {
 		padding-top: 2em;
 		text-align: center;
 		color: $blue-gray-300;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
 		.page-number {
 			padding: 0 1em;
 		}
-    a.newer-posts {
+    a.newer-posts, a.older-posts {
       text-decoration: none;
+			display: flex;
+			justify-content: center;
+			align-items: center;
     }
 	}
 	.site-header-container {
@@ -659,14 +669,9 @@ pre code.hljs {
 					height: 40px;				
 					line-height: 40px;
 					display: inline-block;
-					i {
-						width: 38px;
-						font-size:16px;
-						line-height: 1;
-						text-align: center;
-					}
-					&-slack i {
-						font-size: 17px;
+					svg {
+						width: 42px;
+						margin: 11px 0 0 -2px;
 					}
 				}
 			}

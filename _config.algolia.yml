@@ -138,7 +138,7 @@ descriptions:
 #
 # social:
 #   - name: Twitter                         # Name of the service
-#     icon: twitter                         # Font Awesome icon to use (minus fa- prefix)
+#     icon: twitter                         # Abolished
 #     username: "@TheBenCentra"             # (User) Name to display in the footer link
 #     url: https://twitter.com/TheBenCentra # URL of your profile (leave blank to not display in footer)
 #     desc: Follow me on Twitter            # Description to display as link title, etc
@@ -257,7 +257,7 @@ social:
 #    share: false
 
   - name: Pocket
-    icon: get-pocket
+    img: "/assets/thirdparty/pocket.png"
     username:
     url:
     desc: Save to Pocket

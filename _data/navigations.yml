@@ -10,5 +10,8 @@
   url: 'https://goo.gl/forms/VKcqNYwtEjDUNyN92'
   isAnotherTab: true
 
+- title: 'RSS'
+  url: '/feed.xml'
+  isAnotherTab: true
 # - title: 'Profile'
 #   url: '/profile'

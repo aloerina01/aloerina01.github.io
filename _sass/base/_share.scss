@@ -14,12 +14,27 @@
   }
   &.share-button-twitter {
     background-color: $color-twitter;
+    svg {
+      margin: 10px 0 0 0;
+      color: white;
+    }
   }
   &.share-button-facebook {
     background-color: $color-facebook;
+    svg {
+      color: white;
+      margin: 7px 0 0 0;
+      width: 20px;
+    }
   }
   &.share-button-pocket {
     background-color: $color-pocket;
+    img {
+      width: 26px;
+      height: 26px;
+      margin: 7px auto 0;
+      display: block;
+    }
   }
   &.share-button-line {
     background-color: $color-line;
