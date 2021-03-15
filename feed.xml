@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-03-10T05:30:17+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-03-15T06:31:56+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">Daily Scrum の3つの質問を再考する</title><link href="https://aloerina01.github.io/blog/2021-01-15-1" rel="alternate" type="text/html" title="Daily Scrum の3つの質問を再考する" /><published>2021-01-15T00:00:00+00:00</published><updated>2021-01-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-01-15-1">&lt;p&gt;かつてスクラムガイドにも載っていましたが、Daily Scrum でよく使われる「3つの質問」というものがありました。大雑把に書くと以下の3つです。&lt;/p&gt;
 
 &lt;div class=&quot;note&quot;&gt;
@@ -589,9 +589,9 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
       &lt;li&gt;&lt;a href=&quot;#今回のふりかえりミーティングで目指すフェーズ&quot; id=&quot;markdown-toc-今回のふりかえりミーティングで目指すフェーズ&quot;&gt;今回のふりかえりミーティングで目指す「フェーズ」&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#今回の参加者の属性&quot; id=&quot;markdown-toc-今回の参加者の属性&quot;&gt;今回の参加者の属性&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#今回のふりかえり手法&quot; id=&quot;markdown-toc-今回のふりかえり手法&quot;&gt;今回のふりかえり手法&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#-発散フェーズで気をつけていること&quot; id=&quot;markdown-toc--発散フェーズで気をつけていること&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; 発散フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#-深堀フェーズで気をつけていること&quot; id=&quot;markdown-toc--深堀フェーズで気をつけていること&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; 深堀フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#-解決フェーズで気をつけていること&quot; id=&quot;markdown-toc--解決フェーズで気をつけていること&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; 解決フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#-発散フェーズで気をつけていること&quot; id=&quot;markdown-toc--発散フェーズで気をつけていること&quot;&gt;✓ 発散フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#-深堀フェーズで気をつけていること&quot; id=&quot;markdown-toc--深堀フェーズで気をつけていること&quot;&gt;✓ 深堀フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#-解決フェーズで気をつけていること&quot; id=&quot;markdown-toc--解決フェーズで気をつけていること&quot;&gt;✓ 解決フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
         &lt;/ul&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
@@ -716,7 +716,7 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 
 &lt;p&gt;手法は調べるとたくさん出てきますし、アレンジすることで無限に増えるので、ここでは手法選びで気をつけていることを挙げます。&lt;/p&gt;
 
-&lt;h5 id=&quot;-発散フェーズで気をつけていること&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; 発散フェーズで気をつけていること&lt;/h5&gt;
+&lt;h5 id=&quot;-発散フェーズで気をつけていること&quot;&gt;✓ 発散フェーズで気をつけていること&lt;/h5&gt;
 
 &lt;p&gt;このフェーズで特に大事にしていることは&lt;strong&gt;いかに発言しやすい場を作るか&lt;/strong&gt;と、言語化が難しい&lt;strong&gt;感覚や違和感をいかに表現してもらうか&lt;/strong&gt;です。具体的には以下のようなことを考えます。&lt;/p&gt;
 
@@ -752,7 +752,7 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
   &lt;li&gt;意見やアイデアを「チームの意見」と意識してもらうために、無記名にする&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;-深堀フェーズで気をつけていること&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; 深堀フェーズで気をつけていること&lt;/h5&gt;
+&lt;h5 id=&quot;-深堀フェーズで気をつけていること&quot;&gt;✓ 深堀フェーズで気をつけていること&lt;/h5&gt;
 
 &lt;p&gt;このフェーズでは、深堀りするトピックを&lt;strong&gt;選択し集中する&lt;/strong&gt;ことに意識を向けます。ただし、どの意見やアイデアも等しく大切な参加者の声です。&lt;strong&gt;どれかを蔑ろにすることなく&lt;/strong&gt;深堀りすることが重要であり、難しいポイントでもあります。そのために、意見の関連付けや優先順位について、合意をとることがあります。&lt;/p&gt;
 
@@ -780,7 +780,7 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h5 id=&quot;-解決フェーズで気をつけていること&quot;&gt;&lt;i class=&quot;fas fa-check&quot;&gt;&lt;/i&gt; 解決フェーズで気をつけていること&lt;/h5&gt;
+&lt;h5 id=&quot;-解決フェーズで気をつけていること&quot;&gt;✓ 解決フェーズで気をつけていること&lt;/h5&gt;
 
 &lt;p&gt;解決フェーズで大事なことは&lt;strong&gt;実行可能性を高めること&lt;/strong&gt;に尽きます。&lt;/p&gt;
 

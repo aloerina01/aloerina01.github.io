@@ -237,10 +237,22 @@ code {
     padding: 11px 0 0 0; }
   .share-button.share-button-twitter {
     background-color: #55ACEE; }
+    .share-button.share-button-twitter svg {
+      margin: 10px 0 0 0;
+      color: white; }
   .share-button.share-button-facebook {
     background-color: #3B5998; }
+    .share-button.share-button-facebook svg {
+      color: white;
+      margin: 7px 0 0 0;
+      width: 20px; }
   .share-button.share-button-pocket {
     background-color: #DC3D50; }
+    .share-button.share-button-pocket img {
+      width: 26px;
+      height: 26px;
+      margin: 7px auto 0;
+      display: block; }
   .share-button.share-button-line {
     background-color: #00C300; }
     .share-button.share-button-line img {
@@ -478,7 +490,7 @@ pre code.hljs {
       float: left;
       display: block;
       margin-right: 2.3576515979%;
-      width: 48.821174201%;
+      width: 31.7615656014%;
       text-align: left;
       font-size: 0.9em; }
       .page-content .post-meta .post-date:last-child {
@@ -487,23 +499,33 @@ pre code.hljs {
       float: left;
       display: block;
       margin-right: 2.3576515979%;
-      width: 48.821174201%;
+      width: 65.8807828007%;
+      display: inline-flex;
+      justify-content: flex-end;
+      align-items: center;
       margin-right: 0;
       text-align: right;
       font-size: 0.9em;
       color: #F06292; }
       .page-content .post-meta .post-categories:last-child {
         margin-right: 0; }
-      .page-content .post-meta .post-categories i {
-        vertical-align: -0.12em; }
+      .page-content .post-meta .post-categories-icon {
+        margin: 0 4px 0 0; }
   .page-content .pagination {
     padding-top: 2em;
     text-align: center;
-    color: #90A4AE; }
+    color: #90A4AE;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; }
     .page-content .pagination .page-number {
       padding: 0 1em; }
-    .page-content .pagination a.newer-posts {
-      text-decoration: none; }
+    .page-content .pagination a.newer-posts, .page-content .pagination a.older-posts {
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center; }
   .page-content .site-header-container {
     color: #fff;
     text-shadow: 0 2px 16px rgba(0, 0, 0, 0.33); }
@@ -894,13 +916,9 @@ pre code.hljs {
           height: 40px;
           line-height: 40px;
           display: inline-block; }
-          .profile-bar-main .profile-content-sns .sns-icon i {
-            width: 38px;
-            font-size: 16px;
-            line-height: 1;
-            text-align: center; }
-          .profile-bar-main .profile-content-sns .sns-icon-slack i {
-            font-size: 17px; }
+          .profile-bar-main .profile-content-sns .sns-icon svg {
+            width: 42px;
+            margin: 11px 0 0 -2px; }
     @media screen and (min-width: 768px) {
       .profile-bar-main {
         flex-direction: row; }

@@ -15,11 +15,7 @@
   <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
   <link rel="manifest" href="/manifest.json">
   <!-- External libraries -->
-  <!-- <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"> -->
-  <link rel="stylesheet" async href="//use.fontawesome.com/releases/v5.0.12/css/brands.css" integrity="sha384-Pln/erVatVEIIVh7sfyudOXs5oajCSHg7l5e2Me02e3TklmDuKEhQ8resTIwyI+w" crossorigin="anonymous">
-  <link rel="stylesheet" async href="//use.fontawesome.com/releases/v5.0.12/css/solid.css" integrity="sha384-VxweGom9fDoUf7YfLTHgO0r70LVNHP5+Oi8dcR4hbEjS8UnpRtrwTx7LpHq/MWLI" crossorigin="anonymous">
-  <link rel="stylesheet" async href="//use.fontawesome.com/releases/v5.0.12/css/fontawesome.css" integrity="sha384-rnr8fdrJ6oj4zli02To2U/e6t1qG8dvJ8yNZZPsKHcU7wFK3MGilejY5R/cUc5kf" crossorigin="anonymous">
-  <link rel="stylesheet" async href="/css/prism.css">
+  <link rel="stylesheet" as="style" href="/css/prism.css">
   
   <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
   <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
@@ -95,7 +91,9 @@
       <img src="/assets/logo.png" alt="mille-feuille code" loading="lazy"> 
     </a>
     <a class="navigation-menu-button" id="js-mobile-menu-icon">
-      <i class="fas fa-bars"></i>
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
     </a>
     <nav role="navigation">
       <ul id="js-navigation-menu" class="navigation-menu">
@@ -116,6 +114,9 @@
             
         <li class="nav-link">
           <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
+            
+        <li class="nav-link">
+          <a href="/feed.xml"target="_blank" rel="noopener noreferrer">RSS</a>
            
       </ul>
     </nav>
@@ -148,7 +149,7 @@
   </div>
 </header>
 
-  <div class="page-content">
+  <main class="page-content">
     <div class="post">
       <div class="post-header-container " >
         <div class="scrim ">
@@ -168,7 +169,10 @@
           <div class="post-date">2019-04-02</div>
           <div class="post-categories">
             
-            <i class="fas fa-fw fa-tag"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
+              <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+              <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
+            </svg>
              
             <a href="/category/javascript/">JavaScript</a>,    
             <a href="/category/react/">React</a>,    
@@ -268,13 +272,15 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
             data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
             <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
           </a>
-          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" defer></script>
           
             
             
             <a class="share-button share-button-twitter" href="//twitter.com/share?text=React%2BFlux%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%ABprops%E3%83%90%E3%82%B1%E3%83%84%E3%83%AA%E3%83%AC%E3%83%BC%E3%81%AF%E5%BF%85%E8%A6%81%E3%81%8B&url=https://aloerina01.github.io/blog/2019-04-02-1&via=aloerina_&hashtags=JavaScript,React,Flux,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
-              <i class="fab fa-twitter fa-inverse"></i>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+              </svg>
             </a>
             
             
@@ -289,7 +295,18 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
             
             <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=React%2BFlux%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%ABprops%E3%83%90%E3%82%B1%E3%83%84%E3%83%AA%E3%83%AC%E3%83%BC%E3%81%AF%E5%BF%85%E8%A6%81%E3%81%8B&u=https://aloerina01.github.io/blog/2019-04-02-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
-              <i class="fab fa-facebook-f fa-inverse"></i>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z"
+                  fill="currentColor"
+                />
+              </svg>
             </a>
             
             
@@ -423,7 +440,7 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
             
             
             <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2019-04-02-1" target="_blank">
-              <i class="fab fa-get-pocket fa-inverse"></i>
+              <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
             </a>
             
             
@@ -437,7 +454,7 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
             
             
             <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?React%2BFlux%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%ABprops%E3%83%90%E3%82%B1%E3%83%84%E3%83%AA%E3%83%AC%E3%83%BC%E3%81%AF%E5%BF%85%E8%A6%81%E3%81%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2019-04-02-1">
-              <img src="/assets/thirdparty/linebutton.png" />
+              <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
             </a>
             
           
@@ -465,7 +482,7 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
       </div>
     </div>
 
-  </div>
+  </main>
 
   
     <section class="sub-contents related-posts">
@@ -512,16 +529,19 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
         </div>
         <div class="profile-content-sns">
           <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon">
-              <i class="fab fa-twitter"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+            </svg>
           </a>
           <a target="_blank" href="https://www.instagram.com/pixtrium/" rel="noopener noreferrer" class="sns-icon">
-            <i class="fab fa-instagram"></i>
-        </a>
-          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" rel="noopener noreferrer" class="sns-icon sns-icon-envelope">
-              <i class="fas fa-envelope"></i>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+            </svg>
           </a>
-          <a target="_blank" href="/feed.xml" rel="noopener noreferrer" class="sns-icon">
-              <i class="fas fa-rss"></i>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" rel="noopener noreferrer" class="sns-icon sns-icon-envelope">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+              <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+            </svg>
           </a>
         </div>
       </div>
