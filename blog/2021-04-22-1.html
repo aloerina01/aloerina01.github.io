@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>React16.6の新機能 React.memo のコードリーディング</title>
-  <meta name="description" content="v16.6で追加された React.memo が役立つ嬉しい機能のようだったので、どんなものか、どう実装されているかを軽くコードリーディングしました。そのときのメモです。">
+  <title>心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う</title>
+  <meta name="description" content="「心理的安全であるかどうか」は大事な問題ですが、私はそれ以上に、一人ひとりがどんな要因によって「行動や発言を起こすか否か」を判断しているのかが気になっていました。この要因の一つが対人リスクであると仮定し、私自身が持つ対人リスクを分類しながら自己分析してみようと思います。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2021">
@@ -34,10 +34,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="v16.6で追加された React.memo が役立つ嬉しい機能のようだったので、どんなものか、どう実装されているかを軽くコードリーディングしました。そのときのメモです。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2018-10-25-1" />
+  <meta property="og:description" content="「心理的安全であるかどうか」は大事な問題ですが、私はそれ以上に、一人ひとりがどんな要因によって「行動や発言を起こすか否か」を判断しているのかが気になっていました。この要因の一つが対人リスクであると仮定し、私自身が持つ対人リスクを分類しながら自己分析してみようと思います。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2021-04-22-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="React16.6の新機能 React.memo のコードリーディング" />
+  <meta property="og:title" content="心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -48,17 +48,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="React16.6の新機能 React.memo のコードリーディング">
-  <meta name="twitter:description" content="v16.6で追加された React.memo が役立つ嬉しい機能のようだったので、どんなものか、どう実装されているかを軽くコードリーディングしました。そのときのメモです。">
+  <meta name="twitter:title" content="心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う">
+  <meta name="twitter:description" content="「心理的安全であるかどうか」は大事な問題ですが、私はそれ以上に、一人ひとりがどんな要因によって「行動や発言を起こすか否か」を判断しているのかが気になっていました。この要因の一つが対人リスクであると仮定し、私自身が持つ対人リスクを分類しながら自己分析してみようと思います。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2018-10-25-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2021-04-22-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2018-10-25-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2021-04-22-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   
@@ -70,8 +70,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/blog/2018-10-25-1',
-      'title': 'React16.6の新機能 React.memo のコードリーディング'
+      'page': '/blog/2021-04-22-1',
+      'title': '心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う'
     });
   </script>
   
@@ -142,8 +142,8 @@
         
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2018-10-25-1">
-            <span itemprop="name">React16.6の新機能 React.memo のコードリーディング</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2021-04-22-1">
+            <span itemprop="name">心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -158,7 +158,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">React16.6の新機能 React.memo のコードリーディング</h1>
+            <h1 class="title">心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -170,7 +170,7 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2018-10-25</div>
+          <div class="post-date">2021-04-22</div>
           <div class="post-categories">
             
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
@@ -178,172 +178,83 @@
               <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
             </svg>
              
-            <a href="/category/javascript/">JavaScript</a>,    
-            <a href="/category/react/">React</a>   
+            <a href="/category/management/">Management</a>,    
+            <a href="/category/psychologicalsafety/">PsychologicalSafety</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <p>先日「<a href="https://reactjs.org/blog/2018/10/23/react-v-16-6.html" target="_blank">React v16.6.0: lazy, memo and contextType</a>」にていくつかの新機能が発表されました。この中の<strong>React.memo</strong>が個人的に嬉しい機能だったので、軽く調べてみました。</p>
-
-<h3 id="reactmemoとは何か">React.memoとは何か</h3>
+          <p>心理的安全という言葉の<a href="https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Group_Performance/Edmondson%20Psychological%20safety.pdf" target="_blank">出典</a>をたどると</p>
 
 <blockquote>
-  <p>Class components can bail out from rendering when their input props are the same using PureComponent or shouldComponentUpdate.</p>
+  <p>Team psychological safety is defined as a shared belief that the team is safe for interpersonal risk taking.</p>
 </blockquote>
 
-<p>ReactではComponentの再レンダリング回数を最小限にしパフォーマンスを上げる方法として、<code class="highlighter-rouge">shouldComponentUpdate</code>やPure Componentがあります。ですがFunctional Componentを使う場合はこの仕組みを利用できませんでした。これを可能にしてくれるのがReact.memoです。</p>
+<p>とあるように、心理的に安全かどうかは「対人リスクのある行動を起こせるかどうか」と捉えることができるわけですが、では対人リスクとは何でしょうか。</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">MyFunctionalComponent</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span> <span class="nx">name</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
-</span><span class="kd">const</span> <span class="nx">MemoComponent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">memo</span><span class="p">(</span><span class="nx">MyFunctionalComponent</span><span class="p">);</span>
-</code></pre></div></div>
-<p>MemoComponentはpropsが変化したときのみ再レンダリングされます。</p>
+<p>心理的安全の研究者Amy Edmondson によれば、</p>
 
-<h3 id="ソースから読み解くreactmemoの挙動">ソースから読み解くReact.memoの挙動</h3>
+<ol>
+  <li><strong>IGNORANT - 無知だと思われる不安</strong></li>
+  <li><strong>INCOMPETENT - 無能だと思われる不安</strong></li>
+  <li><strong>INTRUSIVE - 差し出がましいと思われる不安</strong></li>
+  <li><strong>NEGATIVE - ネガティブだと思われる不安</strong></li>
+</ol>
 
-<p><a href="https://github.com/facebook/react/blob/master/packages/react/src/memo.js" target="_blank">memo.js</a>の主要部分を見てみます。</p>
+<p>の4つが職場環境における対人リスクであると定義されています。</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">memo</span><span class="o">&lt;</span><span class="nx">Props</span><span class="o">&gt;</span><span class="p">(</span>
-  <span class="nx">type</span><span class="p">:</span> <span class="nx">React$ElementType</span><span class="p">,</span>
-  <span class="nx">compare</span><span class="p">?:</span> <span class="p">(</span><span class="nx">oldProps</span><span class="p">:</span> <span class="nx">Props</span><span class="p">,</span> <span class="nx">newProps</span><span class="p">:</span> <span class="nx">Props</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">boolean</span><span class="p">,</span>
-<span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">__DEV__</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">isValidElementType</span><span class="p">(</span><span class="nx">type</span><span class="p">))</span> <span class="p">{</span>
-      <span class="nx">warningWithoutStack</span><span class="p">(</span>
-        <span class="kc">false</span><span class="p">,</span>
-        <span class="dl">'</span><span class="s1">memo: The first argument must be a component. Instead </span><span class="dl">'</span> <span class="o">+</span>
-          <span class="dl">'</span><span class="s1">received: %s</span><span class="dl">'</span><span class="p">,</span>
-        <span class="nx">type</span> <span class="o">===</span> <span class="kc">null</span> <span class="p">?</span> <span class="dl">'</span><span class="s1">null</span><span class="dl">'</span> <span class="p">:</span> <span class="k">typeof</span> <span class="nx">type</span><span class="p">,</span>
-      <span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">$</span><span class="na">$typeof</span><span class="p">:</span> <span class="nx">REACT_MEMO_TYPE</span><span class="p">,</span>
-    <span class="nx">type</span><span class="p">,</span>
-    <span class="na">compare</span><span class="p">:</span> <span class="nx">compare</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="p">?</span> <span class="kc">null</span> <span class="p">:</span> <span class="nx">compare</span><span class="p">,</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre></div></div>
+<p style="text-align:center">＊ ＊ ＊</p>
 
-<p>memo関数は2つの引数<code class="highlighter-rouge">type</code>と<code class="highlighter-rouge">compare</code>を受取っています。<strong><code class="highlighter-rouge">type</code>はComponent</strong>で、<strong>compoareは<code class="highlighter-rouge">shouldComponentUpdate</code>に相当するもの</strong>のように見えます。返り値のオブジェクトは、2つの引数と<code class="highlighter-rouge">$$typeof: REACT_MEMO_TYPE</code>というプロパティを持つ新しいオブジェクトです。</p>
+<p>ところで、私たちのチームは少しずつ成熟してきていて、おかげで随分と対人リスクを感じないようになってきました。しかしそれでもなお行動しない・発言しない場面が自分の経験上あるので、その要因が何なのかを改めて考えてみようと思います。</p>
 
-<p>つまりReact.memoがしていることは「受取ったComponentに<code class="highlighter-rouge">REACT_MEMO_TYPE</code>という印をつけている」感じですね。意外にシンプルです。さて、これがどのように利用されるのでしょうか。</p>
+<p>例えばブレストの場で新しいアイデアを出すとき、<strong>自分の思考を人に見られるような不安</strong>を感じたことがあります。アイデアを出す時間なので邪魔をする人だとは思われないだろうし、日頃の関係性から無知無能だとも思われないだろうけれど、どこか言いにくい…という心境です。<br />
+他の例だと、チームメンバーの行動で改善してほしい部分を見つけたとき、日頃から良好な関係性が築けていたとしても<strong>慎重に言葉を選ばないと…というプレッシャーや面倒臭さ</strong>からフィードバックを躊躇したことがあります。<br />
+その他にも、問題を指摘することでその対応が<strong>自分の仕事として降り掛かってくる負担</strong>から発言を控えた場面など、例を挙げればいろいろ出てきます。</p>
 
-<p><a href="https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/react-reconciler/src/ReactFiber.js" target="_blank">ReactFiber.js</a>のソースを見てみます。<code class="highlighter-rouge">type</code>をもとにFiberインスタンスを生成する<code class="highlighter-rouge">createFiberFromTypeAndProps</code>関数から追っていきます。</p>
+<p>Edmondson の対人リスクという分類を知る以前、私はこれらを3つのカテゴリに分けて捉えていました。</p>
 
-<h5 id="react_memo_typeの利用箇所---reactfiberjsl473">REACT_MEMO_TYPEの利用箇所 - <a href="https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/react-reconciler/src/ReactFiber.js#L473" target="_blank">ReactFiber.js#L473</a></h5>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">function</span> <span class="nx">createFiberFromTypeAndProps</span><span class="p">(</span>
-  <span class="nx">type</span><span class="p">:</span> <span class="nx">any</span><span class="p">,</span> <span class="c1">// React$ElementType</span>
-  <span class="nx">key</span><span class="p">:</span> <span class="kc">null</span> <span class="o">|</span> <span class="nx">string</span><span class="p">,</span>
-  <span class="nx">pendingProps</span><span class="p">:</span> <span class="nx">any</span><span class="p">,</span>
-  <span class="nx">owner</span><span class="p">:</span> <span class="kc">null</span> <span class="o">|</span> <span class="nx">Fiber</span><span class="p">,</span>
-  <span class="nx">mode</span><span class="p">:</span> <span class="nx">TypeOfMode</span><span class="p">,</span>
-  <span class="nx">expirationTime</span><span class="p">:</span> <span class="nx">ExpirationTime</span><span class="p">,</span>
-<span class="p">):</span> <span class="nx">Fiber</span> <span class="p">{</span>
-  <span class="c1">// 略</span>
+<ol>
+  <li><strong>個性を出すリスク</strong></li>
+  <li><strong>プロセス・成果・失敗を見せるリスク</strong></li>
+  <li><strong>フィードバックするリスク</strong></li>
+</ol>
 
-  <span class="k">switch</span> <span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">$$typeof</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">REACT_MEMO_TYPE</span><span class="p">:</span>
-    <span class="nx">fiberTag</span> <span class="o">=</span> <span class="nx">MemoComponent</span><span class="p">;</span>
-  <span class="p">}</span>
+<p>Edmondson の対人リスクと比較しながら考えてみます。</p>
 
-  <span class="c1">// 略</span>
+<p style="text-align:center">＊ ＊ ＊</p>
 
-  <span class="nx">fiber</span> <span class="o">=</span> <span class="nx">createFiber</span><span class="p">(</span><span class="nx">fiberTag</span><span class="p">,</span> <span class="nx">pendingProps</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">mode</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<p><code class="highlighter-rouge">$$typeof: REACT_MEMO_TYPE</code>が付与されたオブジェクトは<code class="highlighter-rouge">MemoComponent</code>としてFiberインスタンスが生成されます。</p>
+<h4 id="個性を出すリスク">個性を出すリスク</h4>
 
-<h5 id="componentライフサイクル実行前---reactfiberbeginworkjsl1693">Componentライフサイクル実行前 - <a href="https://github.com/facebook/react/blob/cbbc2b6c4d0d8519145560bd8183ecde55168b12/packages/react-reconciler/src/ReactFiberBeginWork.js#L1693" target="_blank">ReactFiberBeginWork.js#L1693</a></h5>
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">beginWork</span><span class="p">(</span>
-  <span class="nx">current</span><span class="p">:</span> <span class="nx">Fiber</span> <span class="o">|</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nx">workInProgress</span><span class="p">:</span> <span class="nx">Fiber</span><span class="p">,</span>
-  <span class="nx">renderExpirationTime</span><span class="p">:</span> <span class="nx">ExpirationTime</span><span class="p">,</span>
-<span class="p">):</span> <span class="nx">Fiber</span> <span class="o">|</span> <span class="kc">null</span> <span class="p">{</span>
-  <span class="c1">// 略</span>
+<p>言い換えると自己開示するリスクとも言えます。自分の考え方・感じ方・価値観・ポリシー・アイデアなどを人に知られることへの心理的な抵抗により、行動を起こしにくくなることを表しています。端的に言うならば「<strong>内面を知られる不安</strong>」です。</p>
 
-  <span class="k">switch</span> <span class="p">(</span><span class="nx">workInProgress</span><span class="p">.</span><span class="nx">tag</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">MemoComponet</span><span class="p">:</span>
-      <span class="kd">const</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">workInProgress</span><span class="p">.</span><span class="nx">type</span><span class="p">;</span>
-      <span class="kd">const</span> <span class="nx">unresolvedProps</span> <span class="o">=</span> <span class="nx">workInProgress</span><span class="p">.</span><span class="nx">pendingProps</span><span class="p">;</span>
-      <span class="kd">const</span> <span class="nx">resolvedProps</span> <span class="o">=</span> <span class="nx">resolveDefaultProps</span><span class="p">(</span><span class="nx">type</span><span class="p">.</span><span class="nx">type</span><span class="p">,</span> <span class="nx">unresolvedProps</span><span class="p">);</span>
-      <span class="k">return</span> <span class="nx">updateMemoComponent</span><span class="p">(</span>
-        <span class="nx">current</span><span class="p">,</span>
-        <span class="nx">workInProgress</span><span class="p">,</span>
-        <span class="nx">type</span><span class="p">,</span>
-        <span class="nx">resolvedProps</span><span class="p">,</span>
-        <span class="nx">updateExpirationTime</span><span class="p">,</span>
-        <span class="nx">renderExpirationTime</span><span class="p">,</span>
-      <span class="p">);</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<p>Componentの種類に応じたUpdate処理を呼び出しています。</p>
+<p>この抵抗感は、IGNORANT / INCOMPETENT / INTRUSIVE / NEGATIVE だと思われるのでは…という不安が根底にあり、まさしくEdmondson の対人リスクであると捉えることができそうです。</p>
 
-<h5 id="memocomponentのupdate---reactfiberbeginworkjsl235">MemoComponentのupdate - <a href="https://github.com/facebook/react/blob/cbbc2b6c4d0d8519145560bd8183ecde55168b12/packages/react-reconciler/src/ReactFiberBeginWork.js#L235" target="_blank">ReactFiberBeginWork.js#L235</a></h5>
+<p>一方で、無知無能などとは思われたりしない信頼に足る関係性であったとしても行動を起こしたくない場面があります。私は「自分が人からどう見られているか」をコントールしたい節があり、無知無能といった悪評だけでなく、優秀・斬新・面白いなどの好評であっても、それが私が望まない評価であればもらいたくないと思うことがありました。</p>
 
-<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">updateMemoComponent</span><span class="p">(</span>
-  <span class="nx">current</span><span class="p">:</span> <span class="nx">Fiber</span> <span class="o">|</span> <span class="kc">null</span><span class="p">,</span>
-  <span class="nx">workInProgress</span><span class="p">:</span> <span class="nx">Fiber</span><span class="p">,</span>
-  <span class="nx">Component</span><span class="p">:</span> <span class="nx">any</span><span class="p">,</span>
-  <span class="nx">nextProps</span><span class="p">:</span> <span class="nx">any</span><span class="p">,</span>
-  <span class="nx">updateExpirationTime</span><span class="p">,</span>
-  <span class="nx">renderExpirationTime</span><span class="p">:</span> <span class="nx">ExpirationTime</span><span class="p">,</span>
-<span class="p">):</span> <span class="kc">null</span> <span class="o">|</span> <span class="nx">Fiber</span> <span class="p">{</span>
-  <span class="c1">// 略</span>
+<p>このことから、Edmondson の対人リスクは「人が行動を起こさないすべての理由が網羅的に定義されたもの」と捉えるより、「対人リスクの代表例」くらいに捉えると良いのかもしれません。また対人リスクがどんな心理であれ、<strong>自分の印象を操作したいという気持ち</strong>が根底にあると知ることに意義があるのだと思います。</p>
 
-  <span class="c1">// compareがないMemoComponentはシンプルにpropsをshallowEqualで比較してupdateしている</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">isSimpleFunctionComponent</span><span class="p">(</span><span class="nx">type</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">Component</span><span class="p">.</span><span class="nx">compare</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>  
-    <span class="nx">workInProgress</span><span class="p">.</span><span class="nx">tag</span> <span class="o">=</span> <span class="nx">SimpleMemoComponent</span><span class="p">;</span>
-    <span class="nx">workInProgress</span><span class="p">.</span><span class="nx">type</span> <span class="o">=</span> <span class="nx">type</span><span class="p">;</span>
-    <span class="k">return</span> <span class="nx">updateSimpleMemoComponent</span><span class="p">(</span>
-      <span class="nx">current</span><span class="p">,</span>
-      <span class="nx">workInProgress</span><span class="p">,</span>
-      <span class="nx">type</span><span class="p">,</span>
-      <span class="nx">nextProps</span><span class="p">,</span>
-      <span class="nx">updateExpirationTime</span><span class="p">,</span>
-      <span class="nx">renderExpirationTime</span><span class="p">,</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
+<h4 id="プロセス成果失敗を見せるリスク">プロセス・成果・失敗を見せるリスク</h4>
 
-  <span class="c1">// 略</span>
+<p>自分の働く様子をじっくり見られることや、その結果を誇張なく正しく伝えること、ひいては失敗したことを率直に伝えることへのリスクです。言い換えると「業務を評価されるリスク」でしょうか。個性を出すリスクと対比的に見るなら「<strong>行動を見られる不安</strong>」です。</p>
 
-  <span class="c1">// compareがある場合はそれを使い、ない場合はshallowEqualを使い比較してupdateしている</span>
-  <span class="kd">let</span> <span class="nx">compare</span> <span class="o">=</span> <span class="nx">Component</span><span class="p">.</span><span class="nx">compare</span><span class="p">;</span>
-  <span class="nx">compare</span> <span class="o">=</span> <span class="nx">compare</span> <span class="o">!==</span> <span class="kc">null</span> <span class="p">?</span> <span class="nx">compare</span> <span class="p">:</span> <span class="nx">shallowEqual</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">compare</span><span class="p">(</span><span class="nx">prevProps</span><span class="p">,</span> <span class="nx">nextProps</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="nx">current</span><span class="p">.</span><span class="nx">ref</span> <span class="o">===</span> <span class="nx">workInProgress</span><span class="p">.</span><span class="nx">ref</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">bailoutOnAlreadyFinishedWork</span><span class="p">(</span>
-      <span class="nx">current</span><span class="p">,</span>
-      <span class="nx">workInProgress</span><span class="p">,</span>
-      <span class="nx">renderExpirationTime</span><span class="p">,</span>
-    <span class="p">);</span>
-  <span class="p">}</span>
-  <span class="kd">let</span> <span class="nx">newChild</span> <span class="o">=</span> <span class="nx">createWorkInProgress</span><span class="p">(</span>
-    <span class="nx">currentChild</span><span class="p">,</span>
-    <span class="nx">nextProps</span><span class="p">,</span>
-    <span class="nx">renderExpirationTime</span><span class="p">,</span>
-  <span class="p">);</span>
-  <span class="nx">newChild</span><span class="p">.</span><span class="nx">ref</span> <span class="o">=</span> <span class="nx">workInProgress</span><span class="p">.</span><span class="nx">ref</span><span class="p">;</span>
-  <span class="nx">newChild</span><span class="p">.</span><span class="k">return</span> <span class="o">=</span> <span class="nx">workInProgress</span><span class="p">;</span>
-  <span class="nx">workInProgress</span><span class="p">.</span><span class="nx">child</span> <span class="o">=</span> <span class="nx">newChild</span><span class="p">;</span>
-  <span class="k">return</span> <span class="nx">newChild</span><span class="p">;</span>
-<span class="p">}</span>
-</code></pre></div></div>
-<p>compareがある場合はcompareを使ってpropsを比較し、ない場合はshallowEqualでpropsを比較しupdateしています。</p>
+<p>これはEdmondson の対人リスクにかなり近いものだと思います。</p>
 
-<h3 id="まとめ">まとめ</h3>
+<p>ひとつ気になるのは、一部のエンジニアが時たま思う「書きかけのコードを見られたくない」という気持ちはプロセスを見せるリスクに含まれると思うのですが、Edmondson の対人リスクには分類できるのでしょうか…？ 製作中のものを見られる気恥ずかしさの根源が何なのか、私にはまだ分かっていないです。</p>
 
-<p>ざっと見た感じ、</p>
+<h4 id="フィードバックするリスク">フィードバックするリスク</h4>
 
-<ul>
-  <li><code class="highlighter-rouge">React.memo(Component)</code> … 引数のComponentをPure Component化する</li>
-  <li><code class="highlighter-rouge">React.memo(Component, compare)</code> … 引数のComponentに<code class="highlighter-rouge">shouldComponentUpdate</code>の挙動をを付与する</li>
-</ul>
+<p>特にネガティブフィードバックをするリスクです。先例のように信頼しあった関係であってもネガティブフィードバックは気が重いものです。Edmondson の対人リスクのINTRUSIVE やNEGATIVE に通ずるところがあるでしょう。</p>
 
-<p>という感じでした。<br />
-Stateが不要な場面ではFunctional Componentを使いたいので、このUpdateは嬉しい限りです。</p>
+<p>ただそれだけではなく、ネガティブフィードバックはやや特殊な性質があるのではないでしょうか。INTRUSIVE やNEGATIVE に思われる不安と、<strong>利害要因</strong>とを天秤にかけた上で、行動を起こすかどうかを判断しているように感じていました。<br />
+例えばエンジニアはコードレビューをします。これにはネガティブフィードバックが含まれています。沈痛な思いでコードレビューしている人もいると思いますが、そうであったとしてもネガティブフィードバックをすることの価値(コードレビューしないと何らかの形で自分が損をする、自分の望むものとかけ離れる、という気持ち)が優先され、リスクを乗り越え行動が生まれるのではないかと考えていました。</p>
 
+<p>ちなみにEdmondson は「心理的安全」と「責任やモチベーション」は相関関係にないと言っていて、コードレビューの例に当てはめるなら、心理的安全がやや欠けていても責任やモチベーションにより行動が生まれる、ということで説明がつくのかもしれません。</p>
+
+<p style="text-align:center">＊ ＊ ＊</p>
+
+<p>ここまで、自分が抱いていた対人リスクをEdmondson の対人リスクに当てはめて考え直してみました。私にとっての一番の気づきは<strong>対人リスクの元となる不安はなんであれ、自分の印象を操作したいという欲求が背景に潜んでいる</strong>ということです。「自分をどう見られたいと思っているか」「なぜそのように見られたい/見られなくないと思っているか」と印象操作について掘り下げることで自分の行動原理と向き合うことができそうなので、引き続き考えていこうと思います。</p>
+
+<p>本日はここまで。</p>
 
         </article>
 
@@ -358,7 +269,7 @@ Stateが不要な場面ではFunctional Componentを使いたいので、このU
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=React16.6%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD+React.memo+%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0&url=https://aloerina01.github.io/blog/2018-10-25-1&via=aloerina_&hashtags=JavaScript,React,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E5%BF%83%E7%90%86%E7%9A%84%E5%AE%89%E5%85%A8%E3%82%92%E5%A6%A8%E3%81%92%E3%82%8B%E3%80%8C%E5%AF%BE%E4%BA%BA%E3%83%AA%E3%82%B9%E3%82%AF%E3%80%8D%E3%82%92%E5%86%8D%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%A6%E8%87%AA%E5%88%86%E3%81%AE%E8%A1%8C%E5%8B%95%E5%8E%9F%E7%90%86%E3%81%A8%E5%90%91%E3%81%8D%E5%90%88%E3%81%86&url=https://aloerina01.github.io/blog/2021-04-22-1&via=aloerina_&hashtags=Management,PsychologicalSafety,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
                 <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
@@ -375,7 +286,7 @@ Stateが不要な場面ではFunctional Componentを使いたいので、このU
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=React16.6%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD+React.memo+%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0&u=https://aloerina01.github.io/blog/2018-10-25-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E5%BF%83%E7%90%86%E7%9A%84%E5%AE%89%E5%85%A8%E3%82%92%E5%A6%A8%E3%81%92%E3%82%8B%E3%80%8C%E5%AF%BE%E4%BA%BA%E3%83%AA%E3%82%B9%E3%82%AF%E3%80%8D%E3%82%92%E5%86%8D%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%A6%E8%87%AA%E5%88%86%E3%81%AE%E8%A1%8C%E5%8B%95%E5%8E%9F%E7%90%86%E3%81%A8%E5%90%91%E3%81%8D%E5%90%88%E3%81%86&u=https://aloerina01.github.io/blog/2021-04-22-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <svg
                 width="24"
@@ -521,7 +432,7 @@ Stateが不要な場面ではFunctional Componentを使いたいので、このU
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2018-10-25-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2021-04-22-1" target="_blank">
               <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
             </a>
             
@@ -535,7 +446,7 @@ Stateが不要な場面ではFunctional Componentを使いたいので、このU
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?React16.6%E3%81%AE%E6%96%B0%E6%A9%9F%E8%83%BD+React.memo+%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2018-10-25-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E5%BF%83%E7%90%86%E7%9A%84%E5%AE%89%E5%85%A8%E3%82%92%E5%A6%A8%E3%81%92%E3%82%8B%E3%80%8C%E5%AF%BE%E4%BA%BA%E3%83%AA%E3%82%B9%E3%82%AF%E3%80%8D%E3%82%92%E5%86%8D%E5%AE%9A%E7%BE%A9%E3%81%97%E3%81%A6%E8%87%AA%E5%88%86%E3%81%AE%E8%A1%8C%E5%8B%95%E5%8E%9F%E7%90%86%E3%81%A8%E5%90%91%E3%81%8D%E5%90%88%E3%81%86%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2021-04-22-1">
               <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
             </a>
             
@@ -575,15 +486,15 @@ Stateが不要な場面ではFunctional Componentを使いたいので、このU
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2018-09-27-1">Vue.nextTickのコードリーディング</a></li>
+      <li><a href="/blog/2019-11-27-1">「チームがうまく失敗し学ぶために私にできること」の補足と裏話</a></li>
       
-      <li><a href="/blog/2018-09-14-1">React+Fluxで正しく設計するためのFlux見直しガイド</a></li>
+      <li><a href="/blog/2019-12-10-1">ゲームをみんなでやったら自然とモブプロに入門できた話</a></li>
       
-      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+      <li><a href="/tip/2018-05-21-1">ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする</a></li>
       
-      <li><a href="/blog/2017-08-03-1">throttleとdebounce</a></li>
+      <li><a href="/blog/2017-03-14-1">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</a></li>
       
-      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      <li><a href="/blog/2017-11-08-1">トラブルシューティングメモを晒してみる  webpack動的module編</a></li>
       
     </div>
   </div>

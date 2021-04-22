@@ -1,5 +1,75 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-03-16T05:39:20+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">Daily Scrum の3つの質問を再考する</title><link href="https://aloerina01.github.io/blog/2021-01-15-1" rel="alternate" type="text/html" title="Daily Scrum の3つの質問を再考する" /><published>2021-01-15T00:00:00+00:00</published><updated>2021-01-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-01-15-1">&lt;p&gt;かつてスクラムガイドにも載っていましたが、Daily Scrum でよく使われる「3つの質問」というものがありました。大雑把に書くと以下の3つです。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-04-22T07:32:18+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う</title><link href="https://aloerina01.github.io/blog/2021-04-22-1" rel="alternate" type="text/html" title="心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う" /><published>2021-04-22T00:00:00+00:00</published><updated>2021-04-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-04-22-1">&lt;p&gt;心理的安全という言葉の&lt;a href=&quot;https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Group_Performance/Edmondson%20Psychological%20safety.pdf&quot; target=&quot;_blank&quot;&gt;出典&lt;/a&gt;をたどると&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Team psychological safety is defined as a shared belief that the team is safe for interpersonal risk taking.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;とあるように、心理的に安全かどうかは「対人リスクのある行動を起こせるかどうか」と捉えることができるわけですが、では対人リスクとは何でしょうか。&lt;/p&gt;
+
+&lt;p&gt;心理的安全の研究者Amy Edmondson によれば、&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;IGNORANT - 無知だと思われる不安&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;INCOMPETENT - 無能だと思われる不安&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;INTRUSIVE - 差し出がましいと思われる不安&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;NEGATIVE - ネガティブだと思われる不安&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;の4つが職場環境における対人リスクであると定義されています。&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;＊ ＊ ＊&lt;/p&gt;
+
+&lt;p&gt;ところで、私たちのチームは少しずつ成熟してきていて、おかげで随分と対人リスクを感じないようになってきました。しかしそれでもなお行動しない・発言しない場面が自分の経験上あるので、その要因が何なのかを改めて考えてみようと思います。&lt;/p&gt;
+
+&lt;p&gt;例えばブレストの場で新しいアイデアを出すとき、&lt;strong&gt;自分の思考を人に見られるような不安&lt;/strong&gt;を感じたことがあります。アイデアを出す時間なので邪魔をする人だとは思われないだろうし、日頃の関係性から無知無能だとも思われないだろうけれど、どこか言いにくい…という心境です。&lt;br /&gt;
+他の例だと、チームメンバーの行動で改善してほしい部分を見つけたとき、日頃から良好な関係性が築けていたとしても&lt;strong&gt;慎重に言葉を選ばないと…というプレッシャーや面倒臭さ&lt;/strong&gt;からフィードバックを躊躇したことがあります。&lt;br /&gt;
+その他にも、問題を指摘することでその対応が&lt;strong&gt;自分の仕事として降り掛かってくる負担&lt;/strong&gt;から発言を控えた場面など、例を挙げればいろいろ出てきます。&lt;/p&gt;
+
+&lt;p&gt;Edmondson の対人リスクという分類を知る以前、私はこれらを3つのカテゴリに分けて捉えていました。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;個性を出すリスク&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;プロセス・成果・失敗を見せるリスク&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;フィードバックするリスク&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Edmondson の対人リスクと比較しながら考えてみます。&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;＊ ＊ ＊&lt;/p&gt;
+
+&lt;h4 id=&quot;個性を出すリスク&quot;&gt;個性を出すリスク&lt;/h4&gt;
+
+&lt;p&gt;言い換えると自己開示するリスクとも言えます。自分の考え方・感じ方・価値観・ポリシー・アイデアなどを人に知られることへの心理的な抵抗により、行動を起こしにくくなることを表しています。端的に言うならば「&lt;strong&gt;内面を知られる不安&lt;/strong&gt;」です。&lt;/p&gt;
+
+&lt;p&gt;この抵抗感は、IGNORANT / INCOMPETENT / INTRUSIVE / NEGATIVE だと思われるのでは…という不安が根底にあり、まさしくEdmondson の対人リスクであると捉えることができそうです。&lt;/p&gt;
+
+&lt;p&gt;一方で、無知無能などとは思われたりしない信頼に足る関係性であったとしても行動を起こしたくない場面があります。私は「自分が人からどう見られているか」をコントールしたい節があり、無知無能といった悪評だけでなく、優秀・斬新・面白いなどの好評であっても、それが私が望まない評価であればもらいたくないと思うことがありました。&lt;/p&gt;
+
+&lt;p&gt;このことから、Edmondson の対人リスクは「人が行動を起こさないすべての理由が網羅的に定義されたもの」と捉えるより、「対人リスクの代表例」くらいに捉えると良いのかもしれません。また対人リスクがどんな心理であれ、&lt;strong&gt;自分の印象を操作したいという気持ち&lt;/strong&gt;が根底にあると知ることに意義があるのだと思います。&lt;/p&gt;
+
+&lt;h4 id=&quot;プロセス成果失敗を見せるリスク&quot;&gt;プロセス・成果・失敗を見せるリスク&lt;/h4&gt;
+
+&lt;p&gt;自分の働く様子をじっくり見られることや、その結果を誇張なく正しく伝えること、ひいては失敗したことを率直に伝えることへのリスクです。言い換えると「業務を評価されるリスク」でしょうか。個性を出すリスクと対比的に見るなら「&lt;strong&gt;行動を見られる不安&lt;/strong&gt;」です。&lt;/p&gt;
+
+&lt;p&gt;これはEdmondson の対人リスクにかなり近いものだと思います。&lt;/p&gt;
+
+&lt;p&gt;ひとつ気になるのは、一部のエンジニアが時たま思う「書きかけのコードを見られたくない」という気持ちはプロセスを見せるリスクに含まれると思うのですが、Edmondson の対人リスクには分類できるのでしょうか…？ 製作中のものを見られる気恥ずかしさの根源が何なのか、私にはまだ分かっていないです。&lt;/p&gt;
+
+&lt;h4 id=&quot;フィードバックするリスク&quot;&gt;フィードバックするリスク&lt;/h4&gt;
+
+&lt;p&gt;特にネガティブフィードバックをするリスクです。先例のように信頼しあった関係であってもネガティブフィードバックは気が重いものです。Edmondson の対人リスクのINTRUSIVE やNEGATIVE に通ずるところがあるでしょう。&lt;/p&gt;
+
+&lt;p&gt;ただそれだけではなく、ネガティブフィードバックはやや特殊な性質があるのではないでしょうか。INTRUSIVE やNEGATIVE に思われる不安と、&lt;strong&gt;利害要因&lt;/strong&gt;とを天秤にかけた上で、行動を起こすかどうかを判断しているように感じていました。&lt;br /&gt;
+例えばエンジニアはコードレビューをします。これにはネガティブフィードバックが含まれています。沈痛な思いでコードレビューしている人もいると思いますが、そうであったとしてもネガティブフィードバックをすることの価値(コードレビューしないと何らかの形で自分が損をする、自分の望むものとかけ離れる、という気持ち)が優先され、リスクを乗り越え行動が生まれるのではないかと考えていました。&lt;/p&gt;
+
+&lt;p&gt;ちなみにEdmondson は「心理的安全」と「責任やモチベーション」は相関関係にないと言っていて、コードレビューの例に当てはめるなら、心理的安全がやや欠けていても責任やモチベーションにより行動が生まれる、ということで説明がつくのかもしれません。&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center&quot;&gt;＊ ＊ ＊&lt;/p&gt;
+
+&lt;p&gt;ここまで、自分が抱いていた対人リスクをEdmondson の対人リスクに当てはめて考え直してみました。私にとっての一番の気づきは&lt;strong&gt;対人リスクの元となる不安はなんであれ、自分の印象を操作したいという欲求が背景に潜んでいる&lt;/strong&gt;ということです。「自分をどう見られたいと思っているか」「なぜそのように見られたい/見られなくないと思っているか」と印象操作について掘り下げることで自分の行動原理と向き合うことができそうなので、引き続き考えていこうと思います。&lt;/p&gt;
+
+&lt;p&gt;本日はここまで。&lt;/p&gt;</content><author><name></name></author><summary type="html">心理的安全という言葉の出典をたどると</summary></entry><entry><title type="html">Daily Scrum の3つの質問を再考する</title><link href="https://aloerina01.github.io/blog/2021-01-15-1" rel="alternate" type="text/html" title="Daily Scrum の3つの質問を再考する" /><published>2021-01-15T00:00:00+00:00</published><updated>2021-01-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-01-15-1">&lt;p&gt;かつてスクラムガイドにも載っていましたが、Daily Scrum でよく使われる「3つの質問」というものがありました。大雑把に書くと以下の3つです。&lt;/p&gt;
 
 &lt;div class=&quot;note&quot;&gt;
 &lt;ul&gt;
@@ -1001,63 +1071,4 @@ Github Actionsの結果を取得する&lt;a href=&quot;https://developer.github.
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;p&gt;グラレコ(っぽいもの)を手早くそれっぽくつくるコツは「背景色をつけて白文字にすること」と「矩形で情報を束ねること」だと勝手に思っていますが、もっといい方法あれば是非アドバイスいただけると嬉しいです！&lt;/p&gt;</content><author><name></name></author><summary type="html">2019年11月25日、LINE Developer Meetup #58 にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。</summary></entry><entry><title type="html">チームが上手く失敗するためにマネージャーの私にできること</title><link href="https://aloerina01.github.io/blog/2019-10-24-1" rel="alternate" type="text/html" title="チームが上手く失敗するためにマネージャーの私にできること" /><published>2019-10-24T00:00:00+00:00</published><updated>2019-10-24T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-10-24-1">&lt;p&gt;私は現在、フロントエンドエンジニア5人のチームのマネージャーと、職種混合8人チームのスクラムマスターを担当しています。どちらの役割においても、&lt;strong&gt;チームがより自律的で効果的になること&lt;/strong&gt;を意識して関わっています。&lt;/p&gt;
-
-&lt;p&gt;ところで、&lt;strong&gt;心配性な&lt;/strong&gt;私はチームが将来出くわすであろう失敗やトラブルを予測して先回りで対策しようとする傾向にありました。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;この案件は〇〇さんが担当したら苦戦するかもしれないから、△△さんにヘルプはいる準備をしておいてもらおう&lt;/li&gt;
-  &lt;li&gt;ふりかえりの開催は面倒臭がられるだろうから、自分が開催する役目をしよう&lt;/li&gt;
-  &lt;li&gt;この人とあの人は相性が悪くて上手く進捗しないだろうから、別々のチームにしよう&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;実例ではないのですが、例えばこんな感じです。&lt;br /&gt;
-こういったリスクヘッジや環境整備などは、本の言葉を借りるなら「未来や人間関係の不確実性を減らすこと」と言えそうで、マネージャーの仕事であるように感じていました。&lt;/p&gt;
-
-&lt;p&gt;一方で、&lt;strong&gt;その不確実性は本当に解消すべきものだったのか？ チームが失敗して学ぶチャンスだったのではないか？&lt;/strong&gt; という不安も感じるようになりました…。この不安を通じて考え方が少し変わったと思うので、自分語りしながら整理してみようと思います。&lt;/p&gt;
-
-&lt;h3 id=&quot;失敗を恐れているのは誰か&quot;&gt;失敗を恐れているのは誰か&lt;/h3&gt;
-
-&lt;p&gt;「このままだと上手くいかないかもしれない、問題が起きるかもしれない」という思いは誰かの頭の中で生まれます。それはチームメンバー、マネージャー、もしくは外部の人ということも……。もちろん人により見えてる景色が違うので懸念や不安も違うはずですが、&lt;strong&gt;誰かの目線では解決の余地のあること、大した問題でもないこと&lt;/strong&gt;を、心配性の私は勝手に不安がっていた可能性もあるわけです。&lt;/p&gt;
-
-&lt;p&gt;この解決策は言うだけなら簡単で、&lt;strong&gt;チームで会話して懸念や不安を共有すれば良い&lt;/strong&gt;ですよね。ただ実行するのは難しく……日頃から胸の内をオープンにし合える関係性・コミュニケーションの場を作っておくことが大事だと痛感させられました。&lt;/p&gt;
-
-&lt;h3 id=&quot;それは失敗じゃない実績解除だ&quot;&gt;それは失敗じゃない、実績解除だ&lt;/h3&gt;
-
-&lt;p&gt;失敗を避けていた自分の振る舞いを変えるキッカケとなった発想は、「&lt;strong&gt;その失敗は本当にしてはいけない失敗なのか&lt;/strong&gt;」でした。&lt;/p&gt;
-
-&lt;p&gt;私は寝る前に(ひどいときは朝起きてからも)失敗したことを思い返して何がどうダメだったのかを延々考える癖があります。この積み重ねでしか前進できない自覚もあって、私にとって&lt;strong&gt;失敗は必要な要素&lt;/strong&gt;だと認識するようになりました。ということは、もしかしたらチームにとっても失敗する経験は必要なのかもしれません。&lt;/p&gt;
-
-&lt;p&gt;そう思ってチームメンバーをかえりみると、各々から「同じ失敗を繰り返さないようにしよう」という意志が感じ取れました。ちゃんと失敗を見つめ返して乗り越えて糧にしようという気概がありました。そうなるとあとは私がチームを信じて、チームに失敗してもらうだけですよね。&lt;/p&gt;
-
-&lt;p&gt;そんな尊い行為を失敗なんてネガティブな言葉では呼びたくなくて、&lt;strong&gt;実績解除&lt;/strong&gt;と呼ぶようにしています。&lt;/p&gt;
-
-&lt;h3 id=&quot;実績解除のあとの展開を予測する&quot;&gt;実績解除のあとの展開を予測する&lt;/h3&gt;
-
-&lt;p&gt;チームが実績解除の積み重ねで前進するようになったとはいえ、起きてはいけない問題もあります。そしてそれを阻止したり回避したりする責任はマネージャーにあるでしょう。&lt;br /&gt;
-阻止することは難しくないと思っていました。「失敗を予測して阻止する」ことができるなら「失敗の影響範囲や重要度を予測して阻止する」こともできると踏んだわけです。&lt;/p&gt;
-
-&lt;p&gt;しかしいざ取り組んでみたら、&lt;strong&gt;どこまで挑戦してもらって、どこを未然に防ぐか&lt;/strong&gt;のバランスを常にとり続ける難しさが待っていました。特に秀でたところのない私にとって「バランス感覚が良いこと」は生存戦略のつもりだったのですが、このバランス取りはすごく難しくて、今でも悩み続けています。&lt;/p&gt;
-
-&lt;h3 id=&quot;パターンは頼もしくて脆い&quot;&gt;パターンは頼もしくて、脆い&lt;/h3&gt;
-
-&lt;p&gt;チームが実績解除に挑むのと時を同じくして、私は「チームにとって最適な実績解除をどうやって経験してもらうか」の課題に挑戦し続けることになります。どれほどの難易度の経験をどのタイミングでしてもらうのが良いか、その経験のチャンスはどこに転がっているか…と日々悩み臨んでいるのですが、当然のように毎回失敗をします。&lt;/p&gt;
-
-&lt;p&gt;失敗しては別のアプローチをしてまた失敗して…を延々繰り返していれば選択肢も増えるし、うまくいった選択肢はパターンとして自分の中に定着したりもします。&lt;strong&gt;パターンを覚えて強くなったと錯覚した&lt;/strong&gt;日もありました。&lt;br /&gt;
-少し考えれば気づけたことですが、全く同じ人間はいないので同じパターンが通用することなんてないわけです。パターンを覚えたからといってレベルアップしたわけではないのです。&lt;/p&gt;
-
-&lt;p&gt;大事なのは、パターンの使い回しではなく応用です。応用に必要なものは&lt;strong&gt;具体策より方針&lt;/strong&gt;です。つまり、上手くいったアプローチをパターンとして蓄積させる過程では、個別具体的な部分を削ぎ落とし抽象化させていくことも必要なのでした。なんとか言語化までできたパターンの例を挙げてみます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;問題が起き得ることに気づいても何もせず、あえて問題を起こさせる。&lt;strong&gt;一度経験してしまえば次回は防げるであろう事例&lt;/strong&gt;で使う&lt;/li&gt;
-  &lt;li&gt;特定の問題に目を向けるよう、または集中するよう促す。&lt;strong&gt;解決策を試行錯誤する過程で実績解除できるであろう事例&lt;/strong&gt;で使う&lt;/li&gt;
-  &lt;li&gt;自分が取り組む問題に協力してもらえないか聞く。&lt;strong&gt;マネージャーが実績解除する姿を追体験させたい事例&lt;/strong&gt;で使う&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;いざ言葉にしてみるとパターンと呼ぶには見すぼらしい感じがしますね。それでもこれらを呼吸するように引き出せる状態になれば、一人ひとりの反応を見ることに集中できるようになり、コミュニケーションを洗練させられる気がします。そうなることを目指して、今しばらくはこの脆いパターンを蓄積させていこうと思う次第です。&lt;/p&gt;
-
-&lt;h3 id=&quot;本音&quot;&gt;本音&lt;/h3&gt;
-
-&lt;p&gt;自分の失敗をふりかえることを通じて失敗の必要性を実感し、チームが実績解除して前進していくことを意識するようになった話でした。&lt;/p&gt;
-
-&lt;p&gt;これが今自分にできることだと信じていますが、正直なところ全然自信はなくて、チームが前進しているかどうかも不安です。もっと別の視点や要素があるよ！という方はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;まで一言アドバイスをよろしくお願いします。&lt;/p&gt;</content><author><name></name></author><summary type="html">私は現在、フロントエンドエンジニア5人のチームのマネージャーと、職種混合8人チームのスクラムマスターを担当しています。どちらの役割においても、チームがより自律的で効果的になることを意識して関わっています。</summary></entry></feed>
+&lt;p&gt;グラレコ(っぽいもの)を手早くそれっぽくつくるコツは「背景色をつけて白文字にすること」と「矩形で情報を束ねること」だと勝手に思っていますが、もっといい方法あれば是非アドバイスいただけると嬉しいです！&lt;/p&gt;</content><author><name></name></author><summary type="html">2019年11月25日、LINE Developer Meetup #58 にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。</summary></entry></feed>
