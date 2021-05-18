@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか</title>
+  <title>Vuex5 Proposal リーディング - Vue3での状態管理はどう進化するのか</title>
   <meta name="description" content="Vuex5 RFCのProposalを読んだので概要を軽くメモしつつ、ちょこちょこコメントしました。実際に触ったわけではないので当たり障りのないコメント程度です。">
   
   <meta name="author" content="aloerina">
@@ -37,7 +37,7 @@
   <meta property="og:description" content="Vuex5 RFCのProposalを読んだので概要を軽くメモしつつ、ちょこちょこコメントしました。実際に触ったわけではないので当たり障りのないコメント程度です。" />
   <meta property="og:url" content="https://aloerina01.github.io/blog/2021-05-18-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか" />
+  <meta property="og:title" content="Vuex5 Proposal リーディング - Vue3での状態管理はどう進化するのか" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -48,7 +48,7 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか">
+  <meta name="twitter:title" content="Vuex5 Proposal リーディング - Vue3での状態管理はどう進化するのか">
   <meta name="twitter:description" content="Vuex5 RFCのProposalを読んだので概要を軽くメモしつつ、ちょこちょこコメントしました。実際に触ったわけではないので当たり障りのないコメント程度です。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
   <meta name="twitter:url" content="https://aloerina01.github.io/blog/2021-05-18-1">
@@ -71,7 +71,7 @@
     ga('require', 'linkid');
     ga('send', 'pageview', {
       'page': '/blog/2021-05-18-1',
-      'title': 'Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか'
+      'title': 'Vuex5 Proposal リーディング - Vue3での状態管理はどう進化するのか'
     });
   </script>
   
@@ -143,7 +143,7 @@
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
           <a itemprop="item" href="https://aloerina01.github.io/blog/2021-05-18-1">
-            <span itemprop="name">Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか</span>
+            <span itemprop="name">Vuex5 Proposal リーディング - Vue3での状態管理はどう進化するのか</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -158,7 +158,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか</h1>
+            <h1 class="title">Vuex5 Proposal リーディング - Vue3での状態管理はどう進化するのか</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -441,7 +441,7 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E5%90%91%E3%81%91%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B&url=https://aloerina01.github.io/blog/2021-05-18-1&via=aloerina_&hashtags=Vue,Vuex,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E3%81%A7%E3%81%AE%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B&url=https://aloerina01.github.io/blog/2021-05-18-1&via=aloerina_&hashtags=Vue,Vuex,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
                 <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
@@ -458,7 +458,7 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E5%90%91%E3%81%91%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B&u=https://aloerina01.github.io/blog/2021-05-18-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E3%81%A7%E3%81%AE%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B&u=https://aloerina01.github.io/blog/2021-05-18-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <svg
                 width="24"
@@ -618,7 +618,7 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E5%90%91%E3%81%91%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2021-05-18-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E3%81%A7%E3%81%AE%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2021-05-18-1">
               <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
             </a>
             
