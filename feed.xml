@@ -1,5 +1,247 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-04-22T07:32:18+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う</title><link href="https://aloerina01.github.io/blog/2021-04-22-1" rel="alternate" type="text/html" title="心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う" /><published>2021-04-22T00:00:00+00:00</published><updated>2021-04-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-04-22-1">&lt;p&gt;心理的安全という言葉の&lt;a href=&quot;https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Group_Performance/Edmondson%20Psychological%20safety.pdf&quot; target=&quot;_blank&quot;&gt;出典&lt;/a&gt;をたどると&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-05-18T09:56:58+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか</title><link href="https://aloerina01.github.io/blog/2021-05-18-1" rel="alternate" type="text/html" title="Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか" /><published>2021-05-18T00:00:00+00:00</published><updated>2021-05-18T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-05-18-1">&lt;p class=&quot;note&quot;&gt;
+この記事は&lt;a href=&quot;https://github.com/vuejs/rfcs/pull/271&quot; target=&quot;_blank&quot;&gt;Vuex5 RFC Proposal&lt;/a&gt;を参考にした内容です。正式リリース時には変更されている部分があるかもしれませんし、私自身も実際に触ってみて意見が変わる可能性があります。
+&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#vuexの役割のおさらい&quot; id=&quot;markdown-toc-vuexの役割のおさらい&quot;&gt;Vuexの役割のおさらい&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#vuex-5-の簡単なチュートリアル&quot; id=&quot;markdown-toc-vuex-5-の簡単なチュートリアル&quot;&gt;Vuex 5 の簡単なチュートリアル&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-storeの定義&quot; id=&quot;markdown-toc-1-storeの定義&quot;&gt;1. Storeの定義&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#option-store&quot; id=&quot;markdown-toc-option-store&quot;&gt;Option Store&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#composition-store&quot; id=&quot;markdown-toc-composition-store&quot;&gt;Composition Store&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-storeのインスタンス化&quot; id=&quot;markdown-toc-2-storeのインスタンス化&quot;&gt;2. Storeのインスタンス化&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-componentからstoreへのアクセス&quot; id=&quot;markdown-toc-3-componentからstoreへのアクセス&quot;&gt;3. ComponentからStoreへのアクセス&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#感想&quot; id=&quot;markdown-toc-感想&quot;&gt;感想&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;vuexの役割のおさらい&quot;&gt;Vuexの役割のおさらい&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;this RFC focuses on making Vuex an official global state management tool for Vue&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Vuexには、親子関係にないVueComponent間で状態を共有する機能、つまり&lt;strong&gt;グローバルな状態管理&lt;/strong&gt;機能を公式に提供する役割があります。今まではその実現手段としてFluxアーキテクチャをベースにしていましたが、Vuex5では脱却するようです。&lt;/p&gt;
+
+&lt;p&gt;また、グローバルな状態管理に加えて、Vuexが持つべき要件が4つ定義されています。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Code Splitting&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;SSR 対応&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Vue Devtools 対応&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Vuex を利用した状態管理の拡張性&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;私がVuexに期待することもこの要件の通りなので、今後のリリースを楽しみに待ちたいと思います。&lt;/p&gt;
+
+&lt;p&gt;ちなみにFluxには随分お世話になったし好みに合う考え方でした。時代とともに設計方法も進化していくもので今後利用頻度は減るかもしれませんが、頭の片隅に残っていてくれると、いつかどこかでシナジーが生まれるかもしれません。その日まで少しのお別れです。&lt;/p&gt;
+
+&lt;h3 id=&quot;vuex-5-の簡単なチュートリアル&quot;&gt;Vuex 5 の簡単なチュートリアル&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Storeの定義&lt;/li&gt;
+  &lt;li&gt;Storeのインスタンス化&lt;/li&gt;
+  &lt;li&gt;ComponentからStoreへのアクセス&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;の順でRFCにて紹介されています。&lt;/p&gt;
+
+&lt;h4 id=&quot;1-storeの定義&quot;&gt;1. Storeの定義&lt;/h4&gt;
+
+&lt;p&gt;Vuex5ではStoreの定義方法が2種類用意されています。&lt;strong&gt;Option Store&lt;/strong&gt; と &lt;strong&gt;Composition Store&lt;/strong&gt; です。Vueで用意されているOptions API, Composition APIに寄せた手法なので馴染みやすそうです。&lt;/p&gt;
+
+&lt;h5 id=&quot;option-store&quot;&gt;Option Store&lt;/h5&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineStore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;defineStore&lt;/code&gt;にstate, getters, actions等を含むオブジェクトを渡す形です。今までのVuexで書き慣れたプロパティなので分かりやすいですが、stateが関数になっている点は要注意です。mutationsは廃止されるようです。&lt;/p&gt;
+
+&lt;h5 id=&quot;composition-store&quot;&gt;Composition Store&lt;/h5&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;computed&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineStore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;defineStore&lt;/code&gt;にkeyとsetup関数を渡す形式です。Vueの&lt;code class=&quot;highlighter-rouge&quot;&gt;ref&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;などのReactivity APIを使い回しているのが特徴的です。&lt;/p&gt;
+
+&lt;h4 id=&quot;2-storeのインスタンス化&quot;&gt;2. Storeのインスタンス化&lt;/h4&gt;
+
+&lt;p&gt;ここまでで定義してきたStoreは、Vuexインスタンスにregisterされることでインスタンス化されます。&lt;br /&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;vuex.store&lt;/code&gt;関数に先程定義した&lt;code class=&quot;highlighter-rouge&quot;&gt;useCounter&lt;/code&gt;を渡しましょう。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Option Store or Composition Store&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// &amp;lt;- 1&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &amp;lt;- 2&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// success&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;インスタンス生成後は、&lt;code class=&quot;highlighter-rouge&quot;&gt;getters&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;などを使わずともStoreにアクセスできるようになりました。今までのVuexより直感的です。&lt;/p&gt;
+
+&lt;p&gt;Composition Storeでは&lt;code class=&quot;highlighter-rouge&quot;&gt;ref&lt;/code&gt;を利用していてるので&lt;code class=&quot;highlighter-rouge&quot;&gt;counter.count.value&lt;/code&gt;としたいとことですが、その必要はないようです。Option StoreかCompositon Storeかを区別することなく実装できるのはいいですね。&lt;/p&gt;
+
+&lt;p&gt;また、&lt;code class=&quot;highlighter-rouge&quot;&gt;vuex.store(useCounter)&lt;/code&gt;は初回実行時にStoreインスタンスを内部的に保持し、2回目以降の実行時にはそれを返す仕組みがあります。言い換えるとStoreは使用されるまで登録されないということになります。これはCode Splittingの観点でも恩恵があります。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-componentからstoreへのアクセス&quot;&gt;3. ComponentからStoreへのアクセス&lt;/h4&gt;
+
+&lt;p&gt;ComponentがStoreを利用するためには、何はともあれ最初にVueアプリケーションにVuexインスタンスをinjectする必要があります。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createApp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/App.vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;準備ができたところで、&lt;strong&gt;Options APIで実装されたComponent&lt;/strong&gt;からのアクセス方法を見てみます。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;方法1&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;方法2&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mapStores&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapStores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// storeのkey &quot;counter&quot; でアクセスする&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+
+  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;今までのVuexに似ていますね。&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;でStoreの値を利用するか、&lt;code class=&quot;highlighter-rouge&quot;&gt;mapHelper&lt;/code&gt;を利用するか、の2択です。後者の方法では&lt;code class=&quot;highlighter-rouge&quot;&gt;vuex.store&lt;/code&gt;が暗黙的に実行されているようです。ちなみに&lt;code class=&quot;highlighter-rouge&quot;&gt;mapStores&lt;/code&gt;に渡されたStoreにアクセスする際は、&lt;code class=&quot;highlighter-rouge&quot;&gt;difneStore&lt;/code&gt;で定義した&lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt;の値が利用することになります。&lt;/p&gt;
+
+&lt;p&gt;次に&lt;strong&gt;Compositon APIで実装されたComponent&lt;/strong&gt;からのアクセス方法です。&lt;/p&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/Counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;直感的でけっこう好みです。この方法だとStore定義を&lt;code class=&quot;highlighter-rouge&quot;&gt;useXxxx&lt;/code&gt;と命名する意味が実感できますね。&lt;/p&gt;
+
+&lt;p&gt;以上が新しいVuexの使い方です。&lt;br /&gt;
+RFCにはこれ以外にも、Store同士の依存関係、ハイドレーション、型注釈等の解説もありました。&lt;/p&gt;
+
+&lt;h3 id=&quot;感想&quot;&gt;感想&lt;/h3&gt;
+
+&lt;p&gt;今までは、Vuexのルールや制約の中でどれだけ依存関係を整えられるか、責務を分離できるか、再利用したい部品を適切に再利用できるか、といったことを悩み続けてきました。その軌跡はこのブログ上にもいくつかの記事として残っています。&lt;/p&gt;
+
+&lt;p&gt;しかしこれからはComposition API と Composition Storeを使うことで、Store層は極限まで薄く最低限のものになり、Componentに持たせるロジックは切り出され、結果的に&lt;strong&gt;状態・View・ロジックがシンプルに分離された&lt;/strong&gt;構造となりそうです。そしてそれらの依存関係はFluxのように循環するのではなく、Viewが状態やロジックに依存する形になりそうです。&lt;/p&gt;
+
+&lt;p&gt;これだけ聞くと、かつてのMVCのFat Contoller問題のような、Componentが依存で膨れ上がる可能性があるのでは……と思いましたがどうなんでしょう。Componentの切り方次第で良くも悪くもなりそうなので、今までとは違った切り口で設計する心の準備をしておこうと思います。&lt;/p&gt;
+
+&lt;p&gt;話は変わりますが、React向けの状態管理ライブラリのRecoilに&lt;a href=&quot;https://recoiljs.org/docs/api-reference/core/Loadable&quot; target=&quot;_blank&quot;&gt;Loadable&lt;/a&gt;という非同期処理の状態を扱う仕組みがあるのですが、これに近いことがVuexでもできると良いなと漠然と思っています。stateの初期値を非同期で取得する場面や、ユーザの入力をActionsを通じてServerへ反映する場面などの、非同期の状態の扱いやViewへの反映がお手軽になると嬉しいです。&lt;/p&gt;
+
+&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/rfcs/pull/271&quot; target=&quot;_blank&quot;&gt;https://github.com/vuejs/rfcs/pull/271&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md&quot; target=&quot;_blank&quot;&gt;https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/rfcs/discussions/270&quot; target=&quot;_blank&quot;&gt;https://github.com/vuejs/rfcs/discussions/270&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">この記事はVuex5 RFC Proposalを参考にした内容です。正式リリース時には変更されている部分があるかもしれませんし、私自身も実際に触ってみて意見が変わる可能性があります。</summary></entry><entry><title type="html">心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う</title><link href="https://aloerina01.github.io/blog/2021-04-22-1" rel="alternate" type="text/html" title="心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う" /><published>2021-04-22T00:00:00+00:00</published><updated>2021-04-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-04-22-1">&lt;p&gt;心理的安全という言葉の&lt;a href=&quot;https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Group_Performance/Edmondson%20Psychological%20safety.pdf&quot; target=&quot;_blank&quot;&gt;出典&lt;/a&gt;をたどると&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;Team psychological safety is defined as a shared belief that the team is safe for interpersonal risk taking.&lt;/p&gt;
@@ -1021,54 +1263,4 @@ Github Actionsの結果を取得する&lt;a href=&quot;https://developer.github.
 
 &lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
 
-&lt;p&gt;ちなみに記事内写真のマスクに使ったイラストはLINE絵文字の&lt;a href=&quot;https://store.line.me/emojishop/product/5cbbbe67040ab16170b524d4/ja&quot; target=&quot;_blank&quot;&gt;ちゃんくろ絵文字&lt;/a&gt;です。我が家のねこがモデルです、よければご購入ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">とあるゲーム好きなチームメンバーからの一声をきっかけに、FactorioというPCゲームをみんなでやる「モブFactorio」なる会を開催しました。命名こそ「モブ」と言っていますが、ゲーム好き4人が集まってわいわいゲームしようという軽い気持ちでの開催でした。 が、これが想像以上にモブの良さを実感でき、ちょうど良いモブ入門の場となったので様子をレポートします。</summary></entry><entry><title type="html">「チームがうまく失敗し学ぶために私にできること」の補足と裏話</title><link href="https://aloerina01.github.io/blog/2019-11-27-1" rel="alternate" type="text/html" title="「チームがうまく失敗し学ぶために私にできること」の補足と裏話" /><published>2019-11-27T00:00:00+00:00</published><updated>2019-11-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2019-11-27-1">&lt;p&gt;2019年11月25日、&lt;a href=&quot;https://line.connpass.com/event/154447/&quot; target=&quot;_blank&quot;&gt;LINE Developer Meetup #58&lt;/a&gt; にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。&lt;/p&gt;
-
-&lt;script async=&quot;&quot; class=&quot;speakerdeck-embed&quot; data-id=&quot;8b3ee51403284b37956b96592f1be8c9&quot; data-ratio=&quot;1.33333333333333&quot; src=&quot;//speakerdeck.com/assets/embed.js&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;慣れない登壇で上手く伝えきれたか不安なので、言い訳がましく補足をしていこうと思います。&lt;/p&gt;
-
-&lt;h3 id=&quot;補足&quot;&gt;補足&lt;/h3&gt;
-
-&lt;p&gt;今回の話は、&lt;strong&gt;チームにより安全かつ効果的に失敗から学んでもらいたい・もらえる環境をつくっていきたい&lt;/strong&gt;という私の個人的な思いの元、それを実現していくためにどんなことを考えているかを言語化したものでした。&lt;/p&gt;
-
-&lt;p&gt;ですのでチームメンバーと合意をとって取り組んだことというよりは、私がどういう思いを持っていて、どういう&lt;strong&gt;思考プロセス&lt;/strong&gt;を経てどういう行動を起こしているか、というやや自分語り的な内容となっています。&lt;/p&gt;
-
-&lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
-
-&lt;p&gt;発表の中で失敗の分析方法について触れていますが、これは&lt;strong&gt;私が日常的もしくは定期的にしている&lt;/strong&gt;方法になります。チームが出来上がったばかりの頃は特に丁寧にやっていたため付箋やホワイトボードの写真が残っていましたが、今ではノートの端切れに殴り書いたりと雑に(短時間で素早く)やっています。&lt;/p&gt;
-
-&lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
-
-&lt;p&gt;失敗と向き合うために心に留めていることとして「失敗は実績解除だ」と締めくくっていますが、「実績解除」という言葉は人によっては馴染みのないものだったかもしれません。発表の仕方を工夫すべきだったなとまさしく失敗から学んだ点でもあります。&lt;br /&gt;
-ここで伝えたかったことは「学ぶための貴重な機会である&lt;strong&gt;尊い失敗体験&lt;/strong&gt;をネガティブな言葉で表現したくない」ということでした。&lt;/p&gt;
-
-&lt;h3 id=&quot;裏話&quot;&gt;裏話&lt;/h3&gt;
-
-&lt;p&gt;登壇が苦手なので日頃の発信はブログで行っているのですが、せっかく登壇の機会をもらえたので&lt;strong&gt;文字だけでは伝えにくいことを言葉と図で伝える&lt;/strong&gt;ことにこだわりたいと思って臨みました。その効果が如何ほどだったかは測れていないので、聞いていただいた方からのフィードバックを楽しみにしています。&lt;/p&gt;
-
-&lt;p&gt;ちなみに私が登壇資料をつくるときは&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;伝えたいことを箇条書きでリストアップする(ここでほぼ内容を固めます)&lt;/li&gt;
-  &lt;li&gt;声に出して何度も話しながら流れを組み上げる&lt;/li&gt;
-  &lt;li&gt;話しながら思い浮かぶ図を手書きで書き起こす(ここでスライドのおおよその枚数が見えてきます)&lt;/li&gt;
-  &lt;li&gt;Keynoteでスライドをつくる&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;という流れになることが多いです。&lt;/p&gt;
-
-&lt;h3 id=&quot;グラレコ&quot;&gt;グラレコ&lt;/h3&gt;
-
-&lt;p&gt;最近Meetupの参加メモをiPadで手書きで取るようにしているので、おまけとして公開しておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2019-11-27-1-grareco_1.jpg&quot; alt=&quot;grareco_1&quot; loading=&quot;lazy&quot; /&gt;
-「LINEリサーチ開発におけるScrumのこれまでとこれから」 by 門谷さん&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2019-11-27-1-grareco_2.jpg&quot; alt=&quot;grareco_2&quot; loading=&quot;lazy&quot; /&gt;
-「仲間の多様な価値観を尊重しつつ、チームとして成果を出すための戦略」 by 米原さん&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;グラレコ(っぽいもの)を手早くそれっぽくつくるコツは「背景色をつけて白文字にすること」と「矩形で情報を束ねること」だと勝手に思っていますが、もっといい方法あれば是非アドバイスいただけると嬉しいです！&lt;/p&gt;</content><author><name></name></author><summary type="html">2019年11月25日、LINE Developer Meetup #58 にて登壇の機会をもらったので、「チームがうまく失敗し学ぶために私にできること」というタイトルで発表してきました。</summary></entry></feed>
+&lt;p&gt;ちなみに記事内写真のマスクに使ったイラストはLINE絵文字の&lt;a href=&quot;https://store.line.me/emojishop/product/5cbbbe67040ab16170b524d4/ja&quot; target=&quot;_blank&quot;&gt;ちゃんくろ絵文字&lt;/a&gt;です。我が家のねこがモデルです、よければご購入ください。&lt;/p&gt;</content><author><name></name></author><summary type="html">とあるゲーム好きなチームメンバーからの一声をきっかけに、FactorioというPCゲームをみんなでやる「モブFactorio」なる会を開催しました。命名こそ「モブ」と言っていますが、ゲーム好き4人が集まってわいわいゲームしようという軽い気持ちでの開催でした。 が、これが想像以上にモブの良さを実感でき、ちょうど良いモブ入門の場となったので様子をレポートします。</summary></entry></feed>

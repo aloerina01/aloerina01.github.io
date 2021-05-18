@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか</title>
+  <meta name="description" content="Vuex5 RFCのProposalを読んだので概要を軽くメモしつつ、ちょこちょこコメントしました。実際に触ったわけではないので当たり障りのないコメント程度です。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2021">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <link rel="stylesheet" as="style" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="Vuex5 RFCのProposalを読んだので概要を軽くメモしつつ、ちょこちょこコメントしました。実際に触ったわけではないので当たり障りのないコメント程度です。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2021-05-18-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか">
+  <meta name="twitter:description" content="Vuex5 RFCのProposalを読んだので概要を軽くメモしつつ、ちょこちょこコメントしました。実際に触ったわけではないので当たり障りのないコメント程度です。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2021-05-18-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2021-05-18-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-39630080-4', 'auto');
+    ga('require', 'linkid');
+    ga('send', 'pageview', {
+      'page': '/blog/2021-05-18-1',
+      'title': 'Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか'
+    });
+  </script>
+  
+
+  
+
+  <script src="/dist/prism.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <picture>
+        <source src="/assets/logo.webp" type="image/webp"> 
+        <img src="/assets/logo_min.png" alt="mille-feuille code" loading="lazy">
+      </picture>
+      
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="https://note.com/aloerina/m/m699d10700993"target="_blank" rel="noopener noreferrer">Poem</a>
+            
+        <li class="nav-link">
+          <a href="https://suzuri.jp/aloerina"target="_blank" rel="noopener noreferrer">Shop</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
+            
+        <li class="nav-link">
+          <a href="/feed.xml"target="_blank" rel="noopener noreferrer">RSS</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2021-05-18-1">
+            <span itemprop="name">Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <main class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">Vuex5 Proposal リーディング - Vue3向けの新しい状態管理方法はどう進化するのか</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2021-05-18</div>
+          <div class="post-categories">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
+              <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+              <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
+            </svg>
+             
+            <a href="/category/vue/">Vue</a>,    
+            <a href="/category/vuex/">Vuex</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p class="note">
+この記事は<a href="https://github.com/vuejs/rfcs/pull/271" target="_blank">Vuex5 RFC Proposal</a>を参考にした内容です。正式リリース時には変更されている部分があるかもしれませんし、私自身も実際に触ってみて意見が変わる可能性があります。
+</p>
+
+<ul id="markdown-toc">
+  <li><a href="#vuexの役割のおさらい" id="markdown-toc-vuexの役割のおさらい">Vuexの役割のおさらい</a></li>
+  <li><a href="#vuex-5-の簡単なチュートリアル" id="markdown-toc-vuex-5-の簡単なチュートリアル">Vuex 5 の簡単なチュートリアル</a>    <ul>
+      <li><a href="#1-storeの定義" id="markdown-toc-1-storeの定義">1. Storeの定義</a>        <ul>
+          <li><a href="#option-store" id="markdown-toc-option-store">Option Store</a></li>
+          <li><a href="#composition-store" id="markdown-toc-composition-store">Composition Store</a></li>
+        </ul>
+      </li>
+      <li><a href="#2-storeのインスタンス化" id="markdown-toc-2-storeのインスタンス化">2. Storeのインスタンス化</a></li>
+      <li><a href="#3-componentからstoreへのアクセス" id="markdown-toc-3-componentからstoreへのアクセス">3. ComponentからStoreへのアクセス</a></li>
+    </ul>
+  </li>
+  <li><a href="#感想" id="markdown-toc-感想">感想</a></li>
+  <li><a href="#参考" id="markdown-toc-参考">参考</a></li>
+</ul>
+
+<h3 id="vuexの役割のおさらい">Vuexの役割のおさらい</h3>
+
+<blockquote>
+  <p>this RFC focuses on making Vuex an official global state management tool for Vue</p>
+</blockquote>
+
+<p>Vuexには、親子関係にないVueComponent間で状態を共有する機能、つまり<strong>グローバルな状態管理</strong>機能を公式に提供する役割があります。今まではその実現手段としてFluxアーキテクチャをベースにしていましたが、Vuex5では脱却するようです。</p>
+
+<p>また、グローバルな状態管理に加えて、Vuexが持つべき要件が4つ定義されています。</p>
+
+<ul>
+  <li><strong>Code Splitting</strong></li>
+  <li><strong>SSR 対応</strong></li>
+  <li><strong>Vue Devtools 対応</strong></li>
+  <li><strong>Vuex を利用した状態管理の拡張性</strong></li>
+</ul>
+
+<p>私がVuexに期待することもこの要件の通りなので、今後のリリースを楽しみに待ちたいと思います。</p>
+
+<p>ちなみにFluxには随分お世話になったし好みに合う考え方でした。時代とともに設計方法も進化していくもので今後利用頻度は減るかもしれませんが、頭の片隅に残っていてくれると、いつかどこかでシナジーが生まれるかもしれません。その日まで少しのお別れです。</p>
+
+<h3 id="vuex-5-の簡単なチュートリアル">Vuex 5 の簡単なチュートリアル</h3>
+
+<ol>
+  <li>Storeの定義</li>
+  <li>Storeのインスタンス化</li>
+  <li>ComponentからStoreへのアクセス</li>
+</ol>
+
+<p>の順でRFCにて紹介されています。</p>
+
+<h4 id="1-storeの定義">1. Storeの定義</h4>
+
+<p>Vuex5ではStoreの定義方法が2種類用意されています。<strong>Option Store</strong> と <strong>Composition Store</strong> です。Vueで用意されているOptions API, Composition APIに寄せた手法なので馴染みやすそうです。</p>
+
+<h5 id="option-store">Option Store</h5>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">defineStore</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">useCounter</span> <span class="o">=</span> <span class="nx">defineStore</span><span class="p">({</span>
+  <span class="na">key</span><span class="p">:</span> <span class="dl">'</span><span class="s1">counter</span><span class="dl">'</span><span class="p">,</span>
+
+  <span class="na">state</span><span class="p">:</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">({</span>
+    <span class="na">count</span><span class="p">:</span> <span class="mi">1</span>
+  <span class="p">}),</span>
+
+  <span class="na">getters</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">double</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="na">actions</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">count</span><span class="o">++</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">defineStore</code>にstate, getters, actions等を含むオブジェクトを渡す形です。今までのVuexで書き慣れたプロパティなので分かりやすいですが、stateが関数になっている点は要注意です。mutationsは廃止されるようです。</p>
+
+<h5 id="composition-store">Composition Store</h5>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">ref</span><span class="p">,</span> <span class="nx">computed</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">defineStore</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">useCounter</span> <span class="o">=</span> <span class="nx">defineStore</span><span class="p">(</span><span class="dl">'</span><span class="s1">counter</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">count</span> <span class="o">=</span> <span class="nx">ref</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+  <span class="kd">const</span> <span class="nx">double</span> <span class="o">=</span> <span class="nx">computed</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">count</span><span class="p">.</span><span class="nx">value</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>
+
+  <span class="kd">function</span> <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">count</span><span class="p">.</span><span class="nx">value</span><span class="o">++</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">count</span><span class="p">,</span>
+    <span class="nx">double</span><span class="p">,</span>
+    <span class="nx">increment</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">defineStore</code>にkeyとsetup関数を渡す形式です。Vueの<code class="highlighter-rouge">ref</code>や<code class="highlighter-rouge">computed</code>などのReactivity APIを使い回しているのが特徴的です。</p>
+
+<h4 id="2-storeのインスタンス化">2. Storeのインスタンス化</h4>
+
+<p>ここまでで定義してきたStoreは、Vuexインスタンスにregisterされることでインスタンス化されます。<br />
+<code class="highlighter-rouge">vuex.store</code>関数に先程定義した<code class="highlighter-rouge">useCounter</code>を渡しましょう。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createVuex</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useCounter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/stores/counter</span><span class="dl">'</span>  <span class="c1">// Option Store or Composition Store</span>
+
+<span class="kd">const</span> <span class="nx">vuex</span> <span class="o">=</span> <span class="nx">createVuex</span><span class="p">()</span>
+
+<span class="kd">const</span> <span class="nx">counter</span> <span class="o">=</span> <span class="nx">vuex</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="nx">useCounter</span><span class="p">)</span>
+
+<span class="nx">counter</span><span class="p">.</span><span class="nx">count</span>  <span class="c1">// &lt;- 1</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">double</span> <span class="c1">// &lt;- 2</span>
+<span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">()</span> <span class="c1">// success</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>インスタンス生成後は、<code class="highlighter-rouge">getters</code>や<code class="highlighter-rouge">dispatch</code>などを使わずともStoreにアクセスできるようになりました。今までのVuexより直感的です。</p>
+
+<p>Composition Storeでは<code class="highlighter-rouge">ref</code>を利用していてるので<code class="highlighter-rouge">counter.count.value</code>としたいとことですが、その必要はないようです。Option StoreかCompositon Storeかを区別することなく実装できるのはいいですね。</p>
+
+<p>また、<code class="highlighter-rouge">vuex.store(useCounter)</code>は初回実行時にStoreインスタンスを内部的に保持し、2回目以降の実行時にはそれを返す仕組みがあります。言い換えるとStoreは使用されるまで登録されないということになります。これはCode Splittingの観点でも恩恵があります。</p>
+
+<h4 id="3-componentからstoreへのアクセス">3. ComponentからStoreへのアクセス</h4>
+
+<p>ComponentがStoreを利用するためには、何はともあれ最初にVueアプリケーションにVuexインスタンスをinjectする必要があります。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createApp</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vue</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">createVuex</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">App</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/App.vue</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">createApp</span><span class="p">(</span><span class="nx">App</span><span class="p">)</span>
+
+<span class="kd">const</span> <span class="nx">vuex</span> <span class="o">=</span> <span class="nx">createVuex</span><span class="p">()</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">use</span><span class="p">(</span><span class="nx">vuex</span><span class="p">)</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">mount</span><span class="p">(</span><span class="dl">'</span><span class="s1">#app</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p></p>
+
+<p>準備ができたところで、<strong>Options APIで実装されたComponent</strong>からのアクセス方法を見てみます。</p>
+
+<p><strong>方法1</strong></p>
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useCounter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/stores/counter</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">counter</span> <span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">$vuex</span><span class="p">.</span><span class="nx">store</span><span class="p">(</span><span class="nx">useCounter</span><span class="p">)</span>
+    <span class="p">},</span>
+
+    <span class="nx">count</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="p">.</span><span class="nx">count</span>
+    <span class="p">},</span>
+
+    <span class="nx">double</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="p">.</span><span class="nx">double</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p></p>
+
+<p><strong>方法2</strong></p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">mapStores</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">useCounter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/stores/counter</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
+    <span class="p">...</span><span class="nx">mapStores</span><span class="p">([</span>
+      <span class="nx">useCounter</span>
+    <span class="p">]),</span>
+
+    <span class="nx">count</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="p">.</span><span class="nx">count</span>  <span class="c1">// storeのkey "counter" でアクセスする</span>
+    <span class="p">},</span>
+
+    <span class="nx">double</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="p">.</span><span class="nx">double</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+
+  <span class="na">methods</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nx">increment</span><span class="p">()</span> <span class="p">{</span>
+      <span class="k">this</span><span class="p">.</span><span class="nx">counter</span><span class="p">.</span><span class="nx">increment</span><span class="p">()</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>今までのVuexに似ていますね。<code class="highlighter-rouge">computed</code>でStoreの値を利用するか、<code class="highlighter-rouge">mapHelper</code>を利用するか、の2択です。後者の方法では<code class="highlighter-rouge">vuex.store</code>が暗黙的に実行されているようです。ちなみに<code class="highlighter-rouge">mapStores</code>に渡されたStoreにアクセスする際は、<code class="highlighter-rouge">difneStore</code>で定義した<code class="highlighter-rouge">key</code>の値が利用することになります。</p>
+
+<p>次に<strong>Compositon APIで実装されたComponent</strong>からのアクセス方法です。</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useCounter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/stores/Counter</span><span class="dl">'</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="p">{</span>
+  <span class="nx">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">counter</span> <span class="o">=</span> <span class="nx">useCounter</span><span class="p">()</span>
+
+    <span class="nx">counter</span><span class="p">.</span><span class="nx">count</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<p>直感的でけっこう好みです。この方法だとStore定義を<code class="highlighter-rouge">useXxxx</code>と命名する意味が実感できますね。</p>
+
+<p>以上が新しいVuexの使い方です。<br />
+RFCにはこれ以外にも、Store同士の依存関係、ハイドレーション、型注釈等の解説もありました。</p>
+
+<h3 id="感想">感想</h3>
+
+<p>今までは、Vuexのルールや制約の中でどれだけ依存関係を整えられるか、責務を分離できるか、再利用したい部品を適切に再利用できるか、といったことを悩み続けてきました。その軌跡はこのブログ上にもいくつかの記事として残っています。</p>
+
+<p>しかしこれからはComposition API と Composition Storeを使うことで、Store層は極限まで薄く最低限のものになり、Componentに持たせるロジックは切り出され、結果的に<strong>状態・View・ロジックがシンプルに分離された</strong>構造となりそうです。そしてそれらの依存関係はFluxのように循環するのではなく、Viewが状態やロジックに依存する形になりそうです。</p>
+
+<p>これだけ聞くと、かつてのMVCのFat Contoller問題のような、Componentが依存で膨れ上がる可能性があるのでは……と思いましたがどうなんでしょう。Componentの切り方次第で良くも悪くもなりそうなので、今までとは違った切り口で設計する心の準備をしておこうと思います。</p>
+
+<p>話は変わりますが、React向けの状態管理ライブラリのRecoilに<a href="https://recoiljs.org/docs/api-reference/core/Loadable" target="_blank">Loadable</a>という非同期処理の状態を扱う仕組みがあるのですが、これに近いことがVuexでもできると良いなと漠然と思っています。stateの初期値を非同期で取得する場面や、ユーザの入力をActionsを通じてServerへ反映する場面などの、非同期の状態の扱いやViewへの反映がお手軽になると嬉しいです。</p>
+
+<h3 id="参考">参考</h3>
+
+<ul>
+  <li><a href="https://github.com/vuejs/rfcs/pull/271" target="_blank">https://github.com/vuejs/rfcs/pull/271</a></li>
+  <li><a href="https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md" target="_blank">https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md</a></li>
+  <li><a href="https://github.com/vuejs/rfcs/discussions/270" target="_blank">https://github.com/vuejs/rfcs/discussions/270</a></li>
+</ul>
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" defer></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E5%90%91%E3%81%91%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B&url=https://aloerina01.github.io/blog/2021-05-18-1&via=aloerina_&hashtags=Vue,Vuex,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+              </svg>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E5%90%91%E3%81%91%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B&u=https://aloerina01.github.io/blog/2021-05-18-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2021-05-18-1" target="_blank">
+              <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?Vuex5+Proposal+%E3%83%AA%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0+-+Vue3%E5%90%91%E3%81%91%E3%81%AE%E6%96%B0%E3%81%97%E3%81%84%E7%8A%B6%E6%85%8B%E7%AE%A1%E7%90%86%E6%96%B9%E6%B3%95%E3%81%AF%E3%81%A9%E3%81%86%E9%80%B2%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AE%E3%81%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2021-05-18-1">
+              <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
+            </a>
+            
+          
+        </section>
+
+        <div class="post-donation">
+  <div class="post-donation-panel">
+    <p class="post-donation-description for-pc">
+      <span>この記事が気に入ったらaloerinaをサポートしてみませんか？<br />コーヒー1杯からお気軽にサポートできます。</span>
+    </p>
+    <p class="post-donation-description for-mobile">
+      <span>この記事が気に入ったら<br />aloerinaをサポートしてみませんか？</span>
+    </p>
+    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
+      <p class="button-body">
+        <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+        <span class="label">サポートする</span>
+      </p>
+    </a>
+  </div>
+</div>
+
+         
+
+      </div>
+    </div>
+
+  </main>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>あわせて読みたい</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      
+      <li><a href="/blog/2020-06-23-1">Vue+VuexのデータフローをCQSライクに設計する方法</a></li>
+      
+      <li><a href="/blog/2018-09-14-1">React+Fluxで正しく設計するためのFlux見直しガイド</a></li>
+      
+      <li><a href="/blog/2018-12-25-1">俺がやらかしたVue mixinのアンチパターンから学ぶmixinの使い方と代替案</a></li>
+      
+      <li><a href="/blog/2019-09-25-1">VuexのStore設計のTips - 薄いGetter</a></li>
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile_v2.png" alt="" loading="lazy">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name">aloerina</div>
+        <div class="profile-content-description">
+          <p><span>Web developer</span></p>
+          <p>
+            <span>Webアプリの開発、エンジニアリングマネジメント、スクラムマスターなどをしています。趣味でドット絵グッズをつくっています。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+            </svg>
+          </a>
+          <a target="_blank" href="https://www.instagram.com/pixtrium/" rel="noopener noreferrer" class="sns-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+            </svg>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" rel="noopener noreferrer" class="sns-icon sns-icon-envelope">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+              <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/vuex/">Vuex</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/exp/">EXP</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+        
+        
+        <a href="/category/mobprogramming/">MobProgramming</a>
+      
+        
+        
+        <a href="/category/management/">Management</a>
+      
+        
+        
+        <a href="/category/coaching/">Coaching</a>
+      
+        
+        
+        <a href="/category/grareco/">GraReco</a>
+      
+        
+        
+        <a href="/category/githubactions/">GitHubActions</a>
+      
+        
+        
+        <a href="/category/retrospective/">Retrospective</a>
+      
+        
+        
+        <a href="/category/facilitation/">Facilitation</a>
+      
+        
+        
+        <a href="/category/scrum/">Scrum</a>
+      
+        
+        
+        <a href="/category/psychologicalsafety/">PsychologicalSafety</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents donation">
+  <div class="sub-contents-wrapper donation-wrapper">
+    <h3>BUY ME A COFFEE</h3>
+    <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
+    <div class="donation-button-area">
+        <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
+          <p class="button-body">
+            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" loading="lazy"></img>
+            <span class="label">ごちそうする</span>
+          </p>
+        </a>
+        <span>または<a href="https://kyash.co/" target="_blank" rel="noopener noreferrer">Kyash</a>で id: <b>aloerina</b> に送金する</span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published on <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Header
+    var CLASS_MENU_SHOW = 'show';
+    var navigationMenu = document.getElementById('js-navigation-menu');
+    var menuIcon = document.getElementById('js-mobile-menu-icon');
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+    });
+  });
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.30.0/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.31.0/autocomplete.min.js"></script>
+<script src="/dist/algolia.js" async></script>
+
+</body>
+
+</html>
