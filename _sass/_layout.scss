@@ -51,24 +51,33 @@ pre code.hljs {
 .site-header-container, .post-header-container {
 	width: 100%;
 	text-align: center;
+	
 	&.has-cover {
 		color: $white;
-		background-position: center bottom;
+		text-shadow: 0 2px 16px rgba(0,0,0,0.33);
+		background-position: center 80%;
 		background-size: cover;
 		.title {
-			font-size: modular-scale(6);
+			font-size: 2em;
+			@include media($tablet) {
+				font-size: modular-scale(6)
+			}
 		}
 		.subtitle, .info {
-			font-size: modular-scale(0);
+			display: none;
+			font-style: italic;
+			@include media($tablet) {
+				font-size: modular-scale(0);
+			}
 		}
 	}
 	.scrim {
 		padding: 3em 1em;
 		&.has-cover {
 			background-color: rgba(0,0,0,0.2);
-			padding: 8em 1em 6em 1em !important;
+			padding: 4em 1em 3em 1em !important;
 			@include media($tablet) {
-				padding: 13em 1em 9em 1em !important;
+				padding: 9em 1em 8em 1em !important;
 			}
 		}
 	}
@@ -261,19 +270,6 @@ pre code.hljs {
 			justify-content: center;
 			align-items: center;
     }
-	}
-	.site-header-container {
-		color: $white;
-		text-shadow: 0 2px 16px rgba(0,0,0,0.33);
-		.site-header{
-			.title {
-				font-size: modular-scale(6);
-			}
-			.subtitle {
-				font-style: italic;
-				font-size: modular-scale(0);
-			}
-		}
 	}
 	img {
 		display: block;
