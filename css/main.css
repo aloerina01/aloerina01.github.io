@@ -318,20 +318,28 @@ pre code.hljs {
   text-align: center; }
   .site-header-container.has-cover, .post-header-container.has-cover {
     color: #fff;
-    background-position: center bottom;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.33);
+    background-position: center 80%;
     background-size: cover; }
     .site-header-container.has-cover .title, .post-header-container.has-cover .title {
-      font-size: 2.985984em; }
+      font-size: 2em; }
+      @media screen and (min-width: 768px) {
+        .site-header-container.has-cover .title, .post-header-container.has-cover .title {
+          font-size: 2.985984em; } }
     .site-header-container.has-cover .subtitle, .site-header-container.has-cover .info, .post-header-container.has-cover .subtitle, .post-header-container.has-cover .info {
-      font-size: 1em; }
+      display: none;
+      font-style: italic; }
+      @media screen and (min-width: 768px) {
+        .site-header-container.has-cover .subtitle, .site-header-container.has-cover .info, .post-header-container.has-cover .subtitle, .post-header-container.has-cover .info {
+          font-size: 1em; } }
   .site-header-container .scrim, .post-header-container .scrim {
     padding: 3em 1em; }
     .site-header-container .scrim.has-cover, .post-header-container .scrim.has-cover {
       background-color: rgba(0, 0, 0, 0.2);
-      padding: 8em 1em 6em 1em !important; }
+      padding: 4em 1em 3em 1em !important; }
       @media screen and (min-width: 768px) {
         .site-header-container .scrim.has-cover, .post-header-container .scrim.has-cover {
-          padding: 13em 1em 9em 1em !important; } }
+          padding: 9em 1em 8em 1em !important; } }
 
 /*
 *	Header
@@ -526,14 +534,6 @@ pre code.hljs {
       display: flex;
       justify-content: center;
       align-items: center; }
-  .page-content .site-header-container {
-    color: #fff;
-    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.33); }
-    .page-content .site-header-container .site-header .title {
-      font-size: 2.985984em; }
-    .page-content .site-header-container .site-header .subtitle {
-      font-style: italic;
-      font-size: 1em; }
   .page-content img {
     display: block;
     margin: auto;
