@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-07-15T08:17:14+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-07-15T08:21:52+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">穏やかで簡潔なHAPPYコードレビューを実現するChrome拡張をつくってみた</title><link href="https://aloerina01.github.io/blog/2021-07-15-1" rel="alternate" type="text/html" title="穏やかで簡潔なHAPPYコードレビューを実現するChrome拡張をつくってみた" /><published>2021-07-15T00:00:00+00:00</published><updated>2021-07-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-07-15-1">&lt;p&gt;コードレビュー時に思うように意図が伝わらず、会話のラリーがやたら増えてしまったり、詰問合戦のようなギスギスした雰囲気になってしまったことありませんか？ 私はあります。もう少し気持ちよく無駄なくレビューできないものかと思っていたのですが、先日ふと思いついた対処作があったので試してみました。&lt;/p&gt;
 
 &lt;h3 id=&quot;つくったもの&quot;&gt;つくったもの&lt;/h3&gt;
@@ -47,7 +47,7 @@
 
 &lt;p&gt;私たちがレビューの場でしている会話は、実は「何が正しいか」「何が最適か」「このコードは良いか/悪いか」という&lt;strong&gt;事実を正しく理解するための会話&lt;/strong&gt;ではありません。「何を正しいと考えているか」「このコードをどうしたいか」という&lt;strong&gt;認識・解釈・価値観の会話&lt;/strong&gt;の会話です。ですので「(自分は)〜したい」と、主観的な認識を伝えようとすること、ひいては「私は自分のコメントが主観的なものだと自覚しているよ」と伝えることが、丁寧かつ効果的な会話に繋がります。&lt;/p&gt;
 
-&lt;p&gt;「私は正しい、あなたは間違っている」という思い込みのもと、事実を正しく理解するための会話を減らし、&lt;strong&gt;違って当たり前の認識・解釈・価値観を互いにすり合わせる会話のきっかけを作る&lt;/strong&gt;ことが、今回つくったもののコンセプトなのです。&lt;/p&gt;
+&lt;p&gt;「私は正しい、あなたは間違っている」という思い込みのもと行われる会話を減らし、&lt;strong&gt;違って当たり前の認識・解釈・価値観を互いにすり合わせる会話のきっかけを作る&lt;/strong&gt;ことが、今回つくったもののコンセプトなのです。&lt;/p&gt;
 
 &lt;h3 id=&quot;実装の紹介&quot;&gt;実装の紹介&lt;/h3&gt;
 
