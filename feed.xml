@@ -1,5 +1,133 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-09-14T08:49:29+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">穏やかで簡潔なHAPPYコードレビューを実現するChrome拡張をつくってみた</title><link href="https://aloerina01.github.io/blog/2021-07-15-1" rel="alternate" type="text/html" title="穏やかで簡潔なHAPPYコードレビューを実現するChrome拡張をつくってみた" /><published>2021-07-15T00:00:00+00:00</published><updated>2021-07-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-07-15-1">&lt;p&gt;コードレビュー時に思うように意図が伝わらず、会話のラリーがやたら増えてしまったり、詰問合戦のようなギスギスした雰囲気になってしまったことありませんか？ 私はあります。もう少し気持ちよく無駄なくレビューできないものかと思っていたのですが、先日ふと思いついた対処策があったので試してみました。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-09-21T07:45:07+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">esbuild 入門者のための書き置き</title><link href="https://aloerina01.github.io/blog/2021-09-15-1" rel="alternate" type="text/html" title="esbuild 入門者のための書き置き" /><published>2021-09-15T00:00:00+00:00</published><updated>2021-09-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-09-15-1">&lt;p&gt;最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。&lt;/p&gt;
+
+&lt;p&gt;今回は手始めに、初めてesbuildに触ったときに感じた「これなに」「どう使うの」「気をつけることは」あたりを書き置きしておきます。ちなみに執筆時点でのesbuildのバージョンは&lt;a href=&quot;https://github.com/evanw/esbuild/releases/tag/v0.12.28&quot; target=&quot;_blank&quot;&gt;0.12.28&lt;/a&gt;です。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#esbuild-とは&quot; id=&quot;markdown-toc-esbuild-とは&quot;&gt;esbuild とは&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#使い方&quot; id=&quot;markdown-toc-使い方&quot;&gt;使い方&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#利用例&quot; id=&quot;markdown-toc-利用例&quot;&gt;利用例&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#気をつけたいこと&quot; id=&quot;markdown-toc-気をつけたいこと&quot;&gt;気をつけたいこと&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#css-modules未対応&quot; id=&quot;markdown-toc-css-modules未対応&quot;&gt;CSS Modules未対応&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tsconfigの解釈&quot; id=&quot;markdown-toc-tsconfigの解釈&quot;&gt;tsconfigの解釈&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#動的import-code-splittingの展望&quot; id=&quot;markdown-toc-動的import-code-splittingの展望&quot;&gt;動的import, Code Splittingの展望&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#es5との付き合い方&quot; id=&quot;markdown-toc-es5との付き合い方&quot;&gt;ES5との付き合い方&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#top-lebel-await未対応&quot; id=&quot;markdown-toc-top-lebel-await未対応&quot;&gt;top-lebel await未対応&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわり&quot; id=&quot;markdown-toc-おわり&quot;&gt;おわり&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;esbuild-とは&quot;&gt;&lt;a href=&quot;https://github.com/evanw/esbuild&quot; target=&quot;_blank&quot;&gt;esbuild&lt;/a&gt; とは&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;An extremely fast JavaScript bundler&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;とにかく速さに重点を置いたバンドラのようです。バンドラということは、並列で比較できるものは&lt;a href=&quot;https://webpack.js.org/&quot; target=&quot;_blank&quot;&gt;webpack&lt;/a&gt;、&lt;a href=&quot;https://rollupjs.org/&quot; target=&quot;_blank&quot;&gt;rollup.jp&lt;/a&gt;、&lt;a href=&quot;https://ja.parceljs.org/&quot; target=&quot;_blank&quot;&gt;Parcel&lt;/a&gt;などです。バンドルと同時にトランスパイルもしてくれるようなので、その点で言えば&lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html&quot; target=&quot;_blank&quot;&gt;tsc&lt;/a&gt;や&lt;a href=&quot;https://babeljs.io/&quot; target=&quot;_blank&quot;&gt;Babel&lt;/a&gt;が比較対象になるでしょう。&lt;/p&gt;
+
+&lt;p&gt;esbuildは標準で、JS、JSX、TS、TSX、CSS、JSONなどを解釈しバンドルします。パッと見た感じはビルドに必要な一連の処理を担ってくれる印象ですが、&lt;strong&gt;ES5への変換に未対応&lt;/strong&gt;だったり、TypeScriptを解釈するものの&lt;strong&gt;型チェックはしなかったり&lt;/strong&gt;と、ビルド時によく使われる機能が一部ないので、利用の際は要件に合うかの確認が必要そうです。&lt;/p&gt;
+
+&lt;h3 id=&quot;使い方&quot;&gt;使い方&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -D esbuild&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npx esbuild --bundle ./index.js&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;configファイルなしで実行できるので、&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt;して即利用できます。基本的なオプションも揃っています。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Option&lt;/th&gt;
+      &lt;th&gt;効果&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--bundle&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;依存関係をインライン化します。esbuildはデフォルトでは依存関係をバンドルに含まないので、明示的に有効化する必要があります。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--minify&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;ビルドしたファイルを圧縮します。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--watch&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;ウォッチモードを有効にします。ファイルの変更を検知して再ビルドが走るようになります。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--target&lt;/code&gt;&lt;br /&gt;例: &lt;code class=&quot;highlighter-rouge&quot;&gt;-target=es2020,chrome58,node12&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;ビルド後に生成するJSのターゲット環境を指定します。デフォルトは&lt;code class=&quot;highlighter-rouge&quot;&gt;esnext&lt;/code&gt;です。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--sourcemap&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;sourcemapを生成します。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--define&lt;/code&gt;&lt;br /&gt;例: &lt;code class=&quot;highlighter-rouge&quot;&gt;--define:DEBUG=true&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;グローバル変数を定義します。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--splitting&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Code Splitting を有効化しますが、まだWIPのオプションです。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;自分がよく使いそうなものをピックアップしました。これ以外のオプションは&lt;a href=&quot;https://esbuild.github.io/api/#build-api&quot; target=&quot;_blank&quot;&gt;公式&lt;/a&gt;をご確認ください。&lt;/p&gt;
+
+&lt;h3 id=&quot;利用例&quot;&gt;利用例&lt;/h3&gt;
+
+&lt;p&gt;ES5に変換できないので、Production buildには使いにくいのが現状です。ですのでProduction buildは今まで通りwebpackを使って、Development buildにesbuildを利用するのが無難だと思います。&lt;a href=&quot;https://github.com/privatenumber/esbuild-loader&quot; target=&quot;_blank&quot;&gt;esbuild-loader&lt;/a&gt;を使うとwebpack上でesbuildを利用できます。&lt;/p&gt;
+
+&lt;h3 id=&quot;気をつけたいこと&quot;&gt;気をつけたいこと&lt;/h3&gt;
+
+&lt;p&gt;まだBeta版ということもあって気をつけたほうが良いことはいっぱいあるとは思いますが、私がドキュメントやIssueを見ていて目に止まった部分を書き置きしておきます。&lt;/p&gt;
+
+&lt;h4 id=&quot;css-modules未対応&quot;&gt;CSS Modules未対応&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;0.7.7でExperimentalなCSSのサポートを開始&lt;/li&gt;
+  &lt;li&gt;sass/scssの対応はまだの様子&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/evanw/esbuild/issues/20&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;にて議論中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;tsconfigの解釈&quot;&gt;tsconfigの解釈&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;TS, TSXをビルドするときはtsconfigの設定を読み取る&lt;/li&gt;
+  &lt;li&gt;tsconfigの特定フィールドのみ参照される、詳細は&lt;a href=&quot;https://esbuild.github.io/content-types/#tsconfig-json&quot; target=&quot;_blank&quot;&gt;公式&lt;/a&gt;にて&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;動的import-code-splittingの展望&quot;&gt;動的import, Code Splittingの展望&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;動的importの構文には対応している&lt;/li&gt;
+  &lt;li&gt;現時点ではCode SplittingはESMのみ対応してるが、ほかのモジュール形式も対応していくつもり&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/evanw/esbuild/issues/16&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;にて議論中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;es5との付き合い方&quot;&gt;ES5との付き合い方&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--target=es5&lt;/code&gt;とした場合、元々ES5のコードはES5のままになるが、ES6のコードをES5に変換することはない&lt;/li&gt;
+  &lt;li&gt;今後ES5に対応することはなさそう&lt;/li&gt;
+  &lt;li&gt;参考&lt;a href=&quot;https://github.com/evanw/esbuild/issues/297&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;はこちら&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;top-lebel-await未対応&quot;&gt;top-lebel await未対応&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;今後もしばらくは対応できそうにない&lt;/li&gt;
+  &lt;li&gt;細かい議論は&lt;a href=&quot;https://github.com/evanw/esbuild/issues/253&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;にて&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;おわり&quot;&gt;おわり&lt;/h3&gt;
+
+&lt;p&gt;以上、簡単ですがesbuildについての書き置きです。&lt;br /&gt;
+冒頭にも書いたように、最近は環境構築する頻度が減っているので、おそらく数カ月後に久々にesbuildを使おうとして右往左往している自分がいることでしょう。そのときに少しでも役立てばいいなと思います(バージョンが進んでほとんど役立たなくなっているかもしれませんが😫)。&lt;/p&gt;</content><author><name></name></author><summary type="html">最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。</summary></entry><entry><title type="html">穏やかで簡潔なHAPPYコードレビューを実現するChrome拡張をつくってみた</title><link href="https://aloerina01.github.io/blog/2021-07-15-1" rel="alternate" type="text/html" title="穏やかで簡潔なHAPPYコードレビューを実現するChrome拡張をつくってみた" /><published>2021-07-15T00:00:00+00:00</published><updated>2021-07-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-07-15-1">&lt;p&gt;コードレビュー時に思うように意図が伝わらず、会話のラリーがやたら増えてしまったり、詰問合戦のようなギスギスした雰囲気になってしまったことありませんか？ 私はあります。もう少し気持ちよく無駄なくレビューできないものかと思っていたのですが、先日ふと思いついた対処策があったので試してみました。&lt;/p&gt;
 
 &lt;h3 id=&quot;つくったもの&quot;&gt;つくったもの&lt;/h3&gt;
 
@@ -1184,75 +1312,4 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 
 &lt;p&gt;当然ですが環境が変われば気をつけることは変わりますし、このデザイン方法がそのまま利用できない場面も出てくると思います。そうなったときにも揺るがない部分は何なのかを言語化していきたいと、ここまで書き出して気づきました。得に&lt;strong&gt;ふりかえりをするのに適した人間関係&lt;/strong&gt;あたりが重要になってきそうな予感です。いずれそのあたりもブログに書けるようになれたらと思います。&lt;/p&gt;
 
-&lt;p&gt;それでは、お互い良きふりかえりライフを。&lt;/p&gt;</content><author><name></name></author><summary type="html">私の関わるいくつかのチームではよくふりかえりをします。ScrumチームがSprint毎に行う「Sprint Retrospective」であったり、フロントエンドエンジニアのチームが隔週で行う「カイゼンミーティング」であったり、呼び名や頻度や内容は様々ですが、定期的に自分たちの行動を思い返し何らかの学びを得る活動をしています。</summary></entry><entry><title type="html">ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた</title><link href="https://aloerina01.github.io/blog/2020-01-09-1" rel="alternate" type="text/html" title="ブログのCIをCircleCIからGitHub Actionsに乗り換えてみた" /><published>2020-01-09T00:00:00+00:00</published><updated>2020-01-09T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-01-09-1">&lt;p&gt;このブログのCIをCircleCIからGitHub Actionsに移行しましたので、備忘のために作業時のメモを(補足を添えて)公開します。&lt;/p&gt;
-
-&lt;h3 id=&quot;動機&quot;&gt;動機&lt;/h3&gt;
-&lt;p&gt;GitHub ActionsをCIとして業務利用できるかどうか体感で確認したかったためです。&lt;/p&gt;
-
-&lt;h3 id=&quot;要件&quot;&gt;要件&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;developmentブランチへのpushをトリガーに&lt;a href=&quot;https://github.com/aloerina01/aloerina01.github.io/blob/development/Rakefile&quot; target=&quot;_blank&quot;&gt;Raketask&lt;/a&gt;を実行し、jekyllによって静的サイトを生成する&lt;/li&gt;
-  &lt;li&gt;生成された静的サイトをmasterブランチへpushする&lt;/li&gt;
-  &lt;li&gt;直近のビルド成功時のCommitと比較し、&lt;code class=&quot;highlighter-rouge&quot;&gt;/_posts/&lt;/code&gt;以下に差分がある場合はindexを生成しAlgoliaサーバにアップする&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;やったこと&quot;&gt;やったこと&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/.github/workflows&lt;/code&gt;ディレクトリを作成する(命名固定)&lt;/li&gt;
-  &lt;li&gt;ディレクトリ以下にGithub Actionsのconfigファイルを作成する(命名は自由なので&lt;code class=&quot;highlighter-rouge&quot;&gt;deploy.yml&lt;/code&gt;とする)&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;deploy.yml&lt;/code&gt;にCircleCI用のconfigファイルの内容を移植する
-    &lt;ul&gt;
-      &lt;li&gt;ソースをチェックアウトするために&lt;a href=&quot;https://github.com/actions/checkout&quot; target=&quot;_blank&quot;&gt;actions/checkout@v1&lt;/a&gt;を利用する&lt;/li&gt;
-      &lt;li&gt;ビルド環境にrubyのインストールするために&lt;a href=&quot;https://github.com/actions/setup-ruby&quot; target=&quot;_blank&quot;&gt;actions/setup-ruby@v1&lt;/a&gt;を利用する&lt;/li&gt;
-      &lt;li&gt;dependenciesをキャッシュしておくために&lt;a href=&quot;https://github.com/actions/cache&quot; target=&quot;_blank&quot;&gt;actions/cache@v1&lt;/a&gt;を利用する&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;ビルドがSuccessした直近のcommit hashを特定するスクリプトを修正する(詳細後述)
-    &lt;ul&gt;
-      &lt;li&gt;今まではCircleCIのAPIを利用していたため&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;GitHub Actionsで利用するsecretを設定する&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.circleci/config.yml&lt;/code&gt;を削除する&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;「ビルドがSuccessした直近のcommit」を特定する部分でハマりました。今まではCircleCIのAPIを使ってビルドログ一覧を取得したり条件で絞り込んだり簡単にできていたのですが…。Github ActionsにはそのようなAPIが見当たりませんでした。&lt;br /&gt;
-Github Actionsの結果を取得する&lt;a href=&quot;https://developer.github.com/v3/checks/runs/&quot; target=&quot;_blank&quot;&gt;check runs&lt;/a&gt;や&lt;a href=&quot;https://developer.github.com/v3/checks/suites/&quot; target=&quot;_blank&quot;&gt;check suites&lt;/a&gt;、commitのステータスを取得する&lt;a href=&quot;https://developer.github.com/v3/repos/statuses/&quot; target=&quot;_blank&quot;&gt;statuses&lt;/a&gt;などのAPIはあるものの、それらからは条件に該当するcommit hashを抽出することはできず、直前のcommitと比較する方法に妥協しました。&lt;/p&gt;
-
-&lt;p&gt;いい方法知っている方がいましたらお助けください…！&lt;/p&gt;
-
-&lt;h3 id=&quot;使ってみた所感&quot;&gt;使ってみた所感&lt;/h3&gt;
-&lt;p&gt;ビルド速度の劣化はありませんでしたので一安心です。&lt;/p&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt;したものをキャッシュする設定はCircleCI(ver2)よりも書きやすく、読みやすいと感じました。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.circleci/config.yml&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;restore_cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle-cache-{{ checksum &quot;Gemfile.lock&quot; }}&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle-cache-&lt;/span&gt;
-
-&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;save_cache&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;bundle-cache-{{ checksum &quot;Gemfile.lock&quot; }}&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;vendor/bundle&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;CircleCIでは「キャッシュする/キャッシュを復元する」記述をそれぞれ書いていました。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;.github/workflows/deploy.yml&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;na&quot;&gt;uses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;actions/cache@v1&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;with&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;vendor/bundle&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Github Actionsでは「何をキャッシュするのか」を記述すれば良いので分かりやすく感じました。「キャッシュがない場合は〇〇する」処理も&lt;code class=&quot;highlighter-rouge&quot;&gt;if: steps.&amp;lt;step_name&amp;gt;.outputs.cache-hit != ‘true’&lt;/code&gt;と書けるので直感的でした。&lt;/p&gt;
-
-&lt;p&gt;一方で、GitHub Actionsのログを柔軟に取得するAPIがなかったり、結果Viewに「キャッシュをクリアして再ビルドする」ボタンがなかったりと、少し込み入ったことをすると困る場面が多かったです。&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;CircleCIから移行することはできましたし、configファイルも比較的書きやすかったですが、かゆいところに手が届かない印象です。当面は使っていきますが、業務利用はまだ控えておこうと思います。今後に期待します！&lt;/p&gt;</content><author><name></name></author><summary type="html">このブログのCIをCircleCIからGitHub Actionsに移行しましたので、備忘のために作業時のメモを(補足を添えて)公開します。</summary></entry></feed>
+&lt;p&gt;それでは、お互い良きふりかえりライフを。&lt;/p&gt;</content><author><name></name></author><summary type="html">私の関わるいくつかのチームではよくふりかえりをします。ScrumチームがSprint毎に行う「Sprint Retrospective」であったり、フロントエンドエンジニアのチームが隔週で行う「カイゼンミーティング」であったり、呼び名や頻度や内容は様々ですが、定期的に自分たちの行動を思い返し何らかの学びを得る活動をしています。</summary></entry></feed>

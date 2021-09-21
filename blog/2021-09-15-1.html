@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>React+Fluxアプリケーションにpropsバケツリレーは必要か</title>
-  <meta name="description" content="React+Fluxアプリケーションでしばしば見かけるpropsバケツリレーについて、公式ドキュメントの見解と、それを基にしたチームでのディスカッション内容について書きました。思いもよらない観点などが出てきて有意義でした。">
+  <title>esbuild 入門者のための書き置き</title>
+  <meta name="description" content="esbuild(0.12.28)に触ってみたので、簡単な入門用メモを残します。これを読めばesbuildがどんなものかざっくりと分かり、とりあえず動かすことができ、実用するにあたって気をつけるポイントのいくつかを知ることができます。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2021">
@@ -34,10 +34,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="React+Fluxアプリケーションでしばしば見かけるpropsバケツリレーについて、公式ドキュメントの見解と、それを基にしたチームでのディスカッション内容について書きました。思いもよらない観点などが出てきて有意義でした。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2019-04-02-1" />
+  <meta property="og:description" content="esbuild(0.12.28)に触ってみたので、簡単な入門用メモを残します。これを読めばesbuildがどんなものかざっくりと分かり、とりあえず動かすことができ、実用するにあたって気をつけるポイントのいくつかを知ることができます。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2021-09-15-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="React+Fluxアプリケーションにpropsバケツリレーは必要か" />
+  <meta property="og:title" content="esbuild 入門者のための書き置き" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -48,17 +48,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="React+Fluxアプリケーションにpropsバケツリレーは必要か">
-  <meta name="twitter:description" content="React+Fluxアプリケーションでしばしば見かけるpropsバケツリレーについて、公式ドキュメントの見解と、それを基にしたチームでのディスカッション内容について書きました。思いもよらない観点などが出てきて有意義でした。">
+  <meta name="twitter:title" content="esbuild 入門者のための書き置き">
+  <meta name="twitter:description" content="esbuild(0.12.28)に触ってみたので、簡単な入門用メモを残します。これを読めばesbuildがどんなものかざっくりと分かり、とりあえず動かすことができ、実用するにあたって気をつけるポイントのいくつかを知ることができます。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2019-04-02-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2021-09-15-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2019-04-02-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2021-09-15-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   
@@ -70,8 +70,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/blog/2019-04-02-1',
-      'title': 'React+Fluxアプリケーションにpropsバケツリレーは必要か'
+      'page': '/blog/2021-09-15-1',
+      'title': 'esbuild 入門者のための書き置き'
     });
   </script>
   
@@ -142,8 +142,8 @@
         
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2019-04-02-1">
-            <span itemprop="name">React+Fluxアプリケーションにpropsバケツリレーは必要か</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2021-09-15-1">
+            <span itemprop="name">esbuild 入門者のための書き置き</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -158,7 +158,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">React+Fluxアプリケーションにpropsバケツリレーは必要か</h1>
+            <h1 class="title">esbuild 入門者のための書き置き</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -170,7 +170,7 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2019-04-02</div>
+          <div class="post-date">2021-09-15</div>
           <div class="post-categories">
             
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
@@ -178,94 +178,141 @@
               <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
             </svg>
              
-            <a href="/category/javascript/">JavaScript</a>,    
-            <a href="/category/react/">React</a>,    
-            <a href="/category/flux/">Flux</a>   
+            <a href="/category/esbuild/">esbuild</a>,    
+            <a href="/category/environment/">Environment</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <p>React+Fluxアプリケーションのメンテをしている中で「<strong>propsのバケツリレーを減らすためにContainerを増やしてもよいか？</strong>」というディスカッションになったので、考察をまとめてみます。</p>
+          <p>最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。</p>
 
-<h3 id="いまの設計の確認">いまの設計の確認</h3>
+<p>今回は手始めに、初めてesbuildに触ったときに感じた「これなに」「どう使うの」「気をつけることは」あたりを書き置きしておきます。ちなみに執筆時点でのesbuildのバージョンは<a href="https://github.com/evanw/esbuild/releases/tag/v0.12.28" target="_blank">0.12.28</a>です。</p>
 
-<ul>
-  <li>FluxUtilsフレームワークを利用している</li>
-  <li>複数のStoreを持つ</li>
-  <li>ComponentTreeのRootをContainerとし、StoreのStateを受け取る</li>
-  <li>Tree状に配置された各Componentにはprops経由で状態を受け渡す</li>
-  <li>各Componentはローカルステートを持つことができる</li>
+<ul id="markdown-toc">
+  <li><a href="#esbuild-とは" id="markdown-toc-esbuild-とは">esbuild とは</a></li>
+  <li><a href="#使い方" id="markdown-toc-使い方">使い方</a></li>
+  <li><a href="#利用例" id="markdown-toc-利用例">利用例</a></li>
+  <li><a href="#気をつけたいこと" id="markdown-toc-気をつけたいこと">気をつけたいこと</a>    <ul>
+      <li><a href="#css-modules未対応" id="markdown-toc-css-modules未対応">CSS Modules未対応</a></li>
+      <li><a href="#tsconfigの解釈" id="markdown-toc-tsconfigの解釈">tsconfigの解釈</a></li>
+      <li><a href="#動的import-code-splittingの展望" id="markdown-toc-動的import-code-splittingの展望">動的import, Code Splittingの展望</a></li>
+      <li><a href="#es5との付き合い方" id="markdown-toc-es5との付き合い方">ES5との付き合い方</a></li>
+      <li><a href="#top-lebel-await未対応" id="markdown-toc-top-lebel-await未対応">top-lebel await未対応</a></li>
+    </ul>
+  </li>
+  <li><a href="#おわり" id="markdown-toc-おわり">おわり</a></li>
 </ul>
 
-<p>ちなみに、ここで言うFluxの定義については「<a href="/blog/2018-09-14-1" target="_blank">React+Fluxで正しく設計するためのFlux見直しガイド</a>」にてまとめています。</p>
-
-<h3 id="propsのバケツリレーと単一containerとは">propsのバケツリレーと単一Containerとは？</h3>
-<p>Reactアプリケーションでしばしばある「<strong>ComponentTreeのRootでアプリケーション全体のStateを受け取り、それを何階層もの子Componentにprops経由で受け渡していく</strong>」という設計を、ここでは<strong>単一Container</strong>と<strong>propsのバケツリレー</strong>と呼んでいます。</p>
-
-<p>これらの手法をなんとなくお作法だと思いこんでいましたが、本当にそうなのでしょうか？ もっと良い設計があるのではないか、というのがディスカッションの種でした。</p>
-
-<h3 id="propsのバケツリレーの生い立ちを想像してみる">propsのバケツリレーの生い立ちを想像してみる</h3>
-
-<p>ざっくり言うと、ReactはComoponentを「propsを受け取り、それに応じた描画を返すもの」と定義しています。そしてComponentをTree状に並べることで画面を構成する仕組みです。<br />
-これらをつなげると「Treeの上から下へ何階層もpropsを受け渡していく」ということになりそうです。連鎖的に「Treeの一番上でStoreからStateを受け取って」が枕詞になり、次第にReactの典型的な形となっていったのかもしれません。</p>
-
-<h3 id="公式ドキュメントの見解">公式ドキュメントの見解</h3>
-
-<h5 id="react">React</h5>
+<h3 id="esbuild-とは"><a href="https://github.com/evanw/esbuild" target="_blank">esbuild</a> とは</h3>
 
 <blockquote>
-  <p>In a typical React application, data is passed top-down (parent to child) via props</p>
+  <p>An extremely fast JavaScript bundler</p>
 </blockquote>
 
-<p>propsによる状態の受け渡しを「典型的」とは言っているものの、推奨している記述は見つかりませんでした。</p>
+<p>とにかく速さに重点を置いたバンドラのようです。バンドラということは、並列で比較できるものは<a href="https://webpack.js.org/" target="_blank">webpack</a>、<a href="https://rollupjs.org/" target="_blank">rollup.jp</a>、<a href="https://ja.parceljs.org/" target="_blank">Parcel</a>などです。バンドルと同時にトランスパイルもしてくれるようなので、その点で言えば<a href="https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html" target="_blank">tsc</a>や<a href="https://babeljs.io/" target="_blank">Babel</a>が比較対象になるでしょう。</p>
 
-<h5 id="flux">Flux</h5>
+<p>esbuildは標準で、JS、JSX、TS、TSX、CSS、JSONなどを解釈しバンドルします。パッと見た感じはビルドに必要な一連の処理を担ってくれる印象ですが、<strong>ES5への変換に未対応</strong>だったり、TypeScriptを解釈するものの<strong>型チェックはしなかったり</strong>と、ビルド時によく使われる機能が一部ないので、利用の際は要件に合うかの確認が必要そうです。</p>
 
-<p>単一Containerとすることを推奨する記述はみつからず、むしろ「Containers」と複数形で表現されていました。</p>
+<h3 id="使い方">使い方</h3>
 
-<h5 id="redux">Redux</h5>
+<ol>
+  <li><code class="highlighter-rouge">npm install -D esbuild</code></li>
+  <li><code class="highlighter-rouge">npx esbuild --bundle ./index.js</code></li>
+</ol>
 
-<blockquote>
-  <p>Most of the components we’ll write will be presentational, but we’ll need to generate a few container components to connect them to the Redux store. This and the design brief below do not imply container components must be near the top of the component tree.</p>
-</blockquote>
+<p>configファイルなしで実行できるので、<code class="highlighter-rouge">npm install</code>して即利用できます。基本的なオプションも揃っています。</p>
 
-<p>「いくつかのContainerをつくる」「TreeのRoot近くにContainerを置く義務はない」との記述がありました。</p>
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>効果</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">--bundle</code></td>
+      <td>依存関係をインライン化します。esbuildはデフォルトでは依存関係をバンドルに含まないので、明示的に有効化する必要があります。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">--minify</code></td>
+      <td>ビルドしたファイルを圧縮します。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">--watch</code></td>
+      <td>ウォッチモードを有効にします。ファイルの変更を検知して再ビルドが走るようになります。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">--target</code><br />例: <code class="highlighter-rouge">-target=es2020,chrome58,node12</code></td>
+      <td>ビルド後に生成するJSのターゲット環境を指定します。デフォルトは<code class="highlighter-rouge">esnext</code>です。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">--sourcemap</code></td>
+      <td>sourcemapを生成します。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">--define</code><br />例: <code class="highlighter-rouge">--define:DEBUG=true</code></td>
+      <td>グローバル変数を定義します。</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">--splitting</code></td>
+      <td>Code Splitting を有効化しますが、まだWIPのオプションです。</td>
+    </tr>
+  </tbody>
+</table>
 
-<p>まとめると、執筆時点の公式ドキュメントを見る限り、どれをとってもpropsのバケツリレーや単一Containerを推奨する記述はありませんでした。<br />
-ReduxはStateをひとつのオブジェクトとして扱うので、もしかしたらそれを受け取るContainerもひとつなのではと思いましたが、そんなことありませんでした。</p>
+<p>自分がよく使いそうなものをピックアップしました。これ以外のオプションは<a href="https://esbuild.github.io/api/#build-api" target="_blank">公式</a>をご確認ください。</p>
 
-<h3 id="私の見解-最適解を探すこと">私の見解 最適解を探すこと</h3>
+<h3 id="利用例">利用例</h3>
 
-<p>ここまでの内容から思いつくことを箇条書きしてみます。</p>
+<p>ES5に変換できないので、Production buildには使いにくいのが現状です。ですのでProduction buildは今まで通りwebpackを使って、Development buildにesbuildを利用するのが無難だと思います。<a href="https://github.com/privatenumber/esbuild-loader" target="_blank">esbuild-loader</a>を使うとwebpack上でesbuildを利用できます。</p>
+
+<h3 id="気をつけたいこと">気をつけたいこと</h3>
+
+<p>まだBeta版ということもあって気をつけたほうが良いことはいっぱいあるとは思いますが、私がドキュメントやIssueを見ていて目に止まった部分を書き置きしておきます。</p>
+
+<h4 id="css-modules未対応">CSS Modules未対応</h4>
 
 <ul>
-  <li>単一Containerや、壮大なpropsバケツリレーは必須ではない</li>
-  <li>ただ、アプリケーションの性質によってはそれらを使って実装しても問題ない</li>
-  <li>「典型的」であることは、構造を理解しやすい利点もある</li>
-  <li>単一Containerには「Storeアクセスを1箇所にまとめる」利点もある</li>
-  <li>単一Containerを使わなくても「Container Component」と「Presentation Component」を分離した設計は実現できる</li>
-  <li>単一Containerを使わなければ、個々のComponent毎でデータ取得から描画までの一連の処理を完結させられる</li>
-  <li>既にある設計を覆す場合は、どうやって新しい設計に置き換えていくかのマイルストーンとセットで考えたい</li>
-  <li>一部分だけ別の設計にすると混乱の元なので、全部変更しないか全部変えるかの二択で考えたい</li>
+  <li>0.7.7でExperimentalなCSSのサポートを開始</li>
+  <li>sass/scssの対応はまだの様子</li>
+  <li><a href="https://github.com/evanw/esbuild/issues/20" target="_blank">Issue</a>にて議論中</li>
 </ul>
 
-<p>一言で言えば、単一Containerやpropsバケツリレーにもメリットはあるので、<strong>良し悪しではなくあらゆる手法の中でどれが最適かを考えていきたい</strong>ということに尽きますね。</p>
+<h4 id="tsconfigの解釈">tsconfigの解釈</h4>
 
-<h3 id="その他の見解-テスタビリティから考える">その他の見解 テスタビリティから考える</h3>
+<ul>
+  <li>TS, TSXをビルドするときはtsconfigの設定を読み取る</li>
+  <li>tsconfigの特定フィールドのみ参照される、詳細は<a href="https://esbuild.github.io/content-types/#tsconfig-json" target="_blank">公式</a>にて</li>
+</ul>
 
-<p>ディスカッションの中で出た面白い着眼点に「<strong>どちらがテストを書きやすいか</strong>」というものがありました。</p>
+<h4 id="動的import-code-splittingの展望">動的import, Code Splittingの展望</h4>
 
-<p>単一Containerであれば、上述の通りStoreにアクセスするロジックを1箇所にまとめられます。その結果、RootComponentは<strong>Storeアクセスに関するテスト</strong>を、それ以外のComponentは<strong>UIに関するテスト</strong>を書くことに専念できそうです。</p>
+<ul>
+  <li>動的importの構文には対応している</li>
+  <li>現時点ではCode SplittingはESMのみ対応してるが、ほかのモジュール形式も対応していくつもり</li>
+  <li><a href="https://github.com/evanw/esbuild/issues/16" target="_blank">Issue</a>にて議論中</li>
+</ul>
 
-<p>逆に各ComponentをContainerとしStoreアクセスから描画までの一連の処理をComponentに閉じ込めれば、Component間の依存度が下がり、独立したComponentとして<strong>各々が必要な機能のテスト</strong>を書けそうです。</p>
+<h4 id="es5との付き合い方">ES5との付き合い方</h4>
 
-<p>どちらがテストを書きやすいかは一概には言えず、アプリケーションの性質に依存しそうです。たとえばキュレーションサイトのような情報を表示することに特化したアプリケーションであれば、前者のほうがマッチするかもしれません。管理画面のようにユーザの入力とStoreの状態を結びつけることが多いアプリケーションであれば、後者のほうがメリットが大きくなりそうですね。</p>
+<ul>
+  <li><code class="highlighter-rouge">--target=es5</code>とした場合、元々ES5のコードはES5のままになるが、ES6のコードをES5に変換することはない</li>
+  <li>今後ES5に対応することはなさそう</li>
+  <li>参考<a href="https://github.com/evanw/esbuild/issues/297" target="_blank">Issue</a>はこちら</li>
+</ul>
 
-<p><strong>アプリケーションの性質によってComponentの役割の与え方が代わり、それによりどういった設計やテストが必要かなどが変わってくる</strong>ということですね。</p>
+<h4 id="top-lebel-await未対応">top-lebel await未対応</h4>
 
-<p>まとめとしてタイトルの「propsバケツリレーは必要か」に回答するなら、「必要か否かの二元論ではなく、<strong>アプリケーションの性質次第では役立つ場面もある</strong>」ということでしょう。曖昧な結論になってしまいましたが、単一Containerやpropsバケツリレーという手法の良し悪しだけに着目するのではなく、アプリケーションの性質を踏まえて考えると見え方が変わってくるというお話でした。</p>
+<ul>
+  <li>今後もしばらくは対応できそうにない</li>
+  <li>細かい議論は<a href="https://github.com/evanw/esbuild/issues/253" target="_blank">Issue</a>にて</li>
+</ul>
 
-<p>現場からは以上です。</p>
+<h3 id="おわり">おわり</h3>
+
+<p>以上、簡単ですがesbuildについての書き置きです。<br />
+冒頭にも書いたように、最近は環境構築する頻度が減っているので、おそらく数カ月後に久々にesbuildを使おうとして右往左往している自分がいることでしょう。そのときに少しでも役立てばいいなと思います(バージョンが進んでほとんど役立たなくなっているかもしれませんが😫)。</p>
 
         </article>
 
@@ -280,7 +327,7 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=React%2BFlux%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%ABprops%E3%83%90%E3%82%B1%E3%83%84%E3%83%AA%E3%83%AC%E3%83%BC%E3%81%AF%E5%BF%85%E8%A6%81%E3%81%8B&url=https://aloerina01.github.io/blog/2019-04-02-1&via=aloerina_&hashtags=JavaScript,React,Flux,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=esbuild+%E5%85%A5%E9%96%80%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E6%9B%B8%E3%81%8D%E7%BD%AE%E3%81%8D&url=https://aloerina01.github.io/blog/2021-09-15-1&via=aloerina_&hashtags=esbuild,Environment,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
                 <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
@@ -297,7 +344,7 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=React%2BFlux%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%ABprops%E3%83%90%E3%82%B1%E3%83%84%E3%83%AA%E3%83%AC%E3%83%BC%E3%81%AF%E5%BF%85%E8%A6%81%E3%81%8B&u=https://aloerina01.github.io/blog/2019-04-02-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=esbuild+%E5%85%A5%E9%96%80%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E6%9B%B8%E3%81%8D%E7%BD%AE%E3%81%8D&u=https://aloerina01.github.io/blog/2021-09-15-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <svg
                 width="24"
@@ -443,7 +490,7 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2019-04-02-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2021-09-15-1" target="_blank">
               <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
             </a>
             
@@ -457,7 +504,7 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?React%2BFlux%E3%82%A2%E3%83%97%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%ABprops%E3%83%90%E3%82%B1%E3%83%84%E3%83%AA%E3%83%AC%E3%83%BC%E3%81%AF%E5%BF%85%E8%A6%81%E3%81%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2019-04-02-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?esbuild+%E5%85%A5%E9%96%80%E8%80%85%E3%81%AE%E3%81%9F%E3%82%81%E3%81%AE%E6%9B%B8%E3%81%8D%E7%BD%AE%E3%81%8D%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2021-09-15-1">
               <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
             </a>
             
@@ -497,15 +544,15 @@ ReduxはStateをひとつのオブジェクトとして扱うので、もしか�
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2018-05-01-1">メンテナンスしやすいVueComponentを設計するために気をつけていること</a></li>
+      <li><a href="/blog/2017-01-10-1">JavaScriptの新しいモジュールバンドラ rollup.js とは</a></li>
       
-      <li><a href="/blog/2018-05-30-1">コマンド一つでReactの開発環境が100％整うライブラリx0の紹介</a></li>
+      <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
       
-      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
+      <li><a href="/blog/2017-01-01-1">Node.js + Express を試してみた</a></li>
       
-      <li><a href="/blog/2018-10-25-1">React16.6の新機能 React.memo のコードリーディング</a></li>
+      <li><a href="/blog/2018-11-29-1">Babel7.x時代のpolyfillの設定方法とuseBuiltInsの仕組み</a></li>
       
-      <li><a href="/blog/2018-07-01-1">WebフロントエンジニアがDart × Flutterに入門した話</a></li>
+      <li><a href="/blog/2018-08-01-1">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</a></li>
       
     </div>
   </div>
