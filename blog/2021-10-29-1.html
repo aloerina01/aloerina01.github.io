@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</title>
-  <meta name="description" content="リリース環境と開発環境でAPIのオリジンを切り替えたい…ログのレベルを替えたい…。そういった環境変数に纏わる問題をクライアントサイドで解決したい場面ってありますよね。そんな場面で使える「ビルド時に環境毎の設定ファイルを読み込む方法」を実装したのでメモっておきます。">
+  <title>スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</title>
+  <meta name="description" content="私が直面した「相対見積もり」や「ストーリーポイント」にまつわる問題と、それに対する考えと解決策を紹介します。最適解ではないですが、同じような悩みを持つチームの助けになれば幸いです。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2021">
@@ -34,10 +34,10 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="リリース環境と開発環境でAPIのオリジンを切り替えたい…ログのレベルを替えたい…。そういった環境変数に纏わる問題をクライアントサイドで解決したい場面ってありますよね。そんな場面で使える「ビルド時に環境毎の設定ファイルを読み込む方法」を実装したのでメモっておきます。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-02-22-1" />
+  <meta property="og:description" content="私が直面した「相対見積もり」や「ストーリーポイント」にまつわる問題と、それに対する考えと解決策を紹介します。最適解ではないですが、同じような悩みを持つチームの助けになれば幸いです。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2021-10-29-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法" />
+  <meta property="og:title" content="スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -48,17 +48,17 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法">
-  <meta name="twitter:description" content="リリース環境と開発環境でAPIのオリジンを切り替えたい…ログのレベルを替えたい…。そういった環境変数に纏わる問題をクライアントサイドで解決したい場面ってありますよね。そんな場面で使える「ビルド時に環境毎の設定ファイルを読み込む方法」を実装したのでメモっておきます。">
+  <meta name="twitter:title" content="スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方">
+  <meta name="twitter:description" content="私が直面した「相対見積もり」や「ストーリーポイント」にまつわる問題と、それに対する考えと解決策を紹介します。最適解ではないですが、同じような悩みを持つチームの助けになれば幸いです。">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-02-22-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2021-10-29-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-02-22-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2021-10-29-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   
@@ -70,8 +70,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/blog/2017-02-22-1',
-      'title': 'JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法'
+      'page': '/blog/2021-10-29-1',
+      'title': 'スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方'
     });
   </script>
   
@@ -142,8 +142,8 @@
         
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2017-02-22-1">
-            <span itemprop="name">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2021-10-29-1">
+            <span itemprop="name">スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -158,7 +158,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</h1>
+            <h1 class="title">スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -170,7 +170,7 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2017-02-22</div>
+          <div class="post-date">2021-10-29</div>
           <div class="post-categories">
             
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
@@ -178,93 +178,70 @@
               <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
             </svg>
              
-            <a href="/category/javascript/">JavaScript</a>   
+            <a href="/category/scrum/">Scrum</a>,    
+            <a href="/category/agile/">Agile</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <h3 id="実現したいこと">実現したいこと</h3>
+          <p>これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。</p>
 
-<ul>
-  <li>リリース環境と開発環境でAPIのオリジンを替えたい</li>
-  <li>オリジンを環境変数として別ファイルに定義したい</li>
-  <li>リリースするJSファイルに開発環境用の記述が混ざらないようにしたい</li>
-  <li>クライアントサイド(JavaScript)内で完結させたい</li>
+<p>今回は、私が実際に直面した問題と、それらを打破するためチームで取り組んできたことを思い返してみようと思います。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#壁1-相対見積もりの考え方を理解できない" id="markdown-toc-壁1-相対見積もりの考え方を理解できない">壁1. 「相対見積もり」の考え方を理解できない</a></li>
+  <li><a href="#壁2-ストーリーポイントが何を見積もる手段かを理解していない" id="markdown-toc-壁2-ストーリーポイントが何を見積もる手段かを理解していない">壁2. ストーリーポイントが「何を見積もる手段か」を理解していない</a></li>
+  <li><a href="#壁3-見積りをコミットメントと捉えてしまう" id="markdown-toc-壁3-見積りをコミットメントと捉えてしまう">壁3. 見積りをコミットメントと捉えてしまう</a></li>
+  <li><a href="#まとめ" id="markdown-toc-まとめ">まとめ</a></li>
 </ul>
 
-<h3 id="解決策">解決策</h3>
+<h3 id="壁1-相対見積もりの考え方を理解できない">壁1. 「相対見積もり」の考え方を理解できない</h3>
 
-<p>webpackを使ってビルドする前提で、<strong>ビルド時に<code class="highlighter-rouge">process.dev.NODE_ENV</code>を見て読み込む設定ファイルを切り替える</strong>方法をとりました。</p>
+<p>バックログ上に積まれたユーザーストーリーやエピックを見積もろうとしたとき、私たちは真っ先に「こんなコンポーネントを新規実装するだろう、おそらく2日くらい掛かる」「あの既存機能をいじる必要があるが、複雑な箇所なので時間がかかりそうだ」と<strong>具体的な作業内容とそれにかかる時間をセットで</strong>イメージしていました。それらを足し合わせて(さらにバッファを加えて)最終的な見積もりを出していました。</p>
 
-<h4 id="ファイル構成">ファイル構成</h4>
+<p>しかし、これは相対見積もりではありません。</p>
 
-<pre><code class="language-plain">app
-  ├ ...	
-  ├ webpack.config.js
-  └ src
-     ├ environment
-         ├ index.js
-         ├ _development.js
-         └ _production.js
+<p><strong>相対的に見積もるには、過去に取り組んだ仕事を基準とし、その仕事との比較で考える</strong>必要があります。ストーリーポイントで見積もるにせよ、日数で見積もるにせよ、です。<br />
+これを理解し体に馴染ませるために、見積もりの度に「このストーリーは(基準としている)あの仕事と同じくらい？ 倍くらい？ 半分くらい？」と聞き合うようことを繰り返しました。今では基準と比較することにも慣れてきましたが、長いこと苦戦した問題でした。苦戦した要因は、次の『壁2』で紹介する問題と合わさって、相対見積もりをより難しく捉えていたからでもあります。</p>
 
-</code></pre>
+<h3 id="壁2-ストーリーポイントが何を見積もる手段かを理解していない">壁2. ストーリーポイントが「何を見積もる手段か」を理解していない</h3>
 
-<p><code class="highlighter-rouge">_development.js</code>と<code class="highlighter-rouge">_production.js</code>がそれぞれ環境ごとの設定ファイルです。<br />
-<code class="highlighter-rouge">index.js</code>が設定ファイルを切り替えて読み込む主体です。</p>
+<p>ストーリーポイントの考え方は、慣れるまでは分かるようで分からないものでした。分かったつもりになっていた私がよくやった失敗は、「このストーリーは基準の2倍くらいの4日程度かかりそう、であればポイントは５だ」と期間を見積もりストーリーポイントに換算してしまうことでした。これはまさしくストーリーポイントの用途を理解していないことの現れです。</p>
 
-<h4 id="環境ごとの設定ファイル">環境ごとの設定ファイル</h4>
+<p><strong>ストーリーポイントは「規模」を見積もります</strong>。規模を「作業量」と言い換えることもできます。ストーリーポイントを使う理由は、<strong>作業量の見積もりと期間の見積もりを分離して行うこと</strong>だと考えると分かりやすかったです。上述の失敗例では期間を見積もってからストーリーポイントに変換していますが、本来のストーリーポイントの使い方に習うなら、<strong>ストーリーポイントによって作業量を見積もり、ベロシティと照らし合わせて期間を導き出す</strong>が正解です。</p>
 
-<script src="https://gist.github.com/aloerina01/5056c587e828980655b15547409c30c2.js"></script>
+<p>私たちがこの考えに馴染めず苦労した背景には、「相対見積もりをするならストーリーポイント(またはTシャツサイズ等のそれに準ずるもの)を利用しなければならない」と思い込んでいたことがあります。また、いくつかあるストーリーポイントの利点をチームメンバー各々が断片的に知り、それを利用目的だと思い込んでいたことも要因でした。例えば「ストーリーポイントを使えば個々人の力量に依存しない見積もりができること」や「ストーリーポイントを使えば仕様が曖昧でも見積もれること」を、ストーリーポイントを採用する理由だと思っていました。<br />
+そういった利点は多々あるものの、本質的には<strong>ストーリーポイントは「期間」と「作業量」を切り離し別々に見積もる道具</strong>だと腹落ちしたことで前進しました。</p>
 
-<p>当然と言えば当然ですが、両方のファイルに同じ項目が用意されている状態にします。</p>
+<p>とはいえ、理解できてもすぐにうまく実践できたわけではありません。</p>
 
-<h4 id="設定を読み込む">設定を読み込む</h4>
+<h3 id="壁3-見積りをコミットメントと捉えてしまう">壁3. 見積りをコミットメントと捉えてしまう</h3>
 
-<script src="https://gist.github.com/aloerina01/827895f64fc549cf70fe91d3162a2d09.js"></script>
+<p>先述の2つの壁を少しずつ乗り越え、ストーリーポイントを使った相対見積もりに慣れてくると、仕様が固まっていない曖昧な案件に対しても見積もりをするようになりました。言い換えると、作業量の見積もりに「複雑さ」を加味するようになりました。</p>
 
-<p>ポイントは、後に指定する<strong>NODE_ENV = 設定ファイル名</strong>となっていることです(今回は<code class="highlighter-rouge">environment/</code>以外でrequireしないで欲しいという意味を込めて<code class="highlighter-rouge">_</code>の接頭辞をつけました)。</p>
+<p>「この手の案件はステークホルダーの時間が取りにくく後になって仕様がひっくり返るケースがある」「細かい仕様は決まってないけど、この画面の機能をいじるのであればおそらく作業量はこのくらいになる」と、<strong>作業量に複雑さをかけ合わせたものにポイントをつける</strong>ようになりました。</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">env</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../environment/index</span><span class="dl">'</span><span class="p">;</span>
+<p>このやり方は一長一短だとは思いますがそれはさておき、より深刻な失敗だったことは、一度見積もったポイントは根性で守り抜こうとしていたことです。もちろん期限を守ることはエンジニアには必須です。ただし<strong>見積もりはコミットメントではない</strong>ということも忘れてはなりません。</p>
 
-<span class="kd">const</span> <span class="nx">FETCH_API</span> <span class="o">=</span> <span class="nx">env</span><span class="p">.</span><span class="nx">API_ORIGIN</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">user/articles</span><span class="dl">'</span><span class="p">;</span>
-</code></pre></div></div>
+<p>“不確実性のコーン”と表現されるように、見積もりは初期段階ほど不正確です。ましてや私たちのように複雑さを加味するのであれば尚更です。ですので作業量に影響する要素が明らかになる度に<strong>再見積り</strong>をし、その確度(実現可能性)を上げることが必要でした。<br />
+加えて、プランナーと「あとどんな情報が揃えば再見積りができるか」や「見積もりと実働がズレたらどう対応していくか」などについて事前に認識を合わせておくことも、再見積りを繰り返すプロセスを維持するために必要でした。</p>
 
-<p>このように、<code class="highlighter-rouge">environment/index.js</code>を呼び出せばどこでも環境ごとの設定値を参照できるようになりました。</p>
+<p>見積もりの確度がどの程度かは、見積もった私たちにしか分かりません。ですのでそれを丁寧にステークホルダーに共有し、確度に応じたプランを用意しておくところまでをセットで行うよう習慣化することで、周囲から再見積りのプロセスの理解を得やすくなると考えています。</p>
 
-<h4 id="processenvnode_env-を利用できるようにする">process.env.NODE_ENV を利用できるようにする</h4>
+<h3 id="まとめ">まとめ</h3>
 
-<p>ロジック内で<code class="highlighter-rouge">process.env.NODE_ENV</code>を利用するには、<code class="highlighter-rouge">webpack.config.js</code>に以下を追記します。</p>
+<p>「相対見積もりといえばストーリーポイントでしょ！」と勢いで始めたもののなかなか定着せず、効果を得られなかった私が、どのような問題に陥っていたかを紹介しました。</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">plugins</span><span class="p">:</span> <span class="p">[</span>
-<span class="err">　　</span><span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">DefinePlugin</span><span class="p">({</span>
-<span class="err">　　　　</span><span class="dl">'</span><span class="s1">process.env.NODE_ENV</span><span class="dl">'</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">NODE_ENV</span><span class="p">)</span>
-<span class="err">　　</span><span class="p">})</span>
-<span class="p">]</span>
-</code></pre></div></div>
+<ul>
+  <li>相対見積もりとストーリーポイントをごちゃまぜに捉えていたこと</li>
+  <li>ストーリーポイントにより「作業量」を見積もり、その値から「期間」を算出する、という根本的な考え方を理解していなかったこと</li>
+  <li>再見積りをして確度をあげようとしていなかったこと</li>
+</ul>
 
-<p><a href="https://webpack.js.org/plugins/define-plugin/">DefinePlugin</a>を使います。</p>
+<p>これらが主な失敗でした。乗り越えるためには失敗を自覚し向き合うことはもちろん大事ですが、併せて根気も必要だったと思います。時間をかけて実践とふりかえりを重ねてようやく今の理解度に到達できたので、総括すると「根気強く向き合う」が私たちの乗り越え方だったと言えるかもしれません。と言っても、まだ完璧な相対見積もりができているわけではないので、これからも新しい壁にぶつかりながら試行錯誤していこうと思います。</p>
 
-<blockquote>
-  <p>The DefinePlugin allows you to create global constants which can be configured at compile time.</p>
-</blockquote>
-
-<p>コンパイル時にグローバル変数を定義してくれるというものです。</p>
-
-<h4 id="ビルド時に-processenvnode_dev-を指定する">ビルド時に process.env.NODE_DEV を指定する</h4>
-
-<p>用意が整ったのであとはビルドするだけです。ビルド時に<strong>productionビルド</strong>か<strong>developmentビルド</strong>かを指定してあげると、それに応じた設定ファイルを読み込んでコンパイルしてくれる算段です。</p>
-
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ NODE_DEV</span><span class="o">=</span>production webpack
-</code></pre></div></div>
-
-<p>ビルドコマンドをたたくときに<code class="highlighter-rouge">key=value</code>と指定すると、<code class="highlighter-rouge">process.env.key</code>に<code class="highlighter-rouge">value</code>が紐付けられます。</p>
-
-<p>あとはこれをnpm scriptsにして呼び出しやすいようにしておけば、手元で実行するもよし、CIに実行させるもよしです。
-<script src="https://gist.github.com/aloerina01/58d7fd5ef9363457d82b228da47dde56.js"></script></p>
-
-<h3 id="おわりに">おわりに</h3>
-
-<p>不要な設定ファイルがそもそもrequireされない、というのはけっこういい感じだなと思っています。が、もっといい方法もあると思うので気づいたら教えていただけると嬉しいです。その際は<a href="https://twitter.com/aloerina_">@aloerina_</a>までお気軽に。</p>
+<p>最後に、参考書籍を紹介して締めくくります。<br />
+いろいろ読みましたが、一番理解が捗ったのは<a href="https://amzn.to/3ny06zy" target="_blank">アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～</a>でした。同じような悩みを持つ開発者の手助けになれば幸いです。</p>
 
         </article>
 
@@ -279,7 +256,7 @@
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=JavaScript%E3%81%A7%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E7%92%B0%E5%A2%83%E3%81%94%E3%81%A8%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E6%96%B9%E6%B3%95&url=https://aloerina01.github.io/blog/2017-02-22-1&via=aloerina_&hashtags=JavaScript,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%81%B6%E3%81%A1%E5%BD%93%E3%81%9F%E3%82%8B%E3%80%8C%E7%9B%B8%E5%AF%BE%E8%A6%8B%E7%A9%8D%E3%82%82%E3%82%8A%E3%80%8D%E3%81%AE%E5%A3%81%E3%81%A8%E3%80%81%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AE%E4%B9%97%E3%82%8A%E8%B6%8A%E3%81%88%E6%96%B9&url=https://aloerina01.github.io/blog/2021-10-29-1&via=aloerina_&hashtags=Scrum,Agile,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
                 <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
@@ -296,7 +273,7 @@
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=JavaScript%E3%81%A7%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E7%92%B0%E5%A2%83%E3%81%94%E3%81%A8%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E6%96%B9%E6%B3%95&u=https://aloerina01.github.io/blog/2017-02-22-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%81%B6%E3%81%A1%E5%BD%93%E3%81%9F%E3%82%8B%E3%80%8C%E7%9B%B8%E5%AF%BE%E8%A6%8B%E7%A9%8D%E3%82%82%E3%82%8A%E3%80%8D%E3%81%AE%E5%A3%81%E3%81%A8%E3%80%81%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AE%E4%B9%97%E3%82%8A%E8%B6%8A%E3%81%88%E6%96%B9&u=https://aloerina01.github.io/blog/2021-10-29-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <svg
                 width="24"
@@ -442,7 +419,7 @@
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2017-02-22-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2021-10-29-1" target="_blank">
               <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
             </a>
             
@@ -456,7 +433,7 @@
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?JavaScript%E3%81%A7%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E7%92%B0%E5%A2%83%E3%81%94%E3%81%A8%E3%81%AB%E8%A8%AD%E5%AE%9A%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E8%AA%AD%E3%81%BF%E8%BE%BC%E3%82%80%E6%96%B9%E6%B3%95%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2017-02-22-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%82%B9%E3%82%AF%E3%83%A9%E3%83%A0%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%81%B6%E3%81%A1%E5%BD%93%E3%81%9F%E3%82%8B%E3%80%8C%E7%9B%B8%E5%AF%BE%E8%A6%8B%E7%A9%8D%E3%82%82%E3%82%8A%E3%80%8D%E3%81%AE%E5%A3%81%E3%81%A8%E3%80%81%E7%A7%81%E3%81%9F%E3%81%A1%E3%81%AE%E4%B9%97%E3%82%8A%E8%B6%8A%E3%81%88%E6%96%B9%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2021-10-29-1">
               <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
             </a>
             
@@ -496,15 +473,15 @@
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      <li><a href="/blog/2019-05-07-1">コーチング入門 「4つの会話」でやる気の芽を育てよう</a></li>
       
-      <li><a href="/blog/2016-10-14-1">外部スクリプトを動的読込して同期的に処理をする方法</a></li>
+      <li><a href="/blog/2017-08-29-1">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</a></li>
+      
+      <li><a href="/blog/2021-09-15-1">esbuild 入門者のための書き置き</a></li>
+      
+      <li><a href="/blog/2020-04-16-1">わたしのふりかえりデザインテンプレート</a></li>
       
       <li><a href="/blog/2018-03-19-1">Babelの設定を見直すための逆引きガイド</a></li>
-      
-      <li><a href="/blog/2017-02-28-1">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a></li>
-      
-      <li><a href="/blog/2017-05-18-1">create-react-app + Jest + Enzyme で書くReactコンポーネントテストの始め方</a></li>
       
     </div>
   </div>

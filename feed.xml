@@ -1,5 +1,62 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-09-21T07:45:07+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">esbuild 入門者のための書き置き</title><link href="https://aloerina01.github.io/blog/2021-09-15-1" rel="alternate" type="text/html" title="esbuild 入門者のための書き置き" /><published>2021-09-15T00:00:00+00:00</published><updated>2021-09-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-09-15-1">&lt;p&gt;最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-11-01T05:53:02+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</title><link href="https://aloerina01.github.io/blog/2021-10-29-1" rel="alternate" type="text/html" title="スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-10-29-1">&lt;p&gt;これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。&lt;/p&gt;
+
+&lt;p&gt;今回は、私が実際に直面した問題と、それらを打破するためチームで取り組んできたことを思い返してみようと思います。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#壁1-相対見積もりの考え方を理解できない&quot; id=&quot;markdown-toc-壁1-相対見積もりの考え方を理解できない&quot;&gt;壁1. 「相対見積もり」の考え方を理解できない&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#壁2-ストーリーポイントが何を見積もる手段かを理解していない&quot; id=&quot;markdown-toc-壁2-ストーリーポイントが何を見積もる手段かを理解していない&quot;&gt;壁2. ストーリーポイントが「何を見積もる手段か」を理解していない&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#壁3-見積りをコミットメントと捉えてしまう&quot; id=&quot;markdown-toc-壁3-見積りをコミットメントと捉えてしまう&quot;&gt;壁3. 見積りをコミットメントと捉えてしまう&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;壁1-相対見積もりの考え方を理解できない&quot;&gt;壁1. 「相対見積もり」の考え方を理解できない&lt;/h3&gt;
+
+&lt;p&gt;バックログ上に積まれたユーザーストーリーやエピックを見積もろうとしたとき、私たちは真っ先に「こんなコンポーネントを新規実装するだろう、おそらく2日くらい掛かる」「あの既存機能をいじる必要があるが、複雑な箇所なので時間がかかりそうだ」と&lt;strong&gt;具体的な作業内容とそれにかかる時間をセットで&lt;/strong&gt;イメージしていました。それらを足し合わせて(さらにバッファを加えて)最終的な見積もりを出していました。&lt;/p&gt;
+
+&lt;p&gt;しかし、これは相対見積もりではありません。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;相対的に見積もるには、過去に取り組んだ仕事を基準とし、その仕事との比較で考える&lt;/strong&gt;必要があります。ストーリーポイントで見積もるにせよ、日数で見積もるにせよ、です。&lt;br /&gt;
+これを理解し体に馴染ませるために、見積もりの度に「このストーリーは(基準としている)あの仕事と同じくらい？ 倍くらい？ 半分くらい？」と聞き合うようことを繰り返しました。今では基準と比較することにも慣れてきましたが、長いこと苦戦した問題でした。苦戦した要因は、次の『壁2』で紹介する問題と合わさって、相対見積もりをより難しく捉えていたからでもあります。&lt;/p&gt;
+
+&lt;h3 id=&quot;壁2-ストーリーポイントが何を見積もる手段かを理解していない&quot;&gt;壁2. ストーリーポイントが「何を見積もる手段か」を理解していない&lt;/h3&gt;
+
+&lt;p&gt;ストーリーポイントの考え方は、慣れるまでは分かるようで分からないものでした。分かったつもりになっていた私がよくやった失敗は、「このストーリーは基準の2倍くらいの4日程度かかりそう、であればポイントは５だ」と期間を見積もりストーリーポイントに換算してしまうことでした。これはまさしくストーリーポイントの用途を理解していないことの現れです。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;ストーリーポイントは「規模」を見積もります&lt;/strong&gt;。規模を「作業量」と言い換えることもできます。ストーリーポイントを使う理由は、&lt;strong&gt;作業量の見積もりと期間の見積もりを分離して行うこと&lt;/strong&gt;だと考えると分かりやすかったです。上述の失敗例では期間を見積もってからストーリーポイントに変換していますが、本来のストーリーポイントの使い方に習うなら、&lt;strong&gt;ストーリーポイントによって作業量を見積もり、ベロシティと照らし合わせて期間を導き出す&lt;/strong&gt;が正解です。&lt;/p&gt;
+
+&lt;p&gt;私たちがこの考えに馴染めず苦労した背景には、「相対見積もりをするならストーリーポイント(またはTシャツサイズ等のそれに準ずるもの)を利用しなければならない」と思い込んでいたことがあります。また、いくつかあるストーリーポイントの利点をチームメンバー各々が断片的に知り、それを利用目的だと思い込んでいたことも要因でした。例えば「ストーリーポイントを使えば個々人の力量に依存しない見積もりができること」や「ストーリーポイントを使えば仕様が曖昧でも見積もれること」を、ストーリーポイントを採用する理由だと思っていました。&lt;br /&gt;
+そういった利点は多々あるものの、本質的には&lt;strong&gt;ストーリーポイントは「期間」と「作業量」を切り離し別々に見積もる道具&lt;/strong&gt;だと腹落ちしたことで前進しました。&lt;/p&gt;
+
+&lt;p&gt;とはいえ、理解できてもすぐにうまく実践できたわけではありません。&lt;/p&gt;
+
+&lt;h3 id=&quot;壁3-見積りをコミットメントと捉えてしまう&quot;&gt;壁3. 見積りをコミットメントと捉えてしまう&lt;/h3&gt;
+
+&lt;p&gt;先述の2つの壁を少しずつ乗り越え、ストーリーポイントを使った相対見積もりに慣れてくると、仕様が固まっていない曖昧な案件に対しても見積もりをするようになりました。言い換えると、作業量の見積もりに「複雑さ」を加味するようになりました。&lt;/p&gt;
+
+&lt;p&gt;「この手の案件はステークホルダーの時間が取りにくく後になって仕様がひっくり返るケースがある」「細かい仕様は決まってないけど、この画面の機能をいじるのであればおそらく作業量はこのくらいになる」と、&lt;strong&gt;作業量に複雑さをかけ合わせたものにポイントをつける&lt;/strong&gt;ようになりました。&lt;/p&gt;
+
+&lt;p&gt;このやり方は一長一短だとは思いますがそれはさておき、より深刻な失敗だったことは、一度見積もったポイントは根性で守り抜こうとしていたことです。もちろん期限を守ることはエンジニアには必須です。ただし&lt;strong&gt;見積もりはコミットメントではない&lt;/strong&gt;ということも忘れてはなりません。&lt;/p&gt;
+
+&lt;p&gt;“不確実性のコーン”と表現されるように、見積もりは初期段階ほど不正確です。ましてや私たちのように複雑さを加味するのであれば尚更です。ですので作業量に影響する要素が明らかになる度に&lt;strong&gt;再見積り&lt;/strong&gt;をし、その確度(実現可能性)を上げることが必要でした。&lt;br /&gt;
+加えて、プランナーと「あとどんな情報が揃えば再見積りができるか」や「見積もりと実働がズレたらどう対応していくか」などについて事前に認識を合わせておくことも、再見積りを繰り返すプロセスを維持するために必要でした。&lt;/p&gt;
+
+&lt;p&gt;見積もりの確度がどの程度かは、見積もった私たちにしか分かりません。ですのでそれを丁寧にステークホルダーに共有し、確度に応じたプランを用意しておくところまでをセットで行うよう習慣化することで、周囲から再見積りのプロセスの理解を得やすくなると考えています。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;「相対見積もりといえばストーリーポイントでしょ！」と勢いで始めたもののなかなか定着せず、効果を得られなかった私が、どのような問題に陥っていたかを紹介しました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;相対見積もりとストーリーポイントをごちゃまぜに捉えていたこと&lt;/li&gt;
+  &lt;li&gt;ストーリーポイントにより「作業量」を見積もり、その値から「期間」を算出する、という根本的な考え方を理解していなかったこと&lt;/li&gt;
+  &lt;li&gt;再見積りをして確度をあげようとしていなかったこと&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらが主な失敗でした。乗り越えるためには失敗を自覚し向き合うことはもちろん大事ですが、併せて根気も必要だったと思います。時間をかけて実践とふりかえりを重ねてようやく今の理解度に到達できたので、総括すると「根気強く向き合う」が私たちの乗り越え方だったと言えるかもしれません。と言っても、まだ完璧な相対見積もりができているわけではないので、これからも新しい壁にぶつかりながら試行錯誤していこうと思います。&lt;/p&gt;
+
+&lt;p&gt;最後に、参考書籍を紹介して締めくくります。&lt;br /&gt;
+いろいろ読みましたが、一番理解が捗ったのは&lt;a href=&quot;https://amzn.to/3ny06zy&quot; target=&quot;_blank&quot;&gt;アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～&lt;/a&gt;でした。同じような悩みを持つ開発者の手助けになれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。</summary></entry><entry><title type="html">esbuild 入門者のための書き置き</title><link href="https://aloerina01.github.io/blog/2021-09-15-1" rel="alternate" type="text/html" title="esbuild 入門者のための書き置き" /><published>2021-09-15T00:00:00+00:00</published><updated>2021-09-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-09-15-1">&lt;p&gt;最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。&lt;/p&gt;
 
 &lt;p&gt;今回は手始めに、初めてesbuildに触ったときに感じた「これなに」「どう使うの」「気をつけることは」あたりを書き置きしておきます。ちなみに執筆時点でのesbuildのバージョンは&lt;a href=&quot;https://github.com/evanw/esbuild/releases/tag/v0.12.28&quot; target=&quot;_blank&quot;&gt;0.12.28&lt;/a&gt;です。&lt;/p&gt;
 
@@ -1084,232 +1141,4 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 &lt;img src=&quot;/assets/2020-06-23/sample_app.jpg&quot; style=&quot;border-radius:10px;box-shadow:1px 1px 10px #e8e8e8&quot; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;今回紹介した設計を利用し、一覧ページと詳細ページを行き来する簡単な&lt;a href=&quot;https://github.com/aloerina01/vue-sample-list-detail-viewer&quot; target=&quot;_blank&quot;&gt;サンプルアプリ&lt;/a&gt;を実装しました。ご参考にどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？</summary></entry><entry><title type="html">わたしのふりかえりデザインテンプレート</title><link href="https://aloerina01.github.io/blog/2020-04-16-1" rel="alternate" type="text/html" title="わたしのふりかえりデザインテンプレート" /><published>2020-04-16T00:00:00+00:00</published><updated>2020-04-16T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-04-16-1">&lt;p&gt;私の関わるいくつかのチームではよく&lt;strong&gt;ふりかえり&lt;/strong&gt;をします。ScrumチームがSprint毎に行う「Sprint Retrospective」であったり、フロントエンドエンジニアのチームが隔週で行う「カイゼンミーティング」であったり、呼び名や頻度や内容は様々ですが、定期的に&lt;strong&gt;自分たちの行動を思い返し何らかの学びを得る活動&lt;/strong&gt;をしています。&lt;/p&gt;
-
-&lt;p&gt;今回は、これらのふりかえりを私がどのように設計しているかについて、ふりかえってみようと思います。せっかくなのでテンプレートという形で書き出してみます。&lt;/p&gt;
-
-&lt;p&gt;ちなみにこの記事では「過去のある期間を振り返って気づきや学びを得て、今後の行動に反映する一連の活動」を &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ふりかえり&lt;/code&gt;&lt;/strong&gt; と呼び、ふりかえりの一貫として開催されるミーティングを &lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ふりかえりミーティング&lt;/code&gt;&lt;/strong&gt; と呼び分けることとします。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#ふりかえりの大枠をデザインする&quot; id=&quot;markdown-toc-ふりかえりの大枠をデザインする&quot;&gt;ふりかえりの大枠をデザインする&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#ふりかえりの目的&quot; id=&quot;markdown-toc-ふりかえりの目的&quot;&gt;ふりかえりの目的&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#ふりかえり目的の達成基準&quot; id=&quot;markdown-toc-ふりかえり目的の達成基準&quot;&gt;ふりかえり目的の達成基準&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#条件制約&quot; id=&quot;markdown-toc-条件制約&quot;&gt;条件・制約&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#個別のふりかえりミーティングをデザインする&quot; id=&quot;markdown-toc-個別のふりかえりミーティングをデザインする&quot;&gt;個別のふりかえりミーティングをデザインする&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#今回のふりかえりミーティングで目指すフェーズ&quot; id=&quot;markdown-toc-今回のふりかえりミーティングで目指すフェーズ&quot;&gt;今回のふりかえりミーティングで目指す「フェーズ」&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#今回の参加者の属性&quot; id=&quot;markdown-toc-今回の参加者の属性&quot;&gt;今回の参加者の属性&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#今回のふりかえり手法&quot; id=&quot;markdown-toc-今回のふりかえり手法&quot;&gt;今回のふりかえり手法&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#-発散フェーズで気をつけていること&quot; id=&quot;markdown-toc--発散フェーズで気をつけていること&quot;&gt;✓ 発散フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#-深堀フェーズで気をつけていること&quot; id=&quot;markdown-toc--深堀フェーズで気をつけていること&quot;&gt;✓ 深堀フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#-解決フェーズで気をつけていること&quot; id=&quot;markdown-toc--解決フェーズで気をつけていること&quot;&gt;✓ 解決フェーズで気をつけていること&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;ふりかえりの大枠をデザインする&quot;&gt;ふりかえりの大枠をデザインする&lt;/h3&gt;
-&lt;p&gt;いきなりふりかえりミーティングについて考え出すのではなく、ふりかえりそのものの目的から考えていきます。&lt;/p&gt;
-
-&lt;h4 id=&quot;ふりかえりの目的&quot;&gt;ふりかえりの目的&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;[誰に] [どうなってほしい]&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;[誰が] [どうなりたい]&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;note&quot; style=&quot;margin-top:0&quot;&gt;
-&lt;b&gt;サンプル&lt;/b&gt;
-&lt;ul style=&quot;font-size:0.9rem&quot;&gt;
-&lt;li&gt;「チームメンバーに」「開発プロセスをより良くしてほしい」&lt;/li&gt;
-&lt;li&gt;「チームメンバーに」「継続的な改善を習慣づけてほしい」&lt;/li&gt;
-&lt;li&gt;「マネージャーの私が」「チームメンバーが今の体制についてどう感じているか知りたい」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;ふりかえり目的の達成基準&quot;&gt;ふりかえり目的の達成基準&lt;/h4&gt;
-
-&lt;p&gt;どんな状態になっていれば、または何ができあがっていれば、上で設定した目的が達成されたと判断できるかを明確にします。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;[状態]&lt;/strong&gt; になっている&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;[最終成果物]&lt;/strong&gt; が完成している&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;note&quot; style=&quot;margin-top:0&quot;&gt;
-&lt;b&gt;サンプル&lt;/b&gt;
-&lt;ul style=&quot;font-size:0.9rem&quot;&gt;
-&lt;li&gt;「チームが最も優先して対処すべき課題について共通認識を持っている」&lt;/li&gt;
-&lt;li&gt;「開発プロセスを改善するための具体的なTODOリストが完成している」&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/div&gt;
-
-&lt;h4 id=&quot;条件制約&quot;&gt;条件・制約&lt;/h4&gt;
-&lt;p&gt;ふりかえりミーティングを設定するにあたって考慮しておいたほうがいいことを洗い出しておきます。以下の項目を基本セットとし、状況に応じて追加で洗い出します。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ふりかえりに使える &lt;strong&gt;[時間] × [頻度]&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;ふりかえりの &lt;strong&gt;[参加人数]&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;参加者それぞれの &lt;strong&gt;[所在地]&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;ふりかえりミーティングに使える &lt;strong&gt;[スペース(オンライン/オフライン)]&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;ふりかえりミーティングに使える &lt;strong&gt;[ツール]&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;個別のふりかえりミーティングをデザインする&quot;&gt;個別のふりかえりミーティングをデザインする&lt;/h3&gt;
-&lt;h4 id=&quot;今回のふりかえりミーティングで目指すフェーズ&quot;&gt;今回のふりかえりミーティングで目指す「フェーズ」&lt;/h4&gt;
-
-&lt;p&gt;ふりかえりミーティングで話し合われる内容は、大きく3つのフェーズに分類できます。ふりかえりの目的を達成するためには&lt;strong&gt;最終的にどのフェーズまで話し合う必要があるか&lt;/strong&gt;、そして&lt;strong&gt;今回のふりかえりミーティングではどのフェーズまで進めたいか&lt;/strong&gt;を考えます。プロジェクトを完了させるためにマイルストーンを引くようなイメージです。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;フェーズ&lt;/th&gt;
-      &lt;th&gt;概要&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;発散フェーズ&lt;/td&gt;
-      &lt;td&gt;まずは参加者の意見やアイデアを出し切ります&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;深堀フェーズ&lt;/td&gt;
-      &lt;td&gt;意見やアイデアについてディスカッションをし、理解を深めたり、取捨選択をしたり、考えを発展させたりします&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;解決フェーズ&lt;/td&gt;
-      &lt;td&gt;結論を出したりActionに落とし込んだりして、ディスカッションを収束させていきます&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;実際のミーティングの場では、これらのフェーズが明確に分かれていないこともあります。ディスカッションするうちに盛り上がって更に多くの意見が出て…といった具合に発散フェーズと深堀フェーズをいったりきたりすることってありますよね。それ自体は悪いことではありません。&lt;/p&gt;
-
-&lt;p&gt;ただ、&lt;strong&gt;事前にどのフェーズまで到達したいかの目星をつけておくことで、ファシリテーションがしやすく&lt;/strong&gt;なります。&lt;br /&gt;
-例えば「どんなに議論が盛り上がったとしてもラスト15分では解決フェーズに移ろう」と心の準備をしておくことで、ラスト15分までの時間で発散と深堀をいったりきたりしても焦ることなくファシリテーションできたりします。&lt;/p&gt;
-
-&lt;p&gt;余談ですが、チームができたばかりの時期にはよく「お互いにどんなことを感じたか、どんな気持ちだったかを知り合うこと」を目的としたふりかえりをするようにしています。これは発散フェーズまでのふりかえりと言えるでしょう。&lt;/p&gt;
-
-&lt;h4 id=&quot;今回の参加者の属性&quot;&gt;今回の参加者の属性&lt;/h4&gt;
-
-&lt;p&gt;ふりかえりミーティングの参加者が毎回同じ顔ぶれになるとは限りません。役割ごとに集まって少人数で意見を出し合うふりかえりミーティングを開催することもあるでしょうし、ステークホルダーがゲスト参加して一緒にふりかえりミーティングをすることもあるでしょう。参加者の属性や関係性を把握することで、より参加者に合った手法を選択できます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;参加者の人数
-    &lt;ul&gt;
-      &lt;li&gt;人数が多すぎて全員の意見を集めきれない可能性はないか？&lt;/li&gt;
-      &lt;li&gt;人数が多すぎて参加者が発言する際に心のハードルが上がる可能性がないか？&lt;/li&gt;
-      &lt;li&gt;(本来参加してほしい人数に比べて)人数が少なすぎて意見が偏る可能性がないか？&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;参加者の関係性
-    &lt;ul&gt;
-      &lt;li&gt;同じ立場・役割の人は何人いるか？&lt;/li&gt;
-      &lt;li&gt;初対面の人はいるか？&lt;/li&gt;
-      &lt;li&gt;評価者・被評価者の関係の人はいるか？&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;それぞれの参加者の参加場所
-    &lt;ul&gt;
-      &lt;li&gt;一堂に会するのか？ その場合、話しやすい座席構成にできそうか？&lt;/li&gt;
-      &lt;li&gt;テレビ会議でするのか？ その場合「ひとりだけテレビ会議」など発言しにくい環境になっていないか？&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;実際には、これらの懸念点がまったくない状態をつくるのはけっこう難しいですよね…。私の属するチームは東京と福岡の多拠点なので、テレビ会議の懸念は特に起きがちです。&lt;br /&gt;
-事前に払拭できずファシリテーションでカバーする場面などもあり、そのためにも事前の情報収集が大切になります。&lt;/p&gt;
-
-&lt;h4 id=&quot;今回のふりかえり手法&quot;&gt;今回のふりかえり手法&lt;/h4&gt;
-&lt;p&gt;目指すフェーズが決まり参加者の属性を把握したので、これらを踏まえていよいよ手法を考えます。手法については、事前に決めきるより&lt;strong&gt;取り得る選択肢をいくつか用意しておく&lt;/strong&gt;ことが多いです。ミーティングの状況に応じて対応できるようにするためです。&lt;/p&gt;
-
-&lt;p&gt;手法は調べるとたくさん出てきますし、アレンジすることで無限に増えるので、ここでは手法選びで気をつけていることを挙げます。&lt;/p&gt;
-
-&lt;h5 id=&quot;-発散フェーズで気をつけていること&quot;&gt;✓ 発散フェーズで気をつけていること&lt;/h5&gt;
-
-&lt;p&gt;このフェーズで特に大事にしていることは&lt;strong&gt;いかに発言しやすい場を作るか&lt;/strong&gt;と、言語化が難しい&lt;strong&gt;感覚や違和感をいかに表現してもらうか&lt;/strong&gt;です。具体的には以下のようなことを考えます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Keep/Problem/Try などの意見を集める指標は、状況に応じてアレンジする
-    &lt;ul&gt;
-      &lt;li&gt;Problem に『反省文』ばかりが集まるときは「困難だったこと」などに置き換える、など&lt;/li&gt;
-      &lt;li&gt;Try に『曖昧な行動』が集まるときは「Tryを実現するためのAction」などの指標を増やす、など&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;論理的な意見だけでなく、&lt;strong&gt;感情・感覚・違和感&lt;/strong&gt;を出してもらうような指標を使う
-    &lt;ul&gt;
-      &lt;li&gt;「モヤッとしたこと」「みんなに聞いてみたいこと」「ぼやき」など&lt;/li&gt;
-      &lt;li&gt;状況に応じて「改善案」などの主張が強く取られる言葉を「試してみたいこと」などの柔らかめの言葉に置き換える&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;全員が意見を出しやすい仕掛けをする
-    &lt;ul&gt;
-      &lt;li&gt;ふりかえりミーティング中の内職が気になるときは、ペンと付箋を使うことで気持ちを切り替えてもらう&lt;/li&gt;
-      &lt;li&gt;一人で考える時間とみんなで話す時間とを明確に分ける&lt;/li&gt;
-      &lt;li&gt;座らずにホワイトボードの前に立って集まる&lt;/li&gt;
-      &lt;li&gt;「意見を発表した後は次に意見を出してほしい人を指名する」などのルールを参加者みんなで作る&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;言語化しにくい意見を集めるときは、文字や言葉以外の方法も使う
-    &lt;ul&gt;
-      &lt;li&gt;モチベーションを折れ線グラフで表現する&lt;/li&gt;
-      &lt;li&gt;付箋の色やドットシールの色で感情を使い分ける&lt;/li&gt;
-      &lt;li&gt;納得度合いを0~3点で判断し、点数の数だけドットシールを貼る&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;全員に最低1回は意見を声に出してもらい、ふりかえりミーティングに参加するスイッチを入れてもらう&lt;/li&gt;
-  &lt;li&gt;意見やアイデアを「チームの意見」と意識してもらうために、無記名にする&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;-深堀フェーズで気をつけていること&quot;&gt;✓ 深堀フェーズで気をつけていること&lt;/h5&gt;
-
-&lt;p&gt;このフェーズでは、深堀りするトピックを&lt;strong&gt;選択し集中する&lt;/strong&gt;ことに意識を向けます。ただし、どの意見やアイデアも等しく大切な参加者の声です。&lt;strong&gt;どれかを蔑ろにすることなく&lt;/strong&gt;深堀りすることが重要であり、難しいポイントでもあります。そのために、意見の関連付けや優先順位について、合意をとることがあります。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;出してもらった意見は全員が見渡せるように並べる
-    &lt;ul&gt;
-      &lt;li&gt;付箋で出してもらった場合は、大きな模造紙やホワイトボードに貼り付ける&lt;/li&gt;
-      &lt;li&gt;意見を口頭で発表してもらう場合は、ホワイトボードなど見えるところにメモをとる&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;出してもらった意見が多いときは関連性のある意見を近くにまとめて並べる
-    &lt;ul&gt;
-      &lt;li&gt;関係性を見出してもらい、さらに発想が広がることに期待する&lt;/li&gt;
-      &lt;li&gt;関係性がバイアスになりそうなときはあえてランダムに並べることも&lt;/li&gt;
-      &lt;li&gt;カテゴライズ、二次元マッピング、相関図、など情報にあったまとめ方を提案する&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;出してもらった意見すべてを1回のミーティングで深堀りしようとしない
-    &lt;ul&gt;
-      &lt;li&gt;ディスカッションが盛り上がると1トピック20〜40分くらいかかりがち&lt;/li&gt;
-      &lt;li&gt;ミーティングの時間と目指すフェーズを考慮しながら何トピック話せそうか目星をつける&lt;/li&gt;
-      &lt;li&gt;どのトピックから話すのか優先順位を決めるために投票してもらう&lt;/li&gt;
-      &lt;li&gt;投票では「話すもの・話さないもの」を決めるのではなく、「話す優先順位」を決めるだけ。投票の少ない意見を切り捨てない&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h5 id=&quot;-解決フェーズで気をつけていること&quot;&gt;✓ 解決フェーズで気をつけていること&lt;/h5&gt;
-
-&lt;p&gt;解決フェーズで大事なことは&lt;strong&gt;実行可能性を高めること&lt;/strong&gt;に尽きます。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Actionは具体的にする&lt;/li&gt;
-  &lt;li&gt;Actionの期限を短めに設定する(短い期間で達成できるActionに分割する)&lt;/li&gt;
-  &lt;li&gt;Actionが大きくなりすぎてしまったり抽象的になってしまう場合は、&lt;strong&gt;先行指標&lt;/strong&gt;をつくる&lt;/li&gt;
-  &lt;li&gt;Actionが出すぎてしまう場合は&lt;strong&gt;上限数&lt;/strong&gt;をつくる&lt;/li&gt;
-  &lt;li&gt;Actionアサイン前に、Action実行に割り当てられる&lt;strong&gt;時間を見積もっておく&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;ふりかえりミーティングを定期開催している場合は、Actionの粒度を「次のミーティングまでにできること」にする(同時に開催頻度を増やし、1度のミーティング時間やActionのサイズを小さくすることも)&lt;/li&gt;
-  &lt;li&gt;ふりかえりミーティングを定期開催している場合は、一度のミーティングで必ずしも「発散→深堀→解決」と一周させなくても良い&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;こうして書き出してみると、私がふりかえりをデザインするときは「発散フェーズ」を比較的強めに意識していることがわかります。思い返すと、議論がヒートアップしてしまうことよりも牽制しあって意見が出ないことのほうが多かったので、自然とそちらに意識が向いたのだと思います。&lt;/p&gt;
-
-&lt;p&gt;当然ですが環境が変われば気をつけることは変わりますし、このデザイン方法がそのまま利用できない場面も出てくると思います。そうなったときにも揺るがない部分は何なのかを言語化していきたいと、ここまで書き出して気づきました。得に&lt;strong&gt;ふりかえりをするのに適した人間関係&lt;/strong&gt;あたりが重要になってきそうな予感です。いずれそのあたりもブログに書けるようになれたらと思います。&lt;/p&gt;
-
-&lt;p&gt;それでは、お互い良きふりかえりライフを。&lt;/p&gt;</content><author><name></name></author><summary type="html">私の関わるいくつかのチームではよくふりかえりをします。ScrumチームがSprint毎に行う「Sprint Retrospective」であったり、フロントエンドエンジニアのチームが隔週で行う「カイゼンミーティング」であったり、呼び名や頻度や内容は様々ですが、定期的に自分たちの行動を思い返し何らかの学びを得る活動をしています。</summary></entry></feed>
+&lt;p&gt;今回紹介した設計を利用し、一覧ページと詳細ページを行き来する簡単な&lt;a href=&quot;https://github.com/aloerina01/vue-sample-list-detail-viewer&quot; target=&quot;_blank&quot;&gt;サンプルアプリ&lt;/a&gt;を実装しました。ご参考にどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？</summary></entry></feed>
