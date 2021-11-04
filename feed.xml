@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-11-01T05:53:02+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2021-11-04T08:44:03+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</title><link href="https://aloerina01.github.io/blog/2021-10-29-1" rel="alternate" type="text/html" title="スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-10-29-1">&lt;p&gt;これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。&lt;/p&gt;
 
 &lt;p&gt;今回は、私が実際に直面した問題と、それらを打破するためチームで取り組んできたことを思い返してみようと思います。&lt;/p&gt;
@@ -56,7 +56,13 @@
 &lt;p&gt;これらが主な失敗でした。乗り越えるためには失敗を自覚し向き合うことはもちろん大事ですが、併せて根気も必要だったと思います。時間をかけて実践とふりかえりを重ねてようやく今の理解度に到達できたので、総括すると「根気強く向き合う」が私たちの乗り越え方だったと言えるかもしれません。と言っても、まだ完璧な相対見積もりができているわけではないので、これからも新しい壁にぶつかりながら試行錯誤していこうと思います。&lt;/p&gt;
 
 &lt;p&gt;最後に、参考書籍を紹介して締めくくります。&lt;br /&gt;
-いろいろ読みましたが、一番理解が捗ったのは&lt;a href=&quot;https://amzn.to/3ny06zy&quot; target=&quot;_blank&quot;&gt;アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～&lt;/a&gt;でした。同じような悩みを持つ開発者の手助けになれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。</summary></entry><entry><title type="html">esbuild 入門者のための書き置き</title><link href="https://aloerina01.github.io/blog/2021-09-15-1" rel="alternate" type="text/html" title="esbuild 入門者のための書き置き" /><published>2021-09-15T00:00:00+00:00</published><updated>2021-09-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-09-15-1">&lt;p&gt;最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。&lt;/p&gt;
+いろいろ読みましたが、一番理解が捗ったのは&lt;a href=&quot;https://amzn.to/3ny06zy&quot; target=&quot;_blank&quot;&gt;アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～&lt;/a&gt;でした。同じような悩みを持つ開発者の手助けになれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。</summary></entry><entry><title type="html">チームをリードしていたときとマネジメントするようになってからとで変わったこと</title><link href="https://aloerina01.github.io/blog/2021-09-27-1" rel="alternate" type="text/html" title="チームをリードしていたときとマネジメントするようになってからとで変わったこと" /><published>2021-09-27T00:00:00+00:00</published><updated>2021-09-27T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-09-27-1">&lt;p&gt;かつて3人のチームだった&lt;/p&gt;
+
+&lt;p&gt;自分がリードだと勝手思って振る舞うようになって、やがて本当にリードの役目がついた&lt;/p&gt;
+
+&lt;p&gt;その後マネジメントの役目がついた&lt;/p&gt;
+
+&lt;p&gt;役割が変わったときは、いろいろ迷った。今でもマネジメントの方法については悩んでいるけれど、リードとの違いは明確になってきたので書き起こす&lt;/p&gt;</content><author><name></name></author><summary type="html">かつて3人のチームだった</summary></entry><entry><title type="html">esbuild 入門者のための書き置き</title><link href="https://aloerina01.github.io/blog/2021-09-15-1" rel="alternate" type="text/html" title="esbuild 入門者のための書き置き" /><published>2021-09-15T00:00:00+00:00</published><updated>2021-09-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-09-15-1">&lt;p&gt;最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。&lt;/p&gt;
 
 &lt;p&gt;今回は手始めに、初めてesbuildに触ったときに感じた「これなに」「どう使うの」「気をつけることは」あたりを書き置きしておきます。ちなみに執筆時点でのesbuildのバージョンは&lt;a href=&quot;https://github.com/evanw/esbuild/releases/tag/v0.12.28&quot; target=&quot;_blank&quot;&gt;0.12.28&lt;/a&gt;です。&lt;/p&gt;
 
@@ -930,215 +936,4 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
   &lt;li&gt;手段は提案として伝える&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;以上、自分への注意喚起でした。&lt;/p&gt;</content><author><name></name></author><summary type="html">期待値を言語化する、期待値を伝える、期待値をすり合わせる。 チームをマネジメントしたりサポートしたりすると、こういった期待値の調整をする場面はよくありますよね。</summary></entry><entry><title type="html">Vue+VuexのデータフローをCQSライクに設計する方法</title><link href="https://aloerina01.github.io/blog/2020-06-23-1" rel="alternate" type="text/html" title="Vue+VuexのデータフローをCQSライクに設計する方法" /><published>2020-06-23T00:00:00+00:00</published><updated>2020-06-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-23-1">&lt;p&gt;Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？&lt;/p&gt;
-
-&lt;h5 id=&quot;悩み1-vuexのmaphelperを使うとコードが読みにくくなる&quot;&gt;悩み1. VuexのmapHelperを使うとコードが読みにくくなる&lt;/h5&gt;
-
-&lt;p&gt;「&lt;code class=&quot;highlighter-rouge&quot;&gt;created&lt;/code&gt;内で呼ばれているこの関数はどこに定義されているんだ…？ &lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;？ それともStoreのアクション…？」&lt;/p&gt;
-
-&lt;p&gt;「&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;部分を見るにこのComponentはどのStoreにも依存してなさそうだ…。と思いきや、&lt;code class=&quot;highlighter-rouge&quot;&gt;mapState&lt;/code&gt;でいろんなStoreの値を読み込んでいるぞ…」&lt;/p&gt;
-
-&lt;h5 id=&quot;悩み2-ビジネスロジック層がない&quot;&gt;悩み2. ビジネスロジック層がない&lt;/h5&gt;
-
-&lt;p&gt;「ページ読み込み時に走るAPIアクセスはどこに実装されている？ Componentの&lt;code class=&quot;highlighter-rouge&quot;&gt;created&lt;/code&gt;？ Storeのアクション？ ロジックがまとまっている層がなくて処理の入り口を見つけにくい…」&lt;/p&gt;
-
-&lt;p&gt;「クリックされたら見た目を変えてAPIアクセスしてStoreを更新する実装をしたいけど、どうやって責務を分離していくといいかな…」&lt;/p&gt;
-
-&lt;p&gt;「ユーザーの権限を元に表示内容を変える実装したいのだけど、複数のStoreの値を組み合わせたロジックが必要そうだ。こういう場合はComponentの&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;に実装すべき…？ 将来を見越してmixinとして実装すべき…？ それとも…？」&lt;/p&gt;
-
-&lt;h5 id=&quot;悩み3-moduleのnamespaceが使いにくい&quot;&gt;悩み3. Moduleのnamespaceが使いにくい&lt;/h5&gt;
-
-&lt;p&gt;「VuexStoreのモジュールの&lt;code class=&quot;highlighter-rouge&quot;&gt;namespace&lt;/code&gt;は分けたいけれど、そうするとFluxのように全モジュールに対してDispatchできない…」&lt;/p&gt;
-
-&lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
-
-&lt;p&gt;今回はこれらの問題を解決するデータフロー設計について提案してみます。記事の最後でこの設計を採用したサンプルプロダクトも紹介していますので、併せてご参考ください。&lt;br /&gt;
-(この記事はVue2.x系の利用を想定しています)&lt;/p&gt;
-
-&lt;h3 id=&quot;cqs-ライクに考える&quot;&gt;CQS ライクに考える&lt;/h3&gt;
-
-&lt;p&gt;設計パターンのひとつである &lt;strong&gt;Command–Query Separation (コマンドクエリ分離)&lt;/strong&gt; の考え方を参考に設計を考えていきます。このパターンは、アプリケーションにおける処理を&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Query&lt;/strong&gt; = 参照系の処理。アプリケーションの状態を変更せず、また副作用のない処理&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Command&lt;/strong&gt; = 更新系の処理。アプリケーションの状態を変更し、副作用を伴う処理&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;の2つに分類します。この考え方とFluxのDispatcherの考え方を組み合わせてデータフローを構築します。大まかな完成図は以下のようになります。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-06-23/cqs.jpg&quot; alt=&quot;overall picture&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;query-ゲッターのエイリアス-を実装する&quot;&gt;Query (ゲッターのエイリアス) を実装する&lt;/h3&gt;
-
-&lt;p&gt;まずは比較的シンプルなQueryから考えます。&lt;br /&gt;
-Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.getters&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt;などを利用することで「副作用なくアプリケーションの状態を取得する」ことが可能なので、一応Queryとして完成していると言えます。が、悩み1にあるようにこれらの方法ではどのStoreに依存しているかが読み取りにくいため、今回は自前のQueryを実装します。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-06-23/query.jpg&quot; alt=&quot;query&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;今回は以下の4つの要件で実装してみます。一般的なVue+Vuexアプリケーションではあまり見ない設計となるので、なるべく強制力が弱く理解しやすくすることを要件に盛り込みます。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Storeの更新に応じて&lt;strong&gt;リアクティブに値を受け取れる&lt;/strong&gt;仕組みとなっていること&lt;/li&gt;
-  &lt;li&gt;Componentの&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;部分を見ることで、どのStoreを利用しているかが読み取れる&lt;/strong&gt;ようなQueryとなっていること&lt;/li&gt;
-  &lt;li&gt;Storeを実装する際に、Queryの存在を意識せず従来通りに実装できること&lt;/li&gt;
-  &lt;li&gt;Queryを実装する際または利用する際に、複雑なルールを覚えることを強要しない仕組みとなっていること&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;(ちなみにこの記事ではVuexのモジュールをStoreと呼ぶこととします)&lt;/p&gt;
-
-&lt;p&gt;まず要件1を満たす状態を想像しやすくするために、Queryを利用するComponentから実装してみます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SampleComponent.vue&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;{{ todoCount }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/template&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStoreQuery&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/queries&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;todoCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStoreQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todoCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;import部分をみると&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoStoreQuery&lt;/code&gt;があるので、&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;の値を利用しているComponentであることが読み取れます。&lt;/p&gt;
-
-&lt;p&gt;ついでにQueryの利用箇所にも触れておくと、&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;の中でゲッターを使うときと同じ書き口で使われていますね。このようなQueryを用意することができれば、要件4の「複雑なルールを覚えることを強要しない仕組みであること」も満たせていると言えそうです。&lt;/p&gt;
-
-&lt;p&gt;ではこのQueryを実装していきます。参考に&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;の実装も添えておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;store.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;todoCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;queries.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@/store&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Storeの情報からqueryを生成する関数を定義する&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createGettersAlias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;storeTemplate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;storeTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;descriptor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getOwnPropertyDescriptor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defineProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;descriptor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// queryを生成してexportする&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStoreQuery&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createGettersAlias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 新規storeが増える度にこの処理を追加していく&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// export const AnotherStoreQuery = createGettersAlias(AnotherStore);  &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;createGettersAlias&lt;/code&gt;関数は、VuexStoreのインスタンスから&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;のゲッター要素だけを抜き出して返す関数です。やっていることは&lt;code class=&quot;highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt;とほぼ同じです。&lt;/p&gt;
-
-&lt;p&gt;Storeを追加する際は、通常通りの方法でStoreを実装することに加えて&lt;code class=&quot;highlighter-rouge&quot;&gt;createGettersAlias&lt;/code&gt;を呼び出すだけでOKです。ちなみに私はStoreへアクセスする際は必ずゲッターを経由するようにしているためステートのエイリアスはつくっていませんが、このあたりは好みですね。&lt;/p&gt;
-
-&lt;h3 id=&quot;command-ビジネスロジックdispatch-を実装する&quot;&gt;Command (ビジネスロジック+Dispatch) を実装する&lt;/h3&gt;
-
-&lt;p&gt;次は副作用を伴う更新系処理のCommandを実装します。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-06-23/command.jpg&quot; alt=&quot;command&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;こちらも4つの要件で実装します。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;返り値のない関数&lt;/strong&gt;とする&lt;/li&gt;
-  &lt;li&gt;システム的な処理単位ではなく、&lt;strong&gt;ユースケース単位&lt;/strong&gt;で1つ1つのCommandを実装する&lt;/li&gt;
-  &lt;li&gt;処理に必要な依存関係は基本的に引数で受け取る&lt;/li&gt;
-  &lt;li&gt;storeを更新するときはVuexの&lt;code class=&quot;highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;を経由する&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;今回は「TODOを完了にする」ユースケースのCommandの実装を例にします。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;actionTypes.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;DONE_TODO&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;doneTodo&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Dispatchしやすいようにアクション名を定数化しておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;dispatcher.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/store&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actionType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actionType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Commandから直接&lt;code class=&quot;highlighter-rouge&quot;&gt;vuexStoreInstance.dispatch&lt;/code&gt;を呼び出しても良いのですが、今後Dispatch部分を修正する可能性を考慮して、Store層とCommand層の間にDispatcher層を噛ませておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;commands.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/dispatcher&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/actionTypes&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;doneTodo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;todoId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DONE_TODO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;todoId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Commands&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;doneTodo&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;ここまで実装できたら、Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;Commands.doneTodo&lt;/code&gt;を呼び出せば完成ですね。ちなみに&lt;code class=&quot;highlighter-rouge&quot;&gt;doneTodo&lt;/code&gt;を直接&lt;code class=&quot;highlighter-rouge&quot;&gt;export&lt;/code&gt;せず&lt;code class=&quot;highlighter-rouge&quot;&gt;Commands&lt;/code&gt;オブジェクトで束ねているのは、grepしやすくするためです。好みなので要件には含んでいません。&lt;/p&gt;
-
-&lt;p&gt;ちなみにQueryとCommandに依存したComponentの&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;部分は以下のようになります。&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// SampleComponent.vue
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStoreQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AnotherStoreQuery&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/qieries&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Commands&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/commands&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Componentから見ると&lt;strong&gt;「どのStoreの値を利用しているか」は明確であったほうが良い&lt;/strong&gt;ですが、&lt;strong&gt;「どのStoreを更新しているか」は意識する必要がありません&lt;/strong&gt;。それがちょうど良く表現されている点も気に入っています。&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;CQSの考え方を参考にVue＋Vuexアプリケーションの設計方法を提案してみました。しかしよく見ると実はあまり特別なことはしていなくて、Vuexの使い方に一手間加えている程度です。&lt;/p&gt;
-
-&lt;p&gt;別の見方をすると、今回実装したCommandとQueryは&lt;strong&gt;Store層にVuexを採用しなかったとしても利用できる&lt;/strong&gt;仕組みです。そのためこの設計方法はVuexから脱却したVueアプリケーションの設計方法の提案でもあります。Vuexが悪いとは言いませんが、選択肢は多く持っておけると良いですよね。そういった意図も込めての紹介でした。&lt;/p&gt;
-
-&lt;p&gt;余談ですが、「設計の紹介」と聞いてもっと斬新なもの期待させてしまっていたらすみませんでした。&lt;br /&gt;
-私にとって(私にできる)フロントエンドの設計とは、「情報をどう捉えるとか」と「それをどう分離していくか」を繰り返していく作業です。捉え方や分離の仕方には流行や好みが反映されることもあります。最近の私の好みは「部分的に切り離して捨てやすいかどうか」ですが、好みが変われば設計方法も変わると思いますので、そのときはまたこうして記事を書こうと思います。&lt;/p&gt;
-
-&lt;h3 id=&quot;サンプル&quot;&gt;サンプル&lt;/h3&gt;
-
-&lt;p&gt;
-&lt;img src=&quot;/assets/2020-06-23/sample_app.jpg&quot; style=&quot;border-radius:10px;box-shadow:1px 1px 10px #e8e8e8&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;今回紹介した設計を利用し、一覧ページと詳細ページを行き来する簡単な&lt;a href=&quot;https://github.com/aloerina01/vue-sample-list-detail-viewer&quot; target=&quot;_blank&quot;&gt;サンプルアプリ&lt;/a&gt;を実装しました。ご参考にどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？</summary></entry></feed>
+&lt;p&gt;以上、自分への注意喚起でした。&lt;/p&gt;</content><author><name></name></author><summary type="html">期待値を言語化する、期待値を伝える、期待値をすり合わせる。 チームをマネジメントしたりサポートしたりすると、こういった期待値の調整をする場面はよくありますよね。</summary></entry></feed>
