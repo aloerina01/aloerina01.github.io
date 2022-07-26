@@ -190,7 +190,7 @@
   <p>callbackを延期し、DOMの更新サイクル後に実行します。DOM更新を待ち受けるために、いくつかのデータを変更した直後に使用してください。</p>
 </blockquote>
 
-<p><strong>VueはDOMを非同期に更新する</strong>ため、「DOMを更新した後にその更新済みのDOMに対して何らかの処理をする」といったような場面で<code class="highlighter-rouge">nextTick</code>が役立ちます。</p>
+<p><strong>VueはDOMを非同期に更新する</strong>ため、「DOMを更新した後にその更新済みのDOMに対して何らかの処理をする」といったような場面で<code class="language-plaintext highlighter-rouge">nextTick</code>が役立ちます。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// single file component</span>
 
@@ -259,7 +259,7 @@
   <span class="cm">/* 以下省略 */</span>
 </code></pre></div></div>
 
-<p>主要な部分だけピックアップしています。nextTick関数は引数で受け取った<code class="highlighter-rouge">cb</code>を<code class="highlighter-rouge">callbacks</code>に詰め、<code class="highlighter-rouge">macroTimerFunc</code>もしくは<code class="highlighter-rouge">microTimerFunc</code>を呼び出しています。これらがどんな関数か見てみます。</p>
+<p>主要な部分だけピックアップしています。nextTick関数は引数で受け取った<code class="language-plaintext highlighter-rouge">cb</code>を<code class="language-plaintext highlighter-rouge">callbacks</code>に詰め、<code class="language-plaintext highlighter-rouge">macroTimerFunc</code>もしくは<code class="language-plaintext highlighter-rouge">microTimerFunc</code>を呼び出しています。これらがどんな関数か見てみます。</p>
 
 <h5 id="macrotimerfunc-と-microtimerfunc-の実装">macroTimerFunc と microTimerFunc の実装</h5>
 
@@ -296,9 +296,9 @@
 </code></pre></div></div>
 
 <ol>
-  <li><strong><code class="highlighter-rouge">flushCallbacks</code></strong>は、<code class="highlighter-rouge">callbacks</code>の中身を取り出して実行し、<code class="highlighter-rouge">callbacks</code>を初期化しています</li>
-  <li><strong><code class="highlighter-rouge">macroTimerFunc</code></strong>は、<code class="highlighter-rouge">setImmediate</code>もしくは<code class="highlighter-rouge">setTimeout</code>を使ってflushCallbacksを呼び出しています</li>
-  <li><strong><code class="highlighter-rouge">microTimerFunc</code></strong>は、<code class="highlighter-rouge">Promise.resolve()</code>を使ってflushCallbacksを呼び出しています</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">flushCallbacks</code></strong>は、<code class="language-plaintext highlighter-rouge">callbacks</code>の中身を取り出して実行し、<code class="language-plaintext highlighter-rouge">callbacks</code>を初期化しています</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">macroTimerFunc</code></strong>は、<code class="language-plaintext highlighter-rouge">setImmediate</code>もしくは<code class="language-plaintext highlighter-rouge">setTimeout</code>を使ってflushCallbacksを呼び出しています</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">microTimerFunc</code></strong>は、<code class="language-plaintext highlighter-rouge">Promise.resolve()</code>を使ってflushCallbacksを呼び出しています</li>
 </ol>
 
 <p>ここで登場する <strong>macro tasks</strong> と <strong>micro tasks</strong> という考え方は<a href="https://promisesaplus.com/#point-67" target="_blank">Promises/A+</a>にも記載があり、どちらも<strong>現在のイベントループ内の全てのタスクの実行完了後に、タスクを追加で実行する手法</strong>を指しています。<br />

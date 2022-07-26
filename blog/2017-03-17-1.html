@@ -200,7 +200,7 @@
   <li>Elm Architecture に則ったスケーラブル可能な仕組み</li>
 </ul>
 
-<p>今回はHyperappの<a href="https://github.com/hyperapp/hyperapp/blob/master/docs/README.md#documentation">ドキュメント</a>を勝手に意訳<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>してみようと思います😌💡</p>
+<p>今回はHyperappの<a href="https://github.com/hyperapp/hyperapp/blob/master/docs/README.md#documentation">ドキュメント</a>を勝手に意訳<sup id="fnref:1" role="doc-noteref"><a href="#fn:1" class="footnote" rel="footnote">1</a></sup>してみようと思います😌💡</p>
 
 <ul id="markdown-toc">
   <li><a href="#introduction" id="markdown-toc-introduction">Introduction</a></li>
@@ -216,20 +216,20 @@
   <li><a href="#jsxを使う環境の用意" id="markdown-toc-jsxを使う環境の用意">JSXを使う環境の用意</a>    <ul>
       <li><a href="#browserifyを使う場合" id="markdown-toc-browserifyを使う場合">Browserifyを使う場合</a>        <ul>
           <li><a href="#必要なモジュールのインストール" id="markdown-toc-必要なモジュールのインストール">必要なモジュールのインストール</a></li>
-          <li><a href="#babelrcの用意" id="markdown-toc-babelrcの用意"><code class="highlighter-rouge">.babelrc</code>の用意</a></li>
+          <li><a href="#babelrcの用意" id="markdown-toc-babelrcの用意"><code class="language-plaintext highlighter-rouge">.babelrc</code>の用意</a></li>
           <li><a href="#ビルドの実行" id="markdown-toc-ビルドの実行">ビルドの実行</a></li>
         </ul>
       </li>
       <li><a href="#webpackを使う場合" id="markdown-toc-webpackを使う場合">Webpackを使う場合</a>        <ul>
           <li><a href="#必要なモジュールのインストール-1" id="markdown-toc-必要なモジュールのインストール-1">必要なモジュールのインストール</a></li>
-          <li><a href="#babelrcの用意-1" id="markdown-toc-babelrcの用意-1"><code class="highlighter-rouge">.babelrc</code>の用意</a></li>
-          <li><a href="#webpackconfigjsの用意" id="markdown-toc-webpackconfigjsの用意"><code class="highlighter-rouge">webpack.config.js</code>の用意</a></li>
+          <li><a href="#babelrcの用意-1" id="markdown-toc-babelrcの用意-1"><code class="language-plaintext highlighter-rouge">.babelrc</code>の用意</a></li>
+          <li><a href="#webpackconfigjsの用意" id="markdown-toc-webpackconfigjsの用意"><code class="language-plaintext highlighter-rouge">webpack.config.js</code>の用意</a></li>
           <li><a href="#ビルドの実行-1" id="markdown-toc-ビルドの実行-1">ビルドの実行</a></li>
         </ul>
       </li>
       <li><a href="#rollupを使う場合" id="markdown-toc-rollupを使う場合">Rollupを使う場合</a>        <ul>
           <li><a href="#必要なモジュールのインストール-2" id="markdown-toc-必要なモジュールのインストール-2">必要なモジュールのインストール</a></li>
-          <li><a href="#rollupconfigjsの用意" id="markdown-toc-rollupconfigjsの用意"><code class="highlighter-rouge">rollup.config.js</code>の用意</a></li>
+          <li><a href="#rollupconfigjsの用意" id="markdown-toc-rollupconfigjsの用意"><code class="language-plaintext highlighter-rouge">rollup.config.js</code>の用意</a></li>
           <li><a href="#ビルドの実行-2" id="markdown-toc-ビルドの実行-2">ビルドの実行</a></li>
         </ul>
       </li>
@@ -237,8 +237,8 @@
   </li>
   <li><a href="#hyperxを使う環境の用意" id="markdown-toc-hyperxを使う環境の用意">Hyperxを使う環境の用意</a></li>
   <li><a href="#api-reference" id="markdown-toc-api-reference">API Reference</a>    <ul>
-      <li><a href="#h" id="markdown-toc-h"><code class="highlighter-rouge">h</code></a></li>
-      <li><a href="#app" id="markdown-toc-app"><code class="highlighter-rouge">app</code></a></li>
+      <li><a href="#h" id="markdown-toc-h"><code class="language-plaintext highlighter-rouge">h</code></a></li>
+      <li><a href="#app" id="markdown-toc-app"><code class="language-plaintext highlighter-rouge">app</code></a></li>
       <li><a href="#state" id="markdown-toc-state">State</a></li>
       <li><a href="#view" id="markdown-toc-view">View</a></li>
       <li><a href="#actions" id="markdown-toc-actions">Actions</a></li>
@@ -265,7 +265,7 @@
 
 <h4 id="こんにちは世界">こんにちは世界</h4>
 
-<p>ではさっそくHyperappを使って「こんにちは世界」を表示させてみよう。<code class="highlighter-rouge">index.html</code>を用意して以下のコードをコピペしてブラウザで見てみよう😄</p>
+<p>ではさっそくHyperappを使って「こんにちは世界」を表示させてみよう。<code class="language-plaintext highlighter-rouge">index.html</code>を用意して以下のコードをコピペしてブラウザで見てみよう😄</p>
 
 <p>Hyperappでは<strong>JSX</strong>を使った記法と、ES6のテンプレートリテラルを使った<strong>Hyperx</strong>という記法の２つが使えるよ。How wonderful!! それぞれのコード例を用意したから好きな方を使ってね。</p>
 
@@ -330,7 +330,7 @@
   <li>バンドラ(<a href="https://webpack.js.org/">Webpack</a>, <a href="http://browserify.org/">Browserify</a>, <a href="http://rollupjs.org/">Rollup</a>)</li>
 </ul>
 
-<p>なぜこれらが必要かというと、JSX/Hyperxで書かれたソースをコンパイルするためなんだ💪 コンパイルされると、Hyperappの<code class="highlighter-rouge">h</code>関数という<strong>仮想DOMを生成するための関数</strong>になるのだけれど、それについてはまた後で語るからね。</p>
+<p>なぜこれらが必要かというと、JSX/Hyperxで書かれたソースをコンパイルするためなんだ💪 コンパイルされると、Hyperappの<code class="language-plaintext highlighter-rouge">h</code>関数という<strong>仮想DOMを生成するための関数</strong>になるのだけれど、それについてはまた後で語るからね。</p>
 
 <p>コンパイル前(JSX/Hyperx)</p>
 
@@ -349,7 +349,7 @@
 
 <p>JSXはXMLと同様データの記法のひとつだよ。知ってたかい？ これを使うことでHTML(テンプレート)とJavaScript(処理)を一つのファイルに混在させることができるよ。</p>
 
-<p>JSXを使うには上述の通りコンパイルが必要なんだ。JSXを<code class="highlighter-rouge">h</code>関数に変換し、ひとつのjsファイルにバンドルし、配信しなければならないからね。ではさっそくビルド環境の用意をしよう。</p>
+<p>JSXを使うには上述の通りコンパイルが必要なんだ。JSXを<code class="language-plaintext highlighter-rouge">h</code>関数に変換し、ひとつのjsファイルにバンドルし、配信しなければならないからね。ではさっそくビルド環境の用意をしよう。</p>
 
 <h4 id="browserifyを使う場合">Browserifyを使う場合</h4>
 
@@ -360,7 +360,7 @@
 <span class="nv">$ </span>npm i <span class="nt">-D</span> babel-plugin-transform-react-jsx babel-preset-es2015 babelify browserify bundle-collapser uglifyify uglifyjs
 </code></pre></div></div>
 
-<h5 id="babelrcの用意"><code class="highlighter-rouge">.babelrc</code>の用意</h5>
+<h5 id="babelrcの用意"><code class="language-plaintext highlighter-rouge">.babelrc</code>の用意</h5>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"es2015"</span><span class="p">],</span><span class="w">
@@ -392,7 +392,7 @@
 <span class="nv">$ </span>npm i <span class="nt">-D</span> webpack babel-core babel-loader babel-preset-es2015 babel-plugin-transform-react-jsx
 </code></pre></div></div>
 
-<h5 id="babelrcの用意-1"><code class="highlighter-rouge">.babelrc</code>の用意</h5>
+<h5 id="babelrcの用意-1"><code class="language-plaintext highlighter-rouge">.babelrc</code>の用意</h5>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"es2015"</span><span class="p">],</span><span class="w">
@@ -407,7 +407,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h5 id="webpackconfigjsの用意"><code class="highlighter-rouge">webpack.config.js</code>の用意</h5>
+<h5 id="webpackconfigjsの用意"><code class="language-plaintext highlighter-rouge">webpack.config.js</code>の用意</h5>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">entry</span><span class="p">:</span> <span class="dl">"</span><span class="s2">./index.js</span><span class="dl">"</span><span class="p">,</span>
@@ -440,7 +440,7 @@
 <span class="nv">$ </span>npm i <span class="nt">-D</span> rollup rollup-plugin-babel rollup-plugin-node-resolve rollup-plugin-uglify babel-preset-es2015-rollup babel-plugin-transform-react-jsx
 </code></pre></div></div>
 
-<h5 id="rollupconfigjsの用意"><code class="highlighter-rouge">rollup.config.js</code>の用意</h5>
+<h5 id="rollupconfigjsの用意"><code class="language-plaintext highlighter-rouge">rollup.config.js</code>の用意</h5>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">babel</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">rollup-plugin-babel</span><span class="dl">"</span>
 <span class="k">import</span> <span class="nx">resolve</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">rollup-plugin-node-resolve</span><span class="dl">"</span>
@@ -477,11 +477,11 @@
 <p>Hyperappは大きく分けて2つの仕組みを提供しているんだ。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">h 関数</code> … 仮想DOMを生成する関数</li>
-  <li><code class="highlighter-rouge">app 関数</code> … Hyperappを利用したApplicationを実行する関数</li>
+  <li><code class="language-plaintext highlighter-rouge">h 関数</code> … 仮想DOMを生成する関数</li>
+  <li><code class="language-plaintext highlighter-rouge">app 関数</code> … Hyperappを利用したApplicationを実行する関数</li>
 </ul>
 
-<h4 id="h"><code class="highlighter-rouge">h</code></h4>
+<h4 id="h"><code class="language-plaintext highlighter-rouge">h</code></h4>
 
 <p>仮想DOMを返す関数だよ。ここで言う仮想DOMとは、ネストされたDOMのツリーをJavaScriptのオブジェクトとして表現しているものだよ🌴</p>
 
@@ -491,9 +491,9 @@
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">name {String}</code> … 「div」など、HTML上でのタグ名</li>
-  <li><code class="highlighter-rouge">props {Object}</code> … Elementに挿入されるattributes</li>
-  <li><code class="highlighter-rouge">children {String | Array}</code> … 子要素</li>
+  <li><code class="language-plaintext highlighter-rouge">name {String}</code> … 「div」など、HTML上でのタグ名</li>
+  <li><code class="language-plaintext highlighter-rouge">props {Object}</code> … Elementに挿入されるattributes</li>
+  <li><code class="language-plaintext highlighter-rouge">children {String | Array}</code> … 子要素</li>
 </ul>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">h</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="p">{</span> <span class="na">href</span><span class="p">:</span> <span class="dl">"</span><span class="s2">#</span><span class="dl">"</span> <span class="p">},</span> <span class="dl">"</span><span class="s2">next page</span><span class="dl">"</span><span class="p">)</span>
@@ -508,7 +508,7 @@
 <span class="c1">// }</span>
 </code></pre></div></div>
 
-<h4 id="app"><code class="highlighter-rouge">app</code></h4>
+<h4 id="app"><code class="language-plaintext highlighter-rouge">app</code></h4>
 
 <p>HyperappによるWebアプリケーションを起動するよ。これを呼び出すことで全てが始まる。オプションを添えられるよ。</p>
 
@@ -521,7 +521,7 @@
 
 <h4 id="view">View</h4>
 
-<p>仮想DOMを返す関数だよ。引数に<code class="highlighter-rouge">state</code>と<code class="highlighter-rouge">actions</code>をとるよ。</p>
+<p>仮想DOMを返す関数だよ。引数に<code class="language-plaintext highlighter-rouge">state</code>と<code class="language-plaintext highlighter-rouge">actions</code>をとるよ。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">on</span><span class="p">:</span> <span class="kc">true</span>
@@ -540,7 +540,7 @@
 
 <h4 id="actions">Actions</h4>
 
-<p>Webアプリケーションの振る舞いを定義する関数のコレクションだよ。<code class="highlighter-rouge">actions</code>は一般的に<code class="highlighter-rouge">state</code>を更新するために利用されるよ。そのため、返り値が新しい<code class="highlighter-rouge">state</code>であることがしばしば。</p>
+<p>Webアプリケーションの振る舞いを定義する関数のコレクションだよ。<code class="language-plaintext highlighter-rouge">actions</code>は一般的に<code class="language-plaintext highlighter-rouge">state</code>を更新するために利用されるよ。そのため、返り値が新しい<code class="language-plaintext highlighter-rouge">state</code>であることがしばしば。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">actions</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">setValue</span><span class="p">:</span> <span class="nx">value</span> <span class="o">=&gt;</span> <span class="p">({</span> <span class="nx">value</span> <span class="p">}),</span>
@@ -554,9 +554,9 @@
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">data</code> … actionの処理(モデルの更新)に必要な情報</li>
-  <li><code class="highlighter-rouge">state</code> … 現在のstate</li>
-  <li><code class="highlighter-rouge">actions</code> … アプリケーションが持つ大元のactions</li>
+  <li><code class="language-plaintext highlighter-rouge">data</code> … actionの処理(モデルの更新)に必要な情報</li>
+  <li><code class="language-plaintext highlighter-rouge">state</code> … 現在のstate</li>
+  <li><code class="language-plaintext highlighter-rouge">actions</code> … アプリケーションが持つ大元のactions</li>
 </ul>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">state</span> <span class="o">=</span> <span class="p">{</span> <span class="na">count</span><span class="p">:</span> <span class="mi">0</span> <span class="p">}</span>
@@ -603,10 +603,10 @@
 <p>仮想DOMのライフサイクルにまつわるイベントをハンドリングできるよ。</p>
 
 <ul>
-  <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#oncreate"><code class="highlighter-rouge">oncreate</code></a> … ElementがDOMとして構築されたとき</li>
-  <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#onupdate"><code class="highlighter-rouge">onupdate</code></a> … Elementの要素が更新されたとき</li>
-  <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#onremove"><code class="highlighter-rouge">onremove</code></a> … ElementがDOMから消える直前</li>
-  <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#ondestroy"><code class="highlighter-rouge">ondestroy</code></a> … ElementがDOMから消える直後</li>
+  <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#oncreate"><code class="language-plaintext highlighter-rouge">oncreate</code></a> … ElementがDOMとして構築されたとき</li>
+  <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#onupdate"><code class="language-plaintext highlighter-rouge">onupdate</code></a> … Elementの要素が更新されたとき</li>
+  <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#onremove"><code class="language-plaintext highlighter-rouge">onremove</code></a> … ElementがDOMから消える直前</li>
+  <li><a href="https://github.com/hyperapp/hyperapp/blob/master/docs/concepts/lifecycle-events.md#ondestroy"><code class="language-plaintext highlighter-rouge">ondestroy</code></a> … ElementがDOMから消える直後</li>
 </ul>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">node</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">createElement</span><span class="p">(</span><span class="dl">"</span><span class="s2">div</span><span class="dl">"</span><span class="p">)</span>
@@ -651,10 +651,10 @@
 <p>初めて翻訳(の真似事)をしたのですが、自然と海外ドキュメンタリーの吹き替えみたいな声が脳内再生されました。「<a href="http://shirobako-anime.com/story/04.html">私ゃ失敗こいちまってさ</a>」的なやつです。ともあれ、とても楽しかったですしHyperappを好きになれて満足しました。</p>
 
 <p>間違いや指摘箇所があれば<a href="https://twitter.com/aloerina_">@aloerina_</a>までご連絡ください。</p>
-<div class="footnotes">
+<div class="footnotes" role="doc-endnotes">
   <ol>
-    <li id="fn:1">
-      <p>英語が得意でない者が雰囲気で訳したものです。本家Hyperappとは無関係の個人的な記事です。 <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    <li id="fn:1" role="doc-endnote">
+      <p>英語が得意でない者が雰囲気で訳したものです。本家Hyperappとは無関係の個人的な記事です。 <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
 </div>

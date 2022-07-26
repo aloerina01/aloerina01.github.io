@@ -216,11 +216,11 @@
 <h3 id="使い方">使い方</h3>
 
 <ol>
-  <li><code class="highlighter-rouge">npm install -D esbuild</code></li>
-  <li><code class="highlighter-rouge">npx esbuild --bundle ./index.js</code></li>
+  <li><code class="language-plaintext highlighter-rouge">npm install -D esbuild</code></li>
+  <li><code class="language-plaintext highlighter-rouge">npx esbuild --bundle ./index.js</code></li>
 </ol>
 
-<p>configファイルなしで実行できるので、<code class="highlighter-rouge">npm install</code>して即利用できます。基本的なオプションも揃っています。</p>
+<p>configファイルなしで実行できるので、<code class="language-plaintext highlighter-rouge">npm install</code>して即利用できます。基本的なオプションも揃っています。</p>
 
 <table>
   <thead>
@@ -231,31 +231,31 @@
   </thead>
   <tbody>
     <tr>
-      <td><code class="highlighter-rouge">--bundle</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--bundle</code></td>
       <td>依存関係をインライン化します。esbuildはデフォルトでは依存関係をバンドルに含まないので、明示的に有効化する必要があります。</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">--minify</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--minify</code></td>
       <td>ビルドしたファイルを圧縮します。</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">--watch</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--watch</code></td>
       <td>ウォッチモードを有効にします。ファイルの変更を検知して再ビルドが走るようになります。</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">--target</code><br />例: <code class="highlighter-rouge">-target=es2020,chrome58,node12</code></td>
-      <td>ビルド後に生成するJSのターゲット環境を指定します。デフォルトは<code class="highlighter-rouge">esnext</code>です。</td>
+      <td><code class="language-plaintext highlighter-rouge">--target</code><br />例: <code class="language-plaintext highlighter-rouge">-target=es2020,chrome58,node12</code></td>
+      <td>ビルド後に生成するJSのターゲット環境を指定します。デフォルトは<code class="language-plaintext highlighter-rouge">esnext</code>です。</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">--sourcemap</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--sourcemap</code></td>
       <td>sourcemapを生成します。</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">--define</code><br />例: <code class="highlighter-rouge">--define:DEBUG=true</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--define</code><br />例: <code class="language-plaintext highlighter-rouge">--define:DEBUG=true</code></td>
       <td>グローバル変数を定義します。</td>
     </tr>
     <tr>
-      <td><code class="highlighter-rouge">--splitting</code></td>
+      <td><code class="language-plaintext highlighter-rouge">--splitting</code></td>
       <td>Code Splitting を有効化しますが、まだWIPのオプションです。</td>
     </tr>
   </tbody>
@@ -297,7 +297,7 @@
 <h4 id="es5との付き合い方">ES5との付き合い方</h4>
 
 <ul>
-  <li><code class="highlighter-rouge">--target=es5</code>とした場合、元々ES5のコードはES5のままになるが、ES6のコードをES5に変換することはない</li>
+  <li><code class="language-plaintext highlighter-rouge">--target=es5</code>とした場合、元々ES5のコードはES5のままになるが、ES6のコードをES5に変換することはない</li>
   <li>今後ES5に対応することはなさそう</li>
   <li>参考<a href="https://github.com/evanw/esbuild/issues/297" target="_blank">Issue</a>はこちら</li>
 </ul>

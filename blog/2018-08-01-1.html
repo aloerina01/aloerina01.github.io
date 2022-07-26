@@ -227,7 +227,7 @@
 
 <h3 id="1-dart-sdk">1. Dart SDK</h3>
 
-<p><a href="https://www.dartlang.org/tools/sdk" target="_blank">Dart SDK</a> はDartの開発に必要なライブラリ群とCLIツールです。執筆時点では安定版の<code class="highlighter-rouge">1.24.3</code>と、プレリリース版の<code class="highlighter-rouge">2.0.0-dev.69.2</code>が存在します。</p>
+<p><a href="https://www.dartlang.org/tools/sdk" target="_blank">Dart SDK</a> はDartの開発に必要なライブラリ群とCLIツールです。執筆時点では安定版の<code class="language-plaintext highlighter-rouge">1.24.3</code>と、プレリリース版の<code class="language-plaintext highlighter-rouge">2.0.0-dev.69.2</code>が存在します。</p>
 
 <div class="revision">
 
@@ -242,7 +242,7 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 <span class="nv">$ </span>brew sintall dart <span class="nt">--devel</span> <span class="c"># プレリリース版をインストールする場合</span>
 </code></pre></div></div>
 
-<p>なお、Web開発のためにDartをインストールする場合は、インストール時に<code class="highlighter-rouge">--with-dartium --with-content-shell</code>オプションをつけるよう推奨されることがありますが、これらは<strong>Dart1.xでのみ利用する</strong>ものです。<strong>Dartium</strong>はDartVMを内蔵するブラウザで、<strong>content shell</strong>は同じくDartVMを内蔵するテスト用のヘッドレスブラウザですが、Dart2.xでは開発環境が大幅に変わりこれらが不要となったためです(開発環境の詳細は後述します)。</p>
+<p>なお、Web開発のためにDartをインストールする場合は、インストール時に<code class="language-plaintext highlighter-rouge">--with-dartium --with-content-shell</code>オプションをつけるよう推奨されることがありますが、これらは<strong>Dart1.xでのみ利用する</strong>ものです。<strong>Dartium</strong>はDartVMを内蔵するブラウザで、<strong>content shell</strong>は同じくDartVMを内蔵するテスト用のヘッドレスブラウザですが、Dart2.xでは開発環境が大幅に変わりこれらが不要となったためです(開発環境の詳細は後述します)。</p>
 
 <h3 id="2-パッケージ管理ツール-pub">2. パッケージ管理ツール pub</h3>
 
@@ -250,7 +250,7 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 
 <h4 id="pubspecyaml">pubspec.yaml</h4>
 
-<p><strong>依存するパッケージ</strong>と<strong>そのバージョン情報</strong>などを記しておくファイルです。<code class="highlighter-rouge">package.json</code>のような役割をします。npmと使い方が似ているので、とっつきやすくてありがたいですね。</p>
+<p><strong>依存するパッケージ</strong>と<strong>そのバージョン情報</strong>などを記しておくファイルです。<code class="language-plaintext highlighter-rouge">package.json</code>のような役割をします。npmと使い方が似ているので、とっつきやすくてありがたいですね。</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s">Sample</span>
 <span class="na">version</span><span class="pi">:</span> <span class="s">1.0.0</span>
@@ -265,10 +265,10 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
   <span class="na">test</span><span class="pi">:</span> <span class="s1">'</span><span class="s">&gt;=0.6.0</span><span class="nv"> </span><span class="s">&lt;0.12.0'</span>
 </code></pre></div></div>
 
-<p>強いて言うなら、依存パッケージを追加するときにエディタで直接修正する必要があるのは少し面倒だと思いました。<a href="https://pub.dartlang.org/" target="_blank">Dart Packages</a>でインストールしたいパッケージを調べ<code class="highlighter-rouge">pubspec.yaml</code>への記述方法を確認しコピペする…というのはやはり手間です。</p>
+<p>強いて言うなら、依存パッケージを追加するときにエディタで直接修正する必要があるのは少し面倒だと思いました。<a href="https://pub.dartlang.org/" target="_blank">Dart Packages</a>でインストールしたいパッケージを調べ<code class="language-plaintext highlighter-rouge">pubspec.yaml</code>への記述方法を確認しコピペする…というのはやはり手間です。</p>
 
 <h4 id="den">den</h4>
-<p>そこで助かるツールが<strong><a href="https://github.com/seaneagan/den" target="_blank">den</a></strong>です。<code class="highlighter-rouge">pubspec.yaml</code>の初期化や依存関係の追記をしてくれるCLIツールです。<code class="highlighter-rouge">npm init</code>や<code class="highlighter-rouge">npm install -S &lt;package名&gt;</code>に相当するツールですね。</p>
+<p>そこで助かるツールが<strong><a href="https://github.com/seaneagan/den" target="_blank">den</a></strong>です。<code class="language-plaintext highlighter-rouge">pubspec.yaml</code>の初期化や依存関係の追記をしてくれるCLIツールです。<code class="language-plaintext highlighter-rouge">npm init</code>や<code class="language-plaintext highlighter-rouge">npm install -S &lt;package名&gt;</code>に相当するツールですね。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pub global activate den   <span class="c"># denのインストール</span>
 <span class="nv">$ </span>den spec                  <span class="c"># pubspec.yamlの生成</span>
@@ -279,15 +279,15 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 
 <h5 id="pub-get">pub get</h5>
 
-<p><code class="highlighter-rouge">pubspec.yaml</code>に書かれている依存ライブラリを一括インストールしローカルにキャッシュします。同時に、初回であれば<code class="highlighter-rouge">pubspec.lock</code>と<code class="highlighter-rouge">.packages</code>が作成されます。前者は名前の通りバージョンのロックファイルで、後者はローカルのどのディレクトリにキャッシュしたかを記すファイルです。ローカルキャッシュから再インストールする場合は<code class="highlighter-rouge">--offline</code>オプションを使います。</p>
+<p><code class="language-plaintext highlighter-rouge">pubspec.yaml</code>に書かれている依存ライブラリを一括インストールしローカルにキャッシュします。同時に、初回であれば<code class="language-plaintext highlighter-rouge">pubspec.lock</code>と<code class="language-plaintext highlighter-rouge">.packages</code>が作成されます。前者は名前の通りバージョンのロックファイルで、後者はローカルのどのディレクトリにキャッシュしたかを記すファイルです。ローカルキャッシュから再インストールする場合は<code class="language-plaintext highlighter-rouge">--offline</code>オプションを使います。</p>
 
 <h5 id="pub-global-activate-">pub global activate <package></package></h5>
 
-<p><code class="highlighter-rouge">npm install -g</code>と同じです。パッケージをグローバルにインストールします。</p>
+<p><code class="language-plaintext highlighter-rouge">npm install -g</code>と同じです。パッケージをグローバルにインストールします。</p>
 
 <h5 id="pub-run">pub run</h5>
 
-<p><code class="highlighter-rouge">pub get</code>や<code class="highlighter-rouge">pub global</code>でインストールしたexecutable(CLIから実行可能な)packageを実行します。</p>
+<p><code class="language-plaintext highlighter-rouge">pub get</code>や<code class="language-plaintext highlighter-rouge">pub global</code>でインストールしたexecutable(CLIから実行可能な)packageを実行します。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pub run <span class="o">[</span>package名]
 <span class="nv">$ </span>pub global run <span class="o">[</span>package名]
@@ -295,7 +295,7 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 
 <h5 id="pub-upgrade">pub upgrade</h5>
 
-<p>依存パッケージのバージョンを最新にあげ、<code class="highlighter-rouge">pubspec.lock</code>の内容を更新します。</p>
+<p>依存パッケージのバージョンを最新にあげ、<code class="language-plaintext highlighter-rouge">pubspec.lock</code>の内容を更新します。</p>
 
 <h4 id="npmとの比較表">npmとの比較表</h4>
 
@@ -352,7 +352,7 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 
 <h5 id="entrypoint">Entrypoint</h5>
 
-<p>意味合い的にはJavaScriptを実装するときと同じなのですが、Dartにおいては一般的に<code class="highlighter-rouge">main()</code>が実装されている<code class="highlighter-rouge">.dart</code>ファイルがエントリーポイントとなります。</p>
+<p>意味合い的にはJavaScriptを実装するときと同じなのですが、Dartにおいては一般的に<code class="language-plaintext highlighter-rouge">main()</code>が実装されている<code class="language-plaintext highlighter-rouge">.dart</code>ファイルがエントリーポイントとなります。</p>
 
 <h3 id="3-projectの雛形構築ツール-stagehand">3. projectの雛形構築ツール stagehand</h3>
 
@@ -371,7 +371,7 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
   <li>AndularDartを組み込むための<strong><a href="https://github.com/dart-lang/stagehand/tree/master/templates/web-angular" target="_blank">web-angular</a></strong></li>
 </ul>
 
-<p>の2つです。web-simpleでプロジェクトを作ってみたところ、HelloWorld的なHTML/CSS/Dartファイルとpubspec.yamlなどが用意されました。雛形が用意されたあとは依存するpackageをインストールしてローカルサーバを立ち上げればブラウザで確認できます。このあたりも<code class="highlighter-rouge">npm install</code>からの<code class="highlighter-rouge">npm start</code>と同じ流れなので理解しやすいしお手軽でした。</p>
+<p>の2つです。web-simpleでプロジェクトを作ってみたところ、HelloWorld的なHTML/CSS/Dartファイルとpubspec.yamlなどが用意されました。雛形が用意されたあとは依存するpackageをインストールしてローカルサーバを立ち上げればブラウザで確認できます。このあたりも<code class="language-plaintext highlighter-rouge">npm install</code>からの<code class="language-plaintext highlighter-rouge">npm start</code>と同じ流れなので理解しやすいしお手軽でした。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pub get       <span class="c"># 依存packageのインストール</span>
 <span class="nv">$ </span>webdev serve  <span class="c"># ローカルサーバの起動</span>
@@ -396,8 +396,8 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 <p>dart1.xでは、開発時はDartVMを搭載した<strong>Dartium</strong>や<strong>content shell</strong>を利用し、リリース時にはdart2jsでコンパイルしてjsを生成します。それぞれpubコマンドを利用して行えます。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">pub serve</code> … ローカルサーバを起動します。Dariumで確認することができます。</li>
-  <li><code class="highlighter-rouge">pub build</code> … dart2jsを実行します。</li>
+  <li><code class="language-plaintext highlighter-rouge">pub serve</code> … ローカルサーバを起動します。Dariumで確認することができます。</li>
+  <li><code class="language-plaintext highlighter-rouge">pub build</code> … dart2jsを実行します。</li>
 </ul>
 
 <h4 id="dart2xでのビルド環境">Dart2.xでのビルド環境</h4>
@@ -411,8 +411,8 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 <p>コマンド名はpubでビルドするときと同じなのでDart1.xから2.xへマイグレーションした場合も気楽そうです。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">webdev serve</code> … DDCを実行しローカルサーバを起動します。標準ブラウザで確認することができます。</li>
-  <li><code class="highlighter-rouge">webdev build</code> … dart2jsを実行します。</li>
+  <li><code class="language-plaintext highlighter-rouge">webdev serve</code> … DDCを実行しローカルサーバを起動します。標準ブラウザで確認することができます。</li>
+  <li><code class="language-plaintext highlighter-rouge">webdev build</code> … dart2jsを実行します。</li>
 </ul>
 
 <h4 id="まとめ">まとめ</h4>
@@ -428,13 +428,13 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
   <tbody>
     <tr>
       <td style="text-align: left">Dart1.x</td>
-      <td><code class="highlighter-rouge">pub build</code><br /> dart2jsでjsを生成</td>
-      <td><code class="highlighter-rouge">pub serve</code><br /> Dartium, content shell などのDartVM上で直接実行</td>
+      <td><code class="language-plaintext highlighter-rouge">pub build</code><br /> dart2jsでjsを生成</td>
+      <td><code class="language-plaintext highlighter-rouge">pub serve</code><br /> Dartium, content shell などのDartVM上で直接実行</td>
     </tr>
     <tr>
       <td style="text-align: left">Dart2.x</td>
-      <td><code class="highlighter-rouge">webdev build</code><br /> dart2jsでjsを生成</td>
-      <td><code class="highlighter-rouge">webdev serve</code><br /> DDCでコンパイルしたものを標準ブラウザで実行</td>
+      <td><code class="language-plaintext highlighter-rouge">webdev build</code><br /> dart2jsでjsを生成</td>
+      <td><code class="language-plaintext highlighter-rouge">webdev serve</code><br /> DDCでコンパイルしたものを標準ブラウザで実行</td>
     </tr>
   </tbody>
 </table>
@@ -443,26 +443,26 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 
 <p>webdevを使えば特別な設定なくすぐにビルドを行えますが、<strong><a href="https://webdev.dartlang.org/tools/build_runner" target="_blank">build_runner</a></strong>を使ってビルドをカスタマイズすることも可能です。簡単に言うとタスクランナーのようなものです。</p>
 
-<p>まずはインストール方法から。pubspec.yamlにdependencyを追記して<code class="highlighter-rouge">pub get</code>します。</p>
+<p>まずはインストール方法から。pubspec.yamlにdependencyを追記して<code class="language-plaintext highlighter-rouge">pub get</code>します。</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dev_dependencies</span><span class="pi">:</span>
   <span class="na">build_runner</span><span class="pi">:</span> <span class="s">^0.9.0</span>
   <span class="na">build_web_compilers</span><span class="pi">:</span> <span class="s">^0.4.0</span>
 </code></pre></div></div>
 
-<p>次にコンフィグファイルを用意します。build_runnnerはデフォルトで<code class="highlighter-rouge">build.yaml</code>という名前のファイルを読み込んで実行しますが、<code class="highlighter-rouge">build.hoge.yaml</code>と命名すればオプションをつけて指定することができます。</p>
+<p>次にコンフィグファイルを用意します。build_runnnerはデフォルトで<code class="language-plaintext highlighter-rouge">build.yaml</code>という名前のファイルを読み込んで実行しますが、<code class="language-plaintext highlighter-rouge">build.hoge.yaml</code>と命名すればオプションをつけて指定することができます。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pub run build_runner build                <span class="c"># build.yamlを読み込む</span>
 <span class="nv">$ </span>pub run build_runner build <span class="nt">--config</span> hoge  <span class="c"># build.hoge.yamlを読み込む</span>
 </code></pre></div></div>
 
-<p>webpackの設定ファイルを本番用と開発用で分ける時に<code class="highlighter-rouge">webpack.config.prod.js</code>/<code class="highlighter-rouge">webpack.config.dev.js</code>とするケースがありますが、同じような感覚で使えそうです。</p>
+<p>webpackの設定ファイルを本番用と開発用で分ける時に<code class="language-plaintext highlighter-rouge">webpack.config.prod.js</code>/<code class="language-plaintext highlighter-rouge">webpack.config.dev.js</code>とするケースがありますが、同じような感覚で使えそうです。</p>
 
 <p>あとはコンフィグファイルの中身次第でビルドをカスタマイズできますが、詳しい<a href="https://github.com/dart-lang/build/tree/master/docs" target="_blank">設定の仕方</a>については情報が多いのでいずれ別記事にて。</p>
 
 <h4 id="sassのビルド">sassのビルド</h4>
 
-<p>DDCを使えばホットリロードに対応できると書きましたが、sassも同様にあるべきです。これは公式のツールでは(原時点では)対応できないのでライブラリを利用します。<strong><a href="https://pub.dartlang.org/packages/sass_builder" target="_blank">sass_builder</a></strong>を<code class="highlighter-rouge">pub get</code>して、build_runnerで実行するよう設定します。</p>
+<p>DDCを使えばホットリロードに対応できると書きましたが、sassも同様にあるべきです。これは公式のツールでは(原時点では)対応できないのでライブラリを利用します。<strong><a href="https://pub.dartlang.org/packages/sass_builder" target="_blank">sass_builder</a></strong>を<code class="language-plaintext highlighter-rouge">pub get</code>して、build_runnerで実行するよう設定します。</p>
 
 <p><strong>pubspec.yaml</strong></p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">dev_dependencies</span><span class="pi">:</span>
@@ -471,14 +471,14 @@ Dart2.0.0が正式にリリースされ安定版となりました。記事内�
 
 <p><strong>build.yaml</strong></p>
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">targets</span><span class="pi">:</span>
-  <span class="s">$default</span><span class="pi">:</span>
+  <span class="na">$default</span><span class="pi">:</span>
     <span class="na">builders</span><span class="pi">:</span>
       <span class="na">sass_builder</span><span class="pi">:</span>
         <span class="na">options</span><span class="pi">:</span>
           <span class="na">outputStyle</span><span class="pi">:</span> <span class="s">compressed</span>
 </code></pre></div></div>
 
-<p>これで<code class="highlighter-rouge">webdev serve</code>をすればsassのビルドも実行されます。</p>
+<p>これで<code class="language-plaintext highlighter-rouge">webdev serve</code>をすればsassのビルドも実行されます。</p>
 
 <p>別の方法として、sassは今まで通りnode-sassなどを使うというのもアリだと思います。それなら既存のビルド環境を引き継いで使えますし、無理に全部Dartに寄せなくてもいいかもしれませんね。</p>
 

@@ -187,13 +187,13 @@
 
 <ul id="markdown-toc">
   <li><a href="#おさらい-vuejsの利用方法3パターン" id="markdown-toc-おさらい-vuejsの利用方法3パターン">おさらい Vue.jsの利用方法3パターン</a>    <ul>
-      <li><a href="#1-vueをscriptタグで埋め込む方法" id="markdown-toc-1-vueをscriptタグで埋め込む方法">1. Vueを<code class="highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</a></li>
+      <li><a href="#1-vueをscriptタグで埋め込む方法" id="markdown-toc-1-vueをscriptタグで埋め込む方法">1. Vueを<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</a></li>
       <li><a href="#2-vue-cliを使ってvueとソースをバンドルする環境を用意する方法" id="markdown-toc-2-vue-cliを使ってvueとソースをバンドルする環境を用意する方法">2. Vue CLIを使ってVueとソースをバンドルする環境を用意する方法</a></li>
       <li><a href="#3-手動でvueとソースをバンドルする環境を用意する方法" id="markdown-toc-3-手動でvueとソースをバンドルする環境を用意する方法">3. 手動でVueとソースをバンドルする環境を用意する方法</a></li>
     </ul>
   </li>
   <li><a href="#vueテンプレートの実装方法" id="markdown-toc-vueテンプレートの実装方法">Vueテンプレートの実装方法</a>    <ul>
-      <li><a href="#1-単一ファイルコンポーネントのtemplatetemplateを使う" id="markdown-toc-1-単一ファイルコンポーネントのtemplatetemplateを使う">1. 単一ファイルコンポーネントの<code class="highlighter-rouge">&lt;template&gt;&lt;/template&gt;</code>を使う</a></li>
+      <li><a href="#1-単一ファイルコンポーネントのtemplatetemplateを使う" id="markdown-toc-1-単一ファイルコンポーネントのtemplatetemplateを使う">1. 単一ファイルコンポーネントの<code class="language-plaintext highlighter-rouge">&lt;template&gt;&lt;/template&gt;</code>を使う</a></li>
       <li><a href="#2-templateオプションを使う" id="markdown-toc-2-templateオプションを使う">2. templateオプションを使う</a></li>
       <li><a href="#3-render関数を使う" id="markdown-toc-3-render関数を使う">3. render関数を使う</a></li>
     </ul>
@@ -205,9 +205,9 @@
     </ul>
   </li>
   <li><a href="#完全ビルドとランタイム限定ビルドの読み込み方" id="markdown-toc-完全ビルドとランタイム限定ビルドの読み込み方">完全ビルドとランタイム限定ビルドの読み込み方</a>    <ul>
-      <li><a href="#webpackの場合はwebpackconfigjsに追記" id="markdown-toc-webpackの場合はwebpackconfigjsに追記">webpackの場合は<code class="highlighter-rouge">webpack.config.js</code>に追記</a></li>
-      <li><a href="#browserifyの場合はpackagejsonに追記" id="markdown-toc-browserifyの場合はpackagejsonに追記">browserifyの場合は<code class="highlighter-rouge">package.json</code>に追記</a></li>
-      <li><a href="#rollupjsの場合はrollupconfigjsに追記" id="markdown-toc-rollupjsの場合はrollupconfigjsに追記">rollup.jsの場合は<code class="highlighter-rouge">rollup.config.js</code>に追記</a></li>
+      <li><a href="#webpackの場合はwebpackconfigjsに追記" id="markdown-toc-webpackの場合はwebpackconfigjsに追記">webpackの場合は<code class="language-plaintext highlighter-rouge">webpack.config.js</code>に追記</a></li>
+      <li><a href="#browserifyの場合はpackagejsonに追記" id="markdown-toc-browserifyの場合はpackagejsonに追記">browserifyの場合は<code class="language-plaintext highlighter-rouge">package.json</code>に追記</a></li>
+      <li><a href="#rollupjsの場合はrollupconfigjsに追記" id="markdown-toc-rollupjsの場合はrollupconfigjsに追記">rollup.jsの場合は<code class="language-plaintext highlighter-rouge">rollup.config.js</code>に追記</a></li>
     </ul>
   </li>
   <li><a href="#まとめ" id="markdown-toc-まとめ">まとめ</a></li>
@@ -221,19 +221,19 @@
 <p>まずVueの利用方法の確認から。</p>
 
 <ol>
-  <li>Vueを<code class="highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</li>
+  <li>Vueを<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</li>
   <li>Vue CLIを使ってVueとソースをバンドルする環境を用意する方法</li>
   <li>手動でVueとソースをバンドルする環境を用意する方法</li>
 </ol>
 
 <p>の3つがありますという単純なお話なので、知ってる場合は読み飛ばしてください。</p>
 
-<h4 id="1-vueをscriptタグで埋め込む方法">1. Vueを<code class="highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</h4>
+<h4 id="1-vueをscriptタグで埋め込む方法">1. Vueを<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>タグで埋め込む方法</h4>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;script </span><span class="na">src=</span><span class="s">"https://unpkg.com/vue"</span><span class="nt">&gt;&lt;/script&gt;</span>
 </code></pre></div></div>
 
-<p>これでグローバルに<code class="highlighter-rouge">Vue</code>が用意されます。よくあるHTMLにscript直読込させる方法です。プロダクト開発には向かないですが、軽くVueを試すのには十分ですね。</p>
+<p>これでグローバルに<code class="language-plaintext highlighter-rouge">Vue</code>が用意されます。よくあるHTMLにscript直読込させる方法です。プロダクト開発には向かないですが、軽くVueを試すのには十分ですね。</p>
 
 <h4 id="2-vue-cliを使ってvueとソースをバンドルする環境を用意する方法">2. Vue CLIを使ってVueとソースをバンドルする環境を用意する方法</h4>
 
@@ -274,8 +274,8 @@
 <p>ここから本題。<br />
 Vueのテンプレートの実装方法は大きく3種類あります。</p>
 
-<h4 id="1-単一ファイルコンポーネントのtemplatetemplateを使う">1. 単一ファイルコンポーネントの<code class="highlighter-rouge">&lt;template&gt;&lt;/template&gt;</code>を使う</h4>
-<p><code class="highlighter-rouge">.vue</code>の拡張子をつけると単一ファイルコンポーネントとなります。テンプレートとスタイルとスクリプトをひとまとめのコンポーネントとしてカプセル化する手法です。<br />
+<h4 id="1-単一ファイルコンポーネントのtemplatetemplateを使う">1. 単一ファイルコンポーネントの<code class="language-plaintext highlighter-rouge">&lt;template&gt;&lt;/template&gt;</code>を使う</h4>
+<p><code class="language-plaintext highlighter-rouge">.vue</code>の拡張子をつけると単一ファイルコンポーネントとなります。テンプレートとスタイルとスクリプトをひとまとめのコンポーネントとしてカプセル化する手法です。<br />
 参考： <a href="https://jp.vuejs.org/v2/guide/single-file-components.html#ad">単一ファイルコンポーネント - Vue.js</a></p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;template&gt;</span>
@@ -289,16 +289,16 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
 
 <h4 id="2-templateオプションを使う">2. templateオプションを使う</h4>
 
-<p>Vue1.xからあった記法で、コンポーネントオブジェクト内に<code class="highlighter-rouge">template</code>をキーに定義します。</p>
+<p>Vue1.xからあった記法で、コンポーネントオブジェクト内に<code class="language-plaintext highlighter-rouge">template</code>をキーに定義します。</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="err">‘</span><span class="nx">hello</span><span class="o">-</span><span class="nx">world</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">template</span><span class="p">:</span> <span class="err">‘</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">!</span> <span class="o">&lt;</span><span class="sr">/p&gt;’  /</span><span class="o">/</span> <span class="nx">x</span><span class="o">-</span><span class="nx">template</span><span class="err">等でテンプレートを分割する場合も含む</span>
+  <span class="na">template</span><span class="p">:</span> <span class="err">‘</span><span class="o">&lt;</span><span class="nx">p</span><span class="o">&gt;</span><span class="nx">Hello</span><span class="o">!</span> <span class="o">&lt;</span><span class="sr">/p&gt;’  /</span><span class="o">/</span> <span class="nx">x</span><span class="o">-</span><span class="nx">template等でテンプレートを分割する場合も含む</span>
 <span class="p">})</span>
 </code></pre></div></div>
 
 <h4 id="3-render関数を使う">3. render関数を使う</h4>
 
-<p><code class="highlighter-rouge">render</code>という名前の関数を実装する方法で、仮想DOMをreturnさせます。Reactライクな書き方…と言っていいんですかね、微妙ですかね。</p>
+<p><code class="language-plaintext highlighter-rouge">render</code>という名前の関数を実装する方法で、仮想DOMをreturnさせます。Reactライクな書き方…と言っていいんですかね、微妙ですかね。</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">Vue</span><span class="p">.</span><span class="nx">component</span><span class="p">(</span><span class="err">‘</span><span class="nx">hello</span><span class="o">-</span><span class="nx">world</span><span class="err">’</span><span class="p">,</span> <span class="p">{</span>
   <span class="na">render</span><span class="p">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">createElement</span><span class="p">)</span> <span class="p">{</span>
@@ -360,7 +360,7 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
   <p>これは十分高速ですが、アプリケーションのパフォーマンスが重要な場合は避けるのが最善です。</p>
 </blockquote>
 
-<p>また、bundleされたファイルには<code class="highlighter-rouge">vue本体 + コンパイラ</code>というコンパイラを内包するvue.jsが含まれることになります。そのためvue.jsの容量がやや大きくなります。</p>
+<p>また、bundleされたファイルには<code class="language-plaintext highlighter-rouge">vue本体 + コンパイラ</code>というコンパイラを内包するvue.jsが含まれることになります。そのためvue.jsの容量がやや大きくなります。</p>
 
 <h4 id="比較">比較</h4>
 
@@ -398,7 +398,7 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
 <p>vueは<strong>デフォルトでランタイム限定ビルド(されたVue.js)を読み込みます</strong>。<br />
 完全ビルド(されたVue.js)を読み込むように変更するには以下の修正が必要です。</p>
 
-<h4 id="webpackの場合はwebpackconfigjsに追記">webpackの場合は<code class="highlighter-rouge">webpack.config.js</code>に追記</h4>
+<h4 id="webpackの場合はwebpackconfigjsに追記">webpackの場合は<code class="language-plaintext highlighter-rouge">webpack.config.js</code>に追記</h4>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">resolve</span><span class="p">:</span> <span class="p">{</span>
@@ -409,7 +409,7 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
 <span class="p">}</span>
 </code></pre></div></div>
 
-<h4 id="browserifyの場合はpackagejsonに追記">browserifyの場合は<code class="highlighter-rouge">package.json</code>に追記</h4>
+<h4 id="browserifyの場合はpackagejsonに追記">browserifyの場合は<code class="language-plaintext highlighter-rouge">package.json</code>に追記</h4>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"browser"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -418,7 +418,7 @@ Vueのテンプレートの実装方法は大きく3種類あります。</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<h4 id="rollupjsの場合はrollupconfigjsに追記">rollup.jsの場合は<code class="highlighter-rouge">rollup.config.js</code>に追記</h4>
+<h4 id="rollupjsの場合はrollupconfigjsに追記">rollup.jsの場合は<code class="language-plaintext highlighter-rouge">rollup.config.js</code>に追記</h4>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">alias</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">rollup-plugin-alias</span><span class="dl">'</span><span class="p">)</span>
 <span class="nx">rollup</span><span class="p">({</span>

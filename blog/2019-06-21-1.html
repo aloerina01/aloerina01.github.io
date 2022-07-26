@@ -216,9 +216,9 @@
 <h3 id="これからのpolyfill設定方法">これからのpolyfill設定方法</h3>
 <h4 id="1-preset-env-と-usebuiltinsusage-で必要なpolyfillだけ読み込む方法">1. preset-env と useBuiltIns:usage で必要なpolyfillだけ読み込む方法</h4>
 
-<p>@babel/preset-env は(指定した実行環境にあわせた)必要な構文変換や、polyfillの読み込みをしてくれるものです。そしてこのpresetのオプションの<code class="highlighter-rouge">useBuiltins</code>で「<strong>どのようにpolyfillを読み込むか</strong>」を指定できます。</p>
+<p>@babel/preset-env は(指定した実行環境にあわせた)必要な構文変換や、polyfillの読み込みをしてくれるものです。そしてこのpresetのオプションの<code class="language-plaintext highlighter-rouge">useBuiltins</code>で「<strong>どのようにpolyfillを読み込むか</strong>」を指定できます。</p>
 
-<p><code class="highlighter-rouge">useBuiltIns: usage</code>とし、必要なpolyfillだけを読み込む設定例から見ていきます。</p>
+<p><code class="language-plaintext highlighter-rouge">useBuiltIns: usage</code>とし、必要なpolyfillだけを読み込む設定例から見ていきます。</p>
 
 <p><strong>@babel/prest-env をinstallする</strong></p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-D</span> @babel/preset-env
@@ -242,13 +242,13 @@
 
 <p></p>
 
-<p><code class="highlighter-rouge">useBuiltIns: usage</code>とすると、コード内からpolyfillが必要な箇所を勝手に判断し、必要なcore-jsを勝手にimportしてくれます。このとき、<strong>core-js のバージョンも併せてオプションで指定し、それに応じた core-js をnpm installしておく必要がある</strong>わけですね。</p>
+<p><code class="language-plaintext highlighter-rouge">useBuiltIns: usage</code>とすると、コード内からpolyfillが必要な箇所を勝手に判断し、必要なcore-jsを勝手にimportしてくれます。このとき、<strong>core-js のバージョンも併せてオプションで指定し、それに応じた core-js をnpm installしておく必要がある</strong>わけですね。</p>
 
-<p>ちなみに執筆時点の公式ドキュメントでは<code class="highlighter-rouge">useBuiltIns: usage</code>はまだ<strong>experimental</strong>となっているのですが、core-js@3 では多くの問題が解消されていてもはやexperimentalではないだろう…<a href="https://github.com/babel/website/pull/1987/files#r265777607" target="_blank">とのこと</a>です。</p>
+<p>ちなみに執筆時点の公式ドキュメントでは<code class="language-plaintext highlighter-rouge">useBuiltIns: usage</code>はまだ<strong>experimental</strong>となっているのですが、core-js@3 では多くの問題が解消されていてもはやexperimentalではないだろう…<a href="https://github.com/babel/website/pull/1987/files#r265777607" target="_blank">とのこと</a>です。</p>
 
 <h4 id="2-preset-env-と-usebuiltinsentry-で全polyfillを読み込む方法">2. preset-env と useBuiltIns:entry で全polyfillを読み込む方法</h4>
 
-<p>上記と同様に @babel/preset-env を使う方法ですが、オプションの内容が変わります。<code class="highlighter-rouge">useBuiltIns: entry</code>とし、index.js などのjsファイルの先頭にてpolyfillをimportすることで、全部のpolyfillを読み込む方法です。</p>
+<p>上記と同様に @babel/preset-env を使う方法ですが、オプションの内容が変わります。<code class="language-plaintext highlighter-rouge">useBuiltIns: entry</code>とし、index.js などのjsファイルの先頭にてpolyfillをimportすることで、全部のpolyfillを読み込む方法です。</p>
 
 <p><strong>@babel/prest-env をinstallする</strong></p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm <span class="nb">install</span> <span class="nt">-D</span> @babel/preset-env
@@ -321,9 +321,9 @@ npm <span class="nb">install</span> <span class="nt">-D</span> @babel/plugin-tra
 
 <span class="c1">// after</span>
 <span class="p">{</span> 
-  <span class="nl">corejs</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nl">version</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="nx">proposals</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="na">corejs</span><span class="p">:</span> <span class="p">{</span>
+    <span class="na">version</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="na">proposals</span><span class="p">:</span> <span class="kc">true</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>

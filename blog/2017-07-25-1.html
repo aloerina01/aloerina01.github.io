@@ -195,9 +195,9 @@
   <li><a href="#lazyloadの対象" id="markdown-toc-lazyloadの対象">lazyloadの対象</a></li>
   <li><a href="#lazyloadのトリガー" id="markdown-toc-lazyloadのトリガー">lazyloadのトリガー</a></li>
   <li><a href="#loadイベントのobserver" id="markdown-toc-loadイベントのobserver">loadイベントのObserver</a>    <ul>
-      <li><a href="#1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する" id="markdown-toc-1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する">1. <code class="highlighter-rouge">LazyloadComponent</code>各々が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</a></li>
-      <li><a href="#2-scrollviewが自身のスクロールイベントを監視する" id="markdown-toc-2-scrollviewが自身のスクロールイベントを監視する">2. <code class="highlighter-rouge">ScrollView</code>が自身のスクロールイベントを監視する</a></li>
-      <li><a href="#3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する" id="markdown-toc-3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する">3. 第三者(<code class="highlighter-rouge">LazyLoadHandler</code>等)が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</a></li>
+      <li><a href="#1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する" id="markdown-toc-1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する">1. <code class="language-plaintext highlighter-rouge">LazyloadComponent</code>各々が<code class="language-plaintext highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</a></li>
+      <li><a href="#2-scrollviewが自身のスクロールイベントを監視する" id="markdown-toc-2-scrollviewが自身のスクロールイベントを監視する">2. <code class="language-plaintext highlighter-rouge">ScrollView</code>が自身のスクロールイベントを監視する</a></li>
+      <li><a href="#3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する" id="markdown-toc-3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する">3. 第三者(<code class="language-plaintext highlighter-rouge">LazyLoadHandler</code>等)が<code class="language-plaintext highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</a></li>
     </ul>
   </li>
   <li><a href="#lazyloadcomponentの形式" id="markdown-toc-lazyloadcomponentの形式">LazyloadComponentの形式</a></li>
@@ -233,31 +233,31 @@
 <p>※適当に名前つけました。</p>
 
 <p>①の『スクロール量をトリガーにする』ことが一般的に多いと思います。<br />
-が、広義の遅延読込の例として他のものも挙げました。<code class="highlighter-rouge">async</code>/<code class="highlighter-rouge">defer</code>を使ったスクリプトの遅延読込であったり(非同期なので結果的に後追いになることがあるって程度なので遅延というには微妙ですが)、Reactの<code class="highlighter-rouge">componentDidMount</code>などを使いFirstViewのマウント後に追加の読込をさせる手法(Mount方式)であったり、<code class="highlighter-rouge">requestIdleCallback</code>などTimer系functionを使って遅延させる手法(Timer方式)などが考えられます。</p>
+が、広義の遅延読込の例として他のものも挙げました。<code class="language-plaintext highlighter-rouge">async</code>/<code class="language-plaintext highlighter-rouge">defer</code>を使ったスクリプトの遅延読込であったり(非同期なので結果的に後追いになることがあるって程度なので遅延というには微妙ですが)、Reactの<code class="language-plaintext highlighter-rouge">componentDidMount</code>などを使いFirstViewのマウント後に追加の読込をさせる手法(Mount方式)であったり、<code class="language-plaintext highlighter-rouge">requestIdleCallback</code>などTimer系functionを使って遅延させる手法(Timer方式)などが考えられます。</p>
 
 <h3 id="loadイベントのobserver">loadイベントのObserver</h3>
 
 <p>たとえばスクロールをトリガーにlazyloadを行う場合、「どの要素のスクロールを」「だれが監視するのか」を考える必要があります。SVO構文ですね(主語/動詞/目的語のアレ)。</p>
 
-<p>今回は下図のように、スクロールする要素を<code class="highlighter-rouge">ScrollView</code>、遅延読込される要素たちを<code class="highlighter-rouge">LazyloadComponent</code>と呼び、イベントの関係をまとめます。</p>
+<p>今回は下図のように、スクロールする要素を<code class="language-plaintext highlighter-rouge">ScrollView</code>、遅延読込される要素たちを<code class="language-plaintext highlighter-rouge">LazyloadComponent</code>と呼び、イベントの関係をまとめます。</p>
 
 <p><img src="/assets/2017-07-25-1-explain.png" alt="scrollview_lazyloadcomponent" /></p>
 
-<h5 id="1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する">1. <code class="highlighter-rouge">LazyloadComponent</code>各々が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</h5>
+<h5 id="1-lazyloadcomponent各々がscrollviewのスクロールイベントを監視する">1. <code class="language-plaintext highlighter-rouge">LazyloadComponent</code>各々が<code class="language-plaintext highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</h5>
 
 <p>この場合、LazyloadComponentはあらかじめ高さを確保したPlaceholderを描画しておき、ScrollViewのスクロールが一定のところまできたら自身の読込をし、Placeholderと実データを入れ替えます。</p>
 
-<h5 id="2-scrollviewが自身のスクロールイベントを監視する">2. <code class="highlighter-rouge">ScrollView</code>が自身のスクロールイベントを監視する</h5>
+<h5 id="2-scrollviewが自身のスクロールイベントを監視する">2. <code class="language-plaintext highlighter-rouge">ScrollView</code>が自身のスクロールイベントを監視する</h5>
 
 <p>この場合は、ScrollViewは自身のスクロールが一定量になったら一定数のLazyloadComponentを読込みレンダリングします。そのため、ScrollViewはLazyloadComponentのリストを保持しておいて、「どれが読込済みか」「次はどの○件を読込むか」を把握しておく必要があります。</p>
 
-<h5 id="3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する">3. 第三者(<code class="highlighter-rouge">LazyLoadHandler</code>等)が<code class="highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</h5>
+<h5 id="3-第三者lazyloadhandler等がscrollviewのスクロールイベントを監視する">3. 第三者(<code class="language-plaintext highlighter-rouge">LazyLoadHandler</code>等)が<code class="language-plaintext highlighter-rouge">ScrollView</code>のスクロールイベントを監視する</h5>
 
 <p>②の方法から、スクロールするDOMと、それをハンドリングするfunctionを分離したパターンです。画面内に複数のlazyload要素がある場合、handlerを分離してモジュール化しておくと取り回しやすくなります。</p>
 
 <h3 id="lazyloadcomponentの形式">LazyloadComponentの形式</h3>
 
-<p>遅延読込される要素(=<code class="highlighter-rouge">LazyloadComponent</code>)を予め空Divなどで読み込んでおくかどうか、等のパターンです。</p>
+<p>遅延読込される要素(=<code class="language-plaintext highlighter-rouge">LazyloadComponent</code>)を予め空Divなどで読み込んでおくかどうか、等のパターンです。</p>
 
 <ol>
   <li>遅延読み込みされる部分と<strong>同じHeight・WidthのPlaceholder</strong>をDivなどで予め描画しておく</li>
@@ -275,7 +275,7 @@
 
 <h3 id="事例1-lazyloadする要素のサイズが決まっている場合">事例1 lazyloadする要素のサイズが決まっている場合</h3>
 
-<p><code class="highlighter-rouge">LazyloadComponent</code>のHeight・Widthが一定の場合は<strong>Placeholderを事前にレンダリングしておき、各々のPlaceholderが自身のloadタイミングを管理する</strong>のがいいと思います。</p>
+<p><code class="language-plaintext highlighter-rouge">LazyloadComponent</code>のHeight・Widthが一定の場合は<strong>Placeholderを事前にレンダリングしておき、各々のPlaceholderが自身のloadタイミングを管理する</strong>のがいいと思います。</p>
 
 <p><strong>LazyloadComponent.js</strong></p>
 
@@ -321,18 +321,18 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>雰囲気はこんな感じです。load処理だったり、読み込んだデータをStoreする処理だったりは省略です。注目してほしいのは、<code class="highlighter-rouge">LazyloadComponent#render</code>が、未ロード時は高さを確保したPlaceholderをレンダリングし、ロード後には<code class="highlighter-rouge">this.props.children</code>をレンダリングしている点です。</p>
+<p>雰囲気はこんな感じです。load処理だったり、読み込んだデータをStoreする処理だったりは省略です。注目してほしいのは、<code class="language-plaintext highlighter-rouge">LazyloadComponent#render</code>が、未ロード時は高さを確保したPlaceholderをレンダリングし、ロード後には<code class="language-plaintext highlighter-rouge">this.props.children</code>をレンダリングしている点です。</p>
 
-<p>こうすることで遅延読込の処理をLazyloadComponent内で完結させることができ、外部に依存・影響が出ない実装をすることができます。<code class="highlighter-rouge">removeEventListener</code>まできちんとComponent内で行っているので、使い回ししやすいと思います。<br />
-実際に親要素である<code class="highlighter-rouge">Container</code>では特別なことをせずに<code class="highlighter-rouge">LazyloadComponent</code>を必要な分だけ描画しています。</p>
+<p>こうすることで遅延読込の処理をLazyloadComponent内で完結させることができ、外部に依存・影響が出ない実装をすることができます。<code class="language-plaintext highlighter-rouge">removeEventListener</code>まできちんとComponent内で行っているので、使い回ししやすいと思います。<br />
+実際に親要素である<code class="language-plaintext highlighter-rouge">Container</code>では特別なことをせずに<code class="language-plaintext highlighter-rouge">LazyloadComponent</code>を必要な分だけ描画しています。</p>
 
 <h3 id="事例2-lazyloadする要素のサイズが決まっていてスクロールするのがwindow以外の場合">事例2 lazyloadする要素のサイズが決まっていて、スクロールするのがwindow以外の場合</h3>
 
-<p>ケース1では<code class="highlighter-rouge">LazyloadComponent</code>をPlaceholderとして予めレンダリングしておき、<code class="highlighter-rouge">window</code>のスクロールイベントをハンドリングさせました。しかしスクロールする要素が<code class="highlighter-rouge">window</code>以外である場合、<code class="highlighter-rouge">LazyloadComponent</code>はどうやって親要素のスクロールイベントをハンドリングすれば良いでしょうか。</p>
+<p>ケース1では<code class="language-plaintext highlighter-rouge">LazyloadComponent</code>をPlaceholderとして予めレンダリングしておき、<code class="language-plaintext highlighter-rouge">window</code>のスクロールイベントをハンドリングさせました。しかしスクロールする要素が<code class="language-plaintext highlighter-rouge">window</code>以外である場合、<code class="language-plaintext highlighter-rouge">LazyloadComponent</code>はどうやって親要素のスクロールイベントをハンドリングすれば良いでしょうか。</p>
 
-<p>Reactは入れ子になっている子要素から順にマウントされるため、<code class="highlighter-rouge">LazyloadComponent#componentDidMount</code>が呼ばれるタイミングでは、スクロールする親要素を取得できずイベントハンドリングができません。</p>
+<p>Reactは入れ子になっている子要素から順にマウントされるため、<code class="language-plaintext highlighter-rouge">LazyloadComponent#componentDidMount</code>が呼ばれるタイミングでは、スクロールする親要素を取得できずイベントハンドリングができません。</p>
 
-<p>この場合は、<strong>親要素から<code class="highlighter-rouge">props</code>経由でスクロール量を渡す</strong>方法が使えます(手段のひとつであり、別の方法もあります。あらゆる場面での最適解ではありません)。スクロールする親要素を<code class="highlighter-rouge">ScrollView</code>として実装してみます。</p>
+<p>この場合は、<strong>親要素から<code class="language-plaintext highlighter-rouge">props</code>経由でスクロール量を渡す</strong>方法が使えます(手段のひとつであり、別の方法もあります。あらゆる場面での最適解ではありません)。スクロールする親要素を<code class="language-plaintext highlighter-rouge">ScrollView</code>として実装してみます。</p>
 
 <p><strong>ScrollView.js</strong></p>
 
@@ -355,9 +355,9 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">ScrollView</code>内ではスクロール量を<code class="highlighter-rouge">state</code>として持っておくことで、これが更新される度に<code class="highlighter-rouge">render</code>が呼ばれ<code class="highlighter-rouge">LazyloadComponent</code>へスクロール量を渡すことができます。</p>
+<p><code class="language-plaintext highlighter-rouge">ScrollView</code>内ではスクロール量を<code class="language-plaintext highlighter-rouge">state</code>として持っておくことで、これが更新される度に<code class="language-plaintext highlighter-rouge">render</code>が呼ばれ<code class="language-plaintext highlighter-rouge">LazyloadComponent</code>へスクロール量を渡すことができます。</p>
 
-<p>あとは、<code class="highlighter-rouge">LazyloadComponent#componentWillReceiveProps</code>でloadのトリガーとなるHeightと比較させればOKです。</p>
+<p>あとは、<code class="language-plaintext highlighter-rouge">LazyloadComponent#componentWillReceiveProps</code>でloadのトリガーとなるHeightと比較させればOKです。</p>
 
 <h3 id="事例3-lazyloadする要素のサイズが不確定な場合">事例3 lazyloadする要素のサイズが不確定な場合</h3>
 
@@ -391,15 +391,15 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">ScrollView#lazyload</code>が呼ばれると追加読込分がStoreされ、そこから取得される<code class="highlighter-rouge">this.state.items</code>の件数が増えることでlazyloadが実現される仕組みです。</p>
+<p><code class="language-plaintext highlighter-rouge">ScrollView#lazyload</code>が呼ばれると追加読込分がStoreされ、そこから取得される<code class="language-plaintext highlighter-rouge">this.state.items</code>の件数が増えることでlazyloadが実現される仕組みです。</p>
 
-<p><code class="highlighter-rouge">ScrollView#lazyload</code>の関数内では、<strong>既にどれだけのデータが読み込まれているか、追加で何件読み込むのか、といったpager的な処理</strong>をすることが必要になってきます。今回はそれを簡易的に<code class="highlighter-rouge">loadedPages</code>という値で表現しました。</p>
+<p><code class="language-plaintext highlighter-rouge">ScrollView#lazyload</code>の関数内では、<strong>既にどれだけのデータが読み込まれているか、追加で何件読み込むのか、といったpager的な処理</strong>をすることが必要になってきます。今回はそれを簡易的に<code class="language-plaintext highlighter-rouge">loadedPages</code>という値で表現しました。</p>
 
 <h3 id="おわりに">おわりに</h3>
 
 <p>lazyloadについて分類分けしたり仕様に応じた使い方の紹介をしましたが、もちろんこれらが全てではありませんし、自前で実装するよりもライブラリを使う方が良いケースもあると思います。そこはご理解を。</p>
 
-<p>また、スクロールイベントの取扱いは注意しないとカクつきなどの原因となります。ご利用の際は<code class="highlighter-rouge">throttle</code>等の併用をお忘れなく、また用法用量を守ってご利用ください。</p>
+<p>また、スクロールイベントの取扱いは注意しないとカクつきなどの原因となります。ご利用の際は<code class="language-plaintext highlighter-rouge">throttle</code>等の併用をお忘れなく、また用法用量を守ってご利用ください。</p>
 
         </article>
 

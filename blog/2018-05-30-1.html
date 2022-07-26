@@ -189,7 +189,7 @@
 <p>いきなりですが、Reactの開発環境を用意するのって大変だと思うのです。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">React</code>, <code class="highlighter-rouge">ReactDOM</code>をnpm installする</li>
+  <li><code class="language-plaintext highlighter-rouge">React</code>, <code class="language-plaintext highlighter-rouge">ReactDOM</code>をnpm installする</li>
   <li>ES6+で書くためにpolyfillを入れる</li>
   <li>ES6+で書くためにBabelの設定をする</li>
   <li>JSXを書くためにBabelの設定をする</li>
@@ -248,7 +248,7 @@
 
 <h4 id="3-ビルドデプロイする">3. ビルド＆デプロイする</h4>
 
-<p>ビルドしてローカルサーバにデプロイするには<code class="highlighter-rouge">x0 [componentを含むディレクトリ]</code>というコマンドを叩きます。<code class="highlighter-rouge">--open (-o)</code>のオプションをつけると、サーバ起動後にデフォルトブラウザを起動してくれます。</p>
+<p>ビルドしてローカルサーバにデプロイするには<code class="language-plaintext highlighter-rouge">x0 [componentを含むディレクトリ]</code>というコマンドを叩きます。<code class="language-plaintext highlighter-rouge">--open (-o)</code>のオプションをつけると、サーバ起動後にデフォルトブラウザを起動してくれます。</p>
 
 <p>グローバルインストールしている場合</p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>x0 components <span class="nt">--open</span>
@@ -258,10 +258,10 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx x0 components <span class="nt">--open</span>
 </code></pre></div></div>
 
-<p>デプロイされると<code class="highlighter-rouge">components</code>以下に配置したコンポーネント名が一覧で表示され、選択するとそのコンポーネントが描画されたページへ遷移します。</p>
+<p>デプロイされると<code class="language-plaintext highlighter-rouge">components</code>以下に配置したコンポーネント名が一覧で表示され、選択するとそのコンポーネントが描画されたページへ遷移します。</p>
 
 <h4 id="4-エントリーポイントをつくる">4. エントリーポイントをつくる</h4>
-<p><code class="highlighter-rouge">components</code>以下に配置されたコンポーネントはそれぞれ単体で画面に表示されますが、それらを組み合わせた画面をつくることもできます。<code class="highlighter-rouge">components</code>以下にいくつかのコンポーネントとエントリーポイントとなる<code class="highlighter-rouge">main.js</code>を実装します。</p>
+<p><code class="language-plaintext highlighter-rouge">components</code>以下に配置されたコンポーネントはそれぞれ単体で画面に表示されますが、それらを組み合わせた画面をつくることもできます。<code class="language-plaintext highlighter-rouge">components</code>以下にいくつかのコンポーネントとエントリーポイントとなる<code class="language-plaintext highlighter-rouge">main.js</code>を実装します。</p>
 
 <p><strong>Title.js</strong></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
@@ -288,7 +288,7 @@
 </span><span class="p">);</span>
 </code></pre></div></div>
 
-<p>これで<code class="highlighter-rouge">localhost:8080/main</code>に2つのコンポーネントが表示されます。</p>
+<p>これで<code class="language-plaintext highlighter-rouge">localhost:8080/main</code>に2つのコンポーネントが表示されます。</p>
 
 <h3 id="feeling">Feeling</h3>
 
@@ -309,7 +309,7 @@
 <ul>
   <li>webpackの設定を時前で用意してbundleできる
     <ul>
-      <li>CLIのオプション<code class="highlighter-rouge">--webpack</code>で<code class="highlighter-rouge">webpack.config.js</code>のpathを指定できるので、productionビルド時は自前のビルドスクリプトを通す、等できそう</li>
+      <li>CLIのオプション<code class="language-plaintext highlighter-rouge">--webpack</code>で<code class="language-plaintext highlighter-rouge">webpack.config.js</code>のpathを指定できるので、productionビルド時は自前のビルドスクリプトを通す、等できそう</li>
     </ul>
   </li>
   <li>画面に表示するHTMLを自前で用意して差し替えられる
@@ -322,7 +322,7 @@
 
 <p>気になる点は<strong>公式のドキュメントが薄い</strong>点です。かなりのことを自動でやってくれているので、その内部がどうなっているのか、どこをカスタマイズできるのか、についてもう少し簡単に把握できるとより使いやすいと思います。</p>
 
-<p>もう1点気になるのは<strong>依存ライブラリがかなり多い点</strong>です。これも自動でいろいろしてくれる代償ですが、babelのPluginだけでも相当数依存していました。<code class="highlighter-rouge">babel-preset-stage-0</code>まで使うのは個人的にはやり過ぎと感じました。</p>
+<p>もう1点気になるのは<strong>依存ライブラリがかなり多い点</strong>です。これも自動でいろいろしてくれる代償ですが、babelのPluginだけでも相当数依存していました。<code class="language-plaintext highlighter-rouge">babel-preset-stage-0</code>まで使うのは個人的にはやり過ぎと感じました。</p>
 
 <h3 id="create-react-appとの使い分け">create-react-appとの使い分け</h3>
 

@@ -208,11 +208,11 @@
 
 <h3 id="どのshellを使うか">どのshellを使うか</h3>
 
-<p><strong>原則bashを使う。shebangは<code class="highlighter-rouge"><span class="c">#!/bin/bash</span></code>とする</strong></p>
+<p><strong>原則bashを使う。shebangは<code class="language-plaintext highlighter-rouge">#!/bin/bash</code>とする</strong></p>
 
 <p>特段な理由がなければbashを利用するようにします。日頃使っているコマンドの中には、実はPOSIX準拠ではなくbash等で拡張されたものも存在します。そういったことを意識せずに済むようにbashでの実行を前提としています。</p>
 
-<p>私の場合、用意したスクリプトを手元で実行することもあればCIから実行することもあります。よく使うCiecleCIは、仮想環境のOSがubuntuなのでデフォルトのshellがdashです。shebangを<code class="highlighter-rouge"><span class="c">#!/bin/sh</span></code>としていると、手元で動いたスクリプトがCI上では動かない…なんてことになり兼ねないので、bashでの実行を原則としています。</p>
+<p>私の場合、用意したスクリプトを手元で実行することもあればCIから実行することもあります。よく使うCiecleCIは、仮想環境のOSがubuntuなのでデフォルトのshellがdashです。shebangを<code class="language-plaintext highlighter-rouge">#!/bin/sh</code>としていると、手元で動いたスクリプトがCI上では動かない…なんてことになり兼ねないので、bashでの実行を原則としています。</p>
 
 <h3 id="いつshellを使うか">いつshellを使うか</h3>
 
@@ -242,7 +242,7 @@
   <span class="nb">exit</span> <span class="s2">"</span><span class="k">${</span><span class="nv">E_DID_NOTHING</span><span class="k">}</span><span class="s2">"</span>
 <span class="k">fi</span>
 </code></pre></div></div>
-<p>リダイレクト<code class="highlighter-rouge">&gt;</code>とファイルディスクリプタ<code class="highlighter-rouge">&amp;2</code>を使ってSTDERRに出力するサンプルコードです。</p>
+<p>リダイレクト<code class="language-plaintext highlighter-rouge">&gt;</code>とファイルディスクリプタ<code class="language-plaintext highlighter-rouge">&amp;2</code>を使ってSTDERRに出力するサンプルコードです。</p>
 
 <h3 id="フォーマット">フォーマット</h3>
 
@@ -250,23 +250,23 @@
   <li><strong>インデントはスペース2つ</strong></li>
   <li><strong>1行は80文字まで</strong></li>
   <li><strong>パイプラインが3つ以上続くときは改行する</strong></li>
-  <li><strong>ループ文やif文では、同じ行に<code class="highlighter-rouge">; do</code>や<code class="highlighter-rouge">; then</code>を書く</strong></li>
-  <li><strong>case文では、改行して<code class="highlighter-rouge">;;</code>を書く</strong></li>
+  <li><strong>ループ文やif文では、同じ行に<code class="language-plaintext highlighter-rouge">; do</code>や<code class="language-plaintext highlighter-rouge">; then</code>を書く</strong></li>
+  <li><strong>case文では、改行して<code class="language-plaintext highlighter-rouge">;;</code>を書く</strong></li>
 </ul>
 
 <p>特にこだわりはないのでガイドに従います。</p>
 
 <h3 id="変数展開">変数展開</h3>
 
-<p><strong><code class="highlighter-rouge">"$var"</code>より<code class="highlighter-rouge">${var}</code>を使う</strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">"$var"</code>より<code class="language-plaintext highlighter-rouge">${var}</code>を使う</strong></p>
 
 <p>ガイドには「既存の実装に揃えることを優先すること」とも記載されていますが、既存の実装がないのでこのルールに従っています。</p>
 
 <h3 id="コマンド置換">コマンド置換</h3>
 
-<p><strong><code class="highlighter-rouge">`command`</code>より<code class="highlighter-rouge">$(command)</code>を使う</strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">`command`</code>より<code class="language-plaintext highlighter-rouge">$(command)</code>を使う</strong></p>
 
-<p><code class="highlighter-rouge">$(command)</code>は入れ子にできる利点があります。</p>
+<p><code class="language-plaintext highlighter-rouge">$(command)</code>は入れ子にできる利点があります。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># This is preferred:</span>
 <span class="nv">var</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">command</span> <span class="s2">"</span><span class="si">$(</span>command1<span class="si">)</span><span class="s2">"</span><span class="si">)</span><span class="s2">"</span>
@@ -277,15 +277,15 @@
 
 <h3 id="test--">test, [, [[</h3>
 
-<p><strong><code class="highlighter-rouge">[[ ... ]]</code>を利用する</strong></p>
+<p><strong><code class="language-plaintext highlighter-rouge">[[ ... ]]</code>を利用する</strong></p>
 
-<p><code class="highlighter-rouge">[[ ... ]]</code>はPOSIX準拠ではないので注意が必要ですが、testコマンド等に比べて機能が拡張されています。とくに変数展開に関する問題が減るので、原則利用するようにしています。</p>
+<p><code class="language-plaintext highlighter-rouge">[[ ... ]]</code>はPOSIX準拠ではないので注意が必要ですが、testコマンド等に比べて機能が拡張されています。とくに変数展開に関する問題が減るので、原則利用するようにしています。</p>
 
 <h3 id="empty-check">empty check</h3>
 
-<p><strong>極力<code class="highlighter-rouge">-z</code>, <code class="highlighter-rouge">-n</code>を利用する</strong></p>
+<p><strong>極力<code class="language-plaintext highlighter-rouge">-z</code>, <code class="language-plaintext highlighter-rouge">-n</code>を利用する</strong></p>
 
-<p>空文字列のチェックなどのempty checkをするときは<code class="highlighter-rouge">-z</code>(zero)や<code class="highlighter-rouge">-n</code>(non-zero)を利用します。</p>
+<p>空文字列のチェックなどのempty checkをするときは<code class="language-plaintext highlighter-rouge">-z</code>(zero)や<code class="language-plaintext highlighter-rouge">-n</code>(non-zero)を利用します。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="o">[[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="k">${</span><span class="nv">my_var</span><span class="k">}</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then
   </span>do_something
@@ -294,7 +294,7 @@
 
 <h3 id="ファイル名のワイルドカード">ファイル名のワイルドカード</h3>
 
-<p><strong>ワイルドカードを利用するときは<code class="highlighter-rouge">*</code>ではなく<code class="highlighter-rouge">./*</code>とする</strong></p>
+<p><strong>ワイルドカードを利用するときは<code class="language-plaintext highlighter-rouge">*</code>ではなく<code class="language-plaintext highlighter-rouge">./*</code>とする</strong></p>
 
 <p>ワイルドカードを利用するときはpathを明示します。ミスを防ぐことと可読性を高めることが目的だと思います。</p>
 
@@ -342,8 +342,8 @@ your_command | <span class="k">while </span><span class="nb">read </span>line<sp
 <ul>
   <li><strong>変数やファイル名はスネークケース</strong></li>
   <li><strong>定数や環境変数は大文字のスネークケース</strong></li>
-  <li><strong>定数や環境変数はファイル冒頭で定義し、<code class="highlighter-rouge">readonly</code>または<code class="highlighter-rouge">declare</code>する</strong></li>
-  <li><strong>関数内で使う変数は<code class="highlighter-rouge">local</code>をつける</strong></li>
+  <li><strong>定数や環境変数はファイル冒頭で定義し、<code class="language-plaintext highlighter-rouge">readonly</code>または<code class="language-plaintext highlighter-rouge">declare</code>する</strong></li>
+  <li><strong>関数内で使う変数は<code class="language-plaintext highlighter-rouge">local</code>をつける</strong></li>
 </ul>
 
 <p>定数や環境変数などのグローバル変数はファイルの冒頭で定義します。グローバル変数は広い範囲で利用され得るためバリデーションを実装し、定数の場合はreadonlyとします。</p>
@@ -361,7 +361,7 @@ your_command | <span class="k">while </span><span class="nb">read </span>line<sp
 
 <ul>
   <li><strong>スネークケースで書く</strong></li>
-  <li><strong>パッケージの関数は<code class="highlighter-rouge">::</code>で区切る</strong></li>
+  <li><strong>パッケージの関数は<code class="language-plaintext highlighter-rouge">::</code>で区切る</strong></li>
 </ul>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Single function</span>

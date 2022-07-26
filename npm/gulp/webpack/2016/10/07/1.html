@@ -202,7 +202,7 @@
 
 <p>つまるところ、<strong>人のグローバルを侵すな</strong> という話です。</p>
 
-<p>というわけで、ビルドコマンドは<code class="highlighter-rouge">package.json</code>に集約して、すべてnpmコマンドで動くようにしました。</p>
+<p>というわけで、ビルドコマンドは<code class="language-plaintext highlighter-rouge">package.json</code>に集約して、すべてnpmコマンドで動くようにしました。</p>
 
 <h3 id="ソース">ソース</h3>
 <p>中身を全部確認したい場合は【<a href="https://github.com/aloerina01/short-code">aloerina01/short-code  - GitHub</a>】へ。<br />
@@ -212,7 +212,7 @@
 
 <script src="https://gist.github.com/aloerina01/04e8dd2903509a0e23b0a0b0f5d32ebe.js"></script>
 
-<p><code class="highlighter-rouge">package.json</code>の<code class="highlighter-rouge">scripts</code>部分抜粋です。gulpコマンドをnpmコマンド経由で呼び出せるようにしています。<code class="highlighter-rouge">scripts</code>のコマンドは全部<code class="highlighter-rouge">$ npm run XXX</code>というかたちで実行できます(<a href="http://qiita.com/axross/items/a2a0d148e40b66074858#%E6%84%8F%E5%91%B3%E4%BB%98%E3%81%91%E3%81%A0%E3%81%91%E3%81%8C%E3%81%95%E3%82%8C%E3%81%9Fnpm-scripts">例外</a>あり)。</p>
+<p><code class="language-plaintext highlighter-rouge">package.json</code>の<code class="language-plaintext highlighter-rouge">scripts</code>部分抜粋です。gulpコマンドをnpmコマンド経由で呼び出せるようにしています。<code class="language-plaintext highlighter-rouge">scripts</code>のコマンドは全部<code class="language-plaintext highlighter-rouge">$ npm run XXX</code>というかたちで実行できます(<a href="http://qiita.com/axross/items/a2a0d148e40b66074858#%E6%84%8F%E5%91%B3%E4%BB%98%E3%81%91%E3%81%A0%E3%81%91%E3%81%8C%E3%81%95%E3%82%8C%E3%81%9Fnpm-scripts">例外</a>あり)。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm run build
 </code></pre></div></div>
@@ -223,7 +223,7 @@
 
 <script src="https://gist.github.com/aloerina01/1e876b9beb99e46a2fa2458ce09432a7.js"></script>
 
-<p>そしてこれがが実際に動作するタスクの中身。<code class="highlighter-rouge">gulp-plumber</code>でエラーハンドリングをした上で、①lint、②Webpackでのトランスパイル、③distディレクトリに書き出し、をしています。</p>
+<p>そしてこれがが実際に動作するタスクの中身。<code class="language-plaintext highlighter-rouge">gulp-plumber</code>でエラーハンドリングをした上で、①lint、②Webpackでのトランスパイル、③distディレクトリに書き出し、をしています。</p>
 
 <p>それをwatchさせた上で、defaultコマンドに登録しています。よくある基本的なかたちです。</p>
 

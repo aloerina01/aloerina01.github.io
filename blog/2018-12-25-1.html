@@ -267,9 +267,9 @@
 
 <p></p>
 
-<p>mixinの中にはOverrideして使われることを想定した<code class="highlighter-rouge">getTitle</code>関数が実装されていますね。<strong>Overrideされなかった場合に例外を投げて</strong>教えてくれます。</p>
+<p>mixinの中にはOverrideして使われることを想定した<code class="language-plaintext highlighter-rouge">getTitle</code>関数が実装されていますね。<strong>Overrideされなかった場合に例外を投げて</strong>教えてくれます。</p>
 
-<p>またmixinの中で、ライフサイクルメソッドから<code class="highlighter-rouge">sendPageview</code>関数などを呼び出すことで、Componentに必要な処理が暗黙的に実行される仕組みを実現しました。</p>
+<p>またmixinの中で、ライフサイクルメソッドから<code class="language-plaintext highlighter-rouge">sendPageview</code>関数などを呼び出すことで、Componentに必要な処理が暗黙的に実行される仕組みを実現しました。</p>
 
 <h4 id="暗黙的挙動の危うさ">暗黙的挙動の危うさ</h4>
 
@@ -286,7 +286,7 @@
 <p><strong>Overrideする要素の型を束縛できない</strong></p>
 
 <ul>
-  <li>mixinでは<code class="highlighter-rouge">string</code>を返す関数が、Override後は<code class="highlighter-rouge">Promise</code>を返す関数になっている、なんて実装もできてしまう</li>
+  <li>mixinでは<code class="language-plaintext highlighter-rouge">string</code>を返す関数が、Override後は<code class="language-plaintext highlighter-rouge">Promise</code>を返す関数になっている、なんて実装もできてしまう</li>
   <li>このような問題をコンパイラやIDEでチェックできない</li>
   <li>mixin側の関数を変更しても、そのOverride箇所を機械的に見つけられない</li>
   <li>型を束縛しないならmixinで定義する必要がない(関数名を定義しているだけで、引数も戻り値もなんでもアリになってしまう)</li>
@@ -372,7 +372,7 @@
 
 <h4 id="実はcomponentに依存している">実はComponentに依存している</h4>
 
-<p>こちらもmixinを使う以上当たり前の話ですが、mixinの中で使われる<code class="highlighter-rouge">this</code>はComponentに依存します。</p>
+<p>こちらもmixinを使う以上当たり前の話ですが、mixinの中で使われる<code class="language-plaintext highlighter-rouge">this</code>はComponentに依存します。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// share機能を実現する sharable.js</span>
 
@@ -395,10 +395,10 @@
 
 <h4 id="componentのソースが読みにくくなる">Componentのソースが読みにくくなる</h4>
 
-<p>これは問題と言うには大げさかもしれませんし、やはり当たり前な話なのですが、mixinを使うと<strong>見えないところで</strong>Componentの<code class="highlighter-rouge">this</code>にプロパティが増えていくことになります。<br />
-単一ファイルコンポーネントのソースを読んでいて「この<code class="highlighter-rouge">this.〇〇</code>はどこに実装されているの？」と思ったことありませんか？ mixinが増えるとこの状況が増えるわけですね。</p>
+<p>これは問題と言うには大げさかもしれませんし、やはり当たり前な話なのですが、mixinを使うと<strong>見えないところで</strong>Componentの<code class="language-plaintext highlighter-rouge">this</code>にプロパティが増えていくことになります。<br />
+単一ファイルコンポーネントのソースを読んでいて「この<code class="language-plaintext highlighter-rouge">this.〇〇</code>はどこに実装されているの？」と思ったことありませんか？ mixinが増えるとこの状況が増えるわけですね。</p>
 
-<p>mixin以外に、Vuexの<code class="highlighter-rouge">mapState</code>等でも<code class="highlighter-rouge">this</code>にプロパティを生やしていくので、<strong>VueComponentは見えないところでプロパティが増えがち</strong>です。となるとmixinは少ないほうがソースの読みやすさを保てそうですよね。</p>
+<p>mixin以外に、Vuexの<code class="language-plaintext highlighter-rouge">mapState</code>等でも<code class="language-plaintext highlighter-rouge">this</code>にプロパティを生やしていくので、<strong>VueComponentは見えないところでプロパティが増えがち</strong>です。となるとmixinは少ないほうがソースの読みやすさを保てそうですよね。</p>
 
 <p>まとめると、失敗例2のほうはmixinの使い方を根本的に間違えていたわけではなさそうですが、mixinが持つデメリットや懸念点に多く直面した例でした。このあたりから、mixinの利用は最低限にしようと感じるようになります😌</p>
 
@@ -416,7 +416,7 @@
 
 <h3 id="宣言部分は共通化しないつまりmixinを使わない">宣言部分は共通化しない、つまりmixinを使わない</h3>
 
-<p>失敗例2でも触れたように、VueComponentは見えないところで(単一ファイルコンポーネント内に明記されることなく)<code class="highlighter-rouge">this</code>にプロパティが増えがちです。これを減らすためには、単純に<code class="highlighter-rouge">this</code>のプロパティの宣言を共通化せず、単一ファイルコンポーネント内に明記すれば良いです。具体的には</p>
+<p>失敗例2でも触れたように、VueComponentは見えないところで(単一ファイルコンポーネント内に明記されることなく)<code class="language-plaintext highlighter-rouge">this</code>にプロパティが増えがちです。これを減らすためには、単純に<code class="language-plaintext highlighter-rouge">this</code>のプロパティの宣言を共通化せず、単一ファイルコンポーネント内に明記すれば良いです。具体的には</p>
 
 <ol>
   <li>data, props などの「値」をmixinで共通化しない</li>
@@ -460,7 +460,7 @@
 
 <p></p>
 
-<p>こうすることで<code class="highlighter-rouge">this</code>に紐づくプロパティの実装が明記され、単一ファイルコンポーネント内の可読性が上がりました。小さなアプリケーションであれば無理に共通化までしなくても十分かもしれません。<strong>実装が分かれているということは、影響範囲が分かれている</strong>ということですので、これだけでもメリットは得られますね。</p>
+<p>こうすることで<code class="language-plaintext highlighter-rouge">this</code>に紐づくプロパティの実装が明記され、単一ファイルコンポーネント内の可読性が上がりました。小さなアプリケーションであれば無理に共通化までしなくても十分かもしれません。<strong>実装が分かれているということは、影響範囲が分かれている</strong>ということですので、これだけでもメリットは得られますね。</p>
 
 <h3 id="viewmodelの観点から共通化できる箇所を見つける">ViewModelの観点から共通化できる箇所を見つける</h3>
 
@@ -479,7 +479,7 @@
 
 <p>ただし<strong>③ローカルStateの管理については共通化しないほうが良いケースのほうが多そう</strong>です。ローカルStateは「Viewに状態をもたせる機能」であり、ViewModelの責務と強く結びつきます。責務を分離するためにViewModel(Component)を分けていると考えれば、責務に密接するローカルStateも共通化せず分けて扱うほうが良いと言えます。逆に言えば、ローカルStateを共通化できるComponentは、Componentの切り方を見直す余地があるということになります。</p>
 
-<p>これにならうと、前述のexpandable.jsの例では、それぞれのComponent毎に<code class="highlighter-rouge">isExpanded(開閉ステータス)</code>を実装すべきということですね。そうすることで「このComponentでは最初の1件だけ初期値を開いた状態にする」「このComponentでは1度開いたら閉じない」といったような個別の仕様変更にも対応でき、まさしく責務の分離(影響範囲の分離)が生きてきます。</p>
+<p>これにならうと、前述のexpandable.jsの例では、それぞれのComponent毎に<code class="language-plaintext highlighter-rouge">isExpanded(開閉ステータス)</code>を実装すべきということですね。そうすることで「このComponentでは最初の1件だけ初期値を開いた状態にする」「このComponentでは1度開いたら閉じない」といったような個別の仕様変更にも対応でき、まさしく責務の分離(影響範囲の分離)が生きてきます。</p>
 
 <p>まとめると</p>
 
@@ -514,7 +514,7 @@
 
 <h4 id="vuexのgetterなどmodel側で共通化したい処理を持つ">Vuexのgetterなど、Model側で共通化したい処理を持つ</h4>
 
-<p>Modelの値を加工する処理等Modelに依存する処理は、Model側に定義しておくのもひとつの手です。元来的なMVVMでは<strong>Viewのための値の加工はViewModelですべき</strong>とされていますが、Vuexでは「<strong>ViewModel毎に何度も同じ加工ロジックを実装するくらいなら、Model側に寄せてしまえば？</strong>」という思想で<code class="highlighter-rouge">getter</code>が用意されています。ですのでVueアプリケーションではこれに則ってModel側で共通化することもひとつの手段と言えるでしょう。</p>
+<p>Modelの値を加工する処理等Modelに依存する処理は、Model側に定義しておくのもひとつの手です。元来的なMVVMでは<strong>Viewのための値の加工はViewModelですべき</strong>とされていますが、Vuexでは「<strong>ViewModel毎に何度も同じ加工ロジックを実装するくらいなら、Model側に寄せてしまえば？</strong>」という思想で<code class="language-plaintext highlighter-rouge">getter</code>が用意されています。ですのでVueアプリケーションではこれに則ってModel側で共通化することもひとつの手段と言えるでしょう。</p>
 
 <h4 id="slotを使って高階関数的に実装する">slotを使って高階関数的に実装する</h4>
 

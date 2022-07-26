@@ -242,9 +242,9 @@
   <li>画面内に配置するComponentを定義する<br />
 (Templateを見れば画面内にどんなComponentが並ぶのかが分かる)</li>
   <li>画面全体で必要なModelやStateを管理する<br />
-(<code class="highlighter-rouge">data</code>と<code class="highlighter-rouge">computed</code>を見ればどんなデータを扱うのかが分かる)</li>
+(<code class="language-plaintext highlighter-rouge">data</code>と<code class="language-plaintext highlighter-rouge">computed</code>を見ればどんなデータを扱うのかが分かる)</li>
   <li>画面内で共通の処理を定義する<br />
-(<code class="highlighter-rouge">methods</code>を見れば共通のロジックが分かる)</li>
+(<code class="language-plaintext highlighter-rouge">methods</code>を見れば共通のロジックが分かる)</li>
   <li>Component間のイベントバスになる<br />
 (子ComponentAのイベントをトリガーに子ComponentBの状態を変える、等)</li>
 </ul>
@@ -257,12 +257,12 @@
   <li>vue-routerがurlと紐付けるコンポーネントとなる</li>
 </ul>
 
-<p>Containerは1画面に1つと基準が明確なので、コンポーネントを切るときにはあまり困らないです。が、機能を実装する際に「これは本当にContainerが持つべきもものか」を意識していないと、<code class="highlighter-rouge">data</code>や<code class="highlighter-rouge">methods</code>はどんどん肥大化してしまいます。言い換えれば「とりあえずContainerに実装しておけば動く」という機能が多いということです。<br />
+<p>Containerは1画面に1つと基準が明確なので、コンポーネントを切るときにはあまり困らないです。が、機能を実装する際に「これは本当にContainerが持つべきもものか」を意識していないと、<code class="language-plaintext highlighter-rouge">data</code>や<code class="language-plaintext highlighter-rouge">methods</code>はどんどん肥大化してしまいます。言い換えれば「とりあえずContainerに実装しておけば動く」という機能が多いということです。<br />
 なので画面に機能を足すときには、後述する各Componentに機能を移譲できないか？ を常に検討するようにし、Containerの責務を必要最低限を保つようにしています。</p>
 
 <h3 id="viewmodel-component-の責務">ViewModel Component の責務</h3>
 <p>ここからはContainer内に配置するComponentについてのパターンです。<br />
-Vueは双方向バインディングができることから、MVVMな設計で利用されることがよくあります。<a href="/blog/2017-08-29-1">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</a>の記事にも書きましたが、Vueのコンポーネントは<strong>MVVMのV(View)とVM(ViewModel)の機能を併せ持っています</strong>。簡単に言えば単一コンポーネントの<code class="highlighter-rouge">&lt;template&gt;</code>の部分がViewで、<code class="highlighter-rouge">&lt;script&gt;</code>の部分がViewModelという感じです。</p>
+Vueは双方向バインディングができることから、MVVMな設計で利用されることがよくあります。<a href="/blog/2017-08-29-1">Vue+VuexでMVVMなWebApplicationを設計するときに考えたいこと</a>の記事にも書きましたが、Vueのコンポーネントは<strong>MVVMのV(View)とVM(ViewModel)の機能を併せ持っています</strong>。簡単に言えば単一コンポーネントの<code class="language-plaintext highlighter-rouge">&lt;template&gt;</code>の部分がViewで、<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>の部分がViewModelという感じです。</p>
 
 <p>つまりComponentは、標準で<strong>ViewModel(とView)の責務を持っている</strong>ということです。<br />
 ここでViewModelの役割を見直してみます。</p>
@@ -277,10 +277,10 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 <p>といったことが挙げられます。これをVueの言葉で言い換えると</p>
 
 <ul>
-  <li><strong><code class="highlighter-rouge">methods</code>にコンポーネントを操作するロジックを持つ</strong></li>
-  <li><strong><code class="highlighter-rouge">data</code>, <code class="highlighter-rouge">computed</code>にコンポーネントのStateを定義する</strong></li>
-  <li><strong><code class="highlighter-rouge">data</code>, <code class="highlighter-rouge">computed</code>にコンポーネントに必要なModelを定義し、リアクティブに更新する</strong></li>
-  <li><strong>Templateに<code class="highlighter-rouge">data</code>や<code class="highlighter-rouge">computed</code>で定義した値を反映する、また<code class="highlighter-rouge">v-model</code>等でTemplateの変更を検知する</strong></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">methods</code>にコンポーネントを操作するロジックを持つ</strong></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">computed</code>にコンポーネントのStateを定義する</strong></li>
+  <li><strong><code class="language-plaintext highlighter-rouge">data</code>, <code class="language-plaintext highlighter-rouge">computed</code>にコンポーネントに必要なModelを定義し、リアクティブに更新する</strong></li>
+  <li><strong>Templateに<code class="language-plaintext highlighter-rouge">data</code>や<code class="language-plaintext highlighter-rouge">computed</code>で定義した値を反映する、また<code class="language-plaintext highlighter-rouge">v-model</code>等でTemplateの変更を検知する</strong></li>
 </ul>
 
 <p>となります。これらが過不足なく実装されていると、ViewModelとしての責務を持つComponentだと言えそうです。</p>
@@ -298,7 +298,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 <h3 id="view-component-の責務">View Component の責務</h3>
 <p>コンポーネントのTemplateを書いていると、ループ対象を別コンポーネントとして抜き出したい場合や、Templateがでかすぎるので分割したい場合などがあると思います。こういった例で使えるのがView Componentです。</p>
 
-<p>View ComponentはReactのように<strong>ステートレスなコンポーネントで、親コンポーネントから受け取る<code class="highlighter-rouge">props</code>のみで動作させます</strong>。そのため、基本的には<code class="highlighter-rouge">methods</code>や<code class="highlighter-rouge">data</code>は定義しません。</p>
+<p>View ComponentはReactのように<strong>ステートレスなコンポーネントで、親コンポーネントから受け取る<code class="language-plaintext highlighter-rouge">props</code>のみで動作させます</strong>。そのため、基本的には<code class="language-plaintext highlighter-rouge">methods</code>や<code class="language-plaintext highlighter-rouge">data</code>は定義しません。</p>
 
 <p>親から受け取ったものをTemplateにはめ込んで表示し、親から受け取った関数をたたく。それだけの責務を持つこのComponentは、<strong>独自のViewのみを持ちViewModelを持たないComponent</strong>だと言えます。</p>
 
@@ -307,20 +307,20 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 
 <h3 id="design-component-の責務">Design Component の責務</h3>
 
-<p>これはView Componentの亜種で、実装の仕方はView Componentと同様です。つまりステートレスで<code class="highlighter-rouge">props</code>を受け取って動作します。</p>
+<p>これはView Componentの亜種で、実装の仕方はView Componentと同様です。つまりステートレスで<code class="language-plaintext highlighter-rouge">props</code>を受け取って動作します。</p>
 
 <p>ただ目的が違い、View Componentが親のTemplate分割を目的に作られるのに対し、こちらは<strong>UIパーツのデザイン共通化を目的に作られます</strong>。アプリ内でLabel付きButtonのUIを統一したい、ダイアログのUIを統一したい、といった場合に作られます。</p>
 
-<p>そのため、粒度の小さいパーツはTemplateと<code class="highlighter-rouge">props</code>をHTML標準のタグと同じ状態にしておくと、使うときに楽だったり後々置き換えが効いたりして便利です。</p>
+<p>そのため、粒度の小さいパーツはTemplateと<code class="language-plaintext highlighter-rouge">props</code>をHTML標準のタグと同じ状態にしておくと、使うときに楽だったり後々置き換えが効いたりして便利です。</p>
 
 <h3 id="factory-component-の責務">Factory Component の責務</h3>
 
 <p>今までのコンポーネントとは性質が少し違い、<strong>表示するComponentを動的に切り替える機能を持つComponentがFactory Component</strong>です。  具体的には以下のような役割を持ちます。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">props</code>でtypeを受け取る</li>
+  <li><code class="language-plaintext highlighter-rouge">props</code>でtypeを受け取る</li>
   <li><a href="https://jp.vuejs.org/v2/api/#is">v-bind:is</a>を使ってtypeに応じたComponentをレンダリングする</li>
-  <li>描画するComponentたちの<code class="highlighter-rouge">props</code>を抽象化する</li>
+  <li>描画するComponentたちの<code class="language-plaintext highlighter-rouge">props</code>を抽象化する</li>
 </ul>
 
 <p>漠然としていてピンとこないかもしれないのでサンプルコードを載せます。</p>
@@ -348,9 +348,9 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">props</code>で受け取ったtypeに応じて、描画するComponentを<code class="highlighter-rouge">v-bind:is</code>で切り替えています。switch文を使っていますが、type名がそのままComponent名となるようにしてもいいですし、Factory Methodっぽくしてもいいと思います。</p>
+<p><code class="language-plaintext highlighter-rouge">props</code>で受け取ったtypeに応じて、描画するComponentを<code class="language-plaintext highlighter-rouge">v-bind:is</code>で切り替えています。switch文を使っていますが、type名がそのままComponent名となるようにしてもいいですし、Factory Methodっぽくしてもいいと思います。</p>
 
-<p>また、どのComponentにも<code class="highlighter-rouge">componentData</code>を渡しています。この部分が<code class="highlighter-rouge">props</code>の抽象化です。抽象化しているので、Factory Componentを呼び出している側はどのComponentが描画されるのかを気にする必要がなくなりますね。</p>
+<p>また、どのComponentにも<code class="language-plaintext highlighter-rouge">componentData</code>を渡しています。この部分が<code class="language-plaintext highlighter-rouge">props</code>の抽象化です。抽象化しているので、Factory Componentを呼び出している側はどのComponentが描画されるのかを気にする必要がなくなりますね。</p>
 
 <h3 id="higher-order-component-の責務">Higher-Order Component の責務</h3>
 
@@ -359,7 +359,7 @@ Vueは双方向バインディングができることから、MVVMな設計で�
 <ul>
   <li>Factoryとなり、表示するComponentを動的に切り替える</li>
   <li>ComponentをWrapし、Decoratorパターンのように機能を追加する</li>
-  <li><code class="highlighter-rouge">props</code>をproxyし、加工する</li>
+  <li><code class="language-plaintext highlighter-rouge">props</code>をproxyし、加工する</li>
 </ul>
 
 <p>このようなことができます(他にもいろいろできます)。<br />

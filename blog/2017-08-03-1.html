@@ -183,13 +183,13 @@
         </section>
 
         <article class="post-content">
-          <p><code class="highlighter-rouge">throttle</code>と<code class="highlighter-rouge">debounce</code>といきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。</p>
+          <p><code class="language-plaintext highlighter-rouge">throttle</code>と<code class="language-plaintext highlighter-rouge">debounce</code>といきなり言われてピンとくる人もそうでない人も、ここらでおさらいしませんか？ という回です。これらが何なのか、どう使うのか、どう実装するのかを今一度確認していきましょう。</p>
 
 <p>なぜ今更こんなことをするのかというと、自分が先日忘れていたからです😳</p>
 
 <h3 id="ナニコレ">ナニコレ</h3>
 
-<p><code class="highlighter-rouge">throttle</code>と<code class="highlighter-rouge">debounce</code>とは、簡単に言うと間引き処理の一種です。連続して大量に繰り返される処理を間引いて負荷を軽減させたりするときに使います。</p>
+<p><code class="language-plaintext highlighter-rouge">throttle</code>と<code class="language-plaintext highlighter-rouge">debounce</code>とは、簡単に言うと間引き処理の一種です。連続して大量に繰り返される処理を間引いて負荷を軽減させたりするときに使います。</p>
 
 <h4 id="throttle">throttle</h4>
 
@@ -231,7 +231,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">throttle</code>関数が呼び出される最初の1回と、<code class="highlighter-rouge">elapsedTime(経過時間)</code>が指定の間引き時間を上回るときと、最後の1回が実行されます。説明を読むよりソースを読むほうが分かりやすいですね。</p>
+<p><code class="language-plaintext highlighter-rouge">throttle</code>関数が呼び出される最初の1回と、<code class="language-plaintext highlighter-rouge">elapsedTime(経過時間)</code>が指定の間引き時間を上回るときと、最後の1回が実行されます。説明を読むよりソースを読むほうが分かりやすいですね。</p>
 
 <h4 id="debounce-1">debounce</h4>
 
@@ -248,9 +248,9 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">setTimeout</code>で<code class="highlighter-rouge">interval</code>の時間だけ処理を待っています。待っている間に連続してdebounce関数が実行されると、待っている処理を<code class="highlighter-rouge">clearTimeout</code>してタイマーを再セットします。</p>
+<p><code class="language-plaintext highlighter-rouge">setTimeout</code>で<code class="language-plaintext highlighter-rouge">interval</code>の時間だけ処理を待っています。待っている間に連続してdebounce関数が実行されると、待っている処理を<code class="language-plaintext highlighter-rouge">clearTimeout</code>してタイマーを再セットします。</p>
 
-<p>こうすることで、<code class="highlighter-rouge">interval</code>時間内に連続して行われる処理は、最後の1回だけが実行されます。</p>
+<p>こうすることで、<code class="language-plaintext highlighter-rouge">interval</code>時間内に連続して行われる処理は、最後の1回だけが実行されます。</p>
 
 <h3 id="おわり">おわり</h3>
 

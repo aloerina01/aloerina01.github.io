@@ -192,7 +192,7 @@
   <p>Class components can bail out from rendering when their input props are the same using PureComponent or shouldComponentUpdate.</p>
 </blockquote>
 
-<p>ReactではComponentの再レンダリング回数を最小限にしパフォーマンスを上げる方法として、<code class="highlighter-rouge">shouldComponentUpdate</code>やPure Componentがあります。ですがFunctional Componentを使う場合はこの仕組みを利用できませんでした。これを可能にしてくれるのがReact.memoです。</p>
+<p>ReactではComponentの再レンダリング回数を最小限にしパフォーマンスを上げる方法として、<code class="language-plaintext highlighter-rouge">shouldComponentUpdate</code>やPure Componentがあります。ですがFunctional Componentを使う場合はこの仕組みを利用できませんでした。これを可能にしてくれるのがReact.memoです。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">MyFunctionalComponent</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">name</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="nx">Hello</span> <span class="p">{</span> <span class="nx">name</span> <span class="p">}</span><span class="o">&lt;</span><span class="sr">/div&gt;</span><span class="err">;
 </span><span class="kd">const</span> <span class="nx">MemoComponent</span> <span class="o">=</span> <span class="nx">React</span><span class="p">.</span><span class="nx">memo</span><span class="p">(</span><span class="nx">MyFunctionalComponent</span><span class="p">);</span>
@@ -225,11 +225,11 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>memo関数は2つの引数<code class="highlighter-rouge">type</code>と<code class="highlighter-rouge">compare</code>を受取っています。<strong><code class="highlighter-rouge">type</code>はComponent</strong>で、<strong>compoareは<code class="highlighter-rouge">shouldComponentUpdate</code>に相当するもの</strong>のように見えます。返り値のオブジェクトは、2つの引数と<code class="highlighter-rouge">$$typeof: REACT_MEMO_TYPE</code>というプロパティを持つ新しいオブジェクトです。</p>
+<p>memo関数は2つの引数<code class="language-plaintext highlighter-rouge">type</code>と<code class="language-plaintext highlighter-rouge">compare</code>を受取っています。<strong><code class="language-plaintext highlighter-rouge">type</code>はComponent</strong>で、<strong>compoareは<code class="language-plaintext highlighter-rouge">shouldComponentUpdate</code>に相当するもの</strong>のように見えます。返り値のオブジェクトは、2つの引数と<code class="language-plaintext highlighter-rouge">$$typeof: REACT_MEMO_TYPE</code>というプロパティを持つ新しいオブジェクトです。</p>
 
-<p>つまりReact.memoがしていることは「受取ったComponentに<code class="highlighter-rouge">REACT_MEMO_TYPE</code>という印をつけている」感じですね。意外にシンプルです。さて、これがどのように利用されるのでしょうか。</p>
+<p>つまりReact.memoがしていることは「受取ったComponentに<code class="language-plaintext highlighter-rouge">REACT_MEMO_TYPE</code>という印をつけている」感じですね。意外にシンプルです。さて、これがどのように利用されるのでしょうか。</p>
 
-<p><a href="https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/react-reconciler/src/ReactFiber.js" target="_blank">ReactFiber.js</a>のソースを見てみます。<code class="highlighter-rouge">type</code>をもとにFiberインスタンスを生成する<code class="highlighter-rouge">createFiberFromTypeAndProps</code>関数から追っていきます。</p>
+<p><a href="https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/react-reconciler/src/ReactFiber.js" target="_blank">ReactFiber.js</a>のソースを見てみます。<code class="language-plaintext highlighter-rouge">type</code>をもとにFiberインスタンスを生成する<code class="language-plaintext highlighter-rouge">createFiberFromTypeAndProps</code>関数から追っていきます。</p>
 
 <h5 id="react_memo_typeの利用箇所---reactfiberjsl473">REACT_MEMO_TYPEの利用箇所 - <a href="https://github.com/facebook/react/blob/769b1f270e1251d9dbdce0fcbd9e92e502d059b8/packages/react-reconciler/src/ReactFiber.js#L473" target="_blank">ReactFiber.js#L473</a></h5>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">function</span> <span class="nx">createFiberFromTypeAndProps</span><span class="p">(</span>
@@ -252,7 +252,7 @@
   <span class="nx">fiber</span> <span class="o">=</span> <span class="nx">createFiber</span><span class="p">(</span><span class="nx">fiberTag</span><span class="p">,</span> <span class="nx">pendingProps</span><span class="p">,</span> <span class="nx">key</span><span class="p">,</span> <span class="nx">mode</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div></div>
-<p><code class="highlighter-rouge">$$typeof: REACT_MEMO_TYPE</code>が付与されたオブジェクトは<code class="highlighter-rouge">MemoComponent</code>としてFiberインスタンスが生成されます。</p>
+<p><code class="language-plaintext highlighter-rouge">$$typeof: REACT_MEMO_TYPE</code>が付与されたオブジェクトは<code class="language-plaintext highlighter-rouge">MemoComponent</code>としてFiberインスタンスが生成されます。</p>
 
 <h5 id="componentライフサイクル実行前---reactfiberbeginworkjsl1693">Componentライフサイクル実行前 - <a href="https://github.com/facebook/react/blob/cbbc2b6c4d0d8519145560bd8183ecde55168b12/packages/react-reconciler/src/ReactFiberBeginWork.js#L1693" target="_blank">ReactFiberBeginWork.js#L1693</a></h5>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">function</span> <span class="nx">beginWork</span><span class="p">(</span>
@@ -337,8 +337,8 @@
 <p>ざっと見た感じ、</p>
 
 <ul>
-  <li><code class="highlighter-rouge">React.memo(Component)</code> … 引数のComponentをPure Component化する</li>
-  <li><code class="highlighter-rouge">React.memo(Component, compare)</code> … 引数のComponentに<code class="highlighter-rouge">shouldComponentUpdate</code>の挙動をを付与する</li>
+  <li><code class="language-plaintext highlighter-rouge">React.memo(Component)</code> … 引数のComponentをPure Component化する</li>
+  <li><code class="language-plaintext highlighter-rouge">React.memo(Component, compare)</code> … 引数のComponentに<code class="language-plaintext highlighter-rouge">shouldComponentUpdate</code>の挙動をを付与する</li>
 </ul>
 
 <p>という感じでした。<br />

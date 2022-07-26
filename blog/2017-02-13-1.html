@@ -191,7 +191,7 @@
 
 <h4 id="packagejsonを使えるnpm互換">package.jsonを使える(npm互換)</h4>
 
-<p>「今までずっとnpmでやってきたプロジェクトだし、わざわざyarnに乗り換えるの面倒臭いよね…」と目をそむけてきましたが、<strong>全然面倒臭くありませんでした</strong>。yarnをグローバルインストールしてしまえば、あとはnpmと同様に<code class="highlighter-rouge">package.json</code>を元にパッケージ管理ができます。<strong>導入まで1ステップというお手軽さ</strong>でした。</p>
+<p>「今までずっとnpmでやってきたプロジェクトだし、わざわざyarnに乗り換えるの面倒臭いよね…」と目をそむけてきましたが、<strong>全然面倒臭くありませんでした</strong>。yarnをグローバルインストールしてしまえば、あとはnpmと同様に<code class="language-plaintext highlighter-rouge">package.json</code>を元にパッケージ管理ができます。<strong>導入まで1ステップというお手軽さ</strong>でした。</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-g</span> yarn
 </code></pre></div></div>
@@ -203,7 +203,7 @@
 
 <h4 id="ダウンロードが速い">ダウンロードが速い</h4>
 
-<p>過去に1度ダウンロードしたものをローカルにキャッシュしておいてくれるので、<code class="highlighter-rouge">npm install</code>をし直すような場面で特に高速化の威力を発揮します。ローカルキャッシュということはオフラインにも対応しているということですね(まだオフラインの恩恵を受けたことはありませんが)。</p>
+<p>過去に1度ダウンロードしたものをローカルにキャッシュしておいてくれるので、<code class="language-plaintext highlighter-rouge">npm install</code>をし直すような場面で特に高速化の威力を発揮します。ローカルキャッシュということはオフラインにも対応しているということですね(まだオフラインの恩恵を受けたことはありませんが)。</p>
 
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn
 <span class="c"># もしくは</span>
@@ -212,7 +212,7 @@
 
 <h4 id="バージョン固定がしやすい">バージョン固定がしやすい</h4>
 
-<p>Yarnでは読み込むモジュールのバージョンを<strong>お手軽に固定することができます</strong>(一応npmでもできるんですよ、<code class="highlighter-rouge">npm shrinkwrap</code>という機能を使うと)。これにより「誰のどの環境にも同じモジュールがある」状態を維持できます。</p>
+<p>Yarnでは読み込むモジュールのバージョンを<strong>お手軽に固定することができます</strong>(一応npmでもできるんですよ、<code class="language-plaintext highlighter-rouge">npm shrinkwrap</code>という機能を使うと)。これにより「誰のどの環境にも同じモジュールがある」状態を維持できます。</p>
 
 <h4 id="ロゴがかわいい">ロゴがかわいい</h4>
 
@@ -249,7 +249,7 @@
 <p>モジュール間の依存関係を再帰的に解決する。</p>
 
 <h4 id="2-fetch--cache">2. Fetch &amp; Cache</h4>
-<p>ダウンロード対象の各パッケージがグローバルキャッシュ(<code class="highlighter-rouge">~/.yarn-cache</code>)に存在しているかを確認し、もしなければtarballを取得しキャッシュする。</p>
+<p>ダウンロード対象の各パッケージがグローバルキャッシュ(<code class="language-plaintext highlighter-rouge">~/.yarn-cache</code>)に存在しているかを確認し、もしなければtarballを取得しキャッシュする。</p>
 
 <h4 id="3-対象プロジェクトのnode_modulesへコピー">3. 対象プロジェクトのnode_modulesへコピー</h4>
 <p>グローバルキャッシュから対象のモジュールをnode_modules以下へコピーする。</p>

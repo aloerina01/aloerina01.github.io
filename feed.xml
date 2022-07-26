@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2022-07-04T04:05:01+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2022-07-26T08:24:21+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</title><link href="https://aloerina01.github.io/blog/2021-10-29-1" rel="alternate" type="text/html" title="スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-10-29-1">&lt;p&gt;これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。&lt;/p&gt;
 
 &lt;p&gt;今回は、私が実際に直面した問題と、それらを打破するためチームで取り組んできたことを思い返してみようと思います。&lt;/p&gt;
@@ -88,11 +88,11 @@
 &lt;h3 id=&quot;使い方&quot;&gt;使い方&lt;/h3&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install -D esbuild&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;npx esbuild --bundle ./index.js&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install -D esbuild&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npx esbuild --bundle ./index.js&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;configファイルなしで実行できるので、&lt;code class=&quot;highlighter-rouge&quot;&gt;npm install&lt;/code&gt;して即利用できます。基本的なオプションも揃っています。&lt;/p&gt;
+&lt;p&gt;configファイルなしで実行できるので、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt;して即利用できます。基本的なオプションも揃っています。&lt;/p&gt;
 
 &lt;table&gt;
   &lt;thead&gt;
@@ -103,31 +103,31 @@
   &lt;/thead&gt;
   &lt;tbody&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--bundle&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--bundle&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;依存関係をインライン化します。esbuildはデフォルトでは依存関係をバンドルに含まないので、明示的に有効化する必要があります。&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--minify&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--minify&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;ビルドしたファイルを圧縮します。&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--watch&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--watch&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;ウォッチモードを有効にします。ファイルの変更を検知して再ビルドが走るようになります。&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--target&lt;/code&gt;&lt;br /&gt;例: &lt;code class=&quot;highlighter-rouge&quot;&gt;-target=es2020,chrome58,node12&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;ビルド後に生成するJSのターゲット環境を指定します。デフォルトは&lt;code class=&quot;highlighter-rouge&quot;&gt;esnext&lt;/code&gt;です。&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--target&lt;/code&gt;&lt;br /&gt;例: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-target=es2020,chrome58,node12&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;ビルド後に生成するJSのターゲット環境を指定します。デフォルトは&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esnext&lt;/code&gt;です。&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--sourcemap&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--sourcemap&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;sourcemapを生成します。&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--define&lt;/code&gt;&lt;br /&gt;例: &lt;code class=&quot;highlighter-rouge&quot;&gt;--define:DEBUG=true&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--define&lt;/code&gt;&lt;br /&gt;例: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--define:DEBUG=true&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;グローバル変数を定義します。&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--splitting&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--splitting&lt;/code&gt;&lt;/td&gt;
       &lt;td&gt;Code Splitting を有効化しますが、まだWIPのオプションです。&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
@@ -169,7 +169,7 @@
 &lt;h4 id=&quot;es5との付き合い方&quot;&gt;ES5との付き合い方&lt;/h4&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--target=es5&lt;/code&gt;とした場合、元々ES5のコードはES5のままになるが、ES6のコードをES5に変換することはない&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--target=es5&lt;/code&gt;とした場合、元々ES5のコードはES5のままになるが、ES6のコードをES5に変換することはない&lt;/li&gt;
   &lt;li&gt;今後ES5に対応することはなさそう&lt;/li&gt;
   &lt;li&gt;参考&lt;a href=&quot;https://github.com/evanw/esbuild/issues/297&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;はこちら&lt;/li&gt;
 &lt;/ul&gt;
@@ -248,7 +248,7 @@
   &lt;li&gt;Parcel&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Github上のコメント入力欄を&lt;code class=&quot;highlighter-rouge&quot;&gt;querySelectorAll&lt;/code&gt;して、Preact製のプルダウンをマウントしているだけです。コードレビュー時のコメント入力欄はユーザーの操作により増減するので&lt;code class=&quot;highlighter-rouge&quot;&gt;MutationObserver&lt;/code&gt;で検知しています。&lt;br /&gt;
+&lt;p&gt;Github上のコメント入力欄を&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;querySelectorAll&lt;/code&gt;して、Preact製のプルダウンをマウントしているだけです。コードレビュー時のコメント入力欄はユーザーの操作により増減するので&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MutationObserver&lt;/code&gt;で検知しています。&lt;br /&gt;
 小さなアプリケーションをサクッとつくるときはParcelでバンドルすることが多いです。&lt;/p&gt;
 
 &lt;p&gt;ちなみにストアでの提供はしていませんが、リポジトリのREADMEに使い方を記載していますので、気になった方は試してみてくださいね。&lt;/p&gt;
@@ -336,7 +336,7 @@
 &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;defineStore&lt;/code&gt;にstate, getters, actions等を含むオブジェクトを渡す形です。今までのVuexで書き慣れたプロパティなので分かりやすいですが、stateが関数になっている点は要注意です。mutationsは廃止されるようです。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;defineStore&lt;/code&gt;にstate, getters, actions等を含むオブジェクトを渡す形です。今までのVuexで書き慣れたプロパティなので分かりやすいですが、stateが関数になっている点は要注意です。mutationsは廃止されるようです。&lt;/p&gt;
 
 &lt;h5 id=&quot;composition-store&quot;&gt;Composition Store&lt;/h5&gt;
 
@@ -360,12 +360,12 @@
 &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;defineStore&lt;/code&gt;にkeyとsetup関数を渡す形式です。Vueの&lt;code class=&quot;highlighter-rouge&quot;&gt;ref&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;などのReactivity APIを使い回しているのが特徴的です。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;defineStore&lt;/code&gt;にkeyとsetup関数を渡す形式です。Vueの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ref&lt;/code&gt;や&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;computed&lt;/code&gt;などのReactivity APIを使い回しているのが特徴的です。&lt;/p&gt;
 
 &lt;h4 id=&quot;2-storeのインスタンス化&quot;&gt;2. Storeのインスタンス化&lt;/h4&gt;
 
 &lt;p&gt;ここまでで定義してきたStoreは、Vuexインスタンスにregisterされることでインスタンス化されます。&lt;br /&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;vuex.store&lt;/code&gt;関数に先程定義した&lt;code class=&quot;highlighter-rouge&quot;&gt;useCounter&lt;/code&gt;を渡しましょう。&lt;/p&gt;
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vuex.store&lt;/code&gt;関数に先程定義した&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;useCounter&lt;/code&gt;を渡しましょう。&lt;/p&gt;
 
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Option Store or Composition Store&lt;/span&gt;
@@ -381,11 +381,11 @@
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;p&gt;インスタンス生成後は、&lt;code class=&quot;highlighter-rouge&quot;&gt;getters&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;などを使わずともStoreにアクセスできるようになりました。今までのVuexより直感的です。&lt;/p&gt;
+&lt;p&gt;インスタンス生成後は、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getters&lt;/code&gt;や&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;などを使わずともStoreにアクセスできるようになりました。今までのVuexより直感的です。&lt;/p&gt;
 
-&lt;p&gt;Composition Storeでは&lt;code class=&quot;highlighter-rouge&quot;&gt;ref&lt;/code&gt;を利用していてるので&lt;code class=&quot;highlighter-rouge&quot;&gt;counter.count.value&lt;/code&gt;としたいとことですが、その必要はないようです。Option StoreかCompositon Storeかを区別することなく実装できるのはいいですね。&lt;/p&gt;
+&lt;p&gt;Composition Storeでは&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ref&lt;/code&gt;を利用していてるので&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;counter.count.value&lt;/code&gt;としたいとことですが、その必要はないようです。Option StoreかCompositon Storeかを区別することなく実装できるのはいいですね。&lt;/p&gt;
 
-&lt;p&gt;また、&lt;code class=&quot;highlighter-rouge&quot;&gt;vuex.store(useCounter)&lt;/code&gt;は初回実行時にStoreインスタンスを内部的に保持し、2回目以降の実行時にはそれを返す仕組みがあります。言い換えるとStoreは使用されるまで登録されないということになります。これはCode Splittingの観点でも恩恵があります。&lt;/p&gt;
+&lt;p&gt;また、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vuex.store(useCounter)&lt;/code&gt;は初回実行時にStoreインスタンスを内部的に保持し、2回目以降の実行時にはそれを返す仕組みがあります。言い換えるとStoreは使用されるまで登録されないということになります。これはCode Splittingの観点でも恩恵があります。&lt;/p&gt;
 
 &lt;h4 id=&quot;3-componentからstoreへのアクセス&quot;&gt;3. ComponentからStoreへのアクセス&lt;/h4&gt;
 
@@ -463,7 +463,7 @@
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;今までのVuexに似ていますね。&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;でStoreの値を利用するか、&lt;code class=&quot;highlighter-rouge&quot;&gt;mapHelper&lt;/code&gt;を利用するか、の2択です。後者の方法では&lt;code class=&quot;highlighter-rouge&quot;&gt;vuex.store&lt;/code&gt;が暗黙的に実行されているようです。ちなみに&lt;code class=&quot;highlighter-rouge&quot;&gt;mapStores&lt;/code&gt;に渡されたStoreにアクセスする際は、&lt;code class=&quot;highlighter-rouge&quot;&gt;difneStore&lt;/code&gt;で定義した&lt;code class=&quot;highlighter-rouge&quot;&gt;key&lt;/code&gt;の値が利用することになります。&lt;/p&gt;
+&lt;p&gt;今までのVuexに似ていますね。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;computed&lt;/code&gt;でStoreの値を利用するか、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapHelper&lt;/code&gt;を利用するか、の2択です。後者の方法では&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vuex.store&lt;/code&gt;が暗黙的に実行されているようです。ちなみに&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapStores&lt;/code&gt;に渡されたStoreにアクセスする際は、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;difneStore&lt;/code&gt;で定義した&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;key&lt;/code&gt;の値が利用することになります。&lt;/p&gt;
 
 &lt;p&gt;次に&lt;strong&gt;Compositon APIで実装されたComponent&lt;/strong&gt;からのアクセス方法です。&lt;/p&gt;
 
@@ -477,7 +477,7 @@
   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;直感的でけっこう好みです。この方法だとStore定義を&lt;code class=&quot;highlighter-rouge&quot;&gt;useXxxx&lt;/code&gt;と命名する意味が実感できますね。&lt;/p&gt;
+&lt;p&gt;直感的でけっこう好みです。この方法だとStore定義を&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;useXxxx&lt;/code&gt;と命名する意味が実感できますね。&lt;/p&gt;
 
 &lt;p&gt;以上が新しいVuexの使い方です。&lt;br /&gt;
 RFCにはこれ以外にも、Store同士の依存関係、ハイドレーション、型注釈等の解説もありました。&lt;/p&gt;
@@ -804,7 +804,7 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
 
 &lt;p&gt;という記述は、私がセッション内でお伝えした「相互理解があることで課題に自律的に対処できる」ということを、視点を変えて「&lt;strong&gt;相互作用の問題が増えると組織に課題が現れる&lt;/strong&gt;」と説明しているのだと感じました。&lt;/p&gt;
 
-&lt;p&gt;そして適切な関係性を引き出すためのファシリテーションや支援スキルが、組織のあらゆるレベルで発揮される必要があると伝え、関係構築にまつわるスキルを&lt;code class=&quot;highlighter-rouge&quot;&gt;謙虚なリーダーシップの真髄&lt;/code&gt;と表現しその中身を掘り下げています。&lt;/p&gt;
+&lt;p&gt;そして適切な関係性を引き出すためのファシリテーションや支援スキルが、組織のあらゆるレベルで発揮される必要があると伝え、関係構築にまつわるスキルを&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;謙虚なリーダーシップの真髄&lt;/code&gt;と表現しその中身を掘り下げています。&lt;/p&gt;
 
 &lt;p&gt;このように本書は私がうまく言葉にできなかった部分、考えきれていなかった部分に言及しています。さらに人と人との関係性を深堀りし、それを変えるプロセスとして&lt;strong&gt;パーソニゼーション&lt;/strong&gt;という考え方を提示しています。その有無によりチームがどう変化したのかをいくつかの事例と共に紹介し、そしてチームに必要なふるまいである「謙虚なリーダーシップ」とはどういうものかと話を発展させていきます。&lt;/p&gt;
 
@@ -818,13 +818,13 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
   &lt;p&gt;「パーソニゼーション」とは、仕事仲間、チームメイト、上司、部下、同僚との仕事上の関係を、双方向がつくっていくプロセスである。ただし、相手のことを、そのとき担っている役割ではなく、ひとりの人間として考えようとする姿勢が土台になる。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;セッションでお伝えした「一人ひとりの違いについての相互理解」とは、互いを&lt;code class=&quot;highlighter-rouge&quot;&gt;ひとりの人間として考えようとする姿勢&lt;/code&gt;を持ちながら双方向の関係性を築いていくことで得られるものだと言えるでしょう。&lt;/p&gt;
+&lt;p&gt;セッションでお伝えした「一人ひとりの違いについての相互理解」とは、互いを&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ひとりの人間として考えようとする姿勢&lt;/code&gt;を持ちながら双方向の関係性を築いていくことで得られるものだと言えるでしょう。&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;「パーソニゼーション」は、会話の初めに、どちらかが個人的なことを尋ねる、あるいは話すときに始まる。一方が、もしくは両方が、相当な覚悟をもって会話に臨み、無視されたり拒絶されたり軽蔑されたりする危険を冒すことでもある。(中略)「パーソニゼーション」とは、本質的に、互恵的な双方向のプロセスなのである。&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;私がセッション内で相互理解の始め方のひとつとして「自分から始めること」を提案したのは、&lt;code class=&quot;highlighter-rouge&quot;&gt;危険を冒すこと&lt;/code&gt;を相手に委ねるのではなく、自分が背負うことを意味していました。&lt;br /&gt;
+&lt;p&gt;私がセッション内で相互理解の始め方のひとつとして「自分から始めること」を提案したのは、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;危険を冒すこと&lt;/code&gt;を相手に委ねるのではなく、自分が背負うことを意味していました。&lt;br /&gt;
 自己開示をする心理的ハードルについてはセッション内でも触れましたが、もう少しストレートに言えば、自分から一歩踏み込んだ会話をすることで「痛々しく思われたり寒いと思われたりして傷つくかもしれない危険性」を誰かに負ってもらおうとするなということです(自己開示がとても苦手な自分に今でも強く言い聞かせています)。&lt;/p&gt;
 
 &lt;p&gt;「自分から始める」「参加しやすい雰囲気づくりから始める」「チームの状態の見極めから始める」ことを重ねながら危険を乗り越えた先に、双方向に成り立つ関係、つまり相互理解があるのだと思います。&lt;/p&gt;
@@ -934,21 +934,21 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
 
 &lt;h5 id=&quot;悩み1-vuexのmaphelperを使うとコードが読みにくくなる&quot;&gt;悩み1. VuexのmapHelperを使うとコードが読みにくくなる&lt;/h5&gt;
 
-&lt;p&gt;「&lt;code class=&quot;highlighter-rouge&quot;&gt;created&lt;/code&gt;内で呼ばれているこの関数はどこに定義されているんだ…？ &lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;？ それともStoreのアクション…？」&lt;/p&gt;
+&lt;p&gt;「&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;created&lt;/code&gt;内で呼ばれているこの関数はどこに定義されているんだ…？ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;methods&lt;/code&gt;？ それともStoreのアクション…？」&lt;/p&gt;
 
-&lt;p&gt;「&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;部分を見るにこのComponentはどのStoreにも依存してなさそうだ…。と思いきや、&lt;code class=&quot;highlighter-rouge&quot;&gt;mapState&lt;/code&gt;でいろんなStoreの値を読み込んでいるぞ…」&lt;/p&gt;
+&lt;p&gt;「&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;部分を見るにこのComponentはどのStoreにも依存してなさそうだ…。と思いきや、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapState&lt;/code&gt;でいろんなStoreの値を読み込んでいるぞ…」&lt;/p&gt;
 
 &lt;h5 id=&quot;悩み2-ビジネスロジック層がない&quot;&gt;悩み2. ビジネスロジック層がない&lt;/h5&gt;
 
-&lt;p&gt;「ページ読み込み時に走るAPIアクセスはどこに実装されている？ Componentの&lt;code class=&quot;highlighter-rouge&quot;&gt;created&lt;/code&gt;？ Storeのアクション？ ロジックがまとまっている層がなくて処理の入り口を見つけにくい…」&lt;/p&gt;
+&lt;p&gt;「ページ読み込み時に走るAPIアクセスはどこに実装されている？ Componentの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;created&lt;/code&gt;？ Storeのアクション？ ロジックがまとまっている層がなくて処理の入り口を見つけにくい…」&lt;/p&gt;
 
 &lt;p&gt;「クリックされたら見た目を変えてAPIアクセスしてStoreを更新する実装をしたいけど、どうやって責務を分離していくといいかな…」&lt;/p&gt;
 
-&lt;p&gt;「ユーザーの権限を元に表示内容を変える実装したいのだけど、複数のStoreの値を組み合わせたロジックが必要そうだ。こういう場合はComponentの&lt;code class=&quot;highlighter-rouge&quot;&gt;methods&lt;/code&gt;に実装すべき…？ 将来を見越してmixinとして実装すべき…？ それとも…？」&lt;/p&gt;
+&lt;p&gt;「ユーザーの権限を元に表示内容を変える実装したいのだけど、複数のStoreの値を組み合わせたロジックが必要そうだ。こういう場合はComponentの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;methods&lt;/code&gt;に実装すべき…？ 将来を見越してmixinとして実装すべき…？ それとも…？」&lt;/p&gt;
 
 &lt;h5 id=&quot;悩み3-moduleのnamespaceが使いにくい&quot;&gt;悩み3. Moduleのnamespaceが使いにくい&lt;/h5&gt;
 
-&lt;p&gt;「VuexStoreのモジュールの&lt;code class=&quot;highlighter-rouge&quot;&gt;namespace&lt;/code&gt;は分けたいけれど、そうするとFluxのように全モジュールに対してDispatchできない…」&lt;/p&gt;
+&lt;p&gt;「VuexStoreのモジュールの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;namespace&lt;/code&gt;は分けたいけれど、そうするとFluxのように全モジュールに対してDispatchできない…」&lt;/p&gt;
 
 &lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
 
@@ -971,7 +971,7 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
 &lt;h3 id=&quot;query-ゲッターのエイリアス-を実装する&quot;&gt;Query (ゲッターのエイリアス) を実装する&lt;/h3&gt;
 
 &lt;p&gt;まずは比較的シンプルなQueryから考えます。&lt;br /&gt;
-Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.getters&lt;/code&gt;や&lt;code class=&quot;highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt;などを利用することで「副作用なくアプリケーションの状態を取得する」ことが可能なので、一応Queryとして完成していると言えます。が、悩み1にあるようにこれらの方法ではどのStoreに依存しているかが読み取りにくいため、今回は自前のQueryを実装します。&lt;/p&gt;
+Componentから&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;this.$store.getters&lt;/code&gt;や&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt;などを利用することで「副作用なくアプリケーションの状態を取得する」ことが可能なので、一応Queryとして完成していると言えます。が、悩み1にあるようにこれらの方法ではどのStoreに依存しているかが読み取りにくいため、今回は自前のQueryを実装します。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/2020-06-23/query.jpg&quot; alt=&quot;query&quot; /&gt;&lt;/p&gt;
 
@@ -979,7 +979,7 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 
 &lt;ol&gt;
   &lt;li&gt;Storeの更新に応じて&lt;strong&gt;リアクティブに値を受け取れる&lt;/strong&gt;仕組みとなっていること&lt;/li&gt;
-  &lt;li&gt;Componentの&lt;strong&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;部分を見ることで、どのStoreを利用しているかが読み取れる&lt;/strong&gt;ようなQueryとなっていること&lt;/li&gt;
+  &lt;li&gt;Componentの&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;部分を見ることで、どのStoreを利用しているかが読み取れる&lt;/strong&gt;ようなQueryとなっていること&lt;/li&gt;
   &lt;li&gt;Storeを実装する際に、Queryの存在を意識せず従来通りに実装できること&lt;/li&gt;
   &lt;li&gt;Queryを実装する際または利用する際に、複雑なルールを覚えることを強要しない仕組みとなっていること&lt;/li&gt;
 &lt;/ol&gt;
@@ -1009,11 +1009,11 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;p&gt;import部分をみると&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoStoreQuery&lt;/code&gt;があるので、&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;の値を利用しているComponentであることが読み取れます。&lt;/p&gt;
+&lt;p&gt;import部分をみると&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TodoStoreQuery&lt;/code&gt;があるので、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;の値を利用しているComponentであることが読み取れます。&lt;/p&gt;
 
-&lt;p&gt;ついでにQueryの利用箇所にも触れておくと、&lt;code class=&quot;highlighter-rouge&quot;&gt;computed&lt;/code&gt;の中でゲッターを使うときと同じ書き口で使われていますね。このようなQueryを用意することができれば、要件4の「複雑なルールを覚えることを強要しない仕組みであること」も満たせていると言えそうです。&lt;/p&gt;
+&lt;p&gt;ついでにQueryの利用箇所にも触れておくと、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;computed&lt;/code&gt;の中でゲッターを使うときと同じ書き口で使われていますね。このようなQueryを用意することができれば、要件4の「複雑なルールを覚えることを強要しない仕組みであること」も満たせていると言えそうです。&lt;/p&gt;
 
-&lt;p&gt;ではこのQueryを実装していきます。参考に&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;の実装も添えておきます。&lt;/p&gt;
+&lt;p&gt;ではこのQueryを実装していきます。参考に&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;の実装も添えておきます。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;store.js&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
@@ -1055,9 +1055,9 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 &lt;span class=&quot;c1&quot;&gt;// export const AnotherStoreQuery = createGettersAlias(AnotherStore);  &lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;createGettersAlias&lt;/code&gt;関数は、VuexStoreのインスタンスから&lt;code class=&quot;highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;のゲッター要素だけを抜き出して返す関数です。やっていることは&lt;code class=&quot;highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt;とほぼ同じです。&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createGettersAlias&lt;/code&gt;関数は、VuexStoreのインスタンスから&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;のゲッター要素だけを抜き出して返す関数です。やっていることは&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt;とほぼ同じです。&lt;/p&gt;
 
-&lt;p&gt;Storeを追加する際は、通常通りの方法でStoreを実装することに加えて&lt;code class=&quot;highlighter-rouge&quot;&gt;createGettersAlias&lt;/code&gt;を呼び出すだけでOKです。ちなみに私はStoreへアクセスする際は必ずゲッターを経由するようにしているためステートのエイリアスはつくっていませんが、このあたりは好みですね。&lt;/p&gt;
+&lt;p&gt;Storeを追加する際は、通常通りの方法でStoreを実装することに加えて&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createGettersAlias&lt;/code&gt;を呼び出すだけでOKです。ちなみに私はStoreへアクセスする際は必ずゲッターを経由するようにしているためステートのエイリアスはつくっていませんが、このあたりは好みですね。&lt;/p&gt;
 
 &lt;h3 id=&quot;command-ビジネスロジックdispatch-を実装する&quot;&gt;Command (ビジネスロジック+Dispatch) を実装する&lt;/h3&gt;
 
@@ -1071,7 +1071,7 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
   &lt;li&gt;&lt;strong&gt;返り値のない関数&lt;/strong&gt;とする&lt;/li&gt;
   &lt;li&gt;システム的な処理単位ではなく、&lt;strong&gt;ユースケース単位&lt;/strong&gt;で1つ1つのCommandを実装する&lt;/li&gt;
   &lt;li&gt;処理に必要な依存関係は基本的に引数で受け取る&lt;/li&gt;
-  &lt;li&gt;storeを更新するときはVuexの&lt;code class=&quot;highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;を経由する&lt;/li&gt;
+  &lt;li&gt;storeを更新するときはVuexの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;を経由する&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;p&gt;今回は「TODOを完了にする」ユースケースのCommandの実装を例にします。&lt;/p&gt;
@@ -1094,7 +1094,7 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Commandから直接&lt;code class=&quot;highlighter-rouge&quot;&gt;vuexStoreInstance.dispatch&lt;/code&gt;を呼び出しても良いのですが、今後Dispatch部分を修正する可能性を考慮して、Store層とCommand層の間にDispatcher層を噛ませておきます。&lt;/p&gt;
+&lt;p&gt;Commandから直接&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vuexStoreInstance.dispatch&lt;/code&gt;を呼び出しても良いのですが、今後Dispatch部分を修正する可能性を考慮して、Store層とCommand層の間にDispatcher層を噛ませておきます。&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;commands.js&lt;/strong&gt;&lt;/p&gt;
 
@@ -1112,9 +1112,9 @@ Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;this.$store.gette
 
 &lt;p&gt;&lt;/p&gt;
 
-&lt;p&gt;ここまで実装できたら、Componentから&lt;code class=&quot;highlighter-rouge&quot;&gt;Commands.doneTodo&lt;/code&gt;を呼び出せば完成ですね。ちなみに&lt;code class=&quot;highlighter-rouge&quot;&gt;doneTodo&lt;/code&gt;を直接&lt;code class=&quot;highlighter-rouge&quot;&gt;export&lt;/code&gt;せず&lt;code class=&quot;highlighter-rouge&quot;&gt;Commands&lt;/code&gt;オブジェクトで束ねているのは、grepしやすくするためです。好みなので要件には含んでいません。&lt;/p&gt;
+&lt;p&gt;ここまで実装できたら、Componentから&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Commands.doneTodo&lt;/code&gt;を呼び出せば完成ですね。ちなみに&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;doneTodo&lt;/code&gt;を直接&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export&lt;/code&gt;せず&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Commands&lt;/code&gt;オブジェクトで束ねているのは、grepしやすくするためです。好みなので要件には含んでいません。&lt;/p&gt;
 
-&lt;p&gt;ちなみにQueryとCommandに依存したComponentの&lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt;部分は以下のようになります。&lt;/p&gt;
+&lt;p&gt;ちなみにQueryとCommandに依存したComponentの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;部分は以下のようになります。&lt;/p&gt;
 
 &lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// SampleComponent.vue
 

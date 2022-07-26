@@ -313,11 +313,11 @@ brew <span class="nb">install </span>dart <span class="nt">--with-content-shell<
 
 <p>(Android Studioがインストールされてないよ！等、教えてくれていますね)</p>
 
-<p>このコマンドが大変ありがたく、その後もつまずいたらとりあえず<code class="highlighter-rouge">flutter doctor</code>を叩くと何かしら前に進みました。開発環境の構築でハマるのは入門あるあるだと思うので、Flutterの心遣いに感謝するばかりです。</p>
+<p>このコマンドが大変ありがたく、その後もつまずいたらとりあえず<code class="language-plaintext highlighter-rouge">flutter doctor</code>を叩くと何かしら前に進みました。開発環境の構築でハマるのは入門あるあるだと思うので、Flutterの心遣いに感謝するばかりです。</p>
 
 <h5 id="vscodeプラグインのインストール">VSCodeプラグインのインストール</h5>
 
-<p><a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code">Dartプラグイン</a>、<a href="https://marketplace.visualstudio.com/items?itemName=franzsilva.fs-flutter-snippets">Flutterプラグイン</a>をインストールしたものの、VSCodeのコマンドパレットから<code class="highlighter-rouge">Flutter: New Project</code>をしようとしたらFlutter SDKがないと怒られました。設定にFlutterの所在を追記することで解決。</p>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code">Dartプラグイン</a>、<a href="https://marketplace.visualstudio.com/items?itemName=franzsilva.fs-flutter-snippets">Flutterプラグイン</a>をインストールしたものの、VSCodeのコマンドパレットから<code class="language-plaintext highlighter-rouge">Flutter: New Project</code>をしようとしたらFlutter SDKがないと怒られました。設定にFlutterの所在を追記することで解決。</p>
 
 <pre><code class="language-plain">"dart.flutterSdkPath": "/Users/aloerina/flutter"
 </code></pre>
@@ -329,7 +329,7 @@ brew <span class="nb">install </span>dart <span class="nt">--with-content-shell<
 <p>今回はAndroidアプリで検証をします。<br />
 USBデバッグを許可した実機を接続するか、Android Studioのエミュレータを起動するかが必要なので後者を選択しました。Android Studioの公式の<a href="https://developer.android.com/studio/run/managing-avds">仮想端末の作成と管理</a>に書いてある通りにやるとスムーズでした。</p>
 
-<p>エミュレータを起動したらVSCodeのステータスバー(右下)に起動したエミュレータ名が書いてあればOKです。書いてない場合は<code class="highlighter-rouge">flutter emulators</code>を叩いて表示に従えばOKです。</p>
+<p>エミュレータを起動したらVSCodeのステータスバー(右下)に起動したエミュレータ名が書いてあればOKです。書いてない場合は<code class="language-plaintext highlighter-rouge">flutter emulators</code>を叩いて表示に従えばOKです。</p>
 
 <p>検証端末の準備ができたらflutterを起動します。</p>
 
@@ -353,14 +353,14 @@ USBデバッグを許可した実機を接続するか、Android Studioのエミ
 <p>すぐ書ける楽しみだけでなく、JavaScriptのような手軽さや、静的型付けやジェネリクスなどを取り揃えた安心感などにも好感でした。公式の<a href="https://www.dartlang.org/guides/language/language-tour#important-concepts">Important Concepts</a>にこれらに関係するDartのコンセプトがまとまっていたので、ざっくり意訳してみます。</p>
 
 <ul>
-  <li>変数に代入できる値はすべて(数値、関数、null、など何でも)<em>Object</em>であり、すべての<em>Object</em>は<em>Class</em>のインスタンスです。すべての<em>Object</em>は<code class="highlighter-rouge">Object</code>クラスを継承します。</li>
-  <li>Dartは強く型付けされていますが、Dartは型を推測できるため型定義は必須ではありません。型が不明であることを明示的に宣言したいときは、特殊な型である<code class="highlighter-rouge">dynamic</code>を使用することができます。</li>
-  <li>Dartは<code class="highlighter-rouge">List&lt;int&gt;</code>や<code class="highlighter-rouge">List&lt;dynamic&gt;</code>などのジェネリクスに対応しています。</li>
-  <li>Dartは<code class="highlighter-rouge">main()</code>などのトップレベル関数、staticメソッドやインスタンスメソッド、ローカル関数などを定義できます。</li>
-  <li>Javaと違い<code class="highlighter-rouge">public</code>, <code class="highlighter-rouge">private</code>などのスコープ定義はありません。代わりに変数名を<code class="highlighter-rouge">_</code>から始めることでprivateと認識します。</li>
+  <li>変数に代入できる値はすべて(数値、関数、null、など何でも)<em>Object</em>であり、すべての<em>Object</em>は<em>Class</em>のインスタンスです。すべての<em>Object</em>は<code class="language-plaintext highlighter-rouge">Object</code>クラスを継承します。</li>
+  <li>Dartは強く型付けされていますが、Dartは型を推測できるため型定義は必須ではありません。型が不明であることを明示的に宣言したいときは、特殊な型である<code class="language-plaintext highlighter-rouge">dynamic</code>を使用することができます。</li>
+  <li>Dartは<code class="language-plaintext highlighter-rouge">List&lt;int&gt;</code>や<code class="language-plaintext highlighter-rouge">List&lt;dynamic&gt;</code>などのジェネリクスに対応しています。</li>
+  <li>Dartは<code class="language-plaintext highlighter-rouge">main()</code>などのトップレベル関数、staticメソッドやインスタンスメソッド、ローカル関数などを定義できます。</li>
+  <li>Javaと違い<code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">private</code>などのスコープ定義はありません。代わりに変数名を<code class="language-plaintext highlighter-rouge">_</code>から始めることでprivateと認識します。</li>
 </ul>
 
-<p>変数のスコープを<code class="highlighter-rouge">_</code>で判別する点は好みではないのですが(命名は書く側の好きにさせて欲しい)、それ以外はいいと思いました。Interfaceとジェネリクスがあると手堅く設計できますし、DIなども可能になりますよね。<code class="highlighter-rouge">async/await</code>や<code class="highlighter-rouge">Stream</code>などで<a href="https://www.dartlang.org/guides/language/language-tour#asynchrony-support">非同期処理</a>を自然に書けるのもステキです。</p>
+<p>変数のスコープを<code class="language-plaintext highlighter-rouge">_</code>で判別する点は好みではないのですが(命名は書く側の好きにさせて欲しい)、それ以外はいいと思いました。Interfaceとジェネリクスがあると手堅く設計できますし、DIなども可能になりますよね。<code class="language-plaintext highlighter-rouge">async/await</code>や<code class="language-plaintext highlighter-rouge">Stream</code>などで<a href="https://www.dartlang.org/guides/language/language-tour#asynchrony-support">非同期処理</a>を自然に書けるのもステキです。</p>
 
 <p>言語機能を更に深掘りするには<a href="https://www.dartlang.org/guides/language/effective-dart">Effective Dart</a>がおすすめです。Dartはとにかく公式ドキュメントの充実っぷりがすごいですね。</p>
 
@@ -368,7 +368,7 @@ USBデバッグを許可した実機を接続するか、Android Studioのエミ
 
 <h4 id="開発環境について">開発環境について</h4>
 
-<p>べた褒め続きで少々気まずさもありますが、私が開発環境に必要だと思う<strong>セットアップ・メンテの手軽さ</strong>と<strong>開発速度</strong>が保たれていてよかったです。特に上述した<code class="highlighter-rouge">flutter doctor</code>コマンドには幾度となく助けられました。問題にぶち当たってもググらず解決できるってすごいですよね。</p>
+<p>べた褒め続きで少々気まずさもありますが、私が開発環境に必要だと思う<strong>セットアップ・メンテの手軽さ</strong>と<strong>開発速度</strong>が保たれていてよかったです。特に上述した<code class="language-plaintext highlighter-rouge">flutter doctor</code>コマンドには幾度となく助けられました。問題にぶち当たってもググらず解決できるってすごいですよね。</p>
 
 <p>hot reloadは普段Webフロントを開発している自分には必須の機能でした。アプリはビルドやら何やらに時間のかかるイメージだったので(あくまでイメージです)、アプリ開発への敷居が下がったように感じました。</p>
 
@@ -393,7 +393,7 @@ USBデバッグを許可した実機を接続するか、Android Studioのエミ
             &gt; Text Widget (タイトルなどの文字列を表示する)
               &gt; TextAlign Widget (文字列のAlignmentを指定する)
 </code></pre>
-<p>表示要素を表す<code class="highlighter-rouge">ListView</code>, <code class="highlighter-rouge">Card</code>, <code class="highlighter-rouge">Text</code>と並列関係で<code class="highlighter-rouge">Padding</code>などが存在するわけです。ものによってもっと簡単に記述できる仕組みもあるのですが、HTMLで要素を構成してCSSで装飾する手法に慣れている人にはかなり抵抗があるのではないでしょうか…。</p>
+<p>表示要素を表す<code class="language-plaintext highlighter-rouge">ListView</code>, <code class="language-plaintext highlighter-rouge">Card</code>, <code class="language-plaintext highlighter-rouge">Text</code>と並列関係で<code class="language-plaintext highlighter-rouge">Padding</code>などが存在するわけです。ものによってもっと簡単に記述できる仕組みもあるのですが、HTMLで要素を構成してCSSで装飾する手法に慣れている人にはかなり抵抗があるのではないでしょうか…。</p>
 
 <p>ただ、アプリのビルドなど詳しく知らない部分を棚上げしたまま開発できる点はよかったです。とりあえず動くものを作ってみてリリースするときに改めてキャッチアップする、とすると開発意欲を落とさず完成にこぎつけそうです。</p>
 

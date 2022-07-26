@@ -267,7 +267,7 @@
 
 <h3 id="どのようにcomponentを分けるか">どのようにComponentを分けるか</h3>
 
-<p>Componentを利用することでページを要素に分解でき、影響範囲を分けられたり再利用できたりと嬉しい感じになります。更にComponentは親子関係を持たせ<code class="highlighter-rouge">Props</code>と<code class="highlighter-rouge">Event</code>を使いデータを受け渡すことができるようになっているため、より構造的にComponentを組み合わせることができます。</p>
+<p>Componentを利用することでページを要素に分解でき、影響範囲を分けられたり再利用できたりと嬉しい感じになります。更にComponentは親子関係を持たせ<code class="language-plaintext highlighter-rouge">Props</code>と<code class="language-plaintext highlighter-rouge">Event</code>を使いデータを受け渡すことができるようになっているため、より構造的にComponentを組み合わせることができます。</p>
 
 <p>ここで問題なのが、Componentをどの単位で区切るかです。<br />
 本来MVVMでは<strong>ViewはViewModelからデータを受け取るため、View同士(もしくはViewModel同士)でデータを受け渡すことを想定していません</strong>。そのため、VueComponentならではのComponentによる構造化を、MVVMにどう組み込むかを意識しComponent設計をする必要があります。</p>
@@ -310,7 +310,7 @@ Share用URLを受け取って動作するシェアボタンや、メッセージ
 
 <p>これさえきちんと満たしていればModelとしての役割を果たせるので、VueComponentと組み合わせて正しくMVVMを成立させることができます。Modelを階層化させたり、SingleStateにしたりと工夫をしても問題ありません。ViewやViewModelに依存しないため柔軟に実装できるとも言えるんですかね。</p>
 
-<p>ただし、<code class="highlighter-rouge">getter</code>を実装するのはNGです。MVVMはイベント駆動であるため、<strong>ViewModelがModelの値を知るにはModelを監視し変更を検知する</strong>という方法をとることがルールとなります。</p>
+<p>ただし、<code class="language-plaintext highlighter-rouge">getter</code>を実装するのはNGです。MVVMはイベント駆動であるため、<strong>ViewModelがModelの値を知るにはModelを監視し変更を検知する</strong>という方法をとることがルールとなります。</p>
 
 <h3 id="vuexをどのように利用すべきか">Vuexをどのように利用すべきか</h3>
 
@@ -320,7 +320,7 @@ Share用URLを受け取って動作するシェアボタンや、メッセージ
 
 <h4 id="ステート">ステート</h4>
 
-<p>VuexStoreの値をVueComponentに反映する一番シンプルな方法は<code class="highlighter-rouge">computed</code>プロパティで待ち受ける方法だと公式に書かれています。</p>
+<p>VuexStoreの値をVueComponentに反映する一番シンプルな方法は<code class="language-plaintext highlighter-rouge">computed</code>プロパティで待ち受ける方法だと公式に書かれています。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Counter</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">computed</span><span class="p">:</span> <span class="p">{</span>
@@ -352,7 +352,7 @@ Vuexを使うということは、全ての状態を Vuexの中に置くべき�
 
 <h4 id="ゲッター">ゲッター</h4>
 
-<p>Modelに<code class="highlighter-rouge">getter</code>は書くなというルールがあるはずなのに、Vuexにはゲッターの概念があります。ゲッターについて公式は以下のように言及しています。</p>
+<p>Modelに<code class="language-plaintext highlighter-rouge">getter</code>は書くなというルールがあるはずなのに、Vuexにはゲッターの概念があります。ゲッターについて公式は以下のように言及しています。</p>
 
 <blockquote>
   <p>もしこの関数を複数のコンポーネントで利用したくなったら、関数をコピーするか、あるいは関数を共用のヘルパーに切り出して複数の場所でインポートする必要があります。しかし、どちらも理想的とはいえません。</p>
@@ -368,8 +368,8 @@ Vuexを使うということは、全ての状態を Vuexの中に置くべき�
 <p>そのため、<strong>ゲッターはVuexStoreの中身をfilterするために使う</strong>とルール付けています。<br />
 SingleStoreであるためにひとつのModelが大きく、ViewModelが取得するときにはModelの一部のみを受け取れれば十分、というケースで、Modelの値をfilterするためにゲッターを使うというわけです。</p>
 
-<p>例えば「<code class="highlighter-rouge">UsersStore</code>にUserが追加された場合に、<code class="highlighter-rouge">UsersStore</code>丸ごとViewModelへ伝えるのではなく、該当Userオブジェクトのみを伝える」といった感じです。  
-そして、そのUserオブジェクトから<code class="highlighter-rouge">firstName</code>と<code class="highlighter-rouge">familyName</code>と<code class="highlighter-rouge">age</code>をつなげて<code class="highlighter-rouge">${familyName} ${firstName} (${age})</code>という文字列に加工するのはViewModelに任せるというわけです。</p>
+<p>例えば「<code class="language-plaintext highlighter-rouge">UsersStore</code>にUserが追加された場合に、<code class="language-plaintext highlighter-rouge">UsersStore</code>丸ごとViewModelへ伝えるのではなく、該当Userオブジェクトのみを伝える」といった感じです。  
+そして、そのUserオブジェクトから<code class="language-plaintext highlighter-rouge">firstName</code>と<code class="language-plaintext highlighter-rouge">familyName</code>と<code class="language-plaintext highlighter-rouge">age</code>をつなげて<code class="language-plaintext highlighter-rouge">${familyName} ${firstName} (${age})</code>という文字列に加工するのはViewModelに任せるというわけです。</p>
 
 <h4 id="まとめ">まとめ</h4>
 

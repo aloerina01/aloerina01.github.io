@@ -193,14 +193,14 @@
 <ul>
   <li>developmentブランチへのpushをトリガーに<a href="https://github.com/aloerina01/aloerina01.github.io/blob/development/Rakefile" target="_blank">Raketask</a>を実行し、jekyllによって静的サイトを生成する</li>
   <li>生成された静的サイトをmasterブランチへpushする</li>
-  <li>直近のビルド成功時のCommitと比較し、<code class="highlighter-rouge">/_posts/</code>以下に差分がある場合はindexを生成しAlgoliaサーバにアップする</li>
+  <li>直近のビルド成功時のCommitと比較し、<code class="language-plaintext highlighter-rouge">/_posts/</code>以下に差分がある場合はindexを生成しAlgoliaサーバにアップする</li>
 </ul>
 
 <h3 id="やったこと">やったこと</h3>
 <ul>
-  <li><code class="highlighter-rouge">/.github/workflows</code>ディレクトリを作成する(命名固定)</li>
-  <li>ディレクトリ以下にGithub Actionsのconfigファイルを作成する(命名は自由なので<code class="highlighter-rouge">deploy.yml</code>とする)</li>
-  <li><code class="highlighter-rouge">deploy.yml</code>にCircleCI用のconfigファイルの内容を移植する
+  <li><code class="language-plaintext highlighter-rouge">/.github/workflows</code>ディレクトリを作成する(命名固定)</li>
+  <li>ディレクトリ以下にGithub Actionsのconfigファイルを作成する(命名は自由なので<code class="language-plaintext highlighter-rouge">deploy.yml</code>とする)</li>
+  <li><code class="language-plaintext highlighter-rouge">deploy.yml</code>にCircleCI用のconfigファイルの内容を移植する
     <ul>
       <li>ソースをチェックアウトするために<a href="https://github.com/actions/checkout" target="_blank">actions/checkout@v1</a>を利用する</li>
       <li>ビルド環境にrubyのインストールするために<a href="https://github.com/actions/setup-ruby" target="_blank">actions/setup-ruby@v1</a>を利用する</li>
@@ -213,7 +213,7 @@
     </ul>
   </li>
   <li>GitHub Actionsで利用するsecretを設定する</li>
-  <li><code class="highlighter-rouge">.circleci/config.yml</code>を削除する</li>
+  <li><code class="language-plaintext highlighter-rouge">.circleci/config.yml</code>を削除する</li>
 </ul>
 
 <p>「ビルドがSuccessした直近のcommit」を特定する部分でハマりました。今まではCircleCIのAPIを使ってビルドログ一覧を取得したり条件で絞り込んだり簡単にできていたのですが…。Github ActionsにはそのようなAPIが見当たりませんでした。<br />
@@ -224,7 +224,7 @@ Github Actionsの結果を取得する<a href="https://developer.github.com/v3/c
 <h3 id="使ってみた所感">使ってみた所感</h3>
 <p>ビルド速度の劣化はありませんでしたので一安心です。</p>
 
-<p><code class="highlighter-rouge">bundle install</code>や<code class="highlighter-rouge">npm install</code>したものをキャッシュする設定はCircleCI(ver2)よりも書きやすく、読みやすいと感じました。</p>
+<p><code class="language-plaintext highlighter-rouge">bundle install</code>や<code class="language-plaintext highlighter-rouge">npm install</code>したものをキャッシュする設定はCircleCI(ver2)よりも書きやすく、読みやすいと感じました。</p>
 
 <p><strong>.circleci/config.yml</strong></p>
 
@@ -249,7 +249,7 @@ Github Actionsの結果を取得する<a href="https://developer.github.com/v3/c
   <span class="na">key</span><span class="pi">:</span> <span class="s">${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}</span>
 </code></pre></div></div>
 
-<p>Github Actionsでは「何をキャッシュするのか」を記述すれば良いので分かりやすく感じました。「キャッシュがない場合は〇〇する」処理も<code class="highlighter-rouge">if: steps.&lt;step_name&gt;.outputs.cache-hit != ‘true’</code>と書けるので直感的でした。</p>
+<p>Github Actionsでは「何をキャッシュするのか」を記述すれば良いので分かりやすく感じました。「キャッシュがない場合は〇〇する」処理も<code class="language-plaintext highlighter-rouge">if: steps.&lt;step_name&gt;.outputs.cache-hit != ‘true’</code>と書けるので直感的でした。</p>
 
 <p>一方で、GitHub Actionsのログを柔軟に取得するAPIがなかったり、結果Viewに「キャッシュをクリアして再ビルドする」ボタンがなかったりと、少し込み入ったことをすると困る場面が多かったです。</p>
 

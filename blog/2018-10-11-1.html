@@ -233,7 +233,7 @@
 
 <h4 id="installation">Installation</h4>
 
-<p><code class="highlighter-rouge">Gemfile</code>にプラグインを追加し、インストールします。</p>
+<p><code class="language-plaintext highlighter-rouge">Gemfile</code>にプラグインを追加し、インストールします。</p>
 
 <div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">source</span> <span class="s1">'https://rubygems.org'</span>
 
@@ -249,7 +249,7 @@
 
 <h4 id="configuration">Configuration</h4>
 
-<p>algoliaアカウントを作成後、ダッシュボードの「API Keys」にて<strong>Application ID</strong>を確認し、<code class="highlighter-rouge">_config.yml</code>に設定を既述します。</p>
+<p>algoliaアカウントを作成後、ダッシュボードの「API Keys」にて<strong>Application ID</strong>を確認し、<code class="language-plaintext highlighter-rouge">_config.yml</code>に設定を既述します。</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 <span class="na">algolia</span><span class="pi">:</span>
@@ -257,7 +257,7 @@
   <span class="na">index_name</span><span class="pi">:</span> <span class="s">mf_code</span> <span class="c1"># indexingする対象の名前をここで決めます。</span>
 </code></pre></div></div>
 
-<p>私はブログを生成するための設定とAlgoliaにアップするための設定を一部変えたかったので、<code class="highlighter-rouge">_config.algolia.yml</code>と別ファイルにしました。</p>
+<p>私はブログを生成するための設定とAlgoliaにアップするための設定を一部変えたかったので、<code class="language-plaintext highlighter-rouge">_config.algolia.yml</code>と別ファイルにしました。</p>
 
 <h4 id="usage">Usage</h4>
 
@@ -268,7 +268,7 @@
 
 <p></p>
 
-<p>読み込む設定ファイルを変更するには<code class="highlighter-rouge">--config</code>オプションを使います。</p>
+<p>読み込む設定ファイルを変更するには<code class="language-plaintext highlighter-rouge">--config</code>オプションを使います。</p>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ ALGOLIA_API_KEY</span><span class="o">=</span><span class="s1">'your_admin_api_key'</span> bundle <span class="nb">exec </span>jekyll algolia <span class="nt">--config</span> ./_config.algolia.yml
 </code></pre></div></div>
@@ -279,7 +279,7 @@
 <h4 id="advanced">Advanced</h4>
 
 <p>毎回手動で実行するのは面倒なので、CIで実行するようにします。<br />
-ただalgoliaのフリーアカウントでは1ヶ月のアップロード回数に限度があるので、むやみにアップロードするのは避けたいところ。記事コンテンツが修正された時だけアップロードするようにしてみます。具体的には「<strong>前回のCI実行時のリビジョンと比較し<code class="highlighter-rouge">_posts</code>以下に差分がある場合</strong>」にアップロードします。</p>
+ただalgoliaのフリーアカウントでは1ヶ月のアップロード回数に限度があるので、むやみにアップロードするのは避けたいところ。記事コンテンツが修正された時だけアップロードするようにしてみます。具体的には「<strong>前回のCI実行時のリビジョンと比較し<code class="language-plaintext highlighter-rouge">_posts</code>以下に差分がある場合</strong>」にアップロードします。</p>
 
 <p>そのために必要なことは以下のとおりです。</p>
 
@@ -289,8 +289,8 @@
     <ul>
       <li>CIの過去の実行結果を取得し、そのトリガーとなったCommit Idを取得する</li>
       <li>現在のCI実行のトリガーとなったCommit Idを取得する</li>
-      <li>それらのCommit Idのdiffを取得し、<code class="highlighter-rouge">_posts</code>以下の差分の有無を確認する</li>
-      <li><code class="highlighter-rouge">_posts</code>以下に差分がある場合はjekyll-algoliaを実行する</li>
+      <li>それらのCommit Idのdiffを取得し、<code class="language-plaintext highlighter-rouge">_posts</code>以下の差分の有無を確認する</li>
+      <li><code class="language-plaintext highlighter-rouge">_posts</code>以下に差分がある場合はjekyll-algoliaを実行する</li>
     </ul>
   </li>
 </ul>
@@ -337,7 +337,7 @@
   <span class="p">}</span>
 <span class="p">);</span>
 </code></pre></div></div>
-<p><code class="highlighter-rouge">suggestion._highlightResult</code>に検索結果が入ってきます。プロパティの<code class="highlighter-rouge">title</code>は自分がアップロードしたコンテンツが持つプロパティで、algoliaダッシュボードで確認できます。何をヒットさせるか、どんな優先度でヒットさせるか等をダッシュボードから変更することができます。</p>
+<p><code class="language-plaintext highlighter-rouge">suggestion._highlightResult</code>に検索結果が入ってきます。プロパティの<code class="language-plaintext highlighter-rouge">title</code>は自分がアップロードしたコンテンツが持つプロパティで、algoliaダッシュボードで確認できます。何をヒットさせるか、どんな優先度でヒットさせるか等をダッシュボードから変更することができます。</p>
 
 <p></p>
 <p><strong>CSS</strong></p>

@@ -176,7 +176,7 @@
 
 <h3 id="express-ってなに"><a href="http://expressjs.com/">Express</a> ってなに</h3>
 <p>一言で言うとNode上で動くWebアプリケーションをつくるための軽量フレームワーク。
-HTTP通信まわりをいい感じにやってくれるので、<code class="highlighter-rouge">Routing</code>とか<code class="highlighter-rouge">RestAPI</code>とかを簡単に用意できるみたいです。</p>
+HTTP通信まわりをいい感じにやってくれるので、<code class="language-plaintext highlighter-rouge">Routing</code>とか<code class="language-plaintext highlighter-rouge">RestAPI</code>とかを簡単に用意できるみたいです。</p>
 
 <p>フロントもバックも全部JavaScriptで書けるというのがメリットなのだと思いました(個人的にはJavaが好きなので何とも)。</p>
 
@@ -204,14 +204,14 @@ HTTP通信まわりをいい感じにやってくれるので、<code class="hig
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>エントリーポイントとなるこの<code class="highlighter-rouge">app.js</code>をNode上で実行すると、<code class="highlighter-rouge">localhost:3000</code>で待ち受けてくれるようになります。</p>
+<p>エントリーポイントとなるこの<code class="language-plaintext highlighter-rouge">app.js</code>をNode上で実行すると、<code class="language-plaintext highlighter-rouge">localhost:3000</code>で待ち受けてくれるようになります。</p>
 
-<p><code class="highlighter-rouge">app.js</code>内では、<code class="highlighter-rouge">/</code>と<code class="highlighter-rouge">/get</code>のPathに対してRoutingしています。基本的に<code class="highlighter-rouge">app.METHOD(PATH, HANDLER)</code>でHTTPリクエストのRoutingができちゃうので感覚的です。</p>
+<p><code class="language-plaintext highlighter-rouge">app.js</code>内では、<code class="language-plaintext highlighter-rouge">/</code>と<code class="language-plaintext highlighter-rouge">/get</code>のPathに対してRoutingしています。基本的に<code class="language-plaintext highlighter-rouge">app.METHOD(PATH, HANDLER)</code>でHTTPリクエストのRoutingができちゃうので感覚的です。</p>
 
 <h4 id="template-rendering">Template Rendering</h4>
 <p>ExpressはいくつかのTemplateエンジンに対応しているとのことで、今回は使ったことのない <a href="http://www.embeddedjs.com/">EJS - JavaScript Templates</a> を試してみました。</p>
 
-<p>基本の考え方は<code class="highlighter-rouge">&lt;% %&gt;</code>で囲んだ部分でJavaScriptが使えるということなので、そんなに難しく考えなくてもよさそう。
+<p>基本の考え方は<code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code>で囲んだ部分でJavaScriptが使えるということなので、そんなに難しく考えなくてもよさそう。
 Quiteの記事取得APIのResponseのJSONをループで回すようにしました。</p>
 
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;

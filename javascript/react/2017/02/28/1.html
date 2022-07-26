@@ -183,7 +183,7 @@
   <p>Create React apps with no build configuration.</p>
 </blockquote>
 
-<p>イマドキのJS開発環境でWebアプリを作ろうと思ったらビルド環境が必要ですが、それも含めて、Reactを使った開発環境の構築をしてくれるのがこのcreate-react-appです。create-react-appの依存関係に含まれる<code class="highlighter-rouge">react-scripts</code>というモジュールがビルド周りを担っています。</p>
+<p>イマドキのJS開発環境でWebアプリを作ろうと思ったらビルド環境が必要ですが、それも含めて、Reactを使った開発環境の構築をしてくれるのがこのcreate-react-appです。create-react-appの依存関係に含まれる<code class="language-plaintext highlighter-rouge">react-scripts</code>というモジュールがビルド周りを担っています。</p>
 
 <h3 id="how-to-use">How to use</h3>
 
@@ -211,15 +211,15 @@
 
 <h4 id="ビルド成果物に強制的にタグ番号が振られて困る">ビルド成果物に強制的にタグ番号が振られて困る</h4>
 
-<p><code class="highlighter-rouge">npm start</code>を叩くと、手元でお手軽にローカルサーバを起動し動作確認することができます。ちょっとの確認ならこれでいいのですが、複数人で開発している場合は開発環境用のサーバに適用(bundleされたjsを配信する等)して動作確認する場面もあるでしょう。</p>
+<p><code class="language-plaintext highlighter-rouge">npm start</code>を叩くと、手元でお手軽にローカルサーバを起動し動作確認することができます。ちょっとの確認ならこれでいいのですが、複数人で開発している場合は開発環境用のサーバに適用(bundleされたjsを配信する等)して動作確認する場面もあるでしょう。</p>
 
-<p>で、いざバンドル用のコマンド<code class="highlighter-rouge">npm run build</code>を叩いてみると、<code class="highlighter-rouge">bundle.3969bbc2.js</code>といった具合にタグ番号が振られます。これが迷惑。HTML側でいちいち<code class="highlighter-rouge">&lt;script&gt;</code>タグを修正しないといけません。</p>
+<p>で、いざバンドル用のコマンド<code class="language-plaintext highlighter-rouge">npm run build</code>を叩いてみると、<code class="language-plaintext highlighter-rouge">bundle.3969bbc2.js</code>といった具合にタグ番号が振られます。これが迷惑。HTML側でいちいち<code class="language-plaintext highlighter-rouge">&lt;script&gt;</code>タグを修正しないといけません。</p>
 
 <p>リリースするjsファイルはそれでいいけど、開発環境に適用するjsファイルにはそんなのいらんのよ…(´・ω・｀)</p>
 
 <h4 id="ビルド結果が手元での実行時とciでの実行時で違って困る">ビルド結果が手元での実行時とCIでの実行時で違って困る</h4>
 
-<p>CircleCIに<code class="highlighter-rouge">npm run build</code>させたところ、たくさんのWarningと「Failed to compile」の文字が。手元で同コマンドを叩いても何も起きなかったくせに！！</p>
+<p>CircleCIに<code class="language-plaintext highlighter-rouge">npm run build</code>させたところ、たくさんのWarningと「Failed to compile」の文字が。手元で同コマンドを叩いても何も起きなかったくせに！！</p>
 
 <blockquote>
   <p>Create React App treats warnings as failures in the build.</p>
@@ -232,20 +232,20 @@
      <span class="nx">process</span><span class="p">.</span><span class="nx">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
    <span class="p">}</span>
 </code></pre></div></div>
-<p><code class="highlighter-rouge">react-scripts</code>のソースにもこの通り。</p>
+<p><code class="language-plaintext highlighter-rouge">react-scripts</code>のソースにもこの通り。</p>
 
 <p>ここまでは親切でありがたいのだけれど、せめて手元でビルドしたときに同じWarningを表示しよう。なぜ手元ではWarning出してくれないんだ…(´・ω・｀)</p>
 
 <h4 id="つまりビルドの中身を簡単に変えられない">つまりビルドの中身を簡単に変えられない</h4>
 
-<p>ここまでで何となく伝わるかと思いますが、<code class="highlighter-rouge">react-scripts</code>モジュールには<strong>カスタマイズの余地があまりありません</strong>。内部的にWebpackを使っているのですが、<code class="highlighter-rouge">webpack.config.js</code>を外から上書く機構などがなく、<code class="highlighter-rouge">process.env</code>に変数を追加してビルド時にゴニョゴニョしたい…みたいなことがサッとできずに少し困りました。<br />
+<p>ここまでで何となく伝わるかと思いますが、<code class="language-plaintext highlighter-rouge">react-scripts</code>モジュールには<strong>カスタマイズの余地があまりありません</strong>。内部的にWebpackを使っているのですが、<code class="language-plaintext highlighter-rouge">webpack.config.js</code>を外から上書く機構などがなく、<code class="language-plaintext highlighter-rouge">process.env</code>に変数を追加してビルド時にゴニョゴニョしたい…みたいなことがサッとできずに少し困りました。<br />
 (この話： <a href="https://aloerina01.github.io/javascript/2017/02/22/1.html">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</a>)</p>
 
 <h3 id="まとめ">まとめ</h3>
 
 <p><strong>Reactを使ったWebApplicationをさっと立ち上げるには便利ですが、ビルド周りの融通がききにくい</strong>、ということに尽きます。</p>
 
-<p>とは言え、工夫すればいい感じにビルドすることはできるし、そこでゴニョゴニョ工夫するくらいならイチから<code class="highlighter-rouge">webpack.config.js</code>書くなりして自前の環境を用意すればいいし、どうとでもなります。</p>
+<p>とは言え、工夫すればいい感じにビルドすることはできるし、そこでゴニョゴニョ工夫するくらいならイチから<code class="language-plaintext highlighter-rouge">webpack.config.js</code>書くなりして自前の環境を用意すればいいし、どうとでもなります。</p>
 
 <p>こういうのはとっつきやすくて手っ取り早いのがいいところだと思うのであります。以上。</p>
 

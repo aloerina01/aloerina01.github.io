@@ -190,12 +190,12 @@
 <p>オリジン ＝ スキーム、ホスト、ポートの組み合わせ<br />
 (※スキームによって微妙に違うこともある)</p>
 
-<p><code class="highlighter-rouge">http://www.exsample.com:80/index.html</code>のURLを例にすると</p>
+<p><code class="language-plaintext highlighter-rouge">http://www.exsample.com:80/index.html</code>のURLを例にすると</p>
 
 <ul>
-  <li>スキーム ＝ <code class="highlighter-rouge">http://</code></li>
-  <li>ホスト ＝ <code class="highlighter-rouge">www.exsample.com</code></li>
-  <li>ポート ＝ <code class="highlighter-rouge">80</code> (ポート番号「80」は省略可なので普段見かけることは少ない)</li>
+  <li>スキーム ＝ <code class="language-plaintext highlighter-rouge">http://</code></li>
+  <li>ホスト ＝ <code class="language-plaintext highlighter-rouge">www.exsample.com</code></li>
+  <li>ポート ＝ <code class="language-plaintext highlighter-rouge">80</code> (ポート番号「80」は省略可なので普段見かけることは少ない)</li>
 </ul>
 
 <h3 id="同一オリジンポリシーとは">同一オリジンポリシーとは</h3>
@@ -219,12 +219,12 @@
 
 <h4 id="制限を受けないもの">制限を受けないもの</h4>
 <ul>
-  <li><code class="highlighter-rouge">&lt;script src="..."&gt;&lt;/script&gt;</code> によって読み込まれるJavaScript</li>
-  <li><code class="highlighter-rouge">&lt;link rel="stylesheet" href="..."&gt;</code> によって読み込まれるCSS</li>
-  <li><code class="highlighter-rouge">&lt;img&gt;</code>, <code class="highlighter-rouge">&lt;audio&gt;</code>, <code class="highlighter-rouge">&lt;video&gt;</code> のメディアファイル</li>
-  <li><code class="highlighter-rouge">@font-face</code> で指定されたフォント</li>
-  <li><code class="highlighter-rouge">&lt;frame&gt;</code>, <code class="highlighter-rouge">&lt;iframe&gt;</code></li>
-  <li><code class="highlighter-rouge">&lt;object&gt;</code>, <code class="highlighter-rouge">&lt;embad&gt;</code>, <code class="highlighter-rouge">&lt;applet&gt;</code>によるプラグイン</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;script src="..."&gt;&lt;/script&gt;</code> によって読み込まれるJavaScript</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;link rel="stylesheet" href="..."&gt;</code> によって読み込まれるCSS</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;img&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;audio&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;video&gt;</code> のメディアファイル</li>
+  <li><code class="language-plaintext highlighter-rouge">@font-face</code> で指定されたフォント</li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;frame&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code></li>
+  <li><code class="language-plaintext highlighter-rouge">&lt;object&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;embad&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;applet&gt;</code>によるプラグイン</li>
 </ul>
 
 <p>参考：<a href="https://developer.mozilla.org/ja/docs/Web/Security/Same-origin_policy#Cross-origin_network_access">異なるオリジンへのネットワークアクセス</a></p>
@@ -234,11 +234,11 @@
 <p>別オリジンのリソースへアクセス(＝ <strong>クロスサイトHTTPリクエスト</strong>)できるようにするためのルール、手法。</p>
 
 <h4 id="簡単な例">簡単な例</h4>
-<p>ブラウザがオリジンA(<code class="highlighter-rouge">http://origin-a.com</code>)のWEBサイトを表示中に、オリジンB(<code class="highlighter-rouge">http://origin-b.com</code>)のリソースへアクセスする場合のやりとりの例です。</p>
+<p>ブラウザがオリジンA(<code class="language-plaintext highlighter-rouge">http://origin-a.com</code>)のWEBサイトを表示中に、オリジンB(<code class="language-plaintext highlighter-rouge">http://origin-b.com</code>)のリソースへアクセスする場合のやりとりの例です。</p>
 
 <ul>
-  <li>ブラウザ「オリジンA(<code class="highlighter-rouge">http://origin-a.com</code>)がおたくのリソース欲しいって」</li>
-  <li>オリジンB「オリジンA(<code class="highlighter-rouge">http://origin-a.com</code>)からきたの？それなら良いよ😘」</li>
+  <li>ブラウザ「オリジンA(<code class="language-plaintext highlighter-rouge">http://origin-a.com</code>)がおたくのリソース欲しいって」</li>
+  <li>オリジンB「オリジンA(<code class="language-plaintext highlighter-rouge">http://origin-a.com</code>)からきたの？それなら良いよ😘」</li>
 </ul>
 
 <p>こんな会話が、ブラウザから送られる<strong>HTTPリクエストヘッダ</strong>とサーバから返される<strong>HTTPレスポンスヘッダ</strong>にて行われています。</p>

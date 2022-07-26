@@ -208,9 +208,9 @@
 <script src="https://gist.github.com/aloerina01/13fa540af3b6d750f69811c2d6507e81.js"></script>
 
 <p>出てきましたね、Promise.race()👆<br />
-こいつは、Iteratableの引数をとって、それらを並行処理し最も早く結果が返ったものを採用します。この例だと<code class="highlighter-rouge">_getFromCache</code>と<code class="highlighter-rouge">_getFromServer</code>の2つのPromiseのうち、先に<code class="highlighter-rouge">resolve</code>または<code class="highlighter-rouge">reject</code>を返したものが採用されるというわけです😉</p>
+こいつは、Iteratableの引数をとって、それらを並行処理し最も早く結果が返ったものを採用します。この例だと<code class="language-plaintext highlighter-rouge">_getFromCache</code>と<code class="language-plaintext highlighter-rouge">_getFromServer</code>の2つのPromiseのうち、先に<code class="language-plaintext highlighter-rouge">resolve</code>または<code class="language-plaintext highlighter-rouge">reject</code>を返したものが採用されるというわけです😉</p>
 
-<p><code class="highlighter-rouge">_getFromCache</code>と<code class="highlighter-rouge">_getFromServer</code>の(A)〜(D)に実装していきます。</p>
+<p><code class="language-plaintext highlighter-rouge">_getFromCache</code>と<code class="language-plaintext highlighter-rouge">_getFromServer</code>の(A)〜(D)に実装していきます。</p>
 
 <p>(A) キャッシュからコンテンツリストを取得する処理<br />
 (B) 既読のもを表示しないようにする処理<br />

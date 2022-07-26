@@ -185,7 +185,7 @@
         </section>
 
         <article class="post-content">
-          <p>ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です。今回はBabel7.xでの<strong>用途別polyfillの設定方法</strong>と、キモとなる<code class="highlighter-rouge">useBuiltIns</code>オプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは<strong>7.1.0</strong>です)。</p>
+          <p>ES2015+で実装するためにBabelのpolyfillを利用する場面は多いと思いますが、Babel6.xまでと7.xではその導入方法が変わっているので注意が必要です。今回はBabel7.xでの<strong>用途別polyfillの設定方法</strong>と、キモとなる<code class="language-plaintext highlighter-rouge">useBuiltIns</code>オプションの挙動についてまとめてみます(執筆時点でのBabelのバージョンは<strong>7.1.0</strong>です)。</p>
 
 <p>なお、6.xまでの設定方法は「<a href="/blog/2018-03-19-1" target="_blank">Babelの設定を見直すための逆引きガイド</a>」にまとめてあります。polyfillのことだけでなく、Babelとは何か、どのように利用するのか、といったことも併せてまとめてありますので良ければご参考にどうぞ。</p>
 
@@ -226,7 +226,7 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
   <tbody>
     <tr>
       <td>必要なpolyfillだけ入れる</td>
-      <td><code class="highlighter-rouge">useBuiltIns</code>オプション <strong>usage</strong> を使う</td>
+      <td><code class="language-plaintext highlighter-rouge">useBuiltIns</code>オプション <strong>usage</strong> を使う</td>
     </tr>
     <tr>
       <td>全てのpolyfillを入れる</td>
@@ -241,14 +241,14 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
 
 <p></p>
 
-<p>大幅に変更されたのが<code class="highlighter-rouge">useBuiltIns</code>オプションの挙動です。6.xではまずbabel-polyfillを入れた上で「それをどのようにcore-jsに置き換えるか」をuseBuiltInsオプションで指定する形でした。
-対して7.xでは<code class="highlighter-rouge">useBuiltIns</code>オプションに応じて@babel/polyfillを入れたり入れなかったりします。</p>
+<p>大幅に変更されたのが<code class="language-plaintext highlighter-rouge">useBuiltIns</code>オプションの挙動です。6.xではまずbabel-polyfillを入れた上で「それをどのようにcore-jsに置き換えるか」をuseBuiltInsオプションで指定する形でした。
+対して7.xでは<code class="language-plaintext highlighter-rouge">useBuiltIns</code>オプションに応じて@babel/polyfillを入れたり入れなかったりします。</p>
 
 <p>ではそれぞれの方法の詳細を見ていきます。</p>
 
 <h4 id="1-必要なpolyfillだけを入れる方法">1. 必要なpolyfillだけを入れる方法</h4>
 
-<p><strong><a href="https://babeljs.io/docs/en/babel-preset-env" target="_blank">@babel/preset-env</a>の<code class="highlighter-rouge">useBuiltIns</code>オプションを<code class="highlighter-rouge">usage</code>とする</strong>と、@babel/polyfillをソース内でimportせずとも必要なpolyfillだけを自動で選別して入れてくれます。ただし、<strong>@babel/polyfillをnpm installしておく</strong>必要はあります。</p>
+<p><strong><a href="https://babeljs.io/docs/en/babel-preset-env" target="_blank">@babel/preset-env</a>の<code class="language-plaintext highlighter-rouge">useBuiltIns</code>オプションを<code class="language-plaintext highlighter-rouge">usage</code>とする</strong>と、@babel/polyfillをソース内でimportせずとも必要なpolyfillだけを自動で選別して入れてくれます。ただし、<strong>@babel/polyfillをnpm installしておく</strong>必要はあります。</p>
 
 <p><strong>@babel/polyfill, @babel/preset-envをインストールする</strong></p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> @babel/preset-env
@@ -296,7 +296,7 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
 
 <h4 id="2-全てのpolyfillを入れる方法">2. 全てのpolyfillを入れる方法</h4>
 
-<p>Babel6.xまでと同じように<strong><a href="https://babeljs.io/docs/en/babel-polyfill" target="_blank">@babel/polyfill</a>をimport/requireする</strong>方法です。合わせて<code class="highlighter-rouge">useBuiltIns</code>オプションに<code class="highlighter-rouge">entry</code>か<code class="highlighter-rouge">false(default)</code>を指定することができます。</p>
+<p>Babel6.xまでと同じように<strong><a href="https://babeljs.io/docs/en/babel-polyfill" target="_blank">@babel/polyfill</a>をimport/requireする</strong>方法です。合わせて<code class="language-plaintext highlighter-rouge">useBuiltIns</code>オプションに<code class="language-plaintext highlighter-rouge">entry</code>か<code class="language-plaintext highlighter-rouge">false(default)</code>を指定することができます。</p>
 
 <p><strong>@babel/polyfill, @babel/preset-envをインストールする</strong></p>
 
@@ -330,11 +330,11 @@ Babel7.4.0から @babel/polyfill が非推奨となっています。変更点�
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p><code class="highlighter-rouge">useBuiltIns</code>に<code class="highlighter-rouge">entry</code>を指定すると、@babel/polyfillのimportを<strong>生のcore-jsのimportに置換してくれます</strong>。また、今まで通り同じpolyfillを複数回importするのはNGなのでその点もお忘れなく。</p>
+<p><code class="language-plaintext highlighter-rouge">useBuiltIns</code>に<code class="language-plaintext highlighter-rouge">entry</code>を指定すると、@babel/polyfillのimportを<strong>生のcore-jsのimportに置換してくれます</strong>。また、今まで通り同じpolyfillを複数回importするのはNGなのでその点もお忘れなく。</p>
 
 <h4 id="3-グローバル汚染せずにpolyfillを適用する方法">3. グローバル汚染せずにpolyfillを適用する方法</h4>
 
-<p>Babel6.xまででは<code class="highlighter-rouge">babel-plugin-transform-runtime</code>を使っていましたが、7.xからは2つのmoduleを使います。</p>
+<p>Babel6.xまででは<code class="language-plaintext highlighter-rouge">babel-plugin-transform-runtime</code>を使っていましたが、7.xからは2つのmoduleを使います。</p>
 
 <ul>
   <li><a href="https://babeljs.io/docs/en/babel-runtime" target="_blank">@babel/runtime</a> … ソースにバンドルされるpolyfill本体</li>
@@ -367,7 +367,7 @@ useBuiltInsオプションがどのように実装されているか気になっ
 
 <h5 id="babel-preset-envsrcindexjsl285"><a href="https://github.com/babel/babel/blob/59e9c6322baf6cbd1952c40ce5dd0b2ea7802712/packages/babel-preset-env/src/index.js#L285" target="_blank">babel-preset-env/src/index.js#L285</a></h5>
 
-<p><code class="highlighter-rouge">useBuiltIns</code>の値に応じて利用するプラグインを分岐しています。</p>
+<p><code class="language-plaintext highlighter-rouge">useBuiltIns</code>の値に応じて利用するプラグインを分岐しています。</p>
 
 <ul>
   <li>entry設定時 <a href="https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-entry-plugin.js" target="_blank">babel/use-built-ins-entry-plugin.js</a></li>
@@ -388,13 +388,13 @@ useBuiltInsオプションがどのように実装されているか気になっ
 
 <h5 id="babel-preset-envsrcuse-built-ins-entry-pluginjsl31"><a href="https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-entry-plugin.js#L31" target="_blank">babel-preset-env/src/use-built-ins-entry-plugin.js#L31</a></h5>
 
-<p>Plugin.visitorに渡される<code class="highlighter-rouge">isPolyfillImport</code>オブジェクトを見ると、<code class="highlighter-rouge">ImportDeclaration</code>関数に「@babel/polyfillがimportされてるならフラグをたてて、それを必要なmoduleのimportにreplaceしていく」といった実装があります。</p>
+<p>Plugin.visitorに渡される<code class="language-plaintext highlighter-rouge">isPolyfillImport</code>オブジェクトを見ると、<code class="language-plaintext highlighter-rouge">ImportDeclaration</code>関数に「@babel/polyfillがimportされてるならフラグをたてて、それを必要なmoduleのimportにreplaceしていく」といった実装があります。</p>
 
 <h5 id="babel-preset-envsrcuse-built-ins-pluginjsl68"><a href="https://github.com/babel/babel/blob/master/packages/babel-preset-env/src/use-built-ins-plugin.js#L68" target="_blank">babel-preset-env/src/use-built-ins-plugin.js#L68</a></h5>
 
-<p>Plugin.visitorに渡される<code class="highlighter-rouge">addAndRemovePolyfillImports</code>オブジェクトを見ると、「@babel/polyfillがimportされていないことを確認する<code class="highlighter-rouge">ImportDeclaration</code>関数」と、「個々のpolyfillのimportするための関数」が存在します。後者については、ソースを解析して実装方法に応じて呼び出す関数を使い分けている感じですかね。</p>
+<p>Plugin.visitorに渡される<code class="language-plaintext highlighter-rouge">addAndRemovePolyfillImports</code>オブジェクトを見ると、「@babel/polyfillがimportされていないことを確認する<code class="language-plaintext highlighter-rouge">ImportDeclaration</code>関数」と、「個々のpolyfillのimportするための関数」が存在します。後者については、ソースを解析して実装方法に応じて呼び出す関数を使い分けている感じですかね。</p>
 
-<p>個々のpolyfillをimportするための関数は、最終的にutilsの<code class="highlighter-rouge">createImport</code>関数を呼び出し、その中で更に<a href="https://github.com/babel/babel/blob/master/packages/babel-helper-module-imports/src/index.js" target="_blank">@babel/helper-module-imports</a>に処理を委譲しています。この@babel/helper-module-importsがpolyfillを個別にimportする本体ですね。</p>
+<p>個々のpolyfillをimportするための関数は、最終的にutilsの<code class="language-plaintext highlighter-rouge">createImport</code>関数を呼び出し、その中で更に<a href="https://github.com/babel/babel/blob/master/packages/babel-helper-module-imports/src/index.js" target="_blank">@babel/helper-module-imports</a>に処理を委譲しています。この@babel/helper-module-importsがpolyfillを個別にimportする本体ですね。</p>
 
 <h5 id="babelhelper-module-imports"><a href="https://github.com/babel/babel/tree/master/packages/babel-helper-module-imports" target="_blank">@babel/helper-module-imports</a></h5>
 
@@ -409,7 +409,7 @@ polyfillの注入を担うclass。1つのpolyfillにつき1インスタンスを
 <p><strong>import-bulder.js</strong><br />
 上述の「注入する処理」の本体。慎ましいBuilderパターンで実装されている。</p>
 
-<p>以上、ざっくりとしたコードリーディングでした。@babel/coreのほうまではちゃんと読んでないので誤りがあるかもしれませんが、なんとなく<code class="highlighter-rouge">useBuiltIns</code>による挙動の違いを想定できたので良しとします。</p>
+<p>以上、ざっくりとしたコードリーディングでした。@babel/coreのほうまではちゃんと読んでないので誤りがあるかもしれませんが、なんとなく<code class="language-plaintext highlighter-rouge">useBuiltIns</code>による挙動の違いを想定できたので良しとします。</p>
 
 <h3 id="あとがき">あとがき</h3>
 

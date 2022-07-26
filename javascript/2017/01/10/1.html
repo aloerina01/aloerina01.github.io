@@ -179,11 +179,11 @@
 簡単に言うと、なんでもかんでもまずES6として依存性解決をした上で、それをbabel等で任意のものに変換しようというもの。内部処理がES6を前提としている、ということです。</p>
 
 <h3 id="es6ネイティブのいいところ">ES6ネイティブのいいところ</h3>
-<p>ES6でのモジュール機構(<code class="highlighter-rouge">import/export</code>)の仕組みは、<strong>静的である</strong>というのが一番の利点です。静的というのは、<strong>コンパイル時に諸々いい感じになる</strong>ということです。従来の(生の)JavaScriptにはコンパイルの概念がなく基本的には依存関係でも変数でも何でも実行時に決まるものですが、これがコンパイル時に決まるということです。</p>
+<p>ES6でのモジュール機構(<code class="language-plaintext highlighter-rouge">import/export</code>)の仕組みは、<strong>静的である</strong>というのが一番の利点です。静的というのは、<strong>コンパイル時に諸々いい感じになる</strong>ということです。従来の(生の)JavaScriptにはコンパイルの概念がなく基本的には依存関係でも変数でも何でも実行時に決まるものですが、これがコンパイル時に決まるということです。</p>
 
 <h3 id="tree-shaking">Tree-shaking</h3>
 <p>閑話休題。rollup.jsがES6ベースであることで得られる大きなメリットの一つが、<strong>Tree-shaking</strong>だそうです(<a href="http://rollupjs.org/">公式</a>より)。つまるところ<strong>Dead Code Elimination</strong>っぽいです。  
-具体的には、内部で不要な<code class="highlighter-rouge">export</code>を削除してくれるということです。Dead Code Eliminationしてくれるという点は、コンパイルと呼ぶにふさわしいですね。</p>
+具体的には、内部で不要な<code class="language-plaintext highlighter-rouge">export</code>を削除してくれるということです。Dead Code Eliminationしてくれるという点は、コンパイルと呼ぶにふさわしいですね。</p>
 
 <h3 id="how-to-use">How to use</h3>
 
@@ -196,10 +196,10 @@
 <h5 id="関連するプラグインのインストール">関連するプラグインのインストール</h5>
 
 <ul>
-  <li><code class="highlighter-rouge">rollup-plugin-node-resolve</code>  - これないとnom-modulesが使えない</li>
-  <li><code class="highlighter-rouge">rollup-plugin-commonjs</code>  - これないとCommonJSを読み込めない</li>
-  <li><code class="highlighter-rouge">rollup-plugin-babel</code>  - 今回はbabeってES5を吐き出すところまでする</li>
-  <li><code class="highlighter-rouge">babel-preset-es2015-rollup</code>  - 同上</li>
+  <li><code class="language-plaintext highlighter-rouge">rollup-plugin-node-resolve</code>  - これないとnom-modulesが使えない</li>
+  <li><code class="language-plaintext highlighter-rouge">rollup-plugin-commonjs</code>  - これないとCommonJSを読み込めない</li>
+  <li><code class="language-plaintext highlighter-rouge">rollup-plugin-babel</code>  - 今回はbabeってES5を吐き出すところまでする</li>
+  <li><code class="language-plaintext highlighter-rouge">babel-preset-es2015-rollup</code>  - 同上</li>
 </ul>
 
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i <span class="nt">-D</span> rollup-plugin-node-resolve rollup-plugin-commonjs rollup-plugin-babel babel-preset-es2015-rollup

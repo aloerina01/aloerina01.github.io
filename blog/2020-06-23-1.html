@@ -189,21 +189,21 @@
 
 <h5 id="悩み1-vuexのmaphelperを使うとコードが読みにくくなる">悩み1. VuexのmapHelperを使うとコードが読みにくくなる</h5>
 
-<p>「<code class="highlighter-rouge">created</code>内で呼ばれているこの関数はどこに定義されているんだ…？ <code class="highlighter-rouge">methods</code>？ それともStoreのアクション…？」</p>
+<p>「<code class="language-plaintext highlighter-rouge">created</code>内で呼ばれているこの関数はどこに定義されているんだ…？ <code class="language-plaintext highlighter-rouge">methods</code>？ それともStoreのアクション…？」</p>
 
-<p>「<code class="highlighter-rouge">import</code>部分を見るにこのComponentはどのStoreにも依存してなさそうだ…。と思いきや、<code class="highlighter-rouge">mapState</code>でいろんなStoreの値を読み込んでいるぞ…」</p>
+<p>「<code class="language-plaintext highlighter-rouge">import</code>部分を見るにこのComponentはどのStoreにも依存してなさそうだ…。と思いきや、<code class="language-plaintext highlighter-rouge">mapState</code>でいろんなStoreの値を読み込んでいるぞ…」</p>
 
 <h5 id="悩み2-ビジネスロジック層がない">悩み2. ビジネスロジック層がない</h5>
 
-<p>「ページ読み込み時に走るAPIアクセスはどこに実装されている？ Componentの<code class="highlighter-rouge">created</code>？ Storeのアクション？ ロジックがまとまっている層がなくて処理の入り口を見つけにくい…」</p>
+<p>「ページ読み込み時に走るAPIアクセスはどこに実装されている？ Componentの<code class="language-plaintext highlighter-rouge">created</code>？ Storeのアクション？ ロジックがまとまっている層がなくて処理の入り口を見つけにくい…」</p>
 
 <p>「クリックされたら見た目を変えてAPIアクセスしてStoreを更新する実装をしたいけど、どうやって責務を分離していくといいかな…」</p>
 
-<p>「ユーザーの権限を元に表示内容を変える実装したいのだけど、複数のStoreの値を組み合わせたロジックが必要そうだ。こういう場合はComponentの<code class="highlighter-rouge">methods</code>に実装すべき…？ 将来を見越してmixinとして実装すべき…？ それとも…？」</p>
+<p>「ユーザーの権限を元に表示内容を変える実装したいのだけど、複数のStoreの値を組み合わせたロジックが必要そうだ。こういう場合はComponentの<code class="language-plaintext highlighter-rouge">methods</code>に実装すべき…？ 将来を見越してmixinとして実装すべき…？ それとも…？」</p>
 
 <h5 id="悩み3-moduleのnamespaceが使いにくい">悩み3. Moduleのnamespaceが使いにくい</h5>
 
-<p>「VuexStoreのモジュールの<code class="highlighter-rouge">namespace</code>は分けたいけれど、そうするとFluxのように全モジュールに対してDispatchできない…」</p>
+<p>「VuexStoreのモジュールの<code class="language-plaintext highlighter-rouge">namespace</code>は分けたいけれど、そうするとFluxのように全モジュールに対してDispatchできない…」</p>
 
 <p style="text-align:center">* * *</p>
 
@@ -226,7 +226,7 @@
 <h3 id="query-ゲッターのエイリアス-を実装する">Query (ゲッターのエイリアス) を実装する</h3>
 
 <p>まずは比較的シンプルなQueryから考えます。<br />
-Componentから<code class="highlighter-rouge">this.$store.getters</code>や<code class="highlighter-rouge">mapGetters</code>などを利用することで「副作用なくアプリケーションの状態を取得する」ことが可能なので、一応Queryとして完成していると言えます。が、悩み1にあるようにこれらの方法ではどのStoreに依存しているかが読み取りにくいため、今回は自前のQueryを実装します。</p>
+Componentから<code class="language-plaintext highlighter-rouge">this.$store.getters</code>や<code class="language-plaintext highlighter-rouge">mapGetters</code>などを利用することで「副作用なくアプリケーションの状態を取得する」ことが可能なので、一応Queryとして完成していると言えます。が、悩み1にあるようにこれらの方法ではどのStoreに依存しているかが読み取りにくいため、今回は自前のQueryを実装します。</p>
 
 <p><img src="/assets/2020-06-23/query.jpg" alt="query" /></p>
 
@@ -234,7 +234,7 @@ Componentから<code class="highlighter-rouge">this.$store.getters</code>や<cod
 
 <ol>
   <li>Storeの更新に応じて<strong>リアクティブに値を受け取れる</strong>仕組みとなっていること</li>
-  <li>Componentの<strong><code class="highlighter-rouge">import</code>部分を見ることで、どのStoreを利用しているかが読み取れる</strong>ようなQueryとなっていること</li>
+  <li>Componentの<strong><code class="language-plaintext highlighter-rouge">import</code>部分を見ることで、どのStoreを利用しているかが読み取れる</strong>ようなQueryとなっていること</li>
   <li>Storeを実装する際に、Queryの存在を意識せず従来通りに実装できること</li>
   <li>Queryを実装する際または利用する際に、複雑なルールを覚えることを強要しない仕組みとなっていること</li>
 </ol>
@@ -264,11 +264,11 @@ Componentから<code class="highlighter-rouge">this.$store.getters</code>や<cod
 
 <p></p>
 
-<p>import部分をみると<code class="highlighter-rouge">TodoStoreQuery</code>があるので、<code class="highlighter-rouge">TodoStore</code>の値を利用しているComponentであることが読み取れます。</p>
+<p>import部分をみると<code class="language-plaintext highlighter-rouge">TodoStoreQuery</code>があるので、<code class="language-plaintext highlighter-rouge">TodoStore</code>の値を利用しているComponentであることが読み取れます。</p>
 
-<p>ついでにQueryの利用箇所にも触れておくと、<code class="highlighter-rouge">computed</code>の中でゲッターを使うときと同じ書き口で使われていますね。このようなQueryを用意することができれば、要件4の「複雑なルールを覚えることを強要しない仕組みであること」も満たせていると言えそうです。</p>
+<p>ついでにQueryの利用箇所にも触れておくと、<code class="language-plaintext highlighter-rouge">computed</code>の中でゲッターを使うときと同じ書き口で使われていますね。このようなQueryを用意することができれば、要件4の「複雑なルールを覚えることを強要しない仕組みであること」も満たせていると言えそうです。</p>
 
-<p>ではこのQueryを実装していきます。参考に<code class="highlighter-rouge">TodoStore</code>の実装も添えておきます。</p>
+<p>ではこのQueryを実装していきます。参考に<code class="language-plaintext highlighter-rouge">TodoStore</code>の実装も添えておきます。</p>
 
 <p><strong>store.js</strong></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">export</span> <span class="kd">const</span> <span class="nx">TodoStore</span> <span class="o">=</span> <span class="p">{</span>
@@ -310,9 +310,9 @@ Componentから<code class="highlighter-rouge">this.$store.getters</code>や<cod
 <span class="c1">// export const AnotherStoreQuery = createGettersAlias(AnotherStore);  </span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">createGettersAlias</code>関数は、VuexStoreのインスタンスから<code class="highlighter-rouge">TodoStore</code>のゲッター要素だけを抜き出して返す関数です。やっていることは<code class="highlighter-rouge">mapGetters</code>とほぼ同じです。</p>
+<p><code class="language-plaintext highlighter-rouge">createGettersAlias</code>関数は、VuexStoreのインスタンスから<code class="language-plaintext highlighter-rouge">TodoStore</code>のゲッター要素だけを抜き出して返す関数です。やっていることは<code class="language-plaintext highlighter-rouge">mapGetters</code>とほぼ同じです。</p>
 
-<p>Storeを追加する際は、通常通りの方法でStoreを実装することに加えて<code class="highlighter-rouge">createGettersAlias</code>を呼び出すだけでOKです。ちなみに私はStoreへアクセスする際は必ずゲッターを経由するようにしているためステートのエイリアスはつくっていませんが、このあたりは好みですね。</p>
+<p>Storeを追加する際は、通常通りの方法でStoreを実装することに加えて<code class="language-plaintext highlighter-rouge">createGettersAlias</code>を呼び出すだけでOKです。ちなみに私はStoreへアクセスする際は必ずゲッターを経由するようにしているためステートのエイリアスはつくっていませんが、このあたりは好みですね。</p>
 
 <h3 id="command-ビジネスロジックdispatch-を実装する">Command (ビジネスロジック+Dispatch) を実装する</h3>
 
@@ -326,7 +326,7 @@ Componentから<code class="highlighter-rouge">this.$store.getters</code>や<cod
   <li><strong>返り値のない関数</strong>とする</li>
   <li>システム的な処理単位ではなく、<strong>ユースケース単位</strong>で1つ1つのCommandを実装する</li>
   <li>処理に必要な依存関係は基本的に引数で受け取る</li>
-  <li>storeを更新するときはVuexの<code class="highlighter-rouge">dispatch</code>を経由する</li>
+  <li>storeを更新するときはVuexの<code class="language-plaintext highlighter-rouge">dispatch</code>を経由する</li>
 </ol>
 
 <p>今回は「TODOを完了にする」ユースケースのCommandの実装を例にします。</p>
@@ -349,7 +349,7 @@ Componentから<code class="highlighter-rouge">this.$store.getters</code>や<cod
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>Commandから直接<code class="highlighter-rouge">vuexStoreInstance.dispatch</code>を呼び出しても良いのですが、今後Dispatch部分を修正する可能性を考慮して、Store層とCommand層の間にDispatcher層を噛ませておきます。</p>
+<p>Commandから直接<code class="language-plaintext highlighter-rouge">vuexStoreInstance.dispatch</code>を呼び出しても良いのですが、今後Dispatch部分を修正する可能性を考慮して、Store層とCommand層の間にDispatcher層を噛ませておきます。</p>
 
 <p><strong>commands.js</strong></p>
 
@@ -367,9 +367,9 @@ Componentから<code class="highlighter-rouge">this.$store.getters</code>や<cod
 
 <p></p>
 
-<p>ここまで実装できたら、Componentから<code class="highlighter-rouge">Commands.doneTodo</code>を呼び出せば完成ですね。ちなみに<code class="highlighter-rouge">doneTodo</code>を直接<code class="highlighter-rouge">export</code>せず<code class="highlighter-rouge">Commands</code>オブジェクトで束ねているのは、grepしやすくするためです。好みなので要件には含んでいません。</p>
+<p>ここまで実装できたら、Componentから<code class="language-plaintext highlighter-rouge">Commands.doneTodo</code>を呼び出せば完成ですね。ちなみに<code class="language-plaintext highlighter-rouge">doneTodo</code>を直接<code class="language-plaintext highlighter-rouge">export</code>せず<code class="language-plaintext highlighter-rouge">Commands</code>オブジェクトで束ねているのは、grepしやすくするためです。好みなので要件には含んでいません。</p>
 
-<p>ちなみにQueryとCommandに依存したComponentの<code class="highlighter-rouge">import</code>部分は以下のようになります。</p>
+<p>ちなみにQueryとCommandに依存したComponentの<code class="language-plaintext highlighter-rouge">import</code>部分は以下のようになります。</p>
 
 <div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code>// SampleComponent.vue
 

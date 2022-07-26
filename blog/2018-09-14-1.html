@@ -246,7 +246,7 @@
 
 <h4 id="要件1-イベントが発生したらすべてのcallbackを実行すること">要件1 イベントが発生したらすべてのCallbackを実行すること</h4>
 
-<p>Dispatcherは、<code class="highlighter-rouge">addEventListener</code>のように「特定のイベントに特定のCallbackを紐づける」のではなく、<strong>何らかのイベントがdispatchされたら登録されている全てのCallbackを実行します</strong>。その際、Callbackには<strong>Payload</strong>と呼ばれる「イベントに関する情報を持つオブジェクト」を引数として渡します。ここまでがDispatcherの役割です。</p>
+<p>Dispatcherは、<code class="language-plaintext highlighter-rouge">addEventListener</code>のように「特定のイベントに特定のCallbackを紐づける」のではなく、<strong>何らかのイベントがdispatchされたら登録されている全てのCallbackを実行します</strong>。その際、Callbackには<strong>Payload</strong>と呼ばれる「イベントに関する情報を持つオブジェクト」を引数として渡します。ここまでがDispatcherの役割です。</p>
 
 <p>Payloadに応じてStoreの中身をどう更新するか(または更新しないか)は、Callback側で判断することになります。</p>
 
@@ -274,7 +274,7 @@
 
 <p>Storeを更新する際、実行順序を意識しなければならない場面もあると思います。例えば「ユーザーの設定を更新して、それに応じて表示する情報を更新する」といったケースですね。これに対応することがDispatcherのもう一つの要件です。つまり<strong>Callbackの実行順序を制御する</strong>ことです。</p>
 
-<p>Fluxの設計手法を実現するための最小限のライブラリである<a href="http://facebook.github.io/flux/docs/flux-utils.html#content" target="_blank">Flux Utils</a>で実例を確認してみます。Flux Utilsに実装されている<a href="https://github.com/facebook/flux/blob/master/src/Dispatcher.js" target="_blank">Dispatcher.js</a>には<code class="highlighter-rouge">waitFor</code>という関数が定義されていて、これがCallbackの実行順序を制御しています。</p>
+<p>Fluxの設計手法を実現するための最小限のライブラリである<a href="http://facebook.github.io/flux/docs/flux-utils.html#content" target="_blank">Flux Utils</a>で実例を確認してみます。Flux Utilsに実装されている<a href="https://github.com/facebook/flux/blob/master/src/Dispatcher.js" target="_blank">Dispatcher.js</a>には<code class="language-plaintext highlighter-rouge">waitFor</code>という関数が定義されていて、これがCallbackの実行順序を制御しています。</p>
 
 <p>waitFor関数はCallbackの中から呼び出すもので、「あのCallbackの実行を待ってから自身を実行する」という制御をすることができます。</p>
 
@@ -293,7 +293,7 @@
 
 <ol>
   <li>DispatcherにCallbackを登録すると、Callbackの識別子が発行されます</li>
-  <li>Callback内で<code class="highlighter-rouge">waitFor</code>を呼び出し、引数に実行を待ちたい識別子を渡します</li>
+  <li>Callback内で<code class="language-plaintext highlighter-rouge">waitFor</code>を呼び出し、引数に実行を待ちたい識別子を渡します</li>
   <li>あとは同期的に処理を書くだけでOKです</li>
 </ol>
 
@@ -307,12 +307,12 @@
 
 <ol>
   <li>プレーンなオブジェクトであること</li>
-  <li>ユースケースを表す<code class="highlighter-rouge">type</code>プロパティを持っていること</li>
+  <li>ユースケースを表す<code class="language-plaintext highlighter-rouge">type</code>プロパティを持っていること</li>
 </ol>
 
-<p>とてもシンプルですね。ちなみにActionオブジェクト内に定義される<code class="highlighter-rouge">type</code>は一般的に<strong>ActionType</strong>と呼ばれます。</p>
+<p>とてもシンプルですね。ちなみにActionオブジェクト内に定義される<code class="language-plaintext highlighter-rouge">type</code>は一般的に<strong>ActionType</strong>と呼ばれます。</p>
 
-<p>また、Actionには<code class="highlighter-rouge">type</code>プロパティ以外に、ユースケースを実行するために必要な値を持たせることもできます。以下のコードはTODOアプリの「TODOを追加する」Actionの実装例です。</p>
+<p>また、Actionには<code class="language-plaintext highlighter-rouge">type</code>プロパティ以外に、ユースケースを実行するために必要な値を持たせることもできます。以下のコードはTODOアプリの「TODOを追加する」Actionの実装例です。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">todoAction</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">type</span><span class="p">:</span> <span class="dl">'</span><span class="s1">ADD_TODO</span><span class="dl">'</span><span class="p">,</span>  <span class="c1">// ActionType</span>
@@ -347,15 +347,15 @@
 <p>FSAは「読みやすさ」「使いやすさ」「シンプルさ」をコンセプトとし、上述の2つの要件に加え4つのルールを設けています。</p>
 
 <ul>
-  <li>Actionは<code class="highlighter-rouge">payload</code>プロパティを持つことができる</li>
-  <li>Actionは<code class="highlighter-rouge">error</code>プロパティを持つことができる</li>
-  <li>Actionは<code class="highlighter-rouge">meta</code>プロパティを持つことができる</li>
-  <li>Actionは<code class="highlighter-rouge">type</code>, <code class="highlighter-rouge">payload</code>, <code class="highlighter-rouge">error</code>, <code class="highlighter-rouge">meta</code>以外のプロパティを持ってはいけない</li>
+  <li>Actionは<code class="language-plaintext highlighter-rouge">payload</code>プロパティを持つことができる</li>
+  <li>Actionは<code class="language-plaintext highlighter-rouge">error</code>プロパティを持つことができる</li>
+  <li>Actionは<code class="language-plaintext highlighter-rouge">meta</code>プロパティを持つことができる</li>
+  <li>Actionは<code class="language-plaintext highlighter-rouge">type</code>, <code class="language-plaintext highlighter-rouge">payload</code>, <code class="language-plaintext highlighter-rouge">error</code>, <code class="language-plaintext highlighter-rouge">meta</code>以外のプロパティを持ってはいけない</li>
 </ul>
 
-<p><code class="highlighter-rouge">type</code>プロパティはActionTypeのことですね。「typeは<code class="highlighter-rouge">===</code>を使って同じものか判定できるべきだ」と定義していますが、一般的にActionTypeはStringで実装することが多いと思うので、特に意識する必要はなさそうです。</p>
+<p><code class="language-plaintext highlighter-rouge">type</code>プロパティはActionTypeのことですね。「typeは<code class="language-plaintext highlighter-rouge">===</code>を使って同じものか判定できるべきだ」と定義していますが、一般的にActionTypeはStringで実装することが多いと思うので、特に意識する必要はなさそうです。</p>
 
-<p>FSAにおける<code class="highlighter-rouge">payload</code>プロパティは今まで説明してきた「Payload」より狭義です。先述したPayloadは「Dispatcherに渡されるもの」であり、つまりActionオブジェクトそのものを指していました。それに対してFSAのPayloadは「Actionの実行に必要な値」のみを指しています。「TODOを追加する」Actionの例でいうと、<code class="highlighter-rouge">text</code>部分のみがPayloadということになります。</p>
+<p>FSAにおける<code class="language-plaintext highlighter-rouge">payload</code>プロパティは今まで説明してきた「Payload」より狭義です。先述したPayloadは「Dispatcherに渡されるもの」であり、つまりActionオブジェクトそのものを指していました。それに対してFSAのPayloadは「Actionの実行に必要な値」のみを指しています。「TODOを追加する」Actionの例でいうと、<code class="language-plaintext highlighter-rouge">text</code>部分のみがPayloadということになります。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
   <span class="nl">type</span><span class="p">:</span> <span class="nx">ActionType</span><span class="p">.</span><span class="nx">ADD_TODO</span><span class="p">,</span>
@@ -367,9 +367,9 @@
 
 <p></p>
 
-<p>FSAにおける<code class="highlighter-rouge">error</code>プロパティは、エラーが起きたことを通知するために<code class="highlighter-rouge">true</code>をセットして使います。「エラーであることを正常時と同じ方法で伝達する」という点で<code class="highlighter-rouge">Promise.reject</code>に似ている、と説明されています。<code class="highlighter-rouge">error: true</code>のときは<code class="highlighter-rouge">payload</code>にはエラーオブジェクトを詰めるのが一般的な用法です。</p>
+<p>FSAにおける<code class="language-plaintext highlighter-rouge">error</code>プロパティは、エラーが起きたことを通知するために<code class="language-plaintext highlighter-rouge">true</code>をセットして使います。「エラーであることを正常時と同じ方法で伝達する」という点で<code class="language-plaintext highlighter-rouge">Promise.reject</code>に似ている、と説明されています。<code class="language-plaintext highlighter-rouge">error: true</code>のときは<code class="language-plaintext highlighter-rouge">payload</code>にはエラーオブジェクトを詰めるのが一般的な用法です。</p>
 
-<p>FSAにおける<code class="highlighter-rouge">meta</code>プロパティは、<code class="highlighter-rouge">payload</code>に詰めるべきでないものを持つための補助的なものです。</p>
+<p>FSAにおける<code class="language-plaintext highlighter-rouge">meta</code>プロパティは、<code class="language-plaintext highlighter-rouge">payload</code>に詰めるべきでないものを持つための補助的なものです。</p>
 
 <p>以上がFSAのルールです。<br />
 FSAはReduxを使う上で守るべきものですが、Redux以外の方法でFlux設計をする場合でも選択肢のひとつとして検討してみるといいと思います。</p>
@@ -417,7 +417,7 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>このように、Storeが保持する値を直接更新する方法(Setter)は存在しません。Storeが持つ値をひとまとめの<code class="highlighter-rouge">State</code>とみなし、<strong>どのような条件でどのようにStateを更新するかを定義している</strong>関数が実装されています。Dispatcherの説明時に度々登場した「Callback」は、Storeで実装されるというわけですね。</p>
+<p>このように、Storeが保持する値を直接更新する方法(Setter)は存在しません。Storeが持つ値をひとまとめの<code class="language-plaintext highlighter-rouge">State</code>とみなし、<strong>どのような条件でどのようにStateを更新するかを定義している</strong>関数が実装されています。Dispatcherの説明時に度々登場した「Callback」は、Storeで実装されるというわけですね。</p>
 
 <p>ここまでの話をまとめると、<strong>何らかのActionがDispatcherに渡されると、Dispatcherに登録されているすべてのCallbackが実行され、そのCallbackが各々のStoreを更新していく</strong>ということになります。</p>
 
@@ -432,7 +432,7 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
 
 <h4 id="initialstateの実装">InitialStateの実装</h4>
 
-<p>ViewはStateを取得するためにStoreのgetterを叩きます。ただ、初期描画時にはStoreが空っぽなので、初期値を定義しておく必要があります。上の実装例では<code class="highlighter-rouge">constructor</code>の中で初期値を定義していますが、別の関数としてくくり出しておくのが一般的です。</p>
+<p>ViewはStateを取得するためにStoreのgetterを叩きます。ただ、初期描画時にはStoreが空っぽなので、初期値を定義しておく必要があります。上の実装例では<code class="language-plaintext highlighter-rouge">constructor</code>の中で初期値を定義していますが、別の関数としてくくり出しておくのが一般的です。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nx">TodoStore</span> <span class="p">{</span>
   <span class="nx">getInitialState</span><span class="p">()</span> <span class="p">{</span>
@@ -465,7 +465,7 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>こうすることでStoreのテストがしやすかったり、データの更新ロジックの周りに副作用が起きにくかったり、<code class="highlighter-rouge">dispatcher.waitFor</code>などと組み合わせても煩雑にならず可読性の高い状態を維持できたり…といったことが期待されます。</p>
+<p>こうすることでStoreのテストがしやすかったり、データの更新ロジックの周りに副作用が起きにくかったり、<code class="language-plaintext highlighter-rouge">dispatcher.waitFor</code>などと組み合わせても煩雑にならず可読性の高い状態を維持できたり…といったことが期待されます。</p>
 
 <p>Reduce関数と併せて、<strong>StateをImmutableにする</strong>実装パターンもよく使われます。Reduce関数以外のところで意図せずStateが書き換えられてしまうことを防ぎ、堅牢性を高める手法です。</p>
 
@@ -549,9 +549,9 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
 
 <p>FluxContainerを使ったController-Viewsの実装例です。</p>
 
-<p>FluxContainerとFluxStoreとつなぎ込むため、2つのstaticメソッドが用意されています。<code class="highlighter-rouge">getStores</code>で変更を監視するStoreを決め、Storeが変更されたら呼出される<code class="highlighter-rouge">calculateState</code>でViewsに流し込むStateを形成します。このStateはComponentの<code class="highlighter-rouge">state</code>にセットされるので、あとは通常のReactComponentのようにRender関数で子Componentへ渡せばOKです。</p>
+<p>FluxContainerとFluxStoreとつなぎ込むため、2つのstaticメソッドが用意されています。<code class="language-plaintext highlighter-rouge">getStores</code>で変更を監視するStoreを決め、Storeが変更されたら呼出される<code class="language-plaintext highlighter-rouge">calculateState</code>でViewsに流し込むStateを形成します。このStateはComponentの<code class="language-plaintext highlighter-rouge">state</code>にセットされるので、あとは通常のReactComponentのようにRender関数で子Componentへ渡せばOKです。</p>
 
-<p>ちなみにFluxContainer.js内で<code class="highlighter-rouge">import</code>されている<a href="https://github.com/facebook/flux/blob/master/src/container/FluxContainerSubscriptions.js" target="_blank">FluxContainerSubscriptions.js</a>に「①Storeの変更を監視する」ロジックがまとまっていて参考になりました。</p>
+<p>ちなみにFluxContainer.js内で<code class="language-plaintext highlighter-rouge">import</code>されている<a href="https://github.com/facebook/flux/blob/master/src/container/FluxContainerSubscriptions.js" target="_blank">FluxContainerSubscriptions.js</a>に「①Storeの変更を監視する」ロジックがまとまっていて参考になりました。</p>
 
 <h4 id="viewのまとめ">Viewのまとめ</h4>
 
@@ -559,7 +559,7 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
   <li>Fluxの「View」には2つの登場人物がいる</li>
   <li>状態を持たないViews
     <ul>
-      <li>原則<code class="highlighter-rouge">state</code>を持たないReactComponent</li>
+      <li>原則<code class="language-plaintext highlighter-rouge">state</code>を持たないReactComponent</li>
       <li>Functinal Componentで実装することが推奨されている</li>
       <li>表示に関する状態を持つ場合はClass Componentで実装する</li>
     </ul>
@@ -571,8 +571,8 @@ FSAはReduxを使う上で守るべきものですが、Redux以外の方法でF
       <li>Flux UtilsではController-Viewsを「Container」と呼ぶ</li>
       <li>FluxContainer.jsを利用してController-Viewsを実装できる
         <ul>
-          <li><code class="highlighter-rouge">getStores</code>で監視するStoreを決める</li>
-          <li><code class="highlighter-rouge">calculateState</code>で流し込むStateを形成する</li>
+          <li><code class="language-plaintext highlighter-rouge">getStores</code>で監視するStoreを決める</li>
+          <li><code class="language-plaintext highlighter-rouge">calculateState</code>で流し込むStateを形成する</li>
         </ul>
       </li>
     </ul>

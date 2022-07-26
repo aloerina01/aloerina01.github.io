@@ -203,8 +203,8 @@
 <h4 id="全体の構成">全体の構成</h4>
 
 <ol>
-  <li>masterブランチ(baseとなるブランチ)の最新コミットの<code class="highlighter-rouge">commit id</code>を取得する</li>
-  <li>ターゲットとなるブランチとmasterブランチ(baseとなるブランチ)が枝分かれした<code class="highlighter-rouge">commit id</code>を取得する</li>
+  <li>masterブランチ(baseとなるブランチ)の最新コミットの<code class="language-plaintext highlighter-rouge">commit id</code>を取得する</li>
+  <li>ターゲットとなるブランチとmasterブランチ(baseとなるブランチ)が枝分かれした<code class="language-plaintext highlighter-rouge">commit id</code>を取得する</li>
   <li>それらを比較し、差分がないかどうかを判定する</li>
   <li>CIから実行された場合は判定結果をPull Requestにコメントする</li>
 </ol>
@@ -276,11 +276,11 @@ curl <span class="nt">-XPOST</span> <span class="se">\</span>
 
 <h5 id="head-と-tail-が便利で乱用しました">head と tail が便利で乱用しました</h5>
 
-<p><code class="highlighter-rouge">head -n</code>は<strong>入力の冒頭からn行を抽出し出力する</strong>コマンドです。<code class="highlighter-rouge">git log</code>や<code class="highlighter-rouge">git show-branch</code>は複数に渡り情報が表示されるので、head/tailを使うと最新/最古の情報を抽出できて便利でした。</p>
+<p><code class="language-plaintext highlighter-rouge">head -n</code>は<strong>入力の冒頭からn行を抽出し出力する</strong>コマンドです。<code class="language-plaintext highlighter-rouge">git log</code>や<code class="language-plaintext highlighter-rouge">git show-branch</code>は複数に渡り情報が表示されるので、head/tailを使うと最新/最古の情報を抽出できて便利でした。</p>
 
 <h5 id="sedも便利で乱用しました">sedも便利で乱用しました</h5>
 
-<p><code class="highlighter-rouge">sed</code>は<strong>入力をコマンドに従って処理し出力する</strong>コマンドです。今回は<code class="highlighter-rouge">sed -e s/置換前/置換後</code>として文字列を置換します。置換前で<code class="highlighter-rouge">()</code>に入れた部分(グループ化した部分)を、置換後に<code class="highlighter-rouge">\1(特殊変数)</code>で抜き出しています。これが便利すぎて、入力から一部の文字列を切りとって出力する場面では乱用してしまいます。</p>
+<p><code class="language-plaintext highlighter-rouge">sed</code>は<strong>入力をコマンドに従って処理し出力する</strong>コマンドです。今回は<code class="language-plaintext highlighter-rouge">sed -e s/置換前/置換後</code>として文字列を置換します。置換前で<code class="language-plaintext highlighter-rouge">()</code>に入れた部分(グループ化した部分)を、置換後に<code class="language-plaintext highlighter-rouge">\1(特殊変数)</code>で抜き出しています。これが便利すぎて、入力から一部の文字列を切りとって出力する場面では乱用してしまいます。</p>
 
 <h5 id="そこそこ活躍するスクリプトになりました">そこそこ活躍するスクリプトになりました</h5>
 

@@ -264,7 +264,7 @@
 <span class="p">})</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">defineStore</code>にstate, getters, actions等を含むオブジェクトを渡す形です。今までのVuexで書き慣れたプロパティなので分かりやすいですが、stateが関数になっている点は要注意です。mutationsは廃止されるようです。</p>
+<p><code class="language-plaintext highlighter-rouge">defineStore</code>にstate, getters, actions等を含むオブジェクトを渡す形です。今までのVuexで書き慣れたプロパティなので分かりやすいですが、stateが関数になっている点は要注意です。mutationsは廃止されるようです。</p>
 
 <h5 id="composition-store">Composition Store</h5>
 
@@ -288,12 +288,12 @@
 <span class="p">})</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">defineStore</code>にkeyとsetup関数を渡す形式です。Vueの<code class="highlighter-rouge">ref</code>や<code class="highlighter-rouge">computed</code>などのReactivity APIを使い回しているのが特徴的です。</p>
+<p><code class="language-plaintext highlighter-rouge">defineStore</code>にkeyとsetup関数を渡す形式です。Vueの<code class="language-plaintext highlighter-rouge">ref</code>や<code class="language-plaintext highlighter-rouge">computed</code>などのReactivity APIを使い回しているのが特徴的です。</p>
 
 <h4 id="2-storeのインスタンス化">2. Storeのインスタンス化</h4>
 
 <p>ここまでで定義してきたStoreは、Vuexインスタンスにregisterされることでインスタンス化されます。<br />
-<code class="highlighter-rouge">vuex.store</code>関数に先程定義した<code class="highlighter-rouge">useCounter</code>を渡しましょう。</p>
+<code class="language-plaintext highlighter-rouge">vuex.store</code>関数に先程定義した<code class="language-plaintext highlighter-rouge">useCounter</code>を渡しましょう。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">createVuex</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">vuex</span><span class="dl">'</span>
 <span class="k">import</span> <span class="p">{</span> <span class="nx">useCounter</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">@/stores/counter</span><span class="dl">'</span>  <span class="c1">// Option Store or Composition Store</span>
@@ -309,11 +309,11 @@
 
 <p></p>
 
-<p>インスタンス生成後は、<code class="highlighter-rouge">getters</code>や<code class="highlighter-rouge">dispatch</code>などを使わずともStoreにアクセスできるようになりました。今までのVuexより直感的です。</p>
+<p>インスタンス生成後は、<code class="language-plaintext highlighter-rouge">getters</code>や<code class="language-plaintext highlighter-rouge">dispatch</code>などを使わずともStoreにアクセスできるようになりました。今までのVuexより直感的です。</p>
 
-<p>Composition Storeでは<code class="highlighter-rouge">ref</code>を利用していてるので<code class="highlighter-rouge">counter.count.value</code>としたいとことですが、その必要はないようです。Option StoreかCompositon Storeかを区別することなく実装できるのはいいですね。</p>
+<p>Composition Storeでは<code class="language-plaintext highlighter-rouge">ref</code>を利用していてるので<code class="language-plaintext highlighter-rouge">counter.count.value</code>としたいとことですが、その必要はないようです。Option StoreかCompositon Storeかを区別することなく実装できるのはいいですね。</p>
 
-<p>また、<code class="highlighter-rouge">vuex.store(useCounter)</code>は初回実行時にStoreインスタンスを内部的に保持し、2回目以降の実行時にはそれを返す仕組みがあります。言い換えるとStoreは使用されるまで登録されないということになります。これはCode Splittingの観点でも恩恵があります。</p>
+<p>また、<code class="language-plaintext highlighter-rouge">vuex.store(useCounter)</code>は初回実行時にStoreインスタンスを内部的に保持し、2回目以降の実行時にはそれを返す仕組みがあります。言い換えるとStoreは使用されるまで登録されないということになります。これはCode Splittingの観点でも恩恵があります。</p>
 
 <h4 id="3-componentからstoreへのアクセス">3. ComponentからStoreへのアクセス</h4>
 
@@ -391,7 +391,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>今までのVuexに似ていますね。<code class="highlighter-rouge">computed</code>でStoreの値を利用するか、<code class="highlighter-rouge">mapHelper</code>を利用するか、の2択です。後者の方法では<code class="highlighter-rouge">vuex.store</code>が暗黙的に実行されているようです。ちなみに<code class="highlighter-rouge">mapStores</code>に渡されたStoreにアクセスする際は、<code class="highlighter-rouge">difneStore</code>で定義した<code class="highlighter-rouge">key</code>の値が利用することになります。</p>
+<p>今までのVuexに似ていますね。<code class="language-plaintext highlighter-rouge">computed</code>でStoreの値を利用するか、<code class="language-plaintext highlighter-rouge">mapHelper</code>を利用するか、の2択です。後者の方法では<code class="language-plaintext highlighter-rouge">vuex.store</code>が暗黙的に実行されているようです。ちなみに<code class="language-plaintext highlighter-rouge">mapStores</code>に渡されたStoreにアクセスする際は、<code class="language-plaintext highlighter-rouge">difneStore</code>で定義した<code class="language-plaintext highlighter-rouge">key</code>の値が利用することになります。</p>
 
 <p>次に<strong>Compositon APIで実装されたComponent</strong>からのアクセス方法です。</p>
 
@@ -405,7 +405,7 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></div>
-<p>直感的でけっこう好みです。この方法だとStore定義を<code class="highlighter-rouge">useXxxx</code>と命名する意味が実感できますね。</p>
+<p>直感的でけっこう好みです。この方法だとStore定義を<code class="language-plaintext highlighter-rouge">useXxxx</code>と命名する意味が実感できますね。</p>
 
 <p>以上が新しいVuexの使い方です。<br />
 RFCにはこれ以外にも、Store同士の依存関係、ハイドレーション、型注釈等の解説もありました。</p>

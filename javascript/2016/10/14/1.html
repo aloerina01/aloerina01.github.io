@@ -176,13 +176,13 @@
 
 <h3 id="背景">背景</h3>
 <ul>
-  <li><code class="highlighter-rouge">document.write</code>を使ってる外部ライブラリを動的読込する必要があった</li>
+  <li><code class="language-plaintext highlighter-rouge">document.write</code>を使ってる外部ライブラリを動的読込する必要があった</li>
   <li>そのライブラリが読み込まれた後にしなければならない処理がある</li>
 </ul>
 
-<p><code class="highlighter-rouge">document.write</code>は使うなってあれほど言ってるのに！！</p>
+<p><code class="language-plaintext highlighter-rouge">document.write</code>は使うなってあれほど言ってるのに！！</p>
 
-<p>それでもそんなライブラリ(内製だった…)を使わなければならない場面もあります。しかも<code class="highlighter-rouge">&lt;script src="..."&gt;&lt;/script&gt;</code>で読み込めず、動的読込(※)しなきゃいけない場面もあります。それが人生です。</p>
+<p>それでもそんなライブラリ(内製だった…)を使わなければならない場面もあります。しかも<code class="language-plaintext highlighter-rouge">&lt;script src="..."&gt;&lt;/script&gt;</code>で読み込めず、動的読込(※)しなきゃいけない場面もあります。それが人生です。</p>
 
 <p><strong>※動的読込の例</strong></p>
 
@@ -197,8 +197,8 @@
 <span class="nt">&lt;/script&gt;</span>
 </code></pre></div></div>
 
-<p>でも<code class="highlighter-rouge">document.write</code>が使われているライブラリは動的読込しようとしても読み込めません！💢💢<br />
-HTML解析が始まりDOM操作によって追加された外部スクリプトの<code class="highlighter-rouge">document.write</code>は<strong>無視されます</strong>。そのせいで普通に動的読込しても何も起こらないのでした😉</p>
+<p>でも<code class="language-plaintext highlighter-rouge">document.write</code>が使われているライブラリは動的読込しようとしても読み込めません！💢💢<br />
+HTML解析が始まりDOM操作によって追加された外部スクリプトの<code class="language-plaintext highlighter-rouge">document.write</code>は<strong>無視されます</strong>。そのせいで普通に動的読込しても何も起こらないのでした😉</p>
 
 <h3 id="結論">結論</h3>
 
@@ -212,16 +212,16 @@ HTML解析が始まりDOM操作によって追加された外部スクリプト�
 <script src="https://gist.github.com/aloerina01/51e8012367ec04c78c37128d0430b428.js"></script>
 
 <h4 id="1-create-iframe-to-load-a-library">1. create iframe to load a library</h4>
-<p><code class="highlighter-rouge">document.write</code>を含むライブラリを読み込むための、iframeを準備します。<br />
-iframeを使うことで擬似的に別のHTMLをつくり、そいつにライブラリを読み込んでもらう算段です。iframeは今この場で生成しているのでHTML解析がまだ始まっていないから、<code class="highlighter-rouge">document.write</code>のあるライブラリも読み込めます。</p>
+<p><code class="language-plaintext highlighter-rouge">document.write</code>を含むライブラリを読み込むための、iframeを準備します。<br />
+iframeを使うことで擬似的に別のHTMLをつくり、そいつにライブラリを読み込んでもらう算段です。iframeは今この場で生成しているのでHTML解析がまだ始まっていないから、<code class="language-plaintext highlighter-rouge">document.write</code>のあるライブラリも読み込めます。</p>
 
 <p>ちなみにここではiframeを用意しただけで中身(ライブラリを読み込むためのscriptタグ)はまだ書いていません。</p>
 
 <h4 id="2-some-functions-after-loading-a-library">2. some functions after loading a library</h4>
-<p>ライブラリ読込後の後続処理は<code class="highlighter-rouge">onload</code>を使います。<code class="highlighter-rouge">onload</code>イベントはsrc属性により指定されたリソースの読み込み完了時に発生します。ありがたや。</p>
+<p>ライブラリ読込後の後続処理は<code class="language-plaintext highlighter-rouge">onload</code>を使います。<code class="language-plaintext highlighter-rouge">onload</code>イベントはsrc属性により指定されたリソースの読み込み完了時に発生します。ありがたや。</p>
 
 <h4 id="3-write-sctipt-tag-in-iframe">3. write sctipt tag in iframe</h4>
-<p>iframeにscriptタグを書き込みます。<code class="highlighter-rouge">document.write</code>にはちょっとひとクセあって、文書ストリームを勝手に開いて文字列を書き込むんですね。そして開いたら開きっぱなし(これが使うなと言われる所以)。なので明示的に<code class="highlighter-rouge">open</code>, <code class="highlighter-rouge">close</code>をします。<br />
+<p>iframeにscriptタグを書き込みます。<code class="language-plaintext highlighter-rouge">document.write</code>にはちょっとひとクセあって、文書ストリームを勝手に開いて文字列を書き込むんですね。そして開いたら開きっぱなし(これが使うなと言われる所以)。なので明示的に<code class="language-plaintext highlighter-rouge">open</code>, <code class="language-plaintext highlighter-rouge">close</code>をします。<br />
 (closeだけすりゃいいんだけども。見栄え的にopenもしてみた)</p>
 
 <h3 id="参考">参考</h3>

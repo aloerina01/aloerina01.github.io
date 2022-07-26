@@ -217,7 +217,7 @@
 <h4 id="変換対象となるディレクトリ構成">変換対象となるディレクトリ構成</h4>
 
 <p>Jekyllのルールに則ったディレクトリにコンテンツ(ファイル)を配置すると、Jekyllはそのファイルを静的ページ(HTML)に変換してくれます。そして静的ページ1つ1つに対してURLが付与されます。<br />
-例えば記事のように蓄積されていくコンテンツの場合、<code class="highlighter-rouge">_posts</code>以下にコンテンツファイルを配置することで記事ごとのHTMLを生成してくれます。</p>
+例えば記事のように蓄積されていくコンテンツの場合、<code class="language-plaintext highlighter-rouge">_posts</code>以下にコンテンツファイルを配置することで記事ごとのHTMLを生成してくれます。</p>
 
 <pre><code class="language-plain">.
 ├── _config.yml
@@ -231,26 +231,26 @@
 
 <h4 id="url生成のルールとファイル命名ルール">URL生成のルールとファイル命名ルール</h4>
 
-<p>Jekyllはコンテンツのファイル名をもとにURLを自動生成します。そのため、コンテンツファイルは<code class="highlighter-rouge">&lt;year4桁&gt;-&lt;month2桁&gt;-&lt;day2桁&gt;-&lt;タイトル&gt;.md</code>と命名する必要があります。</p>
+<p>Jekyllはコンテンツのファイル名をもとにURLを自動生成します。そのため、コンテンツファイルは<code class="language-plaintext highlighter-rouge">&lt;year4桁&gt;-&lt;month2桁&gt;-&lt;day2桁&gt;-&lt;タイトル&gt;.md</code>と命名する必要があります。</p>
 
-<p>これをもとにJekyllは<code class="highlighter-rouge">/year4桁/month2桁/day2桁/タイトル.html</code>というURLのHTMLを生成します。加えて、記事にカテゴリを指定している場合は<code class="highlighter-rouge">/カテゴリ/year4桁/month2桁/day2桁/タイトル.html</code>というURLのHTMLを生成します。</p>
+<p>これをもとにJekyllは<code class="language-plaintext highlighter-rouge">/year4桁/month2桁/day2桁/タイトル.html</code>というURLのHTMLを生成します。加えて、記事にカテゴリを指定している場合は<code class="language-plaintext highlighter-rouge">/カテゴリ/year4桁/month2桁/day2桁/タイトル.html</code>というURLのHTMLを生成します。</p>
 
 <p><strong>例</strong></p>
 <ul>
   <li>2018-04-01.md<br />
-      → <code class="highlighter-rouge">/2018/04/01.html</code></li>
+      → <code class="language-plaintext highlighter-rouge">/2018/04/01.html</code></li>
   <li>2018-04-02-how-to-use.md<br />
-      → <code class="highlighter-rouge">/2018/04/02/how-to-use.html</code></li>
+      → <code class="language-plaintext highlighter-rouge">/2018/04/02/how-to-use.html</code></li>
   <li>2018-04-03.mdに「diary」カテゴリを指定<br />
-      →<code class="highlighter-rouge">/diary/2018/04/03.html</code></li>
+      →<code class="language-plaintext highlighter-rouge">/diary/2018/04/03.html</code></li>
   <li>2018-04-04-cooking.md「diary」「recipe」カテゴリを指定<br />
-      →<code class="highlighter-rouge">/diary/recipe/2018/04/04/cooking.html</code></li>
+      →<code class="language-plaintext highlighter-rouge">/diary/recipe/2018/04/04/cooking.html</code></li>
 </ul>
 
-<p>このURL生成ルールをJekyllの設定的には<code class="highlighter-rouge">/:categories/:year/:month/:day/:title.html</code>と表現します。</p>
+<p>このURL生成ルールをJekyllの設定的には<code class="language-plaintext highlighter-rouge">/:categories/:year/:month/:day/:title.html</code>と表現します。</p>
 
 <h3 id="1つ1つの記事に任意のurlを付与する">1つ1つの記事に任意のURLを付与する</h3>
-<p>上述のURL生成ルールがJekyllのデフォルトなのですが、このルールを無視して記事ごとに独自のURLを付与することができます。記事の冒頭でタイトルなどを定義する領域( = <strong>Front Matter</strong> )に<code class="highlighter-rouge">permalink</code>という項目を追記します。</p>
+<p>上述のURL生成ルールがJekyllのデフォルトなのですが、このルールを無視して記事ごとに独自のURLを付与することができます。記事の冒頭でタイトルなどを定義する領域( = <strong>Front Matter</strong> )に<code class="language-plaintext highlighter-rouge">permalink</code>という項目を追記します。</p>
 
 <p><strong>2018-04-01.md</strong></p>
 
@@ -260,11 +260,11 @@
 <span class="nn">---</span>
 </code></pre></div></div>
 
-<p>こうすることでファイル名の日付を無視して<code class="highlighter-rouge">/article/how-to-use</code>というURLで記事を生成してくれます。</p>
+<p>こうすることでファイル名の日付を無視して<code class="language-plaintext highlighter-rouge">/article/how-to-use</code>というURLで記事を生成してくれます。</p>
 
 <p>余談ですが、このFront Matterはテンプレート内で使える変数を宣言することができます。たとえば複数人から入稿されるサイトにて記事内にWriter名を表示したい場合は、以下のようにFront Matterを利用できます。</p>
 
-<p><strong>_posts/2018-04-01.md のFrontMatterに<code class="highlighter-rouge">writer</code>という項目を定義</strong></p>
+<p><strong>_posts/2018-04-01.md のFrontMatterに<code class="language-plaintext highlighter-rouge">writer</code>という項目を定義</strong></p>
 
 <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nn">---</span>
 <span class="na">title</span><span class="pi">:</span> <span class="s">Jekyllの使い方</span>
@@ -273,7 +273,7 @@
 <span class="nn">---</span>
 </code></pre></div></div>
 
-<p><strong>_layouts/post.html テンプレートから<code class="highlighter-rouge">page.writer</code>という変数で値を利用</strong></p>
+<p><strong>_layouts/post.html テンプレートから<code class="language-plaintext highlighter-rouge">page.writer</code>という変数で値を利用</strong></p>
 
 <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;h1&gt;<span class="p">{{</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>&lt;/h1&gt;
 &lt;!-- 省略 --&gt;
@@ -281,7 +281,7 @@
 </code></pre></div></div>
 
 <h3 id="すべてのpostsに一定のルールでurlを付与する">すべてのpostsに一定のルールでURLを付与する</h3>
-<p>Front Matterを使えば記事1つ1つに個別のURLを設定できました。しかしこれを毎回書くのは面倒くさいですよね。そこで<code class="highlighter-rouge">_config.yml</code>を使ってFrontMatterのデフォルト値を指定します。「URLを<code class="highlighter-rouge">/artilce/&lt;タイトル名&gt;.html</code>とする」例を使って解説します。</p>
+<p>Front Matterを使えば記事1つ1つに個別のURLを設定できました。しかしこれを毎回書くのは面倒くさいですよね。そこで<code class="language-plaintext highlighter-rouge">_config.yml</code>を使ってFrontMatterのデフォルト値を指定します。「URLを<code class="language-plaintext highlighter-rouge">/artilce/&lt;タイトル名&gt;.html</code>とする」例を使って解説します。</p>
 
 <h4 id="_configymlの設定例">_config.ymlの設定例</h4>
 
@@ -294,11 +294,11 @@
 </code></pre></div></div>
 
 <h4 id="ポイント1--front-matterのデフォルト値を指定する">ポイント1:  Front Matterのデフォルト値を指定する</h4>
-<p>Front Matterのデフォルト値を指定する<code class="highlighter-rouge">defaults</code>には、大きく2つの項目があります。<strong>どのファイルに対してデフォルト値を設定するかを表す<code class="highlighter-rouge">scope</code></strong>と、<strong>どんなデフォルト値にするかを表す<code class="highlighter-rouge">values</code></strong>です。</p>
+<p>Front Matterのデフォルト値を指定する<code class="language-plaintext highlighter-rouge">defaults</code>には、大きく2つの項目があります。<strong>どのファイルに対してデフォルト値を設定するかを表す<code class="language-plaintext highlighter-rouge">scope</code></strong>と、<strong>どんなデフォルト値にするかを表す<code class="language-plaintext highlighter-rouge">values</code></strong>です。</p>
 
-<p><code class="highlighter-rouge">values</code>ほうが理解は簡単で、FrontMatterに書くときと同じように書けばOKです。URLを指定したいなら<code class="highlighter-rouge">permalink: xxxx</code>と、カテゴリを指定したいなら<code class="highlighter-rouge">categories: xxxxx</code>と書くだけです。上述した<code class="highlighter-rouge">writer</code>のような独自の変数をここで定義することもできますし、複数の項目を並べて指定することもできます。</p>
+<p><code class="language-plaintext highlighter-rouge">values</code>ほうが理解は簡単で、FrontMatterに書くときと同じように書けばOKです。URLを指定したいなら<code class="language-plaintext highlighter-rouge">permalink: xxxx</code>と、カテゴリを指定したいなら<code class="language-plaintext highlighter-rouge">categories: xxxxx</code>と書くだけです。上述した<code class="language-plaintext highlighter-rouge">writer</code>のような独自の変数をここで定義することもできますし、複数の項目を並べて指定することもできます。</p>
 
-<p>今回はURLにタイトルを入れたいので<code class="highlighter-rouge">:title</code>という変数を使いましたが、他にもpermalinkの指定に使える変数があります。</p>
+<p>今回はURLにタイトルを入れたいので<code class="language-plaintext highlighter-rouge">:title</code>という変数を使いましたが、他にもpermalinkの指定に使える変数があります。</p>
 
 <table>
   <thead>
@@ -357,58 +357,58 @@
 
 <h4 id="ポイント2-frontmatterのデフォルト値の適用範囲を指定する">ポイント2: FrontMatterのデフォルト値の適用範囲を指定する</h4>
 
-<p><code class="highlighter-rouge">scope</code>は<strong><code class="highlighter-rouge">path</code>と<code class="highlighter-rouge">type</code>という2つの要素を持ちます</strong>。<code class="highlighter-rouge">values</code>とは違いこれら以外の要素を追加することはできません。</p>
+<p><code class="language-plaintext highlighter-rouge">scope</code>は<strong><code class="language-plaintext highlighter-rouge">path</code>と<code class="language-plaintext highlighter-rouge">type</code>という2つの要素を持ちます</strong>。<code class="language-plaintext highlighter-rouge">values</code>とは違いこれら以外の要素を追加することはできません。</p>
 
-<p><strong><code class="highlighter-rouge">path</code>とはどのディレクトリにあるファイルに対してデフォルト値を適用するのか</strong>を表します。上の例のように空文字にした場合はすべてのファイルが適用対象になります。空文字でもいいのですが必須の項目です。</p>
+<p><strong><code class="language-plaintext highlighter-rouge">path</code>とはどのディレクトリにあるファイルに対してデフォルト値を適用するのか</strong>を表します。上の例のように空文字にした場合はすべてのファイルが適用対象になります。空文字でもいいのですが必須の項目です。</p>
 
-<p><strong><code class="highlighter-rouge">type</code>はpath内にあるファイルのうち、該当するタイプのファイルに対してデフォルト値を適用する</strong>という絞込を行う機能です。そのためtypeはなくてもOKな項目です。ちなみに<code class="highlighter-rouge">_posts</code>以下にあるファイルには内部的に<code class="highlighter-rouge">posts</code>というタイプが割り当てられています。</p>
+<p><strong><code class="language-plaintext highlighter-rouge">type</code>はpath内にあるファイルのうち、該当するタイプのファイルに対してデフォルト値を適用する</strong>という絞込を行う機能です。そのためtypeはなくてもOKな項目です。ちなみに<code class="language-plaintext highlighter-rouge">_posts</code>以下にあるファイルには内部的に<code class="language-plaintext highlighter-rouge">posts</code>というタイプが割り当てられています。</p>
 
-<p>つまり今回の設定例では、<strong>全ファイルの中で<code class="highlighter-rouge">posts</code>タイプのファイルに<code class="highlighter-rouge">permalink</code>をデフォルトとして適用する</strong>となるわけです。</p>
+<p>つまり今回の設定例では、<strong>全ファイルの中で<code class="language-plaintext highlighter-rouge">posts</code>タイプのファイルに<code class="language-plaintext highlighter-rouge">permalink</code>をデフォルトとして適用する</strong>となるわけです。</p>
 
-<p><code class="highlighter-rouge">path</code>と<code class="highlighter-rouge">type</code>を組み合わせてデフォルト値の適用範囲を設定できるわけですが、この<code class="highlighter-rouge">type</code>が聞きなれず設定の仕方も少し厄介なので次項でまとめてみます。</p>
+<p><code class="language-plaintext highlighter-rouge">path</code>と<code class="language-plaintext highlighter-rouge">type</code>を組み合わせてデフォルト値の適用範囲を設定できるわけですが、この<code class="language-plaintext highlighter-rouge">type</code>が聞きなれず設定の仕方も少し厄介なので次項でまとめてみます。</p>
 
 <h4 id="ポイント3-collectionsの機能を使ってtypeを追加する">ポイント3: Collectionsの機能を使ってtypeを追加する</h4>
-<p>Webサイトは記事ページ(Jekyll内ではpostsと呼ばれるもの)だけですべてがまかなえるわけではなく、たとえば写真や制作物を載せるページであったり、Documentを載せるページであったりと、様々な様式のページが必要になることがあります。これを表現するのが<code class="highlighter-rouge">type</code>という概念であり、<strong><code class="highlighter-rouge">type</code>を定義するものがCollectionsです</strong>。</p>
+<p>Webサイトは記事ページ(Jekyll内ではpostsと呼ばれるもの)だけですべてがまかなえるわけではなく、たとえば写真や制作物を載せるページであったり、Documentを載せるページであったりと、様々な様式のページが必要になることがあります。これを表現するのが<code class="language-plaintext highlighter-rouge">type</code>という概念であり、<strong><code class="language-plaintext highlighter-rouge">type</code>を定義するものがCollectionsです</strong>。</p>
 
-<p>実は<code class="highlighter-rouge">_config.yml</code>には内部的に以下のような設定を持っています。</p>
+<p>実は<code class="language-plaintext highlighter-rouge">_config.yml</code>には内部的に以下のような設定を持っています。</p>
 
 <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">collections</span><span class="pi">:</span>
   <span class="na">posts</span><span class="pi">:</span>
     <span class="na">output</span><span class="pi">:</span> <span class="no">true</span>
 </code></pre></div></div>
 
-<p>これは「<code class="highlighter-rouge">posts</code>というタイプを用意して、これをJekyllの変換対象とする」ということを表現しています。そしてこのtype名に<code class="highlighter-rouge">_</code>をつなげた_postsディレクトリ以下にあるファイルが、<code class="highlighter-rouge">posts</code>タイプのファイルとなります。</p>
+<p>これは「<code class="language-plaintext highlighter-rouge">posts</code>というタイプを用意して、これをJekyllの変換対象とする」ということを表現しています。そしてこのtype名に<code class="language-plaintext highlighter-rouge">_</code>をつなげた_postsディレクトリ以下にあるファイルが、<code class="language-plaintext highlighter-rouge">posts</code>タイプのファイルとなります。</p>
 
 <p>つまりtypeを増やしたい場合は以下の2つの作業が必要ということになります。</p>
 
 <ol>
   <li><strong>Collectionにtypeを定義する</strong></li>
-  <li><strong>定義したtype名の先頭に<code class="highlighter-rouge">_</code>をつけたディレクトリを用意する</strong></li>
+  <li><strong>定義したtype名の先頭に<code class="language-plaintext highlighter-rouge">_</code>をつけたディレクトリを用意する</strong></li>
 </ol>
 
-<p>この機能により、最初に記した「変換対象となるディレクトリ」を増やすことができ、また<code class="highlighter-rouge">path</code>と組み合わせて<code class="highlighter-rouge">defaults</code>の適用範囲を柔軟に指定できるようになるわけです。</p>
+<p>この機能により、最初に記した「変換対象となるディレクトリ」を増やすことができ、また<code class="language-plaintext highlighter-rouge">path</code>と組み合わせて<code class="language-plaintext highlighter-rouge">defaults</code>の適用範囲を柔軟に指定できるようになるわけです。</p>
 
 <h3 id="まとめ">まとめ</h3>
 
 <ul>
-  <li>Jekyllのコンテンツファイルには命名ルール(<code class="highlighter-rouge">:year-:month-:day-:title.md</code>)がある</li>
-  <li>Jekyllはデフォルトで<code class="highlighter-rouge">/:year/:month/:day/:title.html</code>というURLを生成する</li>
+  <li>Jekyllのコンテンツファイルには命名ルール(<code class="language-plaintext highlighter-rouge">:year-:month-:day-:title.md</code>)がある</li>
+  <li>Jekyllはデフォルトで<code class="language-plaintext highlighter-rouge">/:year/:month/:day/:title.html</code>というURLを生成する</li>
   <li>記事個別にURLを指定する場合は<strong>Front Matter</strong>を使う</li>
-  <li>記事一括でURLを指定する場合は<code class="highlighter-rouge">_config.yml</code>に<strong><code class="highlighter-rouge">defaults</code></strong>を指定する
+  <li>記事一括でURLを指定する場合は<code class="language-plaintext highlighter-rouge">_config.yml</code>に<strong><code class="language-plaintext highlighter-rouge">defaults</code></strong>を指定する
     <ul>
-      <li><strong><code class="highlighter-rouge">values</code></strong>でデフォルト値を定義する</li>
-      <li><strong><code class="highlighter-rouge">scope</code></strong>でデフォルト値の指定範囲を定義する
+      <li><strong><code class="language-plaintext highlighter-rouge">values</code></strong>でデフォルト値を定義する</li>
+      <li><strong><code class="language-plaintext highlighter-rouge">scope</code></strong>でデフォルト値の指定範囲を定義する
         <ul>
-          <li><code class="highlighter-rouge">path</code>は適用対象となるディレクトリを表す</li>
-          <li><code class="highlighter-rouge">type</code>はpath内にあるファイルをさらに絞り込むのに使う</li>
+          <li><code class="language-plaintext highlighter-rouge">path</code>は適用対象となるディレクトリを表す</li>
+          <li><code class="language-plaintext highlighter-rouge">type</code>はpath内にあるファイルをさらに絞り込むのに使う</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li>typeを増やすには<code class="highlighter-rouge">_config.yml</code>に<strong>Collections</strong>を指定する
+  <li>typeを増やすには<code class="language-plaintext highlighter-rouge">_config.yml</code>に<strong>Collections</strong>を指定する
     <ul>
-      <li>何も指定せずとも<code class="highlighter-rouge">posts</code>タイプだけは内部的に定義されている</li>
-      <li>Collectionsにtypeを指定したら、<code class="highlighter-rouge">_type名</code>というディレクトリを用意する</li>
+      <li>何も指定せずとも<code class="language-plaintext highlighter-rouge">posts</code>タイプだけは内部的に定義されている</li>
+      <li>Collectionsにtypeを指定したら、<code class="language-plaintext highlighter-rouge">_type名</code>というディレクトリを用意する</li>
     </ul>
   </li>
 </ul>

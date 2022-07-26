@@ -228,7 +228,7 @@
 <p>コマンド一発でReactの開発環境をつくることができるツールです。<br />
 (参考：<a href="https://aloerina01.github.io/javascript/react/2017/02/28/1.html">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a>)</p>
 
-<p>これを使って構築した環境には標準でJestが組み込まれていて、<code class="highlighter-rouge">yarn test</code>コマンドですぐにテストを実行することができます。</p>
+<p>これを使って構築した環境には標準でJestが組み込まれていて、<code class="language-plaintext highlighter-rouge">yarn test</code>コマンドですぐにテストを実行することができます。</p>
 
 <blockquote>
   <p>Create React App uses Jest as its test runner. To prepare for this integration, we did a major revamp of Jest so if you heard bad things about it years ago, give it another try.</p>
@@ -252,13 +252,13 @@
   <li><a href="http://airbnb.io/enzyme/">Enzyme</a></li>
   <li>Reactのテストコードを書くためのUtilityです</li>
   <li>Jestだけではできない高度なテストを書くことができるfunction群です(Jestと重なる部分もあります)</li>
-  <li>Reactコンポーネントをrenderingする<code class="highlighter-rouge">shallow</code> <code class="highlighter-rouge">mount</code> <code class="highlighter-rouge">render</code>の3つのfunctionがキモです</li>
+  <li>Reactコンポーネントをrenderingする<code class="language-plaintext highlighter-rouge">shallow</code> <code class="language-plaintext highlighter-rouge">mount</code> <code class="language-plaintext highlighter-rouge">render</code>の3つのfunctionがキモです</li>
 </ul>
 
 <h3 id="テストの書き始め方">テストの書き始め方</h3>
 
 <h4 id="1-テストファイルの配置場所を知る">1. テストファイルの配置場所を知る</h4>
-<p>Jestは任意のディレクトリからテストコードを探し出し順に実行してくれます。本来このディレクトリは<code class="highlighter-rouge">package.json</code>に<code class="highlighter-rouge">rootDir</code>という名前で定義するものなのですが、create-react-appでつくられた環境では<code class="highlighter-rouge">src/</code>と決められています。</p>
+<p>Jestは任意のディレクトリからテストコードを探し出し順に実行してくれます。本来このディレクトリは<code class="language-plaintext highlighter-rouge">package.json</code>に<code class="language-plaintext highlighter-rouge">rootDir</code>という名前で定義するものなのですが、create-react-appでつくられた環境では<code class="language-plaintext highlighter-rouge">src/</code>と決められています。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// react-scripts/utils/createJestConfig.js</span>
 <span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">(</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">rootDir</span><span class="p">,</span> <span class="nx">isEjecting</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -278,15 +278,15 @@
 
 </code></pre></div></div>
 
-<p>したがって、<code class="highlighter-rouge">src/</code>にテストファイルを配置していきます。</p>
+<p>したがって、<code class="language-plaintext highlighter-rouge">src/</code>にテストファイルを配置していきます。</p>
 
 <h4 id="2-テストファイルを作成する">2. テストファイルを作成する</h4>
 
 <p>Jestにテストファイルを認識させるには2つの方法があります。</p>
 
 <ol>
-  <li><code class="highlighter-rouge">__test__</code>というディレクトリ以下にテストファイルを置く</li>
-  <li><code class="highlighter-rouge">.test.js</code>という拡張子のファイルを作成する</li>
+  <li><code class="language-plaintext highlighter-rouge">__test__</code>というディレクトリ以下にテストファイルを置く</li>
+  <li><code class="language-plaintext highlighter-rouge">.test.js</code>という拡張子のファイルを作成する</li>
 </ol>
 
 <p>私は②を採用しました。</p>
@@ -351,7 +351,7 @@
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p>ここでつかった<code class="highlighter-rouge">shallow</code>という関数は、その名の通りComponentを浅くレンダリングします。Componentの中にComponentがある入れ子構造の場合、一番外側のComponentしかレンダリングされません。子コンポーネントに依存していない結果を検査することができます。</p>
+<p>ここでつかった<code class="language-plaintext highlighter-rouge">shallow</code>という関数は、その名の通りComponentを浅くレンダリングします。Componentの中にComponentがある入れ子構造の場合、一番外側のComponentしかレンダリングされません。子コンポーネントに依存していない結果を検査することができます。</p>
 
 <blockquote>
   <p>Shallow rendering is useful to constrain yourself to testing a component as a unit, and to ensure that your tests aren’t indirectly asserting on behavior of child components.</p>
@@ -373,9 +373,9 @@
 <span class="p">});</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">toMatchSnapshot()</code>は、既存のスナップショットと比較してレンダリング結果が一致しているかどうかを判定します。最初の一回目はsnapshotがないため必ずpassします。snapshotを更新する場合は<code class="highlighter-rouge">jest --update</code>または<code class="highlighter-rouge">jest -u</code>コマンドを叩きます。</p>
+<p><code class="language-plaintext highlighter-rouge">toMatchSnapshot()</code>は、既存のスナップショットと比較してレンダリング結果が一致しているかどうかを判定します。最初の一回目はsnapshotがないため必ずpassします。snapshotを更新する場合は<code class="language-plaintext highlighter-rouge">jest --update</code>または<code class="language-plaintext highlighter-rouge">jest -u</code>コマンドを叩きます。</p>
 
-<p>ここで使った<code class="highlighter-rouge">mount</code>という関数は、Componentを完全にレンダリングします。その分テストの実行速度が遅くなるため、入れ子の深いComponentをmountしたり、mountを使ったテストをたくさん書くとなかなかテストが終わりません。
+<p>ここで使った<code class="language-plaintext highlighter-rouge">mount</code>という関数は、Componentを完全にレンダリングします。その分テストの実行速度が遅くなるため、入れ子の深いComponentをmountしたり、mountを使ったテストをたくさん書くとなかなかテストが終わりません。
 その場合はテストを分割して行うなどの工夫が必要でした。</p>
 
 <blockquote>
@@ -388,9 +388,9 @@
 
 <h4 id="localstorage-is-not-defined">🙅localStorage is not defined</h4>
 
-<p>テストするComponentが依存しているあるモジュールは、内部でlocalStorageを利用していました。そのためimport時に<code class="highlighter-rouge">localStorage is not defined</code>のエラーが起きました。</p>
+<p>テストするComponentが依存しているあるモジュールは、内部でlocalStorageを利用していました。そのためimport時に<code class="language-plaintext highlighter-rouge">localStorage is not defined</code>のエラーが起きました。</p>
 
-<p>Jestはテスト実行前にテスト環境を構築するコードを実行することができるので、それを利用してlocalStorageモックを定義することで対処できます。一般的には、<code class="highlighter-rouge">package.json</code>に<code class="highlighter-rouge">setupFiles</code>または<code class="highlighter-rouge">setupTestFrameworkScriptFile</code>として定義したファイルがテスト前に実行されます。<br />
+<p>Jestはテスト実行前にテスト環境を構築するコードを実行することができるので、それを利用してlocalStorageモックを定義することで対処できます。一般的には、<code class="language-plaintext highlighter-rouge">package.json</code>に<code class="language-plaintext highlighter-rouge">setupFiles</code>または<code class="language-plaintext highlighter-rouge">setupTestFrameworkScriptFile</code>として定義したファイルがテスト前に実行されます。<br />
 (参考： <a href="http://facebook.github.io/jest/docs/configuration.html#setupfiles-array">Configuring package.json · Jest</a>)</p>
 
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"jest"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
@@ -398,7 +398,7 @@
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div></div>
 
-<p>ただし、create-react-appを使っている場合はやはりこの設定が効かず、独自の設定ファイル<code class="highlighter-rouge">src/setupTests.js</code>にモックを書く必要がありました。</p>
+<p>ただし、create-react-appを使っている場合はやはりこの設定が効かず、独自の設定ファイル<code class="language-plaintext highlighter-rouge">src/setupTests.js</code>にモックを書く必要がありました。</p>
 
 <p><strong>src/setupTests.js</strong></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">localStorageMock</span> <span class="o">=</span> <span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
@@ -437,9 +437,9 @@
 <span class="kd">var</span> <span class="nx">ReactTestUtils</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">react-dom/test-utils</span><span class="dl">'</span><span class="p">);</span> <span class="c1">// ES5 with npm</span>
 </code></pre></div></div>
 
-<p>言われるがままにためしたものの、<code class="highlighter-rouge">Cannot find module 'react-dom/test-utils’</code>と怒られる。いかがなものですかね。</p>
+<p>言われるがままにためしたものの、<code class="language-plaintext highlighter-rouge">Cannot find module 'react-dom/test-utils’</code>と怒られる。いかがなものですかね。</p>
 
-<p>ということで、今度はワーニング文の<code class="highlighter-rouge">Update references</code>にバカ正直に従い依存モジュールを丸々アップデートしてみました。</p>
+<p>ということで、今度はワーニング文の<code class="language-plaintext highlighter-rouge">Update references</code>にバカ正直に従い依存モジュールを丸々アップデートしてみました。</p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>yarn cache clean
 <span class="nv">$ </span>yarn upgrade
 </code></pre></div></div>

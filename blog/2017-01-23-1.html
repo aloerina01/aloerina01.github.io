@@ -193,14 +193,14 @@
 <p><a href="https://github.com/Reactive-Extensions/RxJS">RxJS</a>とは、Rx(Reactive Extensions)をJavaScriptで使えるようにしよう、というライブラリです。</p>
 
 <p>ではRxとは何なのかというと、ざっくり言うと<strong>ストリームというデータの流れを表すモノを、関数型のコレクションライブラリで加工できる仕組み</strong>みたいな感じです。<br />
-もう少し正確な表現だと<code class="highlighter-rouge">Rx = Observable + LINQ + Scheduler</code>となります。知らないものを3つも並べられると少しイラッとしますね😌</p>
+もう少し正確な表現だと<code class="language-plaintext highlighter-rouge">Rx = Observable + LINQ + Scheduler</code>となります。知らないものを3つも並べられると少しイラッとしますね😌</p>
 
 <p>簡単に意訳すると…</p>
 
 <ul>
-  <li><code class="highlighter-rouge">Observable</code> = ストリームのこと</li>
-  <li><code class="highlighter-rouge">LINQ</code> = ストリームを操作する(subcribeする)ための関数型コレクションライブラリみたいなもの</li>
-  <li><code class="highlighter-rouge">Scheduler</code> = 実行するスレッドやタイミングを制御するもの</li>
+  <li><code class="language-plaintext highlighter-rouge">Observable</code> = ストリームのこと</li>
+  <li><code class="language-plaintext highlighter-rouge">LINQ</code> = ストリームを操作する(subcribeする)ための関数型コレクションライブラリみたいなもの</li>
+  <li><code class="language-plaintext highlighter-rouge">Scheduler</code> = 実行するスレッドやタイミングを制御するもの</li>
 </ul>
 
 <p>と、概念を説明するよりソースを見たほうが理解が早いだろうということで、RxJSとStreamAPIの比較ソースを用意しました。以下の仕様で実装したソースです。</p>

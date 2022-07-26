@@ -236,10 +236,10 @@
  * /
 </span></code></pre></div></div>
 
-<p>この<code class="highlighter-rouge">top</code>は画面(viewport)の左上を起点として数えるので、対象のElementが画面上部にピタッとくっついていたら0になります。つまり、<code class="highlighter-rouge">viewportHeight(画面の高さ) &gt; top</code>となっているときは、Elementが画面内に表示されていない(画面左上からの距離が画面の高さより大きい)ということになります。</p>
+<p>この<code class="language-plaintext highlighter-rouge">top</code>は画面(viewport)の左上を起点として数えるので、対象のElementが画面上部にピタッとくっついていたら0になります。つまり、<code class="language-plaintext highlighter-rouge">viewportHeight(画面の高さ) &gt; top</code>となっているときは、Elementが画面内に表示されていない(画面左上からの距離が画面の高さより大きい)ということになります。</p>
 
 <h4 id="7行目-アンバインド">7行目 アンバインド</h4>
-<p>特別なことはしていませんが、scrollInをキャッチしたときに走る処理の中で、その処理自身をアンバインドしています。今回は変数に代入して再帰的に呼び出しましたが<code class="highlighter-rouge">arguments.callee</code>を使っても大丈夫です。</p>
+<p>特別なことはしていませんが、scrollInをキャッチしたときに走る処理の中で、その処理自身をアンバインドしています。今回は変数に代入して再帰的に呼び出しましたが<code class="language-plaintext highlighter-rouge">arguments.callee</code>を使っても大丈夫です。</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">window</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">scroll</span><span class="dl">'</span><span class="p">,</span> <span class="nx">arguments</span><span class="p">.</span><span class="nx">callee</span><span class="p">);</span>
 </code></pre></div></div>

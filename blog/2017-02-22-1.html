@@ -194,7 +194,7 @@
 
 <h3 id="解決策">解決策</h3>
 
-<p>webpackを使ってビルドする前提で、<strong>ビルド時に<code class="highlighter-rouge">process.dev.NODE_ENV</code>を見て読み込む設定ファイルを切り替える</strong>方法をとりました。</p>
+<p>webpackを使ってビルドする前提で、<strong>ビルド時に<code class="language-plaintext highlighter-rouge">process.dev.NODE_ENV</code>を見て読み込む設定ファイルを切り替える</strong>方法をとりました。</p>
 
 <h4 id="ファイル構成">ファイル構成</h4>
 
@@ -209,8 +209,8 @@
 
 </code></pre>
 
-<p><code class="highlighter-rouge">_development.js</code>と<code class="highlighter-rouge">_production.js</code>がそれぞれ環境ごとの設定ファイルです。<br />
-<code class="highlighter-rouge">index.js</code>が設定ファイルを切り替えて読み込む主体です。</p>
+<p><code class="language-plaintext highlighter-rouge">_development.js</code>と<code class="language-plaintext highlighter-rouge">_production.js</code>がそれぞれ環境ごとの設定ファイルです。<br />
+<code class="language-plaintext highlighter-rouge">index.js</code>が設定ファイルを切り替えて読み込む主体です。</p>
 
 <h4 id="環境ごとの設定ファイル">環境ごとの設定ファイル</h4>
 
@@ -222,18 +222,18 @@
 
 <script src="https://gist.github.com/aloerina01/827895f64fc549cf70fe91d3162a2d09.js"></script>
 
-<p>ポイントは、後に指定する<strong>NODE_ENV = 設定ファイル名</strong>となっていることです(今回は<code class="highlighter-rouge">environment/</code>以外でrequireしないで欲しいという意味を込めて<code class="highlighter-rouge">_</code>の接頭辞をつけました)。</p>
+<p>ポイントは、後に指定する<strong>NODE_ENV = 設定ファイル名</strong>となっていることです(今回は<code class="language-plaintext highlighter-rouge">environment/</code>以外でrequireしないで欲しいという意味を込めて<code class="language-plaintext highlighter-rouge">_</code>の接頭辞をつけました)。</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">env</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">../environment/index</span><span class="dl">'</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">FETCH_API</span> <span class="o">=</span> <span class="nx">env</span><span class="p">.</span><span class="nx">API_ORIGIN</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">user/articles</span><span class="dl">'</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>このように、<code class="highlighter-rouge">environment/index.js</code>を呼び出せばどこでも環境ごとの設定値を参照できるようになりました。</p>
+<p>このように、<code class="language-plaintext highlighter-rouge">environment/index.js</code>を呼び出せばどこでも環境ごとの設定値を参照できるようになりました。</p>
 
 <h4 id="processenvnode_env-を利用できるようにする">process.env.NODE_ENV を利用できるようにする</h4>
 
-<p>ロジック内で<code class="highlighter-rouge">process.env.NODE_ENV</code>を利用するには、<code class="highlighter-rouge">webpack.config.js</code>に以下を追記します。</p>
+<p>ロジック内で<code class="language-plaintext highlighter-rouge">process.env.NODE_ENV</code>を利用するには、<code class="language-plaintext highlighter-rouge">webpack.config.js</code>に以下を追記します。</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">plugins</span><span class="p">:</span> <span class="p">[</span>
 <span class="err">　　</span><span class="k">new</span> <span class="nx">webpack</span><span class="p">.</span><span class="nx">DefinePlugin</span><span class="p">({</span>
@@ -257,7 +257,7 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ NODE_DEV</span><span class="o">=</span>production webpack
 </code></pre></div></div>
 
-<p>ビルドコマンドをたたくときに<code class="highlighter-rouge">key=value</code>と指定すると、<code class="highlighter-rouge">process.env.key</code>に<code class="highlighter-rouge">value</code>が紐付けられます。</p>
+<p>ビルドコマンドをたたくときに<code class="language-plaintext highlighter-rouge">key=value</code>と指定すると、<code class="language-plaintext highlighter-rouge">process.env.key</code>に<code class="language-plaintext highlighter-rouge">value</code>が紐付けられます。</p>
 
 <p>あとはこれをnpm scriptsにして呼び出しやすいようにしておけば、手元で実行するもよし、CIに実行させるもよしです。
 <script src="https://gist.github.com/aloerina01/58d7fd5ef9363457d82b228da47dde56.js"></script></p>

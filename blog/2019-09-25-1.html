@@ -205,7 +205,7 @@
 <h3 id="getterの役割を見直す">Getterの役割を見直す</h3>
 
 <p>VuexはFluxアーキテクチャを参考にしており、他のFlux系フレームワークと同様にStoreではStateを保持し、Stateが更新されるとそれをViewに通知します。<br />
-このときVuexのStoreは<strong>Getterを通じてStateの一部を切り出して</strong>Viewに渡すことができます。よくあるFlux系Storeは<code class="highlighter-rouge">getState</code>関数などでStateオブジェクトを丸々渡すケースが多いので対照的ですよね。</p>
+このときVuexのStoreは<strong>Getterを通じてStateの一部を切り出して</strong>Viewに渡すことができます。よくあるFlux系Storeは<code class="language-plaintext highlighter-rouge">getState</code>関数などでStateオブジェクトを丸々渡すケースが多いので対照的ですよね。</p>
 
 <p>この性質に着目すると、VuexのStoreは外部に対して<strong>読み込み系のGetter</strong>と<strong>書き込み系のAction(とMutation)</strong>の仕組みを備えていると考えられます。</p>
 
@@ -228,7 +228,7 @@
 
 <span class="c1">// OK</span>
 <span class="nl">getters</span><span class="p">:</span> <span class="p">{</span>
-  <span class="nl">articles</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">articles</span>
+  <span class="na">articles</span><span class="p">:</span> <span class="nx">state</span> <span class="o">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">articles</span>
 <span class="p">},</span>
 <span class="nx">mutations</span><span class="p">:</span> <span class="p">{</span>
   <span class="nx">shown</span><span class="p">(</span><span class="nx">state</span><span class="p">)</span> <span class="p">{</span>
@@ -245,7 +245,7 @@
 
 <ul>
   <li>プロパティアクセスのGetterは返すデータを表す名詞で命名する</li>
-  <li>メソッドアクセスのGetterは<code class="highlighter-rouge">find{名詞}</code>や<code class="highlighter-rouge">find{名詞}By{条件}</code>と命名し、引数に条件をとる</li>
+  <li>メソッドアクセスのGetterは<code class="language-plaintext highlighter-rouge">find{名詞}</code>や<code class="language-plaintext highlighter-rouge">find{名詞}By{条件}</code>と命名し、引数に条件をとる</li>
 </ul>
 
 <p>というマイルールで実装しています。</p>
@@ -263,7 +263,7 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>ちなみに過去に<code class="highlighter-rouge">getHoge</code>, <code class="highlighter-rouge">filterHoge</code>など動詞を使い分けていたこともあったのですが、開発者によって使い分けルールが曖昧だったので最近はすべて<code class="highlighter-rouge">find</code>に統一しています。</p>
+<p>ちなみに過去に<code class="language-plaintext highlighter-rouge">getHoge</code>, <code class="language-plaintext highlighter-rouge">filterHoge</code>など動詞を使い分けていたこともあったのですが、開発者によって使い分けルールが曖昧だったので最近はすべて<code class="language-plaintext highlighter-rouge">find</code>に統一しています。</p>
 
 <h3 id="プリミティブでシンプルなクエリとして実装する">プリミティブでシンプルなクエリとして実装する</h3>
 
@@ -271,7 +271,7 @@
 これを守るためにも上述の命名ルールが役立っていて、データをまるごと返す場合はデータ名を使った名詞で命名し、データの集合から一部を検索して返す場合はfindで命名すると限定することで、自然とシンプルでプリミティブな役割を持つクエリとして実装することができます。</p>
 
 <p>では、データを加工して渡したい場合はどうするのが良いでしょうか？<br />
-<code class="highlighter-rouge">firstName</code>と<code class="highlighter-rouge">lastName</code>を組み合わせて一つの<code class="highlighter-rouge">fullName</code>文字列として扱う例のように、Stateの値は書き換えないまま一時的に加工された値を生成する場面はよくあると思います。この加工処理をどこで担うのが良いでしょうか？</p>
+<code class="language-plaintext highlighter-rouge">firstName</code>と<code class="language-plaintext highlighter-rouge">lastName</code>を組み合わせて一つの<code class="language-plaintext highlighter-rouge">fullName</code>文字列として扱う例のように、Stateの値は書き換えないまま一時的に加工された値を生成する場面はよくあると思います。この加工処理をどこで担うのが良いでしょうか？</p>
 
 <h3 id="表示用の加工処理はcomponentに実装する">表示用の加工処理はComponentに実装する</h3>
 

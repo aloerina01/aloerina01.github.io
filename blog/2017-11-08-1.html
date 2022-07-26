@@ -210,7 +210,7 @@
 <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Error: Cannot find module <span class="s2">"."</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">modulePath</code>が文字列としてちゃんと認識できていないのかと思ったけどそうでもなかった。</p>
+<p><code class="language-plaintext highlighter-rouge">modulePath</code>が文字列としてちゃんと認識できていないのかと思ったけどそうでもなかった。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// 検証1</span>
 <span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span> <span class="o">+</span> <span class="dl">''</span><span class="p">);</span>  <span class="c1">// 同様のエラー</span>
@@ -219,7 +219,7 @@
 <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// string</span>
 </code></pre></div></div>
 
-<p>もしや<code class="highlighter-rouge">modulePath</code>は正規表現じゃないとだめ？　とか血迷ってみた。</p>
+<p>もしや<code class="language-plaintext highlighter-rouge">modulePath</code>は正規表現じゃないとだめ？　とか血迷ってみた。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">modulePath</span> <span class="o">=</span> <span class="sr">/model</span><span class="se">\/</span><span class="sr">userlist/</span><span class="p">;</span>
 <span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// やはりエラー</span>
@@ -302,12 +302,12 @@ In this case a Critical dependencies warning is emitted. You need to use the Con
 Examples: someFn(require) require.bind(null)</p>
 </blockquote>
 
-<p>静的解決できない<code class="highlighter-rouge">require</code>がソースに含まれている場合、そのときのcontextはカレントディレクトリとなる。</p>
+<p>静的解決できない<code class="language-plaintext highlighter-rouge">require</code>がソースに含まれている場合、そのときのcontextはカレントディレクトリとなる。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// ← modulePathがカレントからの相対パスでないとダメ…？</span>
 </code></pre></div></div>
 
-<p>実はモジュールパス解決をしたくて<code class="highlighter-rouge">webpack.config.js</code>に手を入れていた。</p>
+<p>実はモジュールパス解決をしたくて<code class="language-plaintext highlighter-rouge">webpack.config.js</code>に手を入れていた。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
   <span class="c1">// 省略</span>
@@ -321,7 +321,7 @@ Examples: someFn(require) require.bind(null)</p>
   <span class="p">}</span>
 </code></pre></div></div>
 
-<p><code class="highlighter-rouge">path.resolve</code>で指定したディレクトリをルートとした相対パスで書けるようにしていた(つもりだった)が、実際はカレントディレクトリからのパスが必要だった。</p>
+<p><code class="language-plaintext highlighter-rouge">path.resolve</code>で指定したディレクトリをルートとした相対パスで書けるようにしていた(つもりだった)が、実際はカレントディレクトリからのパスが必要だった。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">let</span> <span class="nx">Constructor</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">modulePath</span><span class="p">);</span>  <span class="c1">// 動いた</span>
 </code></pre></div></div>

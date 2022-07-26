@@ -192,7 +192,7 @@
 
 <p>👆<strong>これ</strong>👆</p>
 
-<p>真面目に言うとHTMLの<code class="highlighter-rouge">&lt;head&gt;</code>内に配置しそのページの情報を表現する<code class="highlighter-rouge">&lt;meta&gt;</code>タグの用法の一つです。検索エンジンのクローラの動作を制御することができます。サイトをよりよく、より自分の意図通りに検索結果に表示させるため活用していきましょう。</p>
+<p>真面目に言うとHTMLの<code class="language-plaintext highlighter-rouge">&lt;head&gt;</code>内に配置しそのページの情報を表現する<code class="language-plaintext highlighter-rouge">&lt;meta&gt;</code>タグの用法の一つです。検索エンジンのクローラの動作を制御することができます。サイトをよりよく、より自分の意図通りに検索結果に表示させるため活用していきましょう。</p>
 
 <h3 id="どんなことができるの">どんなことができるの？</h3>
 <p>SEO対策として、サイト内に適切なページを用意したり、リンクを整備したり、ということはよくされますよね。そのときに「このリンクは残しておきたいけど、SEOの評価には使われたくない」といったような特殊な指示をクローラにすることができます。ほかにも</p>
@@ -215,14 +215,14 @@
 <p>どのクローラへの制御か、を表現します。</p>
 
 <ul>
-  <li><code class="highlighter-rouge">robots</code> = 全ての検索エンジンのクローラを対象</li>
-  <li><code class="highlighter-rouge">googlebot</code> = Googleのクローラを対象</li>
+  <li><code class="language-plaintext highlighter-rouge">robots</code> = 全ての検索エンジンのクローラを対象</li>
+  <li><code class="language-plaintext highlighter-rouge">googlebot</code> = Googleのクローラを対象</li>
 </ul>
 
 <h4 id="content-属性">content 属性</h4>
 <p>クローラへの指示内容になります。複数指定するときはカンマで区切ります。</p>
 
-<p>ちなみに<code class="highlighter-rouge">&lt;meta&gt;</code>タグ内は大文字小文字の違いは認識されません。</p>
+<p>ちなみに<code class="language-plaintext highlighter-rouge">&lt;meta&gt;</code>タグ内は大文字小文字の違いは認識されません。</p>
 
 <h3 id="実例で覚える使い方">実例で覚える使い方</h3>
 
@@ -241,7 +241,7 @@
 <p>「これらのリンクはスパムリンクです！ご注意を！」っていうありがた〜い記事を書いたのに、そこで紹介してるスパムなリンク先をクローラに巡回されて、「この記事はなんて悪質なリンクをはってるんだ！PageRank下げるぞ！👊😠」ってなったら悲しすぎる…。
 そんなときにこれをつかうと、「このページ内のリンクはクローラの巡回をやめてね」と指示できます。</p>
 
-<p>ページ全体ではなくリンク単位で指定することもでき、その場合は<code class="highlighter-rouge">&lt;a rel="nofollow"&gt;</code>と<code class="highlighter-rouge">&lt;a&gt;</code>タグ内に記載します。誰にどんなリンクを貼られるか分からないコメント欄などで力を発揮します。</p>
+<p>ページ全体ではなくリンク単位で指定することもでき、その場合は<code class="language-plaintext highlighter-rouge">&lt;a rel="nofollow"&gt;</code>と<code class="language-plaintext highlighter-rouge">&lt;a&gt;</code>タグ内に記載します。誰にどんなリンクを貼られるか分からないコメント欄などで力を発揮します。</p>
 
 <h4 id="検索結果に表示させず評価対象からも外す">検索結果に表示させず、評価対象からも外す</h4>
 

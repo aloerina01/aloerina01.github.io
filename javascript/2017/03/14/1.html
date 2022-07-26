@@ -180,7 +180,7 @@
   <p>The Proxy object is used to define custom behavior for fundamental operations (e.g. property lookup, assignment, enumeration, function invocation, etc).</p>
 </blockquote>
 
-<p>オブジェクトをラップし、オブジェクトが持つ基本的な機能(<code class="highlighter-rouge">obj.key</code>と書いてvalueを取得する機能など)を上書くことができるのが<code class="highlighter-rouge">Proxy Object</code>です。<br />
+<p>オブジェクトをラップし、オブジェクトが持つ基本的な機能(<code class="language-plaintext highlighter-rouge">obj.key</code>と書いてvalueを取得する機能など)を上書くことができるのが<code class="language-plaintext highlighter-rouge">Proxy Object</code>です。<br />
 (高機能なオブジェクトを生成することができる、けっこうイカした仕様だと思います😋)</p>
 
 <h4 id="つかいかた">つかいかた</h4>
@@ -191,8 +191,8 @@
 </code></pre></div></div>
 
 <ul>
-  <li><code class="highlighter-rouge">target</code> …Proxyでラップする対象となるObject</li>
-  <li><code class="highlighter-rouge">handler</code>…上書く関数をプロパティに持つObject</li>
+  <li><code class="language-plaintext highlighter-rouge">target</code> …Proxyでラップする対象となるObject</li>
+  <li><code class="language-plaintext highlighter-rouge">handler</code>…上書く関数をプロパティに持つObject</li>
 </ul>
 
 <h4 id="用例">用例</h4>
@@ -286,7 +286,7 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 
 <h4 id="reflect">Reflect</h4>
 
-<p>handlerの中で「本来の処理を呼び出したい」場面があると思います。この場合に使えるのが<code class="highlighter-rouge">Reflect</code>です。<code class="highlighter-rouge">handler</code>と同じメソッド群を持ちます。</p>
+<p>handlerの中で「本来の処理を呼び出したい」場面があると思います。この場合に使えるのが<code class="language-plaintext highlighter-rouge">Reflect</code>です。<code class="language-plaintext highlighter-rouge">handler</code>と同じメソッド群を持ちます。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">handler</span> <span class="o">=</span> <span class="p">{</span>
   <span class="na">set</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">target</span><span class="p">,</span> <span class="nx">prop</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
@@ -327,12 +327,12 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 <h3 id="tips-enumobjectをつくる-enumbuilder">[Tips] EnumObjectをつくる！ EnumBuilder</h3>
 
 <p>Enumの定義にオブジェクトを使うケース、よくありますよね。  
-あるオブジェクトがEnumである以上、<strong>値が書き換えられないこと</strong>が厳密に管理されていると良いです。ということで、オブジェクトがEnumとして生まれ変わる<code class="highlighter-rouge">EnumBuilder</code>をつくってみました。
+あるオブジェクトがEnumである以上、<strong>値が書き換えられないこと</strong>が厳密に管理されていると良いです。ということで、オブジェクトがEnumとして生まれ変わる<code class="language-plaintext highlighter-rouge">EnumBuilder</code>をつくってみました。
 <script src="https://gist.github.com/aloerina01/9c931d3918242767b9c9729a63b0952f.js"></script></p>
 
 <ul>
-  <li><code class="highlighter-rouge">set / delete</code>ができないオブジェクトにする</li>
-  <li><code class="highlighter-rouge">import</code>して<code class="highlighter-rouge">Type.INSERT</code>のようにスタティックアクセス風に使える</li>
+  <li><code class="language-plaintext highlighter-rouge">set / delete</code>ができないオブジェクトにする</li>
+  <li><code class="language-plaintext highlighter-rouge">import</code>して<code class="language-plaintext highlighter-rouge">Type.INSERT</code>のようにスタティックアクセス風に使える</li>
   <li>既に作られているEnum用オブジェクトにも簡単に適用できる</li>
   <li>オブジェクトの中にオブジェクトが入れ子になるケースは想定してない</li>
 </ul>
@@ -341,7 +341,7 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 
 <h3 id="tips-用途別に制約付きmoduleを定義してクラスベースな実装をする">[Tips] 用途別に制約付きModuleを定義してクラスベースな実装をする！</h3>
 
-<p>class構文で用意したModuleを<code class="highlighter-rouge">import</code>して<code class="highlighter-rouge">new</code>して使うと本当にクラスをインスタンス化してるように見えて、読みやすいクラスベース(風)の実装となりますよね。<br />
+<p>class構文で用意したModuleを<code class="language-plaintext highlighter-rouge">import</code>して<code class="language-plaintext highlighter-rouge">new</code>して使うと本当にクラスをインスタンス化してるように見えて、読みやすいクラスベース(風)の実装となりますよね。<br />
 しかし実際にはインスタンス化されたソレはただのオブジェクトです。やろうと思えばfunctionを外から追加することも、privateな用途で用意した変数を強引に書き換えることもできてしまいます。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">User</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./User</span><span class="dl">'</span><span class="p">;</span>
@@ -358,14 +358,14 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
   <li>SingletonなModule</li>
 </ol>
 
-<p>の3パターンのModuleを定義するための<code class="highlighter-rouge">ModuleBuilder</code>を作ってみました。</p>
+<p>の3パターンのModuleを定義するための<code class="language-plaintext highlighter-rouge">ModuleBuilder</code>を作ってみました。</p>
 
 <script src="https://gist.github.com/aloerina01/1fa30b0d81384681a4480d80e69893fe.js"></script>
 
 <ul>
   <li>既に作られているModuleにも適用できる</li>
   <li>Moduleのソース内に、どの性質を持っているのかが明記されている</li>
-  <li>今まで通りModuleを<code class="highlighter-rouge">import</code>して<code class="highlighter-rouge">new</code>して使える。呼び出し側で修正が不要(singletonは除く)</li>
+  <li>今まで通りModuleを<code class="language-plaintext highlighter-rouge">import</code>して<code class="language-plaintext highlighter-rouge">new</code>して使える。呼び出し側で修正が不要(singletonは除く)</li>
   <li>上記3つ以外にもパターンを拡張できる</li>
 </ul>
 
@@ -380,7 +380,7 @@ handlerとは、トラップの処理を上書きするものなので、各ト�
 
 <script src="https://gist.github.com/aloerina01/d9537a60291363555b95df5c33a4f9da.js"></script>
 
-<p>ちなみに、設計当初は<code class="highlighter-rouge">Handlers</code>を組み合わせていろんな性質を持つModuleをつくれるようにしたい(Javaの<a href="http://dev.classmethod.jp/server-side/java/use_lombok_short/">lombok</a>アノテーションみたいな感じで簡単に付与できるようにしたい)と思っていたのですが、handlerの競合が起きるのでやめました…。</p>
+<p>ちなみに、設計当初は<code class="language-plaintext highlighter-rouge">Handlers</code>を組み合わせていろんな性質を持つModuleをつくれるようにしたい(Javaの<a href="http://dev.classmethod.jp/server-side/java/use_lombok_short/">lombok</a>アノテーションみたいな感じで簡単に付与できるようにしたい)と思っていたのですが、handlerの競合が起きるのでやめました…。</p>
 
 <h3 id="おわりに">おわりに</h3>
 

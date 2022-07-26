@@ -189,7 +189,7 @@
   <li><a href="#最新の記法でjsを書くにはどうしたらいいんだ" id="markdown-toc-最新の記法でjsを書くにはどうしたらいいんだ">最新の記法でJSを書くにはどうしたらいいんだ</a>    <ul>
       <li><a href="#最低限の設定方法" id="markdown-toc-最低限の設定方法">最低限の設定方法</a>        <ul>
           <li><a href="#1-installする" id="markdown-toc-1-installする">1. Installする</a></li>
-          <li><a href="#2-babelrcに設定を書く" id="markdown-toc-2-babelrcに設定を書く">2. <code class="highlighter-rouge">.babelrc</code>に設定を書く</a></li>
+          <li><a href="#2-babelrcに設定を書く" id="markdown-toc-2-babelrcに設定を書く">2. <code class="language-plaintext highlighter-rouge">.babelrc</code>に設定を書く</a></li>
           <li><a href="#3-polyfillをrequireする" id="markdown-toc-3-polyfillをrequireする">3. polyfillをrequireする</a></li>
           <li><a href="#4-babeるbabelでコンパイルする" id="markdown-toc-4-babeるbabelでコンパイルする">4. Babeる(Babelでコンパイルする)</a></li>
         </ul>
@@ -245,7 +245,7 @@
 要は<strong>世の中のイケてるporyfillをまとめて提供してくれるものがbabel-polyfillだ</strong>という認識でいいと思います。</p>
 
 <h5 id="plugins">Plugins</h5>
-<p>「設定に応じてJavaScriptをコンパイルしてくれるもの」の「設定に応じて」の部分を担当するのがpluginです。<strong>「どうコンパイルするか」を定義している</strong>もので、よく見かける<code class="highlighter-rouge">babel-preset-es2015</code>などがこれに該当します。</p>
+<p>「設定に応じてJavaScriptをコンパイルしてくれるもの」の「設定に応じて」の部分を担当するのがpluginです。<strong>「どうコンパイルするか」を定義している</strong>もので、よく見かける<code class="language-plaintext highlighter-rouge">babel-preset-es2015</code>などがこれに該当します。</p>
 
 <p>※ 正確には、複数のpluginを特定の用途に合わせてセットにしたものが「babel-preset-xxxx」です。よくつかうplugin集をpresetとして提供してくれているわけです。</p>
 
@@ -253,12 +253,12 @@
 <p>Babelのドキュメントを読んだ結果感じたことはこれでした。結局どうすりゃいいんだと。</p>
 
 <p>ここでおさらいしておきます。<br />
-最新の記法でJSを書く際には、ES2015〜で登場した<strong>新しい文法</strong>と<strong>新しい関数</strong>を使うことになります。前者はアロー関数やクラス記法などで、後者は<code class="highlighter-rouge">Promise</code>, <code class="highlighter-rouge">Object.assign</code>, <code class="highlighter-rouge">Array.prototype.find</code>などです。</p>
+最新の記法でJSを書く際には、ES2015〜で登場した<strong>新しい文法</strong>と<strong>新しい関数</strong>を使うことになります。前者はアロー関数やクラス記法などで、後者は<code class="language-plaintext highlighter-rouge">Promise</code>, <code class="language-plaintext highlighter-rouge">Object.assign</code>, <code class="language-plaintext highlighter-rouge">Array.prototype.find</code>などです。</p>
 
 <p>「最新の記法でJSを書く」＝「この2つを含むソースをBabelでコンパイルする」 ということになりますね。それには以下の2つのことが必要です。</p>
 <ul>
-  <li><code class="highlighter-rouge">babel-preset-env</code>などのplugin・presetを使って新しい文法をコンパイルできるようにする</li>
-  <li><code class="highlighter-rouge">babel-polyfill</code>などのpolyfillを入れて新しい関数が動くようにする</li>
+  <li><code class="language-plaintext highlighter-rouge">babel-preset-env</code>などのplugin・presetを使って新しい文法をコンパイルできるようにする</li>
+  <li><code class="language-plaintext highlighter-rouge">babel-polyfill</code>などのpolyfillを入れて新しい関数が動くようにする</li>
 </ul>
 
 <h4 id="最低限の設定方法">最低限の設定方法</h4>
@@ -269,7 +269,7 @@
 <span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-S</span> babel-polyfill
 </code></pre></div></div>
 
-<h5 id="2-babelrcに設定を書く">2. <code class="highlighter-rouge">.babelrc</code>に設定を書く</h5>
+<h5 id="2-babelrcに設定を書く">2. <code class="language-plaintext highlighter-rouge">.babelrc</code>に設定を書く</h5>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
   <span class="dl">"</span><span class="s2">presets</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span><span class="dl">"</span><span class="s2">env</span><span class="dl">"</span><span class="p">]</span>
 <span class="p">}</span>
@@ -286,14 +286,14 @@
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npx babel ./input.js <span class="nt">-o</span> ./output.js
 </code></pre></div></div>
 
-<p>これが基本の使い方です。これを応用して、JSXをコンパイルさせたかったら<code class="highlighter-rouge">babel-preset-react</code>を利用したり、bundleさせたかったらWebpackなどのツールと組み合わせたり…といったカスタマイズをしていく感じになると思います。</p>
+<p>これが基本の使い方です。これを応用して、JSXをコンパイルさせたかったら<code class="language-plaintext highlighter-rouge">babel-preset-react</code>を利用したり、bundleさせたかったらWebpackなどのツールと組み合わせたり…といったカスタマイズをしていく感じになると思います。</p>
 
 <h3 id="webpackと組み合わせた実践例">Webpackと組み合わせた実践例</h3>
 
 <p>ここからは「ES02015+の記法で書いたJSをWebpackでbundleする」というよくあるパターンの実践例です。</p>
 
 <h4 id="キホンのキ">キホンのキ</h4>
-<p>まず基礎ですが、WebpackでBabelを使うには<code class="highlighter-rouge">babel-loader</code>と<code class="highlighter-rouge">babel-core</code>を読み込みますよね。<code class="highlighter-rouge">babel-loader</code>はWebpackに「受け取ったコードをBabeってね」と指示を出すもので、指示に基づいて実際にBabeるのが<code class="highlighter-rouge">babel-core</code>、という感じです。</p>
+<p>まず基礎ですが、WebpackでBabelを使うには<code class="language-plaintext highlighter-rouge">babel-loader</code>と<code class="language-plaintext highlighter-rouge">babel-core</code>を読み込みますよね。<code class="language-plaintext highlighter-rouge">babel-loader</code>はWebpackに「受け取ったコードをBabeってね」と指示を出すもので、指示に基づいて実際にBabeるのが<code class="language-plaintext highlighter-rouge">babel-core</code>、という感じです。</p>
 
 <p><strong>Install</strong></p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> babel-loader babel-core
@@ -311,21 +311,21 @@
 <span class="p">}</span>
 </code></pre></div></div>
 
-<p>pluginの適用は上記の「最低限の設定」と同様に<code class="highlighter-rouge">.babelrc</code>に書きます。polyfillの適用の仕方は3通りあるので、やりたいことベースで整理します。</p>
+<p>pluginの適用は上記の「最低限の設定」と同様に<code class="language-plaintext highlighter-rouge">.babelrc</code>に書きます。polyfillの適用の仕方は3通りあるので、やりたいことベースで整理します。</p>
 
 <h4 id="polyfillの機能を制限なく使いたいでも無駄なものは入れたくない">polyfillの機能を制限なく使いたい、でも無駄なものは入れたくない</h4>
 <p>polyfillの対象となる機能には3つのタイプがあります。</p>
 
 <ul>
   <li><strong>globals</strong><br />
-<code class="highlighter-rouge">Promise</code>など新しいグローバルオブジェクト</li>
+<code class="language-plaintext highlighter-rouge">Promise</code>など新しいグローバルオブジェクト</li>
   <li><strong>native methods</strong><br />
-<code class="highlighter-rouge">Object.assign</code>などの既存のグローバルオブジェクトに追加されたメソッド</li>
+<code class="language-plaintext highlighter-rouge">Object.assign</code>などの既存のグローバルオブジェクトに追加されたメソッド</li>
   <li><strong>instance methods</strong> <br />
-<code class="highlighter-rouge">Array.prototype.find</code>などのインスタンスが持つメソッド</li>
+<code class="language-plaintext highlighter-rouge">Array.prototype.find</code>などのインスタンスが持つメソッド</li>
 </ul>
 
-<p>これらすべてを使うには<strong><code class="highlighter-rouge">babel-polyfill</code>をbundleに含める</strong>ことが必要です。それには<strong>entry pointとなるファイルの1行目</strong>で<strong>1度だけ</strong><code class="highlighter-rouge">babel-polyfill</code>を読み込みます。</p>
+<p>これらすべてを使うには<strong><code class="language-plaintext highlighter-rouge">babel-polyfill</code>をbundleに含める</strong>ことが必要です。それには<strong>entry pointとなるファイルの1行目</strong>で<strong>1度だけ</strong><code class="language-plaintext highlighter-rouge">babel-polyfill</code>を読み込みます。</p>
 
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// CommonJS</span>
 <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">babel-polyfill</span><span class="dl">'</span><span class="p">);</span>
@@ -334,9 +334,9 @@
 <span class="k">import</span> <span class="dl">'</span><span class="s1">babel-polyfill</span><span class="dl">'</span><span class="p">;</span>
 </code></pre></div></div>
 
-<p>「1度だけ」というのがとても重要で、<strong>複数回読み込むとpolyfillがぶっ壊れます</strong>。あるHTMLで2つのjsファイルを読み込んでいて、それぞれで<code class="highlighter-rouge">babel-polyfill</code>を読み込んでいる場合もぶっ壊れます。とにかく2回読み込まれたらマズイのです。</p>
+<p>「1度だけ」というのがとても重要で、<strong>複数回読み込むとpolyfillがぶっ壊れます</strong>。あるHTMLで2つのjsファイルを読み込んでいて、それぞれで<code class="language-plaintext highlighter-rouge">babel-polyfill</code>を読み込んでいる場合もぶっ壊れます。とにかく2回読み込まれたらマズイのです。</p>
 
-<p>この<strong>二重読み込み制約</strong>にさえ気をつけていれば、この方法ですべてのpolyfillを利用することができます。加えて、<code class="highlighter-rouge">babel-preset-env</code>と組み合わせて利用する場合は、<a href="https://babeljs.io/docs/plugins/preset-env/#usebuiltins">useBuiltIns</a>オプションを設定することで<strong>全部入りの<code class="highlighter-rouge">babel-polyfill</code>を、必要なpolyfill(該当する<code class="highlighter-rouge">core-js</code>のモジュール)のみに変換してくれます</strong>。</p>
+<p>この<strong>二重読み込み制約</strong>にさえ気をつけていれば、この方法ですべてのpolyfillを利用することができます。加えて、<code class="language-plaintext highlighter-rouge">babel-preset-env</code>と組み合わせて利用する場合は、<a href="https://babeljs.io/docs/plugins/preset-env/#usebuiltins">useBuiltIns</a>オプションを設定することで<strong>全部入りの<code class="language-plaintext highlighter-rouge">babel-polyfill</code>を、必要なpolyfill(該当する<code class="language-plaintext highlighter-rouge">core-js</code>のモジュール)のみに変換してくれます</strong>。</p>
 
 <p><strong>.babelrc</strong></p>
 <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
@@ -361,7 +361,7 @@
 ❌：二重読み込み制約のリスクがある、グローバルが汚染される</p>
 
 <h4 id="二重読み込み制約のリスクを背負わずにpolyfillを使いたい">「二重読み込み制約」のリスクを背負わずにpolyfillを使いたい</h4>
-<p>WebpackとBabelを組み合わせる場合、二重読み込み制約のリスクを回避する方法があります。それはソース内でbabel-polyfillを読み込むのではなく、bundle時に<code class="highlighter-rouge">babel-polyfill</code>を結合する方法です。以下のように設定します。</p>
+<p>WebpackとBabelを組み合わせる場合、二重読み込み制約のリスクを回避する方法があります。それはソース内でbabel-polyfillを読み込むのではなく、bundle時に<code class="language-plaintext highlighter-rouge">babel-polyfill</code>を結合する方法です。以下のように設定します。</p>
 
 <p><strong>webpack.config.js</strong></p>
 <div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="p">{</span>
@@ -369,21 +369,21 @@
 <span class="p">};</span>
 </code></pre></div></div>
 
-<p>ただし、この方法は上述の<code class="highlighter-rouge">useBuiltIns</code>オプションが効かなくなるので注意です。</p>
+<p>ただし、この方法は上述の<code class="language-plaintext highlighter-rouge">useBuiltIns</code>オプションが効かなくなるので注意です。</p>
 
 <p><strong>まとめ</strong></p>
 
 <p>⭕：二重読み込みのリスクがない、全polyfillを利用できる<br />
-❌：<code class="highlighter-rouge">useBuiltIns</code>オプションが効かない、グローバルが汚染される</p>
+❌：<code class="language-plaintext highlighter-rouge">useBuiltIns</code>オプションが効かない、グローバルが汚染される</p>
 
 <h4 id="グローバルを汚染せずにpolyfillを使いたい複数ファイルでpolyfillを使いたい">グローバルを汚染せずにpolyfillを使いたい、複数ファイルでpolyfillを使いたい</h4>
-<p>ライブラリを実装する場合などでグローバルを汚染せずにES2015+の関数を利用したいときは、<strong><code class="highlighter-rouge">transform-runtime</code></strong>pluginを使います。また、ひとつのアプリケーションで複数のJSファイルを読み込む場合など、polyfill読込が重複してしまうのを避けたいときにも<strong><code class="highlighter-rouge">transform-runtime</code></strong>pluginが使えます。</p>
+<p>ライブラリを実装する場合などでグローバルを汚染せずにES2015+の関数を利用したいときは、<strong><code class="language-plaintext highlighter-rouge">transform-runtime</code></strong>pluginを使います。また、ひとつのアプリケーションで複数のJSファイルを読み込む場合など、polyfill読込が重複してしまうのを避けたいときにも<strong><code class="language-plaintext highlighter-rouge">transform-runtime</code></strong>pluginが使えます。</p>
 
-<p>これは<strong>ES2015+の関数を、<code class="highlighter-rouge">core-js</code>のエイリアスである<code class="highlighter-rouge">babel-runtime</code>モジュールで書き換える</strong>ものです。本来polyfillとは「そのままでは動かないコードを補うためのコード」を埋め込むものなので、対象コードそのものを書き換えてしまう<code class="highlighter-rouge">trunsform-runtime</code>は正確にはpolyfillとは呼べないですが、おかげで上述の利点を得られるわけです。</p>
+<p>これは<strong>ES2015+の関数を、<code class="language-plaintext highlighter-rouge">core-js</code>のエイリアスである<code class="language-plaintext highlighter-rouge">babel-runtime</code>モジュールで書き換える</strong>ものです。本来polyfillとは「そのままでは動かないコードを補うためのコード」を埋め込むものなので、対象コードそのものを書き換えてしまう<code class="language-plaintext highlighter-rouge">trunsform-runtime</code>は正確にはpolyfillとは呼べないですが、おかげで上述の利点を得られるわけです。</p>
 
 <p>そして、ここまでで勘の良い方はお気づきかもですが、<strong>instance methodsを利用できない</strong>という制約がつきます。</p>
 
-<p>設定するには、変換処理を行う<code class="highlighter-rouge">babel-plugin-transform-runtime</code>と、<code class="highlighter-rouge">core-js</code>のエイリアスである<code class="highlighter-rouge">babel-runtime</code>を npm install します。後者はソースに含まれることになるので<code class="highlighter-rouge">--save</code>オプションで。</p>
+<p>設定するには、変換処理を行う<code class="language-plaintext highlighter-rouge">babel-plugin-transform-runtime</code>と、<code class="language-plaintext highlighter-rouge">core-js</code>のエイリアスである<code class="language-plaintext highlighter-rouge">babel-runtime</code>を npm install します。後者はソースに含まれることになるので<code class="language-plaintext highlighter-rouge">--save</code>オプションで。</p>
 
 <p><strong>Install</strong></p>
 <div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>npm <span class="nb">install</span> <span class="nt">-D</span> babel-plugin-transform-runtime
@@ -435,15 +435,15 @@
 <h3 id="細かい機能を上手く使いこなしたい">細かい機能を上手く使いこなしたい</h3>
 
 <h4 id="設定はショートハンドで書けるよ">設定はショートハンドで書けるよ</h4>
-<p><code class="highlighter-rouge">babel-preset-hoge</code>を npm install しているのに、設定ファイルには<code class="highlighter-rouge">"presets": ["hoge"]</code>って書くから分かりにくいな…と思ってました。これは<strong>presetとpluginは<code class="highlighter-rouge">babel-preset-</code> <code class="highlighter-rouge">babel-plugin-</code>の部分を省略</strong>して書くことができる故でした。<br />
-なので<code class="highlighter-rouge">"presets": ["babel-preset-hoge"]</code>と書いてもOK。ちなみにパッケージスコープの場合は<code class="highlighter-rouge">"presets": ["@org/hoge"]</code>という感じ。</p>
+<p><code class="language-plaintext highlighter-rouge">babel-preset-hoge</code>を npm install しているのに、設定ファイルには<code class="language-plaintext highlighter-rouge">"presets": ["hoge"]</code>って書くから分かりにくいな…と思ってました。これは<strong>presetとpluginは<code class="language-plaintext highlighter-rouge">babel-preset-</code> <code class="language-plaintext highlighter-rouge">babel-plugin-</code>の部分を省略</strong>して書くことができる故でした。<br />
+なので<code class="language-plaintext highlighter-rouge">"presets": ["babel-preset-hoge"]</code>と書いてもOK。ちなみにパッケージスコープの場合は<code class="language-plaintext highlighter-rouge">"presets": ["@org/hoge"]</code>という感じ。</p>
 
 <h4 id="babel-preset-esxxxx-はいくつを使えばいいんだ">babel-preset-esXXXX はいくつを使えばいいんだ</h4>
-<p>過去に書いたbabelrcを見てみたら<code class="highlighter-rouge">babel-preset-es2015</code>を入れていることがほとんどだったのですが、ES2016、ES2017と仕様が増えている現在では<code class="highlighter-rouge">babel-preset-env</code>を入れておくのがベターのようです。</p>
+<p>過去に書いたbabelrcを見てみたら<code class="language-plaintext highlighter-rouge">babel-preset-es2015</code>を入れていることがほとんどだったのですが、ES2016、ES2017と仕様が増えている現在では<code class="language-plaintext highlighter-rouge">babel-preset-env</code>を入れておくのがベターのようです。</p>
 
-<p>これは何のオプションもなしで利用すると<code class="highlighter-rouge">babel-preset-latest</code>と同じように機能し、設定次第で<code class="highlighter-rouge">babel-preset-es2015</code>と同様の動きをさせることもできます。</p>
+<p>これは何のオプションもなしで利用すると<code class="language-plaintext highlighter-rouge">babel-preset-latest</code>と同じように機能し、設定次第で<code class="language-plaintext highlighter-rouge">babel-preset-es2015</code>と同様の動きをさせることもできます。</p>
 
-<p>また、上述した<code class="highlighter-rouge">useBuiltIns</code>のような便利なオプションを使うことができる利点があります。個人的にありがたいと思っているのが<strong><a href="https://babeljs.io/docs/plugins/preset-env/#targets">targets</a></strong>オプションです。ブラウザやNodeのバージョンを指定できるオプションで、指定されたバージョンに必要なpolyfillのみを入れてくれるようになります。</p>
+<p>また、上述した<code class="language-plaintext highlighter-rouge">useBuiltIns</code>のような便利なオプションを使うことができる利点があります。個人的にありがたいと思っているのが<strong><a href="https://babeljs.io/docs/plugins/preset-env/#targets">targets</a></strong>オプションです。ブラウザやNodeのバージョンを指定できるオプションで、指定されたバージョンに必要なpolyfillのみを入れてくれるようになります。</p>
 
 <p>参考： <a href="https://babeljs.io/docs/plugins/preset-env/#options">Env preset # Options</a></p>
 
