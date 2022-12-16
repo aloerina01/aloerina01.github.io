@@ -860,3 +860,62 @@ a.donation-button {
 		padding-left: 4px;
 	}
 }
+
+.amazon-link-container {
+	margin: 16px 0px;
+	width: 100%;
+	.amazon-link-body {
+		display: flex;
+		flex-direction: column;
+		border: 1px solid $light-gray;
+		border-radius: 4px;
+		@include media($tablet) {
+			flex-direction: row-reverse;
+		}
+	}
+	.amazon-link-label {
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		flex-grow: 1;
+		margin: 28px 32px 26px 32px;
+		padding: 0 0 38px 0;
+	}
+	.amazon-link-label span {
+		display: block;
+		font-weight: 800;
+		font-size: 1rem;
+		padding: 0 0 16px 0;
+	}
+	.amazon-link-border {
+		border-top: 1px solid $pale-gray;
+		border-right: none;
+		@include media($tablet) {
+			border-right: 1px solid $pale-gray;
+			borfer-top: none;
+		}
+	}
+	.amazon-link-label a {
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+		border: none;
+		background: $pink-300;
+		display: block;
+		width: 100%;
+		padding: 8px;
+		color: white;
+		text-align: center;
+		text-decoration: none;
+		font-weight: 800;
+		font-size: 0.8rem;
+		border-radius: 28px;
+		box-shadow: 0 1px 5px $dark-gray;
+	}
+	.amazon-link-image {
+		padding: 24px 36px;
+		margin: auto;
+	}
+}
