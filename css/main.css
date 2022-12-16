@@ -503,6 +503,24 @@ a.donation-button .icon { width: 28px; height: 28px; padding-bottom: 2px; margin
 
 a.donation-button .label { display: inline-block; font-size: 0.9em; padding-left: 4px; }
 
+.amazon-link-container { margin: 16px 0px; width: 100%; }
+
+.amazon-link-container .amazon-link-body { display: flex; flex-direction: column; border: 1px solid #ddd; border-radius: 4px; }
+
+@media screen and (min-width: 768px) { .amazon-link-container .amazon-link-body { flex-direction: row-reverse; } }
+
+.amazon-link-container .amazon-link-label { position: relative; display: flex; align-items: flex-start; flex-grow: 1; margin: 28px 32px 26px 32px; padding: 0 0 38px 0; }
+
+.amazon-link-container .amazon-link-label span { display: block; font-weight: 800; font-size: 1rem; padding: 0 0 16px 0; }
+
+.amazon-link-container .amazon-link-border { border-top: 1px solid #f8f8f8; border-right: none; }
+
+@media screen and (min-width: 768px) { .amazon-link-container .amazon-link-border { border-right: 1px solid #f8f8f8; borfer-top: none; } }
+
+.amazon-link-container .amazon-link-label a { position: absolute; bottom: 0; left: 0; right: 0; margin: auto; border: none; background: #F06292; display: block; width: 100%; padding: 8px; color: white; text-align: center; text-decoration: none; font-weight: 800; font-size: 0.8rem; border-radius: 28px; box-shadow: 0 1px 5px #333; }
+
+.amazon-link-container .amazon-link-image { padding: 24px 36px; margin: auto; }
+
 ul li.nav-search-box .aa-input-container { display: inline-block; position: relative; margin: 0; }
 
 ul li.nav-search-box .aa-input-search { width: 200px; border: 1px solid #CFD8DC; border-radius: 40px; vertical-align: baseline; padding: 6px 9.6px 6px 34px; margin: 0; box-sizing: border-box; -webkit-appearance: none; -moz-appearance: none; appearance: none; font-size: 14px; box-shadow: none; }

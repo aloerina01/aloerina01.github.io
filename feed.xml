@@ -1,5 +1,126 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2022-07-26T08:24:21+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</title><link href="https://aloerina01.github.io/blog/2021-10-29-1" rel="alternate" type="text/html" title="スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-10-29-1">&lt;p&gt;これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2022-12-16T04:28:26+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">「来月からエンジニアリングマネージャーやってね」と言われたら</title><link href="https://aloerina01.github.io/blog/2022-12-16-1" rel="alternate" type="text/html" title="「来月からエンジニアリングマネージャーやってね」と言われたら" /><published>2022-12-16T00:00:00+00:00</published><updated>2022-12-16T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2022-12-16-1">&lt;p&gt;タイトルのように「来月からエンジニアリングマネージャーやってくれませんか」と言われた経験が私にもあります。もう3〜4年くらい前のことです。おそらく多くのエンジニアと同じように当時の私はマネジメント業に興味がなく、マネージャーになってみたものの何から手を付ければ良いかも分からず、とりあえずチームメンバーとの1on1をセッティングしてみたりしました。&lt;/p&gt;
+
+&lt;p&gt;まさしく”レベル1”だった私ですが、いくらか経験を積み、今では見える景色や解像度が変わるくらいにはレベルアップした実感があります。&lt;/p&gt;
+
+&lt;p&gt;当時に戻れるならこんなふうにマネジメント業務に取り掛かろう、というイメージが具体的に持てるようになったので、今回はそれを言語化してみようと思います。少しレベルアップした自分から、レベル1だった当時の自分へのアドバイスのつもりで書いてみます。&lt;/p&gt;
+
+&lt;p&gt;※ちなみに数人のエンジニアで構成されるチームのエンジニアリングマネージャーを任された場面を想定してます。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#まえおき&quot; id=&quot;markdown-toc-まえおき&quot;&gt;まえおき&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#1-帽子のかぶり直しには時間がかかることを理解する&quot; id=&quot;markdown-toc-1-帽子のかぶり直しには時間がかかることを理解する&quot;&gt;1. 帽子のかぶり直しには時間がかかることを理解する&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#2-名前のある仕事や日々進捗が出る仕事はごくわずかだと理解する&quot; id=&quot;markdown-toc-2-名前のある仕事や日々進捗が出る仕事はごくわずかだと理解する&quot;&gt;2. 名前のある仕事や日々進捗が出る仕事はごくわずかだと理解する&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#3-マネージャーへの期待値を理解しチームを観察する&quot; id=&quot;markdown-toc-3-マネージャーへの期待値を理解しチームを観察する&quot;&gt;3. マネージャーへの期待値を理解し、チームを観察する&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#参考書籍&quot; id=&quot;markdown-toc-参考書籍&quot;&gt;参考書籍&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;まえおき&quot;&gt;まえおき&lt;/h3&gt;
+
+&lt;p&gt;当時の自分に伝えたいことは山程ありますが、まずはマネージャーになりたての時期を想定し、&lt;strong&gt;具体的なアクションよりも、考え方や向き合い方について&lt;/strong&gt;触れていこうと思います。&lt;br /&gt;
+マネージャーになった以上1on1をしたりアサインをしたり指示出しをしたり……と業務内容をガラッと変えて成果を出さねばと当時は焦っていましたが、&lt;strong&gt;焦って行動を変えてもなかなか結果が追いつかない&lt;/strong&gt;ことのほうが圧倒的に多かったです。”名実ともに”マネージャーになるために、まどろっこしいかもしれませんが&lt;strong&gt;まずは考え方のシフトから&lt;/strong&gt;始めてみるのはいかがでしょう。&lt;/p&gt;
+
+&lt;h3 id=&quot;1-帽子のかぶり直しには時間がかかることを理解する&quot;&gt;1. 帽子のかぶり直しには時間がかかることを理解する&lt;/h3&gt;
+
+&lt;p&gt;それまでチームメンバーだった自分が今日からマネージャーになるということは、&lt;strong&gt;『チームメンバー』の帽子から『マネージャー』の帽子にかぶり直しをする必要があります&lt;/strong&gt;。そして帽子をかぶり直したことを自分と周囲の全員が真に理解するには時間がかかります。被り直しが浸透しきっていない例を体験談をもとに挙げてみます。&lt;/p&gt;
+
+&lt;p&gt;1つ目の例では、チームメンバーとの会議の場で、私が「〜〜したい」と意思表示をした場面を思い返してみます。私はチームメンバーと対等な目線で(『チームメンバー』の帽子を被って)アイデアを&lt;strong&gt;提案したつもり&lt;/strong&gt;でいたものの、チームメンバーには&lt;strong&gt;マネージャーからの指示&lt;/strong&gt;だと伝わってしまっていました。このとき私は、周囲から「マネージャーの帽子被っている」と認識されていることを理解していませんでした。私自身が帽子のかぶり直しを自覚できていなかった例です。&lt;/p&gt;
+
+&lt;p&gt;もう1つ例を挙げます。当時私は業務上必要な指示/依頼をする行為を、偉そうな行為と捉え抵抗感を抱いていました。今であれば誠実さや敬意の有無こそが大事だと分かりますが、当時は「何様だ！」と思われないかソワソワしていたのだと思います。この例は、&lt;strong&gt;頭では帽子のかぶり直しをしたことを理解した&lt;/strong&gt;上で指示/依頼業務に臨んでいたものの、&lt;strong&gt;感情が追いつかずにいた&lt;/strong&gt;例です。&lt;br /&gt;
+また、チームメンバーのほうが感情が追いつかず「先日まで同僚だったお前になぜそんなこと言われなきゃならないんだ！」と反発してしまうケースも起こり得るでしょうし、チームの代表として他部署の人と会話をしようとしても対等に扱ってもらえないケースもあり得るでしょう。&lt;/p&gt;
+
+&lt;p&gt;これらの例をまとめるとこんな感じです。
+&lt;img src=&quot;/assets/2022-12-13-1.jpeg&quot; alt=&quot;被り直しができていないパターン一覧&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;帽子のかぶり直しは&lt;strong&gt;自分自身だけでなく周囲の人にも認識してもらう必要があります&lt;/strong&gt;。まずは自分自身が帽子のかぶり直しを意識し行動し、それを積み重ねて少しずつ周囲にも頭で理解し心で納得してもらうことが必要です。感情の問題がある以上、時間をかけることでしか解決できないと割り切って、&lt;strong&gt;徐々にマネージャーになっていく&lt;/strong&gt;つもりで日々の業務に臨むと良いと思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;2-名前のある仕事や日々進捗が出る仕事はごくわずかだと理解する&quot;&gt;2. 名前のある仕事や日々進捗が出る仕事はごくわずかだと理解する&lt;/h3&gt;
+
+&lt;p&gt;マネージャーになると、自分の成果をうまく自覚できず不安や焦りを覚えることがあります。私は今でもあります。その理由は、&lt;strong&gt;分かりやすい名前が付く仕事が少ない&lt;/strong&gt;からと、&lt;strong&gt;短期間で進捗する仕事がほぼない&lt;/strong&gt;からだと考えています。逆に言うとそれまでのエンジニアリング業務は、名前を付けやすく短期間で進捗が見える業務が多いので「今なんの仕事をしているか」がはっきりしていました。たとえば&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;昨日は5件バグフィックスした&lt;/li&gt;
+  &lt;li&gt;昨日は10コミットした&lt;/li&gt;
+  &lt;li&gt;次のリリースに向けて〇〇機能を実装している&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった具合に、作業内容を具体的に表現しやすく、成果を実感しやすいです。&lt;/p&gt;
+
+&lt;p&gt;一方でマネジメント業務では&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;プロダクトやチームメンバーの状況を観察する&lt;/li&gt;
+  &lt;li&gt;今後の方針について考える&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;と、なんとも地味な時間の使い方になりがちです。もちろん長期的に見たらこの積み重ねがインパクトのある大きな成果に繋がるのですが(そこが面白さでもありますが)、&lt;strong&gt;昨日と今日の差分を測るのが非常に難しい&lt;/strong&gt;です。&lt;br /&gt;
+私が日頃している仕事で名前のある仕事と言ったら『1on1』『採用面接』『ミーティングファシリテーション』くらいです。それ以外の時間は&lt;strong&gt;情報収集しているか、チームメンバーを観察しているか、次のアクションを考えているか&lt;/strong&gt;といった無名のタスクをしています。&lt;/p&gt;
+
+&lt;p&gt;進捗の見えにくい仕事ばかりしていると「何もしていないのではないか」「自分は役に立っていないのではないか」と不安になります。分かりやすい成果が欲しくて、チームビルディングのイベントを企画したり、コードを書きたくなることもあります(もちろんそれらが悪いことではなく、本来マネージャーとして優先すべきことをせずに&lt;strong&gt;目先の達成感のために仕事を選ぶのが良くない&lt;/strong&gt;ということです)。&lt;/p&gt;
+
+&lt;p&gt;そんなとき私は一呼吸おいて、マネジメント業務とは名前のある仕事や日々進捗が出る仕事が少ないものだと思い出すようにしています。マネージャーがチームと向き合って第一にすべきことは、そしてし続けるべきことは、&lt;strong&gt;チームメンバー1人1人を観察し、こまめにフィードバックし、チームとしての成果を高め続けていくこと&lt;/strong&gt;です。1日観察したからといって成果は出ないですが、1日観察をサボればフィードバックの機会を1つ逃すことになるかもしれません。長期的な成果や目標を目指して辛抱強くマネジメントしていくことが大切です。&lt;/p&gt;
+
+&lt;h3 id=&quot;3-マネージャーへの期待値を理解しチームを観察する&quot;&gt;3. マネージャーへの期待値を理解し、チームを観察する&lt;/h3&gt;
+
+&lt;p&gt;マネジメント業務とは、極端に言えば「上手く成果を出すために何でもする」ことです。言い換えると、&lt;strong&gt;状況に応じて具体的なタスクが変わる&lt;/strong&gt;ということです。ですので、&lt;strong&gt;自分をマネージャーに任命した上長が自分に何を期待しているのかを理解する&lt;/strong&gt;ことが、行動のヒントになります。&lt;/p&gt;
+
+&lt;p&gt;例えば、毎日締め切りに追われて疲弊しきったチームが健全に働けるよう立て直してほしいとか、はたまた前任のマネージャーによってある程度自己組織化されたチームを引き継ぐことで少しずつマネジメント業務に慣れてほしいとか。そういった期待を理解すると、自分がどんなマネジメントをすべきかの糸口が見えてくると思います。もし既に頭の中にその方向性がある場合でも、上長やチームメンバーが自分に望むことと照らし合わせれば、より確度を高められるはずです。&lt;/p&gt;
+
+&lt;p&gt;そして、周囲からの期待にせよ、マネージャーの業務内容にせよ、&lt;strong&gt;『チームの状態』に依って決まることが多い&lt;/strong&gt;です。上述の例では「疲弊しきったチーム」と「自己組織化されたチーム」が登場し、それに依ってマネージャーへの期待内容が変化しています。チームの状態を適切に把握できれば何をすべきかが見え、期待内容も理解しやすいということです。&lt;/p&gt;
+
+&lt;p&gt;それを踏まえて、当時私が参考にしていた&lt;strong&gt;チームの状態を理解するための3つの指標&lt;/strong&gt;を紹介します。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;チームに時間や心のゆとりがない&lt;strong&gt;サバイバルフェーズ&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;十分な時間やゆとりがあり、その時間を使って学習や検証を行っている&lt;strong&gt;学習フェーズ&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;自分たちの問題を自力で解決し変化し続けている&lt;strong&gt;自己組織化フェーズ&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;今の自分たちはどのフェーズにいるのかじっくり観察し見極めることで、次にすべきことが見えてくるかもしれません。チームの状態を測る指標はこれ以外にもたくさんありますが、まずはお手軽な3フェーズに分けて観察するだけでも十分ヒントが得られると思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;参考書籍&quot;&gt;参考書籍&lt;/h3&gt;
+
+&lt;div class=&quot;amazon-link-container&quot;&gt;
+  &lt;div class=&quot;amazon-link-body&quot;&gt;
+    &lt;div class=&quot;amazon-link-image&quot;&gt;
+      &lt;a href=&quot;https://www.amazon.co.jp/%E3%82%A8%E3%83%A9%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%82%B7%E3%83%83%E3%83%97-%E2%80%95%E8%87%AA%E5%B7%B1%E7%B5%84%E7%B9%94%E5%8C%96%E3%83%81%E3%83%BC%E3%83%A0%E3%81%AE%E8%82%B2%E3%81%A6%E6%96%B9-Roy-Osherove/dp/4873118026?keywords=%E3%82%A8%E3%83%A9%E3%82%B9%E3%83%86%E3%82%A3%E3%83%83%E3%82%AF%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%82%B7%E3%83%83%E3%83%97&amp;amp;qid=1671075668&amp;amp;sprefix=%E3%81%88%E3%82%89%E3%81%99%E3%81%A6%E3%81%83%E3%81%A3%E3%81%8F%E3%82%8A%E3%83%BC%E3%81%A0%2Caps%2C377&amp;amp;sr=8-1&amp;amp;linkCode=li2&amp;amp;tag=aloerina09-22&amp;amp;linkId=68586bb84c53d51c6f606ae553e20cbe&amp;amp;language=ja_JP&amp;amp;ref_=as_li_ss_il&quot; target=&quot;_blank&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;amp;ASIN=4873118026&amp;amp;Format=_SL160_&amp;amp;ID=AsinImage&amp;amp;MarketPlace=JP&amp;amp;ServiceVersion=20070822&amp;amp;WS=1&amp;amp;tag=aloerina09-22&amp;amp;language=ja_JP&quot; /&gt;&lt;/a&gt;&lt;img src=&quot;https://ir-jp.amazon-adsystem.com/e/ir?t=aloerina09-22&amp;amp;language=ja_JP&amp;amp;l=li2&amp;amp;o=9&amp;amp;a=4873118026&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;amazon-link-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;amazon-link-label&quot;&gt;
+      &lt;span&gt;エラスティックリーダーシップ 自己組織化チームの育て方&lt;/span&gt;
+      &lt;a href=&quot;https://amzn.to/3WaenlU&quot; target=&quot;_blank&quot;&gt;Amazon.co.jp で購入する&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;エラスティックリーダーシップ 自己組織化チームの育て方&lt;/strong&gt;&lt;br /&gt;
+上で紹介した3つのフェーズはこの本で紹介されていました。それぞれのフェーズをどう見極めるか、どう対処するかが詳しく書かれています。タイトルには「リーダーシップ」とありますが、マネジメントにも通ずる内容、むしろマネジメントとして取り組むべき内容だと思います。マネジメント入門期に読んでもためになりましたし、今読み返しても気づきが得られているので、繰り返し読んで参考になる本です。&lt;/p&gt;
+
+&lt;div class=&quot;amazon-link-container&quot;&gt;
+  &lt;div class=&quot;amazon-link-body&quot;&gt;
+    &lt;div class=&quot;amazon-link-image&quot;&gt;
+      &lt;a href=&quot;https://www.amazon.co.jp/EQ%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%82%B7%E3%83%83%E3%83%97-%E6%88%90%E5%8A%9F%E3%81%99%E3%82%8B%E4%BA%BA%E3%81%AE%E3%81%93%E3%81%93%E3%82%8D%E3%81%AE%E7%9F%A5%E8%83%BD%E6%8C%87%E6%95%B0%E3%81%AE%E6%B4%BB%E3%81%8B%E3%81%97%E6%96%B9-%E3%83%80%E3%83%8B%E3%82%A8%E3%83%AB-%E3%82%B4%E3%83%BC%E3%83%AB%E3%83%9E%E3%83%B3/dp/4532149754?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&amp;amp;crid=14OKULLVD14FV&amp;amp;keywords=eq%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%82%B7%E3%83%83%E3%83%97&amp;amp;qid=1671009538&amp;amp;sprefix=eq%E3%83%AA%E3%83%BC%E3%83%80%E3%83%BC%E3%82%B7%E3%83%83%E3%83%97%2Caps%2C161&amp;amp;sr=8-1&amp;amp;linkCode=li2&amp;amp;tag=aloerina09-22&amp;amp;linkId=4882c154a9da157651954bf44f019b78&amp;amp;language=ja_JP&amp;amp;ref_=as_li_ss_il&quot; target=&quot;_blank&quot;&gt;&lt;img border=&quot;0&quot; src=&quot;//ws-fe.amazon-adsystem.com/widgets/q?_encoding=UTF8&amp;amp;ASIN=4532149754&amp;amp;Format=_SL160_&amp;amp;ID=AsinImage&amp;amp;MarketPlace=JP&amp;amp;ServiceVersion=20070822&amp;amp;WS=1&amp;amp;tag=aloerina09-22&amp;amp;language=ja_JP&quot; /&gt;&lt;/a&gt;&lt;img src=&quot;https://ir-jp.amazon-adsystem.com/e/ir?t=aloerina09-22&amp;amp;language=ja_JP&amp;amp;l=li2&amp;amp;o=9&amp;amp;a=4532149754&quot; width=&quot;1&quot; height=&quot;1&quot; border=&quot;0&quot; alt=&quot;&quot; style=&quot;border:none !important; margin:0px !important;&quot; /&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;amazon-link-border&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;amazon-link-label&quot;&gt;
+      &lt;span&gt;EQリーダーシップ 成功する人のこころの知能指数の活かし方&lt;/span&gt;
+      &lt;a href=&quot;https://amzn.to/3Pxvr31&quot; target=&quot;_blank&quot;&gt;Amazon.co.jp で購入する&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;EQリーダーシップ 成功する人のこころの知能指数の活かし方&lt;/strong&gt;&lt;br /&gt;
+あまりメジャーな本ではないのですが、個人的に気に入っています。こちらもタイトルに「リーダーシップ」とありますが、この本ではマネージャーのスキルとしてのリーダーシップが説明されています。チームの状況に応じた6つのリーダーシップが紹介されていて、レベル1の頃に私が抱きがちだった「マネージャーなら〇〇しなきゃ」といった固定観念から解放してくれて、マネジメントの多様性を理解する手助けになりました。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;「マネージャーになったし1on1もしっかりやってメンバーのキャリアもいっぱい考えて開発プロセスもいい感じにしてコード品質も高めて……それからそれから……」と意気込んでスタートしたものの、1ヶ月経っても何も変わってないしマネージャーとして頼られることもないし、どうやってマネージャーとして踏み出せば良いんだ……。&lt;br /&gt;
+と悩んだ記憶をたどりながら、当時の自分に向けたアドバイスを書きました。&lt;strong&gt;とにかく焦らず、少しずつマネージャーになっていくんだぞ&lt;/strong&gt;、というのが一番の思いです。&lt;/p&gt;
+
+&lt;p&gt;……なんて大げさにメッセージを残してみたものの、まだまだマネージャーとして道半ばです。チームのフェーズによってマネジメントタスクが変わると書きましたが、比較的得意なフェーズと苦手なフェーズがあったりもします。様々なシチュエーションを経験し試行錯誤をしながら手札を増やしていくという点では、レベル1だった頃と変わりません。そういった意味でも、やはり焦らず少しずつ前進するしかないのだと思います。&lt;/p&gt;
+
+&lt;p&gt;感想はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までよろしくお願いします。それでは、良いお年を。&lt;/p&gt;</content><author><name></name></author><summary type="html">タイトルのように「来月からエンジニアリングマネージャーやってくれませんか」と言われた経験が私にもあります。もう3〜4年くらい前のことです。おそらく多くのエンジニアと同じように当時の私はマネジメント業に興味がなく、マネージャーになってみたものの何から手を付ければ良いかも分からず、とりあえずチームメンバーとの1on1をセッティングしてみたりしました。</summary></entry><entry><title type="html">スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</title><link href="https://aloerina01.github.io/blog/2021-10-29-1" rel="alternate" type="text/html" title="スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-10-29-1">&lt;p&gt;これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。&lt;/p&gt;
 
 &lt;p&gt;今回は、私が実際に直面した問題と、それらを打破するためチームで取り組んできたことを思い返してみようと思います。&lt;/p&gt;
 
@@ -930,215 +1051,4 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
   &lt;li&gt;手段は提案として伝える&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;以上、自分への注意喚起でした。&lt;/p&gt;</content><author><name></name></author><summary type="html">期待値を言語化する、期待値を伝える、期待値をすり合わせる。 チームをマネジメントしたりサポートしたりすると、こういった期待値の調整をする場面はよくありますよね。</summary></entry><entry><title type="html">Vue+VuexのデータフローをCQSライクに設計する方法</title><link href="https://aloerina01.github.io/blog/2020-06-23-1" rel="alternate" type="text/html" title="Vue+VuexのデータフローをCQSライクに設計する方法" /><published>2020-06-23T00:00:00+00:00</published><updated>2020-06-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-06-23-1">&lt;p&gt;Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？&lt;/p&gt;
-
-&lt;h5 id=&quot;悩み1-vuexのmaphelperを使うとコードが読みにくくなる&quot;&gt;悩み1. VuexのmapHelperを使うとコードが読みにくくなる&lt;/h5&gt;
-
-&lt;p&gt;「&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;created&lt;/code&gt;内で呼ばれているこの関数はどこに定義されているんだ…？ &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;methods&lt;/code&gt;？ それともStoreのアクション…？」&lt;/p&gt;
-
-&lt;p&gt;「&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;部分を見るにこのComponentはどのStoreにも依存してなさそうだ…。と思いきや、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapState&lt;/code&gt;でいろんなStoreの値を読み込んでいるぞ…」&lt;/p&gt;
-
-&lt;h5 id=&quot;悩み2-ビジネスロジック層がない&quot;&gt;悩み2. ビジネスロジック層がない&lt;/h5&gt;
-
-&lt;p&gt;「ページ読み込み時に走るAPIアクセスはどこに実装されている？ Componentの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;created&lt;/code&gt;？ Storeのアクション？ ロジックがまとまっている層がなくて処理の入り口を見つけにくい…」&lt;/p&gt;
-
-&lt;p&gt;「クリックされたら見た目を変えてAPIアクセスしてStoreを更新する実装をしたいけど、どうやって責務を分離していくといいかな…」&lt;/p&gt;
-
-&lt;p&gt;「ユーザーの権限を元に表示内容を変える実装したいのだけど、複数のStoreの値を組み合わせたロジックが必要そうだ。こういう場合はComponentの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;methods&lt;/code&gt;に実装すべき…？ 将来を見越してmixinとして実装すべき…？ それとも…？」&lt;/p&gt;
-
-&lt;h5 id=&quot;悩み3-moduleのnamespaceが使いにくい&quot;&gt;悩み3. Moduleのnamespaceが使いにくい&lt;/h5&gt;
-
-&lt;p&gt;「VuexStoreのモジュールの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;namespace&lt;/code&gt;は分けたいけれど、そうするとFluxのように全モジュールに対してDispatchできない…」&lt;/p&gt;
-
-&lt;p style=&quot;text-align:center&quot;&gt;* * *&lt;/p&gt;
-
-&lt;p&gt;今回はこれらの問題を解決するデータフロー設計について提案してみます。記事の最後でこの設計を採用したサンプルプロダクトも紹介していますので、併せてご参考ください。&lt;br /&gt;
-(この記事はVue2.x系の利用を想定しています)&lt;/p&gt;
-
-&lt;h3 id=&quot;cqs-ライクに考える&quot;&gt;CQS ライクに考える&lt;/h3&gt;
-
-&lt;p&gt;設計パターンのひとつである &lt;strong&gt;Command–Query Separation (コマンドクエリ分離)&lt;/strong&gt; の考え方を参考に設計を考えていきます。このパターンは、アプリケーションにおける処理を&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Query&lt;/strong&gt; = 参照系の処理。アプリケーションの状態を変更せず、また副作用のない処理&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Command&lt;/strong&gt; = 更新系の処理。アプリケーションの状態を変更し、副作用を伴う処理&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;の2つに分類します。この考え方とFluxのDispatcherの考え方を組み合わせてデータフローを構築します。大まかな完成図は以下のようになります。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-06-23/cqs.jpg&quot; alt=&quot;overall picture&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;query-ゲッターのエイリアス-を実装する&quot;&gt;Query (ゲッターのエイリアス) を実装する&lt;/h3&gt;
-
-&lt;p&gt;まずは比較的シンプルなQueryから考えます。&lt;br /&gt;
-Componentから&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;this.$store.getters&lt;/code&gt;や&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt;などを利用することで「副作用なくアプリケーションの状態を取得する」ことが可能なので、一応Queryとして完成していると言えます。が、悩み1にあるようにこれらの方法ではどのStoreに依存しているかが読み取りにくいため、今回は自前のQueryを実装します。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-06-23/query.jpg&quot; alt=&quot;query&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;今回は以下の4つの要件で実装してみます。一般的なVue+Vuexアプリケーションではあまり見ない設計となるので、なるべく強制力が弱く理解しやすくすることを要件に盛り込みます。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Storeの更新に応じて&lt;strong&gt;リアクティブに値を受け取れる&lt;/strong&gt;仕組みとなっていること&lt;/li&gt;
-  &lt;li&gt;Componentの&lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;部分を見ることで、どのStoreを利用しているかが読み取れる&lt;/strong&gt;ようなQueryとなっていること&lt;/li&gt;
-  &lt;li&gt;Storeを実装する際に、Queryの存在を意識せず従来通りに実装できること&lt;/li&gt;
-  &lt;li&gt;Queryを実装する際または利用する際に、複雑なルールを覚えることを強要しない仕組みとなっていること&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;(ちなみにこの記事ではVuexのモジュールをStoreと呼ぶこととします)&lt;/p&gt;
-
-&lt;p&gt;まず要件1を満たす状態を想像しやすくするために、Queryを利用するComponentから実装してみます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;SampleComponent.vue&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;template&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;
-  &lt;span class=&quot;nt&quot;&gt;&amp;lt;div&amp;gt;&lt;/span&gt;{{ todoCount }}&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/template&amp;gt;&lt;/span&gt;
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStoreQuery&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/queries&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;todoCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStoreQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todoCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;import部分をみると&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TodoStoreQuery&lt;/code&gt;があるので、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;の値を利用しているComponentであることが読み取れます。&lt;/p&gt;
-
-&lt;p&gt;ついでにQueryの利用箇所にも触れておくと、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;computed&lt;/code&gt;の中でゲッターを使うときと同じ書き口で使われていますね。このようなQueryを用意することができれば、要件4の「複雑なルールを覚えることを強要しない仕組みであること」も満たせていると言えそうです。&lt;/p&gt;
-
-&lt;p&gt;ではこのQueryを実装していきます。参考に&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;の実装も添えておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;store.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[],&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;todoCount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todos&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;todo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;done&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;modules&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;queries.js&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;@/store&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// Storeの情報からqueryを生成する関数を定義する&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createGettersAlias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;storeTemplate&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{})&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;storeTemplate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;descriptor&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getOwnPropertyDescriptor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-    &lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;defineProperty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;descriptor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// queryを生成してexportする&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStoreQuery&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createGettersAlias&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;TodoStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// 新規storeが増える度にこの処理を追加していく&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;// export const AnotherStoreQuery = createGettersAlias(AnotherStore);  &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createGettersAlias&lt;/code&gt;関数は、VuexStoreのインスタンスから&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;TodoStore&lt;/code&gt;のゲッター要素だけを抜き出して返す関数です。やっていることは&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapGetters&lt;/code&gt;とほぼ同じです。&lt;/p&gt;
-
-&lt;p&gt;Storeを追加する際は、通常通りの方法でStoreを実装することに加えて&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;createGettersAlias&lt;/code&gt;を呼び出すだけでOKです。ちなみに私はStoreへアクセスする際は必ずゲッターを経由するようにしているためステートのエイリアスはつくっていませんが、このあたりは好みですね。&lt;/p&gt;
-
-&lt;h3 id=&quot;command-ビジネスロジックdispatch-を実装する&quot;&gt;Command (ビジネスロジック+Dispatch) を実装する&lt;/h3&gt;
-
-&lt;p&gt;次は副作用を伴う更新系処理のCommandを実装します。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-06-23/command.jpg&quot; alt=&quot;command&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;こちらも4つの要件で実装します。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;返り値のない関数&lt;/strong&gt;とする&lt;/li&gt;
-  &lt;li&gt;システム的な処理単位ではなく、&lt;strong&gt;ユースケース単位&lt;/strong&gt;で1つ1つのCommandを実装する&lt;/li&gt;
-  &lt;li&gt;処理に必要な依存関係は基本的に引数で受け取る&lt;/li&gt;
-  &lt;li&gt;storeを更新するときはVuexの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;を経由する&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;今回は「TODOを完了にする」ユースケースのCommandの実装を例にします。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;actionTypes.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;DONE_TODO&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;doneTodo&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Dispatchしやすいようにアクション名を定数化しておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;dispatcher.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/store&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actionType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;vuexStoreInstance&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;actionType&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Commandから直接&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vuexStoreInstance.dispatch&lt;/code&gt;を呼び出しても良いのですが、今後Dispatch部分を修正する可能性を考慮して、Store層とCommand層の間にDispatcher層を噛ませておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;commands.js&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/dispatcher&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/actionTypes&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;doneTodo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;todoId&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;ActionTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;DONE_TODO&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;todoId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Commands&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;doneTodo&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;ここまで実装できたら、Componentから&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Commands.doneTodo&lt;/code&gt;を呼び出せば完成ですね。ちなみに&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;doneTodo&lt;/code&gt;を直接&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;export&lt;/code&gt;せず&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Commands&lt;/code&gt;オブジェクトで束ねているのは、grepしやすくするためです。好みなので要件には含んでいません。&lt;/p&gt;
-
-&lt;p&gt;ちなみにQueryとCommandに依存したComponentの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt;部分は以下のようになります。&lt;/p&gt;
-
-&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// SampleComponent.vue
-
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;script&amp;gt;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;TodoStoreQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;AnotherStoreQuery&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/qieries&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Commands&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/commands&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Componentから見ると&lt;strong&gt;「どのStoreの値を利用しているか」は明確であったほうが良い&lt;/strong&gt;ですが、&lt;strong&gt;「どのStoreを更新しているか」は意識する必要がありません&lt;/strong&gt;。それがちょうど良く表現されている点も気に入っています。&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;CQSの考え方を参考にVue＋Vuexアプリケーションの設計方法を提案してみました。しかしよく見ると実はあまり特別なことはしていなくて、Vuexの使い方に一手間加えている程度です。&lt;/p&gt;
-
-&lt;p&gt;別の見方をすると、今回実装したCommandとQueryは&lt;strong&gt;Store層にVuexを採用しなかったとしても利用できる&lt;/strong&gt;仕組みです。そのためこの設計方法はVuexから脱却したVueアプリケーションの設計方法の提案でもあります。Vuexが悪いとは言いませんが、選択肢は多く持っておけると良いですよね。そういった意図も込めての紹介でした。&lt;/p&gt;
-
-&lt;p&gt;余談ですが、「設計の紹介」と聞いてもっと斬新なもの期待させてしまっていたらすみませんでした。&lt;br /&gt;
-私にとって(私にできる)フロントエンドの設計とは、「情報をどう捉えるとか」と「それをどう分離していくか」を繰り返していく作業です。捉え方や分離の仕方には流行や好みが反映されることもあります。最近の私の好みは「部分的に切り離して捨てやすいかどうか」ですが、好みが変われば設計方法も変わると思いますので、そのときはまたこうして記事を書こうと思います。&lt;/p&gt;
-
-&lt;h3 id=&quot;サンプル&quot;&gt;サンプル&lt;/h3&gt;
-
-&lt;p&gt;
-&lt;img src=&quot;/assets/2020-06-23/sample_app.jpg&quot; style=&quot;border-radius:10px;box-shadow:1px 1px 10px #e8e8e8&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;今回紹介した設計を利用し、一覧ページと詳細ページを行き来する簡単な&lt;a href=&quot;https://github.com/aloerina01/vue-sample-list-detail-viewer&quot; target=&quot;_blank&quot;&gt;サンプルアプリ&lt;/a&gt;を実装しました。ご参考にどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html">Vue + Vuexを使ったWebアプリケーションを開発していて、以下のような悩みにぶち当たったことありませんか？</summary></entry></feed>
+&lt;p&gt;以上、自分への注意喚起でした。&lt;/p&gt;</content><author><name></name></author><summary type="html">期待値を言語化する、期待値を伝える、期待値をすり合わせる。 チームをマネジメントしたりサポートしたりすると、こういった期待値の調整をする場面はよくありますよね。</summary></entry></feed>
