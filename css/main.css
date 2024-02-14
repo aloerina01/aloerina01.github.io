@@ -52,7 +52,7 @@ td { border-bottom: 1px solid #CFD8DC; padding: 14.4px 4px; }
 
 tr, td, th { vertical-align: middle; }
 
-body { -webkit-font-feature-settings: "kern", "liga", "pnum"; -moz-font-feature-settings: "kern", "liga", "pnum"; -ms-font-feature-settings: "kern", "liga", "pnum"; font-feature-settings: "kern", "liga", "pnum"; -webkit-font-smoothing: antialiased; color: #546E7A; font-family: Avenir, "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif; font-size: 16px; font-weight: 500; line-height: 1.8; }
+body { -webkit-font-feature-settings: "kern", "liga", "pnum"; -moz-font-feature-settings: "kern", "liga", "pnum"; -ms-font-feature-settings: "kern", "liga", "pnum"; font-feature-settings: "kern", "liga", "pnum"; -webkit-font-smoothing: antialiased; color: #455A64; font-family: Avenir, "Helvetica Neue", Helvetica, Arial, Verdana, Roboto, "游ゴシック", "Yu Gothic", "游ゴシック体", "YuGothic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif; font-size: 16px; font-weight: 500; line-height: 1.8; }
 
 h1, h2, h3, h4, h5, h6 { font-size: 16px; line-height: 1.8; margin: 0 0 16px; margin: 0 0 1rem; }
 
@@ -363,9 +363,9 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .related-posts .sub-contents-title { margin-bottom: 36px; }
 
-.related-posts .sub-contents-title h3 { margin: 0; color: #546E7A; text-align: center; }
+.related-posts .sub-contents-title h3 { margin: 0; color: #455A64; text-align: center; }
 
-.related-posts .sub-contents-title hr { margin: 4px auto 0 auto; text-align: center; border-bottom: 0; width: 36px; height: 1px; background-color: #546E7A; }
+.related-posts .sub-contents-title hr { margin: 4px auto 0 auto; text-align: center; border-bottom: 0; width: 36px; height: 1px; background-color: #455A64; }
 
 @media screen and (min-width: 768px) { .related-posts .sub-contents-title { margin-bottom: 24px; } .related-posts .sub-contents-title h3 { text-align: left; } .related-posts .sub-contents-title hr { margin: 6px 0 0 0; } }
 
@@ -417,9 +417,9 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .tag-list .sub-contents-title { margin-bottom: 36px; }
 
-.tag-list .sub-contents-title h3 { margin: 0; color: #546E7A; text-align: center; }
+.tag-list .sub-contents-title h3 { margin: 0; color: #455A64; text-align: center; }
 
-.tag-list .sub-contents-title hr { margin: 4px auto 0 auto; text-align: center; border-bottom: 0; width: 36px; height: 1px; background-color: #546E7A; }
+.tag-list .sub-contents-title hr { margin: 4px auto 0 auto; text-align: center; border-bottom: 0; width: 36px; height: 1px; background-color: #455A64; }
 
 @media screen and (min-width: 768px) { .tag-list .sub-contents-title { margin-bottom: 24px; } .tag-list .sub-contents-title h3 { text-align: left; } .tag-list .sub-contents-title hr { margin: 6px 0 0 0; } }
 
@@ -439,9 +439,9 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .site-footer-v2 .sub-contents-title { margin-bottom: 36px; }
 
-.site-footer-v2 .sub-contents-title h3 { margin: 0; color: #546E7A; text-align: center; }
+.site-footer-v2 .sub-contents-title h3 { margin: 0; color: #455A64; text-align: center; }
 
-.site-footer-v2 .sub-contents-title hr { margin: 4px auto 0 auto; text-align: center; border-bottom: 0; width: 36px; height: 1px; background-color: #546E7A; }
+.site-footer-v2 .sub-contents-title hr { margin: 4px auto 0 auto; text-align: center; border-bottom: 0; width: 36px; height: 1px; background-color: #455A64; }
 
 @media screen and (min-width: 768px) { .site-footer-v2 .sub-contents-title { margin-bottom: 24px; } .site-footer-v2 .sub-contents-title h3 { text-align: left; } .site-footer-v2 .sub-contents-title hr { margin: 6px 0 0 0; } }
 
@@ -537,9 +537,9 @@ ul li.nav-search-box .aa-suggestion { cursor: pointer; }
 
 ul li.nav-search-box .aa-suggestion p { margin: 0; }
 
-ul li.nav-search-box .aa-suggestion a { color: #546E7A; display: block; width: 100%; height: 100%; padding: 12px; }
+ul li.nav-search-box .aa-suggestion a { color: #455A64; display: block; width: 100%; height: 100%; padding: 12px; }
 
-ul li.nav-search-box .aa-suggestion a:hover { color: #546E7A; }
+ul li.nav-search-box .aa-suggestion a:hover { color: #455A64; }
 
 ul li.nav-search-box .aa-suggestion a .suggestion-title { font-size: 14px; }
 
