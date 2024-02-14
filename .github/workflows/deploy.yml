@@ -10,20 +10,20 @@ jobs:
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: actions/setup-ruby@v1
+    - uses: actions/checkout@v3
+    - uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '2.6' # 2.7にするとjekyllが動作しないバグがある @see https://github.com/aloerina01/aloerina01.github.io/runs/591550728
+        ruby-version: '2.7.6'
     - name: Cache primes
       id: cache-primes
-      uses: actions/cache@v1
+      uses: actions/cache@v3
       with:
         path: vendor/bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
     - name: Set bundle path
       run: bundle config path vendor/bundle
-    - name: Install gsl
-      run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
+    # - name: Install gsl
+    #  run: chmod +x ./scripts/install_gsl.sh && ./scripts/install_gsl.sh
     - name: Install bundle
       # if: steps.cache-primes.outputs.cache-hit != 'true'
       run: bundle check --path vendor/bundle || bundle install --clean --deployment && bundle package --all
@@ -40,13 +40,13 @@ jobs:
     needs: deploy
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '2.6'
+          ruby-version: '2.7.6'
       - name: Cache primes
         id: cache-primes
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: vendor/bundle
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
