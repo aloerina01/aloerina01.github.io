@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>チーム目標を設定するフレームワークをつくったので紹介したい</title>
+  <meta name="description" content="チームメンバーがチーム目標に向かって適切に行動を起こすためには、適切な解像度の目標を定義する必要があります。マネージャーがチームの目標を決める際や、スクラムチームメンバーが議論してチーム目標を決める際に活用できるフレームワークを考えてみたのでご参考にどうぞ。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2024">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <link rel="stylesheet" as="style" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="チームメンバーがチーム目標に向かって適切に行動を起こすためには、適切な解像度の目標を定義する必要があります。マネージャーがチームの目標を決める際や、スクラムチームメンバーが議論してチーム目標を決める際に活用できるフレームワークを考えてみたのでご参考にどうぞ。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2024-04-04-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="チーム目標を設定するフレームワークをつくったので紹介したい" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/2024-04-04/framework_overall.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="チーム目標を設定するフレームワークをつくったので紹介したい">
+  <meta name="twitter:description" content="チームメンバーがチーム目標に向かって適切に行動を起こすためには、適切な解像度の目標を定義する必要があります。マネージャーがチームの目標を決める際や、スクラムチームメンバーが議論してチーム目標を決める際に活用できるフレームワークを考えてみたのでご参考にどうぞ。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/2024-04-04/framework_overall.jpg">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2024-04-04-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2024-04-04-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-39630080-4', 'auto');
+    ga('require', 'linkid');
+    ga('send', 'pageview', {
+      'page': '/blog/2024-04-04-1',
+      'title': 'チーム目標を設定するフレームワークをつくったので紹介したい'
+    });
+  </script>
+  
+
+  
+
+  <script src="/dist/prism.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <picture>
+        <source src="/assets/logo.webp" type="image/webp"> 
+        <img src="/assets/logo_min.png" alt="mille-feuille code" loading="lazy">
+      </picture>
+      
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="https://note.com/aloerina/m/m699d10700993"target="_blank" rel="noopener noreferrer">Poem</a>
+            
+        <li class="nav-link">
+          <a href="https://suzuri.jp/aloerina"target="_blank" rel="noopener noreferrer">Shop</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
+            
+        <li class="nav-link">
+          <a href="/feed.xml"target="_blank" rel="noopener noreferrer">RSS</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2024-04-04-1">
+            <span itemprop="name">チーム目標を設定するフレームワークをつくったので紹介したい</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <main class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">チーム目標を設定するフレームワークをつくったので紹介したい</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2024-04-04</div>
+          <div class="post-categories">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
+              <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+              <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
+            </svg>
+             
+            <a href="/category/management/">Management</a>,    
+            <a href="/category/scrum/">Scrum</a>,    
+            <a href="/category/facilitation/">Facilitation</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>新年度です。目標を設定するシーズンですね。</p>
+
+<p>私の職場でも個々人が目標設定をする時期ですし、同時に私が関わるスクラムチームでもチームとしての目標を決める議論がされました。<br />
+それらを見ていて、『チーム目標を議論して決める難しさ』を感じる場面が何度かありました。最終的な理想状態を見据えている人もいれば、直近で達成したい短期目標を意識している人もいます。やりたいことは山のようにあるけれど、それらが最終目標にどれだけ効果的に結びつくかが曖昧なこともあります。</p>
+
+<p>目線が違う状態でアイデアが多く出る議論を続けるのは難しいので、目標設定のためのフレームワークをつくってみました。目線を合わせた議論や、建設的な目標設定を導くツールです。</p>
+
+<h3 id="全体像">全体像</h3>
+
+<p><img src="/assets/2024-04-04/framework_template.jpg" alt="フレームワークの全体像" /></p>
+
+<p>このマトリクスを順に埋めていきます。後述しますが列は増減していいですし、マスを全部埋めなくても適切な目標が見つかればその時点で目標設定完了です。<br />
+順に使い方を紹介していきます。</p>
+
+<h3 id="1最終ゴールを右上のマスに記入する">1．最終ゴールを右上のマスに記入する</h3>
+
+<p><img src="/assets/2024-04-04/framework_usage1.jpg" alt="使い方1" /></p>
+
+<p>縦軸・横軸の説明はさておき、まずは右上のマスに現時点で思い描けている『<strong>最終的に到達したい状態または達成したい成果</strong>』を記入します。抽象的でもいいし、現時点で考えうる最終的目標でOKです。目標はナマモノなので変化していって当然です。<br />
+たとえば</p>
+
+<p class="note" style="margin:16px 0">
+プロダクトバックログを安定的に開発し続けるチームになる
+</p>
+
+<p>このくらいざっくりした目標でも大丈夫です。</p>
+
+<h3 id="2-スモールステップを見つける">2. スモールステップを見つける</h3>
+<p>次に最終目標にたどり着くまでのステップを分けていきましょう。マイルストーンを追いたり、短期目標や中期目標に分解したりするイメージです。</p>
+
+<p><img src="/assets/2024-04-04/framework_usage2.jpg" alt="使い方2" /></p>
+
+<p>最終目標から左に向かって考えていきます。十分達成できそうなスモールステップまで掘り下げ、Step1からGoalに向けて見返したときに適切な階段となっていれば上出来です。</p>
+
+<h3 id="3-目標を具体化し行動を起こしやすくする">3. 目標を具体化し行動を起こしやすくする</h3>
+<p>手頃なスモールステップがみつかって、それを目標にして行動が起こせそうであれば目標設定は完了です。ですが目標によっては抽象度が高く、達成のためにどのようなアクションを起こせばよいかが分からない場合もあります。達成手段を自由に柔軟に選択でき、裁量がある目標とも言えます。</p>
+
+<p>ただチーム目標が抽象的すぎると解釈の違いが生まれやすく、不適切なアクションが取られる可能性もあります。<br />
+極端な例を挙げるなら、「スプリントゴールを守る」という目標に対するアクションが「守りやすいように消極的なスプリントゴールを設定する」では本末転倒ですし、「残業してでもやりぬく」ではチームの出力は持続できません。</p>
+
+<p>目標達成にむけたアクションに柔軟性を持たせたい場合は抽象度の高い目標のままにし、逆にミスリードを防いだり決まった道筋で目標達成していきたい場合は目標の具体度を上げます。そのためにマトリクスの縦軸を使います。</p>
+
+<p><img src="/assets/2024-04-04/framework_usage3.jpg" alt="使い方3" /></p>
+
+<p>どういった成果・要素が積み重なれば最終目標の達成に近づくかを掘り下げていきます。<strong>結果目標・成果目標</strong>と呼ばれるものです。
+たとえば上述した「プロダクトバックログを安定的に開発し続けるチームになる」という最終目標の実現に必要な要素の1つとして</p>
+
+<p class="note" style="margin:16px 0">
+次スプリントで着手するであろうバックログアイテムが相対見積もり済みであり、優先順位順に並んでいる状態を維持する
+</p>
+
+<p>を定義してみます。<br />
+少し具体的になったので、これでチームメンバーが動き出せそうであれば具体化は終了ですが、より指示的な目標にする場合はこれを達成するアクションにまで落とし込むこともできます。</p>
+
+<p class="note" style="margin:16px 0">
+プロダクトバックログリファインメントの場で相対見積もりをし、見積もられているアイテムの総ポイントが【平均ベロシティ+10pt】となる状態を維持する
+</p>
+
+<p>ここまで落とし込むと、「いつ」「なにを」「どれくらい」するかまで明確です。<strong>行動目標</strong>と呼ばれるもので、一番最初に決めた最終目標と比較するとかなり具体的になったと思います。</p>
+
+<p><img src="/assets/2024-04-04/framework_usage4.jpg" alt="使い方4" /></p>
+
+<p>実際には、図のように目標を具体的にするほど数が増えるはずなので、マス目の数にとらわれず腹落ちするまで結果目標や行動目標を考え尽くす必要があります。</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>今回紹介したものは、マトリクス型のテンプレートを埋めながら適切な目標を探すためのフレームワークでした。</p>
+
+<p><img src="/assets/2024-04-04/framework_overall.jpg" alt="フレームワークの全体像" /></p>
+
+<p>使い方を整理すると</p>
+
+<ol>
+  <li>右上に最終的なゴールを記入する</li>
+  <li>右に向かって最終目標までのステップをつくる</li>
+  <li>抽象度が高すぎるものは下に向かって具体化する</li>
+</ol>
+
+<p>という流れです。</p>
+
+<p>オンラインで目標設定のディスカッションをする際にMiroなどのホワイトボードツールにマトリクスを用意して付箋を重ねながら議論したり、オフラインの場でマトリクスを印刷して指差しながら議論の目線を合わせたりといった使い方を想定しています。もちろん個人の目標設定時にも使えます。</p>
+
+<p>最後に改めて補足しておくと、マトリクスをすべて埋めることが重要なのではなく、納得いく目標を見つけることが大切です。またチームで議論しながら目標設定する場合は議論の目線を揃えることが重要です。そのために多少なりとも役立てれば幸いです。</p>
+
+
+        </article>
+
+          
+
+        <section class="share">
+          <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button share-button share-button-hatebu" data-hatena-bookmark-layout="touch"
+            data-hatena-bookmark-width="38" data-hatena-bookmark-height="38" title="このエントリーをはてなブックマークに追加" style="border-radius: 50%;width: 38px;height: 38px;box-shadow: 1px 1px 10px #bbb;background-color: #00A4DE;transition:all 0.4s ease;">
+            <img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="16" height="16">
+          </a>
+          <script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" defer></script>
+          
+            
+            
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%E3%83%81%E3%83%BC%E3%83%A0%E7%9B%AE%E6%A8%99%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%A7%E7%B4%B9%E4%BB%8B%E3%81%97%E3%81%9F%E3%81%84&url=https://aloerina01.github.io/blog/2024-04-04-1&via=aloerina_&hashtags=Management,Scrum,Facilitation,mfcode"
+              onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+                <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+              </svg>
+            </a>
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%E3%83%81%E3%83%BC%E3%83%A0%E7%9B%AE%E6%A8%99%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%A7%E7%B4%B9%E4%BB%8B%E3%81%97%E3%81%9F%E3%81%84&u=https://aloerina01.github.io/blog/2024-04-04-1"
+              onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z"
+                  fill="currentColor"
+                />
+              </svg>
+            </a>
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2024-04-04-1" target="_blank">
+              <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
+            </a>
+            
+            
+          
+            
+            
+            
+            
+            
+            
+            
+            
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%E3%83%81%E3%83%BC%E3%83%A0%E7%9B%AE%E6%A8%99%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%92%E3%81%A4%E3%81%8F%E3%81%A3%E3%81%9F%E3%81%AE%E3%81%A7%E7%B4%B9%E4%BB%8B%E3%81%97%E3%81%9F%E3%81%84%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2024-04-04-1">
+              <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
+            </a>
+            
+          
+        </section>
+
+        <div class="post-donation">
+  <div class="post-donation-panel">
+    <p class="post-donation-description for-pc">
+      <span>この記事が気に入ったらaloerinaをサポートしてみませんか？<br />コーヒー1杯からお気軽にサポートできます。</span>
+    </p>
+    <p class="post-donation-description for-mobile">
+      <span>この記事が気に入ったら<br />aloerinaをサポートしてみませんか？</span>
+    </p>
+    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
+      <p class="button-body">
+        <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+        <span class="label">サポートする</span>
+      </p>
+    </a>
+  </div>
+</div>
+
+         
+
+      </div>
+    </div>
+
+  </main>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>あわせて読みたい</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2021-01-15-1">Daily Scrum の3つの質問を再考する</a></li>
+      
+      <li><a href="/blog/2023-05-22-1">マネージャーやリーダーからチームメンバーへの仕事の任せ方、裁量の渡し方</a></li>
+      
+      <li><a href="/blog/2019-05-07-1">コーチング入門 「4つの会話」でやる気の芽を育てよう</a></li>
+      
+      <li><a href="/blog/2017-02-28-1">Reactを秒速で使い始められるcreate-react-appの使い方と使い心地</a></li>
+      
+      <li><a href="/blog/2016-10-31-1">開発者なりに考えたQA(品質保証)の話をしてみよう</a></li>
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile_v4.jpg" alt="" loading="lazy">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name"><p>aloerina</p></div>
+        <div class="profile-content-description">
+          <p>
+            <span>Webフロントエンド開発、エンジニアリングマネジメント、スクラムマスターなどをしています。趣味でドット絵グッズをつくっています。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
+              <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+            </svg>
+          </a>
+          <a target="_blank" href="https://www.instagram.com/pixtrium/" rel="noopener noreferrer" class="sns-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+              <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"/>
+            </svg>
+          </a>
+          <a target="_blank" href="https://goo.gl/forms/CpmOgk2omnWqTzz43" rel="noopener noreferrer" class="sns-icon sns-icon-envelope">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-fill" viewBox="0 0 16 16">
+              <path d="M.05 3.555A2 2 0 0 1 2 2h12a2 2 0 0 1 1.95 1.555L8 8.414.05 3.555zM0 4.697v7.104l5.803-3.558L0 4.697zM6.761 8.83l-6.57 4.027A2 2 0 0 0 2 14h12a2 2 0 0 0 1.808-1.144l-6.57-4.027L8 9.586l-1.239-.757zm3.436-.586L16 11.801V4.697l-5.803 3.546z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/vuex/">Vuex</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/exp/">EXP</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+        
+        
+        <a href="/category/mobprogramming/">MobProgramming</a>
+      
+        
+        
+        <a href="/category/management/">Management</a>
+      
+        
+        
+        <a href="/category/coaching/">Coaching</a>
+      
+        
+        
+        <a href="/category/grareco/">GraReco</a>
+      
+        
+        
+        <a href="/category/githubactions/">GitHubActions</a>
+      
+        
+        
+        <a href="/category/retrospective/">Retrospective</a>
+      
+        
+        
+        <a href="/category/facilitation/">Facilitation</a>
+      
+        
+        
+        <a href="/category/scrum/">Scrum</a>
+      
+        
+        
+        <a href="/category/psychologicalsafety/">PsychologicalSafety</a>
+      
+        
+        
+        <a href="/category/typescript/">TypeScript</a>
+      
+        
+        
+        <a href="/category/chromeextension/">ChromeExtension</a>
+      
+        
+        
+        <a href="/category/esbuild/">esbuild</a>
+      
+        
+        
+        <a href="/category/agile/">Agile</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents donation">
+  <div class="sub-contents-wrapper donation-wrapper">
+    <h3>BUY ME A COFFEE</h3>
+    <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
+    <div class="donation-button-area">
+        <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
+          <p class="button-body">
+            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" loading="lazy"></img>
+            <span class="label">ごちそうする</span>
+          </p>
+        </a>
+        <span>または<a href="https://kyash.co/" target="_blank" rel="noopener noreferrer">Kyash</a>で id: <b>aloerina</b> に送金する</span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published on <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Header
+    var CLASS_MENU_SHOW = 'show';
+    var navigationMenu = document.getElementById('js-navigation-menu');
+    var menuIcon = document.getElementById('js-mobile-menu-icon');
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+    });
+  });
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.35.1/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.1/autocomplete.min.js"></script>
+<script src="/dist/algolia.js" async></script>
+
+</body>
+
+</html>
