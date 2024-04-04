@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-04-04T03:21:45+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-04-04T03:31:46+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">チーム目標を設定するフレームワークをつくったので紹介したい</title><link href="https://aloerina01.github.io/blog/2024-04-04-1" rel="alternate" type="text/html" title="チーム目標を設定するフレームワークをつくったので紹介したい" /><published>2024-04-04T00:00:00+00:00</published><updated>2024-04-04T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-04-04-1">&lt;p&gt;新年度です。目標を設定するシーズンですね。&lt;/p&gt;
 
 &lt;p&gt;私の職場でも個々人が目標設定をする時期ですし、同時に私が関わるスクラムチームでもチームとしての目標を決める議論がされました。&lt;br /&gt;
@@ -27,16 +27,16 @@
 &lt;p&gt;このくらいざっくりした目標でも大丈夫です。&lt;/p&gt;
 
 &lt;h3 id=&quot;2-スモールステップを見つける&quot;&gt;2. スモールステップを見つける&lt;/h3&gt;
-&lt;p&gt;次に最終目標にたどり着くまでのステップを分けていきましょう。マイルストーンを追いたり、短期目標や中期目標に分解したりするイメージです。&lt;/p&gt;
+&lt;p&gt;次に最終目標にたどり着くまでのステップを分けていきましょう。マイルストーンを置いたり、短期目標や中期目標に分解したりするイメージです。&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/2024-04-04/framework_usage2.jpg&quot; alt=&quot;使い方2&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;最終目標から左に向かって考えていきます。十分達成できそうなスモールステップまで掘り下げ、Step1からGoalに向けて見返したときに適切な階段となっていれば上出来です。&lt;/p&gt;
 
 &lt;h3 id=&quot;3-目標を具体化し行動を起こしやすくする&quot;&gt;3. 目標を具体化し行動を起こしやすくする&lt;/h3&gt;
-&lt;p&gt;手頃なスモールステップがみつかって、それを目標にして行動が起こせそうであれば目標設定は完了です。ですが目標によっては抽象度が高く、達成のためにどのようなアクションを起こせばよいかが分からない場合もあります。達成手段を自由に柔軟に選択でき、裁量がある目標とも言えます。&lt;/p&gt;
+&lt;p&gt;手頃なスモールステップがみつかって、それを目標にして行動が起こせそうであれば目標設定は完了です。ですが抽象度が高く達成のためにどのようなアクションを起こせばよいかが分からない目標である可能性があります。達成手段を自由に柔軟に選択でき、裁量がある目標とも言えます。&lt;/p&gt;
 
-&lt;p&gt;ただチーム目標が抽象的すぎると解釈の違いが生まれやすく、不適切なアクションが取られる可能性もあります。&lt;br /&gt;
+&lt;p&gt;ただチーム目標においては抽象的すぎると解釈の違いが生まれやすく、不適切なアクションが取られる可能性もあります。&lt;br /&gt;
 極端な例を挙げるなら、「スプリントゴールを守る」という目標に対するアクションが「守りやすいように消極的なスプリントゴールを設定する」では本末転倒ですし、「残業してでもやりぬく」ではチームの出力は持続できません。&lt;/p&gt;
 
 &lt;p&gt;目標達成にむけたアクションに柔軟性を持たせたい場合は抽象度の高い目標のままにし、逆にミスリードを防いだり決まった道筋で目標達成していきたい場合は目標の具体度を上げます。そのためにマトリクスの縦軸を使います。&lt;/p&gt;
@@ -73,7 +73,7 @@
 
 &lt;ol&gt;
   &lt;li&gt;右上に最終的なゴールを記入する&lt;/li&gt;
-  &lt;li&gt;右に向かって最終目標までのステップをつくる&lt;/li&gt;
+  &lt;li&gt;左に向かって最終目標までのステップをつくる&lt;/li&gt;
   &lt;li&gt;抽象度が高すぎるものは下に向かって具体化する&lt;/li&gt;
 &lt;/ol&gt;
 
@@ -81,7 +81,7 @@
 
 &lt;p&gt;オンラインで目標設定のディスカッションをする際にMiroなどのホワイトボードツールにマトリクスを用意して付箋を重ねながら議論したり、オフラインの場でマトリクスを印刷して指差しながら議論の目線を合わせたりといった使い方を想定しています。もちろん個人の目標設定時にも使えます。&lt;/p&gt;
 
-&lt;p&gt;最後に改めて補足しておくと、マトリクスをすべて埋めることが重要なのではなく、納得いく目標を見つけることが大切です。またチームで議論しながら目標設定する場合は議論の目線を揃えることが重要です。そのために多少なりとも役立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">新年度です。目標を設定するシーズンですね。</summary></entry><entry><title type="html">マネージャーやリーダーからチームメンバーへの仕事の任せ方、裁量の渡し方</title><link href="https://aloerina01.github.io/blog/2023-05-22-1" rel="alternate" type="text/html" title="マネージャーやリーダーからチームメンバーへの仕事の任せ方、裁量の渡し方" /><published>2023-05-22T00:00:00+00:00</published><updated>2023-05-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2023-05-22-1">&lt;p&gt;チームのリーダー、エンジニアリングマネージャー、新入社員のメンターなどの役割をすると、『チームメンバーにどのように仕事を任せるか』と考えることがあります。特にそれなりにスキルがあるチームメンバーに対してこれを考える場合、『どれくらい/どのように裁量を渡すか』がポイントの一つです。&lt;/p&gt;
+&lt;p&gt;最後に改めて補足しておくと、マトリクスをすべて埋めることが重要なのではなく、&lt;strong&gt;納得いく目標を見つけること&lt;/strong&gt;が大切です。またチームで議論しながら目標設定する場合は&lt;strong&gt;議論の目線を揃えること&lt;/strong&gt;が重要です。そのために多少なりとも役立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">新年度です。目標を設定するシーズンですね。</summary></entry><entry><title type="html">マネージャーやリーダーからチームメンバーへの仕事の任せ方、裁量の渡し方</title><link href="https://aloerina01.github.io/blog/2023-05-22-1" rel="alternate" type="text/html" title="マネージャーやリーダーからチームメンバーへの仕事の任せ方、裁量の渡し方" /><published>2023-05-22T00:00:00+00:00</published><updated>2023-05-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2023-05-22-1">&lt;p&gt;チームのリーダー、エンジニアリングマネージャー、新入社員のメンターなどの役割をすると、『チームメンバーにどのように仕事を任せるか』と考えることがあります。特にそれなりにスキルがあるチームメンバーに対してこれを考える場合、『どれくらい/どのように裁量を渡すか』がポイントの一つです。&lt;/p&gt;
 
 &lt;p&gt;私がマネージャーとしてチームメンバーに仕事を任せるとき&lt;strong&gt;『その仕事をどのように進行しどのように完了させるか(何を持って完了とするか)』を決める裁量を渡す&lt;/strong&gt;方針であり、その旨をチームメンバーに重ね重ね伝えています。&lt;/p&gt;
 
