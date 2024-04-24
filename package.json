@@ -5,16 +5,13 @@
     "build": "bundle exec jekyll serve",
     "pre-build": "bundle exec jekyll serve  --destination demo",
     "demo": "bundle exec jekyll serve --watch --destination demo --config ./_config.dev.yml",
-    "build:js": "parcel build js/*.js --no-source-maps",
-    "webpack:w": "NODE_ENV=development webpack -w",
-    "webpack:prod": "NODE_ENV=production webpack"
+    "build:js": "parcel build js/*.js --no-source-maps"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aloerina01/aloerina01.github.io.git"
   },
   "author": "aloerina",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/aloerina01/aloerina01.github.io/issues"
   },
