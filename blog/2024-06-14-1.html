@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>CORS (Cross-Origin Resource Sharing) ってなに？</title>
-  <meta name="description" content="オリジンとは？　同一オリジンポリシーとは？　そしてCORSとは？　基本の基本と関連用語をまとめて復習したら、意外と知らなかったことがちらほらありました。">
+  <title>"ペイン"と"チャレンジ"に注目して改善サイクルを生み出すふりかえりフレームワーク</title>
+  <meta name="description" content="KPTのマンネリ化や改善サイクルの停滞時に、ちょっと手を変えふりかえりを再熱させるべく、新しいふりかえりフレームワークをつくったので紹介します。KPTをベースにしやり方は大きく変えず、それでいて今までより少し意見を出しやすくするコンセプトでつくりました。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2024">
@@ -34,12 +34,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="オリジンとは？　同一オリジンポリシーとは？　そしてCORSとは？　基本の基本と関連用語をまとめて復習したら、意外と知らなかったことがちらほらありました。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2016-10-13-1" />
+  <meta property="og:description" content="KPTのマンネリ化や改善サイクルの停滞時に、ちょっと手を変えふりかえりを再熱させるべく、新しいふりかえりフレームワークをつくったので紹介します。KPTをベースにしやり方は大きく変えず、それでいて今までより少し意見を出しやすくするコンセプトでつくりました。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2024-06-14-1" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="CORS (Cross-Origin Resource Sharing) ってなに？" />
+  <meta property="og:title" content=""ペイン"と"チャレンジ"に注目して改善サイクルを生み出すふりかえりフレームワーク" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/2024-06-14/thumbnail.jpg" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -47,18 +47,18 @@
 
   
   <!-- Twitter: card tags -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="CORS (Cross-Origin Resource Sharing) ってなに？">
-  <meta name="twitter:description" content="オリジンとは？　同一オリジンポリシーとは？　そしてCORSとは？　基本の基本と関連用語をまとめて復習したら、意外と知らなかったことがちらほらありました。">
-  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2016-10-13-1">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content=""ペイン"と"チャレンジ"に注目して改善サイクルを生み出すふりかえりフレームワーク">
+  <meta name="twitter:description" content="KPTのマンネリ化や改善サイクルの停滞時に、ちょっと手を変えふりかえりを再熱させるべく、新しいふりかえりフレームワークをつくったので紹介します。KPTをベースにしやり方は大きく変えず、それでいて今までより少し意見を出しやすくするコンセプトでつくりました。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/2024-06-14/thumbnail.jpg">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2024-06-14-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2016-10-13-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2024-06-14-1">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   
@@ -70,8 +70,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/blog/2016-10-13-1',
-      'title': 'CORS (Cross-Origin Resource Sharing) ってなに？'
+      'page': '/blog/2024-06-14-1',
+      'title': '"ペイン"と"チャレンジ"に注目して改善サイクルを生み出すふりかえりフレームワーク'
     });
   </script>
   
@@ -142,8 +142,8 @@
         
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2016-10-13-1">
-            <span itemprop="name">CORS (Cross-Origin Resource Sharing) ってなに？</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2024-06-14-1">
+            <span itemprop="name">"ペイン"と"チャレンジ"に注目して改善サイクルを生み出すふりかえりフレームワーク</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -158,7 +158,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">CORS (Cross-Origin Resource Sharing) ってなに？</h1>
+            <h1 class="title">"ペイン"と"チャレンジ"に注目して改善サイクルを生み出すふりかえりフレームワーク</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -170,7 +170,7 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2016-10-13</div>
+          <div class="post-date">2024-06-14</div>
           <div class="post-categories">
             
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
@@ -178,107 +178,117 @@
               <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
             </svg>
              
-            <a href="/category/javascript/">JavaScript</a>   
+            <a href="/category/management/">Management</a>,    
+            <a href="/category/facilitation/">Facilitation</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <p>先日CORS(Cross-Origin Resource Sharing)でハマったので、今更だけど復習。Same Origin Policy(同一オリジンポリシー)について基本的なところから調べ直しました。</p>
+          <p>KPTを継続していたものの意見が出にくくなったりTryが実行されなくなったり…といったマンネリ化や改善サイクルの停滞はどのチームも1度くらいは体験するのではないでしょうか。そんなときはふりかえりの方法を少し変えて刺激を得ることが有効な手段のひとつです。</p>
 
-<h3 id="オリジンとは">オリジンとは</h3>
+<p>新しいふりかえり方法は<a href="https://amzn.to/3xkFIen" target="blank">アジャイルレトロスペクティブズ</a>などから探すこともできますし、もっと自由に、議論したい切り口や進め方を自分たちで考えることもできます。今回は私が関わるチームで実践しているオリジナルの方法を紹介します。</p>
 
-<p>オリジン ＝ スキーム、ホスト、ポートの組み合わせ<br />
-(※スキームによって微妙に違うこともある)</p>
+<h3 id="コンセプト">コンセプト</h3>
 
-<p><code class="language-plaintext highlighter-rouge">http://www.exsample.com:80/index.html</code>のURLを例にすると</p>
-
-<ul>
-  <li>スキーム ＝ <code class="language-plaintext highlighter-rouge">http://</code></li>
-  <li>ホスト ＝ <code class="language-plaintext highlighter-rouge">www.exsample.com</code></li>
-  <li>ポート ＝ <code class="language-plaintext highlighter-rouge">80</code> (ポート番号「80」は省略可なので普段見かけることは少ない)</li>
-</ul>
-
-<h3 id="同一オリジンポリシーとは">同一オリジンポリシーとは</h3>
-
-<h4>TL;DR</h4>
+<p><img src="/assets/2024-06-14/thumbnail.jpg" alt="" />
+ふりかえり実践イメージ</p>
 
 <ul>
-  <li>セキュリティを守るための重要な仕組み</li>
-  <li>あるページを開いたときに、関連するリソース(JavaScript等)を同じオリジンからしか取得しない</li>
-  <li>そうしないと個人情報の保護も外部からの攻撃にもガバガバ</li>
+  <li>やりなれたKPTから大きく変えず、少しだけ変化させてマンネリ解消する方法であること</li>
+  <li>チームメンバーが感じる不満やアイデアを集めやすい方法であること</li>
+  <li>次のアクションを可視化し、完了までトラッキングできる仕組みであること</li>
 </ul>
 
-<h4 id="同一オリジンポリシーの制限を受けるwebapi">同一オリジンポリシーの制限を受けるWebAPI</h4>
+<h3 id="テンプレートの紹介">テンプレートの紹介</h3>
+
+<p><img src="/assets/2024-06-14/template.jpg" alt="ふりかえりテンプレート" /></p>
+
+<h4 id="ペイン">“ペイン”</h4>
+
+<p><strong>今イテレーションで困ったこと、苦労したこと、課題に感じていること</strong></p>
+
+<p>「〜がしんどかった」「〜で困った」「〜は良くないと思う」と主観的な感情に注目して書き出します。根拠や論理はいらず、気持ちを吐き出すことが大事です。</p>
+
+<h4 id="チャレンジ">“チャレンジ”</h4>
+
+<p><strong>新しく試してみたいこと</strong></p>
+
+<p>ペインに対するアイデアでもいいですし、技術的にチャレンジしたいことでもいいです。エンジニアならエンジニアとしての欲求を、PMならPMとしての欲求を素直に書きます。</p>
+
+<h4 id="議論中">“議論中”</h4>
+
+<p><strong>ペイン・チャレンジの中から選ばれた深堀りしていくトピック</strong></p>
+
+<p>このテンプレートは毎イテレーションで意見や議論を継ぎ足ししながら使っていくことを想定しています。1度のミーティングで結論が出なかったものや、ふりかえり後に検証や作業をした後に次回のミーティングで継続して議論したいなど、トピック毎の議論のステータスを表現するエリアです。</p>
+
+<h4 id="アクション">“アクション”</h4>
+
+<p><strong>次のふりかえりまでに実践するアクション</strong></p>
+
+<p>ペインとチャレンジは個人の感情や意欲から意見を集めましたが、アクションはチームで議論ながら出していきます。アクションにはいくつかルールがあります。</p>
 
 <ul>
-  <li>XMLHttpRequest</li>
-  <li>Canvas</li>
-  <li>Web Storage</li>
-  <li>X-Frame-Options</li>
+  <li><strong>次回のふりかえりまでに完了できる小さいサイズ</strong>であること</li>
+  <li>誰が見ても達成したかどうか判断できる<strong>具体的な達成基準</strong>が書かれていること</li>
 </ul>
 
-<h4 id="制限を受けないもの">制限を受けないもの</h4>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">&lt;script src="..."&gt;&lt;/script&gt;</code> によって読み込まれるJavaScript</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;link rel="stylesheet" href="..."&gt;</code> によって読み込まれるCSS</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;img&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;audio&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;video&gt;</code> のメディアファイル</li>
-  <li><code class="language-plaintext highlighter-rouge">@font-face</code> で指定されたフォント</li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;frame&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;iframe&gt;</code></li>
-  <li><code class="language-plaintext highlighter-rouge">&lt;object&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;embad&gt;</code>, <code class="language-plaintext highlighter-rouge">&lt;applet&gt;</code>によるプラグイン</li>
-</ul>
-
-<p>参考：<a href="https://developer.mozilla.org/ja/docs/Web/Security/Same-origin_policy#Cross-origin_network_access">異なるオリジンへのネットワークアクセス</a></p>
-
-<h3 id="corsとは">CORSとは</h3>
-
-<p>別オリジンのリソースへアクセス(＝ <strong>クロスサイトHTTPリクエスト</strong>)できるようにするためのルール、手法。</p>
-
-<h4 id="簡単な例">簡単な例</h4>
-<p>ブラウザがオリジンA(<code class="language-plaintext highlighter-rouge">http://origin-a.com</code>)のWEBサイトを表示中に、オリジンB(<code class="language-plaintext highlighter-rouge">http://origin-b.com</code>)のリソースへアクセスする場合のやりとりの例です。</p>
+<p>この2つを満たすアクションを議論しながら探していきます。アクションはいくつ書き出してもよいですが、このエリアにはもういくつかのルールがあります。</p>
 
 <ul>
-  <li>ブラウザ「オリジンA(<code class="language-plaintext highlighter-rouge">http://origin-a.com</code>)がおたくのリソース欲しいって」</li>
-  <li>オリジンB「オリジンA(<code class="language-plaintext highlighter-rouge">http://origin-a.com</code>)からきたの？それなら良いよ😘」</li>
+  <li>アクションの完了の責任はチーム全体にある(アサインされた個人ではなく)</li>
+  <li>1イテレーションで着手するアクション数が少なめになるようWIP上限を設ける</li>
+  <li>もしアクションが達成できなかった場合は、次のふりかえりで必ずアクションに手を加える
+    <ul>
+      <li>よりアクションを細かくする</li>
+      <li>個人アサインからペアアサインに変える</li>
+      <li>「イテレーション内で進捗をシェアする」など、アクション達成のためのタスクを追加する</li>
+    </ul>
+  </li>
 </ul>
 
-<p>こんな会話が、ブラウザから送られる<strong>HTTPリクエストヘッダ</strong>とサーバから返される<strong>HTTPレスポンスヘッダ</strong>にて行われています。</p>
+<h4 id="done">“DONE”</h4>
 
-<p><strong>HTTPリクエストヘッダ</strong></p>
+<p><strong>議論が終わったトピック、完了したアクション</strong></p>
 
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nf">GET</span> <span class="nn">/api</span> <span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span>
-<span class="na">Origin</span><span class="p">:</span> <span class="s">http://origin-a.com</span>
-</code></pre></div></div>
+<p>このレーンはなくてもよいです。終わったものが山積みになると「これだけ改善行動を起こした」とモチベーションになることがあります。</p>
 
-<p><strong>HTTPレスポンスヘッダ</strong></p>
+<p>また1ヶ月おきなど定期的にDONEの内容を見返し、以前との変化を計測したり、新しいチャレンジを見つけるキッカケにするものよさそうです。</p>
 
-<div class="language-http highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">HTTP</span><span class="o">/</span><span class="m">1.1</span> <span class="m">200</span> <span class="ne">OK</span>
-<span class="na">Access-Control-Allow-Origin</span><span class="p">:</span> <span class="s">http://origin-a.com</span>
-</code></pre></div></div>
+<h3 id="ふりかえりの進め方">ふりかえりの進め方</h3>
 
-<h4 id="もう少し深い話">もう少し深い話</h4>
-<p>CORSの仕組みの根底はHTTPヘッダによるやりとりなのだけれど、実はこれを実現する手段は2つあります。</p>
+<h4 id="1-前回のアクションの達成確認をする初回はスキップ">1. 前回のアクションの達成確認をする(初回はスキップ)</h4>
 
-<ol>
-  <li>👆の例のように、直接クロスオリジンなリクエストを投げる</li>
-  <li>一度CORSが可能かを確認するリクエストを投げ、そのレスポンスを受けてから再度クロスオリジンなリクエストを投げる</li>
-</ol>
+<p>WIPアクションについて1つずつ確認し、終わってればDONEに、終わってなければタスクをアップデートします。</p>
 
-<p>基本的には一度CORSが可能かを確認するリクエスト(＝<strong>preflightリクエスト</strong>)を投げることが必要とされていますが、以下の条件<strong>全て</strong>を満たす場合はシンプルなリクエストでもOKです。</p>
+<h4 id="2-ペインとチャレンジを各々が書き出す">2. ペインとチャレンジを各々が書き出す</h4>
 
-<ul>
-  <li>HTTPメソッドがGET, POST, HEADのいずれか</li>
-  <li>HTTPヘッダにAccept, Accept-Language, Content-Language, Content-Type以外のフィールドが含まれない</li>
-  <li>Content-Typeの値はapplication/x-www-form-urlencoded, multipart/form-data, text/plainのいずれか</li>
-</ul>
+<p>5〜10分程度の記入時間を設け、記入が済んだら1件ずつ内容をシェアしながらボードに貼り付けていきます。</p>
 
-<h4 id="今回触れない話">今回触れない話</h4>
-<p>CORSについてはもっともっと深い話があります。たとえばCORSはデフォルトではCookieを使わないのでそれを使えるようにする方法とか、リクエストに独自のリクエストヘッダを使う方法とか、IE対応の話とか…。
-そのへんは今回は割愛する代わりに、参考サイトを残しておきます。</p>
+<p>シェアする過程で近い意見をグルーピングしたり、過去に挙げたものの解消してしまった意見を破棄したりと、ペインとチャレンジのエリアを整理しながら意見を集めていきます。チームメンバーの感情や欲求を1つのボードに載せ切ることを目指します。</p>
 
-<ul>
-  <li><a href="http://inside.pixiv.net/entry/2014/12/16/181804">CORSでハマったことまとめ - pixiv inside</a></li>
-  <li><a href="http://qiita.com/tomoyukilabs/items/81698edd5812ff6acb34">CORSまとめ - Qiita</a></li>
-</ul>
+<h4 id="3-議論して深堀りたいトピックを投票する">3. 議論して深堀りたいトピックを投票する</h4>
+
+<p>議論したいトピックに投票します。今回のミーティングで議論しなかったとしても、次回以降もペインとチャレンジに出ているトピックは(意図的に破棄しない限り)残り続けるので、『今日この場で』話したいものを選びましょう。</p>
+
+<h4 id="4-投票が多かったトピックを議論しアクションに落とし込む">4. 投票が多かったトピックを議論しアクションに落とし込む</h4>
+
+<p>アクションにはWIP制限があり、多くのアクションが出ても1イテレーションで消化できる数には限りがあるので、多くのトピックについて議論するより1つ1つのトピックについてじっくりめに議論するほうがおすすめです。</p>
+
+<p>アクションエリアにどれくらい未着手アクションが溜まっているかや、1トピックの議論にどれだけ時間がかかるかが、ふりかえりミーティングの長さを決めるヒントになります。最初は1時間枠などで開催し、ミーティングの様子を見ながらアップデートしていくとよいです。</p>
+
+<h4 id="5-アクションの実行者を決める">5. アクションの実行者を決める</h4>
+
+<p>次のイテレーションで完了させるアクションをWIP上限内で決めます。</p>
+
+<p>アクションごとに人をアサインしてもいいですし、ペアアサインなどにし個人の忙しさに依存しにくい状態を目指してもいいですし、バックログの消化が得意なチームであれば手が空いた人が都度ピックするかたちでもいいです。なんであれ、次のふりかえりミーティングまでにやると決めたものが完了できる方法であればOKです。</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>最後に、チームで使ったテンプレートを置いておきます。</p>
+
+<p><img style="border:1px solid #CFD8DC" alt="cheatsheet" src="/assets/2024-06-14/cheatsheet.jpg" /></p>
+
+<p>先述のとおり、ふりかえりはKPTにこだわらずもっと自由にやっていいものだと思っているので、これからもチームやプロジェクトに合う方法を探し続けていきたいと思います。それらがどこかで誰かの参考になれば幸いです。</p>
 
         </article>
 
@@ -293,7 +303,7 @@
           
             
             
-            <a class="share-button share-button-twitter" href="//twitter.com/share?text=CORS+%28Cross-Origin+Resource+Sharing%29+%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F&url=https://aloerina01.github.io/blog/2016-10-13-1&via=aloerina_&hashtags=JavaScript,mfcode"
+            <a class="share-button share-button-twitter" href="//twitter.com/share?text=%22%E3%83%9A%E3%82%A4%E3%83%B3%22%E3%81%A8%22%E3%83%81%E3%83%A3%E3%83%AC%E3%83%B3%E3%82%B8%22%E3%81%AB%E6%B3%A8%E7%9B%AE%E3%81%97%E3%81%A6%E6%94%B9%E5%96%84%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%82%92%E7%94%9F%E3%81%BF%E5%87%BA%E3%81%99%E3%81%B5%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8A%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF&url=https://aloerina01.github.io/blog/2024-06-14-1&via=aloerina_&hashtags=Management,Facilitation,mfcode"
               onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter" viewBox="0 0 16 16">
                 <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
@@ -310,7 +320,7 @@
             
             
             
-            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=CORS+%28Cross-Origin+Resource+Sharing%29+%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F&u=https://aloerina01.github.io/blog/2016-10-13-1"
+            <a class="share-button share-button-facebook" href="//www.facebook.com/sharer.php?t=%22%E3%83%9A%E3%82%A4%E3%83%B3%22%E3%81%A8%22%E3%83%81%E3%83%A3%E3%83%AC%E3%83%B3%E3%82%B8%22%E3%81%AB%E6%B3%A8%E7%9B%AE%E3%81%97%E3%81%A6%E6%94%B9%E5%96%84%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%82%92%E7%94%9F%E3%81%BF%E5%87%BA%E3%81%99%E3%81%B5%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8A%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF&u=https://aloerina01.github.io/blog/2024-06-14-1"
               onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;">
               <svg
                 width="24"
@@ -456,7 +466,7 @@
             
             
             
-            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2016-10-13-1" target="_blank">
+            <a class="share-button share-button-pocket" href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2024-06-14-1" target="_blank">
               <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
             </a>
             
@@ -470,7 +480,7 @@
             
             
             
-            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?CORS+%28Cross-Origin+Resource+Sharing%29+%E3%81%A3%E3%81%A6%E3%81%AA%E3%81%AB%EF%BC%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2016-10-13-1">
+            <a class="share-button share-button-line" target="_blank" href="//line.me/R/msg/text/?%22%E3%83%9A%E3%82%A4%E3%83%B3%22%E3%81%A8%22%E3%83%81%E3%83%A3%E3%83%AC%E3%83%B3%E3%82%B8%22%E3%81%AB%E6%B3%A8%E7%9B%AE%E3%81%97%E3%81%A6%E6%94%B9%E5%96%84%E3%82%B5%E3%82%A4%E3%82%AF%E3%83%AB%E3%82%92%E7%94%9F%E3%81%BF%E5%87%BA%E3%81%99%E3%81%B5%E3%82%8A%E3%81%8B%E3%81%88%E3%82%8A%E3%83%95%E3%83%AC%E3%83%BC%E3%83%A0%E3%83%AF%E3%83%BC%E3%82%AF%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2024-06-14-1">
               <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
             </a>
             
@@ -510,15 +520,15 @@
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2017-03-17-1">超軽量Viewライブラリ「Hyperapp」の日本語ドキュメント風の何か</a></li>
+      <li><a href="/blog/2024-04-04-1">チーム目標を設定するフレームワークをつくったので紹介したい</a></li>
       
-      <li><a href="/blog/2016-10-14-1">外部スクリプトを動的読込して同期的に処理をする方法</a></li>
+      <li><a href="/blog/2020-12-23-1">私たちのリモートコミュニケーションをデータと共にふりかえる</a></li>
       
-      <li><a href="/blog/2017-03-14-1">ES6 Proxy をつかって堅牢なオブジェクトをつくるTips</a></li>
+      <li><a href="/blog/2017-01-01-1">Node.js + Express を試してみた</a></li>
       
-      <li><a href="/blog/2019-11-27-1">「チームがうまく失敗し学ぶために私にできること」の補足と裏話</a></li>
+      <li><a href="/blog/2016-10-31-1">開発者なりに考えたQA(品質保証)の話をしてみよう</a></li>
       
-      <li><a href="/blog/2018-08-01-1">Flutterだけじゃない！ Dart × Webフロントエンドの現状と未来</a></li>
+      <li><a href="/blog/2022-12-16-1">「来月からエンジニアリングマネージャーやってね」と言われたら</a></li>
       
     </div>
   </div>

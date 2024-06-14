@@ -1,5 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-04-24T09:48:31+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">チーム目標を設定するフレームワークをつくったので紹介したい</title><link href="https://aloerina01.github.io/blog/2024-04-04-1" rel="alternate" type="text/html" title="チーム目標を設定するフレームワークをつくったので紹介したい" /><published>2024-04-04T00:00:00+00:00</published><updated>2024-04-04T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-04-04-1">&lt;p&gt;新年度です。目標を設定するシーズンですね。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-06-14T08:45:37+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">“ペイン”と”チャレンジ”に注目して改善サイクルを生み出すふりかえりフレームワーク</title><link href="https://aloerina01.github.io/blog/2024-06-14-1" rel="alternate" type="text/html" title="&quot;ペイン&quot;と&quot;チャレンジ&quot;に注目して改善サイクルを生み出すふりかえりフレームワーク" /><published>2024-06-14T00:00:00+00:00</published><updated>2024-06-14T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-06-14-1">&lt;p&gt;KPTを継続していたものの意見が出にくくなったりTryが実行されなくなったり…といったマンネリ化や改善サイクルの停滞はどのチームも1度くらいは体験するのではないでしょうか。そんなときはふりかえりの方法を少し変えて刺激を得ることが有効な手段のひとつです。&lt;/p&gt;
+
+&lt;p&gt;新しいふりかえり方法は&lt;a href=&quot;https://amzn.to/3xkFIen&quot; target=&quot;blank&quot;&gt;アジャイルレトロスペクティブズ&lt;/a&gt;などから探すこともできますし、もっと自由に、議論したい切り口や進め方を自分たちで考えることもできます。今回は私が関わるチームで実践しているオリジナルの方法を紹介します。&lt;/p&gt;
+
+&lt;h3 id=&quot;コンセプト&quot;&gt;コンセプト&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2024-06-14/thumbnail.jpg&quot; alt=&quot;&quot; /&gt;
+ふりかえり実践イメージ&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;やりなれたKPTから大きく変えず、少しだけ変化させてマンネリ解消する方法であること&lt;/li&gt;
+  &lt;li&gt;チームメンバーが感じる不満やアイデアを集めやすい方法であること&lt;/li&gt;
+  &lt;li&gt;次のアクションを可視化し、完了までトラッキングできる仕組みであること&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;テンプレートの紹介&quot;&gt;テンプレートの紹介&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2024-06-14/template.jpg&quot; alt=&quot;ふりかえりテンプレート&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;ペイン&quot;&gt;“ペイン”&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;今イテレーションで困ったこと、苦労したこと、課題に感じていること&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;「〜がしんどかった」「〜で困った」「〜は良くないと思う」と主観的な感情に注目して書き出します。根拠や論理はいらず、気持ちを吐き出すことが大事です。&lt;/p&gt;
+
+&lt;h4 id=&quot;チャレンジ&quot;&gt;“チャレンジ”&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;新しく試してみたいこと&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;ペインに対するアイデアでもいいですし、技術的にチャレンジしたいことでもいいです。エンジニアならエンジニアとしての欲求を、PMならPMとしての欲求を素直に書きます。&lt;/p&gt;
+
+&lt;h4 id=&quot;議論中&quot;&gt;“議論中”&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;ペイン・チャレンジの中から選ばれた深堀りしていくトピック&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;このテンプレートは毎イテレーションで意見や議論を継ぎ足ししながら使っていくことを想定しています。1度のミーティングで結論が出なかったものや、ふりかえり後に検証や作業をした後に次回のミーティングで継続して議論したいなど、トピック毎の議論のステータスを表現するエリアです。&lt;/p&gt;
+
+&lt;h4 id=&quot;アクション&quot;&gt;“アクション”&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;次のふりかえりまでに実践するアクション&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;ペインとチャレンジは個人の感情や意欲から意見を集めましたが、アクションはチームで議論ながら出していきます。アクションにはいくつかルールがあります。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;次回のふりかえりまでに完了できる小さいサイズ&lt;/strong&gt;であること&lt;/li&gt;
+  &lt;li&gt;誰が見ても達成したかどうか判断できる&lt;strong&gt;具体的な達成基準&lt;/strong&gt;が書かれていること&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;この2つを満たすアクションを議論しながら探していきます。アクションはいくつ書き出してもよいですが、このエリアにはもういくつかのルールがあります。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;アクションの完了の責任はチーム全体にある(アサインされた個人ではなく)&lt;/li&gt;
+  &lt;li&gt;1イテレーションで着手するアクション数が少なめになるようWIP上限を設ける&lt;/li&gt;
+  &lt;li&gt;もしアクションが達成できなかった場合は、次のふりかえりで必ずアクションに手を加える
+    &lt;ul&gt;
+      &lt;li&gt;よりアクションを細かくする&lt;/li&gt;
+      &lt;li&gt;個人アサインからペアアサインに変える&lt;/li&gt;
+      &lt;li&gt;「イテレーション内で進捗をシェアする」など、アクション達成のためのタスクを追加する&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;done&quot;&gt;“DONE”&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;議論が終わったトピック、完了したアクション&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;このレーンはなくてもよいです。終わったものが山積みになると「これだけ改善行動を起こした」とモチベーションになることがあります。&lt;/p&gt;
+
+&lt;p&gt;また1ヶ月おきなど定期的にDONEの内容を見返し、以前との変化を計測したり、新しいチャレンジを見つけるキッカケにするものよさそうです。&lt;/p&gt;
+
+&lt;h3 id=&quot;ふりかえりの進め方&quot;&gt;ふりかえりの進め方&lt;/h3&gt;
+
+&lt;h4 id=&quot;1-前回のアクションの達成確認をする初回はスキップ&quot;&gt;1. 前回のアクションの達成確認をする(初回はスキップ)&lt;/h4&gt;
+
+&lt;p&gt;WIPアクションについて1つずつ確認し、終わってればDONEに、終わってなければタスクをアップデートします。&lt;/p&gt;
+
+&lt;h4 id=&quot;2-ペインとチャレンジを各々が書き出す&quot;&gt;2. ペインとチャレンジを各々が書き出す&lt;/h4&gt;
+
+&lt;p&gt;5〜10分程度の記入時間を設け、記入が済んだら1件ずつ内容をシェアしながらボードに貼り付けていきます。&lt;/p&gt;
+
+&lt;p&gt;シェアする過程で近い意見をグルーピングしたり、過去に挙げたものの解消してしまった意見を破棄したりと、ペインとチャレンジのエリアを整理しながら意見を集めていきます。チームメンバーの感情や欲求を1つのボードに載せ切ることを目指します。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-議論して深堀りたいトピックを投票する&quot;&gt;3. 議論して深堀りたいトピックを投票する&lt;/h4&gt;
+
+&lt;p&gt;議論したいトピックに投票します。今回のミーティングで議論しなかったとしても、次回以降もペインとチャレンジに出ているトピックは(意図的に破棄しない限り)残り続けるので、『今日この場で』話したいものを選びましょう。&lt;/p&gt;
+
+&lt;h4 id=&quot;4-投票が多かったトピックを議論しアクションに落とし込む&quot;&gt;4. 投票が多かったトピックを議論しアクションに落とし込む&lt;/h4&gt;
+
+&lt;p&gt;アクションにはWIP制限があり、多くのアクションが出ても1イテレーションで消化できる数には限りがあるので、多くのトピックについて議論するより1つ1つのトピックについてじっくりめに議論するほうがおすすめです。&lt;/p&gt;
+
+&lt;p&gt;アクションエリアにどれくらい未着手アクションが溜まっているかや、1トピックの議論にどれだけ時間がかかるかが、ふりかえりミーティングの長さを決めるヒントになります。最初は1時間枠などで開催し、ミーティングの様子を見ながらアップデートしていくとよいです。&lt;/p&gt;
+
+&lt;h4 id=&quot;5-アクションの実行者を決める&quot;&gt;5. アクションの実行者を決める&lt;/h4&gt;
+
+&lt;p&gt;次のイテレーションで完了させるアクションをWIP上限内で決めます。&lt;/p&gt;
+
+&lt;p&gt;アクションごとに人をアサインしてもいいですし、ペアアサインなどにし個人の忙しさに依存しにくい状態を目指してもいいですし、バックログの消化が得意なチームであれば手が空いた人が都度ピックするかたちでもいいです。なんであれ、次のふりかえりミーティングまでにやると決めたものが完了できる方法であればOKです。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;最後に、チームで使ったテンプレートを置いておきます。&lt;/p&gt;
+
+&lt;p&gt;&lt;img style=&quot;border:1px solid #CFD8DC&quot; alt=&quot;cheatsheet&quot; src=&quot;/assets/2024-06-14/cheatsheet.jpg&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;先述のとおり、ふりかえりはKPTにこだわらずもっと自由にやっていいものだと思っているので、これからもチームやプロジェクトに合う方法を探し続けていきたいと思います。それらがどこかで誰かの参考になれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">KPTを継続していたものの意見が出にくくなったりTryが実行されなくなったり…といったマンネリ化や改善サイクルの停滞はどのチームも1度くらいは体験するのではないでしょうか。そんなときはふりかえりの方法を少し変えて刺激を得ることが有効な手段のひとつです。</summary></entry><entry><title type="html">チーム目標を設定するフレームワークをつくったので紹介したい</title><link href="https://aloerina01.github.io/blog/2024-04-04-1" rel="alternate" type="text/html" title="チーム目標を設定するフレームワークをつくったので紹介したい" /><published>2024-04-04T00:00:00+00:00</published><updated>2024-04-04T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-04-04-1">&lt;p&gt;新年度です。目標を設定するシーズンですね。&lt;/p&gt;
 
 &lt;p&gt;私の職場でも個々人が目標設定をする時期ですし、同時に私が関わるスクラムチームでもチームとしての目標を決める議論がされました。&lt;br /&gt;
 それらを見ていて、『チーム目標を議論して決める難しさ』を感じる場面が何度かありました。最終的な理想状態を見据えている人もいれば、直近で達成したい短期目標を意識している人もいます。やりたいことは山のようにあるけれど、それらが最終目標にどれだけ効果的に結びつくかが曖昧なこともあります。&lt;/p&gt;
@@ -866,135 +970,4 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
 
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 
-&lt;p&gt;現時点では「再考」しただけで「実践」していません。試してみたら全然駄目かもしれませんが、近いうちに実践しレポートしてみようと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">かつてスクラムガイドにも載っていましたが、Daily Scrum でよく使われる「3つの質問」というものがありました。大雑把に書くと以下の3つです。</summary></entry><entry><title type="html">私たちのリモートコミュニケーションをデータと共にふりかえる</title><link href="https://aloerina01.github.io/blog/2020-12-23-1" rel="alternate" type="text/html" title="私たちのリモートコミュニケーションをデータと共にふりかえる" /><published>2020-12-23T00:00:00+00:00</published><updated>2020-12-23T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2020-12-23-1">&lt;p&gt;私たちのチームは11人のフロントエンドエンジニアで構成されていて、今年は皆在宅勤務をしていました。リモート環境に移行した直後からコミュニケーションの方法には悩まされ試行錯誤してきたので、ここらでふりかえってみようと思います。&lt;/p&gt;
-
-&lt;p&gt;今回のふりかえりでは、明示的に取り組んでいるコミュニケーションを紹介し(暗黙的にしているコミュニケーションは今回のふりかえりの対象外とし)、その内容について&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;会話のラリーを目的とした双方向の場か ⇔ 情報伝達などを目的とした単方向の場か&lt;/li&gt;
-  &lt;li&gt;比較的雑談が多いか ⇔ 比較的業務的な話題が多いか&lt;/li&gt;
-  &lt;li&gt;全員集まることが少ない ⇔ 全員集まることが多い&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;という3つの軸で主観的なポイント付けをしてみようと思います。&lt;/p&gt;
-
-&lt;h3 id=&quot;weekly-sync&quot;&gt;Weekly Sync&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;30分/週&lt;/li&gt;
-  &lt;li&gt;近い将来にやる案件の共有・把握&lt;/li&gt;
-  &lt;li&gt;直近のリリース内容の確認&lt;/li&gt;
-  &lt;li&gt;チケットのステータス更新確認、Merge済みブランチの掃除等の事務ワーク&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-weeklysync.jpg&quot; alt=&quot;Weekly Sync&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;daily-sync&quot;&gt;Daily Sync&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;チームメンバーの業務が比較的区切れる17:00~17:15開催&lt;/li&gt;
-  &lt;li&gt;月、火、木の週3回
-    &lt;ul&gt;
-      &lt;li&gt;水曜はWeekly Syncがあるためスキップ、金曜は予定被りのためスキップ&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;その日やったこと、困っていることの共有&lt;/li&gt;
-  &lt;li&gt;余った時間で雑談(余りがち)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-dailysync.jpg&quot; alt=&quot;Daily Sync&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;battleground&quot;&gt;Battleground&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;1時間/週&lt;/li&gt;
-  &lt;li&gt;技術相談をする場&lt;/li&gt;
-  &lt;li&gt;Slack channelに話したいトピックを随時記入しており、それについて話す場&lt;/li&gt;
-  &lt;li&gt;最近方向性をシフトして、ふりかえりと技術相談を交互開催するよう変更&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-battleground.jpg&quot; alt=&quot;Battleground&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;happy-hour&quot;&gt;Happy Hour&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;30分/週&lt;/li&gt;
-  &lt;li&gt;完全雑談時間&lt;/li&gt;
-  &lt;li&gt;ランダムでDJ担当を決めてBGMを流す&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-happyhour.jpg&quot; alt=&quot;Happyhour&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;モブワーク&quot;&gt;モブワーク&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;2時間/週&lt;/li&gt;
-  &lt;li&gt;モブプロの時間として始めたが、今では「プログラミング」以外のことをよくする
-    &lt;ul&gt;
-      &lt;li&gt;モブレビュー、勉強会、臨時のふりかえりなど&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;モブワークバックログをTrelloを使ってカンバン化
-    &lt;ul&gt;
-      &lt;li&gt;レーンは Idea, Ready, Doing, Done&lt;/li&gt;
-      &lt;li&gt;モブワーク開始時にReadyに入っているものの中から選んで実施&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-mobwork.jpg&quot; alt=&quot;Mobwork&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;daily勉強会廃止済み&quot;&gt;Daily勉強会(廃止済み)&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;30分/週3回&lt;/li&gt;
-  &lt;li&gt;TypeScript導入直後に勉強会をするためにスタート&lt;/li&gt;
-  &lt;li&gt;1ヶ月くらい継続しTSの話題が一区切りした後は日替わりでいろんなネタを持ち寄り&lt;/li&gt;
-  &lt;li&gt;更に1ヶ月くらい経過した頃ネタが尽きたので廃止&lt;/li&gt;
-  &lt;li&gt;代わりに、勉強会したいネタが生まれたら臨時開催 or モブワークで実施する方針に&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-dailystudy.jpg&quot; alt=&quot;Daily勉強会&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;いきぬき会&quot;&gt;いきぬき会&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;2週間に1回、業務後開催&lt;/li&gt;
-  &lt;li&gt;だいたい2時間程度、ながれ解散&lt;/li&gt;
-  &lt;li&gt;2週に1度プロダクトのリリースがあり、その後に開催することが多い&lt;/li&gt;
-  &lt;li&gt;雑談、ゲーム、何でもOK&lt;/li&gt;
-  &lt;li&gt;最近はボードゲームアリーナで遊ぶことが多め&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-refresh.jpg&quot; alt=&quot;いきぬき会&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;slack雑談channel&quot;&gt;Slack雑談Channel&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;各自が雑談用Channelを持っている&lt;/li&gt;
-  &lt;li&gt;社内Twitterとして運用している人もいるし、猫写真Botと化している人もいるし、放置の人もいる&lt;/li&gt;
-  &lt;li&gt;雑談用Channelは全員作っているが、運用してもしなくてもいい、人のも見ても見なくてもいい&lt;/li&gt;
-  &lt;li&gt;業務用のチームChannelもあるので、そちらで業務の話題の合間に雑談していることも多い
-    &lt;ul&gt;
-      &lt;li&gt;先日チームChannelでAmong Usの募集をしていたくらい雑&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-zatsuchannel.jpg&quot; alt=&quot;雑談Channel&quot; style=&quot;border:1px solid #e8e8e8;border-radius:20px;&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;分布で見てみるとこんな感じになりました。円の大きさは「参加率」の大小です。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2020-12-23-1-graph.jpg&quot; alt=&quot;分布&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;意図せず万遍なく分布されました。万遍ないことが良いことだとは限りませんが、今のところちょうどいい塩梅だと感じています。強いて言うなら、全員が集まる場ではなくチームメンバーのうち何人かが小さく関わる機会があればと思いますが、各自の雑談用Channel内での会話が盛んであったり、困ったときに「手が空いてる人zoomで相談にのってくれません？」といった会話が1日数回生まれていることなどから、やはりちょうどいい状態なのかもしれません。&lt;/p&gt;
-
-&lt;p&gt;今回は取り上げませんでしたが、四半期に1回開催している「ふりかえり総集編」やスポットで開催しているエクササイズなど細かいコミュニケーションイベントはあるので、むしろ過剰にならないようなブレーキも大切かもしれないと改めて感じました。&lt;/p&gt;
-
-&lt;p&gt;ちなみにこの分布は私の主観を反映しただけのものなので、チームメンバーにも同様にふりかえってもらって&lt;strong&gt;チームメンバー全員の「ちょうどいい塩梅」&lt;/strong&gt;を探ってみても良さそうですね。来年チャレンジしてみたいです。&lt;/p&gt;
-
-&lt;p&gt;他にも、週あたりの「コミュニケーション時間」と「開発専念時間」を比較して実態と感覚があっているか、などもふりかえってみようと思いましたが、今回は手抜きでサボります。コミュニケーション時間はスキマ時間でもできることが多そうだけれど、開発専念時間はある程度まとめて確保したい、など時間の使い方にも違いがあると思うので、単純に総時間数だけで比較する難しさに打ちのめされました。&lt;/p&gt;
-
-&lt;p&gt;以上、私たちのチームのリモートコミュニケーションのふりかえりでした。皆さんのチームのアイデアも知りたいので、よければ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までコメントいただければと思います。&lt;/p&gt;
-
-&lt;p&gt;それでは良いお年を。&lt;/p&gt;</content><author><name></name></author><summary type="html">私たちのチームは11人のフロントエンドエンジニアで構成されていて、今年は皆在宅勤務をしていました。リモート環境に移行した直後からコミュニケーションの方法には悩まされ試行錯誤してきたので、ここらでふりかえってみようと思います。</summary></entry></feed>
+&lt;p&gt;現時点では「再考」しただけで「実践」していません。試してみたら全然駄目かもしれませんが、近いうちに実践しレポートしてみようと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">かつてスクラムガイドにも載っていましたが、Daily Scrum でよく使われる「3つの質問」というものがありました。大雑把に書くと以下の3つです。</summary></entry></feed>
