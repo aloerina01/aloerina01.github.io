@@ -19,6 +19,9 @@
       color: white;
     }
   }
+  &.share-button-x {
+    background-color: black;
+  }
   &.share-button-facebook {
     background-color: $color-facebook;
     svg {
