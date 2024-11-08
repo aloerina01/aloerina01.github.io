@@ -90,6 +90,8 @@ pre, code { font-family: Consolas, Monaco, 'Courier New', Courier, monospace; fo
 
 .share-button.share-button-twitter svg { margin: 10px 0 0 0; color: white; }
 
+.share-button.share-button-x { background-color: black; }
+
 .share-button.share-button-facebook { background-color: #3B5998; }
 
 .share-button.share-button-facebook svg { color: white; margin: 7px 0 0 0; width: 20px; }
