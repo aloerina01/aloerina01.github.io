@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-11-11T04:32:29+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-11-11T05:05:56+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">5年分のマネジメント経験から生まれた実践的フィードバックの型</title><link href="https://aloerina01.github.io/blog/2024-11-06-1" rel="alternate" type="text/html" title="5年分のマネジメント経験から生まれた実践的フィードバックの型" /><published>2024-11-06T00:00:00+00:00</published><updated>2024-11-06T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-11-06-1">&lt;p&gt;私がEMとしてメンバーと向き合うときは「&lt;strong&gt;彼らのポテンシャルやエネルギーを100％発揮できる状態をつくれているか&lt;/strong&gt;」と考えることを心がけています&lt;strong&gt;。『観察』と『フィードバック』&lt;/strong&gt;はこれを実現するための最も大事な手段といえます。&lt;/p&gt;
 
 &lt;p&gt;ここ最近の自分自身のマネジメント業務を振り返ってみると、『フィードバック』のほうはある程度の型ができていると感じます。ベースとなる型があって、それをチームメンバーや状況によってアレンジしながら使っている感覚です。&lt;/p&gt;
@@ -275,9 +275,9 @@
 
 &lt;p&gt;オンラインで目標設定のディスカッションをする際にMiroなどのホワイトボードツールにマトリクスを用意して付箋を重ねながら議論したり、オフラインの場でマトリクスを印刷して指差しながら議論の目線を合わせたりといった使い方を想定しています。もちろん個人の目標設定時にも使えます。&lt;/p&gt;
 
-&lt;p&gt;最後に改めて補足しておくと、マトリクスをすべて埋めることが重要なのではなく、&lt;strong&gt;納得いく目標を見つけること&lt;/strong&gt;が大切です。またチームで議論しながら目標設定する場合は&lt;strong&gt;議論の目線を揃えること&lt;/strong&gt;が重要です。そのために多少なりとも役立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">新年度です。目標を設定するシーズンですね。</summary></entry><entry><title type="html">マネージャーやリーダーからチームメンバーへの仕事の任せ方、裁量の渡し方</title><link href="https://aloerina01.github.io/blog/2023-05-22-1" rel="alternate" type="text/html" title="マネージャーやリーダーからチームメンバーへの仕事の任せ方、裁量の渡し方" /><published>2023-05-22T00:00:00+00:00</published><updated>2023-05-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2023-05-22-1">&lt;p&gt;チームのリーダー、エンジニアリングマネージャー、新入社員のメンターなどの役割をすると、『チームメンバーにどのように仕事を任せるか』と考えることがあります。特にそれなりにスキルがあるチームメンバーに対してこれを考える場合、『どれくらい/どのように裁量を渡すか』がポイントの一つです。&lt;/p&gt;
+&lt;p&gt;最後に改めて補足しておくと、マトリクスをすべて埋めることが重要なのではなく、&lt;strong&gt;納得いく目標を見つけること&lt;/strong&gt;が大切です。またチームで議論しながら目標設定する場合は&lt;strong&gt;議論の目線を揃えること&lt;/strong&gt;が重要です。そのために多少なりとも役立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">新年度です。目標を設定するシーズンですね。</summary></entry><entry><title type="html">チームメンバーに仕事と裁量をわたすときのひと工夫</title><link href="https://aloerina01.github.io/blog/2023-05-22-1" rel="alternate" type="text/html" title="チームメンバーに仕事と裁量をわたすときのひと工夫" /><published>2023-05-22T00:00:00+00:00</published><updated>2023-05-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2023-05-22-1">&lt;p&gt;チームのリーダー、エンジニアリングマネージャー、新入社員のメンターなどの役割をすると、『チームメンバーにどのように仕事を任せるか』と考えることがあります。特にそれなりにスキルがあるチームメンバーに対してこれを考える場合、『どれくらい/どのように裁量を渡すか』がポイントの一つです。&lt;/p&gt;
 
-&lt;p&gt;私がマネージャーとしてチームメンバーに仕事を任せるとき&lt;strong&gt;『その仕事をどのように進行しどのように完了させるか(何を持って完了とするか)』を決める裁量を渡す&lt;/strong&gt;方針であり、その旨をチームメンバーに重ね重ね伝えています。&lt;/p&gt;
+&lt;p&gt;私がEMとしてチームメンバーに仕事を任せるとき&lt;strong&gt;『その仕事をどのように進行しどのように完了させるか(何を持って完了とするか)』を決める裁量を渡す&lt;/strong&gt;方針であり、その旨をチームメンバーに重ね重ね伝えています。&lt;/p&gt;
 
 &lt;p&gt;以下はチームメンバーとの実際のコミュニケーション例です。&lt;/p&gt;
 &lt;div class=&quot;note&quot;&gt;
@@ -312,7 +312,7 @@
 
 &lt;p&gt;人により得手不得手が違うので、&lt;strong&gt;補い合ったりアイデアを出し合ったりして裁量を存分に活かせるケースが多く、私には思いもよらない素晴らしいアウトプットが出ることもある&lt;/strong&gt;ので仕事をお願いするときのちょっとした楽しみでもあります。&lt;/p&gt;
 
-&lt;p&gt;注意点ですが、あんまり人数が多いと何もしない人を生みかねないので、複数人アサインは2〜3人がベストだと思います。また、チームメンバー同士でうまく相互作用が起きているのは、私たちのチームがこれまでにモブプロやふりかえりなどを重ね複数人でワークすることに慣れていたからかも、と注釈しておきます。複数人での仕事に不慣れなチームだと、誰かがリーダーとなり「仕事を分担する人、言われた通り分担をやる人」の関係になってしまい全員が裁量を活かせてるとは言えない結果となってしまうかもしれません。&lt;/p&gt;
+&lt;p&gt;注意点ですが、あんまり人数が多いと何もしない人を生みかねないので、複数人アサインは2〜3人がベストだと思います。また、チームメンバー同士でうまく相互作用が起きているのは、私たちのチームがこれまでにモブプロやふりかえりなどを重ね複数人でワークすることに慣れていたからかも、と注釈しておきます。複数人での仕事に不慣れなチームだと、誰かがリーダーとなり「仕事を分担する人、言われた通り分担をやる人」の関係になってしまい全員が裁量を発揮できない結果となることも多いです。&lt;/p&gt;
 
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 
