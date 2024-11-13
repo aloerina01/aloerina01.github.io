@@ -1,0 +1,139 @@
+<section class="share">
+  <div class="share-inner">
+    <div class="share-description">
+      <span>感想をシェアする</span>
+    </div>
+    <div class="share-panel">
+      <a
+        href="http://b.hatena.ne.jp/entry/"
+        class="hatena-bookmark-button share-button share-button-hatebu"
+        data-hatena-bookmark-layout="touch"
+        data-hatena-bookmark-width="38"
+        data-hatena-bookmark-height="38"
+        title="このエントリーをはてなブックマークに追加"
+        style="
+          border-radius: 50%;
+          width: 38px;
+          height: 38px;
+          box-shadow: 1px 1px 10px #bbb;
+          background-color: #00a4de;
+          transition: all 0.4s ease;
+        "
+      >
+        <img
+          src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+          alt="このエントリーをはてなブックマークに追加"
+          width="16"
+          height="16"
+        />
+      </a>
+      <script
+        type="text/javascript"
+        src="https://b.st-hatena.com/js/bookmark_button.js"
+        charset="utf-8"
+        defer
+      ></script>
+      {% for social in site.social %} {% capture full_url %}{{ site.url }}{{
+      site.baseurl }}{{ page.url }}{% endcapture %} {% if social.name ==
+      "Twitter" and social.share == true %}
+      <a
+        class="share-button share-button-x"
+        href="//twitter.com/share?text={{ page.title | cgi_escape }}&url={{ full_url }}&via={{social.username}}&hashtags={% if page.categories.size > 0 %}{% for cat in page.categories %}{{ cat }},{% endfor %}{% endif %}mfcode"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;"
+      >
+        <svg
+          version="1.1"
+          id="svg5"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 1668.56 1221.19"
+          style="enable-background: new 0 0 1668.56 1221.19"
+          xml:space="preserve"
+          width="38"
+          height="38"
+        >
+          <style type="text/css">
+            .st0 {
+              stroke: #ffffff;
+              stroke-miterlimit: 10;
+            }
+            .st1 {
+              fill: #ffffff;
+            }
+          </style>
+          <g>
+            <g id="layer1" transform="translate(52.390088,-25.058597)">
+              <path
+                id="path1009"
+                class="st1"
+                d="M485.39,356.79l230.07,307.62L483.94,914.52h52.11l202.7-218.98l163.77,218.98h177.32
+                L836.82,589.6l215.5-232.81h-52.11L813.54,558.46L662.71,356.79H485.39z M562.02,395.17h81.46l359.72,480.97h-81.46L562.02,395.17
+                z"
+              />
+            </g>
+          </g>
+        </svg>
+      </a>
+      {% endif %} {% if social.name == "Facebook" and social.share == true %}
+      <a
+        class="share-button share-button-facebook"
+        href="//www.facebook.com/sharer.php?t={{ page.title | cgi_escape }}&u={{ full_url }}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+      {% endif %} {% if social.name == "LinkedIn" and social.share == true %}
+      <a
+        href="//www.linkedin.com/shareArticle?mini=true&url={{ full_url }}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;"
+      >
+        <i class="fab fa-{{ social.icon }} fa-inverse"></i>
+      </a>
+      {% endif %} {% if social.name == "Pinterest" and social.share == true %}
+      <a
+        href="//www.pinterest.com/pin/create/button/?description={{ page.title | cgi_escape }}&url={{ full_url }}&media={{ site.url }}{% if page.cover %}{{ page.cover | prepend: site.baseurl  }}{% elsif site.cover %}{{ site.cover | prepend: site.baseurl }}{% else %}{{ site.logo | prepend: site.baseurl }}{% endif %}"
+        onclick="window.open(this.href, '{{ social.icon }}-share', 'width=550,height=255');return false;"
+      >
+        <i class="fab fa-{{ social.icon }} fa-inverse"></i>
+      </a>
+      {% endif %} {% if social.name == "Reddit" and social.share == true %}
+      <a
+        href="//www.reddit.com/submit"
+        onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('{{ full_url }}') + '&title={{page.title}}'; return false"
+      >
+        <i class="fab fa-{{ social.icon }} fa-inverse"></i>
+      </a>
+      {% endif %} {% if social.name == "Pocket" and social.share == true %}
+      <a
+        class="share-button share-button-pocket"
+        href="//getpocket.com/edit?url={{ full_url }}"
+        target="_blank"
+      >
+        <img src="{{ social.img }}" alt="{{ social.desc }}" loading="lazy" />
+      </a>
+      {% endif %} {% if social.name == "Line" and social.share == true %}
+      <a
+        class="share-button share-button-line"
+        target="_blank"
+        href="//line.me/R/msg/text/?{{ page.title | url_encode }}%0D%0A{{ full_url | url_encode }}"
+      >
+        <img src="{{ social.img }}" alt="{{ social.desc }}" loading="lazy" />
+      </a>
+      {% endif %} {% endfor %}
+    </div>
+  </div>
+</section>
