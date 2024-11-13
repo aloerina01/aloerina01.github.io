@@ -222,11 +222,9 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .page-content .post-meta .post-categories-icon { margin: 0 4px 0 0; }
 
-.page-content .pagination { padding-top: 2em; text-align: center; color: #90A4AE; display: inline-flex; justify-content: center; align-items: center; width: 100%; }
+.page-content .pagination { padding-top: 1.4em; text-align: center; color: #90A4AE; display: inline-flex; justify-content: center; align-items: center; width: 100%; }
 
-.page-content .pagination .page-number { padding: 0 1em; }
-
-.page-content .pagination a.newer-posts, .page-content .pagination a.older-posts { text-decoration: none; display: flex; justify-content: center; align-items: center; }
+.page-content .pagination a.newer-posts, .page-content .pagination a.older-posts { text-decoration: none; display: flex; justify-content: center; align-items: center; padding: 2px 20px; }
 
 .page-content img { display: block; margin: auto; width: 100%; }
 
@@ -415,7 +413,9 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .profile-bar-main .profile-content-sns .sns-icon { border: 1px solid #fff; color: #fff; border-radius: 50%; margin: 0 8px; width: 40px; height: 40px; line-height: 40px; display: inline-block; }
 
-.profile-bar-main .profile-content-sns .sns-icon svg { width: 42px; margin: 11px 0 0 -2px; }
+.profile-bar-main .profile-content-sns .sns-icon svg { width: 38px; height: 40px; padding: 10px 0 11px 0; }
+
+.profile-bar-main .profile-content-sns .sns-icon-x svg { padding: 11px 0 12px 0; }
 
 @media screen and (min-width: 768px) { .profile-bar-main { flex-direction: row; } .profile-bar-main .profile-image { width: 10em; } .profile-bar-main .profile-content { margin-left: 30px; text-align: left; } .profile-bar-main .profile-content-name { padding: 0; } }
 
