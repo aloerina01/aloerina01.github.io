@@ -276,9 +276,17 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 @media screen and (min-width: 768px) { .page-content .post .rss { margin: 1em 0; float: left; display: block; margin-right: 2.3576515979%; width: 48.821174201%; } .page-content .post .rss:last-child { margin-right: 0; } }
 
-.page-content .post .share { position: relative; display: flex; align-items: flex-start; justify-content: space-between; float: none; margin: 1.5rem auto; width: 100%; max-width: 280px; }
+.page-content .post .share { position: relative; margin: 0 auto; background-color: #f8f8f8; }
 
-@media screen and (min-width: 480px) { .page-content .post .share { float: right; margin: 0 0 2rem 0; } }
+.page-content .post .share-inner { padding: 20px 40px; display: flex; align-items: center; justify-content: space-between; flex-direction: column; }
+
+@media screen and (min-width: 768px) { .page-content .post .share-inner { flex-direction: row; } }
+
+.page-content .post .share-description { text-align: center; font-weight: 600; font-size: 90%; margin: -4px 0 8px 0; }
+
+@media screen and (min-width: 768px) { .page-content .post .share-description { margin: 0; } }
+
+.page-content .post .share-panel { display: flex; align-items: center; justify-content: space-between; width: 240px; }
 
 .page-content .post .disqus { float: left; display: block; margin-right: 2.3576515979%; width: 100%; }
 
@@ -353,7 +361,7 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .site-footer .copyright { text-align: center; margin: 24px auto 0 auto; font-size: 12px; }
 
-.sub-contents:nth-of-type(1) { margin-top: 4em; }
+.sub-contents:nth-of-type(1) { margin-top: 8em; }
 
 .related-posts { background-color: #f8f8f8; }
 
@@ -481,29 +489,27 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .donation a, .donation a:hover, .donation a:focus { color: #fff; }
 
-.post-donation { clear: both; margin: 0 auto 4rem auto; }
+.post-donation { clear: both; margin: 8px auto 0 auto; }
 
-.post-donation-panel { text-align: center; padding: 24px 20px 28px 20px; background: #f8f8f8; }
+.post-donation-panel { text-align: center; padding: 20px 40px; background: #f8f8f8; display: flex; align-items: center; justify-content: space-between; flex-direction: column; }
 
-.post-donation-description { font-weight: 600; font-size: 80%; }
+@media screen and (min-width: 768px) { .post-donation-panel { flex-direction: row; } }
 
-.post-donation-description.for-mobile { display: block; }
+.post-donation-description { font-weight: 600; font-size: 90%; margin: -4px 0 8px 0; }
 
-.post-donation-description.for-pc { display: none; }
+@media screen and (min-width: 768px) { .post-donation-description { margin: 0; } }
 
-@media screen and (min-width: 768px) { .post-donation-description.for-mobile { display: none; } .post-donation-description.for-pc { display: block; } }
+.post-donation .donation-button { margin: 0; }
 
-.post-donation a, .post-donation a:hover, .post-donation a:focus { color: #fff; }
+a.donation-button { display: block; margin: 0 auto; max-width: 14em; width: 184px; background: #FF4081; background: -webkit-linear-gradient(to right, #ff6884, #FF4081); background: linear-gradient(to right, #ff6884, #FF4081); color: #fff; font-weight: 800; border-radius: 28px; box-shadow: 0 1px 5px #333; transition: opacity 0.4s ease; }
 
-a.donation-button { display: block; margin: 0 auto; max-width: 14em; background: #FF4081; background: -webkit-linear-gradient(to right, #ff6884, #FF4081); background: linear-gradient(to right, #ff6884, #FF4081); color: #fff; font-weight: 800; border-radius: 28px; box-shadow: 0 1px 5px #333; }
+a.donation-button:hover { opacity: .7; }
 
-a.donation-button:hover, a.donation-button:focus { color: #fff; }
+a.donation-button .button-body { padding: 8px 0 7px 0; margin: 0; display: flex; align-items: center; justify-content: center; }
 
-a.donation-button .button-body { padding: 12px 0 10px 0; margin: 0; display: flex; align-items: center; justify-content: center; }
+a.donation-button .icon { width: 28px; height: 28px; padding-bottom: 2px; margin: 0 4px 0 0; display: inline-block; }
 
-a.donation-button .icon { width: 28px; height: 28px; padding-bottom: 2px; margin: 0; display: inline-block; }
-
-a.donation-button .label { display: inline-block; font-size: 0.9em; padding-left: 4px; }
+a.donation-button .label { display: inline-block; font-size: 0.9em; padding: 0 0 0 -2px; }
 
 .amazon-link-container { margin: 16px 0px; width: 100%; }
 
