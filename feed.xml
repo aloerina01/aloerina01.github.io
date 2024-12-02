@@ -1,5 +1,73 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-11-13T09:10:31+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">5年分のマネジメント経験から生まれた実践的フィードバックの型</title><link href="https://aloerina01.github.io/blog/2024-11-06-1" rel="alternate" type="text/html" title="5年分のマネジメント経験から生まれた実践的フィードバックの型" /><published>2024-11-06T00:00:00+00:00</published><updated>2024-11-06T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-11-06-1">&lt;p&gt;私がEMとしてメンバーと向き合うときは「&lt;strong&gt;彼らのポテンシャルやエネルギーを100％発揮できる状態をつくれているか&lt;/strong&gt;」と考えることを心がけています&lt;strong&gt;。『観察』と『フィードバック』&lt;/strong&gt;はこれを実現するための最も大事な手段といえます。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-12-02T08:51:48+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">ファシリテーションの細かい意識の使い分け - Daily Standup 編</title><link href="https://aloerina01.github.io/blog/2024-12-02-1" rel="alternate" type="text/html" title="ファシリテーションの細かい意識の使い分け - Daily Standup 編" /><published>2024-12-02T00:00:00+00:00</published><updated>2024-12-02T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-02-1">&lt;p&gt;私がエンジニアリングマネージャーとしてミーティング等をファシリテーションするとき、その内容に関わらず共通して意識していることがあります。そしてディテールを見れば意識やテクニックを使い分けている部分があります。それらの言語化にトライしてみようと思います。&lt;/p&gt;
+
+&lt;p&gt;ボリュームが出そうなので何本かの記事に分けて書きます。今回はその第1段です。&lt;/p&gt;
+
+&lt;h3 id=&quot;どのミーティングにも共通して意識することまたはemがファシリテーションをする重要な理由&quot;&gt;どのミーティングにも共通して意識すること、またはEMがファシリテーションをする重要な理由&lt;/h3&gt;
+
+&lt;p&gt;ミーティングの成功という目先の結果だけでなく、&lt;strong&gt;その場での経験がメンバーの関係性、習慣、文化に良い影響を与え、未来の変化の材料となること&lt;/strong&gt;を意識します。&lt;/p&gt;
+
+&lt;p&gt;ファシリテーション時の意識を大雑把に分ければ、&lt;strong&gt;①ミーティングを成功させるための意識、②チームが変化していくための布石を打つ意識&lt;/strong&gt;、の2つが存在するということです。
+特に後者はEMの役割と密接に関わりますし、チームの将来像を見据えてるEMだからこそ持てる意識だと思います(スクラムチームであればスクラムマスターが同様のことを考えることになると思います)。&lt;/p&gt;
+
+&lt;p&gt;この一連の記事で取り扱うのは②になります。&lt;br /&gt;
+①については過去に&lt;a href=&quot;https://aloerina01.github.io/blog/2020-04-16-1&quot; target=&quot;_blank&quot;&gt;わたし流ふりかえり/レトロスペクティブのファシリテーションガイド&lt;/a&gt;にまとめたことがあるので、よければ併せてご参照ください。&lt;/p&gt;
+
+&lt;h3 id=&quot;daily-standup-で垣間見える自責思考に向き合う&quot;&gt;Daily Standup で垣間見える自責思考に向き合う&lt;/h3&gt;
+
+&lt;p&gt;Daily Standup のファシリテーションでは、チームメンバーの意識の向き先を「個々人の成果」から「チームの成果」に変えるために、考え方の癖の修正してもらうことを意識します。具体例から説明します。&lt;/p&gt;
+
+&lt;p&gt;多くの良心的なメンバーには責任感があり、自責思考が備わっています。分かりやすいであろう事例は「自分の失敗は自分で取り返さねば」という行動です。「思ったより進捗が出ずに遅れが発生し、しかしまだ自分が残業してがんばれば計画通りのペースを取り戻せそうだ」という場面で「今日中に終わらせます」と言ってしまう経験は、エンジニアなら誰でも想像できるのではないでしょうか。&lt;/p&gt;
+
+&lt;p&gt;もちろん責任感が強いの素晴らしいことですが、&lt;strong&gt;もしその遅れがチームにとって致命的であれば、チームの総力をもって解決するほうが良いはず&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;p&gt;完了できずにいるタスクがチームにとって最優先の仕事であるなら、他のタスクが予定通りに終わっていたとしても、チームの成果としては「一番大事な仕事が終わっていない」となります。それはタスクを終えられなかった個人だけの問題ではなく、「最優先の仕事の進捗よりも優先順位の低い仕事の進捗を優先したチームの判断が間違い」だと捉えられます。&lt;/p&gt;
+
+&lt;p&gt;視野をチームの外に広げて、ステークホルダーの目線で考えてみると「チームの&lt;strong&gt;誰が&lt;/strong&gt;遅れを生んだか」よりも「&lt;strong&gt;チームは&lt;/strong&gt;仕事を優先順位の沿って成し遂げたか」のほうが重要であることが想像できると思います。&lt;/p&gt;
+
+&lt;p&gt;今回は具体例として『遅れ』にフォーカスしましたが、成果をより良くする場面においても考え方は同様です。&lt;strong&gt;主語を『私』から『チーム』に変えて、チームが完遂すべき仕事の優先順位に基づいて個々人のタスクを進行すべきです&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;そのためにDaily Standup を実施しているはずですが、この考え方を定着させる際に自責思考の癖の修正が必要になることがあり、そこでファシリテーションの出番です。&lt;/p&gt;
+
+&lt;h3 id=&quot;ファシリテーションで自責思考を軌道修正する&quot;&gt;ファシリテーションで自責思考を軌道修正する&lt;/h3&gt;
+
+&lt;p&gt;キッパリと考え方を切り替えてもらうように単刀直入な問いかけを利用します。&lt;/p&gt;
+
+&lt;p&gt;先述のような「計画に対する遅れ」の議論をファシリテーションする場合は、例えば以下のような質問を使います。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;話題に上がっている問題はチームにとってどの程度の優先順位ですか？&lt;/li&gt;
+  &lt;li&gt;その問題の原因分析にどれだけ時間を割きますか？　今イテレーションに残された時間や仕事の優先順位と比較して判断してください&lt;/li&gt;
+  &lt;li&gt;話題に上がっている問題の解決をチームの最優先事項として取り組む場合、誰が何をすると良さそうですか？&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;「チームの中の誰が責任をとるか」の考え方から「チームの成果を最大にするために何をするか」の考え方へシフトさせるための直接的な問いかけを意識します。&lt;/p&gt;
+
+&lt;p&gt;(今後の記事で紹介する予定の)別のミーティングの事例では、チームメンバーの考え方を尊重しつつ緩やかに変化を起こすような問いかけを使うこともありますが、今回のように考え方をガラッと変えること狙うときは直接的な問いかけをするようにしています。&lt;/p&gt;
+
+&lt;h3 id=&quot;いつも特定の人が遅れる場合は&quot;&gt;いつも特定の人が遅れる場合は&lt;/h3&gt;
+
+&lt;p&gt;そうは言っても、「いつも遅れる人がいる」「全然責任感がない人がいる」など、今回紹介したファシリテーションの意識をすんなり受け入れられないチーム事情もあると思います。&lt;/p&gt;
+
+&lt;p&gt;すべての事例に解答を持っているわけではないですが、いくつかのアプローチを添えて補足とします。&lt;/p&gt;
+
+&lt;p&gt;ジュニアなエンジニアやジョインして間もないエンジニアが、他のメンバーに比べて知識や経験が浅いために計画の精度が低く、結果遅れが生じる場面はしばしばあると思います。&lt;br /&gt;
+それに備えるには、&lt;strong&gt;チームは最初から「計画が変更になる前提」でいる&lt;/strong&gt;と良いです。最初につくった計画の精度は40％程度であると捉え、まずは1日手を動かしてみてその実践を材料に計画を修正することを、あらかじめ計画しておきます。&lt;/p&gt;
+
+&lt;p&gt;ここまで読んでAgile 開発経験値の高い人は気付いていると思いますが、Daily Standup の本来の使い方がこれです。&lt;strong&gt;進捗を元に計画の見直しをすることが本来の目的&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;p&gt;ですので、既にこれは実践しているけれどそれでも遅れ続けている人に困っている事例に対し別の選択肢を提案するなら、&lt;strong&gt;ペアアサイン&lt;/strong&gt;はいかがでしょうか。見積もりが上手い人や、そのタスクへの適正が高い人、仕事の進め方が上手い人などとペアアサインすることで&lt;strong&gt;仕事の仕方を学ぶ機会が増え、同時にそれまでの遅れの原因を発見できる可能性がある&lt;/strong&gt;からです。&lt;/p&gt;
+
+&lt;p&gt;それさえも有効打にならず遅れ続ける人がいる場合、その人の適正の問題やチームメンバーとの関係性の問題などを考えるようにしています。少なくともその人が&lt;strong&gt;故意に遅れているはずはない&lt;/strong&gt;ですし、自分たちが採用して受け入れた人であれば&lt;strong&gt;能力が劣っているはずもありません&lt;/strong&gt;(可能性の話をすれば悪意や能力不足の可能性もゼロではないですが、疑わずに信じることができなければそもそもチームとして破綻しています)。&lt;br /&gt;
+&lt;strong&gt;チームメンバーには能力があり、タスクを完遂したい気持ちも責任感もあり、その上で遅れが生じる何らかの要因があると捉え、根気強く原因切り分けをしていくことが重要です&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;今回はDaily Standup のファシリテーション経験を思い出しながら書きました。&lt;/p&gt;
+
+&lt;p&gt;チームメンバーの意識の向き先を「個々人の成果」から「チームの成果」に変えることになぜこんなにもこだわるかと言うと、&lt;strong&gt;その先に自律的なチーム、自己組織化されたチームがある&lt;/strong&gt;と考えているからです。チームが変化していくための布石を打つのは、変化の先にある自律的なチーム像を描き、そこに至るためのステップとしての行動というわけです。&lt;/p&gt;
+
+&lt;p&gt;今後は「ふりかえり」「課題バックログのリファインメント」「チームビルディング系ワークショップ」などのファシリテーションについて書こうと思いますが、他にも聞いてみたい事例があればぜひ&lt;a href=&quot;https://x.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。どなたでも大歓迎です。&lt;/p&gt;</content><author><name></name></author><summary type="html">私がエンジニアリングマネージャーとしてミーティング等をファシリテーションするとき、その内容に関わらず共通して意識していることがあります。そしてディテールを見れば意識やテクニックを使い分けている部分があります。それらの言語化にトライしてみようと思います。</summary></entry><entry><title type="html">5年分のマネジメント経験から生まれた実践的フィードバックの型</title><link href="https://aloerina01.github.io/blog/2024-11-06-1" rel="alternate" type="text/html" title="5年分のマネジメント経験から生まれた実践的フィードバックの型" /><published>2024-11-06T00:00:00+00:00</published><updated>2024-11-06T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-11-06-1">&lt;p&gt;私がEMとしてメンバーと向き合うときは「&lt;strong&gt;彼らのポテンシャルやエネルギーを100％発揮できる状態をつくれているか&lt;/strong&gt;」と考えることを心がけています&lt;strong&gt;。『観察』と『フィードバック』&lt;/strong&gt;はこれを実現するための最も大事な手段といえます。&lt;/p&gt;
 
 &lt;p&gt;ここ最近の自分自身のマネジメント業務を振り返ってみると、『フィードバック』のほうはある程度の型ができていると感じます。ベースとなる型があって、それをチームメンバーや状況によってアレンジしながら使っている感覚です。&lt;/p&gt;
 
@@ -938,74 +1006,4 @@ RFCにはこれ以外にも、Store同士の依存関係、ハイドレーショ
   &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/rfcs/pull/271&quot; target=&quot;_blank&quot;&gt;https://github.com/vuejs/rfcs/pull/271&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md&quot; target=&quot;_blank&quot;&gt;https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/rfcs/discussions/270&quot; target=&quot;_blank&quot;&gt;https://github.com/vuejs/rfcs/discussions/270&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">この記事はVuex5 RFC Proposalを参考にした内容です。正式リリース時には変更されている部分があるかもしれませんし、私自身も実際に触ってみて意見が変わる可能性があります。</summary></entry><entry><title type="html">心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う</title><link href="https://aloerina01.github.io/blog/2021-04-22-1" rel="alternate" type="text/html" title="心理的安全を妨げる「対人リスク」を再定義して自分の行動原理と向き合う" /><published>2021-04-22T00:00:00+00:00</published><updated>2021-04-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-04-22-1">&lt;p&gt;心理的安全という言葉の&lt;a href=&quot;https://web.mit.edu/curhan/www/docs/Articles/15341_Readings/Group_Performance/Edmondson%20Psychological%20safety.pdf&quot; target=&quot;_blank&quot;&gt;出典&lt;/a&gt;をたどると&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;Team psychological safety is defined as a shared belief that the team is safe for interpersonal risk taking.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;とあるように、心理的に安全かどうかは「対人リスクのある行動を起こせるかどうか」と捉えることができるわけですが、では対人リスクとは何でしょうか。&lt;/p&gt;
-
-&lt;p&gt;心理的安全の研究者Amy Edmondson によれば、&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;IGNORANT - 無知だと思われる不安&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;INCOMPETENT - 無能だと思われる不安&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;INTRUSIVE - 差し出がましいと思われる不安&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;NEGATIVE - ネガティブだと思われる不安&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;の4つが職場環境における対人リスクであると定義されています。&lt;/p&gt;
-
-&lt;p style=&quot;text-align:center&quot;&gt;＊ ＊ ＊&lt;/p&gt;
-
-&lt;p&gt;ところで、私たちのチームは少しずつ成熟してきていて、おかげで随分と対人リスクを感じないようになってきました。しかしそれでもなお行動しない・発言しない場面が自分の経験上あるので、その要因が何なのかを改めて考えてみようと思います。&lt;/p&gt;
-
-&lt;p&gt;例えばブレストの場で新しいアイデアを出すとき、&lt;strong&gt;自分の思考を人に見られるような不安&lt;/strong&gt;を感じたことがあります。アイデアを出す時間なので邪魔をする人だとは思われないだろうし、日頃の関係性から無知無能だとも思われないだろうけれど、どこか言いにくい…という心境です。&lt;br /&gt;
-他の例だと、チームメンバーの行動で改善してほしい部分を見つけたとき、日頃から良好な関係性が築けていたとしても&lt;strong&gt;慎重に言葉を選ばないと…というプレッシャーや面倒臭さ&lt;/strong&gt;からフィードバックを躊躇したことがあります。&lt;br /&gt;
-その他にも、問題を指摘することでその対応が&lt;strong&gt;自分の仕事として降り掛かってくる負担&lt;/strong&gt;から発言を控えた場面など、例を挙げればいろいろ出てきます。&lt;/p&gt;
-
-&lt;p&gt;Edmondson の対人リスクという分類を知る以前、私はこれらを3つのカテゴリに分けて捉えていました。&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;strong&gt;個性を出すリスク&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;プロセス・成果・失敗を見せるリスク&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;フィードバックするリスク&lt;/strong&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;Edmondson の対人リスクと比較しながら考えてみます。&lt;/p&gt;
-
-&lt;p style=&quot;text-align:center&quot;&gt;＊ ＊ ＊&lt;/p&gt;
-
-&lt;h4 id=&quot;個性を出すリスク&quot;&gt;個性を出すリスク&lt;/h4&gt;
-
-&lt;p&gt;言い換えると自己開示するリスクとも言えます。自分の考え方・感じ方・価値観・ポリシー・アイデアなどを人に知られることへの心理的な抵抗により、行動を起こしにくくなることを表しています。端的に言うならば「&lt;strong&gt;内面を知られる不安&lt;/strong&gt;」です。&lt;/p&gt;
-
-&lt;p&gt;この抵抗感は、IGNORANT / INCOMPETENT / INTRUSIVE / NEGATIVE だと思われるのでは…という不安が根底にあり、まさしくEdmondson の対人リスクであると捉えることができそうです。&lt;/p&gt;
-
-&lt;p&gt;一方で、無知無能などとは思われたりしない信頼に足る関係性であったとしても行動を起こしたくない場面があります。私は「自分が人からどう見られているか」をコントールしたい節があり、無知無能といった悪評だけでなく、優秀・斬新・面白いなどの好評であっても、それが私が望まない評価であればもらいたくないと思うことがありました。&lt;/p&gt;
-
-&lt;p&gt;このことから、Edmondson の対人リスクは「人が行動を起こさないすべての理由が網羅的に定義されたもの」と捉えるより、「対人リスクの代表例」くらいに捉えると良いのかもしれません。また対人リスクがどんな心理であれ、&lt;strong&gt;自分の印象を操作したいという気持ち&lt;/strong&gt;が根底にあると知ることに意義があるのだと思います。&lt;/p&gt;
-
-&lt;h4 id=&quot;プロセス成果失敗を見せるリスク&quot;&gt;プロセス・成果・失敗を見せるリスク&lt;/h4&gt;
-
-&lt;p&gt;自分の働く様子をじっくり見られることや、その結果を誇張なく正しく伝えること、ひいては失敗したことを率直に伝えることへのリスクです。言い換えると「業務を評価されるリスク」でしょうか。個性を出すリスクと対比的に見るなら「&lt;strong&gt;行動を見られる不安&lt;/strong&gt;」です。&lt;/p&gt;
-
-&lt;p&gt;これはEdmondson の対人リスクにかなり近いものだと思います。&lt;/p&gt;
-
-&lt;p&gt;ひとつ気になるのは、一部のエンジニアが時たま思う「書きかけのコードを見られたくない」という気持ちはプロセスを見せるリスクに含まれると思うのですが、Edmondson の対人リスクには分類できるのでしょうか…？ 製作中のものを見られる気恥ずかしさの根源が何なのか、私にはまだ分かっていないです。&lt;/p&gt;
-
-&lt;h4 id=&quot;フィードバックするリスク&quot;&gt;フィードバックするリスク&lt;/h4&gt;
-
-&lt;p&gt;特にネガティブフィードバックをするリスクです。先例のように信頼しあった関係であってもネガティブフィードバックは気が重いものです。Edmondson の対人リスクのINTRUSIVE やNEGATIVE に通ずるところがあるでしょう。&lt;/p&gt;
-
-&lt;p&gt;ただそれだけではなく、ネガティブフィードバックはやや特殊な性質があるのではないでしょうか。INTRUSIVE やNEGATIVE に思われる不安と、&lt;strong&gt;利害要因&lt;/strong&gt;とを天秤にかけた上で、行動を起こすかどうかを判断しているように感じていました。&lt;br /&gt;
-例えばエンジニアはコードレビューをします。これにはネガティブフィードバックが含まれています。沈痛な思いでコードレビューしている人もいると思いますが、そうであったとしてもネガティブフィードバックをすることの価値(コードレビューしないと何らかの形で自分が損をする、自分の望むものとかけ離れる、という気持ち)が優先され、リスクを乗り越え行動が生まれるのではないかと考えていました。&lt;/p&gt;
-
-&lt;p&gt;ちなみにEdmondson は「心理的安全」と「責任やモチベーション」は相関関係にないと言っていて、コードレビューの例に当てはめるなら、心理的安全がやや欠けていても責任やモチベーションにより行動が生まれる、ということで説明がつくのかもしれません。&lt;/p&gt;
-
-&lt;p style=&quot;text-align:center&quot;&gt;＊ ＊ ＊&lt;/p&gt;
-
-&lt;p&gt;ここまで、自分が抱いていた対人リスクをEdmondson の対人リスクに当てはめて考え直してみました。私にとっての一番の気づきは&lt;strong&gt;対人リスクの元となる不安はなんであれ、自分の印象を操作したいという欲求が背景に潜んでいる&lt;/strong&gt;ということです。「自分をどう見られたいと思っているか」「なぜそのように見られたい/見られなくないと思っているか」と印象操作について掘り下げることで自分の行動原理と向き合うことができそうなので、引き続き考えていこうと思います。&lt;/p&gt;
-
-&lt;p&gt;本日はここまで。&lt;/p&gt;</content><author><name></name></author><summary type="html">心理的安全という言葉の出典をたどると</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">この記事はVuex5 RFC Proposalを参考にした内容です。正式リリース時には変更されている部分があるかもしれませんし、私自身も実際に触ってみて意見が変わる可能性があります。</summary></entry></feed>
