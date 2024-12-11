@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+  <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Node.js + Express を試してみた</title>
-  <meta name="description" content="巷でよく見かけるExpressだけど「何者？」って感じだったので公式のGetting Startedを軽く触ってみたので、その覚書き。せっかくなので普段使わないEJSテンプレートなんかも軽く使ってみた。">
+  <title>mille-feuille code</title>
+  <meta name="description" content="Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2024">
@@ -34,10 +35,11 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="巷でよく見かけるExpressだけど「何者？」って感じだったので公式のGetting Startedを軽く触ってみたので、その覚書き。せっかくなので普段使わないEJSテンプレートなんかも軽く使ってみた。" />
-  <meta property="og:url" content="https://aloerina01.github.io/blog/2017-01-01-1" />
+  <meta property="og:description" content="Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+" />
+  <meta property="og:url" content="https://aloerina01.github.io/page15/" />
   <meta property="og:site_name" content="mille-feuille code" />
-  <meta property="og:title" content="Node.js + Express を試してみた" />
+  <meta property="og:title" content="mille-feuille code" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
   <meta property="og:image:type" content="image/png" />
@@ -48,17 +50,18 @@
   
   <!-- Twitter: card tags -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Node.js + Express を試してみた">
-  <meta name="twitter:description" content="巷でよく見かけるExpressだけど「何者？」って感じだったので公式のGetting Startedを軽く触ってみたので、その覚書き。せっかくなので普段使わないEJSテンプレートなんかも軽く使ってみた。">
+  <meta name="twitter:title" content="mille-feuille code">
+  <meta name="twitter:description" content="Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+">
   <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2017-01-01-1">
+  <meta name="twitter:url" content="https://aloerina01.github.io/page15/">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/blog/2017-01-01-1">
+  <link rel="canonical" href="https://aloerina01.github.io/page15/">
   <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
 
   
@@ -70,8 +73,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/blog/2017-01-01-1',
-      'title': 'Node.js + Express を試してみた'
+      'page': '/page15/',
+      'title': 'mille-feuille code'
     });
   </script>
   
@@ -82,9 +85,9 @@
 </head>
 
 
-<body>
+  <body>
 
-  <header class="navigation" role="banner">
+    <header class="navigation" role="banner">
   <div class="navigation-wrapper">
     <a href="/" class="logo">
       
@@ -133,193 +136,60 @@
           <meta itemprop="position" content="1" />
         </li>
         
-        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blogs">
-            <span itemprop="name">記事</span>
-          </a>
-          <meta itemprop="position" content="2" />
-        </li>
-        
-        
-        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/blog/2017-01-01-1">
-            <span itemprop="name">Node.js + Express を試してみた</span>
-            </a>
-          <meta itemprop="position" content="3" />
-        </li>
         
         </ol>
     </div>
   </div>
 </header>
 
-  <main class="page-content">
-    <div class="post">
-      <div class="post-header-container " >
-        <div class="scrim ">
-          <header class="post-header">
-            <h1 class="title">Node.js + Express を試してみた</h1>
-            <!-- <p class="info">by <strong></strong></p> -->
-          </header>
-        </div>
-      </div>
-      <div class="wrapper">
-         <span class="page-divider">
-  <span class="one"></span>
-  <span class="two"></span>
-</span>
- 
-        <section class="post-meta">
-          <div class="post-date">2017-01-01</div>
-          <div class="post-categories">
-            
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
-              <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
-              <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
-            </svg>
-             
-            <a href="/category/javascript/">JavaScript</a>   
-          </div>
-        </section>
+    <main class="page-content">
+        <div class="home">
 
-        <article class="post-content">
-          <h3 id="express-ってなに"><a href="http://expressjs.com/">Express</a> ってなに</h3>
-<p>一言で言うとNode上で動くWebアプリケーションをつくるための軽量フレームワーク。
-HTTP通信まわりをいい感じにやってくれるので、<code class="language-plaintext highlighter-rouge">Routing</code>とか<code class="language-plaintext highlighter-rouge">RestAPI</code>とかを簡単に用意できるみたいです。</p>
+<div class="site-header-container has-cover" style="
+    background-image: url(/assets/header_image_2_min.jpg);">
+  <div class="scrim has-cover">
+    <header class="site-header">
+      <h1 class="title">mille-feuille code</h1>
+      <p class="subtitle">コードのかけらを一枚ずつ積み重ねて。</p>
+    </header>
+  </div>
+</div>
 
-<p>フロントもバックも全部JavaScriptで書けるというのがメリットなのだと思いました(個人的にはJavaが好きなので何とも)。</p>
-
-<p>普段JavaなりRailsなり(JavaScript意外の言語)で用意してたサーバサイドのコントローラをJavaScriptで書けるので、そしてNode上で動かせるので、お手軽感はあった気がします(Javaで書いてローカルのTomcatを起動して動作確認するのに比べたらだいぶ楽ちんだった)。</p>
-
-<h3 id="つくったもの">つくったもの</h3>
-<p><img src="https://cdn.rawgit.com/aloerina01/short-code/sample-express/demo.gif" alt="つくったもののdemo" /></p>
-
-<p>記事取得のリンクを叩くとqiitaの記事取得APIを叩いて表示する、というだけです。</p>
-
-<h3 id="実装">実装</h3>
-
-<h4 id="routing">Routing</h4>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">res</span><span class="p">.</span><span class="nx">sendFile</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/routes/index.html</span><span class="dl">'</span><span class="p">);</span>
-<span class="p">});</span>
-
-<span class="nx">app</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/get</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">request</span>
-        <span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">http://qiita.com/api/v2/items?page=1&amp;per_page=20</span><span class="dl">'</span><span class="p">)</span>
-        <span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">apiErr</span><span class="p">,</span> <span class="nx">apiRes</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">res</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span><span class="nx">__dirname</span> <span class="o">+</span> <span class="dl">'</span><span class="s1">/routes/itemlist</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">items</span><span class="p">:</span> <span class="nx">apiRes</span><span class="p">.</span><span class="nx">body</span> <span class="p">});</span>
-        <span class="p">});</span>
-<span class="p">});</span>
-</code></pre></div></div>
-
-<p>エントリーポイントとなるこの<code class="language-plaintext highlighter-rouge">app.js</code>をNode上で実行すると、<code class="language-plaintext highlighter-rouge">localhost:3000</code>で待ち受けてくれるようになります。</p>
-
-<p><code class="language-plaintext highlighter-rouge">app.js</code>内では、<code class="language-plaintext highlighter-rouge">/</code>と<code class="language-plaintext highlighter-rouge">/get</code>のPathに対してRoutingしています。基本的に<code class="language-plaintext highlighter-rouge">app.METHOD(PATH, HANDLER)</code>でHTTPリクエストのRoutingができちゃうので感覚的です。</p>
-
-<h4 id="template-rendering">Template Rendering</h4>
-<p>ExpressはいくつかのTemplateエンジンに対応しているとのことで、今回は使ったことのない <a href="http://www.embeddedjs.com/">EJS - JavaScript Templates</a> を試してみました。</p>
-
-<p>基本の考え方は<code class="language-plaintext highlighter-rouge">&lt;% %&gt;</code>で囲んだ部分でJavaScriptが使えるということなので、そんなに難しく考えなくてもよさそう。
-Quiteの記事取得APIのResponseのJSONをループで回すようにしました。</p>
-
-<div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;ul&gt;
-    &lt;% items.forEach(function(item) { %&gt;
-    &lt;li&gt;&lt;a href="&lt;%= item.url %&gt;" target="_blank"&gt;&lt;%= item.title %&gt;&lt;/a&gt;&lt;/li&gt;
-    &lt;% }); %&gt;
-&lt;/ul&gt;
-</code></pre></div></div>
-
-<h3 id="おわり">おわり</h3>
-<p>ソースは <a href="https://github.com/aloerina01/short-code/tree/sample-express">GitHub - aloerina01/short-code at sample-express</a> にあげています。</p>
-
-        </article>
-
-          
-
-        <section class="share">
-  <div class="share-inner">
-    <div class="share-description">
-      <span>感想をシェアする</span>
-    </div>
-    <div class="share-panel">
-      <a
-        href="http://b.hatena.ne.jp/entry/"
-        class="hatena-bookmark-button share-button share-button-hatebu"
-        data-hatena-bookmark-layout="touch"
-        data-hatena-bookmark-width="38"
-        data-hatena-bookmark-height="38"
-        title="このエントリーをはてなブックマークに追加"
-        style="
-          border-radius: 50%;
-          width: 38px;
-          height: 38px;
-          box-shadow: 1px 1px 10px #bbb;
-          background-color: #00a4de;
-          transition: all 0.4s ease;
-        "
-      >
-        <img
-          src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
-          alt="このエントリーをはてなブックマークに追加"
-          width="16"
-          height="16"
-        />
-      </a>
-      <script
-        type="text/javascript"
-        src="https://b.st-hatena.com/js/bookmark_button.js"
-        charset="utf-8"
-        defer
-      ></script>
+<div class="wrapper">
+<ul class="post-list">
+  
+  <li>
+    <h2>
+      <a class="post-link" href="/blog/2016-10-02-2">Jekyll + GitHub Pages でブログをつくってみた</a>
+    </h2>
+    <section class="post-excerpt" itemprop="description">
+      
+      <p>このブログを公開するまでの道のりを公開します。Jekyllについてはネット上に情報が多い分散り散りになっているイメージがあるので、シンプルに必要なことだけまとめました。</p>
+      
+    </section>
+    <section class="post-meta">
+      <div class="post-date">2016-10-02</div>
+      <div class="post-categories">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
+        <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+        <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
+      </svg>
         
-      <a
-        class="share-button share-button-x"
-        href="//twitter.com/share?text=Node.js+%2B+Express+%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&url=https://aloerina01.github.io/blog/2017-01-01-1&via=aloerina_&hashtags=JavaScript,mfcode"
-        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;"
-      >
-        <svg
-          version="1.1"
-          id="svg5"
-          xmlns:svg="http://www.w3.org/2000/svg"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlns:xlink="http://www.w3.org/1999/xlink"
-          x="0px"
-          y="0px"
-          viewBox="0 0 1668.56 1221.19"
-          style="enable-background: new 0 0 1668.56 1221.19"
-          xml:space="preserve"
-          width="38"
-          height="38"
-        >
-          <style type="text/css">
-            .st0 {
-              stroke: #ffffff;
-              stroke-miterlimit: 10;
-            }
-            .st1 {
-              fill: #ffffff;
-            }
-          </style>
-          <g>
-            <g id="layer1" transform="translate(52.390088,-25.058597)">
-              <path
-                id="path1009"
-                class="st1"
-                d="M485.39,356.79l230.07,307.62L483.94,914.52h52.11l202.7-218.98l163.77,218.98h177.32
-                L836.82,589.6l215.5-232.81h-52.11L813.54,558.46L662.71,356.79H485.39z M562.02,395.17h81.46l359.72,480.97h-81.46L562.02,395.17
-                z"
-              />
-            </g>
-          </g>
-        </svg>
-      </a>
-                
-      <a
-        class="share-button share-button-facebook"
-        href="//www.facebook.com/sharer.php?t=Node.js+%2B+Express+%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F&u=https://aloerina01.github.io/blog/2017-01-01-1"
-        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;"
-      >
+        
+        <a href="/category/jekyll/">Jekyll</a>
+        
+      
+      </div>
+    </section>
+  </li>
+  
+  
+</ul>
+
+<nav class="pagination" role="navigation">
+    
+      <a class="newer-posts" href="/">
         <svg
           width="24"
           height="24"
@@ -328,80 +198,26 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z"
+            d="M18.3639 7.75735L16.9497 6.34314L11.2929 12L16.9497 17.6568L18.3639 16.2426L14.1213 12L18.3639 7.75735Z"
+            fill="currentColor"
+          />
+          <path
+            d="M11.2929 6.34314L12.7071 7.75735L8.46447 12L12.7071 16.2426L11.2929 17.6568L5.63605 12L11.2929 6.34314Z"
             fill="currentColor"
           />
         </svg>
       </a>
-                                                                                                                                        
-      <a
-        class="share-button share-button-pocket"
-        href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2017-01-01-1"
-        target="_blank"
-      >
-        <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
-      </a>
-                
-      <a
-        class="share-button share-button-line"
-        target="_blank"
-        href="//line.me/R/msg/text/?Node.js+%2B+Express+%E3%82%92%E8%A9%A6%E3%81%97%E3%81%A6%E3%81%BF%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2017-01-01-1"
-      >
-        <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
-      </a>
-       
-    </div>
-  </div>
-</section>
+    
+    <span class="page-number">Page 15 of 15</span>
+    
+</nav>
 
+</div>
+</div>
 
-        <section class="post-donation">
-  <div class="post-donation-panel">
-    <span class="post-donation-description">
-      執筆時のコーヒーで応援する
-    </span>
-    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
-      <p class="button-body">
-        <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
-        <span class="label">ごちそうする</span>
-      </p>
-    </a>
-  </div>
-</section>
+    </main>
 
-         
-
-      </div>
-    </div>
-
-  </main>
-
-  
-    <section class="sub-contents related-posts">
-  <div class="sub-contents-wrapper">
-    <div class="sub-contents-title">
-      <h3>あわせて読みたい</h3>
-      <hr>
-    </div>
-    <div class="sub-contents-main">
-      
-      <li><a href="/blog/2017-02-22-1">JavaScriptでデプロイ環境ごとに設定ファイルを読み込む方法</a></li>
-      
-      <li><a href="/blog/2017-03-08-1">Vue2.x系のハマりどころ templateとコンパイラを完全解説するよ</a></li>
-      
-      <li><a href="/blog/2016-10-03-1">スクロールインしたイベントをキャッチする</a></li>
-      
-      <li><a href="/blog/2017-01-10-1">JavaScriptの新しいモジュールバンドラ rollup.js とは</a></li>
-      
-      <li><a href="/blog/2018-10-11-1">algoliaを使ってJekyll製ブログに全文検索をつけた話</a></li>
-      
-    </div>
-  </div>
-</section>
-
-  
-
-  <section class="sub-contents profile-bar">
+    <section class="sub-contents profile-bar">
   <div class="sub-contents-wrapper profile-bar-wrapper">
     <div class="sub-contents-title">
       <h3>Profile</h3>
@@ -431,8 +247,8 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
     </div>
   </div>
 </section>
-  
-  <section class="sub-contents tag-list">
+
+    <section class="sub-contents tag-list">
   <div class="sub-contents-wrapper tag-list-wrapper">
     <div class="sub-contents-title">
       <h3>Tags</h3>
@@ -572,7 +388,7 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
   </div>
 </section>
 
-  <section class="sub-contents donation">
+    <section class="sub-contents donation">
   <div class="sub-contents-wrapper donation-wrapper">
     <h3>BUY ME A COFFEE</h3>
     <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
@@ -587,8 +403,8 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
     </div>
   <div>
 </section>
-  
-  <footer class="sub-contents site-footer-v2">
+
+    <footer class="sub-contents site-footer-v2">
   <div class="sub-contents-wrapper site-footer-v2-wrapper">
     <div class="footer-v2-main">
       <div class="site-values">
@@ -602,7 +418,7 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
   </div>
 </footer>
 
-  <script>
+    <script>
   window.addEventListener('DOMContentLoaded', function() {
     // Header
     var CLASS_MENU_SHOW = 'show';
@@ -620,6 +436,6 @@ Quiteの記事取得APIのResponseのJSONをループで回すようにしまし
 <script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.1/autocomplete.min.js"></script>
 <script src="/dist/algolia.js" async></script>
 
-</body>
+  </body>
 
 </html>

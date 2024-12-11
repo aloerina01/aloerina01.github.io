@@ -1,5 +1,106 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-12-02T08:51:48+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">ファシリテーションの細かい意識の使い分け - Daily Standup 編</title><link href="https://aloerina01.github.io/blog/2024-12-02-1" rel="alternate" type="text/html" title="ファシリテーションの細かい意識の使い分け - Daily Standup 編" /><published>2024-12-02T00:00:00+00:00</published><updated>2024-12-02T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-02-1">&lt;p&gt;私がエンジニアリングマネージャーとしてミーティング等をファシリテーションするとき、その内容に関わらず共通して意識していることがあります。そしてディテールを見れば意識やテクニックを使い分けている部分があります。それらの言語化にトライしてみようと思います。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-12-11T04:06:56+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">“頼んだのにやってくれない” “相談にも来てくれない”の処方箋</title><link href="https://aloerina01.github.io/blog/2024-12-11-1" rel="alternate" type="text/html" title="“頼んだのにやってくれない” “相談にも来てくれない”の処方箋" /><published>2024-12-11T00:00:00+00:00</published><updated>2024-12-11T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-11-1">&lt;p&gt;部下や後輩に仕事を依頼する立場を経験すると、1度くらいは&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;頼んだ仕事を進めてくれない&lt;/li&gt;
+  &lt;li&gt;一緒に計画を立てたりタスク分解しても進捗が出ない&lt;/li&gt;
+  &lt;li&gt;「やり方が分からないときは聞きに来てください」と伝えたけど相談に来てくれない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;なんてことを経験するかもしれません。自分からいろいろ歩み寄っているつもりなのに相手がうまく仕事をこなしてくれない、という状況です。&lt;/p&gt;
+
+&lt;p&gt;今回はこういったシチュエーションとどう向き合うかの私なりの考え方を書くわけですが、大前提として人に仕事を任せる時間的余裕・精神的余裕がある状況を想定しています。&lt;/p&gt;
+
+&lt;p&gt;部下や後輩に任せるということは、自分がやったほうが早く上手に終えられる可能性や、任せた相手が失敗する可能性があることを承知していて、加えて実践経験から学びを得ることを期待している状況だと思います。&lt;/p&gt;
+
+&lt;p&gt;逆に猫の手も借りたいようなサバイバルフェーズで新しいエンジニアをチームに迎え入れて、ろくなオンボーディングもなしに「頼んだ仕事をやってくれない！」と嘆くのはさすがに自分勝手な言い分ですしね。&lt;/p&gt;
+
+&lt;p&gt;では参ります。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#処方箋1-相手を意図通りに動かそうとするのをやめる&quot; id=&quot;markdown-toc-処方箋1-相手を意図通りに動かそうとするのをやめる&quot;&gt;処方箋1: 「相手を意図通りに動かそうとする」のをやめる&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#処方箋2-やる気がないと決めつけるのをやめる&quot; id=&quot;markdown-toc-処方箋2-やる気がないと決めつけるのをやめる&quot;&gt;処方箋2: 「やる気がない」と決めつけるのをやめる&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#処方箋3-全ての行動は明快な理屈に基づいていると思い込むのをやめる&quot; id=&quot;markdown-toc-処方箋3-全ての行動は明快な理屈に基づいていると思い込むのをやめる&quot;&gt;処方箋3: 「全ての行動は明快な理屈に基づいている」と思い込むのをやめる&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#処方箋4-自分のちからで解決できるはずと思い込むのをやめる&quot; id=&quot;markdown-toc-処方箋4-自分のちからで解決できるはずと思い込むのをやめる&quot;&gt;処方箋4: 「自分のちからで解決できるはず」と思い込むのをやめる&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;処方箋1-相手を意図通りに動かそうとするのをやめる&quot;&gt;処方箋1: 「相手を意図通りに動かそうとする」のをやめる&lt;/h3&gt;
+
+&lt;p&gt;いきなりガッカリする結論を、しかし今回の話の根幹になる結論を言いますと&lt;strong&gt;「相手に仕事をしてもらう」ための処方箋は存在しません&lt;/strong&gt;。&lt;strong&gt;あるのは「自分がどう向き合うか」の処方箋だけ&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;p&gt;どんなに自分が正しいと感じていたとしても、どんなに相手が不適切な行動をしていたとしても、一方的に相手の考えや行動を変える解決策は存在せず、変えられるのは「自分が相手をどのように捉えているか」である、とはよく言われます。言い換えると「&lt;strong&gt;相手との関係性&lt;/strong&gt;」を変えるということです。&lt;/p&gt;
+
+&lt;p&gt;相手を『怠慢』や『無能』と捉え行動を変えさせようとすることが関係性を悪化させて負の循環に迷い込む要因となることがあるので、それを防ぎ、ゆるやかに良い関係を導き、いずれ状況が良くなることを期待するような&lt;strong&gt;根本治療こそが、この状況でできる唯一の手段&lt;/strong&gt;だと考えています&lt;strong&gt;。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;処方箋2-やる気がないと決めつけるのをやめる&quot;&gt;処方箋2: 「やる気がない」と決めつけるのをやめる&lt;/h3&gt;
+
+&lt;p&gt;相手の行動が不適切であり、修正するよう指示をしても修正が見て取れないとき、相手に「やる気がない」と決めつけないよう注意が必要です。&lt;/p&gt;
+
+&lt;p&gt;相手の思考や感情を決めつけた上でのコミュニケーションは、それが間違っていたときに状況を大きく悪化させてしまいます(仮に決めつけた通りであったとしても相手にとって気持ちの良い会話にはなり得ません)。&lt;/p&gt;
+
+&lt;p&gt;例えば相手は体調が悪く、しかしそのことを知られたくなくて無理している状況だとします。「無理をしてがんばっているが、仕事が完遂できていない」状況です。このときに「やる気がない」と決めつけたコミュニケーションを取れば、がんばろうとしていた相手の気持ちをどれだけひどく打ち砕くことになるかは想像に難くないでしょう。&lt;/p&gt;
+
+&lt;p&gt;相手が真に何を考えているか、どんな意図があるかは分かりません。あるのは「私の目に相手がどう写っているか」という”主観的な観測”だけです。&lt;br /&gt;
+&lt;strong&gt;相手の意図を知らなくても知っていると思い込み、さらにその意図が悪いものであると決めつけてしまうのは、よくある過ちです&lt;/strong&gt;。相手の意図を勝手に作り出さず、理解する姿勢で向き合うのが関係性を変える一歩目です。&lt;/p&gt;
+
+&lt;h3 id=&quot;処方箋3-全ての行動は明快な理屈に基づいていると思い込むのをやめる&quot;&gt;処方箋3: 「全ての行動は明快な理屈に基づいている」と思い込むのをやめる&lt;/h3&gt;
+
+&lt;p&gt;これまでの処方箋にのっとり、相手のやる気や意図を決めつけず「きっと何らかの理由があるはずだ」と性善説的に事態を受け止め、その解消に勤しむことで状況が好転することもあります。&lt;/p&gt;
+
+&lt;p&gt;しかしそれでも解決に近づかない場合、&lt;strong&gt;次にやめるべきことは「相手の全ての行動には理由があり自分が気付けていない論理的な背景がある」と思い込むこと&lt;/strong&gt;です。具体的に言うと&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;やり方が分かれば、仕事を進めてくれるはずだ&lt;/li&gt;
+  &lt;li&gt;質問していいよといえば、質問にくるはずだ&lt;/li&gt;
+  &lt;li&gt;時間を確保して問いかければ、困っていることを打ち明けてくれるはずだ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった思い込みから脱却しようということです。&lt;/p&gt;
+
+&lt;p&gt;では理屈ではない何が行動の背景にあるのでしょうか。私は&lt;strong&gt;『気持ち』&lt;/strong&gt;に着目します。&lt;/p&gt;
+
+&lt;p&gt;例えば相談しない理由は「あなたを信用していないから」もしくは「信用したくないから」という気持ちが根底にあるかもしれません。仕事を進めない理由は「納得いかないから」かもしれません。「なんか気に食わないから」なんてこともあり得ます。&lt;/p&gt;
+
+&lt;p&gt;人間ですから、そういうことはあります。「仕事なんだから嫌でもやれ」と思うかもしれませんが、「仕事ならば嫌でもやるはずだ」という思い込みもこの状況では役に立ちません。&lt;/p&gt;
+
+&lt;p&gt;では気持ちに着目して、どういう手を打てるのかと言うと、ほとんどやれることはありません。&lt;br /&gt;
+粘り強く向き合って信頼関係を築くしかないですが、すでに拒否反応が出ている場合はなかなか態度を変えてくれないこともあるでしょう。人間ですから。&lt;/p&gt;
+
+&lt;p&gt;ですので、こうなる前に、仕事を初めて依頼するときにから、顔を合わせて最初の一言目の会話をするときから、「&lt;strong&gt;私はあなたを信用したいと思っている。これから良い関係を築きたいと思っている。そのための努力をする気がある&lt;/strong&gt;」ということをコミュニケーションの中で示していくしかないでしょう。&lt;/p&gt;
+
+&lt;p&gt;つまり&lt;strong&gt;『気持ち』に着目するのは問題が起きてからではなく、相手と関係を築く一番最初から&lt;/strong&gt;というわけです。当たり前といえば当たり前なんですが、往々にして仕事の場では感情を無視してまるで双方がロボットであるかのように指示と応答をするだけのコミュニケーションが発生したりします。&lt;/p&gt;
+
+&lt;h3 id=&quot;処方箋4-自分のちからで解決できるはずと思い込むのをやめる&quot;&gt;処方箋4: 「自分のちからで解決できるはず」と思い込むのをやめる&lt;/h3&gt;
+
+&lt;p&gt;いよいよ元も子もなくなってきましたが、ここまで書いたことをすべて意識して取り組んできても、やっぱり何度言っても期日までにタスクを終えてくれない……なんてことは起きます。繰り返し起きます。&lt;/p&gt;
+
+&lt;p&gt;原因を探求すればキリがないですし、医学的な要因に依ることもあります。そしてそれを知ったところで自分にはどうにもできません。&lt;/p&gt;
+
+&lt;p&gt;なので&lt;strong&gt;「仕事をやってくれない」という事象を自分の力で解決することを諦め、どのような仕事だったらやれるのかを一緒に探す&lt;/strong&gt;よう切り替えが必要なときもあります。&lt;/p&gt;
+
+&lt;p&gt;少なくとも、自分たちで採用しチームに受け入れたメンバーであればその人が成し遂げてきた実績を知っているはずですし、採用の過程で見つけた魅力や長所もあるはずです。それを活かす方法を探すよう舵を切ることも時には必要です。&lt;/p&gt;
+
+&lt;p&gt;ここまでの内容を整理すると、処方箋1〜3は症状を予防するための生活習慣改善で、症状に対する本当の処方が処方箋4の内容になるとも言えますね。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;長くなったのでまとめると&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;「相手を変えようとする」のではなく、私自身の「相手の捉え方」を変える&lt;/li&gt;
+  &lt;li&gt;相手の意図を決めつけない&lt;/li&gt;
+  &lt;li&gt;仕事の会話であっても双方の『気持ち』を軽視しない&lt;/li&gt;
+  &lt;li&gt;問題の原因を取り払うのではなく、問題を回避する方法にも目を向ける&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といったアプローチを紹介しました。&lt;/p&gt;
+
+&lt;p&gt;先述のとおり、日常生活で発生するコミュニケーションにおいてはどれも当たり前のことなのですが、仕事の場となるとつい&lt;strong&gt;人間的な背景・関係性・感情&lt;/strong&gt;など見落としてしまうことがあり、自分も時間をかけて矯正した部分です。&lt;/p&gt;
+
+&lt;p&gt;おそらく今現在問題に直面していて、その解決法を得たくてこの記事を読んでくれた方にとっては、即効性がなくガッカリする内容だったかもしれません。その点では申し訳なさもありますが、&lt;strong&gt;時間をかけることでしか解消し得ない問題&lt;/strong&gt;なのだと改めて知る機会にしていただければ幸いです。&lt;/p&gt;
+
+&lt;p&gt;思ったより融通が効かず、理屈では動かず、筋が通っていないのが私たち人間です。こんな記事を書きながらもまだまだ上手くできないことの多い私ですが、これからも人間らしさに向き合いながら知見を書き残していこうと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">部下や後輩に仕事を依頼する立場を経験すると、1度くらいは</summary></entry><entry><title type="html">ファシリテーションの細かい意識の使い分け - Daily Standup 編</title><link href="https://aloerina01.github.io/blog/2024-12-02-1" rel="alternate" type="text/html" title="ファシリテーションの細かい意識の使い分け - Daily Standup 編" /><published>2024-12-02T00:00:00+00:00</published><updated>2024-12-02T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-02-1">&lt;p&gt;私がエンジニアリングマネージャーとしてミーティング等をファシリテーションするとき、その内容に関わらず共通して意識していることがあります。そしてディテールを見れば意識やテクニックを使い分けている部分があります。それらの言語化にトライしてみようと思います。&lt;/p&gt;
 
 &lt;p&gt;ボリュームが出そうなので何本かの記事に分けて書きます。今回はその第1段です。&lt;/p&gt;
 
@@ -764,246 +865,4 @@
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 
 &lt;p&gt;今回作ったChrome拡張自体は大したものではありませんが、そのコンセプトには私がコミュニケーションにおいて大事にしている考え方が詰め込まれています。そしてその考え方は、&lt;a href=&quot;https://amzn.to/3yWHAoI&quot; target=&quot;_blank&quot;&gt;話す技術・聞く技術―交渉で最高の成果を引き出す「3つの会話」&lt;/a&gt;という本の内容が基盤になっています。日常生活の中で頻発する難しい会話を3つに分類し、なぜ難しいのか、どうすれば良くなるのか、について体系的にまとめた内容です。&lt;br /&gt;
-何度も読み返していて、私のルーツのような本なので、もし読んだことがある方がいれば&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;まで感想を送ってくれると嬉しいです！&lt;/p&gt;</content><author><name></name></author><summary type="html">コードレビュー時に思うように意図が伝わらず、会話のラリーがやたら増えてしまったり、詰問合戦のようなギスギスした雰囲気になってしまったことありませんか？ 私はあります。もう少し気持ちよく無駄なくレビューできないものかと思っていたのですが、先日ふと思いついた対処策があったので試してみました。</summary></entry><entry><title type="html">Vuex5 Proposal リーディング - Vue3での状態管理はどう進化するのか</title><link href="https://aloerina01.github.io/blog/2021-05-18-1" rel="alternate" type="text/html" title="Vuex5 Proposal リーディング - Vue3での状態管理はどう進化するのか" /><published>2021-05-18T00:00:00+00:00</published><updated>2021-05-18T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-05-18-1">&lt;p class=&quot;note&quot;&gt;
-この記事は&lt;a href=&quot;https://github.com/vuejs/rfcs/pull/271&quot; target=&quot;_blank&quot;&gt;Vuex5 RFC Proposal&lt;/a&gt;を参考にした内容です。正式リリース時には変更されている部分があるかもしれませんし、私自身も実際に触ってみて意見が変わる可能性があります。
-&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#vuexの役割のおさらい&quot; id=&quot;markdown-toc-vuexの役割のおさらい&quot;&gt;Vuexの役割のおさらい&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#vuex-5-の簡単なチュートリアル&quot; id=&quot;markdown-toc-vuex-5-の簡単なチュートリアル&quot;&gt;Vuex 5 の簡単なチュートリアル&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#1-storeの定義&quot; id=&quot;markdown-toc-1-storeの定義&quot;&gt;1. Storeの定義&lt;/a&gt;        &lt;ul&gt;
-          &lt;li&gt;&lt;a href=&quot;#option-store&quot; id=&quot;markdown-toc-option-store&quot;&gt;Option Store&lt;/a&gt;&lt;/li&gt;
-          &lt;li&gt;&lt;a href=&quot;#composition-store&quot; id=&quot;markdown-toc-composition-store&quot;&gt;Composition Store&lt;/a&gt;&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#2-storeのインスタンス化&quot; id=&quot;markdown-toc-2-storeのインスタンス化&quot;&gt;2. Storeのインスタンス化&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#3-componentからstoreへのアクセス&quot; id=&quot;markdown-toc-3-componentからstoreへのアクセス&quot;&gt;3. ComponentからStoreへのアクセス&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#感想&quot; id=&quot;markdown-toc-感想&quot;&gt;感想&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#参考&quot; id=&quot;markdown-toc-参考&quot;&gt;参考&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;vuexの役割のおさらい&quot;&gt;Vuexの役割のおさらい&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;this RFC focuses on making Vuex an official global state management tool for Vue&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Vuexには、親子関係にないVueComponent間で状態を共有する機能、つまり&lt;strong&gt;グローバルな状態管理&lt;/strong&gt;機能を公式に提供する役割があります。今まではその実現手段としてFluxアーキテクチャをベースにしていましたが、Vuex5では脱却するようです。&lt;/p&gt;
-
-&lt;p&gt;また、グローバルな状態管理に加えて、Vuexが持つべき要件が4つ定義されています。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Code Splitting&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;SSR 対応&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Vue Devtools 対応&lt;/strong&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Vuex を利用した状態管理の拡張性&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;私がVuexに期待することもこの要件の通りなので、今後のリリースを楽しみに待ちたいと思います。&lt;/p&gt;
-
-&lt;p&gt;ちなみにFluxには随分お世話になったし好みに合う考え方でした。時代とともに設計方法も進化していくもので今後利用頻度は減るかもしれませんが、頭の片隅に残っていてくれると、いつかどこかでシナジーが生まれるかもしれません。その日まで少しのお別れです。&lt;/p&gt;
-
-&lt;h3 id=&quot;vuex-5-の簡単なチュートリアル&quot;&gt;Vuex 5 の簡単なチュートリアル&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Storeの定義&lt;/li&gt;
-  &lt;li&gt;Storeのインスタンス化&lt;/li&gt;
-  &lt;li&gt;ComponentからStoreへのアクセス&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;の順でRFCにて紹介されています。&lt;/p&gt;
-
-&lt;h4 id=&quot;1-storeの定義&quot;&gt;1. Storeの定義&lt;/h4&gt;
-
-&lt;p&gt;Vuex5ではStoreの定義方法が2種類用意されています。&lt;strong&gt;Option Store&lt;/strong&gt; と &lt;strong&gt;Composition Store&lt;/strong&gt; です。Vueで用意されているOptions API, Composition APIに寄せた手法なので馴染みやすそうです。&lt;/p&gt;
-
-&lt;h5 id=&quot;option-store&quot;&gt;Option Store&lt;/h5&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineStore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-
-  &lt;span class=&quot;na&quot;&gt;state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
-
-  &lt;span class=&quot;na&quot;&gt;getters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-  &lt;span class=&quot;na&quot;&gt;actions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;defineStore&lt;/code&gt;にstate, getters, actions等を含むオブジェクトを渡す形です。今までのVuexで書き慣れたプロパティなので分かりやすいですが、stateが関数になっている点は要注意です。mutationsは廃止されるようです。&lt;/p&gt;
-
-&lt;h5 id=&quot;composition-store&quot;&gt;Composition Store&lt;/h5&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;computed&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineStore&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;defineStore&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;ref&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-  &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-  &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-
-  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;defineStore&lt;/code&gt;にkeyとsetup関数を渡す形式です。Vueの&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ref&lt;/code&gt;や&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;computed&lt;/code&gt;などのReactivity APIを使い回しているのが特徴的です。&lt;/p&gt;
-
-&lt;h4 id=&quot;2-storeのインスタンス化&quot;&gt;2. Storeのインスタンス化&lt;/h4&gt;
-
-&lt;p&gt;ここまでで定義してきたStoreは、Vuexインスタンスにregisterされることでインスタンス化されます。&lt;br /&gt;
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vuex.store&lt;/code&gt;関数に先程定義した&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;useCounter&lt;/code&gt;を渡しましょう。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Option Store or Composition Store&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// &amp;lt;- 1&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &amp;lt;- 2&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// success&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;インスタンス生成後は、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getters&lt;/code&gt;や&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dispatch&lt;/code&gt;などを使わずともStoreにアクセスできるようになりました。今までのVuexより直感的です。&lt;/p&gt;
-
-&lt;p&gt;Composition Storeでは&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ref&lt;/code&gt;を利用していてるので&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;counter.count.value&lt;/code&gt;としたいとことですが、その必要はないようです。Option StoreかCompositon Storeかを区別することなく実装できるのはいいですね。&lt;/p&gt;
-
-&lt;p&gt;また、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vuex.store(useCounter)&lt;/code&gt;は初回実行時にStoreインスタンスを内部的に保持し、2回目以降の実行時にはそれを返す仕組みがあります。言い換えるとStoreは使用されるまで登録されないということになります。これはCode Splittingの観点でも恩恵があります。&lt;/p&gt;
-
-&lt;h4 id=&quot;3-componentからstoreへのアクセス&quot;&gt;3. ComponentからStoreへのアクセス&lt;/h4&gt;
-
-&lt;p&gt;ComponentがStoreを利用するためには、何はともあれ最初にVueアプリケーションにVuexインスタンスをinjectする必要があります。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createApp&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/App.vue&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createApp&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;App&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;vuex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;createVuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;#app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;準備ができたところで、&lt;strong&gt;Options APIで実装されたComponent&lt;/strong&gt;からのアクセス方法を見てみます。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;方法1&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;$vuex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;store&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;方法2&lt;/strong&gt;&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mapStores&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;vuex&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;computed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;mapStores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
-      &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// storeのkey &quot;counter&quot; でアクセスする&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;double&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-
-  &lt;span class=&quot;na&quot;&gt;methods&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-      &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;increment&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;今までのVuexに似ていますね。&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;computed&lt;/code&gt;でStoreの値を利用するか、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapHelper&lt;/code&gt;を利用するか、の2択です。後者の方法では&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;vuex.store&lt;/code&gt;が暗黙的に実行されているようです。ちなみに&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;mapStores&lt;/code&gt;に渡されたStoreにアクセスする際は、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;difneStore&lt;/code&gt;で定義した&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;key&lt;/code&gt;の値が利用することになります。&lt;/p&gt;
-
-&lt;p&gt;次に&lt;strong&gt;Compositon APIで実装されたComponent&lt;/strong&gt;からのアクセス方法です。&lt;/p&gt;
-
-&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;@/stores/Counter&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;
-
-&lt;span class=&quot;k&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;nx&quot;&gt;setup&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;useCounter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
-
-    &lt;span class=&quot;nx&quot;&gt;counter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;count&lt;/span&gt;
-  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;直感的でけっこう好みです。この方法だとStore定義を&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;useXxxx&lt;/code&gt;と命名する意味が実感できますね。&lt;/p&gt;
-
-&lt;p&gt;以上が新しいVuexの使い方です。&lt;br /&gt;
-RFCにはこれ以外にも、Store同士の依存関係、ハイドレーション、型注釈等の解説もありました。&lt;/p&gt;
-
-&lt;h3 id=&quot;感想&quot;&gt;感想&lt;/h3&gt;
-
-&lt;p&gt;今までは、Vuexのルールや制約の中でどれだけ依存関係を整えられるか、責務を分離できるか、再利用したい部品を適切に再利用できるか、といったことを悩み続けてきました。その軌跡はこのブログ上にもいくつかの記事として残っています。&lt;/p&gt;
-
-&lt;p&gt;しかしこれからはComposition API と Composition Storeを使うことで、Store層は極限まで薄く最低限のものになり、Componentに持たせるロジックは切り出され、結果的に&lt;strong&gt;状態・View・ロジックがシンプルに分離された&lt;/strong&gt;構造となりそうです。そしてそれらの依存関係はFluxのように循環するのではなく、Viewが状態やロジックに依存する形になりそうです。&lt;/p&gt;
-
-&lt;p&gt;これだけ聞くと、かつてのMVCのFat Contoller問題のような、Componentが依存で膨れ上がる可能性があるのでは……と思いましたがどうなんでしょう。Componentの切り方次第で良くも悪くもなりそうなので、今までとは違った切り口で設計する心の準備をしておこうと思います。&lt;/p&gt;
-
-&lt;p&gt;話は変わりますが、React向けの状態管理ライブラリのRecoilに&lt;a href=&quot;https://recoiljs.org/docs/api-reference/core/Loadable&quot; target=&quot;_blank&quot;&gt;Loadable&lt;/a&gt;という非同期処理の状態を扱う仕組みがあるのですが、これに近いことがVuexでもできると良いなと漠然と思っています。stateの初期値を非同期で取得する場面や、ユーザの入力をActionsを通じてServerへ反映する場面などの、非同期の状態の扱いやViewへの反映がお手軽になると嬉しいです。&lt;/p&gt;
-
-&lt;h3 id=&quot;参考&quot;&gt;参考&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/rfcs/pull/271&quot; target=&quot;_blank&quot;&gt;https://github.com/vuejs/rfcs/pull/271&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md&quot; target=&quot;_blank&quot;&gt;https://github.com/kiaking/rfcs/blob/vuex-5/active-rfcs/0000-vuex-5.md&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/vuejs/rfcs/discussions/270&quot; target=&quot;_blank&quot;&gt;https://github.com/vuejs/rfcs/discussions/270&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">この記事はVuex5 RFC Proposalを参考にした内容です。正式リリース時には変更されている部分があるかもしれませんし、私自身も実際に触ってみて意見が変わる可能性があります。</summary></entry></feed>
+何度も読み返していて、私のルーツのような本なので、もし読んだことがある方がいれば&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;まで感想を送ってくれると嬉しいです！&lt;/p&gt;</content><author><name></name></author><summary type="html">コードレビュー時に思うように意図が伝わらず、会話のラリーがやたら増えてしまったり、詰問合戦のようなギスギスした雰囲気になってしまったことありませんか？ 私はあります。もう少し気持ちよく無駄なくレビューできないものかと思っていたのですが、先日ふと思いついた対処策があったので試してみました。</summary></entry></feed>
