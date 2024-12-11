@@ -226,7 +226,7 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .page-content .pagination a.newer-posts, .page-content .pagination a.older-posts { text-decoration: none; display: flex; justify-content: center; align-items: center; padding: 2px 20px; }
 
-.page-content img { display: block; margin: auto; width: 100%; }
+.page-content img { display: block; margin: auto; width: 100%; object-fit: contain; }
 
 .page-content .post ul { margin-bottom: 1em; }
 
