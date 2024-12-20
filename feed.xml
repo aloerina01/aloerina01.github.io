@@ -1,5 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-12-17T05:58:38+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">“頼んだのにやってくれない” “相談にもきてくれない”の処方箋</title><link href="https://aloerina01.github.io/blog/2024-12-11-1" rel="alternate" type="text/html" title="“頼んだのにやってくれない” “相談にもきてくれない”の処方箋" /><published>2024-12-11T00:00:00+00:00</published><updated>2024-12-11T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-11-1">&lt;p&gt;部下や後輩に仕事を依頼する立場を経験すると、1度くらいは&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-12-20T02:32:19+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">マネジメントを語るときは具体的で生々しいエピソードを添える</title><link href="https://aloerina01.github.io/blog/2024-12-20-1" rel="alternate" type="text/html" title="マネジメントを語るときは具体的で生々しいエピソードを添える" /><published>2024-12-20T00:00:00+00:00</published><updated>2024-12-20T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-20-1">&lt;p&gt;マネジメントの知見を共有すべくブログを書くとき、その1つ1つに具体的なエピソードを添えることを自分ルールにしています。エピソードにはいくつかの条件を設けています。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;実際に起きた出来事について&lt;/strong&gt;の具体例を出す場合は、多くの現場であるあるな例であり、読者が「たしかに自分もそうなったことあるなぁ」と&lt;strong&gt;実体験に重ねやすい&lt;/strong&gt;ものであること&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;取るべき行動について&lt;/strong&gt;の具体例を出す場合も、多くの現場であるあるな例であり、読者が「こんな場面に出くわしたら真似してみよう」と&lt;strong&gt;実践するイメージを持ちやすい&lt;/strong&gt;ものであること&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;失敗したり恥をかいたりする登場人物は自分だけ&lt;/strong&gt;であること&lt;/li&gt;
+  &lt;li&gt;エピソードは&lt;strong&gt;複数&lt;/strong&gt;挙げること&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ありがたいことに、ブログを書くと「共感しました」「首がもげそうなくらい頷きました」「同じ状況なので参考にします」等の共感系のコメントをもらうことがあるので、多少は功を奏しているのだと思います。&lt;/p&gt;
+
+&lt;p&gt;一方で具体事例がミスリードになるケースもあるにはあるにはあるのですが、なるべくシチュエーションの違うエピソードを複数挙げることで、その共通項である話の主題に目が向くよう工夫しています。&lt;/p&gt;
+
+&lt;p&gt;それに抽象と具象の行き来はマネジメントに必要なスキルですしね、きっとメリットが勝ると信じています。&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;＊ ＊ ＊&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;さて、ここからはなぜ共感を得ることを意識しているかについて語ろうと思います。&lt;strong&gt;私のEMとしての成果や活動の方向性&lt;/strong&gt;について触れます。&lt;/p&gt;
+
+&lt;p&gt;私はマネージャーやスクラムマスターが孤独であることを身をもって知っています。同じ目線で議論やレビューをし合える同僚を社内で見つけることはなかなかに難しいのです。&lt;/p&gt;
+
+&lt;p&gt;社外に目を向ければコミュニティはいくらかあるとは思いますが、マネージャーになったばかりで知見が少なくGiverになれない頃(なれる自信がない頃)は、コミュニティに顔を出してTakerとして振る舞うことに心理的抵抗もありました。もちろん新人を歓迎するコミュニティもあるでしょうが、私自身の性格の問題も相まって参加には至りませんでした。&lt;/p&gt;
+
+&lt;p&gt;目線の合う仲間が身近に少ないこと以外にも、&lt;strong&gt;状況が違うと直面する課題もそれに対するアプローチも全く別のものになるというマネジメント業務の性質&lt;/strong&gt;も、マネージャーの孤独を加速させます。似た境遇で悩んでいる人を探すのに苦労するわけです。&lt;/p&gt;
+
+&lt;p&gt;ですので私は、知見を共有するときには具体的なエピソードを添えて、それに共感してくれる読者の顔(実は身近なマネージャー数名の顔)を想像しながらブログを書いています。&lt;br /&gt;
+単にTipsやテクニックを伝えるのではなく、どういうシチュエーションで、どういう意思決定のもと実践に至ったのかを、生々しく伝えたいと思っています。&lt;/p&gt;
+
+&lt;p&gt;多くの人に響くエモさやSNSを沸かす奇抜さはないですが、極小数の似た境遇にいる読者にとって身近で実践的なブログでありたいのです。&lt;/p&gt;
+
+&lt;p&gt;まるで彼らの目の前で実際に試行錯誤する様子を見せるかのように。彼らの壁打ち相手であるかのように。&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;＊ ＊ ＊&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;世界のどこかでがんばるEMの壁打ち相手になりたいと思う背景には、マネジメントの成果は&lt;strong&gt;影響力をスケールさせること&lt;/strong&gt;で示せるという考えがあります。&lt;/p&gt;
+
+&lt;p&gt;マネジメントしているエンジニアたちのキャリアが前進し、チームが自律的になり、次のマネージャーが生まれ、チームを引き継ぎ自分は次のチームに向かう。&lt;br /&gt;
+そうやってチームを渡り歩きながら、&lt;strong&gt;マネジメント関係が終わった後も活躍し続けられる人やチームを増やしていくこと&lt;/strong&gt;が、私にとって&lt;strong&gt;対外的に見せることのできるマネジメント成果&lt;/strong&gt;なのです。&lt;/p&gt;
+
+&lt;p&gt;もしくはより上位組織のマネジメントにレイヤを移し、複数のマネージャーやチームが生まれる仕組みをつくることでも、私のマネジメントの効力を残すことができるでしょう。&lt;/p&gt;
+
+&lt;p&gt;自分のマネジメントの効力をどこまで広げられるか、言い換えれば、&lt;strong&gt;良い影響を与えることができた人・チーム・組織をどれだけ残せるか&lt;/strong&gt;を追求していくことが当面の私のテーマです。&lt;/p&gt;
+
+&lt;p&gt;もちろん自組織において今現在期待される役割を疎かにするつもりはありませんが、それを全うすると同時に、自分がチームや組織にいなくてもよい状態に着実に近づけることにも意識を向けているということです。&lt;/p&gt;
+
+&lt;p&gt;そしてマネジメント効力は、&lt;strong&gt;ブログを通じてモデルケースを見せる&lt;/strong&gt;ことによって、自分とは直接関わりのないEMにもほんの少しではありますが届けられるのではと考えています。これが読者の目に生々しく姿を描いてもらえるような具体的エピソードを添える理由でした。&lt;/p&gt;
+
+&lt;p&gt;この記事も、たった1人でいいのでどなたかの役に立てれば嬉しい限りです。&lt;/p&gt;</content><author><name></name></author><summary type="html">マネジメントの知見を共有すべくブログを書くとき、その1つ1つに具体的なエピソードを添えることを自分ルールにしています。エピソードにはいくつかの条件を設けています。</summary></entry><entry><title type="html">“頼んだのにやってくれない” “相談にもきてくれない”の処方箋</title><link href="https://aloerina01.github.io/blog/2024-12-11-1" rel="alternate" type="text/html" title="“頼んだのにやってくれない” “相談にもきてくれない”の処方箋" /><published>2024-12-11T00:00:00+00:00</published><updated>2024-12-11T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-11-1">&lt;p&gt;部下や後輩に仕事を依頼する立場を経験すると、1度くらいは&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;頼んだ仕事を進めてくれない&lt;/li&gt;
@@ -793,76 +842,4 @@
 &lt;h3 id=&quot;おわり&quot;&gt;おわり&lt;/h3&gt;
 
 &lt;p&gt;以上、簡単ですがesbuildについての書き置きです。&lt;br /&gt;
-冒頭にも書いたように、最近は環境構築する頻度が減っているので、おそらく数カ月後に久々にesbuildを使おうとして右往左往している自分がいることでしょう。そのときに少しでも役立てばいいなと思います(バージョンが進んでほとんど役立たなくなっているかもしれませんが😫)。&lt;/p&gt;</content><author><name></name></author><summary type="html">最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。</summary></entry><entry><title type="html">穏やかで簡潔なHAPPYコードレビューを実現するChrome拡張をつくってみた</title><link href="https://aloerina01.github.io/blog/2021-07-15-1" rel="alternate" type="text/html" title="穏やかで簡潔なHAPPYコードレビューを実現するChrome拡張をつくってみた" /><published>2021-07-15T00:00:00+00:00</published><updated>2021-07-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-07-15-1">&lt;p&gt;コードレビュー時に思うように意図が伝わらず、会話のラリーがやたら増えてしまったり、詰問合戦のようなギスギスした雰囲気になってしまったことありませんか？ 私はあります。もう少し気持ちよく無駄なくレビューできないものかと思っていたのですが、先日ふと思いついた対処策があったので試してみました。&lt;/p&gt;
-
-&lt;h3 id=&quot;つくったもの&quot;&gt;つくったもの&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2021-07-15-1.gif&quot; alt=&quot;demo&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;コードレビュー時に「アイデア」「質問したい」「議論したい」「修正したい」の4つのアイキャッチをお手軽に付与できるようにするChrome拡張です。&lt;/p&gt;
-
-&lt;h3 id=&quot;解決したかった問題&quot;&gt;解決したかった問題&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;「ここ、なんでこう実装したんですか？」&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;こんな質問をしたレビュワーにはどんな意図があるでしょうか。こんな質問を受け取ったレビュイーはどう感じるでしょうか。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;レビュワーの意図&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;他にもいろいろ実現手段がある中でこの方法を採用した根拠を知りたい&lt;/li&gt;
-  &lt;li&gt;特殊な背景があるようだったらコメントを残すようにお願いしたい&lt;/li&gt;
-  &lt;li&gt;納得できない実装方法だったので変えてほしい&lt;/li&gt;
-  &lt;li&gt;自分には思いつかない方法だったので、経緯を聞いて学びたい&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;レビュイーの受け取り方&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;しまった、良くないやり方だったのかも知れない😣&lt;/li&gt;
-  &lt;li&gt;散々悩んでたどり着いた解なんだよ、イチャモンつけるな…😡&lt;/li&gt;
-  &lt;li&gt;どの選択肢を取るかは「決め」の問題なのになぜ突っ込んできたんだろう🤔&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;このようにパッと思いつくだけでもいろいろな意図があり、感じ方があります。意図を含めて互いに丁寧にコメントし合うことができれば最高ですが、言葉選びはレビュワーによりムラが出ますし、忙しいときに言葉足らずになってしまうことがあるかもしれません。レビュイーも見てほしい部分を適切に伝えることが難しいかもしれませんし、未完成の部分が混じっていることもあるでしょう(そして当たり前ですがこれはどちらが悪いかという話ではありません)。&lt;/p&gt;
-
-&lt;p&gt;一人ひとりが解決するのは難しい、だったらツールで解決しよう、という経緯で開発に至りました。&lt;/p&gt;
-
-&lt;h3 id=&quot;コンセプト&quot;&gt;コンセプト&lt;/h3&gt;
-
-&lt;p&gt;アイキャッチには「〜したい」と書かれています。「〜すべき」「〜してください」といった言葉は使われていません。&lt;/p&gt;
-
-&lt;p&gt;多くの場面で、コードレビューにおける対話では互いの背景知識に差があります。実装者(レビュイー)の悩み抜いたプロセスやボツになった選択肢のすべてがレビュワーに見えているわけではありません。レビュワーが持つ広い視野やバイアスのない視点は、長い時間コードを見つめ続けてきた実装者には欠けがちです。&lt;br /&gt;
-そういった互いの差に配慮しつつ、正しく自分の考えを伝える(汲み取ってもらう)には、&lt;strong&gt;「〜すべき」といった断定的な言い方や「〜してください」といった命令的な言い回しでは力不足&lt;/strong&gt;です。&lt;/p&gt;
-
-&lt;p&gt;代わりに、効果的にレビューを進める言い回しが「〜したい」という主観的な表現です。&lt;/p&gt;
-
-&lt;p&gt;私たちがレビューの場でしている会話は、実は「何が正しいか」「何が最適か」「このコードは良いか/悪いか」という&lt;strong&gt;事実を正しく理解するための会話&lt;/strong&gt;ではありません。「何を正しいと考えているか」「このコードをどうしたいか」という&lt;strong&gt;認識・解釈・価値観の会話&lt;/strong&gt;の会話です。ですので「(自分は)〜したい」と、主観的な認識を伝えようとすること、ひいては「私は自分のコメントが主観的なものだと自覚しているよ」と伝えることが、丁寧かつ効果的な会話に繋がります。&lt;/p&gt;
-
-&lt;p&gt;「私は正しい、あなたは間違っている」という思い込みのもと行われる会話を減らし、&lt;strong&gt;違って当たり前の認識・解釈・価値観を互いにすり合わせる会話のきっかけを作る&lt;/strong&gt;ことが、今回つくったもののコンセプトなのです。&lt;/p&gt;
-
-&lt;h3 id=&quot;実装の紹介&quot;&gt;実装の紹介&lt;/h3&gt;
-
-&lt;p&gt;&lt;strong&gt;Repository&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://github.com/aloerina01/pr_review_toys&quot; target=&quot;_blank&quot;&gt;aloerina01/pr_review_toys&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;使った技術&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;TypeScript&lt;/li&gt;
-  &lt;li&gt;Preact&lt;/li&gt;
-  &lt;li&gt;Parcel&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Github上のコメント入力欄を&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;querySelectorAll&lt;/code&gt;して、Preact製のプルダウンをマウントしているだけです。コードレビュー時のコメント入力欄はユーザーの操作により増減するので&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MutationObserver&lt;/code&gt;で検知しています。&lt;br /&gt;
-小さなアプリケーションをサクッとつくるときはParcelでバンドルすることが多いです。&lt;/p&gt;
-
-&lt;p&gt;ちなみにストアでの提供はしていませんが、リポジトリのREADMEに使い方を記載していますので、気になった方は試してみてくださいね。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;今回作ったChrome拡張自体は大したものではありませんが、そのコンセプトには私がコミュニケーションにおいて大事にしている考え方が詰め込まれています。そしてその考え方は、&lt;a href=&quot;https://amzn.to/3yWHAoI&quot; target=&quot;_blank&quot;&gt;話す技術・聞く技術―交渉で最高の成果を引き出す「3つの会話」&lt;/a&gt;という本の内容が基盤になっています。日常生活の中で頻発する難しい会話を3つに分類し、なぜ難しいのか、どうすれば良くなるのか、について体系的にまとめた内容です。&lt;br /&gt;
-何度も読み返していて、私のルーツのような本なので、もし読んだことがある方がいれば&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;まで感想を送ってくれると嬉しいです！&lt;/p&gt;</content><author><name></name></author><summary type="html">コードレビュー時に思うように意図が伝わらず、会話のラリーがやたら増えてしまったり、詰問合戦のようなギスギスした雰囲気になってしまったことありませんか？ 私はあります。もう少し気持ちよく無駄なくレビューできないものかと思っていたのですが、先日ふと思いついた対処策があったので試してみました。</summary></entry></feed>
+冒頭にも書いたように、最近は環境構築する頻度が減っているので、おそらく数カ月後に久々にesbuildを使おうとして右往左往している自分がいることでしょう。そのときに少しでも役立てばいいなと思います(バージョンが進んでほとんど役立たなくなっているかもしれませんが😫)。&lt;/p&gt;</content><author><name></name></author><summary type="html">最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。</summary></entry></feed>
