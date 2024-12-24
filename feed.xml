@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-12-20T02:32:19+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-12-24T08:10:45+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">マネジメントを語るときは具体的で生々しいエピソードを添える</title><link href="https://aloerina01.github.io/blog/2024-12-20-1" rel="alternate" type="text/html" title="マネジメントを語るときは具体的で生々しいエピソードを添える" /><published>2024-12-20T00:00:00+00:00</published><updated>2024-12-20T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-20-1">&lt;p&gt;マネジメントの知見を共有すべくブログを書くとき、その1つ1つに具体的なエピソードを添えることを自分ルールにしています。エピソードにはいくつかの条件を設けています。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -517,7 +517,7 @@
 &lt;p&gt;前提として、チームが締切に追われ続けている自転車操業状態ではこの裁量の渡し方は不可能です。またお願いするタスクの期限が厳密である場合や、満たすべき要件が多い場合にも難しいでしょう。&lt;br /&gt;
 今までにない広い裁量の中で冷静に選択や決断をしていくためには、仕事を受け取ったチームメンバーが&lt;strong&gt;時間と心の余裕を持てていること&lt;/strong&gt;が大切です。&lt;/p&gt;
 
-&lt;h4 id=&quot;2-必要に応じてこちらの期待値を添える&quot;&gt;2. 必要に応じてこちらの期待値を添える&lt;/h4&gt;
+&lt;h4 id=&quot;2-裁量の行使について期待値を添える&quot;&gt;2. 裁量の行使について期待値を添える&lt;/h4&gt;
 
 &lt;p&gt;広く裁量を渡すと言っても、一言も口出ししてはいけないということではありません。たとえば「実装方針について自身で考えてみてほしいが、最終的にはチームの合意を得てほしい」と条件をつけることもあります。&lt;br /&gt;
 また「この前の取り組みを資料にまとめてほしい。どんな構成にすべきか私もまだイメージできていないので、何度かレビューのやり取りが続いてしまうかもしれない」とある程度レビュー回数が多くなることを事前に申し添えることもあります。&lt;/p&gt;
@@ -530,7 +530,7 @@
 
 &lt;p&gt;人により得手不得手が違うので、&lt;strong&gt;補い合ったりアイデアを出し合ったりして裁量を存分に活かせるケースが多く、私には思いもよらない素晴らしいアウトプットが出ることもある&lt;/strong&gt;ので仕事をお願いするときのちょっとした楽しみでもあります。&lt;/p&gt;
 
-&lt;p&gt;注意点ですが、あんまり人数が多いと何もしない人を生みかねないので、複数人アサインは2〜3人がベストだと思います。また、チームメンバー同士でうまく相互作用が起きているのは、私たちのチームがこれまでにモブプロやふりかえりなどを重ね複数人でワークすることに慣れていたからかも、と注釈しておきます。複数人での仕事に不慣れなチームだと、誰かがリーダーとなり「仕事を分担する人、言われた通り分担をやる人」の関係になってしまい全員が裁量を発揮できない結果となることも多いです。&lt;/p&gt;
+&lt;p&gt;注意点ですが、あんまり人数が多いと何もしない人を生みかねないので、複数人アサインは2〜3人がベストだと思います。また、チームメンバー同士でうまく相互作用が起きているのは、私たちのチームがこれまでにモブプロやふりかえりなどを重ね複数人でワークすることに慣れていたからでもあります。複数人での仕事に不慣れなチームだと、誰かがリーダーとなり「仕事を分担する人、言われた通り分担をやる人」の関係になってしまい全員が裁量を発揮できない結果となることも多いです。&lt;/p&gt;
 
 &lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
 
