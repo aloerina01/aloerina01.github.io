@@ -23,7 +23,7 @@ jobs:
     - name: Set bundle path
       run: bundle config path vendor/bundle
     - name: Install Numo dependencies
-      run: apt-get install liblapacke-dev libopenblas-dev
+      run: sudo apt-get install liblapacke-dev libopenblas-dev
     - name: Install bundle
       # if: steps.cache-primes.outputs.cache-hit != 'true'
       run: bundle check --path vendor/bundle || bundle install --clean --deployment && bundle package --all
