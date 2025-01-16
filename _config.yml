@@ -23,7 +23,7 @@ exclude:
   - "_config.dev.yml"
   - "_config.algolia.yml"
   
-lsi: true
+lsi: false
 
 # Site settings
 title: "mille-feuille code"
