@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました</title>
+  <meta name="description" content="チームに所属するメンバーはスキルやキャリアによって一人ひとり期待役割が違います。同様に、チームも成熟度合いによって「チームへの期待役割」が変化します。自分たちのチームの熟練度と期待役割を理解し、今より1歩自律的なチームに近づいていくためのWorkshopと、そこで利用したCheatSheetを紹介します。">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2025">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <link rel="stylesheet" as="style" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="チームに所属するメンバーはスキルやキャリアによって一人ひとり期待役割が違います。同様に、チームも成熟度合いによって「チームへの期待役割」が変化します。自分たちのチームの熟練度と期待役割を理解し、今より1歩自律的なチームに近づいていくためのWorkshopと、そこで利用したCheatSheetを紹介します。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2025-01-16-1" />
+  <meta property="og:site_name" content="mille-feuille code" />
+  <meta property="og:title" content="チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/ogp/2025-01-16-1.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました">
+  <meta name="twitter:description" content="チームに所属するメンバーはスキルやキャリアによって一人ひとり期待役割が違います。同様に、チームも成熟度合いによって「チームへの期待役割」が変化します。自分たちのチームの熟練度と期待役割を理解し、今より1歩自律的なチームに近づいていくためのWorkshopと、そこで利用したCheatSheetを紹介します。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/ogp/2025-01-16-1.jpg">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2025-01-16-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2025-01-16-1">
+  <link rel="alternate" type="application/rss+xml" title="mille-feuille code" href="https://aloerina01.github.io/feed.xml" />
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-39630080-4', 'auto');
+    ga('require', 'linkid');
+    ga('send', 'pageview', {
+      'page': '/blog/2025-01-16-1',
+      'title': 'チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました'
+    });
+  </script>
+  
+
+  
+
+  <script src="/dist/prism.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <picture>
+        <source src="/assets/logo.webp" type="image/webp"> 
+        <img src="/assets/logo_min.png" alt="mille-feuille code" loading="lazy">
+      </picture>
+      
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="https://note.com/aloerina/m/m699d10700993"target="_blank" rel="noopener noreferrer">Poem</a>
+            
+        <li class="nav-link">
+          <a href="https://suzuri.jp/aloerina"target="_blank" rel="noopener noreferrer">Shop</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
+            
+        <li class="nav-link">
+          <a href="/feed.xml"target="_blank" rel="noopener noreferrer">RSS</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">mille-feuille code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2025-01-16-1">
+            <span itemprop="name">チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <main class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2025-01-16</div>
+          <div class="post-categories">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
+              <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+              <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
+            </svg>
+             
+            <a href="/category/management/">Management</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>エンジニア一人ひとりの期待役割がスキルやキャリアにより変化するように、<strong>チームも成熟度やフェーズに応じて期待役割が変化します</strong>。</p>
+
+<p>様々な期待役割を持つチームメンバーの活動が重なり合い生まれる『<strong>チームのプロセスや成果</strong>』<strong>がどうあるべきか</strong>、がチームの期待役割であると言えます。<strong>チームメンバー各々がこれに目を向ける</strong>ことで、より効果的に相互作用し、高い成果を出し、<strong>自律的に活動をするチームに近づけます</strong>。</p>
+
+<p>定期的にふりかえりを実施しているチームであっても、「私たちのチームはどのくらい成熟しているのか？」「私たちのチームは周囲からどのような期待を持たれているのか？」といったことを見つめ直す機会はなかなかありません。</p>
+
+<p>現に私がマネジメントするいくつかのフロントエンドエンジニアチームでも、チームメンバー自身がこれらの問いに向き合う機会はあまりなかったです。</p>
+
+<p>そこでチームの成熟度と期待役割について共通認識をつくるWorkshopを実施しました。今回はその内容の紹介と、Workshop内で読み合わせたCheatSheetを共有します。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#cheatsheetの紹介から" id="markdown-toc-cheatsheetの紹介から">CheatSheetの紹介から</a>    <ul>
+      <li><a href="#チームの成熟度目安シート" id="markdown-toc-チームの成熟度目安シート">『チームの成熟度目安』シート</a></li>
+      <li><a href="#チームの成熟度に応じた期待役割シート" id="markdown-toc-チームの成熟度に応じた期待役割シート">『チームの成熟度に応じた期待役割』シート</a></li>
+    </ul>
+  </li>
+  <li><a href="#workshopの流れ" id="markdown-toc-workshopの流れ">Workshopの流れ</a>    <ul>
+      <li><a href="#イントロ" id="markdown-toc-イントロ">イントロ</a></li>
+      <li><a href="#step1-成熟度について知る" id="markdown-toc-step1-成熟度について知る">Step1. 成熟度について知る</a></li>
+      <li><a href="#step2-成熟度を測る" id="markdown-toc-step2-成熟度を測る">Step2. 成熟度を測る</a></li>
+      <li><a href="#step3-期待役割と照らし合わせる" id="markdown-toc-step3-期待役割と照らし合わせる">Step3. 期待役割と照らし合わせる</a></li>
+    </ul>
+  </li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="cheatsheetの紹介から">CheatSheetの紹介から</h3>
+
+<p>まずはCheatSheetの紹介からします。</p>
+
+<p>もともとこれを読み物として各チームに共有するつもりだったのですが、読むだけでは理解がはかどらないと思いWorkshop化した経緯があります。ですのでWorkshopで提供するコンテンツの大部分は以下2つのシートになります。</p>
+
+<h4 id="チームの成熟度目安シート">『チームの成熟度目安』シート</h4>
+
+<p><img src="/assets/2025-01-16/Cheatsheet1.jpg" alt="『チームの成熟度目安』シート" /></p>
+
+<h4 id="チームの成熟度に応じた期待役割シート">『チームの成熟度に応じた期待役割』シート</h4>
+
+<p><img src="/assets/2025-01-16/Cheatsheet2.jpg" alt="『チームの成熟度に応じた期待役割』シート" /></p>
+
+<p>これらを<strong>読み合わせた際に生まれる『コミュニケーション』がWorkshopにおける最大の価値</strong>となることを意識してWorkshopを設計しました。以下に実際の流れに沿って紹介します。</p>
+
+<h3 id="workshopの流れ">Workshopの流れ</h3>
+
+<h4 id="イントロ">イントロ</h4>
+
+<p><img alt="イントロ" src="/assets/2025-01-16/Introduction.jpg" style="border:0.5px solid #CFD8DC;" /></p>
+
+<p>本記事の冒頭でも述べたように、『個人の期待役割』だけでなく『チームの期待役割』にも向き合う重要性を伝え、Workshopのゴールをすり合わせます。アイスブレイクが必要であればこの前後でやります。</p>
+
+<h4 id="step1-成熟度について知る">Step1. 成熟度について知る</h4>
+
+<p><img src="/assets/2025-01-16/Step1.jpg" alt="Step1. 成熟度について知る" /></p>
+
+<p>CheatSheetの1枚目を使います。</p>
+
+<p>このシートではチームの成熟度を簡易的に Senior / Middle / Junior の3段階に分けていて、<strong>それぞれの成熟度に到達したチームがどのような状態か</strong>を表現しています。</p>
+
+<p>あらかじめ用意している内容は薄く、<strong>参加者の記入をもってCheatSheetとして完成する</strong>ことを想定しています。たとえば「アウトプットの品質」「ドキュメントの管理状況」「存続期間」「リードタイム」など、様々な観点で成熟度毎の状態を表現できるでしょう。</p>
+
+<p>メンバー自身がディスカッションを通じてこれを完成させることで、<strong>一人ひとりが持つ「理想的な成熟チームのイメージ」を言語化し認識を合わせる</strong>ことに役立ちます。</p>
+
+<p></p>
+
+<h4 id="step2-成熟度を測る">Step2. 成熟度を測る</h4>
+
+<p><img src="/assets/2025-01-16/Step2.jpg" alt="Step2. 成熟度を測る" /></p>
+
+<p>成熟度に応じたチームの姿について共通認識を持てたら、次は自分たちのチームの成熟度がどれくらいかを考えていきます。</p>
+
+<p>このWorkshopはmiroを使っていて、左側に配置してる『People』コンポーネント上のユーザーアイコンはドラッグ＆ドロップすることができます。「せーの」で数字をいいながら自身のアイコンを右側のエリアにプロットして成熟度の認識を開示し合います。</p>
+
+<p>自分たちの成熟度を考えるとき「〇〇の場面で△△だったから成熟度nだと考えた」のように具体的なエピソードを思い浮かべることが多いと思います。その内容を付箋に書き出し右側のエリアに貼りながら共有し合います。</p>
+
+<p><strong>具体的なエピソードの共有がWorkshopの要</strong>で、「どういう行動が称賛されるか」の共通認識づくりに一役買います。チームにジョインして歴の浅いメンバーにとっては、<strong>参考事例を追体験できる機会</strong>にもなります。</p>
+
+<p>エピソードの共有を踏まえて、チームの成熟度の共通認識をつくれればStep2は完了です。必ずしも1つの数字を決めきらずとも「〇〇な状況では8だけど、△△のときは5」「人によって見え方は違うけど7〜9あたり」といった具合に曖昧さがあっても良いです。重要なのは<strong>認識を合わせるために議論したという実績</strong>です。</p>
+
+<h4 id="step3-期待役割と照らし合わせる">Step3. 期待役割と照らし合わせる</h4>
+
+<p><img src="/assets/2025-01-16/Step3.jpg" alt="Step3. 期待役割と照らし合わせる" /></p>
+
+<p>チームの成熟度について共通認識ができたら、最後に成熟度に応じた期待役割を紐解いていきます。CheatSheetでは 『成熟度3段階』×『3つの観点』で期待役割を表現していますが、<strong>会社の方針や組織のミッションによって期待役割は変化するので、Workshop開催前にEM等が自組織に合った内容に書き換えておく</strong>ことをおすすめしています。</p>
+
+<p>Workshop参加者は、自分たちのチームの成熟度に合った行を読み合わせます。シートの各項目の達成状況をマルバツ等で表現しても良いでしょう。</p>
+
+<p>読んでいくと「これはすでにできている」「この行動は意識していなかった」と<strong>チームの強み弱みが浮き彫りになってきます</strong>。同時にここでも背景にあるエピソードを各自が思い浮かべることになると思うので、付箋に書き出し共有し合います。</p>
+
+<p>次第に「プロダクト開発はSenior相当にできているが、自律性はMiddleレベルに達していない。だから〇〇をしてみよう」と具体的なアクションの議論が始まるかもしれません。もしくはWorkshop後に個々人が「チームの持続可能性を高めるために〇〇に取り組みします」と個人目標に落とし込むこともあります。</p>
+
+<p>こういった<strong>行動の変化まで結びつけばWorkshopは120点</strong>の出来だったと言えます。</p>
+
+<p>逆にStep1の成熟度に応じたチーム像について何も意見が出ないなど、Workshopのどこかで極端に行き詰まった場合は、「チームメンバーが『チーム』について考える時間を十分に取れていない、チームのモデルケースを見て学ぶ機会がない」と組織課題が浮き彫りになります。</p>
+
+<p>これはこれでWorkshopの成果と言えるでしょう。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>実際にチームでやってみて手応えを感じたので、今回共有するに至りました。組織やチームに合わせて多少のアレンジは必要かもしれませんが、ぜひいろいろなチームで試していただきたいです。</p>
+
+<p>またWorkshopのアップデートは実践を重ねないとできないので、ぜひ実践後のフィードバックを<a href="https://x.com/aloerina_" target="_blank">@aloerina_</a>までいただければと思います。</p>
+
+        </article>
+
+          
+
+        <section class="share">
+  <div class="share-inner">
+    <div class="share-description">
+      <span>感想をシェアする</span>
+    </div>
+    <div class="share-panel">
+      <a
+        href="http://b.hatena.ne.jp/entry/"
+        class="hatena-bookmark-button share-button share-button-hatebu"
+        data-hatena-bookmark-layout="touch"
+        data-hatena-bookmark-width="38"
+        data-hatena-bookmark-height="38"
+        title="このエントリーをはてなブックマークに追加"
+        style="
+          border-radius: 50%;
+          width: 38px;
+          height: 38px;
+          box-shadow: 1px 1px 10px #bbb;
+          background-color: #00a4de;
+          transition: all 0.4s ease;
+        "
+      >
+        <img
+          src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+          alt="このエントリーをはてなブックマークに追加"
+          width="16"
+          height="16"
+        />
+      </a>
+      <script
+        type="text/javascript"
+        src="https://b.st-hatena.com/js/bookmark_button.js"
+        charset="utf-8"
+        defer
+      ></script>
+        
+      <a
+        class="share-button share-button-x"
+        href="//twitter.com/share?text=%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%82%88%E3%82%8A%E8%87%AA%E5%BE%8B%E7%9A%84%E3%81%AB%E3%81%AA%E3%82%8BWorkshop%E3%81%A8%E3%80%81%E3%83%81%E3%83%BC%E3%83%A0%E6%88%90%E7%86%9F%E5%BA%A6CheatSheet%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F&url=https://aloerina01.github.io/blog/2025-01-16-1&via=aloerina_&hashtags=Management,mfcode"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;"
+      >
+        <svg
+          version="1.1"
+          id="svg5"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 1668.56 1221.19"
+          style="enable-background: new 0 0 1668.56 1221.19"
+          xml:space="preserve"
+          width="38"
+          height="38"
+        >
+          <style type="text/css">
+            .st0 {
+              stroke: #ffffff;
+              stroke-miterlimit: 10;
+            }
+            .st1 {
+              fill: #ffffff;
+            }
+          </style>
+          <g>
+            <g id="layer1" transform="translate(52.390088,-25.058597)">
+              <path
+                id="path1009"
+                class="st1"
+                d="M485.39,356.79l230.07,307.62L483.94,914.52h52.11l202.7-218.98l163.77,218.98h177.32
+                L836.82,589.6l215.5-232.81h-52.11L813.54,558.46L662.71,356.79H485.39z M562.02,395.17h81.46l359.72,480.97h-81.46L562.02,395.17
+                z"
+              />
+            </g>
+          </g>
+        </svg>
+      </a>
+                
+      <a
+        class="share-button share-button-facebook"
+        href="//www.facebook.com/sharer.php?t=%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%82%88%E3%82%8A%E8%87%AA%E5%BE%8B%E7%9A%84%E3%81%AB%E3%81%AA%E3%82%8BWorkshop%E3%81%A8%E3%80%81%E3%83%81%E3%83%BC%E3%83%A0%E6%88%90%E7%86%9F%E5%BA%A6CheatSheet%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F&u=https://aloerina01.github.io/blog/2025-01-16-1"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+                                                                                                                                        
+      <a
+        class="share-button share-button-pocket"
+        href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2025-01-16-1"
+        target="_blank"
+      >
+        <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
+      </a>
+                
+      <a
+        class="share-button share-button-line"
+        target="_blank"
+        href="//line.me/R/msg/text/?%E3%83%81%E3%83%BC%E3%83%A0%E3%81%8C%E3%82%88%E3%82%8A%E8%87%AA%E5%BE%8B%E7%9A%84%E3%81%AB%E3%81%AA%E3%82%8BWorkshop%E3%81%A8%E3%80%81%E3%83%81%E3%83%BC%E3%83%A0%E6%88%90%E7%86%9F%E5%BA%A6CheatSheet%E3%82%92%E3%81%A4%E3%81%8F%E3%82%8A%E3%81%BE%E3%81%97%E3%81%9F%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2025-01-16-1"
+      >
+        <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
+      </a>
+       
+    </div>
+  </div>
+</section>
+
+
+        <section class="post-donation">
+  <div class="post-donation-panel">
+    <span class="post-donation-description">
+      執筆時のコーヒーで応援する
+    </span>
+    <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
+      <p class="button-body">
+        <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+        <span class="label">ごちそうする</span>
+      </p>
+    </a>
+  </div>
+</section>
+
+         
+
+      </div>
+    </div>
+
+  </main>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>あわせて読みたい</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2024-12-20-1">マネジメントを語るときは具体的で生々しいエピソードを添える</a></li>
+      
+      <li><a href="/blog/2024-12-11-1">“頼んだのにやってくれない” “相談にもきてくれない”の処方箋</a></li>
+      
+      <li><a href="/blog/2024-12-02-1">ファシリテーションの細かい意識の使い分け - Daily Standup 編</a></li>
+      
+      <li><a href="/blog/2024-11-06-1">5年分のマネジメント経験から生まれた実践的フィードバックの型</a></li>
+      
+      <li><a href="/blog/2024-06-14-1">"ペイン"と"チャレンジ"に注目して改善サイクルを生み出すふりかえりフレームワーク</a></li>
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile_v4.jpg" alt="" loading="lazy">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name"><p>aloerina</p></div>
+        <div class="profile-content-description">
+          <p>
+            <span>Webフロントエンド開発、エンジニアリングマネジメント、スクラムマスターなどをしています。趣味でドット絵グッズをつくっています。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon sns-icon-x">
+            <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799"><path fill="#fff" fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/></svg>
+          </a>
+          <a target="_blank" href="https://www.instagram.com/pixtrium/" rel="noopener noreferrer" class="sns-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 512"><path fill="#fff" fill-rule="nonzero" d="M170.663 256.157c-.083-47.121 38.055-85.4 85.167-85.483 47.121-.092 85.407 38.03 85.499 85.16.091 47.129-38.047 85.4-85.176 85.492-47.112.09-85.399-38.039-85.49-85.169zm-46.108.091c.141 72.602 59.106 131.327 131.69 131.186 72.592-.141 131.35-59.09 131.209-131.692-.141-72.577-59.114-131.335-131.715-131.194-72.585.141-131.325 59.115-131.184 131.7zm237.104-137.091c.033 16.953 13.817 30.681 30.772 30.648 16.961-.033 30.689-13.811 30.664-30.764-.033-16.954-13.818-30.69-30.78-30.657-16.962.033-30.689 13.818-30.656 30.773zm-208.696 345.4c-24.958-1.087-38.511-5.234-47.543-8.709-11.961-4.629-20.496-10.178-29.479-19.094-8.966-8.95-14.532-17.46-19.202-29.397-3.508-9.032-7.73-22.569-8.9-47.527-1.269-26.982-1.559-35.077-1.683-103.432-.133-68.339.116-76.434 1.294-103.441 1.069-24.942 5.242-38.512 8.709-47.536 4.628-11.977 10.161-20.496 19.094-29.479 8.949-8.982 17.459-14.532 29.403-19.202 9.025-3.525 22.561-7.714 47.511-8.9 26.998-1.277 35.085-1.551 103.423-1.684 68.353-.132 76.448.108 103.456 1.295 24.94 1.086 38.51 5.217 47.527 8.709 11.968 4.628 20.503 10.144 29.478 19.094 8.974 8.95 14.54 17.443 19.21 29.412 3.524 9 7.714 22.553 8.892 47.494 1.285 26.999 1.576 35.095 1.7 103.433.132 68.355-.117 76.451-1.302 103.441-1.087 24.958-5.226 38.52-8.709 47.561-4.629 11.952-10.161 20.487-19.103 29.471-8.941 8.949-17.451 14.531-29.403 19.201-9.009 3.517-22.561 7.714-47.494 8.9-26.998 1.269-35.086 1.559-103.448 1.684-68.338.132-76.424-.125-103.431-1.294zM149.977 1.773c-27.239 1.285-45.843 5.648-62.101 12.018-16.829 6.561-31.095 15.354-45.286 29.604C28.381 57.653 19.655 71.944 13.144 88.79c-6.303 16.299-10.575 34.912-11.778 62.168C.172 178.264-.102 186.973.031 256.489c.133 69.508.439 78.234 1.741 105.547 1.302 27.231 5.649 45.828 12.019 62.093 6.569 16.83 15.353 31.088 29.611 45.288 14.25 14.201 28.55 22.918 45.404 29.438 16.282 6.295 34.902 10.583 62.15 11.778 27.305 1.203 36.022 1.468 105.521 1.335 69.532-.132 78.25-.439 105.555-1.733 27.239-1.303 45.826-5.665 62.1-12.019 16.829-6.586 31.095-15.353 45.288-29.611 14.191-14.251 22.917-28.55 29.428-45.405 6.304-16.282 10.592-34.903 11.777-62.134 1.195-27.322 1.478-36.048 1.344-105.556-.133-69.516-.447-78.225-1.741-105.523-1.294-27.255-5.657-45.844-12.019-62.118-6.577-16.829-15.352-31.079-29.602-45.287-14.25-14.192-28.55-22.935-45.404-29.429-16.29-6.305-34.903-10.601-62.15-11.779C333.747.164 325.03-.102 255.506.031c-69.507.133-78.224.431-105.529 1.742z"/></svg>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/vuex/">Vuex</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/exp/">EXP</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+        
+        
+        <a href="/category/mobprogramming/">MobProgramming</a>
+      
+        
+        
+        <a href="/category/management/">Management</a>
+      
+        
+        
+        <a href="/category/coaching/">Coaching</a>
+      
+        
+        
+        <a href="/category/grareco/">GraReco</a>
+      
+        
+        
+        <a href="/category/githubactions/">GitHubActions</a>
+      
+        
+        
+        <a href="/category/retrospective/">Retrospective</a>
+      
+        
+        
+        <a href="/category/facilitation/">Facilitation</a>
+      
+        
+        
+        <a href="/category/scrum/">Scrum</a>
+      
+        
+        
+        <a href="/category/psychologicalsafety/">PsychologicalSafety</a>
+      
+        
+        
+        <a href="/category/typescript/">TypeScript</a>
+      
+        
+        
+        <a href="/category/chromeextension/">ChromeExtension</a>
+      
+        
+        
+        <a href="/category/esbuild/">esbuild</a>
+      
+        
+        
+        <a href="/category/agile/">Agile</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents donation">
+  <div class="sub-contents-wrapper donation-wrapper">
+    <h3>BUY ME A COFFEE</h3>
+    <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
+    <div class="donation-button-area">
+        <a class="donation-button" href="https://www.buymeacoffee.com/aloerina" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
+          <p class="button-body">
+            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" loading="lazy"></img>
+            <span class="label">ごちそうする</span>
+          </p>
+        </a>
+        <span>または<a href="https://kyash.co/" target="_blank" rel="noopener noreferrer">Kyash</a>で id: <b>aloerina</b> に送金する</span>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">mille-feuille code</a>
+        <p class="site-values-copyright">Copyright since 2016 aloerina All Rights Reserved.</p>
+      </div>
+      <div class="site-designs">
+        <p>Published on <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Header
+    var CLASS_MENU_SHOW = 'show';
+    var navigationMenu = document.getElementById('js-navigation-menu');
+    var menuIcon = document.getElementById('js-mobile-menu-icon');
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+    });
+  });
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.35.1/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.1/autocomplete.min.js"></script>
+<script src="/dist/algolia.js" async></script>
+
+</body>
+
+</html>

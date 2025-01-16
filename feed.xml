@@ -1,5 +1,105 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2024-12-24T08:10:45+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">マネジメントを語るときは具体的で生々しいエピソードを添える</title><link href="https://aloerina01.github.io/blog/2024-12-20-1" rel="alternate" type="text/html" title="マネジメントを語るときは具体的で生々しいエピソードを添える" /><published>2024-12-20T00:00:00+00:00</published><updated>2024-12-20T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-20-1">&lt;p&gt;マネジメントの知見を共有すべくブログを書くとき、その1つ1つに具体的なエピソードを添えることを自分ルールにしています。エピソードにはいくつかの条件を設けています。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-01-16T09:29:47+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました</title><link href="https://aloerina01.github.io/blog/2025-01-16-1" rel="alternate" type="text/html" title="チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました" /><published>2025-01-16T00:00:00+00:00</published><updated>2025-01-16T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-01-16-1">&lt;p&gt;エンジニア一人ひとりの期待役割がスキルやキャリアにより変化するように、&lt;strong&gt;チームも成熟度やフェーズに応じて期待役割が変化します&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;様々な期待役割を持つチームメンバーの活動が重なり合い生まれる『&lt;strong&gt;チームのプロセスや成果&lt;/strong&gt;』&lt;strong&gt;がどうあるべきか&lt;/strong&gt;、がチームの期待役割であると言えます。&lt;strong&gt;チームメンバー各々がこれに目を向ける&lt;/strong&gt;ことで、より効果的に相互作用し、高い成果を出し、&lt;strong&gt;自律的に活動をするチームに近づけます&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;定期的にふりかえりを実施しているチームであっても、「私たちのチームはどのくらい成熟しているのか？」「私たちのチームは周囲からどのような期待を持たれているのか？」といったことを見つめ直す機会はなかなかありません。&lt;/p&gt;
+
+&lt;p&gt;現に私がマネジメントするいくつかのフロントエンドエンジニアチームでも、チームメンバー自身がこれらの問いに向き合う機会はあまりなかったです。&lt;/p&gt;
+
+&lt;p&gt;そこでチームの成熟度と期待役割について共通認識をつくるWorkshopを実施しました。今回はその内容の紹介と、Workshop内で読み合わせたCheatSheetを共有します。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#cheatsheetの紹介から&quot; id=&quot;markdown-toc-cheatsheetの紹介から&quot;&gt;CheatSheetの紹介から&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#チームの成熟度目安シート&quot; id=&quot;markdown-toc-チームの成熟度目安シート&quot;&gt;『チームの成熟度目安』シート&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#チームの成熟度に応じた期待役割シート&quot; id=&quot;markdown-toc-チームの成熟度に応じた期待役割シート&quot;&gt;『チームの成熟度に応じた期待役割』シート&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#workshopの流れ&quot; id=&quot;markdown-toc-workshopの流れ&quot;&gt;Workshopの流れ&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#イントロ&quot; id=&quot;markdown-toc-イントロ&quot;&gt;イントロ&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#step1-成熟度について知る&quot; id=&quot;markdown-toc-step1-成熟度について知る&quot;&gt;Step1. 成熟度について知る&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#step2-成熟度を測る&quot; id=&quot;markdown-toc-step2-成熟度を測る&quot;&gt;Step2. 成熟度を測る&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#step3-期待役割と照らし合わせる&quot; id=&quot;markdown-toc-step3-期待役割と照らし合わせる&quot;&gt;Step3. 期待役割と照らし合わせる&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;cheatsheetの紹介から&quot;&gt;CheatSheetの紹介から&lt;/h3&gt;
+
+&lt;p&gt;まずはCheatSheetの紹介からします。&lt;/p&gt;
+
+&lt;p&gt;もともとこれを読み物として各チームに共有するつもりだったのですが、読むだけでは理解がはかどらないと思いWorkshop化した経緯があります。ですのでWorkshopで提供するコンテンツの大部分は以下2つのシートになります。&lt;/p&gt;
+
+&lt;h4 id=&quot;チームの成熟度目安シート&quot;&gt;『チームの成熟度目安』シート&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2025-01-16/Cheatsheet1.jpg&quot; alt=&quot;『チームの成熟度目安』シート&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;チームの成熟度に応じた期待役割シート&quot;&gt;『チームの成熟度に応じた期待役割』シート&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2025-01-16/Cheatsheet2.jpg&quot; alt=&quot;『チームの成熟度に応じた期待役割』シート&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;これらを&lt;strong&gt;読み合わせた際に生まれる『コミュニケーション』がWorkshopにおける最大の価値&lt;/strong&gt;となることを意識してWorkshopを設計しました。以下に実際の流れに沿って紹介します。&lt;/p&gt;
+
+&lt;h3 id=&quot;workshopの流れ&quot;&gt;Workshopの流れ&lt;/h3&gt;
+
+&lt;h4 id=&quot;イントロ&quot;&gt;イントロ&lt;/h4&gt;
+
+&lt;p&gt;&lt;img alt=&quot;イントロ&quot; src=&quot;/assets/2025-01-16/Introduction.jpg&quot; style=&quot;border:0.5px solid #CFD8DC;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;本記事の冒頭でも述べたように、『個人の期待役割』だけでなく『チームの期待役割』にも向き合う重要性を伝え、Workshopのゴールをすり合わせます。アイスブレイクが必要であればこの前後でやります。&lt;/p&gt;
+
+&lt;h4 id=&quot;step1-成熟度について知る&quot;&gt;Step1. 成熟度について知る&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2025-01-16/Step1.jpg&quot; alt=&quot;Step1. 成熟度について知る&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;CheatSheetの1枚目を使います。&lt;/p&gt;
+
+&lt;p&gt;このシートではチームの成熟度を簡易的に Senior / Middle / Junior の3段階に分けていて、&lt;strong&gt;それぞれの成熟度に到達したチームがどのような状態か&lt;/strong&gt;を表現しています。&lt;/p&gt;
+
+&lt;p&gt;あらかじめ用意している内容は薄く、&lt;strong&gt;参加者の記入をもってCheatSheetとして完成する&lt;/strong&gt;ことを想定しています。たとえば「アウトプットの品質」「ドキュメントの管理状況」「存続期間」「リードタイム」など、様々な観点で成熟度毎の状態を表現できるでしょう。&lt;/p&gt;
+
+&lt;p&gt;メンバー自身がディスカッションを通じてこれを完成させることで、&lt;strong&gt;一人ひとりが持つ「理想的な成熟チームのイメージ」を言語化し認識を合わせる&lt;/strong&gt;ことに役立ちます。&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;step2-成熟度を測る&quot;&gt;Step2. 成熟度を測る&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2025-01-16/Step2.jpg&quot; alt=&quot;Step2. 成熟度を測る&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;成熟度に応じたチームの姿について共通認識を持てたら、次は自分たちのチームの成熟度がどれくらいかを考えていきます。&lt;/p&gt;
+
+&lt;p&gt;このWorkshopはmiroを使っていて、左側に配置してる『People』コンポーネント上のユーザーアイコンはドラッグ＆ドロップすることができます。「せーの」で数字をいいながら自身のアイコンを右側のエリアにプロットして成熟度の認識を開示し合います。&lt;/p&gt;
+
+&lt;p&gt;自分たちの成熟度を考えるとき「〇〇の場面で△△だったから成熟度nだと考えた」のように具体的なエピソードを思い浮かべることが多いと思います。その内容を付箋に書き出し右側のエリアに貼りながら共有し合います。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;具体的なエピソードの共有がWorkshopの要&lt;/strong&gt;で、「どういう行動が称賛されるか」の共通認識づくりに一役買います。チームにジョインして歴の浅いメンバーにとっては、&lt;strong&gt;参考事例を追体験できる機会&lt;/strong&gt;にもなります。&lt;/p&gt;
+
+&lt;p&gt;エピソードの共有を踏まえて、チームの成熟度の共通認識をつくれればStep2は完了です。必ずしも1つの数字を決めきらずとも「〇〇な状況では8だけど、△△のときは5」「人によって見え方は違うけど7〜9あたり」といった具合に曖昧さがあっても良いです。重要なのは&lt;strong&gt;認識を合わせるために議論したという実績&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;h4 id=&quot;step3-期待役割と照らし合わせる&quot;&gt;Step3. 期待役割と照らし合わせる&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/2025-01-16/Step3.jpg&quot; alt=&quot;Step3. 期待役割と照らし合わせる&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;チームの成熟度について共通認識ができたら、最後に成熟度に応じた期待役割を紐解いていきます。CheatSheetでは 『成熟度3段階』×『3つの観点』で期待役割を表現していますが、&lt;strong&gt;会社の方針や組織のミッションによって期待役割は変化するので、Workshop開催前にEM等が自組織に合った内容に書き換えておく&lt;/strong&gt;ことをおすすめしています。&lt;/p&gt;
+
+&lt;p&gt;Workshop参加者は、自分たちのチームの成熟度に合った行を読み合わせます。シートの各項目の達成状況をマルバツ等で表現しても良いでしょう。&lt;/p&gt;
+
+&lt;p&gt;読んでいくと「これはすでにできている」「この行動は意識していなかった」と&lt;strong&gt;チームの強み弱みが浮き彫りになってきます&lt;/strong&gt;。同時にここでも背景にあるエピソードを各自が思い浮かべることになると思うので、付箋に書き出し共有し合います。&lt;/p&gt;
+
+&lt;p&gt;次第に「プロダクト開発はSenior相当にできているが、自律性はMiddleレベルに達していない。だから〇〇をしてみよう」と具体的なアクションの議論が始まるかもしれません。もしくはWorkshop後に個々人が「チームの持続可能性を高めるために〇〇に取り組みします」と個人目標に落とし込むこともあります。&lt;/p&gt;
+
+&lt;p&gt;こういった&lt;strong&gt;行動の変化まで結びつけばWorkshopは120点&lt;/strong&gt;の出来だったと言えます。&lt;/p&gt;
+
+&lt;p&gt;逆にStep1の成熟度に応じたチーム像について何も意見が出ないなど、Workshopのどこかで極端に行き詰まった場合は、「チームメンバーが『チーム』について考える時間を十分に取れていない、チームのモデルケースを見て学ぶ機会がない」と組織課題が浮き彫りになります。&lt;/p&gt;
+
+&lt;p&gt;これはこれでWorkshopの成果と言えるでしょう。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;実際にチームでやってみて手応えを感じたので、今回共有するに至りました。組織やチームに合わせて多少のアレンジは必要かもしれませんが、ぜひいろいろなチームで試していただきたいです。&lt;/p&gt;
+
+&lt;p&gt;またWorkshopのアップデートは実践を重ねないとできないので、ぜひ実践後のフィードバックを&lt;a href=&quot;https://x.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までいただければと思います。&lt;/p&gt;</content><author><name></name></author><summary type="html">エンジニア一人ひとりの期待役割がスキルやキャリアにより変化するように、チームも成熟度やフェーズに応じて期待役割が変化します。</summary></entry><entry><title type="html">マネジメントを語るときは具体的で生々しいエピソードを添える</title><link href="https://aloerina01.github.io/blog/2024-12-20-1" rel="alternate" type="text/html" title="マネジメントを語るときは具体的で生々しいエピソードを添える" /><published>2024-12-20T00:00:00+00:00</published><updated>2024-12-20T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-12-20-1">&lt;p&gt;マネジメントの知見を共有すべくブログを書くとき、その1つ1つに具体的なエピソードを添えることを自分ルールにしています。エピソードにはいくつかの条件を設けています。&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;strong&gt;実際に起きた出来事について&lt;/strong&gt;の具体例を出す場合は、多くの現場であるあるな例であり、読者が「たしかに自分もそうなったことあるなぁ」と&lt;strong&gt;実体験に重ねやすい&lt;/strong&gt;ものであること&lt;/li&gt;
@@ -714,132 +814,4 @@
 &lt;p&gt;これらが主な失敗でした。乗り越えるためには失敗を自覚し向き合うことはもちろん大事ですが、併せて根気も必要だったと思います。時間をかけて実践とふりかえりを重ねてようやく今の理解度に到達できたので、総括すると「根気強く向き合う」が私たちの乗り越え方だったと言えるかもしれません。と言っても、まだ完璧な相対見積もりができているわけではないので、これからも新しい壁にぶつかりながら試行錯誤していこうと思います。&lt;/p&gt;
 
 &lt;p&gt;最後に、参考書籍を紹介して締めくくります。&lt;br /&gt;
-いろいろ読みましたが、一番理解が捗ったのは&lt;a href=&quot;https://amzn.to/3ny06zy&quot; target=&quot;_blank&quot;&gt;アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～&lt;/a&gt;でした。同じような悩みを持つ開発者の手助けになれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。</summary></entry><entry><title type="html">esbuild 入門者のための書き置き</title><link href="https://aloerina01.github.io/blog/2021-09-15-1" rel="alternate" type="text/html" title="esbuild 入門者のための書き置き" /><published>2021-09-15T00:00:00+00:00</published><updated>2021-09-15T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-09-15-1">&lt;p&gt;最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。&lt;/p&gt;
-
-&lt;p&gt;今回は手始めに、初めてesbuildに触ったときに感じた「これなに」「どう使うの」「気をつけることは」あたりを書き置きしておきます。ちなみに執筆時点でのesbuildのバージョンは&lt;a href=&quot;https://github.com/evanw/esbuild/releases/tag/v0.12.28&quot; target=&quot;_blank&quot;&gt;0.12.28&lt;/a&gt;です。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#esbuild-とは&quot; id=&quot;markdown-toc-esbuild-とは&quot;&gt;esbuild とは&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#使い方&quot; id=&quot;markdown-toc-使い方&quot;&gt;使い方&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#利用例&quot; id=&quot;markdown-toc-利用例&quot;&gt;利用例&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#気をつけたいこと&quot; id=&quot;markdown-toc-気をつけたいこと&quot;&gt;気をつけたいこと&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#css-modules未対応&quot; id=&quot;markdown-toc-css-modules未対応&quot;&gt;CSS Modules未対応&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#tsconfigの解釈&quot; id=&quot;markdown-toc-tsconfigの解釈&quot;&gt;tsconfigの解釈&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#動的import-code-splittingの展望&quot; id=&quot;markdown-toc-動的import-code-splittingの展望&quot;&gt;動的import, Code Splittingの展望&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#es5との付き合い方&quot; id=&quot;markdown-toc-es5との付き合い方&quot;&gt;ES5との付き合い方&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#top-lebel-await未対応&quot; id=&quot;markdown-toc-top-lebel-await未対応&quot;&gt;top-lebel await未対応&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おわり&quot; id=&quot;markdown-toc-おわり&quot;&gt;おわり&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;esbuild-とは&quot;&gt;&lt;a href=&quot;https://github.com/evanw/esbuild&quot; target=&quot;_blank&quot;&gt;esbuild&lt;/a&gt; とは&lt;/h3&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;An extremely fast JavaScript bundler&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;とにかく速さに重点を置いたバンドラのようです。バンドラということは、並列で比較できるものは&lt;a href=&quot;https://webpack.js.org/&quot; target=&quot;_blank&quot;&gt;webpack&lt;/a&gt;、&lt;a href=&quot;https://rollupjs.org/&quot; target=&quot;_blank&quot;&gt;rollup.jp&lt;/a&gt;、&lt;a href=&quot;https://ja.parceljs.org/&quot; target=&quot;_blank&quot;&gt;Parcel&lt;/a&gt;などです。バンドルと同時にトランスパイルもしてくれるようなので、その点で言えば&lt;a href=&quot;https://www.typescriptlang.org/docs/handbook/babel-with-typescript.html&quot; target=&quot;_blank&quot;&gt;tsc&lt;/a&gt;や&lt;a href=&quot;https://babeljs.io/&quot; target=&quot;_blank&quot;&gt;Babel&lt;/a&gt;が比較対象になるでしょう。&lt;/p&gt;
-
-&lt;p&gt;esbuildは標準で、JS、JSX、TS、TSX、CSS、JSONなどを解釈しバンドルします。パッと見た感じはビルドに必要な一連の処理を担ってくれる印象ですが、&lt;strong&gt;ES5への変換に未対応&lt;/strong&gt;だったり、TypeScriptを解釈するものの&lt;strong&gt;型チェックはしなかったり&lt;/strong&gt;と、ビルド時によく使われる機能が一部ないので、利用の際は要件に合うかの確認が必要そうです。&lt;/p&gt;
-
-&lt;h3 id=&quot;使い方&quot;&gt;使い方&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install -D esbuild&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npx esbuild --bundle ./index.js&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;configファイルなしで実行できるので、&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;npm install&lt;/code&gt;して即利用できます。基本的なオプションも揃っています。&lt;/p&gt;
-
-&lt;table&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Option&lt;/th&gt;
-      &lt;th&gt;効果&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--bundle&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;依存関係をインライン化します。esbuildはデフォルトでは依存関係をバンドルに含まないので、明示的に有効化する必要があります。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--minify&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;ビルドしたファイルを圧縮します。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--watch&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;ウォッチモードを有効にします。ファイルの変更を検知して再ビルドが走るようになります。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--target&lt;/code&gt;&lt;br /&gt;例: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-target=es2020,chrome58,node12&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;ビルド後に生成するJSのターゲット環境を指定します。デフォルトは&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;esnext&lt;/code&gt;です。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--sourcemap&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;sourcemapを生成します。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--define&lt;/code&gt;&lt;br /&gt;例: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--define:DEBUG=true&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;グローバル変数を定義します。&lt;/td&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-      &lt;td&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--splitting&lt;/code&gt;&lt;/td&gt;
-      &lt;td&gt;Code Splitting を有効化しますが、まだWIPのオプションです。&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p&gt;自分がよく使いそうなものをピックアップしました。これ以外のオプションは&lt;a href=&quot;https://esbuild.github.io/api/#build-api&quot; target=&quot;_blank&quot;&gt;公式&lt;/a&gt;をご確認ください。&lt;/p&gt;
-
-&lt;h3 id=&quot;利用例&quot;&gt;利用例&lt;/h3&gt;
-
-&lt;p&gt;ES5に変換できないので、Production buildには使いにくいのが現状です。ですのでProduction buildは今まで通りwebpackを使って、Development buildにesbuildを利用するのが無難だと思います。&lt;a href=&quot;https://github.com/privatenumber/esbuild-loader&quot; target=&quot;_blank&quot;&gt;esbuild-loader&lt;/a&gt;を使うとwebpack上でesbuildを利用できます。&lt;/p&gt;
-
-&lt;h3 id=&quot;気をつけたいこと&quot;&gt;気をつけたいこと&lt;/h3&gt;
-
-&lt;p&gt;まだBeta版ということもあって気をつけたほうが良いことはいっぱいあるとは思いますが、私がドキュメントやIssueを見ていて目に止まった部分を書き置きしておきます。&lt;/p&gt;
-
-&lt;h4 id=&quot;css-modules未対応&quot;&gt;CSS Modules未対応&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;0.7.7でExperimentalなCSSのサポートを開始&lt;/li&gt;
-  &lt;li&gt;sass/scssの対応はまだの様子&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/evanw/esbuild/issues/20&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;にて議論中&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;tsconfigの解釈&quot;&gt;tsconfigの解釈&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;TS, TSXをビルドするときはtsconfigの設定を読み取る&lt;/li&gt;
-  &lt;li&gt;tsconfigの特定フィールドのみ参照される、詳細は&lt;a href=&quot;https://esbuild.github.io/content-types/#tsconfig-json&quot; target=&quot;_blank&quot;&gt;公式&lt;/a&gt;にて&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;動的import-code-splittingの展望&quot;&gt;動的import, Code Splittingの展望&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;動的importの構文には対応している&lt;/li&gt;
-  &lt;li&gt;現時点ではCode SplittingはESMのみ対応してるが、ほかのモジュール形式も対応していくつもり&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/evanw/esbuild/issues/16&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;にて議論中&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;es5との付き合い方&quot;&gt;ES5との付き合い方&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--target=es5&lt;/code&gt;とした場合、元々ES5のコードはES5のままになるが、ES6のコードをES5に変換することはない&lt;/li&gt;
-  &lt;li&gt;今後ES5に対応することはなさそう&lt;/li&gt;
-  &lt;li&gt;参考&lt;a href=&quot;https://github.com/evanw/esbuild/issues/297&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;はこちら&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;top-lebel-await未対応&quot;&gt;top-lebel await未対応&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;今後もしばらくは対応できそうにない&lt;/li&gt;
-  &lt;li&gt;細かい議論は&lt;a href=&quot;https://github.com/evanw/esbuild/issues/253&quot; target=&quot;_blank&quot;&gt;Issue&lt;/a&gt;にて&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;おわり&quot;&gt;おわり&lt;/h3&gt;
-
-&lt;p&gt;以上、簡単ですがesbuildについての書き置きです。&lt;br /&gt;
-冒頭にも書いたように、最近は環境構築する頻度が減っているので、おそらく数カ月後に久々にesbuildを使おうとして右往左往している自分がいることでしょう。そのときに少しでも役立てばいいなと思います(バージョンが進んでほとんど役立たなくなっているかもしれませんが😫)。&lt;/p&gt;</content><author><name></name></author><summary type="html">最近開発環境を改善する機会が減っていて、Babelやらwebpackやらの情報を追っていませんでした。が、チームメンバーが爆速なesbuildを導入してくれて感動したのを機に、久々にフロントエンドの開発環境について考えてみました。</summary></entry></feed>
+いろいろ読みましたが、一番理解が捗ったのは&lt;a href=&quot;https://amzn.to/3ny06zy&quot; target=&quot;_blank&quot;&gt;アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～&lt;/a&gt;でした。同じような悩みを持つ開発者の手助けになれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。</summary></entry></feed>
