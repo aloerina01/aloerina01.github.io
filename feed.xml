@@ -1,5 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-01-16T09:29:47+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました</title><link href="https://aloerina01.github.io/blog/2025-01-16-1" rel="alternate" type="text/html" title="チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました" /><published>2025-01-16T00:00:00+00:00</published><updated>2025-01-16T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-01-16-1">&lt;p&gt;エンジニア一人ひとりの期待役割がスキルやキャリアにより変化するように、&lt;strong&gt;チームも成熟度やフェーズに応じて期待役割が変化します&lt;/strong&gt;。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-02-12T12:47:52+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">計画的にロールモデルを活用する</title><link href="https://aloerina01.github.io/blog/2025-02-12-1" rel="alternate" type="text/html" title="計画的にロールモデルを活用する" /><published>2025-02-12T00:00:00+00:00</published><updated>2025-02-12T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-02-12-1">&lt;p&gt;ロールモデルの存在は、&lt;strong&gt;日々の小さな行動改善&lt;/strong&gt;から&lt;strong&gt;キャリアの選択&lt;/strong&gt;まで、多くの場面で役立ちます。&lt;/p&gt;
+
+&lt;p&gt;「ロールモデル」や「モデルケース」と私はよく呼びますが、マネジメントの中で意識的にこれらを活用することで、想像以上に幅広い効果を体感してきました。&lt;/p&gt;
+
+&lt;p&gt;今回は、その事例を紹介します。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#ロールモデルの活用事例&quot; id=&quot;markdown-toc-ロールモデルの活用事例&quot;&gt;&lt;strong&gt;ロールモデルの活用事例&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#マネージャーにとってもロールモデルが役立つ&quot; id=&quot;markdown-toc-マネージャーにとってもロールモデルが役立つ&quot;&gt;&lt;strong&gt;マネージャーにとってもロールモデルが役立つ&lt;/strong&gt;&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-フィードバックの空中戦を避ける&quot; id=&quot;markdown-toc-1-フィードバックの空中戦を避ける&quot;&gt;&lt;strong&gt;1. フィードバックの空中戦を避ける&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-チーム文化を根付かせる&quot; id=&quot;markdown-toc-2-チーム文化を根付かせる&quot;&gt;&lt;strong&gt;2. チーム文化を根付かせる&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-新たなマネージャー候補を生み出す&quot; id=&quot;markdown-toc-3-新たなマネージャー候補を生み出す&quot;&gt;&lt;strong&gt;3. 新たなマネージャー候補を生み出す&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ロールモデルとの接点をつくる方法&quot; id=&quot;markdown-toc-ロールモデルとの接点をつくる方法&quot;&gt;&lt;strong&gt;ロールモデルとの接点をつくる方法&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;ロールモデルの活用事例&quot;&gt;&lt;strong&gt;ロールモデルの活用事例&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;たとえばジュニアエンジニアがキャリアのレベルアップを考えるとき、&lt;strong&gt;自身とロールモデルを比較することで取るべき行動を浮き彫り&lt;/strong&gt;にできます。成果だけでなく、プロセスや学習の仕方も含めて比較すると、より実践的なヒントが得られるでしょう。&lt;/p&gt;
+
+&lt;p&gt;シニアエンジニアが自身の価値を追求する際にも、ロールモデルは参考になります。&lt;strong&gt;成功パターンをそのまま適用できるケースは少ないですが、共通項を見出したり、体験談を聞いたりすることで、新たな視点を得られる&lt;/strong&gt;ことがあります。&lt;/p&gt;
+
+&lt;p&gt;また、キャリアのステージを問わず、Web業界は数年後の自分の姿が想像しにくいものです。しかし&lt;strong&gt;2〜5年先を歩む先輩の姿がいくつか見えるだけで、将来像を描きやすく&lt;/strong&gt;なります。&lt;br /&gt;
+ロールモデルが歩いた道を丁寧にたどるというよりは、&lt;strong&gt;複数のロールモデルの背中を見ながら紆余曲折しその過程で自分の道を発見していく&lt;/strong&gt;というイメージです。&lt;/p&gt;
+
+&lt;p&gt;ここまでいくつか簡単な事例を挙げてみました。&lt;/p&gt;
+
+&lt;p&gt;ロールモデルを意識したことがない人でも、振り返ってみると『あのとき、あの人のやり方を参考にした』という経験があると思います。&lt;strong&gt;この経験をより意識的にマネジメントに組み込んでいく&lt;/strong&gt;ことが今回のテーマというわけです。&lt;/p&gt;
+
+&lt;h3 id=&quot;マネージャーにとってもロールモデルが役立つ&quot;&gt;&lt;strong&gt;マネージャーにとってもロールモデルが役立つ&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;ロールモデルを意識することで、&lt;strong&gt;マネジメントする側&lt;/strong&gt;の私自身にも恩恵があります。&lt;/p&gt;
+
+&lt;h4 id=&quot;1-フィードバックの空中戦を避ける&quot;&gt;&lt;strong&gt;1. フィードバックの空中戦を避ける&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;エンジニアがおこなう設計の良し悪しの議論と同様で、フィードバックをする際にも目に見える「モノ」がないと認識のズレが起きがちです。モデルケースが目に見える「モノ」の役割をしてくれることがあります。&lt;/p&gt;
+
+&lt;h4 id=&quot;2-チーム文化を根付かせる&quot;&gt;&lt;strong&gt;2. チーム文化を根付かせる&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;人は所属する集団の”色”に染まる傾向&lt;/strong&gt;にあります。これを利用して、マネージャーやリーダーなど&lt;strong&gt;チームへの影響力を持つ人が、メンバーに推奨したい行動を率先してやることでチームに習慣や文化を根付かせる&lt;/strong&gt;ことができます。&lt;/p&gt;
+
+&lt;p&gt;たとえば「小さなことでも称賛と感謝を忘れないチーム」を目指すのであれば、影響力のあるマネージャー等が称賛と感謝を日々実践しモデルケースとなると効果的でしょう。&lt;/p&gt;
+
+&lt;p&gt;感謝を伝え合うWorkshop 等を開催する手もありますが、その場限りで終わりがちです。定着を狙う場合は、&lt;strong&gt;身近なモデルケースによりじわじわ浸透させる&lt;/strong&gt;ことを私は意識します。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-新たなマネージャー候補を生み出す&quot;&gt;&lt;strong&gt;3. 新たなマネージャー候補を生み出す&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;多くのエンジニアにとって、マネージャーは「何をしているか分からない」「楽しそうに見えない」存在になりがちです。プレイヤーだった頃の私にとってもそうでした。&lt;/p&gt;
+
+&lt;p&gt;その結果、&lt;strong&gt;「なりたい」と思われにくい役割になってしまう&lt;/strong&gt;のですが、これを解消するために、メンバーに&lt;strong&gt;マネージャーの仕事内容を説明し、理解を深めた上でマネージャーを観察してもらう&lt;/strong&gt;ことを実践しています。&lt;/p&gt;
+
+&lt;p&gt;マネージャーにとって「次のマネージャー候補を育成する(見つける)」ことは難易度の高い課題ですが、この下準備がきっかけとなり新たなマネージャーが生まれた経験があります。&lt;/p&gt;
+
+&lt;p&gt;また、マネージャーを観察することで、&lt;strong&gt;エンジニアがすぐに活かせるTipsを発見していた&lt;/strong&gt;事例もあります。たとえばテックリードが「人を巻き込み大きな成果を導く方法」を学ぶケースや、後輩のメンターを担当するエンジニアが「権限委譲の仕方」を参考にするケースなどがありました。&lt;/p&gt;
+
+&lt;p&gt;こういった経験もまた、いずれマネジメントに興味を持つきっかけになることがあるので、布石としての効果があるでしょう。&lt;/p&gt;
+
+&lt;h3 id=&quot;ロールモデルとの接点をつくる方法&quot;&gt;&lt;strong&gt;ロールモデルとの接点をつくる方法&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;最後に、どのようにロールモデルとチームメンバーとの接点をつくっているかを紹介します。&lt;/p&gt;
+
+&lt;p&gt;私は『&lt;strong&gt;その人の協業者の中からロールモデルを選ぶ&lt;/strong&gt;』方法を取ることが多いです。具体的には、&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;協業者の特性、スキル、働き方、価値観、これまでのキャリア等の&lt;strong&gt;情報を集めてマップを描く&lt;/strong&gt;。&lt;/li&gt;
+  &lt;li&gt;メンバー各々の状況に合わせて、マップから&lt;strong&gt;適切なロールモデルを選び伝える&lt;/strong&gt;、また&lt;strong&gt;観察する観点を伝える&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;加えて、ロールモデルとメンバーの直接的な関わりの機会をつくりたい場合は、&lt;strong&gt;プロジェクトのふりかえりの場で同じテーブルにつく機会を設ける&lt;/strong&gt;などの工夫をすることもあります。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;人を観察することが業務の一環である&lt;/strong&gt;マネージャーにとって、また&lt;strong&gt;チームメンバー各々の現状や次のステップについて誰よりも高解像度に把握している&lt;/strong&gt;マネージャーにとって、さらには&lt;strong&gt;ロールをまたいでコミュニケーションハブになりやすい&lt;/strong&gt;マネージャーにとって、この方法は手間をかけずに実践できます。&lt;/p&gt;
+
+&lt;p&gt;もしかしたら、協業者が多く、各分野の専門家が多い今の職場だから使える手法かもしれませんが、手間をかけずに実践できる「ロールモデルの活用」は、今の私にとって有用な手法のひとつです。&lt;/p&gt;
+
+&lt;p&gt;以上です。&lt;br /&gt;
+ぜひ皆さんの回りのロールモデルの事例もお聞かせください。その他感想は&lt;a href=&quot;https://x.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までどうぞ。&lt;/p&gt;</content><author><name></name></author><summary type="html">ロールモデルの存在は、日々の小さな行動改善からキャリアの選択まで、多くの場面で役立ちます。</summary></entry><entry><title type="html">チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました</title><link href="https://aloerina01.github.io/blog/2025-01-16-1" rel="alternate" type="text/html" title="チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました" /><published>2025-01-16T00:00:00+00:00</published><updated>2025-01-16T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-01-16-1">&lt;p&gt;エンジニア一人ひとりの期待役割がスキルやキャリアにより変化するように、&lt;strong&gt;チームも成熟度やフェーズに応じて期待役割が変化します&lt;/strong&gt;。&lt;/p&gt;
 
 &lt;p&gt;様々な期待役割を持つチームメンバーの活動が重なり合い生まれる『&lt;strong&gt;チームのプロセスや成果&lt;/strong&gt;』&lt;strong&gt;がどうあるべきか&lt;/strong&gt;、がチームの期待役割であると言えます。&lt;strong&gt;チームメンバー各々がこれに目を向ける&lt;/strong&gt;ことで、より効果的に相互作用し、高い成果を出し、&lt;strong&gt;自律的に活動をするチームに近づけます&lt;/strong&gt;。&lt;/p&gt;
 
@@ -757,61 +833,4 @@
 
 &lt;p&gt;……なんて大げさにメッセージを残してみたものの、まだまだマネージャーとして道半ばです。チームのフェーズによってマネジメントタスクが変わると書きましたが、比較的得意なフェーズと苦手なフェーズがあったりもします。様々なシチュエーションを経験し試行錯誤をしながら手札を増やしていくという点では、レベル1だった頃と変わりません。そういった意味でも、やはり焦らず少しずつ前進するしかないのだと思います。&lt;/p&gt;
 
-&lt;p&gt;感想はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までよろしくお願いします。それでは、良いお年を。&lt;/p&gt;</content><author><name></name></author><summary type="html">タイトルのように「来月からエンジニアリングマネージャーやってくれませんか」と言われた経験が私にもあります。もう3〜4年くらい前のことです。おそらく多くのエンジニアと同じように当時の私はマネジメント業に興味がなく、マネージャーになってみたものの何から手を付ければ良いかも分からず、とりあえずチームメンバーとの1on1をセッティングしてみたりしました。</summary></entry><entry><title type="html">スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方</title><link href="https://aloerina01.github.io/blog/2021-10-29-1" rel="alternate" type="text/html" title="スクラムチームがぶち当たる「相対見積もり」の壁と、私たちの乗り越え方" /><published>2021-10-29T00:00:00+00:00</published><updated>2021-10-29T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2021-10-29-1">&lt;p&gt;これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。&lt;/p&gt;
-
-&lt;p&gt;今回は、私が実際に直面した問題と、それらを打破するためチームで取り組んできたことを思い返してみようと思います。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#壁1-相対見積もりの考え方を理解できない&quot; id=&quot;markdown-toc-壁1-相対見積もりの考え方を理解できない&quot;&gt;壁1. 「相対見積もり」の考え方を理解できない&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#壁2-ストーリーポイントが何を見積もる手段かを理解していない&quot; id=&quot;markdown-toc-壁2-ストーリーポイントが何を見積もる手段かを理解していない&quot;&gt;壁2. ストーリーポイントが「何を見積もる手段か」を理解していない&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#壁3-見積もりをコミットメントと捉えてしまう&quot; id=&quot;markdown-toc-壁3-見積もりをコミットメントと捉えてしまう&quot;&gt;壁3. 見積もりをコミットメントと捉えてしまう&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;壁1-相対見積もりの考え方を理解できない&quot;&gt;壁1. 「相対見積もり」の考え方を理解できない&lt;/h3&gt;
-
-&lt;p&gt;バックログ上に積まれたユーザーストーリーやエピックを見積もろうとしたとき、私たちは真っ先に「こんなコンポーネントを新規実装するだろう、おそらく2日くらい掛かる」「あの既存機能をいじる必要があるが、複雑な箇所なので時間がかかりそうだ」と&lt;strong&gt;具体的な作業内容とそれにかかる時間をセットで&lt;/strong&gt;イメージしていました。それらを足し合わせて(さらにバッファを加えて)最終的な見積もりを出していました。&lt;/p&gt;
-
-&lt;p&gt;しかし、これは相対見積もりではありません。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;相対的に見積もるには、過去に取り組んだ仕事を基準とし、その仕事との比較で考える&lt;/strong&gt;必要があります。ストーリーポイントで見積もるにせよ、日数で見積もるにせよ、です。&lt;br /&gt;
-これを理解し体に馴染ませるために、見積もりの度に「このストーリーは(基準としている)あの仕事と同じくらい？ 倍くらい？ 半分くらい？」と聞き合うようことを繰り返しました。今では基準と比較することにも慣れてきましたが、長いこと苦戦した問題でした。苦戦した要因は、次の『壁2』で紹介する問題と合わさって、相対見積もりをより難しく捉えていたからでもあります。&lt;/p&gt;
-
-&lt;h3 id=&quot;壁2-ストーリーポイントが何を見積もる手段かを理解していない&quot;&gt;壁2. ストーリーポイントが「何を見積もる手段か」を理解していない&lt;/h3&gt;
-
-&lt;p&gt;ストーリーポイントの考え方は、慣れるまでは分かるようで分からないものでした。分かったつもりになっていた私がよくやった失敗は、「このストーリーは基準の2倍くらいの4日程度かかりそう、であればポイントは５だ」と期間を見積もりストーリーポイントに換算してしまうことでした。これはまさしくストーリーポイントの用途を理解していないことの現れです。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;ストーリーポイントは「規模」を見積もります&lt;/strong&gt;。規模を「作業量」と言い換えることもできます。ストーリーポイントを使う理由は、&lt;strong&gt;作業量の見積もりと期間の見積もりを分離して行うこと&lt;/strong&gt;だと考えると分かりやすかったです。上述の失敗例では期間を見積もってからストーリーポイントに変換していますが、本来のストーリーポイントの使い方に習うなら、&lt;strong&gt;ストーリーポイントによって作業量を見積もり、ベロシティと照らし合わせて期間を導き出す&lt;/strong&gt;が正解です。&lt;/p&gt;
-
-&lt;p&gt;私たちがこの考えに馴染めず苦労した背景には、「相対見積もりをするならストーリーポイント(またはTシャツサイズ等のそれに準ずるもの)を利用しなければならない」と思い込んでいたことがあります。また、いくつかあるストーリーポイントの利点をチームメンバー各々が断片的に知り、それを利用目的だと思い込んでいたことも要因でした。例えば「ストーリーポイントを使えば個々人の力量に依存しない見積もりができること」や「ストーリーポイントを使えば仕様が曖昧でも見積もれること」を、ストーリーポイントを採用する理由だと思っていました。&lt;br /&gt;
-そういった利点は多々あるものの、本質的には&lt;strong&gt;ストーリーポイントは「期間」と「作業量」を切り離し別々に見積もる道具&lt;/strong&gt;だと腹落ちしたことで前進しました。&lt;/p&gt;
-
-&lt;p&gt;とはいえ、理解できてもすぐにうまく実践できたわけではありません。&lt;/p&gt;
-
-&lt;h3 id=&quot;壁3-見積もりをコミットメントと捉えてしまう&quot;&gt;壁3. 見積もりをコミットメントと捉えてしまう&lt;/h3&gt;
-
-&lt;p&gt;先述の2つの壁を少しずつ乗り越え、ストーリーポイントを使った相対見積もりに慣れてくると、仕様が固まっていない曖昧な案件に対しても見積もりをするようになりました。言い換えると、作業量の見積もりに「複雑さ」を加味するようになりました。&lt;/p&gt;
-
-&lt;p&gt;「この手の案件はステークホルダーの時間が取りにくく後になって仕様がひっくり返るケースがある」「細かい仕様は決まってないけど、この画面の機能をいじるのであればおそらく作業量はこのくらいになる」と、&lt;strong&gt;作業量に複雑さをかけ合わせたものにポイントをつける&lt;/strong&gt;ようになりました。&lt;/p&gt;
-
-&lt;p&gt;このやり方は一長一短だとは思いますがそれはさておき、より深刻な失敗だったことは、一度見積もったポイントは根性で守り抜こうとしていたことです。もちろん期限を守ることはエンジニアには必須です。ただし&lt;strong&gt;見積もりはコミットメントではない&lt;/strong&gt;ということも忘れてはなりません。見積もりを基にコミットメントを決めることはありますが、見積もりのすべてがコミットメントになるわけではないのです。&lt;/p&gt;
-
-&lt;p&gt;“不確実性のコーン”と表現されるように、見積もりは初期段階ほど不正確です。ましてや私たちのように複雑さを加味するのであれば尚更です。ですので作業量に影響する要素が明らかになる度に&lt;strong&gt;再見積もり&lt;/strong&gt;をし、その確度(実現可能性)を上げることが必要でした。&lt;br /&gt;
-加えて、プランナーと「あとどんな情報が揃えば再見積もりができるか」や「見積もりと実働がズレたらどう対応していくか」などについて事前に認識を合わせておくことも、再見積もりを繰り返すプロセスを維持するために必要でした。&lt;/p&gt;
-
-&lt;p&gt;見積もりの確度がどの程度かは、見積もった私たちにしか分かりません。ですのでそれを丁寧にステークホルダーに共有し、確度に応じたプランを用意しておくところまでをセットで行うよう習慣化することで、周囲から再見積もりのプロセスの理解を得やすくなると考えています。&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;「相対見積もりといえばストーリーポイントでしょ！」と勢いで始めたもののなかなか定着せず、効果を得られなかった私が、どのような問題に陥っていたかを紹介しました。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;相対見積もりとストーリーポイントをごちゃまぜに捉えていたこと&lt;/li&gt;
-  &lt;li&gt;ストーリーポイントにより「作業量」を見積もり、その値から「期間」を算出する、という根本的な考え方を理解していなかったこと&lt;/li&gt;
-  &lt;li&gt;再見積もりをして確度をあげようとしていなかったこと&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;これらが主な失敗でした。乗り越えるためには失敗を自覚し向き合うことはもちろん大事ですが、併せて根気も必要だったと思います。時間をかけて実践とふりかえりを重ねてようやく今の理解度に到達できたので、総括すると「根気強く向き合う」が私たちの乗り越え方だったと言えるかもしれません。と言っても、まだ完璧な相対見積もりができているわけではないので、これからも新しい壁にぶつかりながら試行錯誤していこうと思います。&lt;/p&gt;
-
-&lt;p&gt;最後に、参考書籍を紹介して締めくくります。&lt;br /&gt;
-いろいろ読みましたが、一番理解が捗ったのは&lt;a href=&quot;https://amzn.to/3ny06zy&quot; target=&quot;_blank&quot;&gt;アジャイルな見積りと計画づくり ～価値あるソフトウェアを育てる概念と技法～&lt;/a&gt;でした。同じような悩みを持つ開発者の手助けになれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">これまでエンジニアやスクラムマスターとしてスクラムチームに関わって来ましたが、その過程で何度も「相対見積もり」や「ストーリーポイント」に纏わる悩みにぶち当たってきました。工数や期間での見積もりに慣れていた私にとって、それらは理解も実践もしにくい手強いものでした。</summary></entry></feed>
+&lt;p&gt;感想はぜひ&lt;a href=&quot;https://twitter.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までよろしくお願いします。それでは、良いお年を。&lt;/p&gt;</content><author><name></name></author><summary type="html">タイトルのように「来月からエンジニアリングマネージャーやってくれませんか」と言われた経験が私にもあります。もう3〜4年くらい前のことです。おそらく多くのエンジニアと同じように当時の私はマネジメント業に興味がなく、マネージャーになってみたものの何から手を付ければ良いかも分からず、とりあえずチームメンバーとの1on1をセッティングしてみたりしました。</summary></entry></feed>
