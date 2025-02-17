@@ -463,9 +463,11 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .site-footer-v2 .site-values-title { font-size: 1em; font-weight: 600; }
 
-.site-footer-v2 .site-values-copyright { font-size: 0.75em; }
+.site-footer-v2 .site-values-anotation { font-size: 0.75em; }
 
-.site-footer-v2 .site-designs { font-size: 0.75em; }
+.site-footer-v2 .site-values-anotation span { display: inline-block; }
+
+.site-footer-v2 .site-designs { font-size: 0.75em; white-space: nowrap; }
 
 @media screen and (min-width: 768px) { .site-footer-v2-wrapper.sub-contents-wrapper { padding: 1.8em 1em; } .site-footer-v2 .footer-v2-main { flex-direction: row; align-items: flex-end; justify-content: space-between; text-align: start; } }
 
