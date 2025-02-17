@@ -751,12 +751,16 @@ pre code.hljs {
 			font-size: 1em;
 			font-weight: 600;
 		}
-		&-copyright {
+		&-anotation {
 			font-size: 0.75em;
+			span {
+				display: inline-block;
+			}
 		}
 	}
 	.site-designs {
 		font-size: 0.75em;
+		white-space: nowrap;
 	}
 	@include media($tablet) {
 		&-wrapper.sub-contents-wrapper {
