@@ -1,5 +1,301 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-03-31T04:11:34+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">「若手が育っていない」「優秀な人に負担が偏っている」と感じたときに立ち返ること</title><link href="https://aloerina01.github.io/blog/2025-03-31-1" rel="alternate" type="text/html" title="「若手が育っていない」「優秀な人に負担が偏っている」と感じたときに立ち返ること" /><published>2025-03-31T00:00:00+00:00</published><updated>2025-03-31T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-03-31-1">&lt;p&gt;チームでプロダクト開発をしているものの、ジュニアエンジニアが十分に成長していない…。1人でやれるタスクは増えているものの、それなりの規模の開発案件を責任を持ってやり遂げるだけのオーナーシップやリーダーシップがなかなか養われない…。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-05-07T02:54:42+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">“我々はなぜここにいるのか”の問いを手放した理由 - 心の発達理論から学ぶEMの問いの設計</title><link href="https://aloerina01.github.io/blog/2025-05-07-1" rel="alternate" type="text/html" title="“我々はなぜここにいるのか”の問いを手放した理由 - 心の発達理論から学ぶEMの問いの設計" /><published>2025-05-07T00:00:00+00:00</published><updated>2025-05-07T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-05-07-1">&lt;p&gt;最近1on1やファシリテーションでの問いかけがうまく“効いていない”感覚になることがありました(おそらく昔から効いてない場面はあったのですが、最近それに自覚的になりました)。&lt;/p&gt;
+
+&lt;p&gt;その例のひとつが、「&lt;strong&gt;私/我々はなぜここにいるのか&lt;/strong&gt;」という問いです。&lt;/p&gt;
+
+&lt;p&gt;この問いはアジャイルの文脈等で度々登場します。私/私たちが特定の活動をする根本的な目的や存在意義を明確にするための問いです。&lt;/p&gt;
+
+&lt;p&gt;この問いは、問いかけ方やタイミング、または心理的安全性など最低限のことに気をつければ&lt;strong&gt;万人に有効だという前提&lt;/strong&gt;でこれまで扱ってきました。&lt;/p&gt;
+
+&lt;p&gt;しかし私は、いくつかの実践経験とある理論から、&lt;strong&gt;この問いがそもそも有効でない相手がいる&lt;/strong&gt;ことを理解しました。これまで有用な武器であったこの問いを手放す決断に至った経緯と学びを共有します。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#問いがうまく刺さらなかった経験&quot; id=&quot;markdown-toc-問いがうまく刺さらなかった経験&quot;&gt;問いがうまく刺さらなかった経験&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#キーガンの心の発達理論を学ぶ&quot; id=&quot;markdown-toc-キーガンの心の発達理論を学ぶ&quot;&gt;キーガンの「心の発達理論」を学ぶ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#発達段階は進めば良いわけではない---理論の詳細を学ぶ&quot; id=&quot;markdown-toc-発達段階は進めば良いわけではない---理論の詳細を学ぶ&quot;&gt;発達段階は進めば良いわけではない - 理論の詳細を学ぶ&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#どういう問いを設計すべきだったか&quot; id=&quot;markdown-toc-どういう問いを設計すべきだったか&quot;&gt;どういう問いを設計すべきだったか&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#まとめ---各段階に向けた問いの設計方針&quot; id=&quot;markdown-toc-まとめ---各段階に向けた問いの設計方針&quot;&gt;まとめ - 各段階に向けた問いの設計方針&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#第3段階向け&quot; id=&quot;markdown-toc-第3段階向け&quot;&gt;第3段階向け&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#第4段階向け&quot; id=&quot;markdown-toc-第4段階向け&quot;&gt;第4段階向け&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おまけ---私が目指す自律的チームに必要な発達段階&quot; id=&quot;markdown-toc-おまけ---私が目指す自律的チームに必要な発達段階&quot;&gt;おまけ - 私が目指す「自律的チーム」に必要な発達段階&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おまけ---第3第4への移行支援の3ステップ&quot; id=&quot;markdown-toc-おまけ---第3第4への移行支援の3ステップ&quot;&gt;おまけ - 第3→第4への移行支援の3ステップ&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-外在化暗黙的に信じている価値観前提を言葉にする&quot; id=&quot;markdown-toc-1-外在化暗黙的に信じている価値観前提を言葉にする&quot;&gt;1. “外在化”：暗黙的に信じている価値観・前提を言葉にする&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-相対化信じている枠組みが唯一ではないと気づく&quot; id=&quot;markdown-toc-2-相対化信じている枠組みが唯一ではないと気づく&quot;&gt;2. “相対化”：信じている枠組みが“唯一ではない”と気づく&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-内在化自分の価値観や判断軸をつくり始める&quot; id=&quot;markdown-toc-3-内在化自分の価値観や判断軸をつくり始める&quot;&gt;3. “内在化”：自分の価値観や判断軸をつくり始める&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#移行支援で気をつけること&quot; id=&quot;markdown-toc-移行支援で気をつけること&quot;&gt;移行支援で気をつけること&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;問いがうまく刺さらなかった経験&quot;&gt;問いがうまく刺さらなかった経験&lt;/h3&gt;
+
+&lt;p&gt;「私/我々はなぜここにいるのか」の問いに対して以下のような反応を得たことがありました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;「え、えっと…このプロダクトの担当だから？それ以外に理由ってあるの？」(&lt;strong&gt;混乱&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;「そんなに深く考えたことありませんでした」(&lt;strong&gt;防衛的態度&lt;/strong&gt;)&lt;/li&gt;
+  &lt;li&gt;「まあ、やっぱり人の役に立ちたいからですかね」(&lt;strong&gt;本音ではない同調&lt;/strong&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これらの反応から、自身の胸の奥底にあるものを探究する&lt;strong&gt;「内的な意味付け」という行為の難易度は人によって違うかもしれない&lt;/strong&gt;と仮説を立てたことが、今回の発端でした。&lt;/p&gt;
+
+&lt;h3 id=&quot;キーガンの心の発達理論を学ぶ&quot;&gt;キーガンの「心の発達理論」を学ぶ&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;心の発達理論&lt;/strong&gt;または&lt;strong&gt;構成的発達理論&lt;/strong&gt;と呼ばれる考えがあります。&lt;/p&gt;
+
+&lt;p&gt;これは人間の意識の発達を5つの段階で表し、個人がどのように自己と世界を理解し意味付けを行うかが段階的に進化すると説明しています。&lt;/p&gt;
+
+&lt;p&gt;今回注目したいのは、成人が最も多く留まるとされる&lt;strong&gt;第3段階&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;段階&lt;/th&gt;
+      &lt;th&gt;名称&lt;/th&gt;
+      &lt;th&gt;特徴&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第1段階&lt;/td&gt;
+      &lt;td&gt;衝動的心性&lt;br /&gt;(Impulsive Mind)&lt;/td&gt;
+      &lt;td&gt;幼児期に見られ、感覚や衝動に支配される。自己と他者の区別が未発達。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第2段階&lt;/td&gt;
+      &lt;td&gt;帝国的心性&lt;br /&gt;(Imperial Mind)&lt;/td&gt;
+      &lt;td&gt;自己中心的で、自分の欲求や利益を最優先する。規則や他者の視点を取り入れることが難しい。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第3段階&lt;/td&gt;
+      &lt;td&gt;社会化された心性&lt;br /&gt;(Socialized Mind)&lt;/td&gt;
+      &lt;td&gt;他者の期待や社会的規範に基づいて自己を形成する。所属する集団や関係性が自己認識に大きな影響を与える。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第4段階&lt;/td&gt;
+      &lt;td&gt;自己主導的心性&lt;br /&gt;(Self-Authoring Mind)&lt;/td&gt;
+      &lt;td&gt;自らの価値観や信念に基づいて意思決定を行う。内的なコンパスを持ち、他者の期待から独立した自己を確立する。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第5段階&lt;/td&gt;
+      &lt;td&gt;自己変容的心性&lt;br /&gt;(Self-Transforming Mind)&lt;/td&gt;
+      &lt;td&gt;自己の枠組みや信念を相対化し、複数の視点を統合する。自己や世界の複雑性を受け入れ、継続的な変化を追求する。&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;第3段階(社会化された自己)は、以下のような特徴を持ちます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;自己とは&lt;strong&gt;他者との関係の中で規定されるもの&lt;/strong&gt;（自分の価値や存在意義は、外から与えられる）&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;「役に立つこと」「期待に応えること」が最優先&lt;/strong&gt;の倫理的指針になる&lt;/li&gt;
+  &lt;li&gt;内面的な欲求や信念は未分化で、&lt;strong&gt;「私は何がしたいのか」より「何が求められているか」&lt;/strong&gt;が判断軸になる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;したがって、「なぜここにいるのか？」という内的動機を問う構造は第3段階の枠組みの外にあるため、そもそもピントが合いづらいのです。&lt;/p&gt;
+
+&lt;p&gt;私の事例に戻ると、私が問いかけた相手は決して怠けていたり理解力がないのではなく、&lt;strong&gt;仕事における「なぜ（目的・意義）」を、役割や所属といった外部的な基準で意味づける段階にいる&lt;/strong&gt;ために、内的な意味付けを期待する問いかけは思考様式にそぐわなかったと言えるでしょう。&lt;/p&gt;
+
+&lt;h3 id=&quot;発達段階は進めば良いわけではない---理論の詳細を学ぶ&quot;&gt;発達段階は進めば良いわけではない - 理論の詳細を学ぶ&lt;/h3&gt;
+
+&lt;p&gt;段階は「能力の序列」ではなく、&lt;strong&gt;自己を捉える軸の違い&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;第3段階は「つながりと忠誠」を大切にする&lt;/li&gt;
+  &lt;li&gt;第4段階は「原則と自律性」を土台にする&lt;/li&gt;
+  &lt;li&gt;第5段階は「複数の枠組みの統合と脱構築」を受け入れる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;倫理観、善悪、正しさの定義&lt;/strong&gt;も段階で変化します。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;第3段階：「他者をがっかりさせないこと」が善&lt;/li&gt;
+  &lt;li&gt;第4段階：「自らの信念と責任を貫くこと」が善&lt;/li&gt;
+  &lt;li&gt;第5段階：「信念や自己概念すら再構成できる柔軟さ」が善&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;例えばオペレーション中心の職務では第3段階的な動機づけが力を発揮するなど、職種や役割によってフィットする段階は変わります。なので&lt;strong&gt;段階を進めば良いわけではない&lt;/strong&gt;、ということを強調しておきます。EMとして&lt;strong&gt;メンバーの段階を無理に変化させる気はありません&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;理論を別の切り口で説明してみます。&lt;/p&gt;
+
+&lt;p&gt;心の発達理論(Subject-Object Theory of Development)では、&lt;strong&gt;各段階で「主観（Subject）」として捉えていたものを、次の段階で「客体（Object）」として認識できるようになること&lt;/strong&gt;が発達の鍵とされています。つまり、以前は無意識に影響を受けていた信念や価値観を&lt;strong&gt;意識的&lt;/strong&gt;に捉え、再構築する能力が発達を促進します。&lt;/p&gt;
+
+&lt;h3 id=&quot;どういう問いを設計すべきだったか&quot;&gt;どういう問いを設計すべきだったか&lt;/h3&gt;
+
+&lt;p&gt;第3段階の人に、自分の心の奥を探るきっかけを与えたいのであれば&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;「どんなときに“役に立てた”と感じた？」&lt;/li&gt;
+  &lt;li&gt;「誰に喜ばれると自分も嬉しい？」&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった具合に、&lt;strong&gt;「他者との関係性」を起点とした問い&lt;/strong&gt;が適していたのでしょう。これを考慮せず、全員に同じように「私/私たちはなぜここにいるのか」と問いかけることは不適切だったと今では考えています。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ---各段階に向けた問いの設計方針&quot;&gt;まとめ - 各段階に向けた問いの設計方針&lt;/h3&gt;
+
+&lt;p&gt;ここまでの学びを踏まえて、第3段階・第4段階の人に向けてどのように問いを設計するか、方針をまとめます。いずれも、&lt;strong&gt;それぞれの段階の思考様式に沿った問いかけ&lt;/strong&gt;と、&lt;strong&gt;自己の段階を自覚するきっかけになり得る問いかけ&lt;/strong&gt;をすることが基本方針です。&lt;/p&gt;
+
+&lt;h4 id=&quot;第3段階向け&quot;&gt;第3段階向け&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;自己と他者の境界づけの支援&lt;/strong&gt;（アイデンティティと期待の分離を支援する）&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;内的対話の導入&lt;/strong&gt;（たとえば「あなたの中の声には複数あるとしたら？」）&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;価値観の言語化支援&lt;/strong&gt;（本人がまだ自分の中に持っていない構造に言葉を与える）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;第4段階向け&quot;&gt;第4段階向け&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;ロジックやパターンの明確化支援&lt;/strong&gt;（価値基準や信念の明確化を支援する）&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;一貫性の問い直し&lt;/strong&gt;（たとえば「それはいつから正しいと感じていますか？」）&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;前提を問い直す支援&lt;/strong&gt;（メタ構造の入り口に立たせる）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;おまけ---私が目指す自律的チームに必要な発達段階&quot;&gt;おまけ - 私が目指す「自律的チーム」に必要な発達段階&lt;/h3&gt;
+
+&lt;p&gt;心の発達理論に照らし合わせると、&lt;strong&gt;「自律性」とは第4段階以降で初めて&lt;/strong&gt;内発的な意味をもって成立する概念です。&lt;/p&gt;
+
+&lt;p&gt;言い換えると、第3段階的な「指示を待たずに動く」といった&lt;strong&gt;『表面的な自律的ふるまい』&lt;/strong&gt;と、第4段階的な「自分の軸で判断し責任を持つ」といった&lt;strong&gt;『構造的な自律性』&lt;/strong&gt;は異なると言えます。&lt;/p&gt;
+
+&lt;p&gt;各段階と自律性の関係はこのようになります。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;段階&lt;/th&gt;
+      &lt;th&gt;特徴&lt;/th&gt;
+      &lt;th&gt;「自律性」との関係&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第2段階（道具的段階）&lt;/td&gt;
+      &lt;td&gt;損得とルールによる行動&lt;/td&gt;
+      &lt;td&gt;自律性は存在せず、明確な報酬や罰でしか動けない&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第3段階（他者依存段階）&lt;/td&gt;
+      &lt;td&gt;他者の期待に従って行動&lt;/td&gt;
+      &lt;td&gt;自律的に見える行動も「評価されるから」であり、本質的には依存的&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第4段階（自己主導段階）&lt;/td&gt;
+      &lt;td&gt;自分の価値観・原則に基づいて意思決定&lt;/td&gt;
+      &lt;td&gt;初めて&lt;strong&gt;内在的な自律性&lt;/strong&gt;が発生し、他者と協働しつつも“自分の意志”で動ける&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;第5段階（自己変容段階）&lt;/td&gt;
+      &lt;td&gt;自分の枠組みをも相対化できる柔軟性&lt;/td&gt;
+      &lt;td&gt;「自律と非自律の揺らぎ」すら受容しながら選択できる次元に&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;これを踏まえると、私が目指す「自律的なチーム」には、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;少なくとも「チーム文化の形成に強く影響を与える中心層」が第4段階以上であることは不可欠&lt;/li&gt;
+  &lt;li&gt;第3段階の人が数名いることは問題ではなく、むしろ「信頼されたい」「貢献したい」という彼らの動機は、適切に設計された関係性やフィードバックの中でポジティブに活きる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;と考えられます。&lt;/p&gt;
+
+&lt;p&gt;ですので僕は今後、メンバー各々の段階を意識したうえで問いをデザインし、そして万が一「全員が第3段階」なチームである場合のみ、一部のメンバーに対し段階を上げる支援をしようと考えています。&lt;/p&gt;
+
+&lt;h3 id=&quot;おまけ---第3第4への移行支援の3ステップ&quot;&gt;おまけ - 第3→第4への移行支援の3ステップ&lt;/h3&gt;
+
+&lt;p&gt;段階を上げる支援をするならどうするかについても考えてみます。まだ実践していないので「支援の設計」の域を出ていないことに留意して読んでもらえればと思います。&lt;/p&gt;
+
+&lt;p&gt;さて、第3段階の特徴を改めて言語化してみましょう。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;他者の期待&lt;/strong&gt;に強く同一化している&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;「良い人」「求められる自分」でいること&lt;/strong&gt;に価値を感じる&lt;/li&gt;
+  &lt;li&gt;自分の意見や価値観は、他者の枠組みに埋もれて見えにくい&lt;/li&gt;
+  &lt;li&gt;「どう思われるか」が最重要の意思決定軸になる&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;責任や目的を“自分の内側”から引き出すのが苦手&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;これを踏まえて移行のステップをこのように考えてみます。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;“&lt;strong&gt;外在化&lt;/strong&gt;”：暗黙的に信じている価値観・前提を言葉にする&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;相対化&lt;/strong&gt;”：信じている枠組みが“唯一ではない”と気づく&lt;/li&gt;
+  &lt;li&gt;“&lt;strong&gt;内在化&lt;/strong&gt;”：自分の価値観や判断軸をつくり始める&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h4 id=&quot;1-外在化暗黙的に信じている価値観前提を言葉にする&quot;&gt;1. “外在化”：暗黙的に信じている価値観・前提を言葉にする&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ゴール：本人が「自分が当然だと思っていた考え方が“前提”である」と気づくこと&lt;/li&gt;
+  &lt;li&gt;方法：本人の言動の背景にある「暗黙のルール（例：期待に応えなければならない）」を探る&lt;/li&gt;
+  &lt;li&gt;使える問い：
+    &lt;ul&gt;
+      &lt;li&gt;「それをやらないと、何が起こると感じますか？」&lt;/li&gt;
+      &lt;li&gt;「そう思うようになったきっかけって、何か心当たりありますか？」&lt;/li&gt;
+      &lt;li&gt;「“〜すべき”って、誰が決めたんでしょう？」&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;2-相対化信じている枠組みが唯一ではないと気づく&quot;&gt;2. “相対化”：信じている枠組みが“唯一ではない”と気づく&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ゴール：「他者の期待」と「自分の価値観」が異なる可能性に気づかせる&lt;/li&gt;
+  &lt;li&gt;方法：対立する意見や価値観に出会わせ、自己の“内在的軸”の不在を実感させる&lt;/li&gt;
+  &lt;li&gt;使える問い：
+    &lt;ul&gt;
+      &lt;li&gt;「Aさんのやり方と、あなたのやり方では、どちらが正しいと思いますか？その理由は？」&lt;/li&gt;
+      &lt;li&gt;「そのやり方は、“あなたにとって”しっくりきてますか？」&lt;/li&gt;
+      &lt;li&gt;「もし誰の期待もなかったとしたら、あなた自身はどうしたいですか？」&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;3-内在化自分の価値観や判断軸をつくり始める&quot;&gt;3. “内在化”：自分の価値観や判断軸をつくり始める&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ゴール：本人の内面からの理由・信念によって意思決定できるようにする&lt;/li&gt;
+  &lt;li&gt;方法：小さな選択や挑戦の場で、自分の意志で決め、振り返るプロセスを支援する&lt;/li&gt;
+  &lt;li&gt;使える問い：
+    &lt;ul&gt;
+      &lt;li&gt;「あなたが“やりたい”と感じる理由は何ですか？」&lt;/li&gt;
+      &lt;li&gt;「それを選んだあなたを、どう思いますか？」&lt;/li&gt;
+      &lt;li&gt;「その判断は、あなたが大切にしている何を守ろうとしていますか？」&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;移行支援で気をつけること&quot;&gt;移行支援で気をつけること&lt;/h4&gt;
+
+&lt;p&gt;変化は時間がかかるものですし、そもそも段階を上げることはその個人にとって必要なこととは限りません。あくまで私が「チームにとって必要」と感じただけで、個人に焦点を当てれば、必ずしも段階を変えたいわけではないでしょう。&lt;/p&gt;
+
+&lt;p&gt;ですので、&lt;strong&gt;問いすぎず、導かず、変化を急かさないこと&lt;/strong&gt;に気をつけます。&lt;/p&gt;
+
+&lt;p&gt;また外在化→相対化→内在化の3ステップはすべて問いかけによって行うので、問われたメンバーは「今まで向き合ったことのない問い」と正面から向き合うことになるでしょう。それもやはり時間がかかることであり、頭の中だけでは結論は出しにくいことが多いかもしれません。&lt;/p&gt;
+
+&lt;p&gt;実践による気づきと内省を繰り返すことで少しずつステップが進むと考えられます。その&lt;strong&gt;精神的・時間的余白を十分に確保すること&lt;/strong&gt;を重視します。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;今まで「問いかけ」は聖なる武器であり、中でも様々な書籍等で登場する「私/我々はなぜここにいるのか」という問いは有用な武器だと考えてきました。&lt;/p&gt;
+
+&lt;p&gt;ですが、それは私の心の発達段階というレンズを通しての捉え方でした。人によってはその問いでは適切に自分自身に向き合えないこともあると、理論を通して、同時に肌感をもって分かってきました。&lt;/p&gt;
+
+&lt;p&gt;これを読んでいるEMの中には、これを当たり前に感じる人もいるでしょうし、何を言っているかピンとこない人もいるかもしれません。&lt;/p&gt;
+
+&lt;p&gt;様々な段階にいるであろう読者の方々が、記事を通していくつかの発達段階について理解し、そして私がこっそり仕込んだ各段階の実践例に触れ、1つでも新しい気付きに繋がれば幸いです。&lt;/p&gt;
+
+&lt;p&gt;この機に、改めて私とともに問いの再デザインをしてみるのはいかがでしょう？&lt;/p&gt;</content><author><name></name></author><summary type="html">最近1on1やファシリテーションでの問いかけがうまく“効いていない”感覚になることがありました(おそらく昔から効いてない場面はあったのですが、最近それに自覚的になりました)。</summary></entry><entry><title type="html">「若手が育っていない」「優秀な人に負担が偏っている」と感じたときに立ち返ること</title><link href="https://aloerina01.github.io/blog/2025-03-31-1" rel="alternate" type="text/html" title="「若手が育っていない」「優秀な人に負担が偏っている」と感じたときに立ち返ること" /><published>2025-03-31T00:00:00+00:00</published><updated>2025-03-31T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-03-31-1">&lt;p&gt;チームでプロダクト開発をしているものの、ジュニアエンジニアが十分に成長していない…。1人でやれるタスクは増えているものの、それなりの規模の開発案件を責任を持ってやり遂げるだけのオーナーシップやリーダーシップがなかなか養われない…。&lt;/p&gt;
 
 &lt;p&gt;一方で、難易度の高い案件やスケジュールの厳しい案件などは特定のシニアエンジニアの馬力によって乗り越えているため、特定の人に負荷が集中してばかり…。&lt;/p&gt;
 
@@ -758,47 +1054,4 @@
 
 &lt;p&gt;オンラインで目標設定のディスカッションをする際にMiroなどのホワイトボードツールにマトリクスを用意して付箋を重ねながら議論したり、オフラインの場でマトリクスを印刷して指差しながら議論の目線を合わせたりといった使い方を想定しています。もちろん個人の目標設定時にも使えます。&lt;/p&gt;
 
-&lt;p&gt;最後に改めて補足しておくと、マトリクスをすべて埋めることが重要なのではなく、&lt;strong&gt;納得いく目標を見つけること&lt;/strong&gt;が大切です。またチームで議論しながら目標設定する場合は&lt;strong&gt;議論の目線を揃えること&lt;/strong&gt;が重要です。そのために多少なりとも役立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">新年度です。目標を設定するシーズンですね。</summary></entry><entry><title type="html">チームメンバーに仕事と裁量をわたすときのひと工夫</title><link href="https://aloerina01.github.io/blog/2023-05-22-1" rel="alternate" type="text/html" title="チームメンバーに仕事と裁量をわたすときのひと工夫" /><published>2023-05-22T00:00:00+00:00</published><updated>2023-05-22T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2023-05-22-1">&lt;p&gt;チームのリーダー、エンジニアリングマネージャー、新入社員のメンターなどの役割をすると、『チームメンバーにどのように仕事を任せるか』と考えることがあります。特にそれなりにスキルがあるチームメンバーに対してこれを考える場合、『どれくらい/どのように裁量を渡すか』がポイントの一つです。&lt;/p&gt;
-
-&lt;p&gt;私がEMとしてチームメンバーに仕事を任せるとき&lt;strong&gt;『その仕事をどのように進行しどのように完了させるか(何を持って完了とするか)』を決める裁量を渡す&lt;/strong&gt;方針であり、その旨をチームメンバーに重ね重ね伝えています。&lt;/p&gt;
-
-&lt;p&gt;以下はチームメンバーとの実際のコミュニケーション例です。&lt;/p&gt;
-&lt;div class=&quot;note&quot;&gt;
-&lt;p&gt;
-「あなたが開発案件を担当するとき、仕様に対してどのようにプランナーやデザイナーとすり合わせるか、どう設計しどれだけ実装の風呂敷を広げるか、どのように見積もりどう進行するか、など幅広い裁量があります。
-&lt;/p&gt;
-&lt;p&gt;
-とはいえ、必ずすべてに責任を持てという意味ではありませんし、やり切らないと期待に沿えないという意味でもありません。&lt;strong&gt;なるべく広めに裁量を渡すので、その中で自身できるものを選びとりながら&lt;/strong&gt;仕事を進めてください。分からない部分やできないと感じた部分は自分に投げ返してください。  
-&lt;/p&gt;
-&lt;p&gt;
-&lt;strong&gt;私は広く裁量を渡す、あなたは一部の裁量を担う/返す、とラリーを重ねながら&lt;/strong&gt;できることを増やしていったり得意分野を見つけたり、新しいチャレンジをしていきましょう。」
-&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;h3 id=&quot;裁量をうまく活用してもらうための工夫&quot;&gt;裁量をうまく活用してもらうための工夫&lt;/h3&gt;
-
-&lt;h4 id=&quot;1-チームのフェーズやタスクの期限を考慮する&quot;&gt;1. チームのフェーズやタスクの期限を考慮する&lt;/h4&gt;
-
-&lt;p&gt;前提として、チームが締切に追われ続けている自転車操業状態ではこの裁量の渡し方は不可能です。またお願いするタスクの期限が厳密である場合や、満たすべき要件が多い場合にも難しいでしょう。&lt;br /&gt;
-今までにない広い裁量の中で冷静に選択や決断をしていくためには、仕事を受け取ったチームメンバーが&lt;strong&gt;時間と心の余裕を持てていること&lt;/strong&gt;が大切です。&lt;/p&gt;
-
-&lt;h4 id=&quot;2-裁量の行使について期待値を添える&quot;&gt;2. 裁量の行使について期待値を添える&lt;/h4&gt;
-
-&lt;p&gt;広く裁量を渡すと言っても、一言も口出ししてはいけないということではありません。たとえば「実装方針について自身で考えてみてほしいが、最終的にはチームの合意を得てほしい」と条件をつけることもあります。&lt;br /&gt;
-また「この前の取り組みを資料にまとめてほしい。どんな構成にすべきか私もまだイメージできていないので、何度かレビューのやり取りが続いてしまうかもしれない」とある程度レビュー回数が多くなることを事前に申し添えることもあります。&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;裁量を渡されたチームメンバーが、どれだけ自由な選択ができるのか、もしくは何かしらの制約があるのかを理解して仕事に臨める&lt;/strong&gt;状況をつくることを心がけます。事前にすべてを伝えるのは難しいので条件を後出ししてしまうこともありますが、その可能性を最初に伝えておくだけでも多少良いかもしれません。&lt;/p&gt;
-
-&lt;h4 id=&quot;3-ペアアサインやチームアサインをする&quot;&gt;3. ペアアサインやチームアサインをする&lt;/h4&gt;
-
-&lt;p&gt;広い裁量の中で選択や判断を重ねて仕事を完遂することは、人によって難易度の感じ方が違いますし、取り得る選択肢も違います。難しいと感じる人にはいくつかの選択肢やヒントをマネージャーが提案しフォローすることもできますが、私はそれよりも好きな手段があります。裁量をペアやチームに対して渡す方法です。&lt;/p&gt;
-
-&lt;p&gt;人により得手不得手が違うので、&lt;strong&gt;補い合ったりアイデアを出し合ったりして裁量を存分に活かせるケースが多く、私には思いもよらない素晴らしいアウトプットが出ることもある&lt;/strong&gt;ので仕事をお願いするときのちょっとした楽しみでもあります。&lt;/p&gt;
-
-&lt;p&gt;注意点ですが、あんまり人数が多いと何もしない人を生みかねないので、複数人アサインは2〜3人がベストだと思います。また、チームメンバー同士でうまく相互作用が起きているのは、私たちのチームがこれまでにモブプロやふりかえりなどを重ね複数人でワークすることに慣れていたからでもあります。複数人での仕事に不慣れなチームだと、誰かがリーダーとなり「仕事を分担する人、言われた通り分担をやる人」の関係になってしまい全員が裁量を発揮できない結果となることも多いです。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;今となっては当たり前でも、マネージャーになったばかりの頃はどうしていいか見当がつかなかったことが山程あったので、それらを思い返しながら言語化しました。こういった細かいTipsを今後も書いていきたいところです。&lt;/p&gt;
-
-&lt;p&gt;マネジメントのやり方はメンバーの数だけ(もしくはそれ以上に)あるので、引き出しの多さはマネージャーのスキルを考える上で重要な要素の一つです。過去の手札をまったく同じように使い回すことは難しくとも、それらを組み合わせたり、それらに着想を得て新しい手段を取ったりできます。自分のためにも手札を見える形で残しておきたい思いがあって書きまとめましたが、新任マネージャーのどなたかのお役に立てれば何よりです。&lt;/p&gt;</content><author><name></name></author><summary type="html">チームのリーダー、エンジニアリングマネージャー、新入社員のメンターなどの役割をすると、『チームメンバーにどのように仕事を任せるか』と考えることがあります。特にそれなりにスキルがあるチームメンバーに対してこれを考える場合、『どれくらい/どのように裁量を渡すか』がポイントの一つです。</summary></entry></feed>
+&lt;p&gt;最後に改めて補足しておくと、マトリクスをすべて埋めることが重要なのではなく、&lt;strong&gt;納得いく目標を見つけること&lt;/strong&gt;が大切です。またチームで議論しながら目標設定する場合は&lt;strong&gt;議論の目線を揃えること&lt;/strong&gt;が重要です。そのために多少なりとも役立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">新年度です。目標を設定するシーズンですね。</summary></entry></feed>
