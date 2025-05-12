@@ -1,5 +1,141 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-05-07T02:54:42+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">“我々はなぜここにいるのか”の問いを手放した理由 - 心の発達理論から学ぶEMの問いの設計</title><link href="https://aloerina01.github.io/blog/2025-05-07-1" rel="alternate" type="text/html" title="“我々はなぜここにいるのか”の問いを手放した理由 - 心の発達理論から学ぶEMの問いの設計" /><published>2025-05-07T00:00:00+00:00</published><updated>2025-05-07T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-05-07-1">&lt;p&gt;最近1on1やファシリテーションでの問いかけがうまく“効いていない”感覚になることがありました(おそらく昔から効いてない場面はあったのですが、最近それに自覚的になりました)。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-05-12T04:06:14+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">mille-feuille code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">1on1再入門 - “傾聴する”から”好奇心を持って問いを設計する”へ</title><link href="https://aloerina01.github.io/blog/2025-05-12-1" rel="alternate" type="text/html" title="1on1再入門 - “傾聴する”から”好奇心を持って問いを設計する”へ" /><published>2025-05-12T00:00:00+00:00</published><updated>2025-05-12T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-05-12-1">&lt;p&gt;「1on1では聞く側に徹しましょう」「8割以上の時間を部下の話に耳を傾けるべき」&lt;br /&gt;
+こういったアドバイスに私も従っていた時期がありました。&lt;/p&gt;
+
+&lt;p&gt;当時の私は相手の話にじっと耳を傾け、「うんうん」と相づちを打ち、「それで？」と続きを促す。散々相手に話してもらったものの、1on1の後にどこかすっきりしない気持ちが残る。そんな1on1をやっていました。&lt;/p&gt;
+
+&lt;p&gt;「これは本当に意味のある時間だったのか？」&lt;br /&gt;
+「ただ話させて終わってしまったのではないか？」&lt;/p&gt;
+
+&lt;p&gt;こういったモヤモヤの原因は、話を聞くことに集中しすぎて&lt;strong&gt;相手の変化や考えを深めるような「問い」をまったく投げられていなかった&lt;/strong&gt;ことにあったと、今なら分かります。そして当時の自分にどうアドバイスすべきかも明確です。&lt;/p&gt;
+
+&lt;p&gt;今回はそれを書き起こしてみようと思います。&lt;/p&gt;
+
+&lt;p&gt;本題の前に、前提について補足しておきます。&lt;br /&gt;
+1on1の目的は組織やチームの文化によって異なりますが、この記事では、1on1を単なる報告や進捗確認の場としてではなく、&lt;strong&gt;相手の内面や成長に向き合う「探索の場」として活用すること&lt;/strong&gt;に重点を置いています。&lt;br /&gt;
+「探索により、変化や思考の深化を目指す時間にしたい」という価値観のもと、当時の私の失敗の理由を明らかにし、改善のためのアプローチを書いていきます。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#傾聴は作法ではない結果として現れる状態&quot; id=&quot;markdown-toc-傾聴は作法ではない結果として現れる状態&quot;&gt;傾聴は「作法」ではない、結果として現れる「状態」&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#探索の場における問いをどのように設計するか&quot; id=&quot;markdown-toc-探索の場における問いをどのように設計するか&quot;&gt;探索の場における「問い」をどのように設計するか&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#1-過去の出来事の意味付けを促す問い&quot; id=&quot;markdown-toc-1-過去の出来事の意味付けを促す問い&quot;&gt;1. 過去の出来事の意味付けを促す問い&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#2-暗黙的な価値観や前提を言語化させる問い&quot; id=&quot;markdown-toc-2-暗黙的な価値観や前提を言語化させる問い&quot;&gt;2. 暗黙的な価値観や前提を言語化させる問い&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#3-行動の背景にあるモチベーションや感情を掘り下げる問い&quot; id=&quot;markdown-toc-3-行動の背景にあるモチベーションや感情を掘り下げる問い&quot;&gt;3. 行動の背景にあるモチベーションや感情を掘り下げる問い&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#問いを設計する自分を置いてけぼりにした失敗例&quot; id=&quot;markdown-toc-問いを設計する自分を置いてけぼりにした失敗例&quot;&gt;「問いを設計する自分」を置いてけぼりにした失敗例&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#純粋に会話を楽しむ自分とメタ的に問いを設計する自分を共存させる&quot; id=&quot;markdown-toc-純粋に会話を楽しむ自分とメタ的に問いを設計する自分を共存させる&quot;&gt;「純粋に会話を楽しむ自分」と「メタ的に問いを設計する自分」を共存させる&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#まとめ&quot; id=&quot;markdown-toc-まとめ&quot;&gt;まとめ&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;傾聴は作法ではない結果として現れる状態&quot;&gt;傾聴は「作法」ではない、結果として現れる「状態」&lt;/h3&gt;
+
+&lt;p&gt;傾聴とは、&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;相手の話に注意深く、真摯に、共感をもって耳を傾けることで、相手の気持ちや考えを深く理解しようとすること&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;だと言われています。&lt;/p&gt;
+
+&lt;p&gt;ですが「よし、じゃあ今日から傾聴するぞ」と自動詞的に実践するものではなく、「相手に敬意を持ち、純粋な好奇心のもと、相手との対話を楽しむ」その結果として現れる姿勢が「傾聴」だと私は考えています。&lt;/p&gt;
+
+&lt;p&gt;言い換えると&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;「1on1の時間になったから話を聞こう」という惰性的スタンス(敬意がない)&lt;/li&gt;
+  &lt;li&gt;「マネージャーとして話を聞かなきゃいけない」というやらされ感(好奇心がない)&lt;/li&gt;
+  &lt;li&gt;「淡泊に『それで？』と相槌を打つ」などの会話を楽しむ気持ちの欠如&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった状態では、どんなに聞く時間を長く取ったところで傾聴にはならないですし、1on1も機能しないということです。&lt;/p&gt;
+
+&lt;p&gt;加えて、1on1における傾聴をうまく実践するための糸口が「問い」です。&lt;/p&gt;
+
+&lt;p&gt;「&lt;strong&gt;聞く&lt;/strong&gt;」ためには「&lt;strong&gt;話してもらう&lt;/strong&gt;」必要があり、話してもらうには「&lt;strong&gt;問いかける&lt;/strong&gt;」必要があります。この&lt;strong&gt;問いかけの質&lt;/strong&gt;が、1on1で相手の話を&lt;strong&gt;聞く質&lt;/strong&gt;に直結するわけです。&lt;/p&gt;
+
+&lt;p&gt;問いかけの質など全く考えてもいなかった当時の自分にも伝わる表現を意識して、問いの設計方法を深堀りしてみます。&lt;/p&gt;
+
+&lt;h3 id=&quot;探索の場における問いをどのように設計するか&quot;&gt;探索の場における「問い」をどのように設計するか&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;1on1を探索の場にする&lt;/strong&gt;という前提に立つと、&lt;strong&gt;「相手が自身のことをより深く理解する」「考えを一歩深める」ような対話が重要&lt;/strong&gt;になります。そのためには、相手の思考の『地図』を広げるような問いが役に立ちます。&lt;/p&gt;
+
+&lt;p&gt;そのためには、以下の3つのいずれかの問いを目指すと良いです。&lt;/p&gt;
+
+&lt;h4 id=&quot;1-過去の出来事の意味付けを促す問い&quot;&gt;1. 過去の出来事の意味付けを促す問い&lt;/h4&gt;
+
+&lt;p&gt;人は経験そのものではなく、「その出来事をどう捉えたか」によって行動や感情が変わります。&lt;br /&gt;
+たとえば「そのとき、どんな意味があると感じた？」という問いは相手の&lt;strong&gt;内面で起きていた認知や解釈を引き出し&lt;/strong&gt;、単なる出来事の報告から一歩踏み込み、&lt;strong&gt;体験に意味付けし言語化する&lt;/strong&gt;対話を生み出します。&lt;/p&gt;
+
+&lt;h4 id=&quot;2-暗黙的な価値観や前提を言語化させる問い&quot;&gt;2. 暗黙的な価値観や前提を言語化させる問い&lt;/h4&gt;
+
+&lt;p&gt;人の行動や判断には、無意識のうちに持っている価値観や前提が強く影響します。&lt;br /&gt;
+たとえば「それって、どういう状態が理想だと感じてた？」のような問いは本人がふだん意識していない&lt;strong&gt;「自分にとって大切なこと」をあぶり出し&lt;/strong&gt;、自己理解を深めるきっかけになります。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-行動の背景にあるモチベーションや感情を掘り下げる問い&quot;&gt;3. 行動の背景にあるモチベーションや感情を掘り下げる問い&lt;/h4&gt;
+
+&lt;p&gt;表面的な行動だけを聞いても、その人の芯にある行動指針や動機には迫れません。&lt;br /&gt;
+「それを選んだとき、どんな感情があった？」のような問いによって行動の背後にある感情にアクセスすることで、より本人にとって意味のある内省が促されます。&lt;/p&gt;
+
+&lt;p&gt;これら3つの問いは、&lt;strong&gt;目に見える「表面的な体験」から、目に見えにくい「内面の揺れ動き」を探索する橋渡し&lt;/strong&gt;をしてくれます。この内面へのアクセスを1on1の場で実践することで、変化や成長のきっかけになったり、内省の習慣づくりになったり、経験を構造的に捉える訓練になったりするわけです。&lt;/p&gt;
+
+&lt;h3 id=&quot;問いを設計する自分を置いてけぼりにした失敗例&quot;&gt;「問いを設計する自分」を置いてけぼりにした失敗例&lt;/h3&gt;
+
+&lt;p&gt;ここまでの話で、当時の自分が良い1on1をするには&lt;strong&gt;適切な問いの設計をする&lt;/strong&gt;必要があったと分かりました。&lt;strong&gt;3つの問いの設計方針&lt;/strong&gt;もある程度言語化できています。&lt;/p&gt;
+
+&lt;p&gt;課題と解決策が揃っているので今はさぞ良い1on1ができているのだろうと思いたいですが……正直なところ今でもまだまだ失敗することがあります。その例を紹介します。&lt;/p&gt;
+
+&lt;p&gt;たとえばある1on1で「あろえさんがやった〇〇の取り組みのおかげでチームが助かっています」といった嬉しいフィードバックをもらったとき、ついその言葉に舞い上がり、「ありがとう！そう思ってくれていたんだね」と会話を弾ませてしまうことがあります。&lt;/p&gt;
+
+&lt;p&gt;しかし終わったあとに冷静にその時間を振り返ると、「その〇〇を自分でもできると思う？」「役立ったと感じた要素って何だと思う？」といったような&lt;strong&gt;相手の内面にダイブしていく問いかけ&lt;/strong&gt;ができていれば、&lt;strong&gt;相手の思考の『地図』新たな観点が描き加えられるような対話&lt;/strong&gt;をできたかもしれません。&lt;br /&gt;
+会話を楽しむ自分が前面に出すぎて、『問いを設計しようとする自分』を置き去りにしてしまう失敗を、今でもちょくちょくやらかしています。&lt;/p&gt;
+
+&lt;h3 id=&quot;純粋に会話を楽しむ自分とメタ的に問いを設計する自分を共存させる&quot;&gt;「純粋に会話を楽しむ自分」と「メタ的に問いを設計する自分」を共存させる&lt;/h3&gt;
+
+&lt;p&gt;この失敗談は、「会話を楽しみすぎて問いを設計する観点が抜け落ちた」例でした。&lt;/p&gt;
+
+&lt;p&gt;もちろんその逆の失敗もあります。問いの設計に意識が向きすぎた結果、&lt;strong&gt;会話を俯瞰しすぎて当事者感が薄れ、相手との距離が遠のく感覚&lt;/strong&gt;に陥る失敗です。&lt;br /&gt;
+そうなると&lt;strong&gt;相手の感情や表情の変化を見落としてしまったり&lt;/strong&gt;、また自分のリアクションが薄くなったりと&lt;strong&gt;会話を楽しめていないような反応が出てしまったり&lt;/strong&gt;します。&lt;/p&gt;
+
+&lt;p&gt;これらの例からわかるように、1on1をしているときは「&lt;strong&gt;純粋に相手との会話を楽しむ自分&lt;/strong&gt;」と「&lt;strong&gt;会話の流れをメタ的に捉え問いを設計する自分&lt;/strong&gt;」の間を行ったり来たりしています。&lt;br /&gt;
+1on1がうまくいっているときは対話の中で頻度高く行き来できますが、振り返って失敗したなと感じるときはどちらかの自分に傾倒していたり、行き来の回数が少なかったりします。&lt;/p&gt;
+
+&lt;p&gt;2つの自分をどのようなバランスで両立するかは、人や状況にとっても異なると思います。ですので&lt;strong&gt;「うまくバランスを取ろう」と思うより、1on1がうまくいかなかったときにバランスを振り返る&lt;/strong&gt;、という捉え方が良いでしょう。&lt;strong&gt;目指すべき指針ではなく、ふりかえりの基準&lt;/strong&gt;ということです。&lt;/p&gt;
+
+&lt;p&gt;そして「2つの自分の往復」という観点では、今の私もまだまだ練習中です。&lt;/p&gt;
+
+&lt;p&gt;ですが、この段階に到達できたのは、問いの設計に慣れてきたからだと言えます。2つの自分の往復に意識を向ける余裕が生まれたなと思ったら、それは問いかけの経験値が十分に溜まった合図なのかもしれませんね。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;私が1on1でやらかした多くの失敗を思い出しながら、当時の1on1を着実に前進させるためのアドバイスを書き表しました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;1on1は探索(対話)を通じて、相手の変化や思考の深化を促すもの&lt;/li&gt;
+  &lt;li&gt;傾聴は「する」ものではなく、好奇心を持って会話を楽しむ結果として「現れる」もの&lt;/li&gt;
+  &lt;li&gt;「聞く」には、「話してもらう」。「話してもらう」には「問いかける」&lt;/li&gt;
+  &lt;li&gt;問いを設計する3つのガイド
+    &lt;ul&gt;
+      &lt;li&gt;過去の出来事の意味付けを促す問い&lt;/li&gt;
+      &lt;li&gt;暗黙的な価値観や前提を言語化させる問い&lt;/li&gt;
+      &lt;li&gt;行動の背景にあるモチベーションや感情を掘り下げる問い&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;「会話を楽しむ自分」と「会話をメタ的に観察し問いを設計する自分」の行き来がうまくできたか、という基準で1on1をふりかえってみる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といった内容でした。&lt;/p&gt;
+
+&lt;p&gt;最後に少し抽象的な話をすると、&lt;strong&gt;今の私にとって「問い」は単なるテクニックではなく「自分のあり方」&lt;/strong&gt;なのだと思います。&lt;/p&gt;
+
+&lt;p&gt;人とどのように関係をつくっていきたいか、人のどのような感情に興味を持つか、相手の変化や成長に伴奏したいという根源的な願いをどう実現させるか、信頼をどう得るか、といったことを&lt;strong&gt;問いを通じて体現している&lt;/strong&gt;のだと思います。&lt;/p&gt;
+
+&lt;p&gt;ですので、たとえ意識的に問いを設計しなくとも、私がする問いかけには&lt;strong&gt;私を構成する要素&lt;/strong&gt;が色濃く出ているでしょうし、それにより相手が私を信頼し、私と良い関係を築いてくれたらとても幸せな気持ちになります。&lt;/p&gt;
+
+&lt;p&gt;「マネージャーになったから1on1をしなきゃ」「ちゃんと傾聴しなきゃ」&lt;br /&gt;
+なんて思っていた自分がここまで問いと向き合えるようになったことは、マネージャーとして一回り成長した証なのかもしれません。&lt;/p&gt;
+
+&lt;p&gt;よければ、皆さんも「問い」に向き合ってみてください。&lt;/p&gt;</content><author><name></name></author><summary type="html">「1on1では聞く側に徹しましょう」「8割以上の時間を部下の話に耳を傾けるべき」 こういったアドバイスに私も従っていた時期がありました。</summary></entry><entry><title type="html">“我々はなぜここにいるのか”の問いを手放した理由 - 心の発達理論から学ぶEMの問いの設計</title><link href="https://aloerina01.github.io/blog/2025-05-07-1" rel="alternate" type="text/html" title="“我々はなぜここにいるのか”の問いを手放した理由 - 心の発達理論から学ぶEMの問いの設計" /><published>2025-05-07T00:00:00+00:00</published><updated>2025-05-07T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-05-07-1">&lt;p&gt;最近1on1やファシリテーションでの問いかけがうまく“効いていない”感覚になることがありました(おそらく昔から効いてない場面はあったのですが、最近それに自覚的になりました)。&lt;/p&gt;
 
 &lt;p&gt;その例のひとつが、「&lt;strong&gt;私/我々はなぜここにいるのか&lt;/strong&gt;」という問いです。&lt;/p&gt;
 
@@ -972,86 +1108,4 @@
 
 &lt;p&gt;&lt;img style=&quot;border:1px solid #CFD8DC&quot; alt=&quot;cheatsheet&quot; src=&quot;/assets/2024-06-14/cheatsheet.jpg&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;先述のとおり、ふりかえりはKPTにこだわらずもっと自由にやっていいものだと思っているので、これからもチームやプロジェクトに合う方法を探し続けていきたいと思います。それらがどこかで誰かの参考になれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">KPTを継続していたものの意見が出にくくなったりTryが実行されなくなったり…といったマンネリ化や改善サイクルの停滞はどのチームも1度くらいは体験するのではないでしょうか。そんなときはふりかえりの方法を少し変えて刺激を得ることが有効な手段のひとつです。</summary></entry><entry><title type="html">チーム目標を設定するフレームワークをつくったので紹介したい</title><link href="https://aloerina01.github.io/blog/2024-04-04-1" rel="alternate" type="text/html" title="チーム目標を設定するフレームワークをつくったので紹介したい" /><published>2024-04-04T00:00:00+00:00</published><updated>2024-04-04T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-04-04-1">&lt;p&gt;新年度です。目標を設定するシーズンですね。&lt;/p&gt;
-
-&lt;p&gt;私の職場でも個々人が目標設定をする時期ですし、同時に私が関わるスクラムチームでもチームとしての目標を決める議論がされました。&lt;br /&gt;
-それらを見ていて、『チーム目標を議論して決める難しさ』を感じる場面が何度かありました。最終的な理想状態を見据えている人もいれば、直近で達成したい短期目標を意識している人もいます。やりたいことは山のようにあるけれど、それらが最終目標にどれだけ効果的に結びつくかが曖昧なこともあります。&lt;/p&gt;
-
-&lt;p&gt;目線が違う状態でアイデアが多く出る議論を続けるのは難しいので、目標設定のためのフレームワークをつくってみました。目線を合わせた議論や、建設的な目標設定を導くツールです。&lt;/p&gt;
-
-&lt;h3 id=&quot;全体像&quot;&gt;全体像&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2024-04-04/framework_template.jpg&quot; alt=&quot;フレームワークの全体像&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;このマトリクスを順に埋めていきます。後述しますが列は増減していいですし、マスを全部埋めなくても適切な目標が見つかればその時点で目標設定完了です。&lt;br /&gt;
-順に使い方を紹介していきます。&lt;/p&gt;
-
-&lt;h3 id=&quot;1最終ゴールを右上のマスに記入する&quot;&gt;1．最終ゴールを右上のマスに記入する&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2024-04-04/framework_usage1.jpg&quot; alt=&quot;使い方1&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;縦軸・横軸の説明はさておき、まずは右上のマスに現時点で思い描けている『&lt;strong&gt;最終的に到達したい状態または達成したい成果&lt;/strong&gt;』を記入します。抽象的でもいいし、現時点で考えうる最終的目標でOKです。目標はナマモノなので変化していって当然です。&lt;br /&gt;
-たとえば&lt;/p&gt;
-
-&lt;p class=&quot;note&quot; style=&quot;margin:16px 0&quot;&gt;
-プロダクトバックログを安定的に開発し続けるチームになる
-&lt;/p&gt;
-
-&lt;p&gt;このくらいざっくりした目標でも大丈夫です。&lt;/p&gt;
-
-&lt;h3 id=&quot;2-スモールステップを見つける&quot;&gt;2. スモールステップを見つける&lt;/h3&gt;
-&lt;p&gt;次に最終目標にたどり着くまでのステップを分けていきましょう。マイルストーンを置いたり、短期目標や中期目標に分解したりするイメージです。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2024-04-04/framework_usage2.jpg&quot; alt=&quot;使い方2&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;最終目標から左に向かって考えていきます。十分達成できそうなスモールステップまで掘り下げ、Step1からGoalに向けて見返したときに適切な階段となっていれば上出来です。&lt;/p&gt;
-
-&lt;h3 id=&quot;3-目標を具体化し行動を起こしやすくする&quot;&gt;3. 目標を具体化し行動を起こしやすくする&lt;/h3&gt;
-&lt;p&gt;手頃なスモールステップがみつかって、それを目標にして行動が起こせそうであれば目標設定は完了です。ですが抽象度が高く達成のためにどのようなアクションを起こせばよいかが分からない目標である可能性があります。達成手段を自由に柔軟に選択でき、裁量がある目標とも言えます。&lt;/p&gt;
-
-&lt;p&gt;ただチーム目標においては抽象的すぎると解釈の違いが生まれやすく、不適切なアクションが取られる可能性もあります。&lt;br /&gt;
-極端な例を挙げるなら、「スプリントゴールを守る」という目標に対するアクションが「守りやすいように消極的なスプリントゴールを設定する」では本末転倒ですし、「残業してでもやりぬく」ではチームの出力は持続できません。&lt;/p&gt;
-
-&lt;p&gt;目標達成にむけたアクションに柔軟性を持たせたい場合は抽象度の高い目標のままにし、逆にミスリードを防いだり決まった道筋で目標達成していきたい場合は目標の具体度を上げます。そのためにマトリクスの縦軸を使います。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2024-04-04/framework_usage3.jpg&quot; alt=&quot;使い方3&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;どういった成果・要素が積み重なれば最終目標の達成に近づくかを掘り下げていきます。&lt;strong&gt;結果目標・成果目標&lt;/strong&gt;と呼ばれるものです。
-たとえば上述した「プロダクトバックログを安定的に開発し続けるチームになる」という最終目標の実現に必要な要素の1つとして&lt;/p&gt;
-
-&lt;p class=&quot;note&quot; style=&quot;margin:16px 0&quot;&gt;
-次スプリントで着手するであろうバックログアイテムが相対見積もり済みであり、優先順位順に並んでいる状態を維持する
-&lt;/p&gt;
-
-&lt;p&gt;を定義してみます。&lt;br /&gt;
-少し具体的になったので、これでチームメンバーが動き出せそうであれば具体化は終了ですが、より指示的な目標にする場合はこれを達成するアクションにまで落とし込むこともできます。&lt;/p&gt;
-
-&lt;p class=&quot;note&quot; style=&quot;margin:16px 0&quot;&gt;
-プロダクトバックログリファインメントの場で相対見積もりをし、見積もられているアイテムの総ポイントが【平均ベロシティ+10pt】となる状態を維持する
-&lt;/p&gt;
-
-&lt;p&gt;ここまで落とし込むと、「いつ」「なにを」「どれくらい」するかまで明確です。&lt;strong&gt;行動目標&lt;/strong&gt;と呼ばれるもので、一番最初に決めた最終目標と比較するとかなり具体的になったと思います。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2024-04-04/framework_usage4.jpg&quot; alt=&quot;使い方4&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;実際には、図のように目標を具体的にするほど数が増えるはずなので、マス目の数にとらわれず腹落ちするまで結果目標や行動目標を考え尽くす必要があります。&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;今回紹介したものは、マトリクス型のテンプレートを埋めながら適切な目標を探すためのフレームワークでした。&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2024-04-04/framework_overall.jpg&quot; alt=&quot;フレームワークの全体像&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;使い方を整理すると&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;右上に最終的なゴールを記入する&lt;/li&gt;
-  &lt;li&gt;左に向かって最終目標までのステップをつくる&lt;/li&gt;
-  &lt;li&gt;抽象度が高すぎるものは下に向かって具体化する&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;という流れです。&lt;/p&gt;
-
-&lt;p&gt;オンラインで目標設定のディスカッションをする際にMiroなどのホワイトボードツールにマトリクスを用意して付箋を重ねながら議論したり、オフラインの場でマトリクスを印刷して指差しながら議論の目線を合わせたりといった使い方を想定しています。もちろん個人の目標設定時にも使えます。&lt;/p&gt;
-
-&lt;p&gt;最後に改めて補足しておくと、マトリクスをすべて埋めることが重要なのではなく、&lt;strong&gt;納得いく目標を見つけること&lt;/strong&gt;が大切です。またチームで議論しながら目標設定する場合は&lt;strong&gt;議論の目線を揃えること&lt;/strong&gt;が重要です。そのために多少なりとも役立てれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">新年度です。目標を設定するシーズンですね。</summary></entry></feed>
+&lt;p&gt;先述のとおり、ふりかえりはKPTにこだわらずもっと自由にやっていいものだと思っているので、これからもチームやプロジェクトに合う方法を探し続けていきたいと思います。それらがどこかで誰かの参考になれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">KPTを継続していたものの意見が出にくくなったりTryが実行されなくなったり…といったマンネリ化や改善サイクルの停滞はどのチームも1度くらいは体験するのではないでしょうか。そんなときはふりかえりの方法を少し変えて刺激を得ることが有効な手段のひとつです。</summary></entry></feed>
