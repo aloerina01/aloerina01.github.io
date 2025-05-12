@@ -503,7 +503,7 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .post-donation .donation-button { margin: 0; }
 
-a.donation-button { display: block; margin: 0 auto; max-width: 14em; width: 184px; background: #FF4081; background: -webkit-linear-gradient(to right, #ff6884, #FF4081); background: linear-gradient(to right, #ff6884, #FF4081); color: #fff; font-weight: 800; border-radius: 28px; box-shadow: 0 1px 5px #333; transition: opacity 0.4s ease; }
+a.donation-button { display: block; margin: 0 auto; width: 250px; background: #FF4081; background: -webkit-linear-gradient(to right, #ff6884, #FF4081); background: linear-gradient(to right, #ff6884, #FF4081); color: #fff; font-weight: 800; border-radius: 28px; box-shadow: 0 1px 5px #333; transition: opacity 0.4s ease; }
 
 a.donation-button:hover { opacity: .7; }
 
