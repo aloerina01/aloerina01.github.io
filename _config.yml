@@ -26,8 +26,8 @@ exclude:
 lsi: false
 
 # Site settings
-title: "mille-feuille code"
-subtitle: "コードのかけらを一枚ずつ積み重ねて。"
+title: "Feel and Code"
+subtitle: "エンジニアリングをロジカルに、そして情緒的に"
 email:
 name: aloerina
 description: >
@@ -95,6 +95,14 @@ defaults:
       type: "old"
     values:
       permalink: /:categories/:year/:month/:day/:title:output_ext
+
+# Recommended posts
+recommended_posts:
+  posts:
+    - slug: 2025-01-16-1
+    - slug: 2024-12-20-1
+    - slug: 2024-11-06-1
+    - slug: 2022-12-16-1
 
 # Disqus comments
 disqus_shortname: # https-aloerina01-github-io

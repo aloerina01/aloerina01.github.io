@@ -3,7 +3,7 @@
     <img width="150" src="https://aloerina01.github.io/assets/logo.png" alt="mf-code">
   </a>
 </p>
-<h1 align="center">mille-feuille code</h1>
+<h1 align="center">Feel and Code</h1>
 
 <p align="center">
   <a href="https://github.com/aloerina01/aloerina01.github.io/actions">
@@ -12,7 +12,7 @@
 </p>
 
 ## What's this
-[mille-feuille code](https://aloerina01.github.io/)
+[Feel and Code](https://aloerina01.github.io/)
 
 This is a blog written about some technical topics, by [Aloerina](https://twitter.com/aloerina_).
 
