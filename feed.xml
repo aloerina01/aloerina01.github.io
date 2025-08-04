@@ -1,5 +1,93 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-05-28T02:15:33+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">Feel and Code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">1on1再入門 - “傾聴する”から”好奇心を持って問いを設計する”へ</title><link href="https://aloerina01.github.io/blog/2025-05-12-1" rel="alternate" type="text/html" title="1on1再入門 - “傾聴する”から”好奇心を持って問いを設計する”へ" /><published>2025-05-12T00:00:00+00:00</published><updated>2025-05-12T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-05-12-1">&lt;p&gt;「1on1では聞く側に徹しましょう」「8割以上の時間を部下の話に耳を傾けるべき」&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-08-04T01:38:09+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">Feel and Code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション</title><link href="https://aloerina01.github.io/blog/2025-08-04-1" rel="alternate" type="text/html" title="議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション" /><published>2025-08-04T00:00:00+00:00</published><updated>2025-08-04T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-08-04-1">&lt;p&gt;会議のファシリテーションをしていて、「論点がかみ合わない」「発言は出ているのにまとまらない」と感じることはないでしょうか。そんな場面では「どの論点に力を入れれば、どこが動くのか」がブレてしまっていることがあります。&lt;br /&gt;
+これを&lt;strong&gt;議論の『力点』と『作用点』が入り乱れてしまい迷走している&lt;/strong&gt;という視点で捉えると、ファシリテーションの糸口が見えてきます。&lt;/p&gt;
+
+&lt;h3 id=&quot;テコの三要素と議論の対応関係&quot;&gt;テコの三要素と議論の対応関係&lt;/h3&gt;
+
+&lt;p&gt;「テコ」は以下の3つの要素で構成されます。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;力点&lt;/strong&gt;：議論で注力すべきテーマや問い&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;作用点&lt;/strong&gt;：議論の結論により影響を与える箇所。現場の困りごとやリターンのある領域&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;支点&lt;/strong&gt;：動かない前提、制約、背景&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;「&lt;strong&gt;今どこに力を加えようとしているのか(＝力点)&lt;/strong&gt;」「&lt;strong&gt;何を動かしたいのか(＝作用点)&lt;/strong&gt;」というテコの原理に似た構造が、議論の中には隠れています。
+議論が迷走するときはこれらにズレがあり、一直線に繋がっていない可能性があります。ファシリテーターはそれを見極め整理することで、議論を立て直すことができます。&lt;br /&gt;
+今回は3つのファシリテーションTipsを紹介します。&lt;/p&gt;
+
+&lt;h3 id=&quot;1まずは作用点何に影響を与えたいかを見極める&quot;&gt;1.まずは「作用点(何に影響を与えたいか)」を見極める&lt;/h3&gt;
+
+&lt;p&gt;「朝会をもう少し短くできないか？」という議論が出たときのことです。&lt;br /&gt;
+一見すると議論のテーマは明確ですが、よく聞くとそれぞれの発言者が持っている目的が違うことがあります。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Aさん「会議で作業を中断させたくない」&lt;/li&gt;
+  &lt;li&gt;Bさん「冗長な報告が多く、時間を無駄にしたくない」&lt;/li&gt;
+  &lt;li&gt;Cさん「必要な情報共有が抜けてしまうのが心配」&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;このように、同じテーマの下に異なる作用点が混在していると、議論はかみ合いません。&lt;/p&gt;
+
+&lt;p&gt;こういう場面でのファシリテーションは、まずは各々がイメージする作用点──つまり「&lt;strong&gt;何を良くしたくて議論に参加しているのか&lt;/strong&gt;」を明らかにすることを目指します。参加者一人一人の&lt;strong&gt;背景や意図を明らかにする&lt;/strong&gt;ことが議論の準備として必要なわけです。&lt;/p&gt;
+
+&lt;h3 id=&quot;2作用点がバラバラなときは共通する力点議論の焦点を見極める&quot;&gt;2.作用点がバラバラなときは、共通する力点(議論の焦点)を見極める&lt;/h3&gt;
+
+&lt;p&gt;作用点が散っていて収集がつかないときは「&lt;strong&gt;どこに議論の焦点を置けば、複数の作用点に影響を与えられるか&lt;/strong&gt;」を探るようファシリテーションするのが1つの手です。&lt;/p&gt;
+
+&lt;p&gt;前述の朝会の例では、目的が「集中力を維持したい」「作業時間を無駄にしたくない」「情報共有を保ちたい」に分かれていました。&lt;br /&gt;
+作用点がバラバラなので、それらに共通する議論の焦点──つまり「何を変えれば全ての目的を満たせるか」を、力点にして議論を進めてみます。それで解決策が見つからない場合は、「作用点の中でゆずれる要素・ゆずれない要素は何か」に論点を移し、のちに「作用点にほどほどに効く」現実的な解決策を探す議論になっていくかもしれません。&lt;/p&gt;
+
+&lt;p&gt;このように&lt;strong&gt;ファシリテーターは「議論の焦点を段階的に変える」アプローチ&lt;/strong&gt;をとることで議論を前進させることが可能です。&lt;/p&gt;
+
+&lt;h3 id=&quot;3作用点と力点が入り混じっているときは一時的に力点を絞り込む&quot;&gt;3．作用点と力点が入り混じっているときは、一時的に力点を絞り込む&lt;/h3&gt;
+
+&lt;p&gt;ふりかえりなどのオープンな議論では、参加者ごとに異なる課題意識(作用点)が出され、話の焦点が定まらなくなることがあります。&lt;/p&gt;
+
+&lt;p&gt;たとえば、かつてふりかえりで「開発体験をもっと良くしたい」というテーマで話し合っていたら、以下のような作用点が並びました。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;レビューの質を上げたい (コード品質)&lt;/li&gt;
+  &lt;li&gt;リリース作業を楽にしたい (運用効率)&lt;/li&gt;
+  &lt;li&gt;オンボーディングを整えたい (育成コスト)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;こんなときに有効なのが、「&lt;strong&gt;まずどこから議論するか&lt;/strong&gt;」を合意し、&lt;strong&gt;議論の力点(焦点)を一時的にでも絞り込む&lt;/strong&gt;アプローチです。私が使う手法をいくつか紹介します。&lt;/p&gt;
+
+&lt;h4 id=&quot;すぐに実践しやすい軽量な手法&quot;&gt;すぐに実践しやすい軽量な手法&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;参加者の&lt;strong&gt;投票&lt;/strong&gt;で議論する順番を決める&lt;/li&gt;
+  &lt;li&gt;「今期中に改善したいものはどれ？」といった&lt;strong&gt;問い&lt;/strong&gt;で絞り込む&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;難易度は高いが効果が高い手法&quot;&gt;難易度は高いが効果が高い手法&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;「重要度と緊急度」「実行しやすさとインパクト」などの&lt;strong&gt;マトリクス&lt;/strong&gt;で整理する&lt;/li&gt;
+  &lt;li&gt;トピックを&lt;strong&gt;グルーピング&lt;/strong&gt;したり&lt;strong&gt;矢印で相関関係を整理&lt;/strong&gt;することで、参加者の関心が高いポイントを探る&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上にあるものは簡単に実践できる反面、効果はやや弱めです。&lt;strong&gt;下にあるものは実践難易度は高めですが参加者と一体となって(高い納得感や共感をもって)作用点を絞り込める&lt;/strong&gt;可能性が高いです。&lt;/p&gt;
+
+&lt;p&gt;今回の例では「作用点がバラバラ」な例を挙げましたが、&lt;strong&gt;実際には「力点と作用点が入り乱れた意見が集まる」ことがほとんど&lt;/strong&gt;です。&lt;br /&gt;
+たとえば「〜〜だから、〇〇したい」といった提案は、前半の「〜〜」部分は「狙い・意図」であるため作用点となり、後半の「〇〇」部分は「具体策」なので意見が割れる可能性の高い論点であり力点となり得ます。&lt;/p&gt;
+
+&lt;p&gt;強調しておくと「作用点」「力点」という言葉はあくまで比喩です。厳密に分類しすぎる必要はありません。&lt;br /&gt;
+大切なのは、&lt;strong&gt;「何に影響を与えるために」「ここで何を議論するのがもっとも効果的か」を整理しながら進めること&lt;/strong&gt;です。そして、こうした整理をファシリテーターだけが担うのではなく、&lt;strong&gt;参加者と一緒に行えるようにする工夫&lt;/strong&gt;を持っておくとファシリテーションはグッとしやすくなります。&lt;/p&gt;
+
+&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
+
+&lt;p&gt;議論が迷走や停滞してしまったとき、ファシリテーターに求められるのは、力点・作用点の構造を見抜きズレを解消することです。そのための3つのTipsを紹介しました。&lt;/p&gt;
+
+&lt;p&gt;「制約が何か（支点）」「効果を出したいところはどこか（作用点）」「そのために今考えるべきポイントはどこか（力点）」の見定めは、&lt;strong&gt;個人で考えごとをしているときには自然とやっていること&lt;/strong&gt;かもしれません。それを&lt;strong&gt;議論の場に広げること&lt;/strong&gt;が、ファシリテーターの役割です。&lt;/p&gt;
+
+&lt;p&gt;しかし、&lt;strong&gt;参加者の立場や背景によって思い描く作用点が異なる&lt;/strong&gt;という点が、これを難しくします。それらに絶対的な優劣や正解不正解を持ち込んでも意味はありません。&lt;br /&gt;
+違って当たり前、対立して当たり前の意見の集合から、&lt;strong&gt;新しい構造を見出し議論を深化させていく&lt;/strong&gt;ことを、&lt;strong&gt;参加者全員で&lt;/strong&gt;できるように導くことがファシリテーションなのだと思います。&lt;/p&gt;
+
+&lt;p&gt;参加者の意見に構造を見出し、&lt;strong&gt;参加者全員が共感・理解・加担できる議論&lt;/strong&gt;へと変化させることができれば、行き詰まっていた議論を立て直すキッカケになるはずです。&lt;/p&gt;
+
+&lt;p&gt;テコの原理を議論に当てはめる考え方が、ファシリテーター自身の思考整理の役に立てれば、ひいては参加者との共有可能な思考のフレームになれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">会議のファシリテーションをしていて、「論点がかみ合わない」「発言は出ているのにまとまらない」と感じることはないでしょうか。そんな場面では「どの論点に力を入れれば、どこが動くのか」がブレてしまっていることがあります。 これを議論の『力点』と『作用点』が入り乱れてしまい迷走しているという視点で捉えると、ファシリテーションの糸口が見えてきます。</summary></entry><entry><title type="html">1on1再入門 - “傾聴する”から”好奇心を持って問いを設計する”へ</title><link href="https://aloerina01.github.io/blog/2025-05-12-1" rel="alternate" type="text/html" title="1on1再入門 - “傾聴する”から”好奇心を持って問いを設計する”へ" /><published>2025-05-12T00:00:00+00:00</published><updated>2025-05-12T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-05-12-1">&lt;p&gt;「1on1では聞く側に徹しましょう」「8割以上の時間を部下の話に耳を傾けるべき」&lt;br /&gt;
 こういったアドバイスに私も従っていた時期がありました。&lt;/p&gt;
 
 &lt;p&gt;当時の私は相手の話にじっと耳を傾け、「うんうん」と相づちを打ち、「それで？」と続きを促す。散々相手に話してもらったものの、1on1の後にどこかすっきりしない気持ちが残る。そんな1on1をやっていました。&lt;/p&gt;
@@ -1004,108 +1092,4 @@
 
 &lt;p&gt;私の職場環境だから成り立っている内容も多分にあったかもしれませんが誰かの役に立てれば嬉しいですし、そうでなくとも数年後自分自身で読み返してレベルアップを実感できれば良いなと思って書きました。&lt;/p&gt;
 
-&lt;p&gt;思ったより長くなってしまいました。ここまで読んでくれた方はどうもありがとうございました。&lt;/p&gt;</content><author><name></name></author><summary type="html">私がEMとしてメンバーと向き合うときは「彼らのポテンシャルやエネルギーを100％発揮できる状態をつくれているか」と考えることを心がけています。『観察』と『フィードバック』はこれを実現するための最も大事な手段といえます。</summary></entry><entry><title type="html">“ペイン”と”チャレンジ”に注目して改善サイクルを生み出すふりかえりフレームワーク</title><link href="https://aloerina01.github.io/blog/2024-06-14-1" rel="alternate" type="text/html" title="&quot;ペイン&quot;と&quot;チャレンジ&quot;に注目して改善サイクルを生み出すふりかえりフレームワーク" /><published>2024-06-14T00:00:00+00:00</published><updated>2024-06-14T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-06-14-1">&lt;p&gt;KPTを継続していたものの意見が出にくくなったりTryが実行されなくなったり…といったマンネリ化や改善サイクルの停滞はどのチームも1度くらいは体験するのではないでしょうか。そんなときはふりかえりの方法を少し変えて刺激を得ることが有効な手段のひとつです。&lt;/p&gt;
-
-&lt;p&gt;新しいふりかえり方法は&lt;a href=&quot;https://amzn.to/3xkFIen&quot; target=&quot;blank&quot;&gt;アジャイルレトロスペクティブズ&lt;/a&gt;などから探すこともできますし、もっと自由に、議論したい切り口や進め方を自分たちで考えることもできます。今回は私が関わるチームで実践しているオリジナルの方法を紹介します。&lt;/p&gt;
-
-&lt;h3 id=&quot;コンセプト&quot;&gt;コンセプト&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2024-06-14/thumbnail.jpg&quot; alt=&quot;&quot; /&gt;
-ふりかえり実践イメージ&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;やりなれたKPTから大きく変えず、少しだけ変化させてマンネリ解消する方法であること&lt;/li&gt;
-  &lt;li&gt;チームメンバーが感じる不満やアイデアを集めやすい方法であること&lt;/li&gt;
-  &lt;li&gt;次のアクションを可視化し、完了までトラッキングできる仕組みであること&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;テンプレートの紹介&quot;&gt;テンプレートの紹介&lt;/h3&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/2024-06-14/template.jpg&quot; alt=&quot;ふりかえりテンプレート&quot; /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;ペイン&quot;&gt;“ペイン”&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;今イテレーションで困ったこと、苦労したこと、課題に感じていること&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;「〜がしんどかった」「〜で困った」「〜は良くないと思う」と主観的な感情に注目して書き出します。根拠や論理はいらず、気持ちを吐き出すことが大事です。&lt;/p&gt;
-
-&lt;h4 id=&quot;チャレンジ&quot;&gt;“チャレンジ”&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;新しく試してみたいこと&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;ペインに対するアイデアでもいいですし、技術的にチャレンジしたいことでもいいです。エンジニアならエンジニアとしての欲求を、PMならPMとしての欲求を素直に書きます。&lt;/p&gt;
-
-&lt;h4 id=&quot;議論中&quot;&gt;“議論中”&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;ペイン・チャレンジの中から選ばれた深堀りしていくトピック&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;このテンプレートは毎イテレーションで意見や議論を継ぎ足ししながら使っていくことを想定しています。1度のミーティングで結論が出なかったものや、ふりかえり後に検証や作業をした後に次回のミーティングで継続して議論したいなど、トピック毎の議論のステータスを表現するエリアです。&lt;/p&gt;
-
-&lt;h4 id=&quot;アクション&quot;&gt;“アクション”&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;次のふりかえりまでに実践するアクション&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;ペインとチャレンジは個人の感情や意欲から意見を集めましたが、アクションはチームで議論ながら出していきます。アクションにはいくつかルールがあります。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;次回のふりかえりまでに完了できる小さいサイズ&lt;/strong&gt;であること&lt;/li&gt;
-  &lt;li&gt;誰が見ても達成したかどうか判断できる&lt;strong&gt;具体的な達成基準&lt;/strong&gt;が書かれていること&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;この2つを満たすアクションを議論しながら探していきます。アクションはいくつ書き出してもよいですが、このエリアにはもういくつかのルールがあります。&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;アクションの完了の責任はチーム全体にある(アサインされた個人ではなく)&lt;/li&gt;
-  &lt;li&gt;1イテレーションで着手するアクション数が少なめになるようWIP上限を設ける&lt;/li&gt;
-  &lt;li&gt;もしアクションが達成できなかった場合は、次のふりかえりで必ずアクションに手を加える
-    &lt;ul&gt;
-      &lt;li&gt;よりアクションを細かくする&lt;/li&gt;
-      &lt;li&gt;個人アサインからペアアサインに変える&lt;/li&gt;
-      &lt;li&gt;「イテレーション内で進捗をシェアする」など、アクション達成のためのタスクを追加する&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;done&quot;&gt;“DONE”&lt;/h4&gt;
-
-&lt;p&gt;&lt;strong&gt;議論が終わったトピック、完了したアクション&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;このレーンはなくてもよいです。終わったものが山積みになると「これだけ改善行動を起こした」とモチベーションになることがあります。&lt;/p&gt;
-
-&lt;p&gt;また1ヶ月おきなど定期的にDONEの内容を見返し、以前との変化を計測したり、新しいチャレンジを見つけるキッカケにするものよさそうです。&lt;/p&gt;
-
-&lt;h3 id=&quot;ふりかえりの進め方&quot;&gt;ふりかえりの進め方&lt;/h3&gt;
-
-&lt;h4 id=&quot;1-前回のアクションの達成確認をする初回はスキップ&quot;&gt;1. 前回のアクションの達成確認をする(初回はスキップ)&lt;/h4&gt;
-
-&lt;p&gt;WIPアクションについて1つずつ確認し、終わってればDONEに、終わってなければタスクをアップデートします。&lt;/p&gt;
-
-&lt;h4 id=&quot;2-ペインとチャレンジを各々が書き出す&quot;&gt;2. ペインとチャレンジを各々が書き出す&lt;/h4&gt;
-
-&lt;p&gt;5〜10分程度の記入時間を設け、記入が済んだら1件ずつ内容をシェアしながらボードに貼り付けていきます。&lt;/p&gt;
-
-&lt;p&gt;シェアする過程で近い意見をグルーピングしたり、過去に挙げたものの解消してしまった意見を破棄したりと、ペインとチャレンジのエリアを整理しながら意見を集めていきます。チームメンバーの感情や欲求を1つのボードに載せ切ることを目指します。&lt;/p&gt;
-
-&lt;h4 id=&quot;3-議論して深堀りたいトピックを投票する&quot;&gt;3. 議論して深堀りたいトピックを投票する&lt;/h4&gt;
-
-&lt;p&gt;議論したいトピックに投票します。今回のミーティングで議論しなかったとしても、次回以降もペインとチャレンジに出ているトピックは(意図的に破棄しない限り)残り続けるので、『今日この場で』話したいものを選びましょう。&lt;/p&gt;
-
-&lt;h4 id=&quot;4-投票が多かったトピックを議論しアクションに落とし込む&quot;&gt;4. 投票が多かったトピックを議論しアクションに落とし込む&lt;/h4&gt;
-
-&lt;p&gt;アクションにはWIP制限があり、多くのアクションが出ても1イテレーションで消化できる数には限りがあるので、多くのトピックについて議論するより1つ1つのトピックについてじっくりめに議論するほうがおすすめです。&lt;/p&gt;
-
-&lt;p&gt;アクションエリアにどれくらい未着手アクションが溜まっているかや、1トピックの議論にどれだけ時間がかかるかが、ふりかえりミーティングの長さを決めるヒントになります。最初は1時間枠などで開催し、ミーティングの様子を見ながらアップデートしていくとよいです。&lt;/p&gt;
-
-&lt;h4 id=&quot;5-アクションの実行者を決める&quot;&gt;5. アクションの実行者を決める&lt;/h4&gt;
-
-&lt;p&gt;次のイテレーションで完了させるアクションをWIP上限内で決めます。&lt;/p&gt;
-
-&lt;p&gt;アクションごとに人をアサインしてもいいですし、ペアアサインなどにし個人の忙しさに依存しにくい状態を目指してもいいですし、バックログの消化が得意なチームであれば手が空いた人が都度ピックするかたちでもいいです。なんであれ、次のふりかえりミーティングまでにやると決めたものが完了できる方法であればOKです。&lt;/p&gt;
-
-&lt;h3 id=&quot;まとめ&quot;&gt;まとめ&lt;/h3&gt;
-
-&lt;p&gt;最後に、チームで使ったテンプレートを置いておきます。&lt;/p&gt;
-
-&lt;p&gt;&lt;img style=&quot;border:1px solid #CFD8DC&quot; alt=&quot;cheatsheet&quot; src=&quot;/assets/2024-06-14/cheatsheet.jpg&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;先述のとおり、ふりかえりはKPTにこだわらずもっと自由にやっていいものだと思っているので、これからもチームやプロジェクトに合う方法を探し続けていきたいと思います。それらがどこかで誰かの参考になれば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">KPTを継続していたものの意見が出にくくなったりTryが実行されなくなったり…といったマンネリ化や改善サイクルの停滞はどのチームも1度くらいは体験するのではないでしょうか。そんなときはふりかえりの方法を少し変えて刺激を得ることが有効な手段のひとつです。</summary></entry></feed>
+&lt;p&gt;思ったより長くなってしまいました。ここまで読んでくれた方はどうもありがとうございました。&lt;/p&gt;</content><author><name></name></author><summary type="html">私がEMとしてメンバーと向き合うときは「彼らのポテンシャルやエネルギーを100％発揮できる状態をつくれているか」と考えることを心がけています。『観察』と『フィードバック』はこれを実現するための最も大事な手段といえます。</summary></entry></feed>

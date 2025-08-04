@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする</title>
-  <meta name="description" content="ForkしたリポジトリをFork元から切り離すことは自分ひとりではできないのですが、それについての知見がなかなか見つからず苦労したので、自分のしたことをまとめておきます。">
+  <title>議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション</title>
+  <meta name="description" content="会議で「論点がかみ合わない」「発言は出ているのにまとまらない」と感じたことはありませんか？ そんなとき、議論の構造を「テコの原理」になぞらえて捉え直すことで、力点と作用点のズレに気づき、議論を立て直すヒントが見えてきます。">
   
   <meta name="author" content="aloerina">
   <meta name="copyright" content="&copy; aloerina 2025">
@@ -34,12 +34,12 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   <!-- Facebook OGP cards -->
-  <meta property="og:description" content="ForkしたリポジトリをFork元から切り離すことは自分ひとりではできないのですが、それについての知見がなかなか見つからず苦労したので、自分のしたことをまとめておきます。" />
-  <meta property="og:url" content="https://aloerina01.github.io/tip/2018-05-21-1" />
+  <meta property="og:description" content="会議で「論点がかみ合わない」「発言は出ているのにまとまらない」と感じたことはありませんか？ そんなとき、議論の構造を「テコの原理」になぞらえて捉え直すことで、力点と作用点のズレに気づき、議論を立て直すヒントが見えてきます。" />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2025-08-04-1" />
   <meta property="og:site_name" content="Feel and Code" />
-  <meta property="og:title" content="ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする" />
+  <meta property="og:title" content="議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://aloerina01.github.io/assets/logo_whitebg.png" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/ogp/2025-08-04-1.jpg" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -47,18 +47,18 @@
 
   
   <!-- Twitter: card tags -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする">
-  <meta name="twitter:description" content="ForkしたリポジトリをFork元から切り離すことは自分ひとりではできないのですが、それについての知見がなかなか見つからず苦労したので、自分のしたことをまとめておきます。">
-  <meta name="twitter:image" content="https://aloerina01.github.io/assets/logo_whitebg.png">
-  <meta name="twitter:url" content="https://aloerina01.github.io/tip/2018-05-21-1">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション">
+  <meta name="twitter:description" content="会議で「論点がかみ合わない」「発言は出ているのにまとまらない」と感じたことはありませんか？ そんなとき、議論の構造を「テコの原理」になぞらえて捉え直すことで、力点と作用点のズレに気づき、議論を立て直すヒントが見えてきます。">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/ogp/2025-08-04-1.jpg">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2025-08-04-1">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://aloerina01.github.io/tip/2018-05-21-1">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2025-08-04-1">
   <link rel="alternate" type="application/rss+xml" title="Feel and Code" href="https://aloerina01.github.io/feed.xml" />
 
   <meta name="algolia-site-verification"  content="72D549DE860CC566" />
@@ -72,8 +72,8 @@
     ga('create', 'UA-39630080-4', 'auto');
     ga('require', 'linkid');
     ga('send', 'pageview', {
-      'page': '/tip/2018-05-21-1',
-      'title': 'ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする'
+      'page': '/blog/2025-08-04-1',
+      'title': '議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション'
     });
   </script>
   
@@ -136,16 +136,16 @@
         </li>
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/tips">
-            <span itemprop="name">Tips</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
           </a>
           <meta itemprop="position" content="2" />
         </li>
         
         
         <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-          <a itemprop="item" href="https://aloerina01.github.io/tip/2018-05-21-1">
-            <span itemprop="name">ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする</span>
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2025-08-04-1">
+            <span itemprop="name">議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション</span>
             </a>
           <meta itemprop="position" content="3" />
         </li>
@@ -160,7 +160,7 @@
       <div class="post-header-container " >
         <div class="scrim ">
           <header class="post-header">
-            <h1 class="title">ForkリポジトリをFork元から切り離してスタンドアローンなリポジトリにする</h1>
+            <h1 class="title">議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション</h1>
             <!-- <p class="info">by <strong></strong></p> -->
           </header>
         </div>
@@ -172,7 +172,7 @@
 </span>
  
         <section class="post-meta">
-          <div class="post-date">2018-05-21</div>
+          <div class="post-date">2025-08-04</div>
           <div class="post-categories">
             
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
@@ -180,61 +180,100 @@
               <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
             </svg>
              
-            <a href="/category/environment/">Environment</a>   
+            <a href="/category/management/">Management</a>   
           </div>
         </section>
 
         <article class="post-content">
-          <p>Forkして作ったリポジトリだけれどFork元にMergeしたりせず普通のリポジトリとして扱いたい、という稀なケースの対応を経験したので知見をメモします。</p>
+          <p>会議のファシリテーションをしていて、「論点がかみ合わない」「発言は出ているのにまとまらない」と感じることはないでしょうか。そんな場面では「どの論点に力を入れれば、どこが動くのか」がブレてしまっていることがあります。<br />
+これを<strong>議論の『力点』と『作用点』が入り乱れてしまい迷走している</strong>という視点で捉えると、ファシリテーションの糸口が見えてきます。</p>
 
-<h3 id="結論">結論</h3>
+<h3 id="テコの三要素と議論の対応関係">テコの三要素と議論の対応関係</h3>
 
-<blockquote>
-  <p>To detach the fork and turn it into a standalone repository on GitHub, contact GitHub Support. If the fork has forks of its own, let support know if the forks should move with your repository into a new network or remain in the current network.</p>
-</blockquote>
+<p>「テコ」は以下の3つの要素で構成されます。</p>
 
-<p>と<a href="https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/#commit-was-made-in-a-fork">Github Help</a>に書いてありました。</p>
+<ul>
+  <li><strong>力点</strong>：議論で注力すべきテーマや問い</li>
+  <li><strong>作用点</strong>：議論の結論により影響を与える箇所。現場の困りごとやリターンのある領域</li>
+  <li><strong>支点</strong>：動かない前提、制約、背景</li>
+</ul>
 
-<p>Fork元から切り離しStandaloneなリポジトリにしたい場合はGithub Supportに連絡してね、そのときはリポジトリをどこのネットワーク化に配置したいのかも教えてね、とのことです。<br />
-自身ではできないようです。</p>
+<p>「<strong>今どこに力を加えようとしているのか(＝力点)</strong>」「<strong>何を動かしたいのか(＝作用点)</strong>」というテコの原理に似た構造が、議論の中には隠れています。
+議論が迷走するときはこれらにズレがあり、一直線に繋がっていない可能性があります。ファシリテーターはそれを見極め整理することで、議論を立て直すことができます。<br />
+今回は3つのファシリテーションTipsを紹介します。</p>
 
-<h3 id="実際にやってみたときのこと">実際にやってみたときのこと</h3>
+<h3 id="1まずは作用点何に影響を与えたいかを見極める">1.まずは「作用点(何に影響を与えたいか)」を見極める</h3>
 
-<p>拙い英語で連絡しました。2通やり取りしたのですが、だいたい翌日の朝方2時〜3時くらいに返信が来たのでとても素早く対応いただけたと感じました。</p>
+<p>「朝会をもう少し短くできないか？」という議論が出たときのことです。<br />
+一見すると議論のテーマは明確ですが、よく聞くとそれぞれの発言者が持っている目的が違うことがあります。</p>
 
-<p>やり取りの内容の雰囲気を載せておきます(原文ママではないです)。</p>
+<ul>
+  <li>Aさん「会議で作業を中断させたくない」</li>
+  <li>Bさん「冗長な報告が多く、時間を無駄にしたくない」</li>
+  <li>Cさん「必要な情報共有が抜けてしまうのが心配」</li>
+</ul>
 
-<p><strong>1通目</strong></p>
-<blockquote>
-  <p>In the below repository, I want to detach the fork and turn it into a standalone repository.<br />
-https://github.com/aloerina01/aloerina01.github.io</p>
+<p>このように、同じテーマの下に異なる作用点が混在していると、議論はかみ合いません。</p>
 
-  <p>How can I do ? 
- Thank you for being patient with my English.</p>
-</blockquote>
+<p>こういう場面でのファシリテーションは、まずは各々がイメージする作用点──つまり「<strong>何を良くしたくて議論に参加しているのか</strong>」を明らかにすることを目指します。参加者一人一人の<strong>背景や意図を明らかにする</strong>ことが議論の準備として必要なわけです。</p>
 
-<p><strong>1通目の返信</strong></p>
-<blockquote>
-  <p>I’d be happy to help you with that! I see that your fork has 1 fork of its own. Would you like it to remain under aloerina01/aloerina01.github.io, or should it move under [fork元リポジトリ名]?</p>
-</blockquote>
+<h3 id="2作用点がバラバラなときは共通する力点議論の焦点を見極める">2.作用点がバラバラなときは、共通する力点(議論の焦点)を見極める</h3>
 
-<p><strong>2通目</strong></p>
-<blockquote>
-  <p>Thanks for your helping!</p>
+<p>作用点が散っていて収集がつかないときは「<strong>どこに議論の焦点を置けば、複数の作用点に影響を与えられるか</strong>」を探るようファシリテーションするのが1つの手です。</p>
 
-  <p>Please excuse my lack of explanation…<br />
-I would like to remain under aloerina01/aloerina01.github.io.<br />
-This is my Github Pages repository, therefore I never merge to [fork元リポジトリ名].</p>
-</blockquote>
+<p>前述の朝会の例では、目的が「集中力を維持したい」「作業時間を無駄にしたくない」「情報共有を保ちたい」に分かれていました。<br />
+作用点がバラバラなので、それらに共通する議論の焦点──つまり「何を変えれば全ての目的を満たせるか」を、力点にして議論を進めてみます。それで解決策が見つからない場合は、「作用点の中でゆずれる要素・ゆずれない要素は何か」に論点を移し、のちに「作用点にほどほどに効く」現実的な解決策を探す議論になっていくかもしれません。</p>
 
-<p><strong>2通目の返信</strong></p>
-<blockquote>
-  <p>Thanks for confirming! I’ve detached that fork with it’s child for you. It may take a few minutes for that to complete.</p>
-</blockquote>
+<p>このように<strong>ファシリテーターは「議論の焦点を段階的に変える」アプローチ</strong>をとることで議論を前進させることが可能です。</p>
 
-<p>Helpページを熟読せずにSupportに連絡してしまったせいでやり取りが2往復になってしまって迷惑をかけてしまいましたが、素早くそして快く対応してくれたGithubに感謝です。</p>
+<h3 id="3作用点と力点が入り混じっているときは一時的に力点を絞り込む">3．作用点と力点が入り混じっているときは、一時的に力点を絞り込む</h3>
 
-<p>以上。</p>
+<p>ふりかえりなどのオープンな議論では、参加者ごとに異なる課題意識(作用点)が出され、話の焦点が定まらなくなることがあります。</p>
+
+<p>たとえば、かつてふりかえりで「開発体験をもっと良くしたい」というテーマで話し合っていたら、以下のような作用点が並びました。</p>
+
+<ul>
+  <li>レビューの質を上げたい (コード品質)</li>
+  <li>リリース作業を楽にしたい (運用効率)</li>
+  <li>オンボーディングを整えたい (育成コスト)</li>
+</ul>
+
+<p>こんなときに有効なのが、「<strong>まずどこから議論するか</strong>」を合意し、<strong>議論の力点(焦点)を一時的にでも絞り込む</strong>アプローチです。私が使う手法をいくつか紹介します。</p>
+
+<h4 id="すぐに実践しやすい軽量な手法">すぐに実践しやすい軽量な手法</h4>
+
+<ul>
+  <li>参加者の<strong>投票</strong>で議論する順番を決める</li>
+  <li>「今期中に改善したいものはどれ？」といった<strong>問い</strong>で絞り込む</li>
+</ul>
+
+<h4 id="難易度は高いが効果が高い手法">難易度は高いが効果が高い手法</h4>
+
+<ul>
+  <li>「重要度と緊急度」「実行しやすさとインパクト」などの<strong>マトリクス</strong>で整理する</li>
+  <li>トピックを<strong>グルーピング</strong>したり<strong>矢印で相関関係を整理</strong>することで、参加者の関心が高いポイントを探る</li>
+</ul>
+
+<p>上にあるものは簡単に実践できる反面、効果はやや弱めです。<strong>下にあるものは実践難易度は高めですが参加者と一体となって(高い納得感や共感をもって)作用点を絞り込める</strong>可能性が高いです。</p>
+
+<p>今回の例では「作用点がバラバラ」な例を挙げましたが、<strong>実際には「力点と作用点が入り乱れた意見が集まる」ことがほとんど</strong>です。<br />
+たとえば「〜〜だから、〇〇したい」といった提案は、前半の「〜〜」部分は「狙い・意図」であるため作用点となり、後半の「〇〇」部分は「具体策」なので意見が割れる可能性の高い論点であり力点となり得ます。</p>
+
+<p>強調しておくと「作用点」「力点」という言葉はあくまで比喩です。厳密に分類しすぎる必要はありません。<br />
+大切なのは、<strong>「何に影響を与えるために」「ここで何を議論するのがもっとも効果的か」を整理しながら進めること</strong>です。そして、こうした整理をファシリテーターだけが担うのではなく、<strong>参加者と一緒に行えるようにする工夫</strong>を持っておくとファシリテーションはグッとしやすくなります。</p>
+
+<h3 id="まとめ">まとめ</h3>
+
+<p>議論が迷走や停滞してしまったとき、ファシリテーターに求められるのは、力点・作用点の構造を見抜きズレを解消することです。そのための3つのTipsを紹介しました。</p>
+
+<p>「制約が何か（支点）」「効果を出したいところはどこか（作用点）」「そのために今考えるべきポイントはどこか（力点）」の見定めは、<strong>個人で考えごとをしているときには自然とやっていること</strong>かもしれません。それを<strong>議論の場に広げること</strong>が、ファシリテーターの役割です。</p>
+
+<p>しかし、<strong>参加者の立場や背景によって思い描く作用点が異なる</strong>という点が、これを難しくします。それらに絶対的な優劣や正解不正解を持ち込んでも意味はありません。<br />
+違って当たり前、対立して当たり前の意見の集合から、<strong>新しい構造を見出し議論を深化させていく</strong>ことを、<strong>参加者全員で</strong>できるように導くことがファシリテーションなのだと思います。</p>
+
+<p>参加者の意見に構造を見出し、<strong>参加者全員が共感・理解・加担できる議論</strong>へと変化させることができれば、行き詰まっていた議論を立て直すキッカケになるはずです。</p>
+
+<p>テコの原理を議論に当てはめる考え方が、ファシリテーター自身の思考整理の役に立てれば、ひいては参加者との共有可能な思考のフレームになれば幸いです。</p>
 
         </article>
 
@@ -278,7 +317,7 @@ This is my Github Pages repository, therefore I never merge to [fork元リポジ
         
       <a
         class="share-button share-button-x"
-        href="//twitter.com/share?text=Fork%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92Fork%E5%85%83%E3%81%8B%E3%82%89%E5%88%87%E3%82%8A%E9%9B%A2%E3%81%97%E3%81%A6%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%82%A2%E3%83%AD%E3%83%BC%E3%83%B3%E3%81%AA%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AB%E3%81%99%E3%82%8B&url=https://aloerina01.github.io/tip/2018-05-21-1&via=aloerina_&hashtags=Environment,mfcode"
+        href="//twitter.com/share?text=%E8%AD%B0%E8%AB%96%E3%82%92%E2%80%9C%E7%AB%8B%E3%81%A6%E7%9B%B4%E3%81%99%E2%80%9D%E3%81%A8%E3%81%8D%E3%81%AB%E4%BD%BF%E3%81%88%E3%82%8B%E3%80%81%E5%8A%9B%E7%82%B9%E3%81%A8%E4%BD%9C%E7%94%A8%E7%82%B9%E3%82%92%E5%8A%B9%E3%81%8B%E3%81%9B%E3%82%8B%E3%83%95%E3%82%A1%E3%82%B7%E3%83%AA%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3&url=https://aloerina01.github.io/blog/2025-08-04-1&via=aloerina_&hashtags=Management,mfcode"
         onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;"
       >
         <svg
@@ -320,7 +359,7 @@ This is my Github Pages repository, therefore I never merge to [fork元リポジ
                 
       <a
         class="share-button share-button-facebook"
-        href="//www.facebook.com/sharer.php?t=Fork%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92Fork%E5%85%83%E3%81%8B%E3%82%89%E5%88%87%E3%82%8A%E9%9B%A2%E3%81%97%E3%81%A6%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%82%A2%E3%83%AD%E3%83%BC%E3%83%B3%E3%81%AA%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AB%E3%81%99%E3%82%8B&u=https://aloerina01.github.io/tip/2018-05-21-1"
+        href="//www.facebook.com/sharer.php?t=%E8%AD%B0%E8%AB%96%E3%82%92%E2%80%9C%E7%AB%8B%E3%81%A6%E7%9B%B4%E3%81%99%E2%80%9D%E3%81%A8%E3%81%8D%E3%81%AB%E4%BD%BF%E3%81%88%E3%82%8B%E3%80%81%E5%8A%9B%E7%82%B9%E3%81%A8%E4%BD%9C%E7%94%A8%E7%82%B9%E3%82%92%E5%8A%B9%E3%81%8B%E3%81%9B%E3%82%8B%E3%83%95%E3%82%A1%E3%82%B7%E3%83%AA%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3&u=https://aloerina01.github.io/blog/2025-08-04-1"
         onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;"
       >
         <svg
@@ -339,7 +378,7 @@ This is my Github Pages repository, therefore I never merge to [fork元リポジ
                                                                                                                                         
       <a
         class="share-button share-button-pocket"
-        href="//getpocket.com/edit?url=https://aloerina01.github.io/tip/2018-05-21-1"
+        href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2025-08-04-1"
         target="_blank"
       >
         <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
@@ -348,7 +387,7 @@ This is my Github Pages repository, therefore I never merge to [fork元リポジ
       <a
         class="share-button share-button-line"
         target="_blank"
-        href="//line.me/R/msg/text/?Fork%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92Fork%E5%85%83%E3%81%8B%E3%82%89%E5%88%87%E3%82%8A%E9%9B%A2%E3%81%97%E3%81%A6%E3%82%B9%E3%82%BF%E3%83%B3%E3%83%89%E3%82%A2%E3%83%AD%E3%83%BC%E3%83%B3%E3%81%AA%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%81%AB%E3%81%99%E3%82%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Ftip%2F2018-05-21-1"
+        href="//line.me/R/msg/text/?%E8%AD%B0%E8%AB%96%E3%82%92%E2%80%9C%E7%AB%8B%E3%81%A6%E7%9B%B4%E3%81%99%E2%80%9D%E3%81%A8%E3%81%8D%E3%81%AB%E4%BD%BF%E3%81%88%E3%82%8B%E3%80%81%E5%8A%9B%E7%82%B9%E3%81%A8%E4%BD%9C%E7%94%A8%E7%82%B9%E3%82%92%E5%8A%B9%E3%81%8B%E3%81%9B%E3%82%8B%E3%83%95%E3%82%A1%E3%82%B7%E3%83%AA%E3%83%86%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2025-08-04-1"
       >
         <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
       </a>
@@ -388,8 +427,6 @@ This is my Github Pages repository, therefore I never merge to [fork元リポジ
     </div>
     <div class="sub-contents-main">
       
-      <li><a href="/blog/2025-08-04-1">議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション</a></li>
-      
       <li><a href="/blog/2025-05-12-1">1on1再入門 - “傾聴する”から”好奇心を持って問いを設計する”へ</a></li>
       
       <li><a href="/blog/2025-05-07-1">“我々はなぜここにいるのか”の問いを手放した理由 - 心の発達理論から学ぶEMの問いの設計</a></li>
@@ -397,6 +434,8 @@ This is my Github Pages repository, therefore I never merge to [fork元リポジ
       <li><a href="/blog/2025-03-31-1">「若手が育っていない」「優秀な人に負担が偏っている」と感じたときに立ち返ること</a></li>
       
       <li><a href="/blog/2025-02-12-1">計画的にロールモデルを活用する</a></li>
+      
+      <li><a href="/blog/2025-01-16-1">チームがより自律的になるWorkshopと、チーム成熟度CheatSheetをつくりました</a></li>
       
     </div>
   </div>
