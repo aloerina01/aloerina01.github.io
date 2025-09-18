@@ -348,6 +348,32 @@ pre code.hljs {
 			h3 + h4, h3 + h5, h4 + h5 {
 				margin-top: 0;
 			}
+			#markdown-toc {
+				background-color: #f5f8fa;
+				font-size: 90%;
+				list-style: none;
+				position: relative;
+				padding: 16px 24px;
+				border-radius: 8px;
+				
+				&, ul {
+					list-style: none;
+					margin-bottom: 0;
+					> li {
+						padding-top: 2px;
+					}
+					// 罫線は一旦表示しない。細かい調整が必要なので。
+					// > li + li {
+					// 	border-top: 1px solid $blue-gray-100;
+					// }
+				}
+				&::before {
+					content: "目次";
+					display: block;
+					font-weight: bold;
+					margin-bottom: 0.5em;
+				}
+			}
 			.footnotes {
 				font-size: 80%;
 				margin-top: 44px;
