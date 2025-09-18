@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例</title>
+  <meta name="description" content="新メンバーが入ったとき、オンボーディングと称して資料を渡して「読んでおいてね」で終わらせていませんか？ しかしそれでは、立ち上がりのスピードやチーム全体の期待値調整には不十分でした。この記事では、LINE NEWSのフロントエンドチームで実践したオンボーディング改善の取り組みを紹介します。ターゲットの分類、必要な...">
+  
+  <meta name="author" content="aloerina">
+  <meta name="copyright" content="&copy; aloerina 2025">
+  
+  <meta name="google-site-verification" content="FEbLKzXnOoXdy4JCrf6UntpqxWuuK8umvUEhILj8IU8" />
+  <link rel="manifest" href="/manifest.json">
+  <!-- External libraries -->
+  <link rel="stylesheet" as="style" href="/css/prism.css">
+  
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="109x109" href="/assets/icons/favicon 1ldpi.png">
+  <link rel="apple-touch-icon" sizes="146x146" href="/assets/icons/favicon 1mdpi.png">
+  <link rel="apple-touch-icon" sizes="218x218" href="/assets/icons/favicon 1hdpi.png">
+  <link rel="apple-touch-icon" sizes="290x290" href="/assets/icons/favicon 1xhdpi.png">
+  <link rel="apple-touch-icon" sizes="435x435" href="/assets/icons/favicon 1xxhdpi.png">
+  <link rel="apple-touch-icon" sizes="580x580" href="/assets/icons/favicon 1xxxhdpi.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/favicon 1mdpi.png">
+  <meta name="theme-color" content="#546E7A">
+  <meta name="apple-mobile-web-app-title" content="mf-code">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="新メンバーが入ったとき、オンボーディングと称して資料を渡して「読んでおいてね」で終わらせていませんか？ しかしそれでは、立ち上がりのスピードやチーム全体の期待値調整には不十分でした。この記事では、LINE NEWSのフロントエンドチームで実践したオンボーディング改善の取り組みを紹介します。ターゲットの分類、必要な..." />
+  <meta property="og:url" content="https://aloerina01.github.io/blog/2025-09-18-1" />
+  <meta property="og:site_name" content="Feel and Code" />
+  <meta property="og:title" content="”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://aloerina01.github.io/assets/ogp/2025-09-18-1.jpg" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例">
+  <meta name="twitter:description" content="新メンバーが入ったとき、オンボーディングと称して資料を渡して「読んでおいてね」で終わらせていませんか？ しかしそれでは、立ち上がりのスピードやチーム全体の期待値調整には不十分でした。この記事では、LINE NEWSのフロントエンドチームで実践したオンボーディング改善の取り組みを紹介します。ターゲットの分類、必要な...">
+  <meta name="twitter:image" content="https://aloerina01.github.io/assets/ogp/2025-09-18-1.jpg">
+  <meta name="twitter:url" content="https://aloerina01.github.io/blog/2025-09-18-1">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="https://aloerina01.github.io/blog/2025-09-18-1">
+  <link rel="alternate" type="application/rss+xml" title="Feel and Code" href="https://aloerina01.github.io/feed.xml" />
+
+  <meta name="algolia-site-verification"  content="72D549DE860CC566" />
+
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-39630080-4', 'auto');
+    ga('require', 'linkid');
+    ga('send', 'pageview', {
+      'page': '/blog/2025-09-18-1',
+      'title': '”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例'
+    });
+  </script>
+  
+
+  
+
+  <script src="/dist/prism.js" defer></script>
+</head>
+
+
+<body>
+
+  <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <picture>
+        <source src="/assets/logo.webp" type="image/webp"> 
+        <img src="/assets/logo_min.png" alt="Feel and Code" loading="lazy">
+      </picture>
+      
+    </a>
+    <a class="navigation-menu-button" id="js-mobile-menu-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+      </svg>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu">
+        <li class="nav-search-box">
+          <div class="aa-input-container" id="aa-input-container">
+            <input type="search" id="aa-search-input" class="aa-input-search" placeholder="" name="search" autocomplete="off" />
+            <svg class="aa-input-icon" viewBox="654 -372 1664 1664">
+                <path d="M1806,332c0-123.3-43.8-228.8-131.5-316.5C1586.8-72.2,1481.3-116,1358-116s-228.8,43.8-316.5,131.5  C953.8,103.2,910,208.7,910,332s43.8,228.8,131.5,316.5C1129.2,736.2,1234.7,780,1358,780s228.8-43.8,316.5-131.5  C1762.2,560.8,1806,455.3,1806,332z M2318,1164c0,34.7-12.7,64.7-38,90s-55.3,38-90,38c-36,0-66-12.7-90-38l-343-342  c-119.3,82.7-252.3,124-399,124c-95.3,0-186.5-18.5-273.5-55.5s-162-87-225-150s-113-138-150-225S654,427.3,654,332  s18.5-186.5,55.5-273.5s87-162,150-225s138-113,225-150S1262.7-372,1358-372s186.5,18.5,273.5,55.5s162,87,225,150s113,138,150,225  S2062,236.7,2062,332c0,146.7-41.3,279.7-124,399l343,343C2305.7,1098.7,2318,1128.7,2318,1164z" />
+            </svg>
+          </div>
+        </li>
+         
+        <li class="nav-link">
+          <a href="https://note.com/aloerina/m/m699d10700993"target="_blank" rel="noopener noreferrer">Poem</a>
+            
+        <li class="nav-link">
+          <a href="https://suzuri.jp/aloerina"target="_blank" rel="noopener noreferrer">Shop</a>
+            
+        <li class="nav-link">
+          <a href="https://goo.gl/forms/VKcqNYwtEjDUNyN92"target="_blank" rel="noopener noreferrer">Contact</a>
+            
+        <li class="nav-link">
+          <a href="/feed.xml"target="_blank" rel="noopener noreferrer">RSS</a>
+           
+      </ul>
+    </nav>
+    <div class="breadcrumbs" style="display:none">
+      <ol itemscope itemtype="http://schema.org/BreadcrumbList">
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/">
+            <span itemprop="name">Feel and Code</span>
+          </a>
+          <meta itemprop="position" content="1" />
+        </li>
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blogs">
+            <span itemprop="name">記事</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+        
+        
+        <li itemscope itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+          <a itemprop="item" href="https://aloerina01.github.io/blog/2025-09-18-1">
+            <span itemprop="name">”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例</span>
+            </a>
+          <meta itemprop="position" content="3" />
+        </li>
+        
+        </ol>
+    </div>
+  </div>
+</header>
+
+  <main class="page-content">
+    <div class="post">
+      <div class="post-header-container " >
+        <div class="scrim ">
+          <header class="post-header">
+            <h1 class="title">”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例</h1>
+            <!-- <p class="info">by <strong></strong></p> -->
+          </header>
+        </div>
+      </div>
+      <div class="wrapper">
+         <span class="page-divider">
+  <span class="one"></span>
+  <span class="two"></span>
+</span>
+ 
+        <section class="post-meta">
+          <div class="post-date">2025-09-18</div>
+          <div class="post-categories">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="post-categories-icon" viewBox="0 0 16 16">
+              <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"/>
+              <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586l7 7L13.586 9l-7-7H2v4.586z"/>
+            </svg>
+             
+            <a href="/category/onboarding/">Onboarding</a>,    
+            <a href="/category/management/">Management</a>   
+          </div>
+        </section>
+
+        <article class="post-content">
+          <p>新メンバーを受け入れるとき、オンボーディングと称して既存資料をドサッと渡して「読んでおいてね」と伝えて済ませてしまうこと、ありませんか？</p>
+
+<p>私たちのチームもかつてそうでした。<br />
+しかし、このオンボーディングは新メンバーが<strong>最速でパフォーマンスを出すために</strong>最適なやり方なのでしょうか？</p>
+
+<p>もっと良いオンボーディングにしたいと思っても、その機会は多くて年に数回。ついつい<strong>メンテナンスは後回し</strong>にされがち。いざメンテしようにも<strong>どこをどう直せば良くなるのか分からない</strong>…。<br />
+と、改善意欲があっても手が動かせない状況にも陥りやすいのが、オンボーディングの難しいところですよね。</p>
+
+<p>今回の記事では、かつて私がマネジメントしていたLINE NEWSのフロントエンドチームのオンボーディング改善事例を紹介します。事例を参考に、ご自身のチームにあったオンボーディングはどういうものか、想像しながら読んでもらえると嬉しいです。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#オンボーディングの真の役割を問い直す" id="markdown-toc-オンボーディングの真の役割を問い直す">オンボーディングの真の役割を問い直す</a></li>
+  <li><a href="#ターゲットをタイプ分けする" id="markdown-toc-ターゲットをタイプ分けする">ターゲットをタイプ分けする</a></li>
+  <li><a href="#ターゲットのタイプ毎にユーザーストーリーを描く" id="markdown-toc-ターゲットのタイプ毎にユーザーストーリーを描く">ターゲットのタイプ毎にユーザーストーリーを描く</a></li>
+  <li><a href="#これまで実践してきたオンボーディングをマッピングする" id="markdown-toc-これまで実践してきたオンボーディングをマッピングする">これまで実践してきたオンボーディングをマッピングする</a></li>
+  <li><a href="#アクションのタイムラインを設計する" id="markdown-toc-アクションのタイムラインを設計する">アクションのタイムラインを設計する</a></li>
+  <li><a href="#その他のオンボーディングを充実させるtips" id="markdown-toc-その他のオンボーディングを充実させるtips">その他のオンボーディングを充実させるTips</a>    <ul>
+      <li><a href="#新メンバーによるオンボーディング改善をオンボーディングに組み込む" id="markdown-toc-新メンバーによるオンボーディング改善をオンボーディングに組み込む">「新メンバーによるオンボーディング改善」をオンボーディングに組み込む</a></li>
+      <li><a href="#オンボーディングの責任範囲を明記する" id="markdown-toc-オンボーディングの責任範囲を明記する">オンボーディングの責任範囲を明記する</a></li>
+      <li><a href="#過剰なものを削ぎ落とす" id="markdown-toc-過剰なものを削ぎ落とす">過剰なものを削ぎ落とす</a></li>
+      <li><a href="#ドキュメントを使うものとモブワークを使うものとを分ける" id="markdown-toc-ドキュメントを使うものとモブワークを使うものとを分ける">ドキュメントを使うものと、モブワークを使うものとを分ける</a></li>
+    </ul>
+  </li>
+  <li><a href="#おわりに" id="markdown-toc-おわりに">おわりに</a></li>
+</ul>
+
+<h3 id="オンボーディングの真の役割を問い直す">オンボーディングの真の役割を問い直す</h3>
+
+<p>オンボーディングは誰のためのものでしょうか？</p>
+
+<p>私は新メンバーのためだけではないと考えています。新メンバーの<strong>メンター</strong>のためであり、<strong>受け入れるチームメンバー</strong>のためでもあります。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th><strong>誰のためか</strong></th>
+      <th><strong>どう役立つか</strong></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>新メンバー</strong></td>
+      <td>チームのルールや運用を理解し、最速で力を発揮できる状態に辿り着く</td>
+    </tr>
+    <tr>
+      <td><strong>メンター</strong></td>
+      <td>たまにしかやらない「メンター業務」のガイドラインになる<br />誰がメンター役を担っても一定の品質になる</td>
+    </tr>
+    <tr>
+      <td><strong>受け入れるチームメンバー</strong></td>
+      <td>新メンバーに対する「何を知っていて、何を知らないのか」の期待値が揃い協業しやすくなる</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>三者にとって意味のあるオンボーディングを目指すことが、私たちのオンボーディング改善のスタート地点でした。</p>
+
+<h3 id="ターゲットをタイプ分けする">ターゲットをタイプ分けする</h3>
+
+<p>オンボーディングとは、資料を読んでもらうことでも、説明会を開くことでもありません。それらは手段の1つにはなり得ますが、目的そのものではありません。</p>
+
+<p>上述の通り、私たちにとってオンボーディングの目的は</p>
+
+<ul>
+  <li><strong>新メンバー</strong>が最速でパフォーマンスを出す(メインターゲット)</li>
+  <li><strong>メンター</strong>が迷うことなくメンタリングでき、かつその品質が一定になる</li>
+  <li><strong>受け入れチーム</strong>の期待値が揃う</li>
+</ul>
+
+<p>の3つです。</p>
+
+<p>この三者の目的を達成するために、<strong>まずはメインターゲットである「新メンバー」がどういう人か解像度を上げることから</strong>始めてみます。私たちのチームでは4種類に分類しました。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>タイプ</th>
+      <th>特徴</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>新卒</strong></td>
+      <td>エンジニアとしての業務経験が<strong>ない</strong>、<strong>長期的</strong>にチームに属する</td>
+    </tr>
+    <tr>
+      <td><strong>インターン生</strong></td>
+      <td>エンジニアとしての業務経験が<strong>ない</strong>、<strong>短期間</strong>の関わりで終了日が決まっている</td>
+    </tr>
+    <tr>
+      <td><strong>中途採用や社内異動</strong></td>
+      <td>エンジニアとしての業務経験が<strong>ある</strong>、<strong>長期的</strong>にチームに属する</td>
+    </tr>
+    <tr>
+      <td><strong>ヘルプアサイン</strong></td>
+      <td>エンジニアとしての業務経験が<strong>ある</strong>、<strong>短期間</strong>の関わり</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>私たちは「エンジニア歴」と「関わる期間の長さ」で分類しましたが、チームによっては「技術領域」や「得意ドメイン」などかもしれません。これまでに受け入れてきた人たちを思い浮かべながら分類すると良いでしょう。</p>
+
+<h3 id="ターゲットのタイプ毎にユーザーストーリーを描く">ターゲットのタイプ毎にユーザーストーリーを描く</h3>
+
+<p>次に、この4タイプの新メンバーがパフォーマンスを発揮するまでに経験すべきことを描きます。これを「ユーザーストーリー」と呼ぶのは、<strong>ユーザー(新メンバー)の目線</strong>でどんな体験が必要かを考えるためです。</p>
+
+<p>ストーリーを考えるための骨組みとして、オンボーディングを4つのフェーズに分けましょう。</p>
+
+<ol>
+  <li>How to <strong>Live</strong> (職場に適応する)</li>
+  <li>How to <strong>Learn</strong> (知識・スキルを得る)</li>
+  <li>How to <strong>Work</strong> (仕事を完遂する、成果を出す)</li>
+  <li>How to <strong>Influence</strong> (周囲に影響を与える)</li>
+</ol>
+
+<p>フェーズごとにストーリーを洗い出していきます。</p>
+
+<p>例えば、1番目の適用するフェーズでは「チームに馴染む」「よく使うコミュニケーション方法を知る」などで、2番目の知識を得るフェーズでは「デプロイフローを知る」「プロダクトの収益モデルを知る」などでしょうか。</p>
+
+<p>成果を出すまでに必要な体験を<strong>粒度問わず</strong>洗い出します。</p>
+
+<p>一通り洗い出し終わったら、先程のターゲットのタイプと掛け合わあせて、「新メンバーのタイプ毎にどのストーリーを経験すべきか」を整理していきます。</p>
+
+<p>LINE NEWSでは、「4つの新メンバーのタイプ」x 「4つのフェーズ(12のストーリー)」を表にまとめていました。</p>
+
+<figure style="margin-left:-30%;margin-right:-30%;margin-bottom:36px;">
+<img style="border:1px solid #CFD8DC;border-radius:4px;" alt="オンボーディングストーリー" src="/assets/2025-09-18-1/オンボーディングストーリーマッピング.jpg" />
+<figcaption style="text-align:center;font-size:90%;color:#90A4AE;">(LINE NEWSのオンボーディングストーリー)</figcaption>
+</figure>
+
+<p>少し表の解説をします。<br />
+<strong>Rowには、オンボーディングの4つのフェーズ(緑色のブロック)と、それぞれのフェーズで必要なストーリー(グレーの行)</strong>があります。たとえばHow to Liveのフェーズには「チームの雰囲気を知る」「チームメンバーとの関係性をつくる」「Managerと期待値を揃える」の3つのストーリーがあります。</p>
+
+<p><strong>Columnには、新メンバーの4つのタイプ</strong>が並んでいます。<br />
+それぞれのタイプが、各ストーリーを経験すべきかについて「Essential(必須)」「Recommended(推奨)」「Optional(任意)」「空欄(不要)」の4段階で表現しています。</p>
+
+<p>具体例を1つピックアップして詳細を見てみましょう。<br />
+表の真ん中あたりにあるHow to Learnの<strong>「配属先Small Teamの開発環境・ルールを理解する」ストーリー</strong>は、</p>
+
+<ul>
+  <li>新卒タイプには Essential</li>
+  <li>インターン生タイプには Optional</li>
+  <li>中途採用タイプには Recommended</li>
+  <li>ヘルプアサインタイプには None</li>
+</ul>
+
+<p>となっています。</p>
+
+<p>当時のLINE NEWSプロジェクトでは、エンジニアは3つのSmall Team(職能横断なスクラムチーム)に分かれて開発をしていました。</p>
+
+<p>『新卒タイプ』にとっては馴染のない開発体制であろうことから「必須」のストーリーとしましたが、1ヶ月間のみ協業する『インターン生タイプ』に開発環境・ルール・運用をすべて理解してもらうのはオーバーヘッドが高いので「任意」としていました。</p>
+
+<p style="text-align:center;">＊＊＊</p>
+
+<p>これがオンボーディングの全体像になります。<br />
+どんな新メンバーが何を経験すべきかが明らかになりました。</p>
+
+<p>上述した三者の目的である</p>
+
+<ul>
+  <li><strong>新メンバー</strong>が最速でパフォーマンスを出す(メインターゲット)</li>
+  <li><strong>メンター</strong>が迷うことなくメンタリングでき、かつその品質が一定になる</li>
+  <li><strong>受け入れチーム</strong>の期待値が揃う</li>
+</ul>
+
+<p>を満たすアウトラインが整った状態です。あとは<strong>ストーリーを実現する具体的なアクションを埋めていけばオンボーディングが完成する</strong>であろうことが、すでに感じ取れるのではないでしょうか？</p>
+
+<h3 id="これまで実践してきたオンボーディングをマッピングする">これまで実践してきたオンボーディングをマッピングする</h3>
+
+<p>これまで実践してきたオンボーディングアクションを<strong>ストーリーにマッピング</strong>していきます。</p>
+
+<p>たとえば</p>
+
+<ul>
+  <li>初日に自己紹介ミーティングに参加する</li>
+  <li>プロダクトコードを修正しPRを作成する</li>
+  <li>マージからデプロイまでの流れを資料で読み、サンプルプロジェクトで試す</li>
+</ul>
+
+<p>といったような具体的なアクションが、どのストーリーに当てはまるかを考えていくわけです。</p>
+
+<p>もし<strong>該当するストーリーがない場合はストーリーの追加が必要</strong>か、もしくは<strong>そのアクションが不要</strong>な可能性を示唆しています。</p>
+
+<p>マッピングが完了すると、「実践できていないストーリー」や「過剰に取り組んでいるストーリー」が浮き彫りになるはずです。これを1つずつ修正していくことで、<strong>過不足のない</strong>オンボーディングが出来上がっていきます。</p>
+
+<figure style="margin-left:0%;margin-right:0%;margin-bottom:36px;">
+<img style="border:1px solid #CFD8DC;border-radius:4px;" alt="オンボーディングストーリーマッピング" src="/assets/2025-09-18-1/オンボーディングアクション.jpg" />
+<figcaption style="text-align:center;font-size:90%;color:#90A4AE;">(LINE NEWSのオンボーディングアクションのマッピング例)</figcaption>
+</figure>
+
+<p>「ストーリーとアクションをマッピングする」アプローチは、マクロとミクロの視点のかけ合わせとも言えます。この作業を通じてオンボーディングの<strong>網羅性</strong>が高まります。</p>
+
+<p>「オンボーディングの全体像」と「過不足のないオンボーディングアクション」が出揃ってくると質が高まることはもちろん、<strong>「メンターが何をすべきか」や「オンボーディングを完了したメンバーは何ができるのか、の期待水準」が明らかになる</strong>のが、イメージできると思います。</p>
+
+<h3 id="アクションのタイムラインを設計する">アクションのタイムラインを設計する</h3>
+
+<p>ここまででオンボーディングの全体図は完成しました。これにてオンボーディングのメンテナンス完了です！</p>
+
+<p>…としてもいいのですが「メンターが迷うことなくメンタリングでき、かつその品質が一定になる」目的を果たすためには、もう少し具体的な<strong>メンタリングのガイドライン</strong>となる側面があっても良さそうです。<br />
+それが<strong>オンボーディングタイムライン</strong>です。</p>
+
+<p>まずはLINE NEWSの実例から見てみましょう。</p>
+
+<figure style="margin-left:-30%;margin-right:-30%;margin-bottom:36px;">
+<img style="border:1px solid #CFD8DC;border-radius:4px;" alt="オンボーディングストーリーマッピング" src="/assets/2025-09-18-1/オンボーディングタイムライン.jpg" />
+<figcaption style="text-align:center;font-size:90%;color:#90A4AE;">(LINE NEWSのオンボーディングタイムラインの一部)</figcaption>
+</figure>
+
+<p>横軸を時間軸とし、それぞれのアクションをどのタイミングで実施するかを表現しています。</p>
+
+<p>付箋の色は</p>
+
+<ul>
+  <li>単発アクション</li>
+  <li>継続アクション(の初回開催時)</li>
+  <li>資料を使うアクション(メンターが事前に資料の更新状況を確認すべきもの)</li>
+  <li>新メンバーが任意のタイミングで実施すれば良いアクション</li>
+</ul>
+
+<p>を表します。</p>
+
+<p>初めて/久々にメンターする人にとって、オンボーディングの流れの可視化されているといくらか安心して臨めるのではないでしょうか。<br />
+新メンバーから「来週からSmall Teamにジョイン予定なんですが、事前に確認しておくべきことはありますか？」と聞かれてオンボーディングアクションの漏れに気づく…なんてこともなくなりますね。</p>
+
+<p>オンボーディング前に付箋を貼ったり剥がしたりしてプランニングに使うこともできますし、完了したアクションを剥がしてタスク管理することにも使えます。</p>
+
+<h3 id="その他のオンボーディングを充実させるtips">その他のオンボーディングを充実させるTips</h3>
+
+<h4 id="新メンバーによるオンボーディング改善をオンボーディングに組み込む">「新メンバーによるオンボーディング改善」をオンボーディングに組み込む</h4>
+
+<p>オンボーディングの一環として、オンボーディングそのものに対するフィードバックと修正をしてもらうと、双方にとってハッピーです。新メンバー目線でオンボーディングをより良くできますし、<strong>新メンバーが成果を出す場</strong>としても機能します。</p>
+
+<h4 id="オンボーディングの責任範囲を明記する">オンボーディングの責任範囲を明記する</h4>
+
+<p><strong>オンボーディング完了時点で新メンバーがどういう状態になっているか</strong>を明記することで、オンボーディングの責任範囲が明確になります。例えばLINE NEWSのオンボーディングでは「フロントエンド知識のインプット」は責任範囲外としています。フロントエンドの根源的な知識は採用のタイミングで確認済みで、ライブラリの利用ナレッジ等は業務の中でキャッチアップすることを想定していたからです。</p>
+
+<h4 id="過剰なものを削ぎ落とす">過剰なものを削ぎ落とす</h4>
+
+<p>今回の改善方法は、足りないものに気づきやすいアプローチです。反面、<strong>オンボーディングのボリュームが増しがち</strong>です。オンボーディングにどれだけの時間を費やすかは受け入れるチームの状況によって変わるはずです。</p>
+
+<p>ボリュームがあると感じた場合は、オンボーディングの責任範囲を見直しながら『削ぎ落とし』をすると良いでしょう。私たちも一通りの改善を済ませた後は、新メンバー加入のたびに削ぎ落としをしていました。</p>
+
+<h4 id="ドキュメントを使うものとモブワークを使うものとを分ける">ドキュメントを使うものと、モブワークを使うものとを分ける</h4>
+
+<p>ドキュメントとして残しやすい形式知と、そうでない暗黙知とを分けることは重要です。うまく分別できれば<strong>「すべてをドキュメントに残さねば」の圧から解放</strong>されますし、ドキュメントの総量を少なく維持できれば最新性を保ちやすくなります。</p>
+
+<p><strong>暗黙知のほうは、モブワーク(モブプログラミングやモブ環境構築など)で口伝していく</strong>方法をとっても良いです。特に最初の環境構築はモブワークがおすすめです。</p>
+
+<h3 id="おわりに">おわりに</h3>
+
+<p>オンボーディングをターゲット、フェーズ、ストーリー、アクション、タイムラインに分けて考えることで、私たちのオンボーディングのクオリティはグッと高まりました。</p>
+
+<p>まだまだ改善の余地は残っていますが、<strong>「このオンボーディングが過不足なく、一定のクオリティであること」に根拠を持てる</strong>ようになりました。感覚ではなくロジックで作り上げたことで、より良くするための<strong>議論のスタート地点</strong>に立てた、とも言えます。</p>
+
+<p>オンボーディングの改善は後回しになりがちなタスクです。<br />
+しかし、新たに加わった新メンバーがいち早くパフォーマンスを発揮できるよう、<strong>自らオンボーディングを整えられたチーム</strong>には、<strong>自律性</strong>や<strong>持続可能性</strong>の片鱗があるはずです。</p>
+
+<p>新メンバーにとってだけでなく、チームにとって重要なオンボーディングの改善に、この知見が少しでも役立てば幸いです。</p>
+
+
+        </article>
+
+          
+
+        <section class="share">
+  <div class="share-inner">
+    <div class="share-description">
+      <span>感想をシェアする</span>
+    </div>
+    <div class="share-panel">
+      <a
+        href="http://b.hatena.ne.jp/entry/"
+        class="hatena-bookmark-button share-button share-button-hatebu"
+        data-hatena-bookmark-layout="touch"
+        data-hatena-bookmark-width="38"
+        data-hatena-bookmark-height="38"
+        title="このエントリーをはてなブックマークに追加"
+        style="
+          border-radius: 50%;
+          width: 38px;
+          height: 38px;
+          box-shadow: 1px 1px 10px #bbb;
+          background-color: #00a4de;
+          transition: all 0.4s ease;
+        "
+      >
+        <img
+          src="https://b.st-hatena.com/images/entry-button/button-only@2x.png"
+          alt="このエントリーをはてなブックマークに追加"
+          width="16"
+          height="16"
+        />
+      </a>
+      <script
+        type="text/javascript"
+        src="https://b.st-hatena.com/js/bookmark_button.js"
+        charset="utf-8"
+        defer
+      ></script>
+        
+      <a
+        class="share-button share-button-x"
+        href="//twitter.com/share?text=%E2%80%9D%E8%B3%87%E6%96%99%E3%82%92%E6%B8%A1%E3%81%99%E3%81%A0%E3%81%91%E2%80%9D%E3%81%8B%E3%82%89%E8%84%B1%E5%8D%B4%E3%81%97%E3%81%A6%E5%8A%B9%E6%9E%9C%E7%9A%84%E3%81%AA%E3%82%AA%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%94%B9%E5%96%84%E4%BA%8B%E4%BE%8B&url=https://aloerina01.github.io/blog/2025-09-18-1&via=aloerina_&hashtags=Onboarding,Management,mfcode"
+        onclick="window.open(this.href, 'twitter-share', 'width=550,height=255');return false;"
+      >
+        <svg
+          version="1.1"
+          id="svg5"
+          xmlns:svg="http://www.w3.org/2000/svg"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px"
+          y="0px"
+          viewBox="0 0 1668.56 1221.19"
+          style="enable-background: new 0 0 1668.56 1221.19"
+          xml:space="preserve"
+          width="38"
+          height="38"
+        >
+          <style type="text/css">
+            .st0 {
+              stroke: #ffffff;
+              stroke-miterlimit: 10;
+            }
+            .st1 {
+              fill: #ffffff;
+            }
+          </style>
+          <g>
+            <g id="layer1" transform="translate(52.390088,-25.058597)">
+              <path
+                id="path1009"
+                class="st1"
+                d="M485.39,356.79l230.07,307.62L483.94,914.52h52.11l202.7-218.98l163.77,218.98h177.32
+                L836.82,589.6l215.5-232.81h-52.11L813.54,558.46L662.71,356.79H485.39z M562.02,395.17h81.46l359.72,480.97h-81.46L562.02,395.17
+                z"
+              />
+            </g>
+          </g>
+        </svg>
+      </a>
+                
+      <a
+        class="share-button share-button-facebook"
+        href="//www.facebook.com/sharer.php?t=%E2%80%9D%E8%B3%87%E6%96%99%E3%82%92%E6%B8%A1%E3%81%99%E3%81%A0%E3%81%91%E2%80%9D%E3%81%8B%E3%82%89%E8%84%B1%E5%8D%B4%E3%81%97%E3%81%A6%E5%8A%B9%E6%9E%9C%E7%9A%84%E3%81%AA%E3%82%AA%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%94%B9%E5%96%84%E4%BA%8B%E4%BE%8B&u=https://aloerina01.github.io/blog/2025-09-18-1"
+        onclick="window.open(this.href, 'facebook-share', 'width=550,height=255');return false;"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M9.19795 21.5H13.198V13.4901H16.8021L17.198 9.50977H13.198V7.5C13.198 6.94772 13.6457 6.5 14.198 6.5H17.198V2.5H14.198C11.4365 2.5 9.19795 4.73858 9.19795 7.5V9.50977H7.19795L6.80206 13.4901H9.19795V21.5Z"
+            fill="currentColor"
+          />
+        </svg>
+      </a>
+                                                                                                                                        
+      <a
+        class="share-button share-button-pocket"
+        href="//getpocket.com/edit?url=https://aloerina01.github.io/blog/2025-09-18-1"
+        target="_blank"
+      >
+        <img src="/assets/thirdparty/pocket.png" alt="Save to Pocket" loading="lazy" />
+      </a>
+                
+      <a
+        class="share-button share-button-line"
+        target="_blank"
+        href="//line.me/R/msg/text/?%E2%80%9D%E8%B3%87%E6%96%99%E3%82%92%E6%B8%A1%E3%81%99%E3%81%A0%E3%81%91%E2%80%9D%E3%81%8B%E3%82%89%E8%84%B1%E5%8D%B4%E3%81%97%E3%81%A6%E5%8A%B9%E6%9E%9C%E7%9A%84%E3%81%AA%E3%82%AA%E3%83%B3%E3%83%9C%E3%83%BC%E3%83%87%E3%82%A3%E3%83%B3%E3%82%B0%E3%81%AB%E3%81%99%E3%82%8B%E3%81%9F%E3%82%81%E3%81%AE%E6%94%B9%E5%96%84%E4%BA%8B%E4%BE%8B%0D%0Ahttps%3A%2F%2Faloerina01.github.io%2Fblog%2F2025-09-18-1"
+      >
+        <img src="/assets/thirdparty/linebutton.png" alt="LINEで送る" loading="lazy" />
+      </a>
+       
+    </div>
+  </div>
+</section>
+
+
+        <section class="post-donation">
+  <div class="post-donation-panel">
+    <span class="post-donation-description">
+      執筆時のコーヒーで応援する
+    </span>
+    <a class="donation-button" href="https://www.amazon.jp/hz/wishlist/ls/2B61O6E56WG47?ref_=wl_share" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'post')">
+      <p class="button-body">
+        <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg"></img>
+        <span class="label">欲しいものリストから贈る</span>
+      </p>
+    </a>
+  </div>
+</section>
+
+         
+
+      </div>
+    </div>
+
+  </main>
+
+  
+    <section class="sub-contents related-posts">
+  <div class="sub-contents-wrapper">
+    <div class="sub-contents-title">
+      <h3>あわせて読みたい</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+      <li><a href="/blog/2025-08-04-1">議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション</a></li>
+      
+      <li><a href="/blog/2025-05-12-1">1on1再入門 - “傾聴する”から”好奇心を持って問いを設計する”へ</a></li>
+      
+      <li><a href="/blog/2025-05-07-1">“我々はなぜここにいるのか”の問いを手放した理由 - 心の発達理論から学ぶEMの問いの設計</a></li>
+      
+      <li><a href="/blog/2025-03-31-1">「若手が育っていない」「優秀な人に負担が偏っている」と感じたときに立ち返ること</a></li>
+      
+      <li><a href="/blog/2025-02-12-1">計画的にロールモデルを活用する</a></li>
+      
+    </div>
+  </div>
+</section>
+
+  
+
+  <section class="sub-contents profile-bar">
+  <div class="sub-contents-wrapper profile-bar-wrapper">
+    <div class="sub-contents-title">
+      <h3>Profile</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main profile-bar-main">
+      <div class="profile-image">
+        <img src="/assets/profile_v4.jpg" alt="" loading="lazy">
+      </div>
+      <div class="profile-content">
+        <div class="profile-content-name"><p>aloerina</p></div>
+        <div class="profile-content-description">
+          <p>
+            <span>Webフロントエンド開発、エンジニアリングマネジメント、スクラムマスターなどをしています。趣味でドット絵グッズをつくっています。</span>
+          </p>
+        </div>
+        <div class="profile-content-sns">
+          <a target="_blank" href="https://twitter.com/aloerina_" rel="noopener noreferrer" class="sns-icon sns-icon-x">
+            <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 462.799"><path fill="#fff" fill-rule="nonzero" d="M403.229 0h78.506L310.219 196.04 512 462.799H354.002L230.261 301.007 88.669 462.799h-78.56l183.455-209.683L0 0h161.999l111.856 147.88L403.229 0zm-27.556 415.805h43.505L138.363 44.527h-46.68l283.99 371.278z"/></svg>
+          </a>
+          <a target="_blank" href="https://www.instagram.com/pixtrium/" rel="noopener noreferrer" class="sns-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 512"><path fill="#fff" fill-rule="nonzero" d="M170.663 256.157c-.083-47.121 38.055-85.4 85.167-85.483 47.121-.092 85.407 38.03 85.499 85.16.091 47.129-38.047 85.4-85.176 85.492-47.112.09-85.399-38.039-85.49-85.169zm-46.108.091c.141 72.602 59.106 131.327 131.69 131.186 72.592-.141 131.35-59.09 131.209-131.692-.141-72.577-59.114-131.335-131.715-131.194-72.585.141-131.325 59.115-131.184 131.7zm237.104-137.091c.033 16.953 13.817 30.681 30.772 30.648 16.961-.033 30.689-13.811 30.664-30.764-.033-16.954-13.818-30.69-30.78-30.657-16.962.033-30.689 13.818-30.656 30.773zm-208.696 345.4c-24.958-1.087-38.511-5.234-47.543-8.709-11.961-4.629-20.496-10.178-29.479-19.094-8.966-8.95-14.532-17.46-19.202-29.397-3.508-9.032-7.73-22.569-8.9-47.527-1.269-26.982-1.559-35.077-1.683-103.432-.133-68.339.116-76.434 1.294-103.441 1.069-24.942 5.242-38.512 8.709-47.536 4.628-11.977 10.161-20.496 19.094-29.479 8.949-8.982 17.459-14.532 29.403-19.202 9.025-3.525 22.561-7.714 47.511-8.9 26.998-1.277 35.085-1.551 103.423-1.684 68.353-.132 76.448.108 103.456 1.295 24.94 1.086 38.51 5.217 47.527 8.709 11.968 4.628 20.503 10.144 29.478 19.094 8.974 8.95 14.54 17.443 19.21 29.412 3.524 9 7.714 22.553 8.892 47.494 1.285 26.999 1.576 35.095 1.7 103.433.132 68.355-.117 76.451-1.302 103.441-1.087 24.958-5.226 38.52-8.709 47.561-4.629 11.952-10.161 20.487-19.103 29.471-8.941 8.949-17.451 14.531-29.403 19.201-9.009 3.517-22.561 7.714-47.494 8.9-26.998 1.269-35.086 1.559-103.448 1.684-68.338.132-76.424-.125-103.431-1.294zM149.977 1.773c-27.239 1.285-45.843 5.648-62.101 12.018-16.829 6.561-31.095 15.354-45.286 29.604C28.381 57.653 19.655 71.944 13.144 88.79c-6.303 16.299-10.575 34.912-11.778 62.168C.172 178.264-.102 186.973.031 256.489c.133 69.508.439 78.234 1.741 105.547 1.302 27.231 5.649 45.828 12.019 62.093 6.569 16.83 15.353 31.088 29.611 45.288 14.25 14.201 28.55 22.918 45.404 29.438 16.282 6.295 34.902 10.583 62.15 11.778 27.305 1.203 36.022 1.468 105.521 1.335 69.532-.132 78.25-.439 105.555-1.733 27.239-1.303 45.826-5.665 62.1-12.019 16.829-6.586 31.095-15.353 45.288-29.611 14.191-14.251 22.917-28.55 29.428-45.405 6.304-16.282 10.592-34.903 11.777-62.134 1.195-27.322 1.478-36.048 1.344-105.556-.133-69.516-.447-78.225-1.741-105.523-1.294-27.255-5.657-45.844-12.019-62.118-6.577-16.829-15.352-31.079-29.602-45.287-14.25-14.192-28.55-22.935-45.404-29.429-16.29-6.305-34.903-10.601-62.15-11.779C333.747.164 325.03-.102 255.506.031c-69.507.133-78.224.431-105.529 1.742z"/></svg>
+          </a>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+  <section class="sub-contents tag-list">
+  <div class="sub-contents-wrapper tag-list-wrapper">
+    <div class="sub-contents-title">
+      <h3>Tags</h3>
+      <hr>
+    </div>
+    <div class="sub-contents-main">
+      
+        
+        
+        <a href="/category/jekyll/">Jekyll</a>
+      
+        
+        
+        <a href="/category/javascript/">JavaScript</a>
+      
+        
+        
+        <a href="/category/webpack/">Webpack</a>
+      
+        
+        
+        <a href="/category/environment/">Environment</a>
+      
+        
+        
+        <a href="/category/seo/">SEO</a>
+      
+        
+        
+        <a href="/category/qualityassurance/">QualityAssurance</a>
+      
+        
+        
+        <a href="/category/css/">CSS</a>
+      
+        
+        
+        <a href="/category/yarn/">Yarn</a>
+      
+        
+        
+        <a href="/category/react/">React</a>
+      
+        
+        
+        <a href="/category/vue/">Vue</a>
+      
+        
+        
+        <a href="/category/hyperapp/">Hyperapp</a>
+      
+        
+        
+        <a href="/category/vuex/">Vuex</a>
+      
+        
+        
+        <a href="/category/babel/">Babel</a>
+      
+        
+        
+        <a href="/category/exp/">EXP</a>
+      
+        
+        
+        <a href="/category/shell/">shell</a>
+      
+        
+        
+        <a href="/category/dart/">Dart</a>
+      
+        
+        
+        <a href="/category/flutter/">Flutter</a>
+      
+        
+        
+        <a href="/category/flux/">Flux</a>
+      
+        
+        
+        <a href="/category/algolia/">algolia</a>
+      
+        
+        
+        <a href="/category/mobprogramming/">MobProgramming</a>
+      
+        
+        
+        <a href="/category/management/">Management</a>
+      
+        
+        
+        <a href="/category/coaching/">Coaching</a>
+      
+        
+        
+        <a href="/category/grareco/">GraReco</a>
+      
+        
+        
+        <a href="/category/githubactions/">GitHubActions</a>
+      
+        
+        
+        <a href="/category/retrospective/">Retrospective</a>
+      
+        
+        
+        <a href="/category/facilitation/">Facilitation</a>
+      
+        
+        
+        <a href="/category/scrum/">Scrum</a>
+      
+        
+        
+        <a href="/category/psychologicalsafety/">PsychologicalSafety</a>
+      
+        
+        
+        <a href="/category/typescript/">TypeScript</a>
+      
+        
+        
+        <a href="/category/chromeextension/">ChromeExtension</a>
+      
+        
+        
+        <a href="/category/esbuild/">esbuild</a>
+      
+        
+        
+        <a href="/category/agile/">Agile</a>
+      
+        
+        
+        <a href="/category/onboarding/">Onboarding</a>
+      
+    </div>
+  </div>
+</section>
+
+  <section class="sub-contents donation">
+  <div class="sub-contents-wrapper donation-wrapper">
+    <h3>BUY ME A COFFEE</h3>
+    <p class="donation-description">記事執筆時のコーヒーをごちそういただけると励みになります。</p>
+    <div class="donation-button-area">
+        <a class="donation-button" href="https://www.amazon.jp/hz/wishlist/ls/2B61O6E56WG47?ref_=wl_share" target="_blank" rel="noopener noreferrer" onClick="ga('send', 'event', 'click_buymeacoffee', 'site')">
+          <p class="button-body">
+            <img class="icon" alt="buymeacoffee" src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" loading="lazy"></img>
+            <span class="label">欲しいものリストから贈る</span>
+          </p>
+        </a>
+    </div>
+  <div>
+</section>
+  
+  <footer class="sub-contents site-footer-v2">
+  <div class="sub-contents-wrapper site-footer-v2-wrapper">
+    <div class="footer-v2-main">
+      <div class="site-values">
+        <a href="/" class="site-values-title">Feel and Code (formerly: mille-feuille code)</a>
+        <p class="site-values-anotation">
+          <span>since 2016 aloerina All Rights Reserved.</span><br>
+          <span>サイト内のリンクにはアフェリエイトリンクが含まれる場合があります。</span>
+        </p>
+      </div>
+      <div class="site-designs">
+        <p>Published on <a target="_blank" href="https://github.com/aloerina01/aloerina01.github.io" rel="noopener noreferrer">GitHub</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script>
+  window.addEventListener('DOMContentLoaded', function() {
+    // Header
+    var CLASS_MENU_SHOW = 'show';
+    var navigationMenu = document.getElementById('js-navigation-menu');
+    var menuIcon = document.getElementById('js-mobile-menu-icon');
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      navigationMenu.classList.toggle(CLASS_MENU_SHOW);
+    });
+  });
+  </script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/3.35.1/algoliasearch.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.1/autocomplete.min.js"></script>
+<script src="/dist/algolia.js" async></script>
+
+</body>
+
+</html>

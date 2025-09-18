@@ -262,6 +262,14 @@ pre code.hljs { font-size: 0.8333333333em; }
 
 .page-content .post .post-content h3 + h4, .page-content .post .post-content h3 + h5, .page-content .post .post-content h4 + h5 { margin-top: 0; }
 
+.page-content .post .post-content #markdown-toc { background-color: #f5f8fa; font-size: 90%; list-style: none; position: relative; padding: 16px 24px; border-radius: 8px; }
+
+.page-content .post .post-content #markdown-toc, .page-content .post .post-content #markdown-toc ul { list-style: none; margin-bottom: 0; }
+
+.page-content .post .post-content #markdown-toc > li, .page-content .post .post-content #markdown-toc ul > li { padding-top: 2px; }
+
+.page-content .post .post-content #markdown-toc::before { content: "目次"; display: block; font-weight: bold; margin-bottom: 0.5em; }
+
 .page-content .post .post-content .footnotes { font-size: 80%; margin-top: 44px; margin-bottom: 28px; }
 
 .page-content .post .post-content .footnotes p { margin-bottom: 8px; }

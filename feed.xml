@@ -1,5 +1,262 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-08-04T03:08:26+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">Feel and Code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
-</subtitle><entry><title type="html">議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション</title><link href="https://aloerina01.github.io/blog/2025-08-04-1" rel="alternate" type="text/html" title="議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション" /><published>2025-08-04T00:00:00+00:00</published><updated>2025-08-04T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-08-04-1">&lt;p&gt;会議のファシリテーションをしていて、「論点がかみ合わない」「発言は出ているのにまとまらない」と感じることはないでしょうか。そんな場面では「どの論点に力を入れれば、どの結論に影響を与えられるのか」がブレてしまっていることがあります。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-09-18T09:41:12+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">Feel and Code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+</subtitle><entry><title type="html">”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例</title><link href="https://aloerina01.github.io/blog/2025-09-18-1" rel="alternate" type="text/html" title="”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例" /><published>2025-09-18T00:00:00+00:00</published><updated>2025-09-18T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-09-18-1">&lt;p&gt;新メンバーを受け入れるとき、オンボーディングと称して既存資料をドサッと渡して「読んでおいてね」と伝えて済ませてしまうこと、ありませんか？&lt;/p&gt;
+
+&lt;p&gt;私たちのチームもかつてそうでした。&lt;br /&gt;
+しかし、このオンボーディングは新メンバーが&lt;strong&gt;最速でパフォーマンスを出すために&lt;/strong&gt;最適なやり方なのでしょうか？&lt;/p&gt;
+
+&lt;p&gt;もっと良いオンボーディングにしたいと思っても、その機会は多くて年に数回。ついつい&lt;strong&gt;メンテナンスは後回し&lt;/strong&gt;にされがち。いざメンテしようにも&lt;strong&gt;どこをどう直せば良くなるのか分からない&lt;/strong&gt;…。&lt;br /&gt;
+と、改善意欲があっても手が動かせない状況にも陥りやすいのが、オンボーディングの難しいところですよね。&lt;/p&gt;
+
+&lt;p&gt;今回の記事では、かつて私がマネジメントしていたLINE NEWSのフロントエンドチームのオンボーディング改善事例を紹介します。事例を参考に、ご自身のチームにあったオンボーディングはどういうものか、想像しながら読んでもらえると嬉しいです。&lt;/p&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#オンボーディングの真の役割を問い直す&quot; id=&quot;markdown-toc-オンボーディングの真の役割を問い直す&quot;&gt;オンボーディングの真の役割を問い直す&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ターゲットをタイプ分けする&quot; id=&quot;markdown-toc-ターゲットをタイプ分けする&quot;&gt;ターゲットをタイプ分けする&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#ターゲットのタイプ毎にユーザーストーリーを描く&quot; id=&quot;markdown-toc-ターゲットのタイプ毎にユーザーストーリーを描く&quot;&gt;ターゲットのタイプ毎にユーザーストーリーを描く&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#これまで実践してきたオンボーディングをマッピングする&quot; id=&quot;markdown-toc-これまで実践してきたオンボーディングをマッピングする&quot;&gt;これまで実践してきたオンボーディングをマッピングする&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#アクションのタイムラインを設計する&quot; id=&quot;markdown-toc-アクションのタイムラインを設計する&quot;&gt;アクションのタイムラインを設計する&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#その他のオンボーディングを充実させるtips&quot; id=&quot;markdown-toc-その他のオンボーディングを充実させるtips&quot;&gt;その他のオンボーディングを充実させるTips&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#新メンバーによるオンボーディング改善をオンボーディングに組み込む&quot; id=&quot;markdown-toc-新メンバーによるオンボーディング改善をオンボーディングに組み込む&quot;&gt;「新メンバーによるオンボーディング改善」をオンボーディングに組み込む&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#オンボーディングの責任範囲を明記する&quot; id=&quot;markdown-toc-オンボーディングの責任範囲を明記する&quot;&gt;オンボーディングの責任範囲を明記する&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#過剰なものを削ぎ落とす&quot; id=&quot;markdown-toc-過剰なものを削ぎ落とす&quot;&gt;過剰なものを削ぎ落とす&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ドキュメントを使うものとモブワークを使うものとを分ける&quot; id=&quot;markdown-toc-ドキュメントを使うものとモブワークを使うものとを分ける&quot;&gt;ドキュメントを使うものと、モブワークを使うものとを分ける&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;オンボーディングの真の役割を問い直す&quot;&gt;オンボーディングの真の役割を問い直す&lt;/h3&gt;
+
+&lt;p&gt;オンボーディングは誰のためのものでしょうか？&lt;/p&gt;
+
+&lt;p&gt;私は新メンバーのためだけではないと考えています。新メンバーの&lt;strong&gt;メンター&lt;/strong&gt;のためであり、&lt;strong&gt;受け入れるチームメンバー&lt;/strong&gt;のためでもあります。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;strong&gt;誰のためか&lt;/strong&gt;&lt;/th&gt;
+      &lt;th&gt;&lt;strong&gt;どう役立つか&lt;/strong&gt;&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;新メンバー&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;チームのルールや運用を理解し、最速で力を発揮できる状態に辿り着く&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;メンター&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;たまにしかやらない「メンター業務」のガイドラインになる&lt;br /&gt;誰がメンター役を担っても一定の品質になる&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;受け入れるチームメンバー&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;新メンバーに対する「何を知っていて、何を知らないのか」の期待値が揃い協業しやすくなる&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;三者にとって意味のあるオンボーディングを目指すことが、私たちのオンボーディング改善のスタート地点でした。&lt;/p&gt;
+
+&lt;h3 id=&quot;ターゲットをタイプ分けする&quot;&gt;ターゲットをタイプ分けする&lt;/h3&gt;
+
+&lt;p&gt;オンボーディングとは、資料を読んでもらうことでも、説明会を開くことでもありません。それらは手段の1つにはなり得ますが、目的そのものではありません。&lt;/p&gt;
+
+&lt;p&gt;上述の通り、私たちにとってオンボーディングの目的は&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;新メンバー&lt;/strong&gt;が最速でパフォーマンスを出す(メインターゲット)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;メンター&lt;/strong&gt;が迷うことなくメンタリングでき、かつその品質が一定になる&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;受け入れチーム&lt;/strong&gt;の期待値が揃う&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;の3つです。&lt;/p&gt;
+
+&lt;p&gt;この三者の目的を達成するために、&lt;strong&gt;まずはメインターゲットである「新メンバー」がどういう人か解像度を上げることから&lt;/strong&gt;始めてみます。私たちのチームでは4種類に分類しました。&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;タイプ&lt;/th&gt;
+      &lt;th&gt;特徴&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;新卒&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;エンジニアとしての業務経験が&lt;strong&gt;ない&lt;/strong&gt;、&lt;strong&gt;長期的&lt;/strong&gt;にチームに属する&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;インターン生&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;エンジニアとしての業務経験が&lt;strong&gt;ない&lt;/strong&gt;、&lt;strong&gt;短期間&lt;/strong&gt;の関わりで終了日が決まっている&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;中途採用や社内異動&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;エンジニアとしての業務経験が&lt;strong&gt;ある&lt;/strong&gt;、&lt;strong&gt;長期的&lt;/strong&gt;にチームに属する&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;strong&gt;ヘルプアサイン&lt;/strong&gt;&lt;/td&gt;
+      &lt;td&gt;エンジニアとしての業務経験が&lt;strong&gt;ある&lt;/strong&gt;、&lt;strong&gt;短期間&lt;/strong&gt;の関わり&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;私たちは「エンジニア歴」と「関わる期間の長さ」で分類しましたが、チームによっては「技術領域」や「得意ドメイン」などかもしれません。これまでに受け入れてきた人たちを思い浮かべながら分類すると良いでしょう。&lt;/p&gt;
+
+&lt;h3 id=&quot;ターゲットのタイプ毎にユーザーストーリーを描く&quot;&gt;ターゲットのタイプ毎にユーザーストーリーを描く&lt;/h3&gt;
+
+&lt;p&gt;次に、この4タイプの新メンバーがパフォーマンスを発揮するまでに経験すべきことを描きます。これを「ユーザーストーリー」と呼ぶのは、&lt;strong&gt;ユーザー(新メンバー)の目線&lt;/strong&gt;でどんな体験が必要かを考えるためです。&lt;/p&gt;
+
+&lt;p&gt;ストーリーを考えるための骨組みとして、オンボーディングを4つのフェーズに分けましょう。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;How to &lt;strong&gt;Live&lt;/strong&gt; (職場に適応する)&lt;/li&gt;
+  &lt;li&gt;How to &lt;strong&gt;Learn&lt;/strong&gt; (知識・スキルを得る)&lt;/li&gt;
+  &lt;li&gt;How to &lt;strong&gt;Work&lt;/strong&gt; (仕事を完遂する、成果を出す)&lt;/li&gt;
+  &lt;li&gt;How to &lt;strong&gt;Influence&lt;/strong&gt; (周囲に影響を与える)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;フェーズごとにストーリーを洗い出していきます。&lt;/p&gt;
+
+&lt;p&gt;例えば、1番目の適用するフェーズでは「チームに馴染む」「よく使うコミュニケーション方法を知る」などで、2番目の知識を得るフェーズでは「デプロイフローを知る」「プロダクトの収益モデルを知る」などでしょうか。&lt;/p&gt;
+
+&lt;p&gt;成果を出すまでに必要な体験を&lt;strong&gt;粒度問わず&lt;/strong&gt;洗い出します。&lt;/p&gt;
+
+&lt;p&gt;一通り洗い出し終わったら、先程のターゲットのタイプと掛け合わあせて、「新メンバーのタイプ毎にどのストーリーを経験すべきか」を整理していきます。&lt;/p&gt;
+
+&lt;p&gt;LINE NEWSでは、「4つの新メンバーのタイプ」x 「4つのフェーズ(12のストーリー)」を表にまとめていました。&lt;/p&gt;
+
+&lt;figure style=&quot;margin-left:-30%;margin-right:-30%;margin-bottom:36px;&quot;&gt;
+&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリー&quot; src=&quot;/assets/2025-09-18-1/オンボーディングストーリーマッピング.jpg&quot; /&gt;
+&lt;figcaption style=&quot;text-align:center;font-size:90%;color:#90A4AE;&quot;&gt;(LINE NEWSのオンボーディングストーリー)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;少し表の解説をします。&lt;br /&gt;
+&lt;strong&gt;Rowには、オンボーディングの4つのフェーズ(緑色のブロック)と、それぞれのフェーズで必要なストーリー(グレーの行)&lt;/strong&gt;があります。たとえばHow to Liveのフェーズには「チームの雰囲気を知る」「チームメンバーとの関係性をつくる」「Managerと期待値を揃える」の3つのストーリーがあります。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Columnには、新メンバーの4つのタイプ&lt;/strong&gt;が並んでいます。&lt;br /&gt;
+それぞれのタイプが、各ストーリーを経験すべきかについて「Essential(必須)」「Recommended(推奨)」「Optional(任意)」「空欄(不要)」の4段階で表現しています。&lt;/p&gt;
+
+&lt;p&gt;具体例を1つピックアップして詳細を見てみましょう。&lt;br /&gt;
+表の真ん中あたりにあるHow to Learnの&lt;strong&gt;「配属先Small Teamの開発環境・ルールを理解する」ストーリー&lt;/strong&gt;は、&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;新卒タイプには Essential&lt;/li&gt;
+  &lt;li&gt;インターン生タイプには Optional&lt;/li&gt;
+  &lt;li&gt;中途採用タイプには Recommended&lt;/li&gt;
+  &lt;li&gt;ヘルプアサインタイプには None&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;となっています。&lt;/p&gt;
+
+&lt;p&gt;当時のLINE NEWSプロジェクトでは、エンジニアは3つのSmall Team(職能横断なスクラムチーム)に分かれて開発をしていました。&lt;/p&gt;
+
+&lt;p&gt;『新卒タイプ』にとっては馴染のない開発体制であろうことから「必須」のストーリーとしましたが、1ヶ月間のみ協業する『インターン生タイプ』に開発環境・ルール・運用をすべて理解してもらうのはオーバーヘッドが高いので「任意」としていました。&lt;/p&gt;
+
+&lt;p style=&quot;text-align:center;&quot;&gt;＊＊＊&lt;/p&gt;
+
+&lt;p&gt;これがオンボーディングの全体像になります。&lt;br /&gt;
+どんな新メンバーが何を経験すべきかが明らかになりました。&lt;/p&gt;
+
+&lt;p&gt;上述した三者の目的である&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;新メンバー&lt;/strong&gt;が最速でパフォーマンスを出す(メインターゲット)&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;メンター&lt;/strong&gt;が迷うことなくメンタリングでき、かつその品質が一定になる&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;受け入れチーム&lt;/strong&gt;の期待値が揃う&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;を満たすアウトラインが整った状態です。あとは&lt;strong&gt;ストーリーを実現する具体的なアクションを埋めていけばオンボーディングが完成する&lt;/strong&gt;であろうことが、すでに感じ取れるのではないでしょうか？&lt;/p&gt;
+
+&lt;h3 id=&quot;これまで実践してきたオンボーディングをマッピングする&quot;&gt;これまで実践してきたオンボーディングをマッピングする&lt;/h3&gt;
+
+&lt;p&gt;これまで実践してきたオンボーディングアクションを&lt;strong&gt;ストーリーにマッピング&lt;/strong&gt;していきます。&lt;/p&gt;
+
+&lt;p&gt;たとえば&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;初日に自己紹介ミーティングに参加する&lt;/li&gt;
+  &lt;li&gt;プロダクトコードを修正しPRを作成する&lt;/li&gt;
+  &lt;li&gt;マージからデプロイまでの流れを資料で読み、サンプルプロジェクトで試す&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;といったような具体的なアクションが、どのストーリーに当てはまるかを考えていくわけです。&lt;/p&gt;
+
+&lt;p&gt;もし&lt;strong&gt;該当するストーリーがない場合はストーリーの追加が必要&lt;/strong&gt;か、もしくは&lt;strong&gt;そのアクションが不要&lt;/strong&gt;な可能性を示唆しています。&lt;/p&gt;
+
+&lt;p&gt;マッピングが完了すると、「実践できていないストーリー」や「過剰に取り組んでいるストーリー」が浮き彫りになるはずです。これを1つずつ修正していくことで、&lt;strong&gt;過不足のない&lt;/strong&gt;オンボーディングが出来上がっていきます。&lt;/p&gt;
+
+&lt;figure style=&quot;margin-left:0%;margin-right:0%;margin-bottom:36px;&quot;&gt;
+&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリーマッピング&quot; src=&quot;/assets/2025-09-18-1/オンボーディングアクション.jpg&quot; /&gt;
+&lt;figcaption style=&quot;text-align:center;font-size:90%;color:#90A4AE;&quot;&gt;(LINE NEWSのオンボーディングアクションのマッピング例)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;「ストーリーとアクションをマッピングする」アプローチは、マクロとミクロの視点のかけ合わせとも言えます。この作業を通じてオンボーディングの&lt;strong&gt;網羅性&lt;/strong&gt;が高まります。&lt;/p&gt;
+
+&lt;p&gt;「オンボーディングの全体像」と「過不足のないオンボーディングアクション」が出揃ってくると質が高まることはもちろん、&lt;strong&gt;「メンターが何をすべきか」や「オンボーディングを完了したメンバーは何ができるのか、の期待水準」が明らかになる&lt;/strong&gt;のが、イメージできると思います。&lt;/p&gt;
+
+&lt;h3 id=&quot;アクションのタイムラインを設計する&quot;&gt;アクションのタイムラインを設計する&lt;/h3&gt;
+
+&lt;p&gt;ここまででオンボーディングの全体図は完成しました。これにてオンボーディングのメンテナンス完了です！&lt;/p&gt;
+
+&lt;p&gt;…としてもいいのですが「メンターが迷うことなくメンタリングでき、かつその品質が一定になる」目的を果たすためには、もう少し具体的な&lt;strong&gt;メンタリングのガイドライン&lt;/strong&gt;となる側面があっても良さそうです。&lt;br /&gt;
+それが&lt;strong&gt;オンボーディングタイムライン&lt;/strong&gt;です。&lt;/p&gt;
+
+&lt;p&gt;まずはLINE NEWSの実例から見てみましょう。&lt;/p&gt;
+
+&lt;figure style=&quot;margin-left:-30%;margin-right:-30%;margin-bottom:36px;&quot;&gt;
+&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリーマッピング&quot; src=&quot;/assets/2025-09-18-1/オンボーディングタイムライン.jpg&quot; /&gt;
+&lt;figcaption style=&quot;text-align:center;font-size:90%;color:#90A4AE;&quot;&gt;(LINE NEWSのオンボーディングタイムラインの一部)&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;横軸を時間軸とし、それぞれのアクションをどのタイミングで実施するかを表現しています。&lt;/p&gt;
+
+&lt;p&gt;付箋の色は&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;単発アクション&lt;/li&gt;
+  &lt;li&gt;継続アクション(の初回開催時)&lt;/li&gt;
+  &lt;li&gt;資料を使うアクション(メンターが事前に資料の更新状況を確認すべきもの)&lt;/li&gt;
+  &lt;li&gt;新メンバーが任意のタイミングで実施すれば良いアクション&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;を表します。&lt;/p&gt;
+
+&lt;p&gt;初めて/久々にメンターする人にとって、オンボーディングの流れの可視化されているといくらか安心して臨めるのではないでしょうか。&lt;br /&gt;
+新メンバーから「来週からSmall Teamにジョイン予定なんですが、事前に確認しておくべきことはありますか？」と聞かれてオンボーディングアクションの漏れに気づく…なんてこともなくなりますね。&lt;/p&gt;
+
+&lt;p&gt;オンボーディング前に付箋を貼ったり剥がしたりしてプランニングに使うこともできますし、完了したアクションを剥がしてタスク管理することにも使えます。&lt;/p&gt;
+
+&lt;h3 id=&quot;その他のオンボーディングを充実させるtips&quot;&gt;その他のオンボーディングを充実させるTips&lt;/h3&gt;
+
+&lt;h4 id=&quot;新メンバーによるオンボーディング改善をオンボーディングに組み込む&quot;&gt;「新メンバーによるオンボーディング改善」をオンボーディングに組み込む&lt;/h4&gt;
+
+&lt;p&gt;オンボーディングの一環として、オンボーディングそのものに対するフィードバックと修正をしてもらうと、双方にとってハッピーです。新メンバー目線でオンボーディングをより良くできますし、&lt;strong&gt;新メンバーが成果を出す場&lt;/strong&gt;としても機能します。&lt;/p&gt;
+
+&lt;h4 id=&quot;オンボーディングの責任範囲を明記する&quot;&gt;オンボーディングの責任範囲を明記する&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;オンボーディング完了時点で新メンバーがどういう状態になっているか&lt;/strong&gt;を明記することで、オンボーディングの責任範囲が明確になります。例えばLINE NEWSのオンボーディングでは「フロントエンド知識のインプット」は責任範囲外としています。フロントエンドの根源的な知識は採用のタイミングで確認済みで、ライブラリの利用ナレッジ等は業務の中でキャッチアップすることを想定していたからです。&lt;/p&gt;
+
+&lt;h4 id=&quot;過剰なものを削ぎ落とす&quot;&gt;過剰なものを削ぎ落とす&lt;/h4&gt;
+
+&lt;p&gt;今回の改善方法は、足りないものに気づきやすいアプローチです。反面、&lt;strong&gt;オンボーディングのボリュームが増しがち&lt;/strong&gt;です。オンボーディングにどれだけの時間を費やすかは受け入れるチームの状況によって変わるはずです。&lt;/p&gt;
+
+&lt;p&gt;ボリュームがあると感じた場合は、オンボーディングの責任範囲を見直しながら『削ぎ落とし』をすると良いでしょう。私たちも一通りの改善を済ませた後は、新メンバー加入のたびに削ぎ落としをしていました。&lt;/p&gt;
+
+&lt;h4 id=&quot;ドキュメントを使うものとモブワークを使うものとを分ける&quot;&gt;ドキュメントを使うものと、モブワークを使うものとを分ける&lt;/h4&gt;
+
+&lt;p&gt;ドキュメントとして残しやすい形式知と、そうでない暗黙知とを分けることは重要です。うまく分別できれば&lt;strong&gt;「すべてをドキュメントに残さねば」の圧から解放&lt;/strong&gt;されますし、ドキュメントの総量を少なく維持できれば最新性を保ちやすくなります。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;暗黙知のほうは、モブワーク(モブプログラミングやモブ環境構築など)で口伝していく&lt;/strong&gt;方法をとっても良いです。特に最初の環境構築はモブワークがおすすめです。&lt;/p&gt;
+
+&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
+
+&lt;p&gt;オンボーディングをターゲット、フェーズ、ストーリー、アクション、タイムラインに分けて考えることで、私たちのオンボーディングのクオリティはグッと高まりました。&lt;/p&gt;
+
+&lt;p&gt;まだまだ改善の余地は残っていますが、&lt;strong&gt;「このオンボーディングが過不足なく、一定のクオリティであること」に根拠を持てる&lt;/strong&gt;ようになりました。感覚ではなくロジックで作り上げたことで、より良くするための&lt;strong&gt;議論のスタート地点&lt;/strong&gt;に立てた、とも言えます。&lt;/p&gt;
+
+&lt;p&gt;オンボーディングの改善は後回しになりがちなタスクです。&lt;br /&gt;
+しかし、新たに加わった新メンバーがいち早くパフォーマンスを発揮できるよう、&lt;strong&gt;自らオンボーディングを整えられたチーム&lt;/strong&gt;には、&lt;strong&gt;自律性&lt;/strong&gt;や&lt;strong&gt;持続可能性&lt;/strong&gt;の片鱗があるはずです。&lt;/p&gt;
+
+&lt;p&gt;新メンバーにとってだけでなく、チームにとって重要なオンボーディングの改善に、この知見が少しでも役立てば幸いです。&lt;/p&gt;</content><author><name></name></author><summary type="html">新メンバーを受け入れるとき、オンボーディングと称して既存資料をドサッと渡して「読んでおいてね」と伝えて済ませてしまうこと、ありませんか？</summary></entry><entry><title type="html">議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション</title><link href="https://aloerina01.github.io/blog/2025-08-04-1" rel="alternate" type="text/html" title="議論を“立て直す”ときに使える、力点と作用点を効かせるファシリテーション" /><published>2025-08-04T00:00:00+00:00</published><updated>2025-08-04T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-08-04-1">&lt;p&gt;会議のファシリテーションをしていて、「論点がかみ合わない」「発言は出ているのにまとまらない」と感じることはないでしょうか。そんな場面では「どの論点に力を入れれば、どの結論に影響を与えられるのか」がブレてしまっていることがあります。&lt;/p&gt;
 
 &lt;p&gt;これを&lt;strong&gt;議論の『力点』と『作用点』が入り乱れてしまい迷走している&lt;/strong&gt;という視点で捉えると、ファシリテーションの糸口が見えてきます。&lt;/p&gt;
 
@@ -1005,94 +1262,4 @@
 
 &lt;p&gt;チームメンバーの意識の向き先を「個々人の成果」から「チームの成果」に変えることになぜこんなにもこだわるかと言うと、&lt;strong&gt;その先に自律的なチーム、自己組織化されたチームがある&lt;/strong&gt;と考えているからです。チームが変化していくための布石を打つのは、変化の先にある自律的なチーム像を描き、そこに至るためのステップとしての行動というわけです。&lt;/p&gt;
 
-&lt;p&gt;今後は「ふりかえり」「課題バックログのリファインメント」「チームビルディング系ワークショップ」などのファシリテーションについて書こうと思いますが、他にも聞いてみたい事例があればぜひ&lt;a href=&quot;https://x.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。どなたでも大歓迎です。&lt;/p&gt;</content><author><name></name></author><summary type="html">私がエンジニアリングマネージャーとしてミーティング等をファシリテーションするとき、その内容に関わらず共通して意識していることがあります。そしてディテールを見れば意識やテクニックを使い分けている部分があります。それらの言語化にトライしてみようと思います。</summary></entry><entry><title type="html">5年分のマネジメント経験から生まれた実践的フィードバックの型</title><link href="https://aloerina01.github.io/blog/2024-11-06-1" rel="alternate" type="text/html" title="5年分のマネジメント経験から生まれた実践的フィードバックの型" /><published>2024-11-06T00:00:00+00:00</published><updated>2024-11-06T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2024-11-06-1">&lt;p&gt;私がEMとしてメンバーと向き合うときは「&lt;strong&gt;彼らのポテンシャルやエネルギーを100％発揮できる状態をつくれているか&lt;/strong&gt;」と考えることを心がけています&lt;strong&gt;。『観察』と『フィードバック』&lt;/strong&gt;はこれを実現するための最も大事な手段といえます。&lt;/p&gt;
-
-&lt;p&gt;ここ最近の自分自身のマネジメント業務を振り返ってみると、『フィードバック』のほうはある程度の型ができていると感じます。ベースとなる型があって、それをチームメンバーや状況によってアレンジしながら使っている感覚です。&lt;/p&gt;
-
-&lt;p&gt;そこで今回は私が5年間のマネジメント業務経験で培ってきたフィードバックの型を紹介してみます。世の中には数々のフィードバック方法論があるので体系的な知識はそれらに任せて、ここではより実践値の高い具体的な手法をお伝えします。&lt;/p&gt;
-
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#前提---フィードバックのタイミング&quot; id=&quot;markdown-toc-前提---フィードバックのタイミング&quot;&gt;前提 - フィードバックのタイミング&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#観点1現在の期待役割とその達成度&quot; id=&quot;markdown-toc-観点1現在の期待役割とその達成度&quot;&gt;観点1　「現在の期待役割とその達成度」&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#観点2一歩先の期待役割と伸びしろ&quot; id=&quot;markdown-toc-観点2一歩先の期待役割と伸びしろ&quot;&gt;観点2「一歩先の期待役割と伸びしろ」&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#観点3成果の価値の掘り下げ&quot; id=&quot;markdown-toc-観点3成果の価値の掘り下げ&quot;&gt;観点3「成果の価値の掘り下げ」&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#観点4強み&quot; id=&quot;markdown-toc-観点4強み&quot;&gt;観点4「強み」&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#観点5挑戦機会&quot; id=&quot;markdown-toc-観点5挑戦機会&quot;&gt;観点5「挑戦機会」&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#おわりに&quot; id=&quot;markdown-toc-おわりに&quot;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;前提---フィードバックのタイミング&quot;&gt;前提 - フィードバックのタイミング&lt;/h3&gt;
-
-&lt;p&gt;人事評価の時期にはこのあと紹介するフィードバックの観点のすべてを整理し伝えますが、1on1等日々のコミュニケーションの中でも伝えられる内容があるときはすぐ伝えます。言い換えると、&lt;strong&gt;日々の小さなフィードバックを収集して体系化したものが人事評価のタイミングでのフィードバックとなる&lt;/strong&gt;ので、受け取ったメンバーが「半期が終わって評価のタイミングで突然思いも寄らないフィードバックを伝えられた」とはならないはずです。 ……ならないよう心がけています。&lt;/p&gt;
-
-&lt;p&gt;「フィードバックはナマモノ」と言われたりもしますが、&lt;strong&gt;マネージャーとメンバーとの間で期待役割や評価の認識がズレない状態を維持すること&lt;/strong&gt;がフィードバックにおいて最も重要だと考えています。&lt;/p&gt;
-
-&lt;h3 id=&quot;観点1現在の期待役割とその達成度&quot;&gt;観点1　「現在の期待役割とその達成度」&lt;/h3&gt;
-
-&lt;p&gt;期待役割と、現時点でそれをどれほど達成できているかを伝えます。&lt;br /&gt;
-グレード、担当業務、職種、スキルなど様々な要因で期待役割は決まりますが、&lt;strong&gt;マネージャーはメンバー一人ひとりの期待役割を解像度高く理解し、彼らにその解像度を共有すること&lt;/strong&gt;が必要です。そしてその期待値をどれだけ満たしているかを併せて伝えることで、メンバーは「今の働き方を継続していこう」「足りない〇〇を意識するよう軌道修正しよう」と日々の行動を修正する指針を得られます。&lt;/p&gt;
-
-&lt;p&gt;期待役割は『やってほしいタスク』ではなく、&lt;strong&gt;ふるまい、責任、成果、インパクト&lt;/strong&gt;等で伝えます。&lt;br /&gt;
-これらを伝える際、&lt;strong&gt;ジュニアなエンジニアほど具体的に、シニアなエンジニアほど抽象的に&lt;/strong&gt;伝えることになります。ジュニアメンバーはいわゆる一人前と呼ばれる共通の水準に到達するための段階的な期待役割が設定されることが多いので内容が具体的になりやすく、シニアになるほど「エンジニアリングを通じて事業目標に貢献する」などの抽象度の高い成果が期待されることが増えるからです。&lt;/p&gt;
-
-&lt;p&gt;この観点でのフィードバックの要は、&lt;strong&gt;評価者である自分と被評価者であるメンバーとで、期待役割と現在地についてどれだけ高解像度に目線合わせできるか&lt;/strong&gt;です。そのためにはまずマネージャー自身が解像度を上げる必要があります。&lt;br /&gt;
-会社や部署の評価基準が曖昧なままであったり、全社共通のグレード毎の期待役割が抽象的過ぎたりする場合は、それらを掘り下げることが必要になるでしょう。その場合マネージャーひとりでは解決できないですし、ましてやチームメンバー自身で解決するのは不可能なので、有識者や意思決定者を巻き込んで期待役割の掘り下げをすることが最初の一歩となるかもしれません。&lt;/p&gt;
-
-&lt;h3 id=&quot;観点2一歩先の期待役割と伸びしろ&quot;&gt;観点2「一歩先の期待役割と伸びしろ」&lt;/h3&gt;
-
-&lt;p&gt;現在の期待役割と併せて伝えるべき2つ目の観点が、&lt;strong&gt;次の段階のキャリアで求められる期待役割&lt;/strong&gt;です。&lt;/p&gt;
-
-&lt;p&gt;自分自身がチームに属するいちエンジニアとして働いていた頃、あと何をがんばれば自分の評価が伸びるのか、新しい仕事を任せてもらえるのか、より裁量が与えられるのかが分からず悩んだことがあります。この要因は次のステップでの期待役割を理解していなかったこと、ひいては&lt;strong&gt;現状と次ステップとの差分を測れていなかった&lt;/strong&gt;ことにあります。&lt;br /&gt;
-この例のように、キャリアアップの伸びしろを示すことが、メンバーが持つエネルギーを適切な方向に放出させることに役立つ場面があります。&lt;strong&gt;努力の方向性を間違えさせない環境づくり&lt;/strong&gt;とも言えます。&lt;/p&gt;
-
-&lt;p&gt;この観点をフィードバックする際に私が気をつけていることは、現状との差分、つまり伸びしろを伝えるようにし、伸びしろを埋める行動はメンバー自身に考え実行してもらうようにすることです。例えば先述した「一人前のエンジニアになること」が次のステップである場合、&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;任された案件の進行中に仕様漏れや見積もりミスなどの問題が発生しても、関係者とともに軌道修正しながら完遂することを期待しています。すでにトラブルのない案件は滞りなく進行できているので、軽微かつ頻出な問題が発生した際にも進行できることで『一人前』の水準に近づきます。&lt;/p&gt;
-
-  &lt;p&gt;他にも、任された案件をこなすだけでなく、プロダクトやチームの課題を自ら見つけ解決に取り組むなどの自主的な行動も一人前のエンジニアに求められる期待役割です。&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;といった具合にフィードバックします。『一人前』という期待役割の解像度を上げ複数の視点で伸びしろを伝え、&lt;strong&gt;メンバー自身が差分を埋める具体的な行動を判断し実行すること&lt;/strong&gt;が、彼らのポテンシャルを引き出すことに繋がると信じているからです。&lt;br /&gt;
-もちろん行動が思いつかないようであれば具体例を出すこともありますが、メンバー自身が考える余地を残すことに意味があります。&lt;/p&gt;
-
-&lt;p&gt;ところでここで言う『一歩先』とは必ずしも次のグレードを指すわけではありません。メンバー一人ひとりの成長速度や直面する障壁の難易度などによって変わります。「各メンバーが次のフェーズにステップアップするためにどのような階段を登るだろうか」と考えながら、&lt;strong&gt;メンバーによっては1段ずつであったり2段飛ばしであったりと適切な『一歩先の階段』&lt;/strong&gt;をフィードバックするよう意識しています。&lt;/p&gt;
-
-&lt;h3 id=&quot;観点3成果の価値の掘り下げ&quot;&gt;観点3「成果の価値の掘り下げ」&lt;/h3&gt;
-
-&lt;p&gt;メンバーが出した成果にどのような価値があるかを様々な視点から伝えます。&lt;/p&gt;
-
-&lt;p&gt;あるメンバーが「既存のプロダクトにTypeScriptを導入しました。開発スピードが上がり、QA時のバグも減りました」と自身の成果を捉えていたとします。しかしこの成果には他の側面でも価値があります。たとえば&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;今まで通り開発案件をこなしながらTS導入の時間を捻出しやり遂げたことは、開発リードタイムの短縮や効率化など業務改善の成功事例という側面があります&lt;/li&gt;
-  &lt;li&gt;デグレを起こすことなく既存のコードをTS化した開発プロセスそのものに価値があります&lt;/li&gt;
-  &lt;li&gt;チームメンバー間でTSの技術レベルの差がありながらも導入し、その後もチームのベロシティが落ちていないことから、チームの技術力を底上げする工夫がなされていることが読み取れます&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;といった具合に様々な側面から成果を捉え、本人が気づいていない価値をフィードバックします。&lt;/p&gt;
-
-&lt;p&gt;加えて、その&lt;strong&gt;成果が期待役割に噛み合っているか&lt;/strong&gt;を伝えること重要です。たとえばジュニア寄りのエンジニアが上述の成果を上げたのであれば「自主的な改善活動は期待に沿う成果です」となるかもしれませんし、シニアエンジニアであれば「その活動が事業に与える効果をステークホルダーに説明するところまでやり遂げることを期待しています」となるかもしれません。これは観点1の『現状の期待役割に対する達成度』のフィードバックとも言えますね。&lt;/p&gt;
-
-&lt;h3 id=&quot;観点4強み&quot;&gt;観点4「強み」&lt;/h3&gt;
-
-&lt;p&gt;多くのマネージャーがすでにしていることと思いますが、マネージャーが観測した強みを伝えることも重要です。これは言葉の通りなのでこれ以上の説明はないですが、私が意識していることは、&lt;strong&gt;1度伝えた内容であってもその強みが見られる事例があった際には何度でも伝える&lt;/strong&gt;ことです。&lt;/p&gt;
-
-&lt;p&gt;強みとは、言い換えれば「苦労したとは思ってないのに人よりうまく出来ていること、評価されていること」だと思います。人より簡単にできてしまうことを特別なスキルや長所だと自覚するのは案外難しかったりするので、繰り返し何度でも伝えようと心がけています。&lt;/p&gt;
-
-&lt;h3 id=&quot;観点5挑戦機会&quot;&gt;観点5「挑戦機会」&lt;/h3&gt;
-
-&lt;p&gt;ここまで紹介した観点1〜4を踏まえて、挑戦機会を提供します。&lt;br /&gt;
-メンバーの次のステップの期待役割と現在地との差分を明らかにし、伸びしろを埋めていくためにどんな強みを生かしてどんな挑戦をすると良いかを計画し、日々のマネジメント活動(EMとしてのあらゆる活動)を通じて挑戦機会を見つけてフィードバックします。&lt;/p&gt;
-
-&lt;p&gt;『挑戦』というと目新しい仕事に目が行きがちですが、長く続けている業務の中にも挑戦できるポイントは潜んでいます。もちろん最適な挑戦機会がすぐに見つからない状況もありますが、挑戦機会が必要になって初めて探すこととならないよう、&lt;strong&gt;メンバー各々に対する観点1〜4を頭の中に描きアップデートし続け、適切な挑戦機会を日々探し続けておくこと&lt;/strong&gt;が大切です。&lt;br /&gt;
-「今の仕事に飽きてしまったし成長を実感できないので転職を考えています」と打ち明けられてから挑戦機会を探すのでは遅い……ということはマネジメントをしている方々には想像に難くないと思います。&lt;/p&gt;
-
-&lt;h3 id=&quot;おわりに&quot;&gt;おわりに&lt;/h3&gt;
-
-&lt;p&gt;実践しているフィードバックのうちベースとなる部分を整理して紹介してみました。&lt;br /&gt;
-繰り返しになりますが、「フィードバックをしよう」と思ってからこれらの観点について考え始めても手遅れになってしまうので、常にメンバー一人ひとりと各観点を同期し続け、自分と近い解像度を維持してもらうことを意識しながらフィードバックし続けることが重要です。そしてそのためには常に観察し続けることもセットで必要になります。&lt;/p&gt;
-
-&lt;p&gt;私の職場環境だから成り立っている内容も多分にあったかもしれませんが誰かの役に立てれば嬉しいですし、そうでなくとも数年後自分自身で読み返してレベルアップを実感できれば良いなと思って書きました。&lt;/p&gt;
-
-&lt;p&gt;思ったより長くなってしまいました。ここまで読んでくれた方はどうもありがとうございました。&lt;/p&gt;</content><author><name></name></author><summary type="html">私がEMとしてメンバーと向き合うときは「彼らのポテンシャルやエネルギーを100％発揮できる状態をつくれているか」と考えることを心がけています。『観察』と『フィードバック』はこれを実現するための最も大事な手段といえます。</summary></entry></feed>
+&lt;p&gt;今後は「ふりかえり」「課題バックログのリファインメント」「チームビルディング系ワークショップ」などのファシリテーションについて書こうと思いますが、他にも聞いてみたい事例があればぜひ&lt;a href=&quot;https://x.com/aloerina_&quot; target=&quot;_blank&quot;&gt;@aloerina_&lt;/a&gt;までご連絡ください。どなたでも大歓迎です。&lt;/p&gt;</content><author><name></name></author><summary type="html">私がエンジニアリングマネージャーとしてミーティング等をファシリテーションするとき、その内容に関わらず共通して意識していることがあります。そしてディテールを見れば意識やテクニックを使い分けている部分があります。それらの言語化にトライしてみようと思います。</summary></entry></feed>
