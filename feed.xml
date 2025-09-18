@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-09-18T09:41:12+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">Feel and Code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="https://aloerina01.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aloerina01.github.io/" rel="alternate" type="text/html" /><updated>2025-09-18T09:45:21+00:00</updated><id>https://aloerina01.github.io/feed.xml</id><title type="html">Feel and Code</title><subtitle>Web Developer。同じような過ちを繰り返さないように備忘録を残しています。
 </subtitle><entry><title type="html">”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例</title><link href="https://aloerina01.github.io/blog/2025-09-18-1" rel="alternate" type="text/html" title="”資料を渡すだけ”から脱却して効果的なオンボーディングにするための改善事例" /><published>2025-09-18T00:00:00+00:00</published><updated>2025-09-18T00:00:00+00:00</updated><id>https://aloerina01.github.io/blog/1</id><content type="html" xml:base="https://aloerina01.github.io/blog/2025-09-18-1">&lt;p&gt;新メンバーを受け入れるとき、オンボーディングと称して既存資料をドサッと渡して「読んでおいてね」と伝えて済ませてしまうこと、ありませんか？&lt;/p&gt;
 
 &lt;p&gt;私たちのチームもかつてそうでした。&lt;br /&gt;
@@ -125,7 +125,7 @@
 &lt;p&gt;LINE NEWSでは、「4つの新メンバーのタイプ」x 「4つのフェーズ(12のストーリー)」を表にまとめていました。&lt;/p&gt;
 
 &lt;figure style=&quot;margin-left:-30%;margin-right:-30%;margin-bottom:36px;&quot;&gt;
-&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリー&quot; src=&quot;/assets/2025-09-18-1/オンボーディングストーリーマッピング.jpg&quot; /&gt;
+&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリー&quot; src=&quot;/assets/2025-09-18-1/stories.jpg&quot; /&gt;
 &lt;figcaption style=&quot;text-align:center;font-size:90%;color:#90A4AE;&quot;&gt;(LINE NEWSのオンボーディングストーリー)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -185,7 +185,7 @@
 &lt;p&gt;マッピングが完了すると、「実践できていないストーリー」や「過剰に取り組んでいるストーリー」が浮き彫りになるはずです。これを1つずつ修正していくことで、&lt;strong&gt;過不足のない&lt;/strong&gt;オンボーディングが出来上がっていきます。&lt;/p&gt;
 
 &lt;figure style=&quot;margin-left:0%;margin-right:0%;margin-bottom:36px;&quot;&gt;
-&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリーマッピング&quot; src=&quot;/assets/2025-09-18-1/オンボーディングアクション.jpg&quot; /&gt;
+&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリーマッピング&quot; src=&quot;/assets/2025-09-18-1/actions.jpg&quot; /&gt;
 &lt;figcaption style=&quot;text-align:center;font-size:90%;color:#90A4AE;&quot;&gt;(LINE NEWSのオンボーディングアクションのマッピング例)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
@@ -203,7 +203,7 @@
 &lt;p&gt;まずはLINE NEWSの実例から見てみましょう。&lt;/p&gt;
 
 &lt;figure style=&quot;margin-left:-30%;margin-right:-30%;margin-bottom:36px;&quot;&gt;
-&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリーマッピング&quot; src=&quot;/assets/2025-09-18-1/オンボーディングタイムライン.jpg&quot; /&gt;
+&lt;img style=&quot;border:1px solid #CFD8DC;border-radius:4px;&quot; alt=&quot;オンボーディングストーリーマッピング&quot; src=&quot;/assets/2025-09-18-1/timeline.jpg&quot; /&gt;
 &lt;figcaption style=&quot;text-align:center;font-size:90%;color:#90A4AE;&quot;&gt;(LINE NEWSのオンボーディングタイムラインの一部)&lt;/figcaption&gt;
 &lt;/figure&gt;
 
