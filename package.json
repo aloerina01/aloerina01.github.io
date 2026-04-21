@@ -5,7 +5,11 @@
     "build": "bundle exec jekyll serve",
     "pre-build": "bundle exec jekyll serve  --destination demo",
     "demo": "bundle exec jekyll serve --watch --destination demo --config ./_config.dev.yml",
-    "build:js": "parcel build js/*.js --no-source-maps"
+    "build:js": "parcel build js/*.js --no-source-maps",
+    "test": "npm run test:structure && npm run test:visual",
+    "test:structure": "vitest run tests/structure.test.js",
+    "test:visual": "playwright test tests/visual.spec.js",
+    "test:update": "vitest run tests/structure.test.js -u && playwright test tests/visual.spec.js --update-snapshots"
   },
   "repository": {
     "type": "git",
@@ -21,6 +25,11 @@
     "update": "^0.4.2"
   },
   "devDependencies": {
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "@playwright/test": "^1.42.0",
+    "vitest": "^1.4.0",
+    "jsdom": "^24.0.0",
+    "gray-matter": "^4.0.3",
+    "glob": "^10.3.10"
   }
 }
