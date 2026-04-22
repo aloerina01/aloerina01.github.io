@@ -1,0 +1,60 @@
+/**
+ * HTML正規化ユーティリティ
+ * スナップショット比較のため、動的な値をマスクし、空白を正規化する
+ */
+
+export const normalizeHtml = (html) => {
+  let normalized = html;
+
+  // 現在の年をマスク（copyright表示など）
+  const currentYear = new Date().getFullYear();
+  normalized = normalized.replace(new RegExp(currentYear, 'g'), '{{YEAR}}');
+
+  // URLをマスク（localhost:4000 と aloerina01.github.io の両方）
+  normalized = normalized.replace(/http:\/\/localhost:4000/g, '{{BASE_URL}}');
+  normalized = normalized.replace(/https:\/\/aloerina01\.github\.io/g, '{{BASE_URL}}');
+
+  // Google Analytics のページパラメータをマスク
+  normalized = normalized.replace(
+    /'page':\s*'[^']+'/g,
+    "'page': '{{GA_PAGE}}'"
+  );
+  normalized = normalized.replace(
+    /'title':\s*'[^']+'/g,
+    "'title': '{{GA_TITLE}}'"
+  );
+
+  // タイムスタンプやビルド時刻をマスク
+  normalized = normalized.replace(
+    /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/g,
+    '{{TIMESTAMP}}'
+  );
+
+  // 空白の正規化
+  normalized = normalized
+    .replace(/\s+/g, ' ') // 複数の空白を1つに
+    .replace(/>\s+</g, '><') // タグ間の空白を削除
+    .trim();
+
+  return normalized;
+};
+
+/**
+ * 記事本文エリアを除外したHTMLを取得
+ * 記事更新時にレイアウトのみをテストするため
+ */
+export const excludeArticleContent = (html) => {
+  // 記事詳細ページの post-content クラスを持つ article タグのみを対象
+  // 固定ページの article タグは除外しない
+  const articleRegex = /<article\s+class="post-content"[^>]*>[\s\S]*?<\/article>/gi;
+  return html.replace(articleRegex, '<article class="post-content">{{ARTICLE_CONTENT}}</article>');
+};
+
+/**
+ * 動的リスト要素（関連記事など）を構造のみに変換
+ */
+export const normalizeRelatedPosts = (html) => {
+  // 関連記事リストのアイテムを構造のみに変換
+  // 具体的なパターンは実際のHTMLを見て調整
+  return html;
+};
