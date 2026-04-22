@@ -44,9 +44,10 @@ export function normalizeHtml(html) {
  * 記事更新時にレイアウトのみをテストするため
  */
 export function excludeArticleContent(html) {
-  // article タグの内容を置き換え
-  const articleRegex = /<article[^>]*>[\s\S]*?<\/article>/gi;
-  return html.replace(articleRegex, '<article>{{ARTICLE_CONTENT}}</article>');
+  // 記事詳細ページの post-content クラスを持つ article タグのみを対象
+  // 固定ページの article タグは除外しない
+  const articleRegex = /<article\s+class="post-content"[^>]*>[\s\S]*?<\/article>/gi;
+  return html.replace(articleRegex, '<article class="post-content">{{ARTICLE_CONTENT}}</article>');
 }
 
 /**

@@ -13,7 +13,13 @@ export const PageType = {
  * HTMLファイルパスからページタイプを判定
  */
 export function classifyPage(htmlPath) {
-  // 記事詳細ページ（年/月/日/番号.html のパターン）
+  // 記事詳細ページ
+  // 新URL形式: /blog/YYYY-MM-DD-N.html または /tip/YYYY-MM-DD-N.html
+  if (/\/(?:blog|tip)\/\d{4}-\d{2}-\d{2}-\d+\.html$/.test(htmlPath)) {
+    return PageType.POST;
+  }
+
+  // 旧URL形式: /category/YYYY/MM/DD/N.html
   if (/\d{4}\/\d{2}\/\d{2}\/\d+\.html$/.test(htmlPath)) {
     return PageType.POST;
   }

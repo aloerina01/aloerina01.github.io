@@ -46,13 +46,22 @@ export function generatePostHashMap() {
 
 /**
  * HTMLファイルパスから対応する記事スラッグを取得
- * 例: _test_build/jekyll/2016/10/02/2.html -> 2016-10-02-2
+ * 新URL形式: _test_build/blog/2024-12-20-1.html -> 2024-12-20-1
+ * 旧URL形式: _test_build/jekyll/2016/10/02/2.html -> 2016-10-02-2
  */
 export function getSlugFromHtmlPath(htmlPath) {
-  // パスから日付とファイル名を抽出
-  const match = htmlPath.match(/(\d{4})\/(\d{2})\/(\d{2})\/(\d+)\.html$/);
-  if (!match) return null;
+  // 新しいURL形式: /blog/YYYY-MM-DD-N.html
+  const newFormatMatch = htmlPath.match(/\/(?:blog|tip)\/(\d{4}-\d{2}-\d{2}-\d+)\.html$/);
+  if (newFormatMatch) {
+    return newFormatMatch[1];
+  }
 
-  const [, year, month, day, number] = match;
-  return `${year}-${month}-${day}-${number}`;
+  // 古いURL形式: /category/YYYY/MM/DD/N.html
+  const oldFormatMatch = htmlPath.match(/(\d{4})\/(\d{2})\/(\d{2})\/(\d+)\.html$/);
+  if (oldFormatMatch) {
+    const [, year, month, day, number] = oldFormatMatch;
+    return `${year}-${month}-${day}-${number}`;
+  }
+
+  return null;
 }
