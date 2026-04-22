@@ -3,7 +3,7 @@
  * スナップショット比較のため、動的な値をマスクし、空白を正規化する
  */
 
-export function normalizeHtml(html) {
+export const normalizeHtml = (html) => {
   let normalized = html;
 
   // 現在の年をマスク（copyright表示など）
@@ -37,24 +37,24 @@ export function normalizeHtml(html) {
     .trim();
 
   return normalized;
-}
+};
 
 /**
  * 記事本文エリアを除外したHTMLを取得
  * 記事更新時にレイアウトのみをテストするため
  */
-export function excludeArticleContent(html) {
+export const excludeArticleContent = (html) => {
   // 記事詳細ページの post-content クラスを持つ article タグのみを対象
   // 固定ページの article タグは除外しない
   const articleRegex = /<article\s+class="post-content"[^>]*>[\s\S]*?<\/article>/gi;
   return html.replace(articleRegex, '<article class="post-content">{{ARTICLE_CONTENT}}</article>');
-}
+};
 
 /**
  * 動的リスト要素（関連記事など）を構造のみに変換
  */
-export function normalizeRelatedPosts(html) {
+export const normalizeRelatedPosts = (html) => {
   // 関連記事リストのアイテムを構造のみに変換
   // 具体的なパターンは実際のHTMLを見て調整
   return html;
-}
+};

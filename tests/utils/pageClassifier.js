@@ -12,7 +12,7 @@ export const PageType = {
 /**
  * HTMLファイルパスからページタイプを判定
  */
-export function classifyPage(htmlPath) {
+export const classifyPage = (htmlPath) => {
   // 記事詳細ページ
   // 新URL形式: /blog/YYYY-MM-DD-N.html または /tip/YYYY-MM-DD-N.html
   if (/\/(?:blog|tip)\/\d{4}-\d{2}-\d{2}-\d+\.html$/.test(htmlPath)) {
@@ -36,12 +36,12 @@ export function classifyPage(htmlPath) {
 
   // 固定ページ
   return PageType.STATIC;
-}
+};
 
 /**
  * ビジュアルテスト対象ページか判定
  */
-export function shouldVisualTest(htmlPath) {
+export const shouldVisualTest = (htmlPath) => {
   const visualTestPages = [
     '_test_build/index.html',
     '_test_build/blogs.html',
@@ -60,4 +60,4 @@ export function shouldVisualTest(htmlPath) {
 
   return visualTestPages.some(page => htmlPath.endsWith(page)) ||
          samplePosts.some(post => htmlPath.includes(post));
-}
+};
