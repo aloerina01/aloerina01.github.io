@@ -23,6 +23,11 @@ const pages = [
   { name: 'Category - CSS', url: '/category/css/' },
   { name: 'Post - Long Content', url: '/blog/2025-09-18-1.html' },
   { name: 'Post - Short Content', url: '/blog/2024-12-20-1.html' },
+  // 特殊なレイアウト・要素を含むPost
+  { name: 'Post - Old URL with Info Banner', url: '/jekyll/2016/10/02/2.html' }, // 古いURL形式、info_new_url表示
+  { name: 'Post - Embedded iframes', url: '/blog/2020-12-18-1.html' }, // YouTube、SpeakerDeck埋め込み
+  { name: 'Post - Raw HTML Elements', url: '/blog/2016-10-13-1.html' }, // 生のHTML要素（h4タグなど）
+  { name: 'Post - TOC with Images', url: '/blog/2017-03-08-1.html' }, // {:toc}、画像含む
 ];
 
 test.describe('Visual Regression Tests', () => {
