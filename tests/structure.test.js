@@ -11,7 +11,9 @@ const htmlFiles = globSync('_test_build/**/*.html', {
   ignore: [
     '_test_build/feed.xml',
     '_test_build/assets/**',
-    '_test_build/dist/**'
+    '_test_build/dist/**',
+    '_test_build/playwright-report/**',
+    '_test_build/test-results/**'
   ]
 });
 

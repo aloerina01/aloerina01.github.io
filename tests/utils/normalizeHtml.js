@@ -10,6 +10,10 @@ export function normalizeHtml(html) {
   const currentYear = new Date().getFullYear();
   normalized = normalized.replace(new RegExp(currentYear, 'g'), '{{YEAR}}');
 
+  // URLをマスク（localhost:4000 と aloerina01.github.io の両方）
+  normalized = normalized.replace(/http:\/\/localhost:4000/g, '{{BASE_URL}}');
+  normalized = normalized.replace(/https:\/\/aloerina01\.github\.io/g, '{{BASE_URL}}');
+
   // Google Analytics のページパラメータをマスク
   normalized = normalized.replace(
     /'page':\s*'[^']+'/g,
