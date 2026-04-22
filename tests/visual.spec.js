@@ -21,8 +21,8 @@ const pages = [
   { name: 'Profile', url: '/profile.html' },
   { name: 'Category - JavaScript', url: '/category/javascript/' },
   { name: 'Category - CSS', url: '/category/css/' },
-  { name: 'Post - Jekyll Blog', url: '/jekyll/2016/10/02/2.html' },
-  { name: 'Post - React', url: '/javascript/react/2017/07/25/1.html' },
+  { name: 'Post - Long Content', url: '/blog/2025-09-18-1.html' },
+  { name: 'Post - Short Content', url: '/blog/2024-12-20-1.html' },
 ];
 
 test.describe('Visual Regression Tests', () => {
@@ -56,7 +56,7 @@ test.describe('Visual Regression Tests - Responsive', () => {
   // レスポンシブテスト（主要ページのみ）
   const responsivePages = [
     { name: 'Top Page', url: '/' },
-    { name: 'Post - Jekyll Blog', url: '/jekyll/2016/10/02/2.html' },
+    { name: 'Post - Long Content', url: '/blog/2025-09-18-1.html' },
   ];
 
   for (const viewport of viewports) {
