@@ -32,6 +32,59 @@ This is a blog written about some technical topics, by [Aloerina](https://twitte
 3. `npm start`
 
 
+## Testing
+
+このプロジェクトには、生成されたHTMLの構造とビジュアルのリグレッションテストが含まれています。
+
+### Requirements
+
+* Node.js 18.x or later
+
+### Test Types
+
+#### Structure Tests (Vitest)
+全157ページのHTML構造をスナップショット比較します。
+- HTMLの正規化（空白、動的な値のマスク）を行い、ユーザーが気づくレベルのデグレのみ検知
+- 記事本文の更新は除外され、レイアウト・構造のみをテスト
+- 記事ページ、一覧ページ、固定ページすべてを対象
+
+#### Visual Tests (Playwright)
+主要ページのスクリーンショット比較を行います。
+- メインページ（トップ、一覧、プロフィールなど）
+- 特殊な記事（古いURL、iframe埋め込み、目次付きなど）
+- レスポンシブ対応（デスクトップ、タブレット、モバイル）
+
+### Run Tests
+
+```bash
+# すべてのテストを実行
+npm test
+
+# 構造テストのみ
+npm run test:structure
+
+# ビジュアルテストのみ
+npm run test:visual
+
+# スナップショットを更新
+npm run test:update
+```
+
+### Update Snapshots
+
+意図的な変更後にスナップショットを更新する場合:
+
+```bash
+# 構造テストのスナップショットを更新
+npm run test:structure -- -u
+
+# ビジュアルテストのスナップショットを更新
+npm run test:visual -- --update-snapshots
+
+# または一括更新
+npm run test:update
+```
+
 ## Branch rules
 
 ### development branch

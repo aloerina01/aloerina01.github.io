@@ -10,3 +10,6 @@ node_modules
 demo
 .vscode
 .cache
+_test_build
+test-results
+playwright-report
